@@ -1,0 +1,5 @@
+# Build a package
+
+Expalin how to build a package, I would add style guide and something on pkgdown
+
+

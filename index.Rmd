@@ -1,0 +1,35 @@
+--- 
+title: "Let's find a good title"
+author: "Stéphane Guerrier, Justin Lee & Roberto Molinari"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: smac-group/ds
+description: "LEt's add somethign here"
+---
+
+# Introduction
+
+
+
+Explain what this text is about + objectives.
+
+This chapter should summarize the advantage of using R. Following Hadley's Advanced R, here are the main points:
+
+- Free, open source which implies easy results can easily be replicated.
+- Massive set of packages
+- Easy packages creation to allow code sharing
+- Cutting edge tools (research in stat and machine learning often use R)
+- Powerful tools for communicating results (Rmarkdown, shinny)
+- Can be "connected" to high-performance languages. In this text, we will discuss C++ but C and FORTRAN are also natural candidates
+
+Maybe add drawback of R, for me the main one is that R is slow and doesn't manages well memory. There are certainly other just as the inconsistency between packages.
+
+It would be nice to add some kind of list of "what you should be able to do after reading this text".
+
+Finally, a few remarks on conventions, references (this text will use a lot Hadley's books) and some acknowledgements.
+

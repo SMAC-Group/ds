@@ -1,0 +1,63 @@
+# Logical Operators and Control Stuctures {#control}
+
+## Logical Operators
+
+## Control Structures
+
+### Selection Controls
+
+Basically if, if/else, if/elseif/else and switch
+
+### Iteration Controls
+
+for and while
+
+## Applications: 
+
+### Non-parametric Bootstrap
+
+Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)
+
+```{r}
+student_work = c(0, 0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1.25, 4)
+```
+
+We can compute the mean time spent
+
+```{r}
+mean(student_work)
+```
+
+*ADD SOMETHING ON T TEST*
+
+```{r}
+t.test(student_work)$conf.int
+```
+
+We can see that our confidence interval includes a negative values which clearly isn't meaningful. Solution: (non-parametric) bootstrap which works as follows..... ADD SOMETHING
+
+Here is a simple function to implement this approach:
+
+```{r}
+# Number of boostrap replications
+B = 500
+
+# Compute the length of vector
+n = length(student_work)
+
+# Confidence level
+alpha = 0.05
+
+# Initialisation of 
+boot_mean = rep(NA, B)
+
+for (i in 1:B){
+  student_work_star = student_work[sample(1:n, replace = TRUE)]
+  boot_mean[i] = mean(student_work_star)
+}
+
+quantile(boot_mean, c(alpha/2, 1 - alpha/2))
+#hist(boot_mean, probability = TRUE)
+
+```
+
