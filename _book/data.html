@@ -110,7 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.2</b> Subsetting</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.3</b> Attributes</a></li>
 <li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Useful functions with vectors</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#example"><i class="fa fa-check"></i><b>2.1.5</b> Example</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#example-making-maps"><i class="fa fa-check"></i><b>2.1.5</b> Example: Making Maps</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#dataframes"><i class="fa fa-check"></i><b>2.2</b> Dataframes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.2.1</b> Application: Non-parametric bootstrap</a></li>
@@ -150,7 +150,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>List: Heterogeneous, 1D</li>
 <li>Data Frame: Heterogeneous, 2D</li>
 </ul>
-<p>To illistrate the things we will in this chapter….</p>
+<p>To illustrate the things we will in this chapter….</p>
 <p>as of 07/15/17 (Men single)</p>
 <table>
 <thead>
@@ -224,9 +224,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div class="rmdimportant">
 <ul>
-<li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> evaluate the type of objects in a vector.</li>
+<li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> to evaluate the type of objects in a vector.</li>
 <li><strong>Length</strong>, i.e. the number of elements in a vector. This information can be obtained using the function <code>length()</code>.</li>
-<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can found in Section <a href="data.html#vectattr">2.1.3</a>)
+<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can be found in Section <a href="data.html#vectattr">2.1.3</a>)
 </div>
 </li>
 </ul>
@@ -329,8 +329,8 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <h3><span class="header-section-number">2.1.4</span> Useful functions with vectors</h3>
 <p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>sort()</code> and <code>order()</code></p>
 </div>
-<div id="example" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Example</h3>
+<div id="example-making-maps" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Example: Making Maps</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_place =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
                 <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
@@ -339,23 +339,40 @@ glasgow_coord =<span class="st"> </span><span class="kw">geocode</span>(<span cl
 <pre><code>##         lon      lat
 ## 1 -4.251806 55.86424</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord =<span class="st"> </span><span class="kw">geocode</span>(birth_place)</code></pre></div>
-<pre><code>## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Glasgow,%20Scotland&amp;sensor=false</code></pre>
-<pre><code>## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Manacor,%20Spain&amp;sensor=false</code></pre>
-<pre><code>## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Lausanne,%20Switzerland&amp;sensor=false</code></pre>
-<pre><code>## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Belgrade,%20Serbia&amp;sensor=false</code></pre>
-<pre><code>## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Basel,%20Switzerland&amp;sensor=false</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mapproj)</code></pre></div>
-<pre><code>## Loading required package: maps</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)</code></pre></div>
-<pre><code>## Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=Switzerland&amp;zoom=4&amp;size=640x640&amp;scale=2&amp;maptype=terrain&amp;language=en-EN&amp;sensor=false</code></pre>
-<pre><code>## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Switzerland&amp;sensor=false</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggmap</span>(map) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> players))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord</code></pre></div>
+<pre><code>##         lon      lat
+## 1 -4.251806 55.86424
+## 2  3.209532 39.56972
+## 3  6.632273 46.51965
+## 4 20.448922 44.78657
+## 5  7.588576 47.55960</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(birth_coord)</code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord$Players =<span class="st"> </span>players
+birth_coord$GS =<span class="st"> </span>grand_slam_win</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord</code></pre></div>
+<pre><code>##         lon      lat        Players GS
+## 1 -4.251806 55.86424    Andy Murray  9
+## 2  3.209532 39.56972   Rafael Nadal 15
+## 3  6.632273 46.51965  Stan Wawrinka  5
+## 4 20.448922 44.78657 Novak Djokovic 12
+## 5  7.588576 47.55960  Roger Federer 18</code></pre>
+<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry to much about the details of how this graph is made</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mapproj)
+map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)
+<span class="kw">ggmap</span>(map) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, 
+             <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
+<span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
+<span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="dataframes" class="section level2">
 <h2><span class="header-section-number">2.2</span> Dataframes</h2>
 <p>LG</p>
+<p>A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list.</p>
+<p>We can create a data frame using data.frame()</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <div id="application-non-parametric-bootstrap" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Application: Non-parametric bootstrap</h3>
 <p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
@@ -388,8 +405,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##  2.5% 97.5% 
-## 0.250 1.475</code></pre>
+<pre><code>##     2.5%    97.5% 
+## 0.286875 1.538125</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
