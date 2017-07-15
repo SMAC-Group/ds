@@ -12,13 +12,13 @@ To illustrate the things we will in this chapter....
 
 as of 07/15/17 (Men single)
 
- Name              Date of Birth       Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
-----------------  ---------------  -------------------  ---------------  -------------- ---------------- ------------------
-Andy Murray        15 May 1987     Great Britain            1             60,449,649         78.07               9
-Rafael Nadal       3 June 1986       Spain                   2            85,920,132         82.48               15
-Stan Wawrinka      28 March 1985     Switzerland             3            30,577,981         63.96              5
-Novak Djokovic    22 May 1987          Serbia                4            109,447,408        82.77              12
-Roger Federer      8 August 1981      Switzerland            5            104,445,185        81.80              18
+ Name              Date of Birth         Born                Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
+----------------  ---------------  ---------------------- -------------------  ---------------  -------------- ---------------- ------------------
+Andy Murray        15 May 1987     Glasgow, Scotland       Great Britain            1             60,449,649         78.07               9
+Rafael Nadal       3 June 1986     Manacor, Spain           Spain                   2            85,920,132         82.48               15
+Stan Wawrinka      28 March 1985   Lausanne, Switzerland    Switzerland             3            30,577,981         63.96              5
+Novak Djokovic    22 May 1987       Belgrade, Serbia          Serbia                4            109,447,408        82.77              12
+Roger Federer      8 August 1981    Basel, Switzerland      Switzerland            5            104,445,185        81.80              18
 
 
 
@@ -32,32 +32,42 @@ A vector has three properties:
 - **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
 ```
 
-For example, consider the number of grand slam won by the players 
+For example, consider the number of grand slam won by the five players we are considering: 
 
 ```{r}
-exp_res = c(1, 2, 3, 5, 1)
+grand_slam_win = c(9, 15, 5, 12, 18)
 ```
 
-To display the values stored in `exp_res` we could simply do:
+To display the values stores in `grand_slam_win` we could simply do:
+
 
 ```{r}
-exp_res
+grand_slam_win
 ```
-
 
 Alteratively, we could have create and display the value by using `()` around the defiition, for example:
 
 ```{r}
-(exp_res = c(1, 2, 3, 5, 1))
+(grand_slam_win = c(9, 15, 5, 12, 18))
 ```
 
-We can evaluate the kind or type of elements that are stored in a vector using the function `typeof()`. For example, for the vector we just created we obtain:
+It is also possible to define vector with characters, for example we could define a vector with the player names as follows:
 
 ```{r}
-typeof(exp_res)
+(players = c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer"))
 ```
 
-This is a little suprzing as all the elements in `exp_res` are integers it would seem natural to expect this as an output of the function `typeof()`. This is R considers by default any number as a "double", expet when spefiying `L` after an integer. For example,  
+### Type 
+
+We can evaluate the kind or type of elements that are stored in a vector using the function `typeof()`. For example, for the vectors we just created we obtain:
+
+```{r}
+typeof(grand_slam_win)
+typeof(players)
+```
+
+This is a little suprzing as all the elements in `grand_slam_win` are integers it would seem natural to expect this as an output of the function `typeof()`. This is R considers by default any number as a "double", expet when spefiying `L` after an integer. For example,  
 
 ```{r}
 typeof(1)
@@ -74,7 +84,7 @@ typeof(exp_res_int)
 Naturally, the difference is the two in general relatively but we can see that `exp_res_int` takes less "space" to two. For example, we have
 
 ```{r}
-object.size(exp_res)
+object.size(grand_slam_win)
 object.size(exp_res_int)
 ```
 
@@ -87,64 +97,73 @@ Naturally, it is possible to "subset" the values of in our vectror in many ways.
 
 ```{r}
 # Accesing the first element
-exp_res[1]
+grand_slam_win[1]
 
 # Accesing the third and first value
-exp_res[c(3, 1)]
+grand_slam_win[c(3, 1)]
 
 # Duplicated indices yield duplicated values
-exp_res[c(1, 1, 2, 2, 3, 4)]
+grand_slam_win[c(1, 1, 2, 2, 3, 4)]
 ```
 
 - **Negative Index**: We *remove* elements in a vector using negative indices:
 
 ```{r}
 # Removing the second obervation
-exp_res[-2]
+grand_slam_win[-2]
 
 # Removing the first and fourth obserations
-exp_res[c(-1, -4)]
+grand_slam_win[c(-1, -4)]
 ```
 
 - **Logical Indices**: Another usefull approach is based on *logical* operators:
 
 ```{r}
 # Access the first and fourth observations
-exp_res[c(TRUE, FALSE, FALSE, TRUE, FALSE)]
+grand_slam_win[c(TRUE, FALSE, FALSE, TRUE, FALSE)]
 ```
 
-**ADD REMARK BOX**
-
+```{block2, type='rmdnote'}
 Here we could add some remarks on weird cases, for example `exp_res[c(1.2, 3.4)]` (which rounds things up) or `exp_res[c(-1, 2)]` (which doesn't work as "mixed" indices are not permitted).
+```
+
+
 
 ### Attributes {#vectattr}
 
 Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:
 
 ```{r}
-attr(exp_res, "date") = "07-21-2017"
-attr(exp_res, "location") = "Montreux, Switzerland"
+attr(grand_slam_win, "date") = "07-21-2017"
+attr(grand_slam_win, "location") = "Montreux, Switzerland"
 ```
 
 To display the vector with its attributes
 
 ```{r}
-exp_res
+grand_slam_win
 ```
 
 To only display the attributes
 ```{r}
-attributes(exp_res)
+attributes(grand_slam_win)
 ```
 
 It is also possible to extract a specific attribute
 
 ```{r}
-attr(exp_res, "date")
+attr(grand_slam_win, "date")
 ```
 
 
-### Dataframes
+### Useful functions with vectors
+
+length sum mean sort and order
+
+### Example
+
+
+## Dataframes
 
 
 LG 
