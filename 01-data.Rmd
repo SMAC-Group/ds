@@ -8,6 +8,20 @@ Brievely explain the types of data strucutres in R. Basically there are five
 - List: Heterogeneous, 1D
 - Data Frame: Heterogeneous, 2D
 
+To illistrate the things we will in this chapter....
+
+as of 07/15/17 (Men single)
+
+ Name              Date of Birth       Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
+----------------  ---------------  -------------------  ---------------  -------------- ---------------- ------------------
+Andy Murray        15 May 1987     Great Britain            1             60,449,649         78.07               9
+Rafael Nadal       3 June 1986       Spain                   2            85,920,132         82.48               15
+Stan Wawrinka      28 March 1985     Switzerland             3            30,577,981         63.96              5
+Novak Djokovic    22 May 1987          Serbia                4            109,447,408        82.77              12
+Roger Federer      8 August 1981      Switzerland            5            104,445,185        81.80              18
+
+
+
 ## Vectors 
 
 A vector has three properties:
@@ -18,22 +32,7 @@ A vector has three properties:
 - **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can found in Section \@ref(vectattr))
 ```
 
-
-### Defining vectors {#defvect}
-
-Suppose
-
-
-Table: A simple table in Markdown.
-
- Name              Date of Birth       Country            ATP Ranking     Prize Money   Win Percentage   Grand Slam Wins
-----------------  ---------------  -------------------  ---------------  -------------- ---------------- ------------------
-Andy Murray        15 May 1987     Great Britain            1             60,449,649         78.07               9
-Rafael Nadal       3 June 1986       Spain                   2            85,920,132         82.48               15
-Stan Wawrinka      28 March 1985     Switzerland             3            30,577,981         63.96              5
-Novak Djokovic    22 May 1987          Serbia                4            109,447,408        82.77              12
-Roger Federer      8 August 1981      Switzerland            5
-
+For example, consider the number of grand slam won by the players 
 
 ```{r}
 exp_res = c(1, 2, 3, 5, 1)
@@ -143,6 +142,13 @@ It is also possible to extract a specific attribute
 ```{r}
 attr(exp_res, "date")
 ```
+
+
+### Dataframes
+
+
+LG 
+
 
 ### Application: Non-parametric bootstrap
 
