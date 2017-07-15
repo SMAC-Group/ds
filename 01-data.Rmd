@@ -8,7 +8,7 @@ Brievely explain the types of data strucutres in R. Basically there are five
 - List: Heterogeneous, 1D
 - Data Frame: Heterogeneous, 2D
 
-To illistrate the things we will in this chapter....
+To illustrate the things we will in this chapter....
 
 as of 07/15/17 (Men single)
 
@@ -27,9 +27,9 @@ Roger Federer      8 August 1981      Switzerland            5            104,44
 A vector has three properties:
 
 ```{block2, note-text, type='rmdimportant'}
-- **Type**, which corresponds the "kind" of objects in contains. It is possible to use the function `typeof()` evaluate the type of objects in a vector.
+- **Type**, which corresponds the "kind" of objects in contains. It is possible to use the function `typeof()` to evaluate the type of objects in a vector.
 - **Length**, i.e. the number of elements in a vector. This information can be obtained using the function `length()`.
-- **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can found in Section \@ref(vectattr))
+- **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
 ```
 
 For example, consider the number of grand slam won by the players 
@@ -38,7 +38,7 @@ For example, consider the number of grand slam won by the players
 exp_res = c(1, 2, 3, 5, 1)
 ```
 
-To display the values stores in `exp_res` we could simply do:
+To display the values stored in `exp_res` we could simply do:
 
 ```{r}
 exp_res
@@ -106,7 +106,7 @@ exp_res[-2]
 exp_res[c(-1, -4)]
 ```
 
-- **Logical Indices**: Another usefull approach is based on *logic al* operators:
+- **Logical Indices**: Another usefull approach is based on *logical* operators:
 
 ```{r}
 # Access the first and fourth observations
@@ -149,6 +149,13 @@ attr(exp_res, "date")
 
 LG 
 
+A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list. 
+
+We can create a data frame using data.frame() 
+
+```{r}
+student_work = c(0, 0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1.25, 4)
+```
 
 ### Application: Non-parametric bootstrap
 
