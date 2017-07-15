@@ -77,15 +77,15 @@ typeof(1L)
 Therefore, we could express `exp_res` as follows:
 
 ```{r}
-(exp_res_int = c(1L, 2L, 3L, 5L, 1L))
-typeof(exp_res_int)
+(grand_slam_win_int = c(1L, 2L, 3L, 5L, 1L))
+typeof(grand_slam_win_int)
 ```
 
-Naturally, the difference is the two in general relatively but we can see that `exp_res_int` takes less "space" to two. For example, we have
+Naturally, the difference between the two in general relatively unimportant but we can see that `exp_res_int` takes less "space" to two. For example, we have
 
 ```{r}
 object.size(grand_slam_win)
-object.size(exp_res_int)
+object.size(grand_slam_win_int)
 ```
 
 
@@ -134,8 +134,8 @@ Here we could add some remarks on weird cases, for example `exp_res[c(1.2, 3.4)]
 Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:
 
 ```{r}
-attr(grand_slam_win, "date") = "07-21-2017"
-attr(grand_slam_win, "location") = "Montreux, Switzerland"
+attr(grand_slam_win, "date") = "07-15-2017"
+attr(grand_slam_win, "type") = "Men, Single"
 ```
 
 To display the vector with its attributes
@@ -158,9 +158,33 @@ attr(grand_slam_win, "date")
 
 ### Useful functions with vectors
 
-length sum mean sort and order
+`length()` `sum()` `mean()` `sort()` and `order()`
 
 ### Example
+
+```{r}
+birth_place = c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland",
+                "Belgrade, Serbia", "Basel, Switzerland")
+```
+
+```{r, message = FALSE}
+library(ggmap)
+glasgow_coord = geocode("Glasgow, Scotland")
+```
+
+```{r}
+glasgow_coord
+```
+
+```{r}
+birth_coord = geocode(birth_place)
+```
+
+```{r}
+library(mapproj)
+map <- get_map(location = 'Switzerland', zoom = 4)
+ggmap(map) + geom_point(data = birth_coord, size = 2, aes(lon, lat, col = players))
+```
 
 
 ## Dataframes
