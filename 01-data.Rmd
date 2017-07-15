@@ -160,6 +160,69 @@ attr(grand_slam_win, "date")
 
 `length()` `sum()` `mean()` `sort()` and `order()`
 
+
+### Example: Apple Stock Price 
+
+```{r}
+(today = Sys.Date())
+```
+
+```{r}
+(three_months_ago = seq(today, length = 2, by = "-3 months")[2])
+```
+
+```{r, message = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE}
+library(quantmod)
+getSymbols("AAPL", from = three_months_ago, to = today)
+candleChart(AAPL, theme='white', type='candles')
+```
+
+Let's compute returns...
+
+\begin{equation}
+  r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
+\end{equation}
+
+where $r_t$ are the return, $S_t$ the stock price. This is implemented in the function `ClCl()` of the package `quantmod`. For example, we can create a vector of returns as follows 
+
+
+```{r}
+AAPL_returns = as.numeric(na.omit(ClCl(AAPL)))
+```
+
+`na.omit` to remove missing value as if we have $n+1$ stock prices we only $n$ returns
+`as.numeric` to transform into a vector. We can now compute mean and median return over the period
+
+```{r}
+mean(AAPL_returns)
+median(AAPL_returns)
+```
+
+Excess Kurtosis can be defined for a random variable $X$ as
+
+\begin{equation}
+  \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
+\end{equation}
+
+The reason excess is .... A common estimator of the excess Kurtosis is
+
+\begin{equation}
+  k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3
+\end{equation}
+
+where $\bar{k}$ denotes the sample average of the returns, i.e.
+
+\begin{equation}
+  \bar{k} = \frac{1}{n} \sum_{i = 1}^n r_i
+\end{equation}
+
+```{r}
+mu = mean(AAPL_returns)
+(k = mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)
+```
+ 
+which is quite high tends to indicate the returns have a heavier tails than the normal distribution.
+ 
 ### Example: Making Maps
 
 
@@ -177,7 +240,7 @@ glasgow_coord = geocode("Glasgow, Scotland")
 glasgow_coord
 ```
 
-```{r, message = FALSE}
+```{r, message = FALSE, cache = TRUE}
 birth_coord = geocode(birth_place)
 ```
 
@@ -200,7 +263,7 @@ birth_coord
 
 Let's represent this information graphically. We haven't seen how to make graph yet so don't worry to much about the details of how this graph is made
 
-```{r, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5}
+```{r, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
 library(mapproj)
 map <- get_map(location = 'Switzerland', zoom = 4)
 ggmap(map) + geom_point(data = birth_coord, 
