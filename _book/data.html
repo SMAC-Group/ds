@@ -106,10 +106,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a><ul>
 <li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="data.html"><a href="data.html#defvect"><i class="fa fa-check"></i><b>2.1.1</b> Defining vectors</a></li>
+<li class="chapter" data-level="2.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>2.1.1</b> Type</a></li>
 <li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.2</b> Subsetting</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.3</b> Attributes</a></li>
-<li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.1.4</b> Application: Non-parametric bootstrap</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#example"><i class="fa fa-check"></i><b>2.1.5</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#dataframes"><i class="fa fa-check"></i><b>2.2</b> Dataframes</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.2.1</b> Application: Non-parametric bootstrap</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a></li>
@@ -146,6 +150,74 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>List: Heterogeneous, 1D</li>
 <li>Data Frame: Heterogeneous, 2D</li>
 </ul>
+<p>To illistrate the things we will in this chapter….</p>
+<p>as of 07/15/17 (Men single)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Name</th>
+<th align="center">Date of Birth</th>
+<th align="center">Born</th>
+<th align="center">Country</th>
+<th align="center">ATP Ranking</th>
+<th align="left">Prize Money</th>
+<th align="left">Win Percentage</th>
+<th align="left">Grand Slam Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Andy Murray</td>
+<td align="center">15 May 1987</td>
+<td align="center">Glasgow, Scotland</td>
+<td align="center">Great Britain</td>
+<td align="center">1</td>
+<td align="left">60,449,649</td>
+<td align="left">78.07</td>
+<td align="left">9</td>
+</tr>
+<tr class="even">
+<td align="center">Rafael Nadal</td>
+<td align="center">3 June 1986</td>
+<td align="center">Manacor, Spain</td>
+<td align="center">Spain</td>
+<td align="center">2</td>
+<td align="left">85,920,132</td>
+<td align="left">82.48</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="center">Stan Wawrinka</td>
+<td align="center">28 March 1985</td>
+<td align="center">Lausanne, Switzerland</td>
+<td align="center">Switzerland</td>
+<td align="center">3</td>
+<td align="left">30,577,981</td>
+<td align="left">63.96</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="center">Novak Djokovic</td>
+<td align="center">22 May 1987</td>
+<td align="center">Belgrade, Serbia</td>
+<td align="center">Serbia</td>
+<td align="center">4</td>
+<td align="left">109,447,408</td>
+<td align="left">82.77</td>
+<td align="left">12</td>
+</tr>
+<tr class="odd">
+<td align="center">Roger Federer</td>
+<td align="center">8 August 1981</td>
+<td align="center">Basel, Switzerland</td>
+<td align="center">Switzerland</td>
+<td align="center">5</td>
+<td align="left">104,445,185</td>
+<td align="left">81.80</td>
+<td align="left">18</td>
+</tr>
+</tbody>
+</table>
 <div id="vectors" class="section level2">
 <h2><span class="header-section-number">2.1</span> Vectors</h2>
 <p>A vector has three properties:</p>
@@ -158,81 +230,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </li>
 </ul>
-<div id="defvect" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Defining vectors</h3>
-<p>Suppose</p>
-<table>
-<caption>A simple table in Markdown.</caption>
-<thead>
-<tr class="header">
-<th align="center">Name</th>
-<th align="center">Date of Birth</th>
-<th align="center">Country</th>
-<th align="center">ATP Ranking</th>
-<th align="center">Prize Money</th>
-<th align="center">Win Percentage</th>
-<th align="center">Grand Slam Wins</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Andy Murray</td>
-<td align="center">15 May 1987</td>
-<td align="center">Great Britain</td>
-<td align="center">1</td>
-<td align="center">60,449,649</td>
-<td align="center">78.07</td>
-<td align="center">9</td>
-</tr>
-<tr class="even">
-<td align="center">Rafael Nadal</td>
-<td align="center">3 June 1986</td>
-<td align="center">Spain</td>
-<td align="center">2</td>
-<td align="center">85,920,132</td>
-<td align="center">82.48</td>
-<td align="center">15</td>
-</tr>
-<tr class="odd">
-<td align="center">Stan Wawrinka</td>
-<td align="center">28 March 1985</td>
-<td align="center">Switzerland</td>
-<td align="center">3</td>
-<td align="center">30,577,981</td>
-<td align="center">63.96</td>
-<td align="center">5</td>
-</tr>
-<tr class="even">
-<td align="center">Novak Djokovic</td>
-<td align="center">22 May 1987</td>
-<td align="center">Serbia</td>
-<td align="center">4</td>
-<td align="center">109,447,408</td>
-<td align="center">82.77</td>
-<td align="center">12</td>
-</tr>
-<tr class="odd">
-<td align="center">Roger Federer</td>
-<td align="center">8 August 1981</td>
-<td align="center">Switzerland</td>
-<td align="center">5</td>
-<td align="center">104,445,185</td>
-<td align="center">81.80</td>
-<td align="center">18</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_res =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</code></pre></div>
-<p>To display the values stores in <code>exp_res</code> we could simply do:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_res</code></pre></div>
-<pre><code>## [1] 1 2 3 5 1</code></pre>
+<p>For example, consider the number of grand slam won by the five players we are considering:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)</code></pre></div>
+<p>To display the values stores in <code>grand_slam_win</code> we could simply do:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
 <p>Alteratively, we could have create and display the value by using <code>()</code> around the defiition, for example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">exp_res =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>))</code></pre></div>
-<pre><code>## [1] 1 2 3 5 1</code></pre>
-<p>We can evaluate the kind or type of elements that are stored in a vector using the function <code>typeof()</code>. For example, for the vector we just created we obtain:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(exp_res)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>))</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">players =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
+             <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
+## [5] &quot;Roger Federer&quot;</code></pre>
+<div id="type" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Type</h3>
+<p>We can evaluate the kind or type of elements that are stored in a vector using the function <code>typeof()</code>. For example, for the vectors we just created we obtain:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(grand_slam_win)</code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<p>This is a little suprzing as all the elements in <code>exp_res</code> are integers it would seem natural to expect this as an output of the function <code>typeof()</code>. This is R considers by default any number as a “double”, expet when spefiying <code>L</code> after an integer. For example,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(players)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>This is a little suprzing as all the elements in <code>grand_slam_win</code> are integers it would seem natural to expect this as an output of the function <code>typeof()</code>. This is R considers by default any number as a “double”, expet when spefiying <code>L</code> after an integer. For example,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">1</span>)</code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(1L)</code></pre></div>
@@ -243,7 +261,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(exp_res_int)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Naturally, the difference is the two in general relatively but we can see that <code>exp_res_int</code> takes less “space” to two. For example, we have</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(exp_res)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win)</code></pre></div>
 <pre><code>## 88 bytes</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(exp_res_int)</code></pre></div>
 <pre><code>## 72 bytes</code></pre>
@@ -255,57 +273,71 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>exp_res[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Accesing the first element</span>
-exp_res[<span class="dv">1</span>]</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+grand_slam_win[<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 9</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Accesing the third and first value</span>
-exp_res[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</code></pre></div>
-<pre><code>## [1] 3 1</code></pre>
+grand_slam_win[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</code></pre></div>
+<pre><code>## [1] 5 9</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Duplicated indices yield duplicated values</span>
-exp_res[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</code></pre></div>
-<pre><code>## [1] 1 1 2 2 3 5</code></pre>
+grand_slam_win[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</code></pre></div>
+<pre><code>## [1]  9  9 15 15  5 12</code></pre>
 <ul>
 <li><strong>Negative Index</strong>: We <em>remove</em> elements in a vector using negative indices:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Removing the second obervation</span>
-exp_res[-<span class="dv">2</span>]</code></pre></div>
-<pre><code>## [1] 1 3 5 1</code></pre>
+grand_slam_win[-<span class="dv">2</span>]</code></pre></div>
+<pre><code>## [1]  9  5 12 18</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Removing the first and fourth obserations</span>
-exp_res[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">4</span>)]</code></pre></div>
-<pre><code>## [1] 2 3 1</code></pre>
+grand_slam_win[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">4</span>)]</code></pre></div>
+<pre><code>## [1] 15  5 18</code></pre>
 <ul>
-<li><strong>Logical Indices</strong>: Another usefull approach is based on <em>logic al</em> operators:</li>
+<li><strong>Logical Indices</strong>: Another usefull approach is based on <em>logical</em> operators:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access the first and fourth observations</span>
-exp_res[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
-<pre><code>## [1] 1 5</code></pre>
-<p><strong>ADD REMARK BOX</strong></p>
-<p>Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 3.4)]</code> (which rounds things up) or <code>exp_res[c(-1, 2)]</code> (which doesn’t work as “mixed” indices are not permitted).</p>
+grand_slam_win[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
+<pre><code>## [1]  9 12</code></pre>
+
+<div class="rmdnote">
+Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 3.4)]</code> (which rounds things up) or <code>exp_res[c(-1, 2)]</code> (which doesn’t work as “mixed” indices are not permitted).
+</div>
+<p></p>
 </div>
 <div id="vectattr" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Attributes</h3>
 <p>Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(exp_res, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-21-2017&quot;</span>
-<span class="kw">attr</span>(exp_res, <span class="st">&quot;location&quot;</span>) =<span class="st"> &quot;Montreux, Switzerland&quot;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-21-2017&quot;</span>
+<span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;location&quot;</span>) =<span class="st"> &quot;Montreux, Switzerland&quot;</span></code></pre></div>
 <p>To display the vector with its attributes</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_res</code></pre></div>
-<pre><code>## [1] 1 2 3 5 1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18
 ## attr(,&quot;date&quot;)
 ## [1] &quot;07-21-2017&quot;
 ## attr(,&quot;location&quot;)
 ## [1] &quot;Montreux, Switzerland&quot;</code></pre>
 <p>To only display the attributes</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(exp_res)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(grand_slam_win)</code></pre></div>
 <pre><code>## $date
 ## [1] &quot;07-21-2017&quot;
 ## 
 ## $location
 ## [1] &quot;Montreux, Switzerland&quot;</code></pre>
 <p>It is also possible to extract a specific attribute</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(exp_res, <span class="st">&quot;date&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;07-21-2017&quot;</code></pre>
 </div>
+<div id="useful-functions-with-vectors" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Useful functions with vectors</h3>
+<p>length sum mean sort and order</p>
+</div>
+<div id="example" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Example</h3>
+</div>
+</div>
+<div id="dataframes" class="section level2">
+<h2><span class="header-section-number">2.2</span> Dataframes</h2>
+<p>LG</p>
 <div id="application-non-parametric-bootstrap" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> Application: Non-parametric bootstrap</h3>
+<h3><span class="header-section-number">2.2.1</span> Application: Non-parametric bootstrap</h3>
 <p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <p>We can compute the mean time spent</p>
@@ -337,7 +369,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.261875 1.763125</code></pre>
+## 0.261875 1.625000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
