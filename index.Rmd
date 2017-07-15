@@ -10,6 +10,8 @@ biblio-style: apalike
 link-citations: yes
 github-repo: smac-group/ds
 description: "LEt's add somethign here"
+includes:
+      in_header: style.css
 ---
 
 # Introduction

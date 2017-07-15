@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s find a good title</title>
   <meta name="description" content="LEt’s add somethign here">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s find a good title" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-13">
+<meta name="date" content="2017-07-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,9 +106,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a><ul>
 <li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.1</b> Subsetting</a></li>
-<li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#attributes"><i class="fa fa-check"></i><b>2.1.2</b> Attributes</a></li>
-<li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.1.3</b> Application: Non-parametric bootstrap</a></li>
+<li class="chapter" data-level="2.1.1" data-path="data.html"><a href="data.html#defvect"><i class="fa fa-check"></i><b>2.1.1</b> Defining vectors</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.2</b> Subsetting</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.3</b> Attributes</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.1.4</b> Application: Non-parametric bootstrap</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a></li>
@@ -148,12 +149,79 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="vectors" class="section level2">
 <h2><span class="header-section-number">2.1</span> Vectors</h2>
 <p>A vector has three properties:</p>
+
+<div class="rmdimportant">
 <ul>
-<li><strong>Type</strong>, which corresponds the “kind” of objects in contains.</li>
-<li><strong>Length</strong>, i.e. the number of elements in a vector.</li>
-<li><strong>Attributes</strong>, some additional metadata attached to a vector.</li>
+<li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> evaluate the type of objects in a vector.</li>
+<li><strong>Length</strong>, i.e. the number of elements in a vector. This information can be obtained using the function <code>length()</code>.</li>
+<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can found in Section <a href="data.html#vectattr">2.1.3</a>)
+</div>
+</li>
 </ul>
-<p>I think we should make up a story: “we are interested in studying something, you get data”. Let’s store them in R.</p>
+<div id="defvect" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Defining vectors</h3>
+<p>Suppose</p>
+<table>
+<caption>A simple table in Markdown.</caption>
+<thead>
+<tr class="header">
+<th align="center">Name</th>
+<th align="center">Date of Birth</th>
+<th align="center">Country</th>
+<th align="center">ATP Ranking</th>
+<th align="center">Prize Money</th>
+<th align="center">Win Percentage</th>
+<th align="center">Grand Slam Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Andy Murray</td>
+<td align="center">15 May 1987</td>
+<td align="center">Great Britain</td>
+<td align="center">1</td>
+<td align="center">60,449,649</td>
+<td align="center">78.07</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td align="center">Rafael Nadal</td>
+<td align="center">3 June 1986</td>
+<td align="center">Spain</td>
+<td align="center">2</td>
+<td align="center">85,920,132</td>
+<td align="center">82.48</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center">Stan Wawrinka</td>
+<td align="center">28 March 1985</td>
+<td align="center">Switzerland</td>
+<td align="center">3</td>
+<td align="center">30,577,981</td>
+<td align="center">63.96</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">Novak Djokovic</td>
+<td align="center">22 May 1987 S</td>
+<td align="center">erbia and Montene</td>
+<td align="center">gro</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Roger Federer</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_res =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</code></pre></div>
 <p>To display the values stores in <code>exp_res</code> we could simply do:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_res</code></pre></div>
@@ -179,8 +247,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## 88 bytes</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(exp_res_int)</code></pre></div>
 <pre><code>## 72 bytes</code></pre>
+</div>
 <div id="subsetting" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Subsetting</h3>
+<h3><span class="header-section-number">2.1.2</span> Subsetting</h3>
 <p>Naturally, it is possible to “subset” the values of in our vectror in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
 <ul>
 <li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>exp_res[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
@@ -212,8 +281,8 @@ exp_res[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot"
 <p><strong>ADD REMARK BOX</strong></p>
 <p>Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 3.4)]</code> (which rounds things up) or <code>exp_res[c(-1, 2)]</code> (which doesn’t work as “mixed” indices are not permitted).</p>
 </div>
-<div id="attributes" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Attributes</h3>
+<div id="vectattr" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Attributes</h3>
 <p>Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(exp_res, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-21-2017&quot;</span>
 <span class="kw">attr</span>(exp_res, <span class="st">&quot;location&quot;</span>) =<span class="st"> &quot;Montreux, Switzerland&quot;</span></code></pre></div>
@@ -236,7 +305,7 @@ exp_res[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot"
 <pre><code>## [1] &quot;07-21-2017&quot;</code></pre>
 </div>
 <div id="application-non-parametric-bootstrap" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Application: Non-parametric bootstrap</h3>
+<h3><span class="header-section-number">2.1.4</span> Application: Non-parametric bootstrap</h3>
 <p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <p>We can compute the mean time spent</p>
@@ -267,8 +336,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##     2.5%    97.5% 
-## 0.300000 1.613125</code></pre>
+<pre><code>##  2.5% 97.5% 
+## 0.275 1.600</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
@@ -291,7 +360,7 @@ for (i in <span class="dv">1</span>:B){
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
