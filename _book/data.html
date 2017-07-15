@@ -110,7 +110,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.2</b> Subsetting</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.3</b> Attributes</a></li>
 <li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Useful functions with vectors</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#example"><i class="fa fa-check"></i><b>2.1.5</b> Example</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.5</b> Example: Apple Stock Price</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#example-making-maps"><i class="fa fa-check"></i><b>2.1.6</b> Example: Making Maps</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#dataframes"><i class="fa fa-check"></i><b>2.2</b> Dataframes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.2.1</b> Application: Non-parametric bootstrap</a></li>
@@ -150,7 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>List: Heterogeneous, 1D</li>
 <li>Data Frame: Heterogeneous, 2D</li>
 </ul>
-<p>To illistrate the things we will in this chapter….</p>
+<p>To illustrate the things we will in this chapter….</p>
 <p>as of 07/15/17 (Men single)</p>
 <table>
 <thead>
@@ -224,9 +225,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div class="rmdimportant">
 <ul>
-<li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> evaluate the type of objects in a vector.</li>
+<li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> to evaluate the type of objects in a vector.</li>
 <li><strong>Length</strong>, i.e. the number of elements in a vector. This information can be obtained using the function <code>length()</code>.</li>
-<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can found in Section <a href="data.html#vectattr">2.1.3</a>)
+<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can be found in Section <a href="data.html#vectattr">2.1.3</a>)
 </div>
 </li>
 </ul>
@@ -256,14 +257,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(1L)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Therefore, we could express <code>exp_res</code> as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">exp_res_int =</span> <span class="kw">c</span>(1L, 2L, 3L, 5L, 1L))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win_int =</span> <span class="kw">c</span>(1L, 2L, 3L, 5L, 1L))</code></pre></div>
 <pre><code>## [1] 1 2 3 5 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(exp_res_int)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(grand_slam_win_int)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Naturally, the difference is the two in general relatively but we can see that <code>exp_res_int</code> takes less “space” to two. For example, we have</p>
+<p>Naturally, the difference between the two in general relatively unimportant but we can see that <code>exp_res_int</code> takes less “space” to two. For example, we have</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win)</code></pre></div>
 <pre><code>## 88 bytes</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(exp_res_int)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win_int)</code></pre></div>
 <pre><code>## 72 bytes</code></pre>
 </div>
 <div id="subsetting" class="section level3">
@@ -305,37 +306,113 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <div id="vectattr" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Attributes</h3>
 <p>Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-21-2017&quot;</span>
-<span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;location&quot;</span>) =<span class="st"> &quot;Montreux, Switzerland&quot;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-15-2017&quot;</span>
+<span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;type&quot;</span>) =<span class="st"> &quot;Men, Single&quot;</span></code></pre></div>
 <p>To display the vector with its attributes</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18
 ## attr(,&quot;date&quot;)
-## [1] &quot;07-21-2017&quot;
-## attr(,&quot;location&quot;)
-## [1] &quot;Montreux, Switzerland&quot;</code></pre>
+## [1] &quot;07-15-2017&quot;
+## attr(,&quot;type&quot;)
+## [1] &quot;Men, Single&quot;</code></pre>
 <p>To only display the attributes</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(grand_slam_win)</code></pre></div>
 <pre><code>## $date
-## [1] &quot;07-21-2017&quot;
+## [1] &quot;07-15-2017&quot;
 ## 
-## $location
-## [1] &quot;Montreux, Switzerland&quot;</code></pre>
+## $type
+## [1] &quot;Men, Single&quot;</code></pre>
 <p>It is also possible to extract a specific attribute</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</code></pre></div>
-<pre><code>## [1] &quot;07-21-2017&quot;</code></pre>
+<pre><code>## [1] &quot;07-15-2017&quot;</code></pre>
 </div>
 <div id="useful-functions-with-vectors" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Useful functions with vectors</h3>
-<p>length sum mean sort and order</p>
+<p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>sort()</code> and <code>order()</code></p>
 </div>
-<div id="example" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Example</h3>
+<div id="example-apple-stock-price" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Example: Apple Stock Price</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
+<pre><code>## [1] &quot;2017-07-15&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] &quot;2017-04-15&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
+<span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
+<pre><code>## [1] &quot;AAPL&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">candleChart</span>(AAPL, <span class="dt">theme=</span><span class="st">&#39;white&#39;</span>, <span class="dt">type=</span><span class="st">&#39;candles&#39;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Let’s compute returns…</p>
+<span class="math display">\[\begin{equation}
+  r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(r_t\)</span> are the return, <span class="math inline">\(S_t\)</span> the stock price. This is implemented in the function <code>ClCl()</code> of the package <code>quantmod</code>. For example, we can create a vector of returns as follows</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
+<p><code>na.omit</code> to remove missing value as if we have <span class="math inline">\(n+1\)</span> stock prices we only <span class="math inline">\(n\)</span> returns <code>as.numeric</code> to transform into a vector. We can now compute mean and median return over the period</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
+<pre><code>## [1] 0.0009362567</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
+<pre><code>## [1] 0.001104352</code></pre>
+<p>Excess Kurtosis can be defined for a random variable <span class="math inline">\(X\)</span> as</p>
+<span class="math display">\[\begin{equation}
+  \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
+\end{equation}\]</span>
+<p>The reason excess is …. A common estimator of the excess Kurtosis is</p>
+<span class="math display">\[\begin{equation}
+  k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3
+\end{equation}\]</span>
+<p>where <span class="math inline">\(\bar{k}\)</span> denotes the sample average of the returns, i.e.</p>
+<span class="math display">\[\begin{equation}
+  \bar{k} = \frac{1}{n} \sum_{i = 1}^n r_i
+\end{equation}\]</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
+(<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 2.022523</code></pre>
+<p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
+</div>
+<div id="example-making-maps" class="section level3">
+<h3><span class="header-section-number">2.1.6</span> Example: Making Maps</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_place =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
+                <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
+glasgow_coord =<span class="st"> </span><span class="kw">geocode</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glasgow_coord</code></pre></div>
+<pre><code>##         lon      lat
+## 1 -4.251806 55.86424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord =<span class="st"> </span><span class="kw">geocode</span>(birth_place)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord</code></pre></div>
+<pre><code>##         lon      lat
+## 1 -4.251806 55.86424
+## 2  3.209532 39.56972
+## 3  6.632273 46.51965
+## 4 20.448922 44.78657
+## 5  7.588576 47.55960</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(birth_coord)</code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord$Players =<span class="st"> </span>players
+birth_coord$GS =<span class="st"> </span>grand_slam_win</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord</code></pre></div>
+<pre><code>##         lon      lat        Players GS
+## 1 -4.251806 55.86424    Andy Murray  9
+## 2  3.209532 39.56972   Rafael Nadal 15
+## 3  6.632273 46.51965  Stan Wawrinka  5
+## 4 20.448922 44.78657 Novak Djokovic 12
+## 5  7.588576 47.55960  Roger Federer 18</code></pre>
+<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry to much about the details of how this graph is made</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mapproj)
+map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)
+<span class="kw">ggmap</span>(map) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, 
+             <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
+<span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
+<span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="dataframes" class="section level2">
 <h2><span class="header-section-number">2.2</span> Dataframes</h2>
 <p>LG</p>
+<p>A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list.</p>
+<p>We can create a data frame using data.frame()</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <div id="application-non-parametric-bootstrap" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Application: Non-parametric bootstrap</h3>
 <p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
@@ -369,7 +446,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.261875 1.625000</code></pre>
+## 0.300000 1.713125</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
