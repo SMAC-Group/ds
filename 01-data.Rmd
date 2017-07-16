@@ -169,8 +169,6 @@ grand_slam_win[c(TRUE, FALSE, FALSE, TRUE, FALSE)]
 Here we could add some remarks on weird cases, for example `exp_res[c(1.2, 3.4)]` (which rounds things up) or `exp_res[c(-1, 2)]` (which doesn't work as "mixed" indices are not permitted).
 ```
 
-
-
 ### Attributes {#vectattr}
 
 Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:
@@ -197,6 +195,28 @@ It is also possible to extract a specific attribute
 attr(grand_slam_win, "date")
 ```
 
+### Adding labels {#addlab}
+
+In some cases, it might be useful to add label to vectors. For example, we could defined the vector `grand_slam_win` and use as labels the player's names, i.e.
+
+```{r}
+(grand_slam_win = c("Andy Murray" = 9, "Rafael Nadal" = 15, 
+                   "Stan Wawrinka" = 5, "Novak Djokovic" = 12, 
+                   "Roger Federer" = 18))
+```
+
+The main advantage of this approach is that the number of grand slam won can now be referred to by the player's name. For example:
+
+```{r}
+grand_slam_win["Andy Murray"]
+grand_slam_win[c("Andy Murray","Roger Federer")]
+```
+
+All labels (players' names in our case) can be obtained witht the function `names`, i.e.
+
+```{r}
+names(grand_slam_win)
+```
 
 ### Useful functions with vectors
 

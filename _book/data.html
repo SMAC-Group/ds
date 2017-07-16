@@ -110,9 +110,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>2.1.2</b> Coercion</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.3</b> Subsetting</a></li>
 <li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.4</b> Attributes</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.5</b> Useful functions with vectors</a></li>
-<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>2.1.6</b> Creation sequences</a></li>
-<li class="chapter" data-level="2.1.7" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.7</b> Example: Apple Stock Price</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#adding-labels-to-vector"><i class="fa fa-check"></i><b>2.1.5</b> Adding labels to vector</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.6</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="2.1.7" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>2.1.7</b> Creation sequences</a></li>
+<li class="chapter" data-level="2.1.8" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.8</b> Example: Apple Stock Price</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a></li>
 <li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>2.3</b> Array</a></li>
@@ -392,8 +393,28 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;07-15-2017&quot;</code></pre>
 </div>
+<div id="adding-labels-to-vector" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Adding labels to vector</h3>
+<p>In some cases, it might be useful to add label to vectors. For example, we could defined the vector <code>grand_slam_win</code> and use as labels the player’s names, i.e.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span> =<span class="st"> </span><span class="dv">9</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">15</span>, 
+                   <span class="st">&quot;Stan Wawrinka&quot;</span> =<span class="st"> </span><span class="dv">5</span>, <span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">12</span>, 
+                   <span class="st">&quot;Roger Federer&quot;</span> =<span class="st"> </span><span class="dv">18</span>))</code></pre></div>
+<pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
+##              9             15              5             12             18</code></pre>
+<p>The main advantage of this approach is that the number of grand slam won can now be referred to by the player’s name. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="st">&quot;Andy Murray&quot;</span>]</code></pre></div>
+<pre><code>## Andy Murray 
+##           9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>,<span class="st">&quot;Roger Federer&quot;</span>)]</code></pre></div>
+<pre><code>##   Andy Murray Roger Federer 
+##             9            18</code></pre>
+<p>All labels (players’ names in our case) can be obtained witht the function <code>names</code>, i.e.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
+## [5] &quot;Roger Federer&quot;</code></pre>
+</div>
 <div id="useful-functions-with-vectors" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Useful functions with vectors</h3>
+<h3><span class="header-section-number">2.1.6</span> Useful functions with vectors</h3>
 <p>Add some text here</p>
 <p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>sort()</code> and <code>order()</code></p>
 <p>For example</p>
@@ -412,17 +433,19 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 ## [5] &quot;Roger Federer&quot;</code></pre>
 <p>showing the Roger Federer won the most grand slam. Another related function is <code>sort()</code> which simply sorts the elements of a vector (in an ascending manner). For example,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(grand_slam_win)</code></pre></div>
-<pre><code>## [1]  5  9 12 15 18</code></pre>
+<pre><code>##  Stan Wawrinka    Andy Murray Novak Djokovic   Rafael Nadal  Roger Federer 
+##              5              9             12             15             18</code></pre>
 <p>which is compact version of</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="kw">order</span>(grand_slam_win)]</code></pre></div>
-<pre><code>## [1]  5  9 12 15 18</code></pre>
+<pre><code>##  Stan Wawrinka    Andy Murray Novak Djokovic   Rafael Nadal  Roger Federer 
+##              5              9             12             15             18</code></pre>
 <p>There are of course many other usefull to dealing with vectors.</p>
 </div>
 <div id="creation-sequences" class="section level3">
-<h3><span class="header-section-number">2.1.6</span> Creation sequences</h3>
+<h3><span class="header-section-number">2.1.7</span> Creation sequences</h3>
 </div>
 <div id="example-apple-stock-price" class="section level3">
-<h3><span class="header-section-number">2.1.7</span> Example: Apple Stock Price</h3>
+<h3><span class="header-section-number">2.1.8</span> Example: Apple Stock Price</h3>
 <p>How to get today’s date</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
 <pre><code>## [1] &quot;2017-07-16&quot;</code></pre>
@@ -434,7 +457,7 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
 <pre><code>## [1] &quot;AAPL&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">candleChart</span>(AAPL, <span class="dt">theme=</span><span class="st">&#39;white&#39;</span>, <span class="dt">type=</span><span class="st">&#39;candles&#39;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Let’s compute some returns…</p>
 <span class="math display">\[\begin{equation}
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
@@ -537,7 +560,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-41-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-44-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
@@ -649,8 +672,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##  2.5% 97.5% 
-## 0.250 1.575</code></pre>
+<pre><code>##     2.5%    97.5% 
+## 0.275000 1.613125</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
