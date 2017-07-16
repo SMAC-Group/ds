@@ -110,7 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>2.1.2</b> Coercion</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.3</b> Subsetting</a></li>
 <li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.4</b> Attributes</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#adding-labels-to-vector"><i class="fa fa-check"></i><b>2.1.5</b> Adding labels to vector</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#addlab"><i class="fa fa-check"></i><b>2.1.5</b> Adding labels</a></li>
 <li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.6</b> Useful functions with vectors</a></li>
 <li class="chapter" data-level="2.1.7" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>2.1.7</b> Creation sequences</a></li>
 <li class="chapter" data-level="2.1.8" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.8</b> Example: Apple Stock Price</a></li>
@@ -393,8 +393,8 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;07-15-2017&quot;</code></pre>
 </div>
-<div id="adding-labels-to-vector" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Adding labels to vector</h3>
+<div id="addlab" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Adding labels</h3>
 <p>In some cases, it might be useful to add label to vectors. For example, we could defined the vector <code>grand_slam_win</code> and use as labels the player’s names, i.e.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span> =<span class="st"> </span><span class="dv">9</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">15</span>, 
                    <span class="st">&quot;Stan Wawrinka&quot;</span> =<span class="st"> </span><span class="dv">5</span>, <span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">12</span>, 
@@ -443,6 +443,38 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 </div>
 <div id="creation-sequences" class="section level3">
 <h3><span class="header-section-number">2.1.7</span> Creation sequences</h3>
+<p>When uing R for statstical programming or even data analysis it is very common to create sequences of numbers. Here are three common ways for generatign such sequences:</p>
+<ul>
+<li><code>from:to</code>: This method is quite inituitive and very compact. For example:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">y =</span> <span class="dv">3</span>:<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 3 2 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">w =</span> -<span class="dv">1</span>:-<span class="dv">4</span>)</code></pre></div>
+<pre><code>## [1] -1 -2 -3 -4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">z =</span> <span class="fl">1.3</span>:<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 1.3 2.3</code></pre>
+<ul>
+<li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exeptions of the cases <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exeption will become clear in Section <a href="#forloop"><strong>??</strong></a>. Let’s see a few examples:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">3</span>
+<span class="dv">1</span>:n</code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq_len</span>(n)</code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">0</span>
+<span class="dv">1</span>:n</code></pre></div>
+<pre><code>## [1] 1 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq_len</span>(n)</code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<ul>
+<li><code>seq(a, b, by/length.out = d)</code>: This function can be used to create more “complexe” sequences. It either be used to create a sequence from <code>a</code> to <code>b</code> by increments of <code>d</code> (using the option <code>by</code>) or of a total length of <code>d</code> (using the option <code>length.out</code>). A few examples:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">by =</span> <span class="fl">0.4</span>))</code></pre></div>
+<pre><code>## [1] 1.0 1.4 1.8 2.2 2.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">y =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">length.out =</span> <span class="dv">6</span>))</code></pre></div>
+<pre><code>## [1] 1.00 1.36 1.72 2.08 2.44 2.80</code></pre>
 </div>
 <div id="example-apple-stock-price" class="section level3">
 <h3><span class="header-section-number">2.1.8</span> Example: Apple Stock Price</h3>
@@ -457,7 +489,7 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
 <pre><code>## [1] &quot;AAPL&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">candleChart</span>(AAPL, <span class="dt">theme=</span><span class="st">&#39;white&#39;</span>, <span class="dt">type=</span><span class="st">&#39;candles&#39;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Let’s compute some returns…</p>
 <span class="math display">\[\begin{equation}
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
@@ -560,12 +592,11 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-44-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-47-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
 <h2><span class="header-section-number">2.6</span> Data frames</h2>
-<p>LG</p>
 <p>A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list.</p>
 <p>We can create a data frame using data.frame()</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Creation
@@ -609,7 +640,21 @@ tennis</code></pre></div>
 <p>Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player’s height and if he is right-handed or letf-handed.</p>
 <p>We can do so by using <code>cbind()</code> and <code>rbind()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.90</span>, <span class="fl">1.85</span>, <span class="fl">1.83</span>, <span class="fl">1.88</span>, <span class="fl">1.85</span>)
-hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)</code></pre></div>
+hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)
+
+(<span class="dt">tennis =</span> <span class="kw">cbind</span>(tennis, <span class="kw">data.frame</span>(height, hand)))</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Rafael Nadal     3 June 1986             15         Spain           2
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Roger Federer  8 August 1981             18   Switzerland           5
+##                prize_money height hand
+## Andy Murray       60449649   1.90    R
+## Rafael Nadal      85920132   1.85    L
+## Stan Wawrinka     30577981   1.83    R
+## Novak Djokovic   109447408   1.88    R
+## Roger Federer    104445185   1.85    R</code></pre>
 </div>
 <div id="subsetting-1" class="section level3">
 <h3><span class="header-section-number">2.6.2</span> Subsetting</h3>
@@ -673,7 +718,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.275000 1.613125</code></pre>
+## 0.275000 1.614375</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>

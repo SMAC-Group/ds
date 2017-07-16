@@ -260,6 +260,38 @@ There are of course many other usefull to dealing with vectors.
 
 ### Creation sequences
 
+When uing R for statstical programming or even data analysis it is very common to create sequences of numbers. Here are three common ways for generatign such sequences:
+
+- `from:to`: This method is quite inituitive and very compact. For example:
+
+```{r}
+(x = 1:3)
+(y = 3:1)
+(w = -1:-4)
+(z = 1.3:3)
+```
+
+- `seq_len(n)`: This function provides a simple way to generate a sequence from 1 to an arbitrary number `n`. In general, `1:n` and `seq_len(n)` are equivalent with the notable exeptions of the cases `n = 0` and `n < 0`. The reason for these exeption will become clear in Section \@ref(forloop). Let's see a few examples:
+
+```{r}
+n = 3
+1:n
+seq_len(n)
+
+n = 0
+1:n
+seq_len(n)
+```
+
+
+
+- `seq(a, b, by/length.out = d)`: This function can be used to create more "complexe" sequences. It either be used to create a sequence from `a` to `b` by increments of `d` (using the option `by`) or of a total length of `d` (using the option `length.out`). A few examples:
+
+```{r}
+(x = seq(1, 2.8, by = 0.4))
+(y = seq(1, 2.8, length.out = 6))
+```
+
 
 ### Example: Apple Stock Price 
 
@@ -411,9 +443,6 @@ ggmap(map) + geom_point(data = birth_coord,
 
 ## Data frames
 
-
-LG 
-
 A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list. 
 
 We can create a data frame using data.frame() 
@@ -456,7 +485,9 @@ We can do so by using `cbind()` and `rbind()`:
 
 ```{r}
 height <- c(1.90, 1.85, 1.83, 1.88, 1.85)
-hand <- c("R","L","R","R","R","R")
+hand <- c("R","L","R","R","R")
+
+(tennis = cbind(tennis, data.frame(height, hand)))
 ```
 
 ### Subsetting

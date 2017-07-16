@@ -10,7 +10,7 @@ Basically if, if/else, if/elseif/else and switch
 
 ### Iteration Controls
 
-for and while
+#### for {#forloop}
 
 ## Applications: 
 
