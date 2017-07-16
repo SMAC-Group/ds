@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-15">
+<meta name="date" content="2017-07-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -107,11 +107,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a><ul>
 <li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>2.1.1</b> Type</a></li>
-<li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.2</b> Subsetting</a></li>
-<li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.3</b> Attributes</a></li>
-<li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Useful functions with vectors</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>2.1.5</b> Creation sequences</a></li>
-<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.6</b> Example: Apple Stock Price</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>2.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.5</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>2.1.6</b> Creation sequences</a></li>
+<li class="chapter" data-level="2.1.7" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.7</b> Example: Apple Stock Price</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a></li>
 <li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>2.3</b> Array</a></li>
@@ -119,8 +120,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>2.5</b> Dataframe</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="data.html"><a href="data.html#example-making-maps"><i class="fa fa-check"></i><b>2.5.1</b> Example: Making Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="data.html"><a href="data.html#dataframes"><i class="fa fa-check"></i><b>2.6</b> Dataframes</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.6.1</b> Application: Non-parametric bootstrap</a></li>
+<li class="chapter" data-level="2.6" data-path="data.html"><a href="data.html#data-frames"><i class="fa fa-check"></i><b>2.6</b> Data frames</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>2.6.1</b> Combination</a></li>
+<li class="chapter" data-level="2.6.2" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>2.6.2</b> Subsetting</a></li>
+<li class="chapter" data-level="2.6.3" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.6.3</b> Application: Non-parametric bootstrap</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a></li>
@@ -149,7 +152,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="data" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Data Structures</h1>
-<p>Brievely explain the types of data strucutres in R. Basically there are five</p>
+<p>There are different data types that are commonly used in R th most important ones are the following:</p>
+<ul>
+<li><p><strong>Numeric</strong> (or double): are used to store real numbers. Examples: -4, 12.4532, 6.</p></li>
+<li><p><strong>Integer</strong>: examples: 2L, 12L.</p></li>
+<li><p><strong>Logical</strong> (or boolean): examples: <code>TRUE</code>, <code>FALSE</code>.</p></li>
+<li><p><strong>Character</strong>: examples: <code>&quot;a&quot;</code>, <code>&quot;Bonjour&quot;</code>.</p></li>
+</ul>
+<p>In R there are basically five type of data structures which can be used to store elements in. A data structure is said to <em>homogeneous</em> if it only contains elements of the same type (for example it only contains character or numeric values) and <em>heterogenous</em> if it contains elements of more than one type. The five type of data structrures are commonly summarized in the table similar to the one below:</p>
 <table>
 <thead>
 <tr class="header">
@@ -176,8 +186,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<p>To illustrate the things we will in this chapter….</p>
-<p>as of 07/15/17 (Men single)</p>
+<p>To illustrate how to use these data structures, we will consider the simple data set of five best (as ranked by ATP on 07-15-2017) single men tennis players. The data are presented in the table below:</p>
 <table>
 <thead>
 <tr class="header">
@@ -246,24 +255,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </table>
 <div id="vectors" class="section level2">
 <h2><span class="header-section-number">2.1</span> Vectors</h2>
-<p>A vector has three properties:</p>
+<p>A vector has three important properties:</p>
 
 <div class="rmdimportant">
 <ul>
 <li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> to evaluate the type of objects in a vector.</li>
 <li><strong>Length</strong>, i.e. the number of elements in a vector. This information can be obtained using the function <code>length()</code>.</li>
-<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can be found in Section <a href="data.html#vectattr">2.1.3</a>)
+<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can be found in Section <a href="data.html#vectattr">2.1.4</a>)
 </div>
 </li>
 </ul>
-<p>For example, consider the number of grand slam won by the five players we are considering:</p>
+<p>For example, let us consider the number of grand slam won by the five players we are considering:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)</code></pre></div>
 <p>To display the values stores in <code>grand_slam_win</code> we could simply do:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
-<p>Alteratively, we could have create and display the value by using <code>()</code> around the defiition, for example:</p>
+<p>Alteratively, we could have create and display the value by using <code>()</code> around the definition, for example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>))</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>Various forms of “nest concatenation” can be used to defined vectors, for example we could also define <code>grand_slam_win</code> as</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">12</span>, <span class="kw">c</span>(<span class="dv">18</span>)))))</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>This approach is often used to assemnble vector in various ways.</p>
 <p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">players =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
              <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>))</code></pre></div>
@@ -292,8 +305,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win_int)</code></pre></div>
 <pre><code>## 72 bytes</code></pre>
 </div>
+<div id="coercion" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Coercion</h3>
+<p>As indicated earlier a vector is a homogenous data structures data, meaning that it can only contain a single type of data type. Therefore, when more than one data types are presented R <em>coerces</em> the data into a “shared” type. To identify this “shared” we can use this simple rule:</p>
+<span class="math display">\[\begin{equation*}
+ \text{logical} &lt; \text{integer} &lt; \text{numeric} &lt; \text{character},
+\end{equation*}\]</span>
+<p>which simply means that if a vector contains more than data type it will be of the type of the “largest” according to the above equations. Here are few examples:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Logical + integer</span>
+(<span class="dt">mix_logic_int =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, 1L))</code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_logic_int)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Logical + character</span>
+(<span class="dt">mix_logic_char =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="st">&quot;Hi&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;TRUE&quot; &quot;Hi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_logic_char)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Integer + numeric</span>
+(<span class="dt">mix_int_num =</span> <span class="kw">c</span>(<span class="dv">1</span>, 1L))</code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_int_num)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Integer + character</span>
+(<span class="dt">mix_int_char =</span> <span class="kw">c</span>(1L, <span class="st">&quot;Hi&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;1&quot;  &quot;Hi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_int_char)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
 <div id="subsetting" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Subsetting</h3>
+<h3><span class="header-section-number">2.1.3</span> Subsetting</h3>
 <p>Naturally, it is possible to “subset” the values of in our vectror in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
 <ul>
 <li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>exp_res[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
@@ -329,7 +370,7 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <p></p>
 </div>
 <div id="vectattr" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Attributes</h3>
+<h3><span class="header-section-number">2.1.4</span> Attributes</h3>
 <p>Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-15-2017&quot;</span>
 <span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;type&quot;</span>) =<span class="st"> &quot;Men, Single&quot;</span></code></pre></div>
@@ -352,7 +393,7 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <pre><code>## [1] &quot;07-15-2017&quot;</code></pre>
 </div>
 <div id="useful-functions-with-vectors" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> Useful functions with vectors</h3>
+<h3><span class="header-section-number">2.1.5</span> Useful functions with vectors</h3>
 <p>Add some text here</p>
 <p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>sort()</code> and <code>order()</code></p>
 <p>For example</p>
@@ -378,22 +419,22 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <p>There are of course many other usefull to dealing with vectors.</p>
 </div>
 <div id="creation-sequences" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Creation sequences</h3>
+<h3><span class="header-section-number">2.1.6</span> Creation sequences</h3>
 </div>
 <div id="example-apple-stock-price" class="section level3">
-<h3><span class="header-section-number">2.1.6</span> Example: Apple Stock Price</h3>
+<h3><span class="header-section-number">2.1.7</span> Example: Apple Stock Price</h3>
 <p>How to get today’s date</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-15&quot;</code></pre>
+<pre><code>## [1] &quot;2017-07-16&quot;</code></pre>
 <p>Three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-15&quot;</code></pre>
+<pre><code>## [1] &quot;2017-04-16&quot;</code></pre>
 <p>Let’s download Apple stock price</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
 <pre><code>## [1] &quot;AAPL&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">candleChart</span>(AAPL, <span class="dt">theme=</span><span class="st">&#39;white&#39;</span>, <span class="dt">type=</span><span class="st">&#39;candles&#39;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Let’s compute some returns…</p>
 <span class="math display">\[\begin{equation}
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
@@ -496,19 +537,90 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-41-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="dataframes" class="section level2">
-<h2><span class="header-section-number">2.6</span> Dataframes</h2>
+<div id="data-frames" class="section level2">
+<h2><span class="header-section-number">2.6</span> Data frames</h2>
 <p>LG</p>
 <p>A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list.</p>
 <p>We can create a data frame using data.frame()</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Creation
+
+players =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
+             <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>)
+
+grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)
+
+date_of_birth =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;15 May 1987&quot;</span>, <span class="st">&quot;3 June 1986&quot;</span>, <span class="st">&quot;28 March 1985&quot;</span>, 
+                  <span class="st">&quot;22 May 1981&quot;</span>, <span class="st">&quot;8 August 1981&quot;</span>)
+
+country =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Great Britain&quot;</span>, <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>, 
+            <span class="st">&quot;Serbia&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>)
+ATP_ranking =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+
+prize_money =<span class="st"> </span><span class="kw">c</span>(<span class="dv">60449649</span>, <span class="dv">85920132</span>, <span class="dv">30577981</span>, <span class="dv">109447408</span>, <span class="dv">104445185</span>)
+
+tennis =<span class="st"> </span><span class="kw">data.frame</span>(date_of_birth, grand_slam_win, country, 
+                    ATP_ranking, prize_money)
+
+<span class="kw">dimnames</span>(tennis)[[<span class="dv">1</span>]] =<span class="st"> </span>players
+tennis</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Rafael Nadal     3 June 1986             15         Spain           2
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Roger Federer  8 August 1981             18   Switzerland           5
+##                prize_money
+## Andy Murray       60449649
+## Rafael Nadal      85920132
+## Stan Wawrinka     30577981
+## Novak Djokovic   109447408
+## Roger Federer    104445185</code></pre>
+<p>We can check if we have achived our gooal by using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.data.frame</span>(tennis)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div id="combination" class="section level3">
+<h3><span class="header-section-number">2.6.1</span> Combination</h3>
+<p>Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player’s height and if he is right-handed or letf-handed.</p>
+<p>We can do so by using <code>cbind()</code> and <code>rbind()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.90</span>, <span class="fl">1.85</span>, <span class="fl">1.83</span>, <span class="fl">1.88</span>, <span class="fl">1.85</span>)
+hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)</code></pre></div>
+</div>
+<div id="subsetting-1" class="section level3">
+<h3><span class="header-section-number">2.6.2</span> Subsetting</h3>
+<p>Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let say we want only want to know the country and date of </span>
+<span class="co"># birth of the players</span>
+
+<span class="co"># There are two ways to select columns from a data frame</span>
+<span class="co"># Like a list:</span>
+tennis[<span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</code></pre></div>
+<pre><code>##                      country date_of_birth
+## Andy Murray    Great Britain   15 May 1987
+## Rafael Nadal           Spain   3 June 1986
+## Stan Wawrinka    Switzerland 28 March 1985
+## Novak Djokovic        Serbia   22 May 1981
+## Roger Federer    Switzerland 8 August 1981</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Like a matrix</span>
+tennis[, <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</code></pre></div>
+<pre><code>##                      country date_of_birth
+## Andy Murray    Great Britain   15 May 1987
+## Rafael Nadal           Spain   3 June 1986
+## Stan Wawrinka    Switzerland 28 March 1985
+## Novak Djokovic        Serbia   22 May 1981
+## Roger Federer    Switzerland 8 August 1981</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To acces a single element, let say the date of birth, </span>
+<span class="co"># you can also use:</span>
+tennis$date_of_birth</code></pre></div>
+<pre><code>## [1] 15 May 1987   3 June 1986   28 March 1985 22 May 1981   8 August 1981
+## 5 Levels: 15 May 1987 22 May 1981 28 March 1985 ... 8 August 1981</code></pre>
+</div>
 <div id="application-non-parametric-bootstrap" class="section level3">
-<h3><span class="header-section-number">2.6.1</span> Application: Non-parametric bootstrap</h3>
+<h3><span class="header-section-number">2.6.3</span> Application: Non-parametric bootstrap</h3>
 <p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <p>We can compute the mean time spent</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(student_work)</code></pre></div>
 <pre><code>## [1] 0.825</code></pre>
@@ -537,8 +649,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##     2.5%    97.5% 
-## 0.261875 1.550000</code></pre>
+<pre><code>##  2.5% 97.5% 
+## 0.250 1.575</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>

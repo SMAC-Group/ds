@@ -1,6 +1,16 @@
 # Data Structures {#data}
 
-Brievely explain the types of data strucutres in R. Basically there are five
+There are different data types that are commonly used in R th most important ones are the following:
+
+- **Numeric** (or double): are used to store real numbers. Examples: -4, 12.4532, 6.
+
+- **Integer**: examples: 2L, 12L.
+
+- **Logical** (or boolean): examples: `TRUE`, `FALSE`.
+
+- **Character**: examples: `"a"`, `"Bonjour"`. 
+
+In R there are basically five type of data structures which can be used to store elements in. A data structure is said to *homogeneous* if it only contains elements of the same type (for example it only contains character or numeric values) and *heterogenous* if it contains elements of more than one type. The five type of data structrures are commonly summarized in the table similar to the one below:
 
 Dimension      Homogenous    Heterogeneous
 ------------- ------------- ----------------
@@ -8,10 +18,7 @@ Dimension      Homogenous    Heterogeneous
 2                Matrix       Dataframe
 n               Array
 
-
-To illustrate the things we will in this chapter....
-
-as of 07/15/17 (Men single)
+To illustrate how to use these data structures, we will consider the simple data set of five best (as ranked by ATP on 07-15-2017) single men tennis players. The data are presented in the table below:
 
  Name              Date of Birth         Born                Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
 ----------------  ---------------  ---------------------- -------------------  ---------------  -------------- ---------------- ------------------
@@ -22,10 +29,9 @@ Novak Djokovic    22 May 1987       Belgrade, Serbia          Serbia            
 Roger Federer      8 August 1981    Basel, Switzerland      Switzerland            5            104,445,185        81.80              18
 
 
-
 ## Vectors 
 
-A vector has three properties:
+A vector has three important properties:
 
 ```{block2, note-text, type='rmdimportant'}
 - **Type**, which corresponds the "kind" of objects in contains. It is possible to use the function `typeof()` to evaluate the type of objects in a vector.
@@ -33,7 +39,7 @@ A vector has three properties:
 - **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
 ```
 
-For example, consider the number of grand slam won by the five players we are considering: 
+For example, let us consider the number of grand slam won by the five players we are considering: 
 
 ```{r}
 grand_slam_win = c(9, 15, 5, 12, 18)
@@ -41,16 +47,23 @@ grand_slam_win = c(9, 15, 5, 12, 18)
 
 To display the values stores in `grand_slam_win` we could simply do:
 
-
 ```{r}
 grand_slam_win
 ```
 
-Alteratively, we could have create and display the value by using `()` around the defiition, for example:
+Alteratively, we could have create and display the value by using `()` around the definition, for example:
 
 ```{r}
 (grand_slam_win = c(9, 15, 5, 12, 18))
 ```
+
+Various forms of "nest concatenation" can be used to defined vectors, for example we could also define `grand_slam_win` as
+
+```{r}
+(grand_slam_win = c(9, c(15, 5, c(12, c(18)))))
+```
+
+This approach is often used to assemnble vector in various ways.
 
 It is also possible to define vector with characters, for example we could define a vector with the player names as follows:
 
@@ -87,6 +100,34 @@ Naturally, the difference between the two in general relatively unimportant but 
 ```{r}
 object.size(grand_slam_win)
 object.size(grand_slam_win_int)
+```
+
+### Coercion
+
+As indicated earlier a vector is a homogenous data structures data, meaning that it can only contain a single type of data type. Therefore, when more than one data types are presented R *coerces* the data into a "shared" type. To identify this "shared" we can use this simple rule:
+
+\begin{equation*}
+ \text{logical} < \text{integer} < \text{numeric} < \text{character},
+\end{equation*}
+
+which simply means that if a vector contains more than data type it will be of the type of the "largest" according to the above equations. Here are few examples:
+
+```{r}
+# Logical + integer
+(mix_logic_int = c(TRUE, 1L))
+typeof(mix_logic_int)
+
+# Logical + character
+(mix_logic_char = c(TRUE, "Hi"))
+typeof(mix_logic_char)
+
+# Integer + numeric
+(mix_int_num = c(1, 1L))
+typeof(mix_int_num)
+
+# Integer + character
+(mix_int_char = c(1L, "Hi"))
+typeof(mix_int_char)
 ```
 
 
@@ -394,8 +435,8 @@ Different data frames can also be combined. Let say we want to add some ifomrmat
 We can do so by using `cbind()` and `rbind()`:
 
 ```{r}
-height = c(1.90, 1.85, 1.83, 1.88, 1.85)
-hand = (R','L','R','R','R','R')
+height <- c(1.90, 1.85, 1.83, 1.88, 1.85)
+hand <- c("R","L","R","R","R","R")
 ```
 
 ### Subsetting
@@ -403,17 +444,18 @@ hand = (R','L','R','R','R','R')
 Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.
 
 ```{r}
-# Let say we want only want to know the country and date of birth of the players
+# Let say we want only want to know the country and date of 
+# birth of the players
 
 # There are two ways to select columns from a data frame
 # Like a list:
-
 tennis[c("country", "date_of_birth")]
 
 # Like a matrix
-df[, c("country", "date_of_birth")]
+tennis[, c("country", "date_of_birth")]
 
-# To acces a single element, let say the date of birth, you can also use:
+# To acces a single element, let say the date of birth, 
+# you can also use:
 tennis$date_of_birth
 ```
 
@@ -422,7 +464,7 @@ tennis$date_of_birth
 Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)
 
 ```{r}
-student_work = c(0, 0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1.25, 4)
+student_work <- c(0, 0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1.25, 4)
 ```
 
 We can compute the mean time spent
