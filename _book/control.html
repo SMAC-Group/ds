@@ -6,8 +6,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s find a good title</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="LEt’s add somethign here">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s find a good title" />
   <meta property="og:type" content="book" />
@@ -24,8 +25,14 @@
 
 <meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
+  
+<meta name="date" content="2017-07-16">
 
-<meta name="date" content="2017-07-13">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +41,7 @@
   
 <link rel="prev" href="data.html">
 <link rel="next" href="functions.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -93,7 +101,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
-
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -121,7 +128,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.1" data-path="control.html"><a href="control.html#non-parametric-bootstrap"><i class="fa fa-check"></i><b>3.3.1</b> Non-parametric Bootstrap</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
+<li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="functions.html"><a href="functions.html#function-components"><i class="fa fa-check"></i><b>4.1</b> Function components</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>5</b> Build a package</a></li>
 <li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
 <li class="divider"></li>
@@ -194,8 +203,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##     2.5%    97.5% 
-## 0.286875 1.688125</code></pre>
+<pre><code>##  2.5% 97.5% 
+## 0.275 1.625</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
@@ -207,9 +216,8 @@ for (i in <span class="dv">1</span>:B){
         </div>
       </div>
 <a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
+<a href="functions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -221,7 +229,6 @@ for (i in <span class="dv">1</span>:B){
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -252,7 +259,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

@@ -1,6 +1,6 @@
 # Data Structures {#data}
 
-Brievely explain the types of data strucutres in R. Basically there are five
+Briefly explain the types of data strucutres in R. Basically there are five
 
 - Vector: homogenous, 1D
 - Matrix: homogenous, 2D
