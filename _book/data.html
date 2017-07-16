@@ -110,11 +110,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>2.1.2</b> Subsetting</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>2.1.3</b> Attributes</a></li>
 <li class="chapter" data-level="2.1.4" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Useful functions with vectors</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.5</b> Example: Apple Stock Price</a></li>
-<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#example-making-maps"><i class="fa fa-check"></i><b>2.1.6</b> Example: Making Maps</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>2.1.5</b> Creation sequences</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>2.1.6</b> Example: Apple Stock Price</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#dataframes"><i class="fa fa-check"></i><b>2.2</b> Dataframes</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.2.1</b> Application: Non-parametric bootstrap</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>2.3</b> Array</a></li>
+<li class="chapter" data-level="2.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>2.4</b> List</a></li>
+<li class="chapter" data-level="2.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>2.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="data.html"><a href="data.html#example-making-maps"><i class="fa fa-check"></i><b>2.5.1</b> Example: Making Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="data.html"><a href="data.html#dataframes"><i class="fa fa-check"></i><b>2.6</b> Dataframes</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.6.1</b> Application: Non-parametric bootstrap</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a></li>
@@ -144,13 +150,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="data" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Data Structures</h1>
 <p>Brievely explain the types of data strucutres in R. Basically there are five</p>
-<ul>
-<li>Vector: homogenous, 1D</li>
-<li>Matrix: homogenous, 2D</li>
-<li>Array: homogenous, nD</li>
-<li>List: Heterogeneous, 1D</li>
-<li>Data Frame: Heterogeneous, 2D</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dimension</th>
+<th align="center">Homogenous</th>
+<th align="center">Heterogeneous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">Vector</td>
+<td align="center">List</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">Matrix</td>
+<td align="center">Dataframe</td>
+</tr>
+<tr class="odd">
+<td align="left">n</td>
+<td align="center">Array</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 <p>To illustrate the things we will in this chapter….</p>
 <p>as of 07/15/17 (Men single)</p>
 <table>
@@ -328,20 +353,48 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 </div>
 <div id="useful-functions-with-vectors" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Useful functions with vectors</h3>
+<p>Add some text here</p>
 <p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>sort()</code> and <code>order()</code></p>
+<p>For example</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 59</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 11.8</code></pre>
+<p>To sort the player by number of grand slam we could use the function <code>order()</code> which returns the <em>position</em> of the elements of a vector sorted in an ascending manner,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 3 1 4 2 5</code></pre>
+<p>Therefore, we can sort the players as follow</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players[<span class="kw">order</span>(grand_slam_win)]</code></pre></div>
+<pre><code>## [1] &quot;Stan Wawrinka&quot;  &quot;Andy Murray&quot;    &quot;Novak Djokovic&quot; &quot;Rafael Nadal&quot;  
+## [5] &quot;Roger Federer&quot;</code></pre>
+<p>showing the Roger Federer won the most grand slam. Another related function is <code>sort()</code> which simply sorts the elements of a vector (in an ascending manner). For example,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1]  5  9 12 15 18</code></pre>
+<p>which is compact version of</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="kw">order</span>(grand_slam_win)]</code></pre></div>
+<pre><code>## [1]  5  9 12 15 18</code></pre>
+<p>There are of course many other usefull to dealing with vectors.</p>
+</div>
+<div id="creation-sequences" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Creation sequences</h3>
 </div>
 <div id="example-apple-stock-price" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Example: Apple Stock Price</h3>
+<h3><span class="header-section-number">2.1.6</span> Example: Apple Stock Price</h3>
+<p>How to get today’s date</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
 <pre><code>## [1] &quot;2017-07-15&quot;</code></pre>
+<p>Three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
 <pre><code>## [1] &quot;2017-04-15&quot;</code></pre>
+<p>Let’s download Apple stock price</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
 <pre><code>## [1] &quot;AAPL&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">candleChart</span>(AAPL, <span class="dt">theme=</span><span class="st">&#39;white&#39;</span>, <span class="dt">type=</span><span class="st">&#39;candles&#39;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p>Let’s compute returns…</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Let’s compute some returns…</p>
 <span class="math display">\[\begin{equation}
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
 \end{equation}\]</span>
@@ -369,8 +422,47 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <pre><code>## [1] 2.022523</code></pre>
 <p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
 </div>
+</div>
+<div id="matrix" class="section level2">
+<h2><span class="header-section-number">2.2</span> Matrix</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mat =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<p>explain <code>cbind</code> and <code>rbind</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
+             <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>)
+grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)
+win_percentage =<span class="st"> </span><span class="kw">c</span>(<span class="fl">78.07</span>, <span class="fl">82.48</span>, <span class="fl">63.96</span>, <span class="fl">82.77</span>, <span class="fl">81.80</span>)
+(<span class="dt">mat =</span> <span class="kw">cbind</span>(grand_slam_win, win_percentage))</code></pre></div>
+<pre><code>##      grand_slam_win win_percentage
+## [1,]              9          78.07
+## [2,]             15          82.48
+## [3,]              5          63.96
+## [4,]             12          82.77
+## [5,]             18          81.80</code></pre>
+<p>explain <code>rownames</code> <code>colnames</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players
+<span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)
+mat</code></pre></div>
+<pre><code>##                GS win Win rate
+## Andy Murray         9    78.07
+## Rafael Nadal       15    82.48
+## Stan Wawrinka       5    63.96
+## Novak Djokovic     12    82.77
+## Roger Federer      18    81.80</code></pre>
+</div>
+<div id="array" class="section level2">
+<h2><span class="header-section-number">2.3</span> Array</h2>
+</div>
+<div id="list" class="section level2">
+<h2><span class="header-section-number">2.4</span> List</h2>
+</div>
+<div id="dataframe" class="section level2">
+<h2><span class="header-section-number">2.5</span> Dataframe</h2>
 <div id="example-making-maps" class="section level3">
-<h3><span class="header-section-number">2.1.6</span> Example: Making Maps</h3>
+<h3><span class="header-section-number">2.5.1</span> Example: Making Maps</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_place =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
                 <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
@@ -404,17 +496,17 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="dataframes" class="section level2">
-<h2><span class="header-section-number">2.2</span> Dataframes</h2>
+<h2><span class="header-section-number">2.6</span> Dataframes</h2>
 <p>LG</p>
 <p>A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list.</p>
 <p>We can create a data frame using data.frame()</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <div id="application-non-parametric-bootstrap" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Application: Non-parametric bootstrap</h3>
+<h3><span class="header-section-number">2.6.1</span> Application: Non-parametric bootstrap</h3>
 <p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
 <p>We can compute the mean time spent</p>
@@ -446,7 +538,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.300000 1.713125</code></pre>
+## 0.261875 1.550000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>

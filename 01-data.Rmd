@@ -2,11 +2,12 @@
 
 Brievely explain the types of data strucutres in R. Basically there are five
 
-- Vector: homogenous, 1D
-- Matrix: homogenous, 2D
-- Array: homogenous, nD
-- List: Heterogeneous, 1D
-- Data Frame: Heterogeneous, 2D
+Dimension      Homogenous    Heterogeneous
+------------- ------------- ----------------
+1               Vector        List
+2                Matrix       Dataframe
+n               Array
+
 
 To illustrate the things we will in this chapter....
 
@@ -158,18 +159,62 @@ attr(grand_slam_win, "date")
 
 ### Useful functions with vectors
 
+Add some text here
+
 `length()` `sum()` `mean()` `sort()` and `order()`
+
+For example
+
+```{r}
+length(grand_slam_win)
+sum(grand_slam_win)
+mean(grand_slam_win)
+```
+
+To sort the player by number of grand slam we could use the function `order()` which returns the *position* of the elements of a vector sorted in an ascending manner,
+
+```{r}
+order(grand_slam_win)
+```
+
+Therefore, we can sort the players as follow
+
+```{r}
+players[order(grand_slam_win)]
+```
+
+showing the Roger Federer won the most grand slam. Another related function is `sort()` which simply sorts the elements of a vector (in an ascending manner). For example,
+
+```{r}
+sort(grand_slam_win)
+```
+
+which is compact version of
+
+```{r}
+grand_slam_win[order(grand_slam_win)]
+```
+
+There are of course many other usefull to dealing with vectors.
+
+### Creation sequences
 
 
 ### Example: Apple Stock Price 
+
+How to get today's date
 
 ```{r}
 (today = Sys.Date())
 ```
 
+Three monmths ago
+
 ```{r}
 (three_months_ago = seq(today, length = 2, by = "-3 months")[2])
 ```
+
+Let's download Apple stock price
 
 ```{r, message = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE}
 library(quantmod)
@@ -177,7 +222,7 @@ getSymbols("AAPL", from = three_months_ago, to = today)
 candleChart(AAPL, theme='white', type='candles')
 ```
 
-Let's compute returns...
+Let's compute some returns...
 
 \begin{equation}
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
@@ -222,6 +267,36 @@ mu = mean(AAPL_returns)
 ```
  
 which is quite high tends to indicate the returns have a heavier tails than the normal distribution.
+ 
+## Matrix
+
+```{r}
+(mat = matrix(1:12, ncol = 4,  nrow = 3))
+```
+explain `cbind` and `rbind`
+
+```{r}
+players = c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+grand_slam_win = c(9, 15, 5, 12, 18)
+win_percentage = c(78.07, 82.48, 63.96, 82.77, 81.80)
+(mat = cbind(grand_slam_win, win_percentage))
+```
+
+explain `rownames` `colnames`
+
+```{r}
+rownames(mat) <- players
+colnames(mat) <- c("GS win", "Win rate")
+mat
+```
+
+## Array
+
+## List
+
+## Dataframe
+ 
  
 ### Example: Making Maps
 
