@@ -1,10 +1,26 @@
+--- 
+title: "Let's find a good title"
+author: "Stéphane Guerrier, Justin Lee & Roberto Molinari"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: smac-group/ds
+description: "LEt's add somethign here"
+includes:
+      in_header: style.css
+---
+
+# Introduction
+
+<!--chapter:end:index.Rmd-->
+
 # Data Structures {#data}
 
-<<<<<<< HEAD
-Briefly explain the types of data strucutres in R. Basically there are five
-=======
 There are different data types that are commonly used in R th most important ones are the following:
->>>>>>> origin/master
 
 - **Numeric** (or double): are used to store real numbers. Examples: -4, 12.4532, 6.
 
@@ -588,3 +604,26 @@ quantile(boot_mean, c(alpha/2, 1 - alpha/2))
 #hist(boot_mean, probability = TRUE)
 
 ```
+
+<!--chapter:end:01-data.Rmd-->
+
+
+# Logical Operators and Control Stuctures {#control}
+
+<!--chapter:end:02-controls.Rmd-->
+
+
+# Functions
+
+<!--chapter:end:03-functions.Rmd-->
+
+
+# Build a package
+
+<!--chapter:end:04-package.Rmd-->
+
+
+# Case Study: Monte-Carlo Integration
+
+<!--chapter:end:05-MC.Rmd-->
+
