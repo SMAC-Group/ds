@@ -288,7 +288,6 @@ seq_len(n)
 ```
 
 
-
 - `seq(a, b, by/length.out = d)`: This function can be used to create more "complexe" sequences. It either be used to create a sequence from `a` to `b` by increments of `d` (using the option `by`) or of a total length of `d` (using the option `length.out`). A few examples:
 
 ```{r}
@@ -297,6 +296,12 @@ seq_len(n)
 ```
 
 
+Maybe it would be interesting to add something `rep()` for example:
+
+```{r}
+rep(c(1,2), times = 3, each = 1)
+rep(c(1,2), times = 1, each = 3)
+```
 ### Example: Apple Stock Price 
 
 How to get today's date
@@ -415,6 +420,8 @@ It is also interesting to compare `sig2` and `sig2_mat`
 ```{r}
 sig2 - sig2_mat
 ```
+
+numerical error
 
 ## Array
 
