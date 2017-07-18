@@ -373,9 +373,12 @@ which is quite high tends to indicate the returns have a heavier tails than the 
  
 ## Matrix
 
+Example of matrix creation
+
 ```{r}
 (mat = matrix(1:12, ncol = 4,  nrow = 3))
 ```
+
 explain `cbind` and `rbind`
 
 ```{r}
@@ -405,7 +408,54 @@ mat[1:3, 1]
 
 ### Useful fun + matrix algebra
 
-`%*%` `t()` `det()` `solve()`
+The function `dim()` allows to determine the dimension of a matrix. For example, consider the following $4 \times 2$ matrix
+
+\begin{equation*}
+\mathbf{A} = \left[
+\begin{matrix}
+1 & 5\\
+2 & 6\\
+3 & 7\\
+4 & 8
+\end{matrix}
+\right]
+\end{equation*}
+
+which can be defined as:
+```{r}
+(A = matrix(1:8, 4, 2))
+```
+
+Therefore, we expect `dim(A)` to retrun the vector `c(4, 2)`. Indeed, we have
+
+```{r}
+dim(A)
+```
+
+Next, we consider the function `t()` allows transpose a matrix. For example, $\mathbf{A}^T$ is equal to:
+
+\begin{equation*}
+\mathbf{A}^T = \left[
+\begin{matrix}
+1 & 2 & 3 & 4\\
+5 & 6 & 7 & 8
+\end{matrix}
+\right],
+\end{equation*}
+
+which is a $2 \times 4$ matrix. In R, we obtain
+
+```{r}
+(At <- t(A))
+dim(At)
+```
+
+The operator `%*%` is used in R to denote matrix multiplicate. Note that the regular product opertor `*` used with matrices performs the Hadamar product (or element by element product). For example,
+
+```{r}
+
+```
+`%*%` `det()` `solve()` 
 
 ### Example: variance as matrix
 

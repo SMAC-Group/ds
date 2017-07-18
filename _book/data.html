@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-17">
+<meta name="date" content="2017-07-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -132,10 +132,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.6.3" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>2.6.3</b> Application: Non-parametric bootstrap</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a></li>
-<li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
+<li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a><ul>
+<li class="chapter" data-level="3.1" data-path="control.html"><a href="control.html#logical-operators"><i class="fa fa-check"></i><b>3.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="3.2" data-path="control.html"><a href="control.html#control-structures"><i class="fa fa-check"></i><b>3.2</b> Control Structures</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="control.html"><a href="control.html#selection-controls"><i class="fa fa-check"></i><b>3.2.1</b> Selection Controls</a></li>
+<li class="chapter" data-level="3.2.2" data-path="control.html"><a href="control.html#iteration-controls"><i class="fa fa-check"></i><b>3.2.2</b> Iteration Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="control.html"><a href="control.html#applications"><i class="fa fa-check"></i><b>3.3</b> Applications:</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="control.html"><a href="control.html#non-parametric-bootstrap"><i class="fa fa-check"></i><b>3.3.1</b> Non-parametric Bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="functions.html"><a href="functions.html#function-components"><i class="fa fa-check"></i><b>4.1</b> Function components</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>5</b> Build a package</a></li>
 <li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -461,7 +473,7 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">z =</span> <span class="fl">1.3</span>:<span class="dv">3</span>)</code></pre></div>
 <pre><code>## [1] 1.3 2.3</code></pre>
 <ul>
-<li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exeptions of the cases <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exeption will become clear in Section <a href="#forloop"><strong>??</strong></a>. Let’s see a few examples:</li>
+<li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exeptions of the cases <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exeption will become clear in Section <a href="control.html#forloop">3.2.2.1</a>. Let’s see a few examples:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">3</span>
 <span class="dv">1</span>:n</code></pre></div>
@@ -490,10 +502,10 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <h3><span class="header-section-number">2.1.8</span> Example: Apple Stock Price</h3>
 <p>How to get today’s date</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-17&quot;</code></pre>
+<pre><code>## [1] &quot;2017-07-19&quot;</code></pre>
 <p>Three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-17&quot;</code></pre>
+<pre><code>## [1] &quot;2017-04-19&quot;</code></pre>
 <p>Let’s download Apple stock price</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
@@ -508,9 +520,9 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
 <p><code>na.omit</code> to remove missing value as if we have <span class="math inline">\(n+1\)</span> stock prices we only <span class="math inline">\(n\)</span> returns <code>as.numeric</code> to transform into a vector. We can now compute mean and median return over the period</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.0009362567</code></pre>
+<pre><code>## [1] 0.001179654</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.001104352</code></pre>
+<pre><code>## [1] 0.002557922</code></pre>
 <p>Excess Kurtosis can be defined for a random variable <span class="math inline">\(X\)</span> as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
@@ -525,12 +537,13 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 \end{equation}\]</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.022523</code></pre>
+<pre><code>## [1] 2.127954</code></pre>
 <p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
 </div>
 </div>
 <div id="matrix" class="section level2">
 <h2><span class="header-section-number">2.2</span> Matrix</h2>
+<p>Example of matrix creation</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mat =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
@@ -577,19 +590,57 @@ mat</code></pre></div>
 </div>
 <div id="useful-fun-matrix-algebra" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Useful fun + matrix algebra</h3>
-<p><code>%*%</code> <code>t()</code> <code>det()</code> <code>solve()</code></p>
+<p>The function <code>dim()</code> allows to determine the dimension of a matrix. For example, consider the following <span class="math inline">\(4 \times 2\)</span> matrix</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A} = \left[
+\begin{matrix}
+1 &amp; 5\\
+2 &amp; 6\\
+3 &amp; 7\\
+4 &amp; 8
+\end{matrix}
+\right]
+\end{equation*}\]</span>
+<p>which can be defined as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">A =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>))</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## [3,]    3    7
+## [4,]    4    8</code></pre>
+<p>Therefore, we expect <code>dim(A)</code> to retrun the vector <code>c(4, 2)</code>. Indeed, we have</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(A)</code></pre></div>
+<pre><code>## [1] 4 2</code></pre>
+<p>Next, we consider the function <code>t()</code> allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A}^T = \left[
+\begin{matrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+5 &amp; 6 &amp; 7 &amp; 8
+\end{matrix}
+\right],
+\end{equation*}\]</span>
+<p>which is a <span class="math inline">\(2 \times 4\)</span> matrix. In R, we obtain</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(At &lt;-<span class="st"> </span><span class="kw">t</span>(A))</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(At)</code></pre></div>
+<pre><code>## [1] 2 4</code></pre>
+<p>The operator <code>%*%</code> is used in R to denote matrix multiplicate. Note that the regular product opertor <code>*</code> used with matrices performs the Hadamar product (or element by element product). For example,</p>
+<p><code>%*%</code> <code>det()</code> <code>solve()</code></p>
 </div>
 <div id="example-variance-as-matrix" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Example: variance as matrix</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">100</span>
 x =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">0</span>, <span class="kw">sqrt</span>(<span class="dv">4</span>))
 (<span class="dt">sig2 =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span><span class="kw">mean</span>(x))^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 4.552691</code></pre>
+<pre><code>## [1] 3.561341</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">sig2_mat =</span> <span class="kw">as.numeric</span>(<span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%x -<span class="st"> </span>(<span class="dv">1</span>/n*<span class="kw">t</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n))%*%x)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 4.552691</code></pre>
+<pre><code>## [1] 3.561341</code></pre>
 <p>It is also interesting to compare <code>sig2</code> and <code>sig2_mat</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig2 -<span class="st"> </span>sig2_mat</code></pre></div>
-<pre><code>## [1] 1.776357e-15</code></pre>
+<pre><code>## [1] 4.440892e-16</code></pre>
 <p>numerical error</p>
 </div>
 <div id="example-least-squares" class="section level3">
@@ -717,7 +768,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-57-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
@@ -843,7 +894,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.275000 1.638125</code></pre>
+## 0.286875 1.600000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
