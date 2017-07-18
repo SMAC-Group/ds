@@ -1,10 +1,31 @@
 # R Markdown
 
-RMarkdown is a framework that provides a literate format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, and MS Word documents.
+RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.
+
+An RMarkdown is a plain text file that contains three different aspects: 
+- Code Chunks 
+- Text 
+- YAML metadata
+
+## YAML Metadata 
+YAML stands for YAML Ain't Markup Language, and is used to specify document configurations and properties such as name, date, output format, etc. 
+
+## Text 
+
+## Code Chunks 
+
+
+
+
+By effectively 
+
 
 ```{r cars}
 summary(cars)
 ```
+
+
+
 
 ## Including Plots
 
