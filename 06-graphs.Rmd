@@ -26,7 +26,7 @@ grid()
 [full link](https://guerrier.shinyapps.io/example_plot/)
 
 ```{r, echo = FALSE}
-knitr::include_app("https://guerrier.shinyapps.io/example_plot/", height = "400px")
+knitr::include_app("https://guerrier.shinyapps.io/example_plot/", height = "800px")
 ```
 
 
