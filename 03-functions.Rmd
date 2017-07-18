@@ -51,7 +51,7 @@ formals(nonpar_boot)
 A feature which can be underlined at this stage is that, as can be seen for the above mentioned function, it is possible to provide default values for some, all or none of the function arguments. In this case, default values have been given for the arguments B and alpha, consequently the user does not need to specify the value of these arguments unless they wish to specify different values compared to the default values given.
 
 
-```{block2, note-text, type='rmdnote'}
+```{block2, type='rmdnote'}
 R functions are quite flexible when specifying the arguments. These can in fact be specified by exact name, prefix matching or position (and are given priority in this order). For example, one could specify the arguments for the above non-parametric bootstrap function as follows "nonpar_boot(B = 200, sim, a = 0.1)" where the object "sim" is the sample which in the function is named "x". For a more in-depth overview of this feature refer to @wickham2014advanced.
 ```
 
