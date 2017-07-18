@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="data.html">
-<link rel="next" href="functions.html">
+<link rel="prev" href="case-study-monte-carlo-integration.html">
+<link rel="next" href="r-markdown.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -173,72 +173,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="control" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Logical Operators and Control Stuctures</h1>
-<div id="logical-operators" class="section level2">
-<h2><span class="header-section-number">3.1</span> Logical Operators</h2>
-</div>
-<div id="control-structures" class="section level2">
-<h2><span class="header-section-number">3.2</span> Control Structures</h2>
-<div id="selection-controls" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Selection Controls</h3>
-<p>Basically if, if/else, if/elseif/else and switch</p>
-</div>
-<div id="iteration-controls" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Iteration Controls</h3>
-<div id="forloop" class="section level4">
-<h4><span class="header-section-number">3.2.2.1</span> for</h4>
-</div>
-</div>
-</div>
-<div id="applications" class="section level2">
-<h2><span class="header-section-number">3.3</span> Applications:</h2>
-<div id="non-parametric-bootstrap" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Non-parametric Bootstrap</h3>
-<p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
-<p>We can compute the mean time spent</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(student_work)</code></pre></div>
-<pre><code>## [1] 0.825</code></pre>
-<p><em>ADD SOMETHING ON T TEST</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(student_work)$conf.int</code></pre></div>
-<pre><code>## [1] -0.03495865  1.68495865
-## attr(,&quot;conf.level&quot;)
-## [1] 0.95</code></pre>
-<p>We can see that our confidence interval includes a negative values which clearly isn’t meaningful. Solution: (non-parametric) bootstrap which works as follows….. ADD SOMETHING</p>
-<p>Here is a simple function to implement this approach:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Number of boostrap replications</span>
-B =<span class="st"> </span><span class="dv">500</span>
+<div id="chap:graphs" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Graphics</h1>
+<p>In this chapter we discuss graphics with R.</p>
+<p>In this chapter, we will as an example the function <code>sin(x)</code> in the range <span class="math inline">\(0, 2\pi)\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nb_points &lt;-<span class="st"> </span><span class="dv">60</span>
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">4</span>*pi, <span class="dt">length.out =</span> nb_points)
+y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
+<span class="kw">plot</span>(x, y)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p>In general, we found that the following approach is quite usefull,</p>
+<ul>
+<li>Step 1: Construct graph “frame”, i.e. basically an empty graph with the right title, labels, axis and so on. Often, this can be achieve with <code>plot()</code>. It is also useful to grid. Here is an example:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(y), <span class="dt">main =</span> <span class="st">&quot;my title&quot;</span>,
+         <span class="dt">xlab =</span> <span class="st">&quot;my xlab&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;my ylab&quot;</span>, <span class="dt">col.main =</span> <span class="st">&quot;red&quot;</span>, 
+         <span class="dt">col.lab =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">col.axis =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>,
+         <span class="dt">cex.lab =</span> <span class="dv">1</span>, <span class="dt">cex.axis =</span> <span class="fl">0.5</span>)
+<span class="kw">grid</span>()</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><a href="https://guerrier.shinyapps.io/example_plot/">full link</a></p>
+<iframe src="https://guerrier.shinyapps.io/example_plot/?showcase=0" width="672" height="800px">
+</iframe>
 
-<span class="co"># Compute the length of vector</span>
-n =<span class="st"> </span><span class="kw">length</span>(student_work)
-
-<span class="co"># Confidence level</span>
-alpha =<span class="st"> </span><span class="fl">0.05</span>
-
-<span class="co"># Initialisation of </span>
-boot_mean =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
-
-for (i in <span class="dv">1</span>:B){
-  student_work_star =<span class="st"> </span>student_work[<span class="kw">sample</span>(<span class="dv">1</span>:n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)]
-  boot_mean[i] =<span class="st"> </span><span class="kw">mean</span>(student_work_star)
-}
-
-<span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##     2.5%    97.5% 
-## 0.236875 1.575000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
-
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="case-study-monte-carlo-integration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -267,7 +232,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-controls.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-graphs.Rmd",
 "text": "Edit"
 },
 "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
