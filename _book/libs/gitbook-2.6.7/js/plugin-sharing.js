@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-require(["gitbook", "lodash"], function(gitbook, _) {
-=======
-gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
->>>>>>> origin/master
+require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
     var SITES = {
         'github': {
             'label': 'Github',
