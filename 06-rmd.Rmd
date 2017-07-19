@@ -4,21 +4,27 @@ RMarkdown is a framework that provides a literate programming format for data sc
 
 An RMarkdown is a plain text file that contains three different aspects:
 
-- Code Chunks 
-- Text 
 - YAML metadata
-
-
-
+- Text 
+- Code Chunks 
 
 ## YAML Metadata 
-YAML stands for YAML Ain't Markup Language, and is used to specify document configurations and properties such as name, date, output format, etc. 
+
+YAML stands for YAML Ain't Markup Language, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header surrounded by ---s.
 
 ![](images/rmd_yaml.png)
 
+You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient.  
+
 ## Text 
 
+In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or even a `code style`. Headings are preceded with a #, breaks create a new paragraph. 
+
 ![](images/rmd_text.png)
+
+There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
+
+
 
 ## Code Chunks 
 

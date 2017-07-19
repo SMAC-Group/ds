@@ -141,20 +141,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.</p>
 <p>An RMarkdown is a plain text file that contains three different aspects:</p>
 <ul>
-<li>Code Chunks</li>
-<li>Text</li>
 <li>YAML metadata</li>
+<li>Text</li>
+<li>Code Chunks</li>
 </ul>
 <div id="yaml-metadata" class="section level2">
 <h2><span class="header-section-number">8.1</span> YAML Metadata</h2>
-<p>YAML stands for YAML Ain’t Markup Language, and is used to specify document configurations and properties such as name, date, output format, etc.</p>
+<p>YAML stands for YAML Ain’t Markup Language, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header surrounded by —s.</p>
 <div class="figure">
 <img src="images/rmd_yaml.png" />
 
 </div>
+<p>You can also include additional formatting <a href="http://rmarkdown.rstudio.com/html_document_format.html">options</a>, such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient.</p>
 </div>
 <div id="text" class="section level2">
 <h2><span class="header-section-number">8.2</span> Text</h2>
+<p>In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as <em>italics</em>, <strong>bold</strong>, or even a <code>code style</code>. Headings are preceded with a #, breaks create a new paragraph.</p>
 <div class="figure">
 <img src="images/rmd_text.png" />
 
