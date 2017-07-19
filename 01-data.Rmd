@@ -101,7 +101,7 @@ Therefore, we could express `grand_slam_win` as follows:
 typeof(grand_slam_win_int)
 ```
 
-Naturally, the difference between the two in general is relatively unimportant but we can see that `grand_slam_win_int` takes less "space" to two. For example, we have
+Naturally, the difference between the two in general is relatively unimportant but we can see that `grand_slam_win_int` takes less "space" among the two. Indeed we have
 
 ```{r}
 object.size(grand_slam_win)
@@ -110,13 +110,13 @@ object.size(grand_slam_win_int)
 
 ### Coercion
 
-As indicated earlier, a vector has a homogenous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R *coerces* the data into a "shared" type. To identify this "shared" we can use this simple rule:
+As indicated earlier, a vector has a homogenous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R *coerces* the data into a "shared" type. To identify this "shared" type we can use this simple rule:
 
 \begin{equation*}
  \text{logical} < \text{integer} < \text{numeric} < \text{character},
 \end{equation*}
 
-which simply means that if a vector contains more than data type it will be of the type of the "largest" according to the above equations. Here are few examples:
+which simply means that if a vector contains more than one data type, the "shared" type will be that of the "largest" type according to the above equations. Here are a few examples:
 
 ```{r}
 # Logical + integer
@@ -141,7 +141,7 @@ typeof(mix_int_char)
 
 Naturally, it is possible to "subset" the values of in our vectror in many ways. Essentially, there are four main ways of subsetting a vector. Here we'll only discuss the first three:
 
-- **Positive Index**: We can *access* or *subset* the $i$-th element of a vector by simply using `exp_res[i]` where $i$ is a positive number between 1 and length of the vector.
+- **Positive Index**: We can *access* or *subset* the $i$-th element of a vector by simply using `grand_slam_win[i]` where $i$ is a positive number between 1 and length of the vector.
 
 ```{r}
 # Accesing the first element
@@ -172,12 +172,12 @@ grand_slam_win[c(TRUE, FALSE, FALSE, TRUE, FALSE)]
 ```
 
 ```{block2, type='rmdnote'}
-Here we could add some remarks on weird cases, for example `exp_res[c(1.2, 3.4)]` (which rounds things up) or `exp_res[c(-1, 2)]` (which doesn't work as "mixed" indices are not permitted).
+Here we could add some remarks on weird cases, for example `grand_slam_win[c(1.2, 3.4)]` (which rounds things up) or `grand_slam_win[c(-1, 2)]` (which doesn't work as "mixed" indices are not permitted).
 ```
 
 ### Attributes {#vectattr}
 
-Our experiment was conducted under specific conditions, say a date and a place which should be store are attributes. Indeed, objects can have arbitrary additional attributes, used to store metadata about the considered object. For example:
+Let's suppose that we conducted an experiment under specific conditions, say a date and a place which should be stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:
 
 ```{r}
 attr(grand_slam_win, "date") = "07-15-2017"
@@ -190,7 +190,8 @@ To display the vector with its attributes
 grand_slam_win
 ```
 
-To only display the attributes
+To only display the attributes we have
+
 ```{r}
 attributes(grand_slam_win)
 ```
@@ -203,7 +204,7 @@ attr(grand_slam_win, "date")
 
 ### Adding labels {#addlab}
 
-In some cases, it might be useful to add label to vectors. For example, we could defined the vector `grand_slam_win` and use as labels the player's names, i.e.
+In some cases it might be useful to add labels to vectors. For example, we could define the vector `grand_slam_win` and use the player's names as labels, i.e.
 
 ```{r}
 (grand_slam_win = c("Andy Murray" = 9, "Rafael Nadal" = 15, 
@@ -211,7 +212,7 @@ In some cases, it might be useful to add label to vectors. For example, we could
                    "Roger Federer" = 18))
 ```
 
-The main advantage of this approach is that the number of grand slam won can now be referred to by the player's name. For example:
+The main advantage of this approach is that the number of grand slams won can now be referred to by the player's name. For example:
 
 ```{r}
 grand_slam_win["Andy Murray"]
@@ -226,11 +227,11 @@ names(grand_slam_win)
 
 ### Useful functions with vectors
 
-Add some text here
+The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain manner which can be of interest to the user. Among the most commonly used functions we can find the following ones 
 
 `length()` `sum()` `mean()` `sort()` and `order()`
 
-For example
+whose name is self-explicative in most cases. For example we have
 
 ```{r}
 length(grand_slam_win)
@@ -238,19 +239,19 @@ sum(grand_slam_win)
 mean(grand_slam_win)
 ```
 
-To sort the player by number of grand slam we could use the function `order()` which returns the *position* of the elements of a vector sorted in an ascending manner,
+To sort the players by number of grand slam wins, we could use the function `order()` which returns the *position* of the elements of a vector sorted in an ascending order,
 
 ```{r}
 order(grand_slam_win)
 ```
 
-Therefore, we can sort the players as follow
+Therefore, we can sort the players in ascending order of wins as follows
 
 ```{r}
 players[order(grand_slam_win)]
 ```
 
-showing the Roger Federer won the most grand slam. Another related function is `sort()` which simply sorts the elements of a vector (in an ascending manner). For example,
+which implies that Roger Federer won most grand slams. Another related function is `sort()` which simply sorts the elements of a vector in an ascending manner. For example,
 
 ```{r}
 sort(grand_slam_win)
@@ -262,11 +263,11 @@ which is compact version of
 grand_slam_win[order(grand_slam_win)]
 ```
 
-There are of course many other usefull to dealing with vectors.
+There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references (see for example @wickham2014advanced).
 
 ### Creation sequences
 
-When uing R for statstical programming or even data analysis it is very common to create sequences of numbers. Here are three common ways for generatign such sequences:
+When uing R for statistical programming or even data analysis it is very common to create sequences of numbers. Here are three common ways used to create such sequences:
 
 - `from:to`: This method is quite inituitive and very compact. For example:
 
@@ -277,7 +278,7 @@ When uing R for statstical programming or even data analysis it is very common t
 (z = 1.3:3)
 ```
 
-- `seq_len(n)`: This function provides a simple way to generate a sequence from 1 to an arbitrary number `n`. In general, `1:n` and `seq_len(n)` are equivalent with the notable exeptions of the cases `n = 0` and `n < 0`. The reason for these exeption will become clear in Section \@ref(forloop). Let's see a few examples:
+- `seq_len(n)`: This function provides a simple way to generate a sequence from 1 to an arbitrary number `n`. In general, `1:n` and `seq_len(n)` are equivalent with the notable exeptions where `n = 0` and `n < 0`. The reason for these exeptions will become clear in Section \@ref(forloop). Let's see a few examples:
 
 ```{r}
 n = 3
@@ -290,36 +291,37 @@ seq_len(n)
 ```
 
 
-- `seq(a, b, by/length.out = d)`: This function can be used to create more "complexe" sequences. It either be used to create a sequence from `a` to `b` by increments of `d` (using the option `by`) or of a total length of `d` (using the option `length.out`). A few examples:
+- `seq(a, b, by/length.out = d)`: This function can be used to create more "complex" sequences. It can either be used to create a sequence from `a` to `b` by increments of `d` (using the option `by`) or of a total length of `d` (using the option `length.out`). A few examples:
 
 ```{r}
 (x = seq(1, 2.8, by = 0.4))
 (y = seq(1, 2.8, length.out = 6))
 ```
 
-
-Maybe it would be interesting to add something `rep()` for example:
+It could be interesting to use a function like `rep()` that allows to create vectors with repeated values or sequences, for example:
 
 ```{r}
 rep(c(1,2), times = 3, each = 1)
 rep(c(1,2), times = 1, each = 3)
 ```
 
+where the option `times` allows to specify how many times the object needs to be repeated and `each` regulates how many times each element in the object is repeated.
+
 ### Example: Apple Stock Price 
 
-How to get today's date
+Suppose that one is interested in analysing the behavior of Apple's stoch price over the last three months. The first thing that is need is today's date which can be obtained as follows
 
 ```{r}
 (today = Sys.Date())
 ```
 
-Three monmths ago
+Once this is done, we can obtain the date which is exactly three monmths ago
 
 ```{r}
 (three_months_ago = seq(today, length = 2, by = "-3 months")[2])
 ```
 
-Let's download Apple stock price
+With this information, we can now download Apple's stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.
 
 ```{r, message = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE}
 library(quantmod)
@@ -327,34 +329,32 @@ getSymbols("AAPL", from = three_months_ago, to = today)
 candleChart(AAPL, theme='white', type='candles')
 ```
 
-Let's compute some returns...
+Once we have the prices, we can compute some returns which are defined as follows
 
 \begin{equation}
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
 \end{equation}
 
-where $r_t$ are the return, $S_t$ the stock price. This is implemented in the function `ClCl()` of the package `quantmod`. For example, we can create a vector of returns as follows 
-
+where $r_t$ are the returns at time *t* and $S_t$ is the stock price. This is implemented in the function `ClCl()` within the `quantmod` package. For example, we can create a vector of returns as follows 
 
 ```{r}
 AAPL_returns = as.numeric(na.omit(ClCl(AAPL)))
 ```
 
-`na.omit` to remove missing value as if we have $n+1$ stock prices we only $n$ returns
-`as.numeric` to transform into a vector. We can now compute mean and median return over the period
+where `na.omit` is used to remove missing values in the stock prices vector since, if we have $n+1$ stock prices, we will only have $n$ returns and `as.numeric` is used to transform the computed returns into a numeric vector. We can now compute the mean and median of the returns over the considered period
 
 ```{r}
 mean(AAPL_returns)
 median(AAPL_returns)
 ```
 
-Excess Kurtosis can be defined for a random variable $X$ as
+However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as $X$, can be defined as
 
 \begin{equation}
   \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
 \end{equation}
 
-The reason excess is .... A common estimator of the excess Kurtosis is
+The reason for defining this statistic as *Excess* Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. Given this statistic, it is useful to compute this on the observed data and for this purpose a common estimator of the excess Kurtosis is
 
 \begin{equation}
   k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3

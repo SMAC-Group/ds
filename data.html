@@ -274,18 +274,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </li>
 </ul>
-<p>For example, let us consider the number of grand slams won by the five players we are considering:</p>
+<p>For example, let us consider the number of grand slams won by the five players we are considering which are reported in the eigth column of the dataset:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)</code></pre></div>
-<p>To display the values stored in <code>grand_slam_win</code> we could simply do:</p>
+<p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
-<p>Alteratively, we could have create and display the value by using <code>()</code> around the definition, for example:</p>
+<p>Alteratively, we could have created and displayed the value by using <code>()</code> around the definition of the object itself as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>))</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
-<p>Various forms of “nest concatenation” can be used to defined vectors, for example we could also define <code>grand_slam_win</code> as</p>
+<p>Various forms of “nested concatenation” can be used to defined vectors, for example we could also define <code>grand_slam_win</code> as</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">12</span>, <span class="kw">c</span>(<span class="dv">18</span>)))))</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
-<p>This approach is often used to assemnble vector in various ways.</p>
+<p>This approach is often used to assemble vectors in various ways.</p>
 <p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">players =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
              <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>))</code></pre></div>
@@ -298,17 +298,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(players)</code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<p>This is a little suprzing as all the elements in <code>grand_slam_win</code> are integers it would seem natural to expect this as an output of the function <code>typeof()</code>. This is R considers by default any number as a “double”, expet when spefiying <code>L</code> after an integer. For example,</p>
+<p>This is a little surprising as all the elements in <code>grand_slam_win</code> are integers and it would therefore seem natural to expect this as an output of the function <code>typeof()</code>. This is because R considers any number as a “double” by default, except when adding the suffix <code>L</code> after an integer. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">1</span>)</code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(1L)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Therefore, we could express <code>exp_res</code> as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win_int =</span> <span class="kw">c</span>(1L, 2L, 3L, 5L, 1L))</code></pre></div>
-<pre><code>## [1] 1 2 3 5 1</code></pre>
+<p>Therefore, we could express <code>grand_slam_win</code> as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win_int =</span> <span class="kw">c</span>(9L, 15L, 5L, 12L, 18L))</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(grand_slam_win_int)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Naturally, the difference between the two in general relatively unimportant but we can see that <code>exp_res_int</code> takes less “space” to two. For example, we have</p>
+<p>Naturally, the difference between the two in general is relatively unimportant but we can see that <code>grand_slam_win_int</code> takes less “space” to two. For example, we have</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win)</code></pre></div>
 <pre><code>## 88 bytes</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win_int)</code></pre></div>
@@ -316,7 +316,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="coercion" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Coercion</h3>
-<p>As indicated earlier a vector is a homogenous data structures data, meaning that it can only contain a single type of data type. Therefore, when more than one data types are presented R <em>coerces</em> the data into a “shared” type. To identify this “shared” we can use this simple rule:</p>
+<p>As indicated earlier, a vector has a homogenous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R <em>coerces</em> the data into a “shared” type. To identify this “shared” we can use this simple rule:</p>
 <span class="math display">\[\begin{equation*}
  \text{logical} &lt; \text{integer} &lt; \text{numeric} &lt; \text{character},
 \end{equation*}\]</span>
@@ -493,10 +493,10 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <h3><span class="header-section-number">1.1.8</span> Example: Apple Stock Price</h3>
 <p>How to get today’s date</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-18&quot;</code></pre>
+<pre><code>## [1] &quot;2017-07-19&quot;</code></pre>
 <p>Three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-18&quot;</code></pre>
+<pre><code>## [1] &quot;2017-04-19&quot;</code></pre>
 <p>Let’s download Apple stock price</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
@@ -511,9 +511,9 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
 <p><code>na.omit</code> to remove missing value as if we have <span class="math inline">\(n+1\)</span> stock prices we only <span class="math inline">\(n\)</span> returns <code>as.numeric</code> to transform into a vector. We can now compute mean and median return over the period</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.001064177</code></pre>
+<pre><code>## [1] 0.001179654</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.001904745</code></pre>
+<pre><code>## [1] 0.002557922</code></pre>
 <p>Excess Kurtosis can be defined for a random variable <span class="math inline">\(X\)</span> as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
@@ -528,12 +528,13 @@ Here we could add some remarks on weird cases, for example <code>exp_res[c(1.2, 
 \end{equation}\]</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.079234</code></pre>
+<pre><code>## [1] 2.127954</code></pre>
 <p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
 </div>
 </div>
 <div id="matrix" class="section level2">
 <h2><span class="header-section-number">1.2</span> Matrix</h2>
+<p>Example of matrix creation</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mat =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
@@ -580,19 +581,57 @@ mat</code></pre></div>
 </div>
 <div id="useful-fun-matrix-algebra" class="section level3">
 <h3><span class="header-section-number">1.2.2</span> Useful fun + matrix algebra</h3>
-<p><code>%*%</code> <code>t()</code> <code>det()</code> <code>solve()</code></p>
+<p>The function <code>dim()</code> allows to determine the dimension of a matrix. For example, consider the following <span class="math inline">\(4 \times 2\)</span> matrix</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A} = \left[
+\begin{matrix}
+1 &amp; 5\\
+2 &amp; 6\\
+3 &amp; 7\\
+4 &amp; 8
+\end{matrix}
+\right]
+\end{equation*}\]</span>
+<p>which can be defined as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">A =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>))</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## [3,]    3    7
+## [4,]    4    8</code></pre>
+<p>Therefore, we expect <code>dim(A)</code> to retrun the vector <code>c(4, 2)</code>. Indeed, we have</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(A)</code></pre></div>
+<pre><code>## [1] 4 2</code></pre>
+<p>Next, we consider the function <code>t()</code> allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A}^T = \left[
+\begin{matrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+5 &amp; 6 &amp; 7 &amp; 8
+\end{matrix}
+\right],
+\end{equation*}\]</span>
+<p>which is a <span class="math inline">\(2 \times 4\)</span> matrix. In R, we obtain</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(At &lt;-<span class="st"> </span><span class="kw">t</span>(A))</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(At)</code></pre></div>
+<pre><code>## [1] 2 4</code></pre>
+<p>The operator <code>%*%</code> is used in R to denote matrix multiplicate. Note that the regular product opertor <code>*</code> used with matrices performs the Hadamar product (or element by element product). For example,</p>
+<p><code>%*%</code> <code>det()</code> <code>solve()</code></p>
 </div>
 <div id="example-variance-as-matrix" class="section level3">
 <h3><span class="header-section-number">1.2.3</span> Example: variance as matrix</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">100</span>
 x =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">0</span>, <span class="kw">sqrt</span>(<span class="dv">4</span>))
 (<span class="dt">sig2 =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span><span class="kw">mean</span>(x))^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 4.303506</code></pre>
+<pre><code>## [1] 4.806174</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">sig2_mat =</span> <span class="kw">as.numeric</span>(<span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%x -<span class="st"> </span>(<span class="dv">1</span>/n*<span class="kw">t</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n))%*%x)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 4.303506</code></pre>
+<pre><code>## [1] 4.806174</code></pre>
 <p>It is also interesting to compare <code>sig2</code> and <code>sig2_mat</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig2 -<span class="st"> </span>sig2_mat</code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 1.776357e-15</code></pre>
 <p>numerical error</p>
 </div>
 <div id="example-least-squares" class="section level3">
@@ -720,7 +759,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="01-data_files/figure-html/unnamed-chunk-53-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="01-data_files/figure-html/unnamed-chunk-57-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
@@ -845,8 +884,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##     2.5%    97.5% 
-## 0.300000 1.638125</code></pre>
+<pre><code>##  2.5% 97.5% 
+## 0.275 1.650</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 </div>
 </div>
