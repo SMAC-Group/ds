@@ -6,7 +6,7 @@ Briefly explain the types of data strucutres in R. Basically there are five
 There are different data types that are commonly used in R among which the most important ones are the following:
 >>>>>>> origin/master
 
-- **Numeric** (or double): are used to store real numbers. Examples: -4, 12.4532, 6.
+- **Numeric** (or double): these are used to store real numbers. Examples: -4, 12.4532, 6.
 
 - **Integer**: examples: 2L, 12L.
 
@@ -14,15 +14,15 @@ There are different data types that are commonly used in R among which the most 
 
 - **Character**: examples: `"a"`, `"Bonjour"`. 
 
-In R there are basically five type of data structures that can be used to store elements in. A data structure is said to *homogeneous* if it only contains elements of the same type (for example it only contains character or numeric values) and *heterogenous* if it contains elements of more than one type. The five type of data structrures are commonly summarized in the table similar to the one below:
+In R there are basically five types of data structures in which elements can be stored. A data structure is said to *homogeneous* if it only contains elements of the same type (for example it only contains character or numeric values) and *heterogenous* if it contains elements of more than one type. The five types of data structrures are commonly summarized in a table similar to the one below:
 
 Dimension      Homogenous    Heterogeneous
 ------------- ------------- ----------------
 1               Vector        List
-2                Matrix       Dataframe
+2               Matrix        Dataframe
 n               Array
 
-To illustrate how to use these data structures, we will consider the simple data set of five best (as ranked by ATP on 07-15-2017) single men tennis players. The data are presented in the table below:
+To illustrate how to use these data structures, we will consider the simple data set of the five best male single tennis players (as ranked by ATP on 07-15-2017). The data are presented in the table below:
 
  Name              Date of Birth         Born                Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
 ----------------  ---------------  ---------------------- -------------------  ---------------  -------------- ---------------- ------------------
@@ -31,6 +31,8 @@ Rafael Nadal       3 June 1986     Manacor, Spain           Spain               
 Stan Wawrinka      28 March 1985   Lausanne, Switzerland    Switzerland             3            30,577,981         63.96              5
 Novak Djokovic    22 May 1987       Belgrade, Serbia          Serbia                4            109,447,408        82.77              12
 Roger Federer      8 August 1981    Basel, Switzerland      Switzerland            5            104,445,185        81.80              18
+
+It can be noticed that this data set contains columns with a variety of data types and in the next sections we will focus on these different types separately. 
 
 
 ## Vectors 
@@ -43,31 +45,31 @@ A vector has three important properties:
 - **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
 ```
 
-For example, let us consider the number of grand slam won by the five players we are considering: 
+For example, let us consider the number of grand slams won by the five players we are considering which are reported in the eigth column of the dataset: 
 
 ```{r}
 grand_slam_win = c(9, 15, 5, 12, 18)
 ```
 
-To display the values stores in `grand_slam_win` we could simply do:
+To display the values stored in `grand_slam_win` we could simply enter the following in the R console:
 
 ```{r}
 grand_slam_win
 ```
 
-Alteratively, we could have create and display the value by using `()` around the definition, for example:
+Alteratively, we could have created and displayed the value by using `()` around the definition of the object itself as follows:
 
 ```{r}
 (grand_slam_win = c(9, 15, 5, 12, 18))
 ```
 
-Various forms of "nest concatenation" can be used to defined vectors, for example we could also define `grand_slam_win` as
+Various forms of "nested concatenation" can be used to defined vectors, for example we could also define `grand_slam_win` as
 
 ```{r}
 (grand_slam_win = c(9, c(15, 5, c(12, c(18)))))
 ```
 
-This approach is often used to assemnble vector in various ways.
+This approach is often used to assemble vectors in various ways.
 
 It is also possible to define vector with characters, for example we could define a vector with the player names as follows:
 
@@ -85,21 +87,21 @@ typeof(grand_slam_win)
 typeof(players)
 ```
 
-This is a little suprzing as all the elements in `grand_slam_win` are integers it would seem natural to expect this as an output of the function `typeof()`. This is R considers by default any number as a "double", expet when spefiying `L` after an integer. For example,  
+This is a little surprising as all the elements in `grand_slam_win` are integers and it would therefore seem natural to expect this as an output of the function `typeof()`. This is because R considers any number as a "double" by default, except when adding the suffix `L` after an integer. For example:
 
 ```{r}
 typeof(1)
 typeof(1L)
 ```
 
-Therefore, we could express `exp_res` as follows:
+Therefore, we could express `grand_slam_win` as follows:
 
 ```{r}
-(grand_slam_win_int = c(1L, 2L, 3L, 5L, 1L))
+(grand_slam_win_int = c(9L, 15L, 5L, 12L, 18L))
 typeof(grand_slam_win_int)
 ```
 
-Naturally, the difference between the two in general relatively unimportant but we can see that `exp_res_int` takes less "space" to two. For example, we have
+Naturally, the difference between the two in general is relatively unimportant but we can see that `grand_slam_win_int` takes less "space" to two. For example, we have
 
 ```{r}
 object.size(grand_slam_win)
@@ -108,7 +110,7 @@ object.size(grand_slam_win_int)
 
 ### Coercion
 
-As indicated earlier a vector is a homogenous data structures data, meaning that it can only contain a single type of data type. Therefore, when more than one data types are presented R *coerces* the data into a "shared" type. To identify this "shared" we can use this simple rule:
+As indicated earlier, a vector has a homogenous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R *coerces* the data into a "shared" type. To identify this "shared" we can use this simple rule:
 
 \begin{equation*}
  \text{logical} < \text{integer} < \text{numeric} < \text{character},
