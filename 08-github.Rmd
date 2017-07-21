@@ -1,4 +1,4 @@
-# Github 
+# GitHub 
 
 You may have experienced a moment like this once in your life: 
 
@@ -7,7 +7,7 @@ You may have experienced a moment like this once in your life:
 After plenty hours of hard work, you only find yourself saving the same file over and over - even losing track of what changes you made. Version control is a software that keeps track of your changes for you. 
 
 
-## Version control 
+## Version Control 
 
 Version control is a system that records changes to a file or a set of files over time, so that you can save changes over time. It allows you to: 
 
@@ -16,9 +16,25 @@ Version control is a system that records changes to a file or a set of files ove
 - collaborate on the same platform with other people 
 - make changes without modifying the main file 
 
+
 ## Git and GitHub
 
 Among version control platform, Git is a powerful tool that is commonly used. GitHub is a commercial website that uses Git and stores local files into a "album" called a repository. For the purposes of this course, we will be using this platform. 
 
+In addition, your GitHub profile will also serve as your data science *resume* that contain future projects that you save and commit so that employers know what you're made of. 
 
 
+## GitHub Setup 
+
+To begin, head over to GitHub and sign up with your PSU email address. (don't worry, you can change your Username/Email anytime after this course!) 
+
+![](images/github_page.png)
+
+On `Step 2: Choose your plan` choose the default plan (Unlimited public repositories for free.) and click `Continue`. You can either submit your information or skip `Step 3: Tailor your experience`. 
+
+Once you have set up your profile, make sure you send your user ID (eg. jjl170) to *****. 
+
+
+## Configuration 
+
+Before we start, you will need to associate configure your name and email address in Git. 
