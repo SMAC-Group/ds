@@ -1,0 +1,24 @@
+# Github 
+
+You may have experienced a moment like this once in your life: 
+
+![](images/bad-version-control.png)
+
+After plenty hours of hard work, you only find yourself saving the same file over and over - even losing track of what changes you made. Version control is a software that keeps track of your changes for you. 
+
+
+## Version control 
+
+Version control is a system that records changes to a file or a set of files over time, so that you can save changes over time. It allows you to: 
+
+- keep the entire history of a file 
+- revert to a specific version of the file 
+- collaborate on the same platform with other people 
+- make changes without modifying the main file 
+
+## Git and GitHub
+
+Among version control platform, Git is a powerful tool that is commonly used. GitHub is a commercial website that uses Git and stores local files into a "album" called a repository. For the purposes of this course, we will be using this platform. 
+
+
+
