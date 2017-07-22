@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-19">
+<meta name="date" content="2017-07-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -151,7 +151,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a><ul>
-<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#including-plots"><i class="fa fa-check"></i><b>8.1</b> Including Plots</a></li>
+<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a></li>
+<li class="chapter" data-level="8.2" data-path="r-markdown.html"><a href="r-markdown.html#text"><i class="fa fa-check"></i><b>8.2</b> Text</a></li>
+<li class="chapter" data-level="8.3" data-path="r-markdown.html"><a href="r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>8.3</b> Code Chunks</a></li>
+<li class="chapter" data-level="8.4" data-path="r-markdown.html"><a href="r-markdown.html#including-plots"><i class="fa fa-check"></i><b>8.4</b> Including Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>9</b> GitHub</a><ul>
+<li class="chapter" data-level="9.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>9.1</b> Version Control</a></li>
+<li class="chapter" data-level="9.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>9.2</b> Git and GitHub</a></li>
+<li class="chapter" data-level="9.3" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>9.3</b> GitHub Setup</a></li>
+<li class="chapter" data-level="9.4" data-path="github.html"><a href="github.html#configuration"><i class="fa fa-check"></i><b>9.4</b> Configuration</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -181,7 +190,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">4</span>*pi, <span class="dt">length.out =</span> nb_points)
 y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
 <span class="kw">plot</span>(x, y)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 <p>In general, we found that the following approach is quite usefull,</p>
 <ul>
 <li>Step 1: Construct graph “frame”, i.e. basically an empty graph with the right title, labels, axis and so on. Often, this can be achieve with <code>plot()</code>. It is also useful to grid. Here is an example:</li>
@@ -191,7 +200,7 @@ y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
          <span class="dt">col.lab =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">col.axis =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>,
          <span class="dt">cex.lab =</span> <span class="dv">1</span>, <span class="dt">cex.axis =</span> <span class="fl">0.5</span>)
 <span class="kw">grid</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <p><a href="https://guerrier.shinyapps.io/example_plot/">full link</a></p>
 <iframe src="https://guerrier.shinyapps.io/example_plot/?showcase=0" width="672" height="800px">
 </iframe>
