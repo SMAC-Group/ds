@@ -25,28 +25,18 @@ In addition, due to its literate nature, text will be an essential part in expla
 There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
 
 
-
 ## Code Chunks 
+
+This is where you enter your code. 
+
+You can quickly insert chunks like these into your file with
+
+- the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
+- the Add Chunk command in the editor toolbar
+- by typing the chunk delimiters ```{r} and ```.
 
 ![](images/rmd_code_chunk.png)
 
-
-By effectively 
-
-
-```{r cars}
-summary(cars)
-```
+Like third code chunk above, we can also set up chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
 
 
-
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
