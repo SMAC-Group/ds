@@ -1,0 +1,85 @@
+---
+title: "Example RMarkdown Document"
+author: "Justin Lee"
+---
+
+# Header Type 1
+## Header Type 2 
+### Header Type 3 
+
+We have text here.
+
+Bold Text **bold** 
+Italics Text _italics_ (*italics* again).
+
+**Links Full:** <https://google.com/>
+
+**Links Custom:** [Google](https://google.com)
+
+
+**Picture (with caption):**
+
+![Science Department Banner](http://science.psu.edu/psu_eberly_blue.png)
+
+
+**Picture (without caption):**
+
+![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+
+Inline Code highlighting with `mean(x)`. 
+
+```{r calculate_mean, cache = TRUE}
+n = 25
+set.seed(42)
+x = runif(n) # Generates 25 random numbers
+
+mean(x)
+```
+
+If you do not want code to run just use:
+
+```r
+mean(x)
+```
+
+Unordered list
+
+- Apple
+- Oranges
+- Bananas
+
+Ordered list
+
+1. Mozart
+1. Kimchi and Chipotle
+1. Sleep
+
+**Paragraph together (on one line):**
+
+When I first brought my cat home from the humane society she was a mangy, pitiful animal. It cost a lot to adopt her: forty dollars. And then I had to buy litter, a litterbox, food, and dishes for her to eat out of. Two days after she came home with me she got taken to the pound by the animal warden. There's a leash law for cats in Fort Collins. If they're not in your yard they have to be on a leash. Anyway, my cat is my best friend. I'm glad I got her. She sleeps under the covers with me when it's cold. Sometimes she meows a lot in the middle of the night and wakes me up, though. (unfocused)
+
+**Paragraph (multiple lines without breaks):**
+
+When I first brought my cat home from the humane society she was a mangy, pitiful animal.
+It cost a lot to adopt her: forty dollars. And then I had to buy litter, a litterbox,
+food, and dishes for her to eat out of. Two days after she came home with me she got taken
+to the pound by the animal warden. There's a leash law for cats in Fort Collins. If 
+they're not in your yard they have to be on a leash. Anyway, my cat is my best friend. I'm
+glad I got her. She sleeps under the covers with me when it's cold. Sometimes she meows a 
+lot in the middle of the night and wakes me up, though. (unfocused)
+
+**Paragraph (multiple lines with breaks):**
+
+When I first brought my cat home from the humane society she was a mangy, pitiful animal.
+
+It cost a lot to adopt her: forty dollars. And then I had to buy litter, a litterbox, 
+
+food, and dishes for her to eat out of. Two days after she came home with me she got taken
+
+to the pound by the animal warden. There's a leash law for cats in Fort Collins. If 
+
+they're not in your yard they have to be on a leash. Anyway, my cat is my best friend. I'm
+
+glad I got her. She sleeps under the covers with me when it's cold. Sometimes she meows a 
+
+lot in the middle of the night and wakes me up, though. (unfocused)

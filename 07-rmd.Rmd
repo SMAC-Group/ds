@@ -39,4 +39,16 @@ You can quickly insert chunks like these into your file with
 
 Like third code chunk above, we can also set up chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
 
+## Render Output 
+
+After you are done, run `rmarkdown::render()` or click the `knit HTML` button at the top of the RStudio scripts pane to save the output in your working directory. 
+
+
+
+Click on the links below for more information on RMarkdown:
+
+- <a href='downloads/example_rmd_document.Rmd' download>RMarkdown Example File</a>
+- [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
+- [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
+
 
