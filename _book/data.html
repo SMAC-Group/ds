@@ -6,8 +6,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s find a good title</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="LEt’s add somethign here">
-  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s find a good title" />
   <meta property="og:type" content="book" />
@@ -24,8 +25,14 @@
 
 <meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
+  
+<meta name="date" content="2017-07-24">
 
-<meta name="date" content="2017-07-22">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +41,7 @@
   
 <link rel="prev" href="index.html">
 <link rel="next" href="control.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -91,7 +99,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 
 <body>
-
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -495,10 +502,10 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 <h3><span class="header-section-number">2.1.8</span> Example: Apple Stock Price</h3>
 <p>Suppose that one is interested in analysing the behavior of Apple’s stoch price over the last three months. The first thing that is need is today’s date which can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-22&quot;</code></pre>
+<pre><code>## [1] &quot;2017-07-24&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-22&quot;</code></pre>
+<pre><code>## [1] &quot;2017-04-24&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
@@ -536,13 +543,24 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 </div>
 <div id="matrix" class="section level2">
 <h2><span class="header-section-number">2.2</span> Matrix</h2>
-<p>Example of matrix creation</p>
+<p>Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional vectors within the same object. Below is an example of how to create a matrix in R:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mat =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
-<p>explain <code>cbind</code> and <code>rbind</code></p>
+<p>Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (<code>ncol = 4</code>) and three rows (<code>nrow = 3</code>).</p>
+
+<div class="rmdtip">
+<p>By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument <code>byrow = T</code>.</p>
+</div>
+<p></p>
+
+<div class="rmdwarning">
+<p>Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements?</p>
+</div>
+<p></p>
+<p>It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are <code>cbind()</code> and <code>rbind()</code> where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
              <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>)
 grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)
@@ -554,7 +572,7 @@ win_percentage =<span class="st"> </span><span class="kw">c</span>(<span class="
 ## [3,]              5          63.96
 ## [4,]             12          82.77
 ## [5,]             18          81.80</code></pre>
-<p>explain <code>rownames</code> <code>colnames</code></p>
+<p>The result in this case is a <span class="math inline">\(5 \times 2\)</span> matrix (while with <code>rbind()</code> it would have been a <span class="math inline">\(2 \times 5\)</span> matrix). Once the matrix is defined, we can assign names to its rows and columns by using resepctively <code>rownames</code> and <code>colnames</code>. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the <code>players</code> vector) and each column corresponds to a specific statistic on the players.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players
 <span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)
 mat</code></pre></div>
@@ -566,6 +584,7 @@ mat</code></pre></div>
 ## Roger Federer      18    81.80</code></pre>
 <div id="subsetting-1" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Subsetting</h3>
+<p>As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we’re dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use <code>[ ]</code> but, as opposed to vectors, we need to add <code>,</code> within the square brackets where the rows are specified before the comma and the columns after it. Below are a few examples:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[<span class="kw">c</span>(<span class="st">&quot;Stan Wawrinka&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>), ]</code></pre></div>
 <pre><code>##               GS win Win rate
 ## Stan Wawrinka      5    63.96
@@ -580,6 +599,7 @@ mat</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>]</code></pre></div>
 <pre><code>##   Andy Murray  Rafael Nadal Stan Wawrinka 
 ##             9            15             5</code></pre>
+<p>It can be noticed that, when a space is left blank before or after the comma, this means that respectively all the rows or all the columns are considered.</p>
 </div>
 <div id="useful-functions-to-work-with-matrices" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Useful Functions to Work with Matrices</h3>
@@ -783,24 +803,24 @@ y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3<
 <span class="co"># Sample mean</span>
 one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
 (<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
-<pre><code>## [1] -0.2286912</code></pre>
+<pre><code>## [1] 0.195686</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] -0.2286912</code></pre>
+<pre><code>##          [,1]
+## [1,] 0.195686</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
 H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
 (<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 2.96035</code></pre>
+<pre><code>## [1] 4.781341</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
-<pre><code>##         [,1]
-## [1,] 2.96035</code></pre>
+<pre><code>##          [,1]
+## [1,] 4.781341</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
 y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
 (<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] -0.2266842</code></pre>
+<pre><code>## [1] -0.4509762</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
 <pre><code>##            [,1]
-## [1,] -0.2266842</code></pre>
+## [1,] -0.4509762</code></pre>
 </div>
 <div id="example-least-squares" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Example: Least-squares</h3>
@@ -927,7 +947,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-62-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-64-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
@@ -1053,7 +1073,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.300000 1.563125</code></pre>
+## 0.275000 1.763125</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
@@ -1071,9 +1091,8 @@ for (i in <span class="dv">1</span>:B){
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="control.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
+<a href="control.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -1082,10 +1101,9 @@ for (i in <span class="dv">1</span>:B){
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -1116,7 +1134,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
