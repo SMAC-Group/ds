@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s find a good title</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="LEt’s add somethign here">
-  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s find a good title" />
   <meta property="og:type" content="book" />
@@ -23,16 +22,10 @@
   <meta name="twitter:description" content="LEt’s add somethign here" />
   
 
-<meta name="author" content="Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
-  
-<meta name="date" content="2017-07-24">
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<meta name="date" content="2017-07-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,7 +34,6 @@ MathJax.Hub.Config({
   
 <link rel="prev" href="case-study-monte-carlo-integration.html">
 <link rel="next" href="r-markdown.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -99,6 +91,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -199,7 +192,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">4</span>*pi, <span class="dt">length.out =</span> nb_points)
 y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
 <span class="kw">plot</span>(x, y)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <p>In general, we found that the following approach is quite usefull,</p>
 <ul>
 <li>Step 1: Construct graph “frame”, i.e. basically an empty graph with the right title, labels, axis and so on. Often, this can be achieve with <code>plot()</code>. It is also useful to grid. Here is an example:</li>
@@ -209,7 +202,7 @@ y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
          <span class="dt">col.lab =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">col.axis =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>,
          <span class="dt">cex.lab =</span> <span class="dv">1</span>, <span class="dt">cex.axis =</span> <span class="fl">0.5</span>)
 <span class="kw">grid</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 <p><a href="https://guerrier.shinyapps.io/example_plot/">full link</a></p>
 <iframe src="https://guerrier.shinyapps.io/example_plot/?showcase=0" width="672" height="800px">
 </iframe>
@@ -221,8 +214,9 @@ y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
         </div>
       </div>
 <a href="case-study-monte-carlo-integration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-markdown.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -231,9 +225,10 @@ y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -264,7 +259,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

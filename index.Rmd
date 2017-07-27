@@ -1,6 +1,6 @@
 --- 
 title: "Let's find a good title"
-author: "Stéphane Guerrier, Justin Lee & Roberto Molinari"
+author: "Matthew Beckman, Stéphane Guerrier, Justin Lee & Roberto Molinari"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook

@@ -1,10 +1,14 @@
 # Case Study: Monte-Carlo Integration
 
-Monte Carlo integration is a powerful technique for numerical integration. It is particulary useful to evaluate integrals of "high-dimension". A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to most basic form(s) of Monte Carlo Integration and breifly discuss the rational behind this method.
+```{r, echo=FALSE}
+library(support)
+```
 
-Originally, such Monte Carlo methods were known under various names among which *statistical sampling* was probably the most commonly used. In fact, the name *Monte Carlo* was popularized by several physics researchers, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to this technique which he employed to study the properties newly-discovered neutron in the 1930s. Later, these methods played for example a central role in many of thesimulations required for the Manhattan project.
+Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of "high-dimension". A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to most basic form(s) of Monte Carlo Integration and briefly discuss the rational behind this method.
 
-Suppose we are interested in computing the following intergal: 
+Originally, such Monte Carlo methods were known under various names among which *statistical sampling* was probably the most commonly used. In fact, the name *Monte Carlo* was popularized by several physics researchers, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to this technique which he employed to study the properties newly-discovered neutron in the 1930s. Later, these methods played for example a central role in many of the simulations required for the Manhattan project.
+
+Suppose we are interested in computing the following integral: 
 
 \[I = \int_a^b f(x) dx.\]
 
@@ -12,7 +16,7 @@ Of course, this integral can be approximated by a Riemann sum,
 
 \[I \approx \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x),\]
 
-where $\Delta x = \frac{b - a}{n}\;$ and the idea behind this approaximation is that as the number of partions $n$ increases the Riemann sum will become closer and closer to $I$. Also (and under some technical conditions), we have that
+where $\Delta x = \frac{b - a}{n}\;$ and the idea behind this approximation is that as the number of partions $n$ increases the Riemann sum will become closer and closer to $I$. Also (and under some technical conditions), we have that
 
 \[I = \lim_{n \to \infty} \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x).\]
 
@@ -23,9 +27,9 @@ In fact, the rational of a Monte Carlo Integral is quite close to the Riemann su
  (\#eq:binom)
 \end{equation}
 
-where $X_i = a + U_i (b - a)$ and $U_i \sim \mathcal{U}(0,1)$. In fact, \@ref(eq:binom) is quite intuniteve as $\frac{1}{B} \sum_{i = 1}^B f(X_i)$ respresents an estimation of the average value of $f(x)$ in the interval $[a, b]$ and thus $\hat{I}$ is simply the average value time the length of the interval, i.e. $(b-a)$.
+where $X_i = a + U_i (b - a)$ and $U_i \sim \mathcal{U}(0,1)$. In fact, \@ref(eq:binom) is quite intuitive as $\frac{1}{B} \sum_{i = 1}^B f(X_i)$ represents an estimation of the average value of $f(x)$ in the interval $[a, b]$ and thus $\hat{I}$ is simply the average value time the length of the interval, i.e. $(b-a)$.
 
-A more formal argument on the validity of this approach can be found in analysyzing the statistical properties of the estimator $\hat{I}$. In order to do so, we start by considering its expected value
+A more formal argument on the validity of this approach can be found in analyzing the statistical properties of the estimator $\hat{I}$. In order to do so, we start by considering its expected value
 \[
 \mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \mathbb{E}\left[ f(X_i)  \right]
 = \frac{b - a}{B} \sum_{i = 1}^B \int f(x) g(x) dx, 
@@ -54,8 +58,13 @@ Since $X_i$ are iid, the same can be said about $f(X_i)$ and therefore by the **
 \mathbb{P}\left(\lim_{B \to \infty} \hat{I} = I    \right) = 1.
 \]
 
-This result imples that as the number of simulations $B$ goes to infinity we can guarantee that the solution will be exact. Unfortunately, this result does give us any information on how quickly this estimate converges to "sufficiently accurate" solution for the problem at hand. This can be done by studying the variance of $\hat{I}$ and its *rate of convergence*.
+This result implies that as the number of simulations $B$ goes to infinity we can guarantee that the solution will be exact. If you are unfamiliar or don't remeber well the Strong Law of Large Numbers we provide a reminder in the comment box below.
 
+```{block2, type='rmdtip'}
+IS THAT USEFUL?
+```
+
+Unfortunately, this result does give us any information on how quickly this estimate converges to "sufficiently accurate" solution for the problem at hand. This can be done by studying the variance of $\hat{I}$ and its *rate of convergence*. Indeed, we have
 
 \[
 \begin{aligned}
@@ -77,11 +86,11 @@ and therefore using $\hat{I}$ we obtain:
 \widehat{\operatorname{var}} \left(\hat{I} \right) = \frac{(b-a) \hat{I}_2 - \hat{I}^2}{B} = \frac{b - a}{B^2} \sum_{i = 1}^B\left[ (b - a )f^2(X_i) - f(X_i)\right]
 \]
 
-Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{var}} \left(\hat{I} \right)$ is $B^{-1}$. This implies that if we wish to reduce the error (or standard deviation) by half we need to quadruple $B$. Such phenomon is very common in many research such as Statistics is often called the *curse of dimensionality*.
+Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{var}} \left(\hat{I} \right)$ is $B^{-1}$ and we may write ${\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)$. This implies that if we wish to reduce the error (or standard deviation) by half we need to quadruple $B$. Such phenomon is very common in many research such as Statistics is often called the *curse of dimensionality*.
 
-The function below implements the above precedure and is also available in the `stat298` package.
+The function `mc_int()`, which is presented below implements the above procedure and is also available in the `?????` package. 
 
-There isn't anything difficult about this code but one thing we haven't seen yet is how to evaluate a string
+The thing that may be a little difficul to understand with the approach is how to pass the function we wish to integrate is passed on as an input `mc_int`. Indeed, we are using a string for this purpose so for example if we have to integrate the function $\sin(x)$ we will simply write `fun = sin(x)` when calling `mc_int`. This implies that we should be able to "transform" a string into a function we can evaluate, which is something that we can achieve by combining the functions `eval` and `parse`. An example is provided below:
 
 ```{r exampleeval}
 my_fun = "x^2"
@@ -89,72 +98,21 @@ x = 0:3
 eval(parse(text = my_fun))
 ```
 
+If you having trouble to understand what these functions are doing have a look to their help files with write `?eval` and `?parse`.
 
-```{r montecarbasic}
-#' Generate random points with bivariate uniform distribution
-#' 
-#' @param x_range A vector of dimension 2 used to denote the parameter 
-#' of the uniform distribution on the x-axis.
-#' @param y_range A vector of dimension 2 used to denote the parameter 
-#' of the uniform distribution on the y-axis.
-#' @param B A positive number used to denote the number of simulation.
-#' @param seed A number used to control the seed of the random number
-#' generated by this function.
-#' @return A B x 2 matrix containing the simulated points.
-#' @examples
-#' gen_points(x_range = c(0, 1), y_range = c(0, 2), B = 10)
-#' gen_points(x_range = c(-10, 1), y_range = c(0, 0.1), B = 5)
-monte_carlo_integral_uniform = function(x_range, fun, B, seed = 1291){
-  # A few checks
-  # Check x_range
-  if (length(x_range) != 2 || x_range[1] >= x_range[2]){
-    error("x_range is uncorrely specified")
-  }
-  
-  # Check fun
-  if (class(fun) != "character"){
-    error("fun is uncorrectly specified and should be a character")
-  }
-  
-  x = mean(x_range)
-  test_fun = try(eval(parse(text = fun)), silent = TRUE)
-  if (class(test_fun) == "try-error"){
-    error("fun cannot be evaluated")
-  }
-  
-  # Check B
-  if (B < 1){
-    error("B is uncorrely specified")
-  }
-  
-  # Set seed
-  set.seed(seed)
-  
-  # Compute the length of the interval, i.e. (b-a)
-  interval_length = diff(x_range)
-  
-  # Let's draw some uniforms to get Ui and Xi
-  Ui = runif(B)
-  Xi = x_range[1] + Ui*interval_length
-  
-  # Compute \hat{I}
-  x = Xi
-  I_hat = interval_length*mean(eval(parse(text = fun)))
-  
-  # Compute \hat{I}_2
-  I2_hat = interval_length*mean((eval(parse(text = fun)))^2)
-  var_I_hat = (interval_length*I2_hat - I_hat^2)/B
-  
-  # Output list
-  out = list(I = I_hat, var = var_I_hat)
-  out
-}
+Using this function we can consider the following example. Suppose that we interested in computing the integral of the function $f(x) = x^2$ in the domain $(0,\, 3)$. Tthis integral is simple enough and we actually know the true value of $I$ in this case, indeed we have
+
+\[
+I = \int_0^3 x^2 dx = \frac{1}{3} \left[x^3\right]_0^3 = 9.
+\]
+
+
+```{r}
+mc_int(x_range = c(0,3), fun = "x^2", B = 10^5)
 ```
 
 
-
-
-```{r, fig.height = 2.5, fig.width = 10}
+```{r, fig.height = 2.5, fig.width = 10, eval = FALSE}
 n_step = 10^3
 x = seq(from = -0.35, to = 3.35, length.out = n_step)
 y = x^2
@@ -184,7 +142,7 @@ I = \int_0^3 x^2 dx = \frac{1}{3} \left[x^3\right]_0^3 = 9
 \]
 
 
-```{r}
+```{r, eval = FALSE}
 B = 4^(4:12)
 results = matrix(NA, length(B), 3)
 for (i in 1:length(B)){
@@ -228,9 +186,8 @@ and that $X_i \sim G$ where the pdf of $X_i$ is such that
 
 Of course, in the case $X_i \mathcal{U}(a, b)$, then $\hat{I}$ and $\hat{I}$ are equivalent.
 
-\[\mathbb{E} \left[ \tilde{I} \right] = 
-
-
+\[
+\mathbb{E} \left[ \tilde{I} \right] = 
 \]
 
 
@@ -255,7 +212,7 @@ It is easy to verify that $\max_{\Omega} \; f(x) = 12$ and $\min_{\Omega} \; f(x
 
 The following code and image illustrates the situation:
 
-```{r}
+```{r, eval = FALSE}
 n_step = 10^3
 x = seq(from = -1.35, to = 2.35, length.out = n_step)
 x_in_omega = x[x >= -1 & x <= 2]
@@ -274,7 +231,7 @@ legend("topleft", c(expression(I[1]), expression(I[2]), "f(x)"), bty = "n",
 
 Suppose that we generate (uniformly) a large number points, with coordinates ($U_1$, $U_2$) inside the red region. We assume that $U_1 \sim \mathcal{U}(-1, 2)$ and $U_2 \sim \mathcal{U}(0, 12)$. The function below also t
 
-```{r}
+```{r, eval = FALSE}
 #' Generate random points with bivariate uniform distribution
 #' 
 #' @param x_range A vector of dimension 2 used to denote the parameter 
@@ -317,7 +274,7 @@ gen_points = function(x_range, y_range, B, seed = 1291){
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 B = 500
 mc_points = gen_points(x_range = c(-1, 2), y_range = c(0, 12), B = B)
 n_step = 10^3

@@ -897,6 +897,7 @@ We can check if we have achived our gooal by using:
 ```{r}
 is.data.frame(tennis)
 ```
+
 ### Combination
 
 Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player's height and if he is right-handed or letf-handed. 
