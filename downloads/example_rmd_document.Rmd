@@ -2,7 +2,7 @@
 title: "Example RMarkdown Document"
 author: "Justin Lee"
 output: 
-  html_document:
+  pdf_document:
     number_sections: yes
 ---
 
@@ -13,8 +13,6 @@ writing posts or comments.
 ## Header Type 2 
 ### Header Type 3 
 
-
-`$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$`
 
 ### Text
 
