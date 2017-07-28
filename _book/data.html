@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-27">
+<meta name="date" content="2017-07-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -148,7 +148,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>4.3</b> Function environment</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>5</b> Build a package</a></li>
-<li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="6.1" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#properties"><i class="fa fa-check"></i><b>6.2</b> Properties</a></li>
+<li class="chapter" data-level="6.3" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#implementation"><i class="fa fa-check"></i><b>6.3</b> Implementation</a></li>
+<li class="chapter" data-level="6.4" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-normal-distribution"><i class="fa fa-check"></i><b>6.4</b> Example: Normal Distribution</a></li>
+<li class="chapter" data-level="6.5" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-nonelementary-integral"><i class="fa fa-check"></i><b>6.5</b> Example: Nonelementary integral</a></li>
+<li class="chapter" data-level="6.6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#to-delete"><i class="fa fa-check"></i><b>6.6</b> To delete…</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a><ul>
 <li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a></li>
@@ -520,10 +527,10 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 <h3><span class="header-section-number">2.1.8</span> Example: Apple Stock Price</h3>
 <p>Suppose that one is interested in analysing the behavior of Apple’s stoch price over the last three months. The first thing that is need is today’s date which can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-27&quot;</code></pre>
+<pre><code>## [1] &quot;2017-07-28&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-27&quot;</code></pre>
+<pre><code>## [1] &quot;2017-04-28&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
@@ -538,7 +545,7 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
 <p>where <code>na.omit</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and <code>as.numeric</code> is used to transform the computed returns into a numeric vector. We can now compute the mean and median of the returns over the considered period</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.0011187</code></pre>
+<pre><code>## [1] 0.0008296052</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
 <pre><code>## [1] 0.002994722</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
@@ -555,7 +562,7 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 \end{equation}\]</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.253091</code></pre>
+<pre><code>## [1] 1.854458</code></pre>
 <p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
 </div>
 </div>
@@ -821,24 +828,24 @@ y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3<
 <span class="co"># Sample mean</span>
 one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
 (<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
-<pre><code>## [1] 0.1575762</code></pre>
+<pre><code>## [1] -0.3156716</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##           [,1]
-## [1,] 0.1575762</code></pre>
+<pre><code>##            [,1]
+## [1,] -0.3156716</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
 H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
 (<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 3.251295</code></pre>
+<pre><code>## [1] 4.277322</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 3.251295</code></pre>
+## [1,] 4.277322</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
 y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
 (<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] 0.1163033</code></pre>
+<pre><code>## [1] -0.01609829</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
-<pre><code>##           [,1]
-## [1,] 0.1163033</code></pre>
+<pre><code>##             [,1]
+## [1,] -0.01609829</code></pre>
 </div>
 <div id="example-least-squares" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Example: Least-squares</h3>

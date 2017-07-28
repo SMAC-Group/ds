@@ -4,6 +4,7 @@
 library(support)
 ```
 
+## Introduction
 Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of "high-dimension". A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to most basic form(s) of Monte Carlo Integration and briefly discuss the rational behind this method.
 
 Originally, such Monte Carlo methods were known under various names among which *statistical sampling* was probably the most commonly used. In fact, the name *Monte Carlo* was popularized by several physics researchers, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to this technique which he employed to study the properties newly-discovered neutron in the 1930s. Later, these methods played for example a central role in many of the simulations required for the Manhattan project.
@@ -28,6 +29,8 @@ In fact, the rational of a Monte Carlo Integral is quite close to the Riemann su
 \end{equation}
 
 where $X_i = a + U_i (b - a)$ and $U_i \sim \mathcal{U}(0,1)$. In fact, \@ref(eq:binom) is quite intuitive as $\frac{1}{B} \sum_{i = 1}^B f(X_i)$ represents an estimation of the average value of $f(x)$ in the interval $[a, b]$ and thus $\hat{I}$ is simply the average value time the length of the interval, i.e. $(b-a)$.
+
+## Properties
 
 A more formal argument on the validity of this approach can be found in analyzing the statistical properties of the estimator $\hat{I}$. In order to do so, we start by considering its expected value
 \[
@@ -88,9 +91,28 @@ and therefore using $\hat{I}$ we obtain:
 
 Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{var}} \left(\hat{I} \right)$ is $B^{-1}$ and we may write ${\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)$. This implies that if we wish to reduce the error (or standard deviation) by half we need to quadruple $B$. Such phenomon is very common in many research such as Statistics is often called the *curse of dimensionality*.
 
-The function `mc_int()`, which is presented below implements the above procedure and is also available in the `?????` package. 
+## Implementation
 
-The thing that may be a little difficul to understand with the approach is how to pass the function we wish to integrate is passed on as an input `mc_int`. Indeed, we are using a string for this purpose so for example if we have to integrate the function $\sin(x)$ we will simply write `fun = sin(x)` when calling `mc_int`. This implies that we should be able to "transform" a string into a function we can evaluate, which is something that we can achieve by combining the functions `eval` and `parse`. An example is provided below:
+The function `mc_int()`, which is available in the `support` package, implements the above method. This functions has four inputs:
+
+- `x_range`: A vector containing the integration domain, i.e. $a$ and $b$,
+- `fun`: A string containing the function you wish to integrate where $x$ is used to indicate the variable of integration,
+- `B`: A numeric value to denote the number of Monte-Carlo replications,
+- `seed`: A numeric to control the seed of the random number generator.
+
+For example, if you want to estimate 
+
+\[
+\int_1^3 \frac{\exp\left(\sin(x)\right)}{x} dx,
+\]
+
+using $10^4$ Monte-Carlo replications, you can use the following command:
+
+```{r}
+mc_int(x_range = c(1,3), fun = "exp(sin(x))/x", B = 10^5)
+```
+
+At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function `mc_int()`. This should be rather easy to implement but one thing that may be a little delicate is how to pass as an input the function you wish to integrate. A possible way of doing this is to use a string for this purpose so that, for example, if we have to integrate the function $\sin(x)$ you could simply write `fun = sin(x)` when calling your function. This implies that we should be able to "transform" a string into a function that we can evaluate, which is something that we can achieve by combining the functions `eval` and `parse`. An example is provided below:
 
 ```{r exampleeval}
 my_fun = "x^2"
@@ -100,16 +122,78 @@ eval(parse(text = my_fun))
 
 If you having trouble to understand what these functions are doing have a look to their help files with write `?eval` and `?parse`.
 
-Using this function we can consider the following example. Suppose that we interested in computing the integral of the function $f(x) = x^2$ in the domain $(0,\, 3)$. Tthis integral is simple enough and we actually know the true value of $I$ in this case, indeed we have
+## Example: Normal Distribution
+
+Suppose that $X \sim \mathcal{N}(4, 1.25^2)$ and that we are interested in computing the following probability $\mathbb{P}\left(1 < X < 4.5 \right)$. The probability density of the normal distribution for a random variable with mean $\mu$ and variance $\sigma^2$ is given by:
 
 \[
-I = \int_0^3 x^2 dx = \frac{1}{3} \left[x^3\right]_0^3 = 9.
+f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2}{2 \sigma^2}\right).
 \]
+
+Therefore, the probability we are interested in can written as the following integral
+
+\[
+\mathbb{P}\left(1 < X < 4.5 \right) = \int_1^{4.5} \frac{1}{\sqrt{3.125 \pi}} \exp \left(- \frac{\left(x - 4\right)^2}{3.125}\right).
+\]
+
+Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use Monte-Carlo integral to solve it. For example:
 
 
 ```{r}
-mc_int(x_range = c(0,3), fun = "x^2", B = 10^5)
+my_fun = "1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)"
+(prob = mc_int(x_range = c(1, 4.5), fun = my_fun, B = 10^7))
 ```
+
+Based on this result, we can write $\mathbb{P}\left(1 < X < 4.5 \right) \approx 64.72 \%$ with a standard error of about 0.01\%. We can compare our results with what we would obtain with the function `pnorm` which provide a nearly exact result:
+
+```{r}
+pnorm(4.5, 4, 1.25) - pnorm(1, 4, 1.25)
+```
+
+This shows that our estimation is within one standard error of a near perfect result. 
+
+## Example: Nonelementary integral
+
+Layman's terms, a nonelementary integral of a given (elementary) function is an integral that is cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to proof the existing of such nonelementary integral. An well-known example of such integrals are the Fresnel integrals, which have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:
+
+\[S(y) = \int_0^t \sin\left(x^2\right) dx \;\;\;\;\;\; \text{and}  \;\;\;\;\;\; 
+C(y) = \int_0^y \cos \left( x^2 \right) dx.\]
+
+In this example, we will only consider $S(y)$. In general it is believed that the most convenient way of evaluating these functions to arbitrary precision is to use power series representation that converges for all $y$:
+
+\[
+S(y) = \sum_{i = 1}^\infty \, \left(-1\right)^n \, \frac{y^{4i + 1}}{\left(2i + 1\right) \, !\left(4i + 3\right)}.
+\]
+
+In this example, we will study the estimation of $S(\pi)$ as well as the *precision* of this estimation. 
+
+
+```{r, cache = TRUE, fig.height = 5, fig.width = 6, fig.align = "center"}
+B = 4^(4:13)
+results = matrix(NA, length(B), 2)
+for (i in 1:length(B)){
+  mc_res = mc_int(c(0, 2), "sin(x^2)", B = B[i], seed = i+12)
+  results[i, ] = c(mc_res$I, sqrt(mc_res$var))
+}
+
+
+trans_blue = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.15)[2]
+plot(NA, xlim = range(B), ylim = range(cbind(results[, 1] + results[,2], 
+      results[, 1] -results[,2])), log = "x", ylab = "Estimated Integral",
+      xlab = "Number of Simulations B", xaxt = 'n')
+grid()
+axis(1, at = B, labels = parse(text = paste("4^", 4:13, sep = "")))
+polygon(c(B, rev(B)), c(results[, 1] + results[, 2], 
+                        rev(results[, 1] - results[, 2])), border = NA, col = trans_blue)
+lines(B, results[, 1], type = "b", col = "blue4", pch = 16)
+abline(h = 0.8048208, col = "red4", lty = 2)
+legend("topright", c("Estimated value", "Standard error interval", "Good approximation (MatLab)"), bty = "n",
+       pch = c(16, 15, NA), lwd = c(1, NA, 1), lty = c(1, NA, 2), 
+       pt.cex = c(1, 2, NA), col = c("blue4", trans_blue, "red4"))
+```
+
+ 
+## To delete...
 
 
 ```{r, fig.height = 2.5, fig.width = 10, eval = FALSE}
@@ -140,29 +224,6 @@ Example
 \[
 I = \int_0^3 x^2 dx = \frac{1}{3} \left[x^3\right]_0^3 = 9
 \]
-
-
-```{r, eval = FALSE}
-B = 4^(4:12)
-results = matrix(NA, length(B), 3)
-for (i in 1:length(B)){
-  mc_res = monte_carlo_integral_uniform(c(0, 3), "x^2", B = B[i], seed = i+1)
-  results[i, ] = mc_res$I + 2*c(0, sqrt(mc_res$var), -sqrt(mc_res$var))
-}
-
-trans_blue = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.15)[2]
-plot(NA, xlim = range(B), ylim = range(results[, 2:3]), log = "x", 
-     ylab = "Estimated Integral", xlab = "Number of Simulations B",
-     xaxt = 'n')
-grid()
-axis(1, at = B, labels = parse(text = paste("4^", 4:12, sep = "")))
-polygon(c(B, rev(B)), c(results[, 2], rev(results[, 3])), border = NA, col = trans_blue)
-lines(B, results[, 1], type = "b", col = "blue4", pch = 16)
-abline(h = 9, col = "red4", lty = 2)
-legend("topright", c(expression(I[1]), "Confidence Interval", "True Value"), bty = "n",
-       pch = c(16, 15, NA), lwd = c(1, NA, 1), lty = c(1, NA, 2), 
-       pt.cex = c(1, 2, NA), col = c("blue4", trans_blue, "red4"))
-```
 
 \[
 \widehat{\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B^{-1}).
