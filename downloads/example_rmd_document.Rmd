@@ -1,6 +1,9 @@
 ---
 title: "Example RMarkdown Document"
 author: "Justin Lee"
+output: 
+  html_document:
+    number_sections: yes
 ---
 
 This guide shows you how to use Markdown instead of HTML when
