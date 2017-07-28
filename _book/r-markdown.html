@@ -74,7 +74,9 @@
 <li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a><ul>
-<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a></li>
+<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="r-markdown.html"><a href="r-markdown.html#subsections"><i class="fa fa-check"></i><b>8.1.1</b> Subsections</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="r-markdown.html"><a href="r-markdown.html#text"><i class="fa fa-check"></i><b>8.2</b> Text</a></li>
 <li class="chapter" data-level="8.3" data-path="r-markdown.html"><a href="r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>8.3</b> Code Chunks</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="r-markdown.html"><a href="r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>8.3.1</b> Code Chunk Options</a></li>
@@ -121,13 +123,19 @@
 <img src="images/rmd_yaml.png" />
 
 </div>
-<p>You can also include additional formatting <a href="http://rmarkdown.rstudio.com/html_document_format.html">options</a>, such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient.</p>
-<p>The default output above is an html_document format. However, this can be specified as well, such as <code>pdf_document</code>. Before, you must install a TeX distribution such as <a href="https://miktex.org/2.9/setup">MikTeX</a>. You can also include raw LaTeX and even define LaTeX macros. Check <a href="http://rmarkdown.rstudio.com/pdf_document_format.html">here</a> to learn more about pdf document output. Check below to see an example of RMarkdown as pdf output.</p>
-<p>*** add file here</p>
+<p>You can also include additional formatting <a href="http://rmarkdown.rstudio.com/html_document_format.html">options</a>, such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file.</p>
+<div class="figure">
+<img src="images/rmd_example_output.png" />
+
+</div>
+<p>The default output above is an html_document format. However, this can be specified as well, such as <code>pdf_document</code>. Before, you must install a TeX distribution such as <a href="https://miktex.org/2.9/setup">MikTeX</a>. You can also include raw LaTeX and even define LaTeX macros.</p>
+<div id="subsections" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Subsections</h3>
 <p>To make your sections numbered as sections and subsections, make sure you specify <code>number_sections: yes</code> as part of YAML Metadata.</p>
 <div class="figure">
 <img src="images/yaml_number_sections.png" />
 
+</div>
 </div>
 </div>
 <div id="text" class="section level2">
@@ -234,6 +242,10 @@
 <div id="render-output" class="section level2">
 <h2><span class="header-section-number">8.4</span> Render Output</h2>
 <p>After you are done, run <code>rmarkdown::render()</code> or click the <code>knit HTML</code> button at the top of the RStudio scripts pane to save the output in your working directory.</p>
+<div class="figure">
+<img src="images/rmd_knit.png" />
+
+</div>
 <p>Click on the links below for more information on RMarkdown:</p>
 <ul>
 <li><a href='downloads/example_rmd_document.Rmd' download>RMarkdown Example File</a></li>

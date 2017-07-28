@@ -14,16 +14,20 @@ YAML stands for YAML Ain't Markup Language, and is used to specify document conf
 
 ![](images/rmd_yaml.png)
 
-You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient.  
+You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
 
-The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. Before, you must install a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). You can also include raw LaTeX and even define LaTeX macros. Check [here](http://rmarkdown.rstudio.com/pdf_document_format.html) to learn more about pdf document output. Check below to see an example of RMarkdown as pdf output. 
+![](images/rmd_example_output.png)
 
-*** add file here 
+
+
+
+The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. Before, you must install a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). You can also include raw LaTeX and even define LaTeX macros.
+
+### Subsections 
 
 To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of YAML Metadata. 
 
 ![](images/yaml_number_sections.png)
-
 
 ## Text 
 
