@@ -1,10 +1,6 @@
 # Data Structures {#data}
 
-<<<<<<< HEAD
-Briefly explain the types of data strucutres in R. Basically there are five
-=======
 There are different data types that are commonly used in R among which the most important ones are the following:
->>>>>>> origin/master
 
 - **Numeric** (or double): these are used to store real numbers. Examples: -4, 12.4532, 6.
 
