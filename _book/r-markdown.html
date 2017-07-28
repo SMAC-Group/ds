@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-28">
+<meta name="date" content="2017-07-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -71,14 +71,7 @@
 <li class="chapter" data-level="3" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>3</b> Logical Operators and Control Stuctures</a></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
 <li class="chapter" data-level="5" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>5</b> Build a package</a></li>
-<li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a><ul>
-<li class="chapter" data-level="6.1" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#properties"><i class="fa fa-check"></i><b>6.2</b> Properties</a></li>
-<li class="chapter" data-level="6.3" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#implementation"><i class="fa fa-check"></i><b>6.3</b> Implementation</a></li>
-<li class="chapter" data-level="6.4" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-normal-distribution"><i class="fa fa-check"></i><b>6.4</b> Example: Normal Distribution</a></li>
-<li class="chapter" data-level="6.5" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-nonelementary-integral"><i class="fa fa-check"></i><b>6.5</b> Example: Nonelementary integral</a></li>
-<li class="chapter" data-level="6.6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#to-delete"><i class="fa fa-check"></i><b>6.6</b> To delete…</a></li>
-</ul></li>
+<li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a><ul>
 <li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a></li>
@@ -123,7 +116,14 @@
 <img src="images/rmd_yaml.png" />
 
 </div>
-<p>You can also include additional formatting <a href="http://rmarkdown.rstudio.com/html_document_format.html">options</a>, such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. The default output above is an html_document format. However, this can be specified as well, such as <code>pdf_document</code>. Before, you must install a TeX distribution such as <a href="https://miktex.org/2.9/setup">MikTeX</a>.</p>
+<p>You can also include additional formatting <a href="http://rmarkdown.rstudio.com/html_document_format.html">options</a>, such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient.</p>
+<p>The default output above is an html_document format. However, this can be specified as well, such as <code>pdf_document</code>. Before, you must install a TeX distribution such as <a href="https://miktex.org/2.9/setup">MikTeX</a>. You can also include raw LaTeX and even define LaTeX macros. Check <a href="http://rmarkdown.rstudio.com/pdf_document_format.html">here</a> to learn more about pdf document output. Check below to see an example of RMarkdown as pdf output.</p>
+<p>*** add file here</p>
+<p>To make your sections numbered as sections and subsections, make sure you specify <code>number_sections: yes</code> as part of YAML Metadata.</p>
+<div class="figure">
+<img src="images/yaml_number_sections.png" />
+
+</div>
 </div>
 <div id="text" class="section level2">
 <h2><span class="header-section-number">8.2</span> Text</h2>
@@ -148,6 +148,12 @@
 
 </div>
 <p>Like third code chunk above, we can also set up chunk options. Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Rmarkdown Cheatsheet</a>.</p>
+<p>Within the text section, you can also include LaTeX format to output equation format.</p>
+<p>For example:</p>
+<p><code>$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$</code></p>
+<p>converts to…</p>
+<p><span class="math display">\[f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}\]</span></p>
+<p>A basic introduction to LaTeX format can be found <a href="http://www.math.harvard.edu/texman/">here</a> if you want to learn more about the basics. An alternative can be to insert custom LaTeX formulas using a graphical interface such as <a href="https://www.codecogs.com/latex/eqneditor.php">codecogs</a>.</p>
 </div>
 <div id="render-output" class="section level2">
 <h2><span class="header-section-number">8.4</span> Render Output</h2>
@@ -207,6 +213,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
