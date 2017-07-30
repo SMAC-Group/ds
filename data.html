@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+  
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#data"><i class="fa fa-check"></i><b>1</b> Data Structures</a><ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#vectors"><i class="fa fa-check"></i><b>1.1</b> Vectors</a><ul>
+<li class="chapter" data-level="1.1.1" data-path=""><a href="#type"><i class="fa fa-check"></i><b>1.1.1</b> Type</a></li>
+<li class="chapter" data-level="1.1.2" data-path=""><a href="#coercion"><i class="fa fa-check"></i><b>1.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="1.1.3" data-path=""><a href="#subsetting"><i class="fa fa-check"></i><b>1.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="1.1.4" data-path=""><a href="#vectattr"><i class="fa fa-check"></i><b>1.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="1.1.5" data-path=""><a href="#addlab"><i class="fa fa-check"></i><b>1.1.5</b> Adding labels</a></li>
+<li class="chapter" data-level="1.1.6" data-path=""><a href="#useful-functions-with-vectors"><i class="fa fa-check"></i><b>1.1.6</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="1.1.7" data-path=""><a href="#creation-sequences"><i class="fa fa-check"></i><b>1.1.7</b> Creation sequences</a></li>
+<li class="chapter" data-level="1.1.8" data-path=""><a href="#example-apple-stock-price"><i class="fa fa-check"></i><b>1.1.8</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#matrix"><i class="fa fa-check"></i><b>1.2</b> Matrix</a><ul>
+<li class="chapter" data-level="1.2.1" data-path=""><a href="#subsetting-1"><i class="fa fa-check"></i><b>1.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="1.2.2" data-path=""><a href="#linear-algebra"><i class="fa fa-check"></i><b>1.2.2</b> Linear Algebra</a></li>
+<li class="chapter" data-level="1.2.3" data-path=""><a href="#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>1.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="1.2.4" data-path=""><a href="#example-least-squares"><i class="fa fa-check"></i><b>1.2.4</b> Example: Least-squares</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#array"><i class="fa fa-check"></i><b>1.3</b> Array</a></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#list"><i class="fa fa-check"></i><b>1.4</b> List</a></li>
+<li class="chapter" data-level="1.5" data-path=""><a href="#dataframe"><i class="fa fa-check"></i><b>1.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="1.5.1" data-path=""><a href="#example-making-maps"><i class="fa fa-check"></i><b>1.5.1</b> Example: Making Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data frames</a><ul>
+<li class="chapter" data-level="1.6.1" data-path=""><a href="#combination"><i class="fa fa-check"></i><b>1.6.1</b> Combination</a></li>
+<li class="chapter" data-level="1.6.2" data-path=""><a href="#subsetting-2"><i class="fa fa-check"></i><b>1.6.2</b> Subsetting</a></li>
+<li class="chapter" data-level="1.6.3" data-path=""><a href="#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>1.6.3</b> Application: Non-parametric bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="data" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Data Structures</h1>
+<p>There are different data types that are commonly used in R among which the most important ones are the following:</p>
+<ul>
+<li><p><strong>Numeric</strong> (or double): these are used to store real numbers. Examples: -4, 12.4532, 6.</p></li>
+<li><p><strong>Integer</strong>: examples: 2L, 12L.</p></li>
+<li><p><strong>Logical</strong> (or boolean): examples: <code>TRUE</code>, <code>FALSE</code>.</p></li>
+<li><p><strong>Character</strong>: examples: <code>&quot;a&quot;</code>, <code>&quot;Bonjour&quot;</code>.</p></li>
+</ul>
+<p>In R there are basically five types of data structures in which elements can be stored. A data structure is said to <em>homogeneous</em> if it only contains elements of the same type (for example it only contains character or numeric values) and <em>heterogenous</em> if it contains elements of more than one type. The five types of data structrures are commonly summarized in a table similar to the one below:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dimension</th>
+<th align="center">Homogenous</th>
+<th align="center">Heterogeneous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">Vector</td>
+<td align="center">List</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">Matrix</td>
+<td align="center">Dataframe</td>
+</tr>
+<tr class="odd">
+<td align="left">n</td>
+<td align="center">Array</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>To illustrate how to use these data structures, we will consider the simple data set of the five best male single tennis players (as ranked by ATP on 07-15-2017). The data are presented in the table below:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Name</th>
+<th align="center">Date of Birth</th>
+<th align="center">Born</th>
+<th align="center">Country</th>
+<th align="center">ATP Ranking</th>
+<th align="left">Prize Money</th>
+<th align="left">Win Percentage</th>
+<th align="left">Grand Slam Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Andy Murray</td>
+<td align="center">15 May 1987</td>
+<td align="center">Glasgow, Scotland</td>
+<td align="center">Great Britain</td>
+<td align="center">1</td>
+<td align="left">60,449,649</td>
+<td align="left">78.07</td>
+<td align="left">9</td>
+</tr>
+<tr class="even">
+<td align="center">Rafael Nadal</td>
+<td align="center">3 June 1986</td>
+<td align="center">Manacor, Spain</td>
+<td align="center">Spain</td>
+<td align="center">2</td>
+<td align="left">85,920,132</td>
+<td align="left">82.48</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="center">Stan Wawrinka</td>
+<td align="center">28 March 1985</td>
+<td align="center">Lausanne, Switzerland</td>
+<td align="center">Switzerland</td>
+<td align="center">3</td>
+<td align="left">30,577,981</td>
+<td align="left">63.96</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="center">Novak Djokovic</td>
+<td align="center">22 May 1987</td>
+<td align="center">Belgrade, Serbia</td>
+<td align="center">Serbia</td>
+<td align="center">4</td>
+<td align="left">109,447,408</td>
+<td align="left">82.77</td>
+<td align="left">12</td>
+</tr>
+<tr class="odd">
+<td align="center">Roger Federer</td>
+<td align="center">8 August 1981</td>
+<td align="center">Basel, Switzerland</td>
+<td align="center">Switzerland</td>
+<td align="center">5</td>
+<td align="left">104,445,185</td>
+<td align="left">81.80</td>
+<td align="left">18</td>
+</tr>
+</tbody>
+</table>
+<p>It can be noticed that this data set contains columns with a variety of data types and in the next sections we will focus on these different types separately.</p>
+<div id="vectors" class="section level2">
+<h2><span class="header-section-number">1.1</span> Vectors</h2>
+<p>A vector has three important properties:</p>
+
+<div class="rmdimportant">
+<ul>
+<li><strong>Type</strong>, which corresponds the “kind” of objects in contains. It is possible to use the function <code>typeof()</code> to evaluate the type of objects in a vector.</li>
+<li><strong>Length</strong>, i.e. the number of elements in a vector. This information can be obtained using the function <code>length()</code>.</li>
+<li><strong>Attributes</strong>, some additional metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can be found in Section <a href="#vectattr">1.1.4</a>)
+</div>
+</li>
+</ul>
+<p><code>c()</code> is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. To learn more about what a specific function’s documentation, type <code>?yourfunction</code> onto the R Studio Console.</p>
+<p>For example, let us consider the number of grand slams won by the five players we are considering which are reported in the eigth column of the dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)</code></pre></div>
+<p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>Alteratively, we could have created and displayed the value by using <code>()</code> around the definition of the object itself as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>))</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>Various forms of “nested concatenation” can be used to defined vectors, for example we could also define <code>grand_slam_win</code> as</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">12</span>, <span class="kw">c</span>(<span class="dv">18</span>)))))</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>This approach is often used to assemble vectors in various ways.</p>
+<p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">players =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
+             <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
+## [5] &quot;Roger Federer&quot;</code></pre>
+<div id="type" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Type</h3>
+<p>We can evaluate the kind or type of elements that are stored in a vector using the function <code>typeof()</code>. For example, for the vectors we just created we obtain:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(players)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>This is a little surprising as all the elements in <code>grand_slam_win</code> are integers and it would therefore seem natural to expect this as an output of the function <code>typeof()</code>. This is because R considers any number as a “double” by default, except when adding the suffix <code>L</code> after an integer. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(1L)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Therefore, we could express <code>grand_slam_win</code> as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win_int =</span> <span class="kw">c</span>(9L, 15L, 5L, 12L, 18L))</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(grand_slam_win_int)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Naturally, the difference between the two in general is relatively unimportant but we can see that <code>grand_slam_win_int</code> takes less “space” among the two. Indeed we have</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win)</code></pre></div>
+<pre><code>## 88 bytes</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">object.size</span>(grand_slam_win_int)</code></pre></div>
+<pre><code>## 72 bytes</code></pre>
+</div>
+<div id="coercion" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Coercion</h3>
+<p>As indicated earlier, a vector has a homogenous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R <em>coerces</em> the data into a “shared” type. To identify this “shared” type we can use this simple rule:</p>
+<span class="math display">\[\begin{equation*}
+ \text{logical} &lt; \text{integer} &lt; \text{numeric} &lt; \text{character},
+\end{equation*}\]</span>
+<p>which simply means that if a vector contains more than one data type, the “shared” type will be that of the “largest” type according to the above equations. Here are a few examples:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Logical + integer</span>
+(<span class="dt">mix_logic_int =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, 1L))</code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_logic_int)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Logical + character</span>
+(<span class="dt">mix_logic_char =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="st">&quot;Hi&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;TRUE&quot; &quot;Hi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_logic_char)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Integer + numeric</span>
+(<span class="dt">mix_int_num =</span> <span class="kw">c</span>(<span class="dv">1</span>, 1L))</code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_int_num)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Integer + character</span>
+(<span class="dt">mix_int_char =</span> <span class="kw">c</span>(1L, <span class="st">&quot;Hi&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;1&quot;  &quot;Hi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mix_int_char)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="subsetting" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Subsetting</h3>
+<p>Naturally, it is possible to “subset” the values of in our vectror in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
+<ul>
+<li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>grand_slam_win[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Accesing the first element</span>
+grand_slam_win[<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Accesing the third and first value</span>
+grand_slam_win[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</code></pre></div>
+<pre><code>## [1] 5 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Duplicated indices yield duplicated values</span>
+grand_slam_win[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</code></pre></div>
+<pre><code>## [1]  9  9 15 15  5 12</code></pre>
+<ul>
+<li><strong>Negative Index</strong>: We <em>remove</em> elements in a vector using negative indices:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Removing the second obervation</span>
+grand_slam_win[-<span class="dv">2</span>]</code></pre></div>
+<pre><code>## [1]  9  5 12 18</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Removing the first and fourth obserations</span>
+grand_slam_win[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">4</span>)]</code></pre></div>
+<pre><code>## [1] 15  5 18</code></pre>
+<ul>
+<li><strong>Logical Indices</strong>: Another usefull approach is based on <em>logical</em> operators:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access the first and fourth observations</span>
+grand_slam_win[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
+<pre><code>## [1]  9 12</code></pre>
+
+<div class="rmdnote">
+Here we could add some remarks on weird cases, for example <code>grand_slam_win[c(1.2, 3.4)]</code> (which rounds things up) or <code>grand_slam_win[c(-1, 2)]</code> (which doesn’t work as “mixed” indices are not permitted).
+</div>
+<p></p>
+</div>
+<div id="vectattr" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Attributes</h3>
+<p>Let’s suppose that we conducted an experiment under specific conditions, say a date and a place which should be stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) =<span class="st"> &quot;07-15-2017&quot;</span>
+<span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;type&quot;</span>) =<span class="st"> &quot;Men, Single&quot;</span></code></pre></div>
+<p>To display the vector with its attributes</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
+<pre><code>## [1]  9 15  5 12 18
+## attr(,&quot;date&quot;)
+## [1] &quot;07-15-2017&quot;
+## attr(,&quot;type&quot;)
+## [1] &quot;Men, Single&quot;</code></pre>
+<p>To only display the attributes we have</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(grand_slam_win)</code></pre></div>
+<pre><code>## $date
+## [1] &quot;07-15-2017&quot;
+## 
+## $type
+## [1] &quot;Men, Single&quot;</code></pre>
+<p>It is also possible to extract a specific attribute</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;07-15-2017&quot;</code></pre>
+</div>
+<div id="addlab" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> Adding labels</h3>
+<p>In some cases it might be useful to add labels to vectors. For example, we could define the vector <code>grand_slam_win</code> and use the player’s names as labels, i.e.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">grand_slam_win =</span> <span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span> =<span class="st"> </span><span class="dv">9</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">15</span>, 
+                   <span class="st">&quot;Stan Wawrinka&quot;</span> =<span class="st"> </span><span class="dv">5</span>, <span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">12</span>, 
+                   <span class="st">&quot;Roger Federer&quot;</span> =<span class="st"> </span><span class="dv">18</span>))</code></pre></div>
+<pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
+##              9             15              5             12             18</code></pre>
+<p>The main advantage of this approach is that the number of grand slams won can now be referred to by the player’s name. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="st">&quot;Andy Murray&quot;</span>]</code></pre></div>
+<pre><code>## Andy Murray 
+##           9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>,<span class="st">&quot;Roger Federer&quot;</span>)]</code></pre></div>
+<pre><code>##   Andy Murray Roger Federer 
+##             9            18</code></pre>
+<p>All labels (players’ names in our case) can be obtained witht the function <code>names</code>, i.e.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
+## [5] &quot;Roger Federer&quot;</code></pre>
+</div>
+<div id="useful-functions-with-vectors" class="section level3">
+<h3><span class="header-section-number">1.1.6</span> Useful functions with vectors</h3>
+<p>The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain manner which can be of interest to the user. Among the most commonly used functions we can find the following ones</p>
+<p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>sort()</code> and <code>order()</code></p>
+<p>whose name is self-explicative in most cases. For example we have</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 59</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 11.8</code></pre>
+<p>To sort the players by number of grand slam wins, we could use the function <code>order()</code> which returns the <em>position</em> of the elements of a vector sorted in an ascending order,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(grand_slam_win)</code></pre></div>
+<pre><code>## [1] 3 1 4 2 5</code></pre>
+<p>Therefore, we can sort the players in ascending order of wins as follows</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players[<span class="kw">order</span>(grand_slam_win)]</code></pre></div>
+<pre><code>## [1] &quot;Stan Wawrinka&quot;  &quot;Andy Murray&quot;    &quot;Novak Djokovic&quot; &quot;Rafael Nadal&quot;  
+## [5] &quot;Roger Federer&quot;</code></pre>
+<p>which implies that Roger Federer won most grand slams. Another related function is <code>sort()</code> which simply sorts the elements of a vector in an ascending manner. For example,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(grand_slam_win)</code></pre></div>
+<pre><code>##  Stan Wawrinka    Andy Murray Novak Djokovic   Rafael Nadal  Roger Federer 
+##              5              9             12             15             18</code></pre>
+<p>which is compact version of</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win[<span class="kw">order</span>(grand_slam_win)]</code></pre></div>
+<pre><code>##  Stan Wawrinka    Andy Murray Novak Djokovic   Rafael Nadal  Roger Federer 
+##              5              9             12             15             18</code></pre>
+<p>There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references (see for example <span class="citation">@wickham2014advanced</span>).</p>
+</div>
+<div id="creation-sequences" class="section level3">
+<h3><span class="header-section-number">1.1.7</span> Creation sequences</h3>
+<p>When uing R for statistical programming or even data analysis it is very common to create sequences of numbers. Here are three common ways used to create such sequences:</p>
+<ul>
+<li><code>from:to</code>: This method is quite inituitive and very compact. For example:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">y =</span> <span class="dv">3</span>:<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 3 2 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">w =</span> -<span class="dv">1</span>:-<span class="dv">4</span>)</code></pre></div>
+<pre><code>## [1] -1 -2 -3 -4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">z =</span> <span class="fl">1.3</span>:<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 1.3 2.3</code></pre>
+<ul>
+<li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exeptions where <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exeptions will become clear in Section <a href="#forloop"><strong>??</strong></a>. Let’s see a few examples:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">3</span>
+<span class="dv">1</span>:n</code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq_len</span>(n)</code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">0</span>
+<span class="dv">1</span>:n</code></pre></div>
+<pre><code>## [1] 1 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq_len</span>(n)</code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<ul>
+<li><code>seq(a, b, by/length.out = d)</code>: This function can be used to create more “complex” sequences. It can either be used to create a sequence from <code>a</code> to <code>b</code> by increments of <code>d</code> (using the option <code>by</code>) or of a total length of <code>d</code> (using the option <code>length.out</code>). A few examples:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">by =</span> <span class="fl">0.4</span>))</code></pre></div>
+<pre><code>## [1] 1.0 1.4 1.8 2.2 2.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">y =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">length.out =</span> <span class="dv">6</span>))</code></pre></div>
+<pre><code>## [1] 1.00 1.36 1.72 2.08 2.44 2.80</code></pre>
+<p>It could be interesting to use a function like <code>rep()</code> that allows to create vectors with repeated values or sequences, for example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">3</span>, <span class="dt">each =</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 1 2 1 2 1 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">1</span>, <span class="dt">each =</span> <span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 1 1 1 2 2 2</code></pre>
+<p>where the option <code>times</code> allows to specify how many times the object needs to be repeated and <code>each</code> regulates how many times each element in the object is repeated.</p>
+</div>
+<div id="example-apple-stock-price" class="section level3">
+<h3><span class="header-section-number">1.1.8</span> Example: Apple Stock Price</h3>
+<p>Suppose that one is interested in analysing the behavior of Apple’s stock price over the last three months. The first thing that is needed is today’s date which can be obtained as follows</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
+<pre><code>## [1] &quot;2017-07-29&quot;</code></pre>
+<p>Once this is done, we can obtain the date which is exactly three monmths ago</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] &quot;2017-04-29&quot;</code></pre>
+<p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.</p>
+<p>Just to note, <code>library()</code> loads and attaches add-on packages.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
+<span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
+<pre><code>## [1] &quot;AAPL&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">candleChart</span>(AAPL, <span class="dt">theme=</span><span class="st">&#39;white&#39;</span>, <span class="dt">type=</span><span class="st">&#39;candles&#39;</span>)</code></pre></div>
+<p><img src="01-data_files/figure-html/unnamed-chunk-33-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Once we have the prices, we can compute some returns which are defined as follows</p>
+<span class="math display">\[\begin{equation}
+  r_t = \frac{S_t - S_{t-1}}{S_{t-1}}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(r_t\)</span> are the returns at time <em>t</em> and <span class="math inline">\(S_t\)</span> is the stock price. This is implemented in the function <code>ClCl()</code> within the <code>quantmod</code> package. For example, we can create a vector of returns as follows</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
+<p>where <code>na.omit</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and <code>as.numeric</code> is used to transform the computed returns into a numeric vector. We can now compute the mean and median of the returns over the considered period.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
+<pre><code>## [1] 0.0003870694</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
+<pre><code>## [1] 0.002557922</code></pre>
+<p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
+<span class="math display">\[\begin{equation}
+  \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
+\end{equation}\]</span>
+<p>The reason for defining this statistic as <em>Excess</em> Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. Given this statistic, it is useful to compute this on the observed data and for this purpose a common estimator of the excess Kurtosis is</p>
+<span class="math display">\[\begin{equation}
+  k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3
+\end{equation}\]</span>
+<p>where <span class="math inline">\(\bar{k}\)</span> denotes the sample average of the returns, i.e.</p>
+<span class="math display">\[\begin{equation}
+  \bar{k} = \frac{1}{n} \sum_{i = 1}^n r_i
+\end{equation}\]</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
+(<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 2.004566</code></pre>
+<p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
+</div>
+</div>
+<div id="matrix" class="section level2">
+<h2><span class="header-section-number">1.2</span> Matrix</h2>
+<p>Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional vectors within the same object. Below is an example of how to create a matrix in R:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mat =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<p>Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (<code>ncol = 4</code>) and three rows (<code>nrow = 3</code>).</p>
+
+<div class="rmdtip">
+<p>By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument <code>byrow = T</code>.</p>
+</div>
+<p></p>
+
+<div class="rmdwarning">
+<p>Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements?</p>
+</div>
+<p></p>
+<p>It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are <code>cbind()</code> and <code>rbind()</code> where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
+             <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>)
+grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)
+win_percentage =<span class="st"> </span><span class="kw">c</span>(<span class="fl">78.07</span>, <span class="fl">82.48</span>, <span class="fl">63.96</span>, <span class="fl">82.77</span>, <span class="fl">81.80</span>)
+(<span class="dt">mat =</span> <span class="kw">cbind</span>(grand_slam_win, win_percentage))</code></pre></div>
+<pre><code>##      grand_slam_win win_percentage
+## [1,]              9          78.07
+## [2,]             15          82.48
+## [3,]              5          63.96
+## [4,]             12          82.77
+## [5,]             18          81.80</code></pre>
+<p>The result in this case is a <span class="math inline">\(5 \times 2\)</span> matrix (while with <code>rbind()</code> it would have been a <span class="math inline">\(2 \times 5\)</span> matrix). Once the matrix is defined, we can assign names to its rows and columns by using resepctively <code>rownames</code> and <code>colnames</code>. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the <code>players</code> vector) and each column corresponds to a specific statistic on the players.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players
+<span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)
+mat</code></pre></div>
+<pre><code>##                GS win Win rate
+## Andy Murray         9    78.07
+## Rafael Nadal       15    82.48
+## Stan Wawrinka       5    63.96
+## Novak Djokovic     12    82.77
+## Roger Federer      18    81.80</code></pre>
+<div id="subsetting-1" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Subsetting</h3>
+<p>As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we’re dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use <code>[ ]</code> but, as opposed to vectors, we need to add <code>,</code> within the square brackets where the rows are specified before the comma and the columns after it. Below are a few examples:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[<span class="kw">c</span>(<span class="st">&quot;Stan Wawrinka&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>), ]</code></pre></div>
+<pre><code>##               GS win Win rate
+## Stan Wawrinka      5    63.96
+## Roger Federer     18    81.80</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</code></pre></div>
+<pre><code>##               GS win Win rate
+## Andy Murray        9    78.07
+## Stan Wawrinka      5    63.96</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[, <span class="dv">2</span>]</code></pre></div>
+<pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
+##          78.07          82.48          63.96          82.77          81.80</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>]</code></pre></div>
+<pre><code>##   Andy Murray  Rafael Nadal Stan Wawrinka 
+##             9            15             5</code></pre>
+<p>It can be noticed that, when a space is left blank before or after the comma, this means that respectively all the rows or all the columns are considered.</p>
+</div>
+<div id="linear-algebra" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Linear Algebra</h3>
+<p>As with vectors, there are some useful functions that can be used with matrices. A first example is the function <code>dim()</code> that allows to determine the dimension of a matrix. For example, consider the following <span class="math inline">\(4 \times 2\)</span> matrix</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A} = \left[
+\begin{matrix}
+1 &amp; 5\\
+2 &amp; 6\\
+3 &amp; 7\\
+4 &amp; 8
+\end{matrix}
+\right]
+\end{equation*}\]</span>
+<p>which can be created in R as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">A =</span> <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>))</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## [3,]    3    7
+## [4,]    4    8</code></pre>
+<p>Therefore, we expect <code>dim(A)</code> to retrun the vector <code>c(4, 2)</code>. Indeed, we have</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(A)</code></pre></div>
+<pre><code>## [1] 4 2</code></pre>
+<p>Next, we consider the function <code>t()</code> allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A}^T = \left[
+\begin{matrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+5 &amp; 6 &amp; 7 &amp; 8
+\end{matrix}
+\right],
+\end{equation*}\]</span>
+<p>which is a <span class="math inline">\(2 \times 4\)</span> matrix. In R, we achieve this as follows</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(At &lt;-<span class="st"> </span><span class="kw">t</span>(A))</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(At)</code></pre></div>
+<pre><code>## [1] 2 4</code></pre>
+<p>Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator <code>%*%</code> is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator <code>*</code> performs the Hadamard product (or element by element product) when applied to matrices. For example, consider the following matrix product</p>
+<span class="math display">\[\begin{equation*}
+  \mathbf{B} = \mathbf{A}^T \mathbf{A} =   \left[
+\begin{matrix}
+30 &amp; 70\\
+70 &amp; 174
+\end{matrix}
+\right],
+\end{equation*}\]</span>
+<p>which can be done in R as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">B =</span> At %*%<span class="st"> </span>A)</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   30   70
+## [2,]   70  174</code></pre>
+<p>Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are <code>det()</code> and <code>solve()</code> that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function <code>det()</code> can be used to compute the determinant of a (squared) matrix. In the case of a <span class="math inline">\(2 \times 2\)</span> matrix, there exists a simple solution for the determinant which is</p>
+<span class="math display">\[\begin{equation*}
+\text{det} \left( \mathbf{D} \right) = \text{det} \left( \left[
+\begin{matrix}
+d_1 &amp; d_2\\
+d_3 &amp; d_4
+\end{matrix}
+\right] \right) = d_1 d_4 - d_2 d_3.
+\end{equation*}\]</span>
+<p>Consider the matrix <span class="math inline">\(\mathbf{B}\)</span>, we have</p>
+<span class="math display">\[\begin{equation*}
+  \text{det} \left( \mathbf{B}\right) = 30 \cdot 174 - 70^2 = 320.
+\end{equation*}\]</span>
+<p>In R, we can simply do</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">det</span>(B)</code></pre></div>
+<pre><code>## [1] 320</code></pre>
+<p>The function <code>solve()</code> is also an important function when working with matrices as it allows to inverse a matrix. It is worth remembering that a square matrix that is not invertible (i.e. <span class="math inline">\(\mathbf{A}^{-1}\)</span> doesn’t exist) is called <em>singular</em> and the determinant offers a way to “check” if this is the case for a given matrix. Indeed, a square matrix is singular if and only if its determinant is 0. Therefore, in the case of <span class="math inline">\(\mathbf{B}\)</span>, we should be able to compute its inverse. As for the determinant, there exists a formula to compute the inverse of <span class="math inline">\(2 \times 2\)</span> matrices, i.e.</p>
+<span class="math display">\[\begin{equation*}
+ \mathbf{D}^{-1} = \left[
+\begin{matrix}
+d_1 &amp; d_2\\
+d_3 &amp; d_4
+\end{matrix}
+\right]^{-1} = \frac{1}{\text{det}\left( \mathbf{D} \right)} \left[
+\begin{matrix}
+\phantom{-}d_4 &amp; -d_2\\
+-d_3 &amp; \phantom{-}d_1
+\end{matrix}
+\right].
+\end{equation*}\]</span>
+<p>Considering the matrix <span class="math inline">\(\mathbf{B}\)</span>, we obtain</p>
+<span class="math display">\[\begin{equation*}
+ \mathbf{B}^{-1} = \left[
+\begin{matrix}
+30 &amp; 70\\
+70 &amp; 174
+\end{matrix}
+\right]^{-1} = \frac{1}{320}\left[
+\begin{matrix}
+  \phantom{-}174 &amp; -70\\
+-70 &amp; \phantom{-}30
+\end{matrix}
+\right] = 
+\end{equation*}\]</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">B_inv =</span> <span class="kw">solve</span>(B))</code></pre></div>
+<pre><code>##          [,1]     [,2]
+## [1,]  0.54375 -0.21875
+## [2,] -0.21875  0.09375</code></pre>
+<p>Finally, we can verify that</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{G} = \mathbf{B} \mathbf{B}^{-1},
+\end{equation*}\]</span>
+<p>should be equal to the identity matrix,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">G =</span> B %*%<span class="st"> </span>B_inv)</code></pre></div>
+<pre><code>##      [,1]          [,2]
+## [1,]    1 -8.881784e-16
+## [2,]    0  1.000000e+00</code></pre>
+<p>The result is of course extremely close but <span class="math inline">\(\mathbf{G}\)</span> is not exactly equal to the identity matrix due to rounding and other numerical errors.</p>
+<p>Another function of interest is the function <code>diag()</code> that can be used to extract the diagonal of a matrix. For example, we have</p>
+<span class="math display">\[\begin{equation*}
+\text{diag} \left( \mathbf{B} \right) = \left[30 \;\; 174\right],
+\end{equation*}\]</span>
+<p>which can be done in R as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(B)</code></pre></div>
+<pre><code>## [1]  30 174</code></pre>
+<p>Therefore, the function <code>diag()</code> allows to easily compute the trace of matrix (i.e. the sum of the diagonal elements). For example,</p>
+<span class="math display">\[\begin{equation*}
+\text{tr} \left( \mathbf{B} \right) = 204,
+\end{equation*}\]</span>
+<p>or in R</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">diag</span>(B))</code></pre></div>
+<pre><code>## [1] 204</code></pre>
+<p>Another use of the function <code>diag()</code> is to create diagonal matrices. Indeed, if the argument of this function is a vector, its behavior is the following:</p>
+<span class="math display">\[\begin{equation*}
+  \text{diag} \left(\left[a_1 \;\; a_2 \;\; \cdots \;\; a_n\right]\right) = \left[
+\begin{matrix}
+a_1     &amp; 0       &amp; \cdots &amp; 0  \\
+0       &amp; a_2     &amp; \cdots &amp; 0  \\
+\vdots  &amp; \vdots  &amp; \ddots       &amp; \vdots    \\
+0       &amp; 0       &amp;   \cdots     &amp; a_n
+\end{matrix}
+\right].
+\end{equation*}\]</span>
+<p>Therefore, this provides a simple way of creating an identity matrix by combining the functions <code>diag()</code> and <code>rep()</code> (discussed in the previous section) as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">4</span>
+(<span class="dt">ident =</span> <span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)))</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1</code></pre>
+</div>
+<div id="example-summary-statistics-with-matrix-notation" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Example: Summary Statistics with Matrix Notation</h3>
+<p>A simple example of the operations we discussed in the previous section is given by many common statistics that can be reexpressed using matrix notation. As an example, we will consider three common statistics that are the sample mean, variance and covariance. Let us consider the following two samples of size <span class="math inline">\(n\)</span></p>
+<span class="math display">\[\begin{equation*}
+  \begin{aligned}
+    \mathbf{x} &amp;= \left[x_1 \;\; x_2 \; \;\cdots \;\; x_n\right]^T\\
+    \mathbf{y} &amp;= \left[y_1 \;\;\; y_2 \; \;\;\cdots \;\;\; y_n\right]^T.
+  \end{aligned}
+\end{equation*}\]</span>
+<p>The sample mean of <span class="math inline">\(\mathbf{x}\)</span> is</p>
+<span class="math display">\[\begin{equation*}
+  \bar{x} = \frac{1}{n} \sum_{i = 1}^{n} x_i,
+\end{equation*}\]</span>
+<p>and its sample variance is</p>
+<span class="math display">\[\begin{equation*}
+  s_x^2 = \frac{1}{n} \sum_{i = 1}^n \left(x_i - \bar{x}\right)^2.
+\end{equation*}\]</span>
+<p>The sample covariance between <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> is</p>
+<span class="math display">\[\begin{equation*}
+  s_{x,y} = \frac{1}{n} \sum_{i = 1}^n \left(X_i - \bar{x}\right) \left(Y_i - \bar{y}\right),
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\bar{y}\)</span> denotes the sample mean of <span class="math inline">\(\mathbf{y}\)</span>.</p>
+<p>Consider the sample mean, this statistic can be expressed in matrix notation as follows</p>
+<span class="math display">\[\begin{equation*}
+  \bar{x} = \frac{1}{n} \sum_{i = 1}^{n} x_i =  \frac{1}{n} \mathbf{x}^T \mathbf{1},
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\mathbf{1}\)</span> is a column vector of <span class="math inline">\(n\)</span> ones.</p>
+<span class="math display">\[\begin{equation*}
+  \begin{aligned}
+    s_x^2 &amp;= \frac{1}{n} \sum_{i = 1}^n \left(x_i - \bar{x}\right)^2 = \frac{1}{n} \sum_{i = 1}^n x_i^2 - \bar{x}^2 = \frac{1}{n} \mathbf{x}^T \mathbf{x} - \bar{x}^2\\
+    &amp;= \frac{1}{n} \mathbf{x}^T \mathbf{x} - \left(\frac{1}{n} \mathbf{x}^T \mathbf{1}\right)^2 = \frac{1}{n} \left(\mathbf{x}^T \mathbf{x} - \frac{1}{n} \mathbf{x}^T \mathbf{1} \mathbf{1}^T \mathbf{x}\right)\\
+    &amp;= \frac{1}{n}\mathbf{x}^T \left( \mathbf{I} - \frac{1}{n} \mathbf{1} \mathbf{1}^T \right) \mathbf{x} = \frac{1}{n}\mathbf{x}^T \mathbf{H} \mathbf{x},
+  \end{aligned}
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\mathbf{H} = \mathbf{I} - \frac{1}{n} \mathbf{1} \mathbf{1}^T\)</span>. This matrix is often called the <em>centering</em> matrix. Similarly, for the sample covariance we obtain</p>
+<span class="math display">\[\begin{equation*}
+  \begin{aligned}
+    s_{x,y} &amp;= \frac{1}{n} \sum_{i = 1}^n \left(x_i - \bar{x}\right) \left(y_i - \bar{y}\right) = \frac{1}{n}\mathbf{x}^T \mathbf{H} \mathbf{y}.
+  \end{aligned}
+\end{equation*}\]</span>
+<p>In the code below we verify the validity of these results by comparing the value of the three statistics based on the different formulas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample size</span>
+n =<span class="st"> </span><span class="dv">100</span>
+
+<span class="co"># Simulate random numbers from a zero mean normal distribution with</span>
+<span class="co"># variance equal to 4.</span>
+x =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">0</span>, <span class="kw">sqrt</span>(<span class="dv">4</span>))
+
+<span class="co"># Simulate random numbers from normal distribution with mean 3 and</span>
+<span class="co"># variance equal to 1.</span>
+y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3</span>, <span class="dv">1</span>)
+
+<span class="co"># Note that x and y are independent.</span>
+
+<span class="co"># Sample mean</span>
+one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
+(<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
+<pre><code>## [1] 0.06037076</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
+<pre><code>##            [,1]
+## [1,] 0.06037076</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
+H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
+(<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 4.272818</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
+<pre><code>##          [,1]
+## [1,] 4.272818</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
+y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
+(<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
+<pre><code>## [1] 0.05105247</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
+<pre><code>##            [,1]
+## [1,] 0.05105247</code></pre>
+</div>
+<div id="example-least-squares" class="section level3">
+<h3><span class="header-section-number">1.2.4</span> Example: Least-squares</h3>
+<p>If the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, the least-squares estimator for <span class="math inline">\(\boldsymbol{\beta}\)</span> is given by:</p>
+<span class="math display" id="eq:lsformula">\[\begin{equation}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
+\tag{1.1}
+\end{equation}\]</span>
+<p>In the comment box below, we derive Eq. <a href="#eq:lsformula">(1.1)</a>. If you aren’t familiar with such calculations we suggest you read some introduction to linear regression (see for example <span class="citation">@seber2012linear</span>).</p>
+
+<div class="rmdtip">
+<p>The least-square estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
+<span class="math display">\[\begin{equation*}
+ \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
+\end{equation*}\]</span>
+<p>The first step of this derivation is to reexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
+<span class="math display">\[\begin{equation*}
+    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}\]</span>
+<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transposed without changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, our next step is to the following derivative</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
+\end{equation*}\]</span>
+<p>To do this we should keep in mind the following results</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
+   \boldsymbol{y}^T \mathbf{X},
+\end{equation*}\]</span>
+<p>and</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} =  2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X}.
+\end{equation*}\]</span>
+<p>The proof of these two results can for example be found in Propositions 7 and 9 of <a href="http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf">Prof. Barnes’ notes</a>. Using these two results we obtain</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
+\end{equation*}\]</span>
+<p>By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> through the follwing equation</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
+\end{equation*}\]</span>
+<p>which is equivalent to</p>
+<span class="math display">\[\begin{equation*}
+  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}\]</span>
+<p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
+\end{equation*}\]</span>
+which verifies Eq. <a href="#eq:lsformula">(1.1)</a>.
+</div>
+<p></p>
+<p>The variance of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
+<span class="math display" id="eq:lsvar">\[\begin{equation}
+\text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+\tag{1.2}
+\end{equation}\]</span>
+<p>the derivation of this result is explained in the comment box below.</p>
+
+<div class="rmdtip">
+<p>If we let <span class="math inline">\(\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T\)</span>, then we have</p>
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+  \text{Var} \left(\hat{\boldsymbol{\beta}} \right) &amp;= \text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T \\
+  &amp; = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T  \mathbf{X} \left(\mathbf{X}^T \mathbf{X}\right)^{-1} = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+\end{aligned}
+\end{equation*}\]</span>
+<p>which verifies Eq. <a href="#eq:lsvar">(1.2)</a>. To understand the above derivation it may be useful to remind and point out a few things:</p>
+<ul>
+<li><span class="math inline">\(\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T\)</span> since <span class="math inline">\(\mathbf{A}\)</span> is not a random variable.</li>
+<li><span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span> since<span class="math inline">\(\text{Var} \left( \mathbf{y} \right) = \sigma^2 \mathbf{I}\)</span> and therefore we have <span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span>.</li>
+<li>The result <span class="math inline">\(\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}\)</span> is based on the fact that <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix <span class="math inline">\(\mathbf{B}\)</span> is such that the inverse and transpose operator commute, meaning that <span class="math inline">\(( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T\)</span>. Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)</span> is square and (by assumption) invertible we have <span class="math inline">\([(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}\)</span>.
+</div>
+</li>
+</ul>
+<p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
+<span class="math display" id="eq:lssig2hat">\[\begin{equation}
+  \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
+  \tag{1.3}
+\end{equation}\]</span>
+<p>DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW.</p>
+<p>Let’s implement Eq. <a href="#eq:lsformula">(1.1)</a> to <a href="#eq:lssig2hat">(1.3)</a> and compare with the <code>lm()</code> implemented in base R. Before doing maybe we could use the dataset <code>hubble</code>. I think it is quite cool as it can be used to estimate the “age” of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.</p>
+</div>
+</div>
+<div id="array" class="section level2">
+<h2><span class="header-section-number">1.3</span> Array</h2>
+</div>
+<div id="list" class="section level2">
+<h2><span class="header-section-number">1.4</span> List</h2>
+</div>
+<div id="dataframe" class="section level2">
+<h2><span class="header-section-number">1.5</span> Dataframe</h2>
+<div id="example-making-maps" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Example: Making Maps</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_place =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
+                <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
+glasgow_coord =<span class="st"> </span><span class="kw">geocode</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glasgow_coord</code></pre></div>
+<pre><code>##         lon      lat
+## 1 -4.251806 55.86424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord =<span class="st"> </span><span class="kw">geocode</span>(birth_place)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord</code></pre></div>
+<pre><code>##         lon      lat
+## 1 -4.251806 55.86424
+## 2  3.209532 39.56972
+## 3  6.632273 46.51965
+## 4 20.448922 44.78657
+## 5  7.588576 47.55960</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(birth_coord)</code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord$Players =<span class="st"> </span>players
+birth_coord$GS =<span class="st"> </span>grand_slam_win</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord</code></pre></div>
+<pre><code>##         lon      lat        Players GS
+## 1 -4.251806 55.86424    Andy Murray  9
+## 2  3.209532 39.56972   Rafael Nadal 15
+## 3  6.632273 46.51965  Stan Wawrinka  5
+## 4 20.448922 44.78657 Novak Djokovic 12
+## 5  7.588576 47.55960  Roger Federer 18</code></pre>
+<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry to much about the details of how this graph is made</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mapproj)
+map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)
+<span class="kw">ggmap</span>(map) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, 
+             <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
+<span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
+<span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
+<p><img src="01-data_files/figure-html/unnamed-chunk-64-1.png" width="720" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="data-frames" class="section level2">
+<h2><span class="header-section-number">1.6</span> Data frames</h2>
+<p>A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list.</p>
+<p>We can create a data frame using data.frame()</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Creation
+
+players =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
+             <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>)
+
+grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)
+
+date_of_birth =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;15 May 1987&quot;</span>, <span class="st">&quot;3 June 1986&quot;</span>, <span class="st">&quot;28 March 1985&quot;</span>, 
+                  <span class="st">&quot;22 May 1981&quot;</span>, <span class="st">&quot;8 August 1981&quot;</span>)
+
+country =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Great Britain&quot;</span>, <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>, 
+            <span class="st">&quot;Serbia&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>)
+ATP_ranking =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+
+prize_money =<span class="st"> </span><span class="kw">c</span>(<span class="dv">60449649</span>, <span class="dv">85920132</span>, <span class="dv">30577981</span>, <span class="dv">109447408</span>, <span class="dv">104445185</span>)
+
+tennis =<span class="st"> </span><span class="kw">data.frame</span>(date_of_birth, grand_slam_win, country, 
+                    ATP_ranking, prize_money)
+
+<span class="kw">dimnames</span>(tennis)[[<span class="dv">1</span>]] =<span class="st"> </span>players
+tennis</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Rafael Nadal     3 June 1986             15         Spain           2
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Roger Federer  8 August 1981             18   Switzerland           5
+##                prize_money
+## Andy Murray       60449649
+## Rafael Nadal      85920132
+## Stan Wawrinka     30577981
+## Novak Djokovic   109447408
+## Roger Federer    104445185</code></pre>
+<p>We can check if we have achived our gooal by using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.data.frame</span>(tennis)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div id="combination" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Combination</h3>
+<p>Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player’s height and if he is right-handed or letf-handed.</p>
+<p>We can do so by using <code>cbind()</code> and <code>rbind()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.90</span>, <span class="fl">1.85</span>, <span class="fl">1.83</span>, <span class="fl">1.88</span>, <span class="fl">1.85</span>)
+hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)
+
+(<span class="dt">tennis =</span> <span class="kw">cbind</span>(tennis, <span class="kw">data.frame</span>(height, hand)))</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Rafael Nadal     3 June 1986             15         Spain           2
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Roger Federer  8 August 1981             18   Switzerland           5
+##                prize_money height hand
+## Andy Murray       60449649   1.90    R
+## Rafael Nadal      85920132   1.85    L
+## Stan Wawrinka     30577981   1.83    R
+## Novak Djokovic   109447408   1.88    R
+## Roger Federer    104445185   1.85    R</code></pre>
+</div>
+<div id="subsetting-2" class="section level3">
+<h3><span class="header-section-number">1.6.2</span> Subsetting</h3>
+<p>Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let say we want only want to know the country and date of </span>
+<span class="co"># birth of the players</span>
+
+<span class="co"># There are two ways to select columns from a data frame</span>
+<span class="co"># Like a list:</span>
+tennis[<span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</code></pre></div>
+<pre><code>##                      country date_of_birth
+## Andy Murray    Great Britain   15 May 1987
+## Rafael Nadal           Spain   3 June 1986
+## Stan Wawrinka    Switzerland 28 March 1985
+## Novak Djokovic        Serbia   22 May 1981
+## Roger Federer    Switzerland 8 August 1981</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Like a matrix</span>
+tennis[, <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</code></pre></div>
+<pre><code>##                      country date_of_birth
+## Andy Murray    Great Britain   15 May 1987
+## Rafael Nadal           Spain   3 June 1986
+## Stan Wawrinka    Switzerland 28 March 1985
+## Novak Djokovic        Serbia   22 May 1981
+## Roger Federer    Switzerland 8 August 1981</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To acces a single element, let say the date of birth, </span>
+<span class="co"># you can also use:</span>
+tennis$date_of_birth</code></pre></div>
+<pre><code>## [1] 15 May 1987   3 June 1986   28 March 1985 22 May 1981   8 August 1981
+## 5 Levels: 15 May 1987 22 May 1981 28 March 1985 ... 8 August 1981</code></pre>
+</div>
+<div id="application-non-parametric-bootstrap" class="section level3">
+<h3><span class="header-section-number">1.6.3</span> Application: Non-parametric bootstrap</h3>
+<p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
+<p>We can compute the mean time spent</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(student_work)</code></pre></div>
+<pre><code>## [1] 0.825</code></pre>
+<p><em>ADD SOMETHING ON T TEST</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(student_work)$conf.int</code></pre></div>
+<pre><code>## [1] -0.03495865  1.68495865
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>We can see that our confidence interval includes a negative values which clearly isn’t meaningful. Solution: (non-parametric) bootstrap which works as follows….. ADD SOMETHING</p>
+<p>Here is a simple function to implement this approach:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Number of boostrap replications</span>
+B =<span class="st"> </span><span class="dv">500</span>
+
+<span class="co"># Compute the length of vector</span>
+n =<span class="st"> </span><span class="kw">length</span>(student_work)
+
+<span class="co"># Confidence level</span>
+alpha =<span class="st"> </span><span class="fl">0.05</span>
+
+<span class="co"># Initialisation of </span>
+boot_mean =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
+
+for (i in <span class="dv">1</span>:B){
+  student_work_star =<span class="st"> </span>student_work[<span class="kw">sample</span>(<span class="dv">1</span>:n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)]
+  boot_mean[i] =<span class="st"> </span><span class="kw">mean</span>(student_work_star)
+}
+
+<span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
+<pre><code>##  2.5% 97.5% 
+## 0.275 1.625</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

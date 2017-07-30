@@ -307,7 +307,7 @@ where the option `times` allows to specify how many times the object needs to be
 
 ### Example: Apple Stock Price 
 
-Suppose that one is interested in analysing the behavior of Apple's stoch price over the last three months. The first thing that is need is today's date which can be obtained as follows
+Suppose that one is interested in analysing the behavior of Apple's stock price over the last three months. The first thing that is needed is today's date which can be obtained as follows
 
 ```{r}
 (today = Sys.Date())
@@ -321,7 +321,7 @@ Once this is done, we can obtain the date which is exactly three monmths ago
 
 With this information, we can now download Apple's stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.
 
-Just to note, `library()` load and attach add-on packages.
+Just to note, `library()` loads and attaches add-on packages.
 
 ```{r, message = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE}
 library(quantmod)
@@ -694,36 +694,35 @@ y_bar = 1/n*sum(y)
 
 ### Example: Least-squares
 
-If the matrix $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$, the least-squares estimator for $\boldsymbol{\beta}$ is given by:
+If the matrix $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$ exists, the least-squares estimator for $\boldsymbol{\beta}$ is given by:
 
 \begin{equation}
   \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
 (\#eq:lsformula)
 \end{equation}
 
-In the comment box below, we derive Eq. \@ref(eq:lsformula). If you aren't familiar with such calculation it might to read or something like this
-
+In the comment box below, we derive Eq. \@ref(eq:lsformula). If you aren't familiar with such calculations we suggest you read some introduction to linear regression (see for example @seber2012linear).
 
 ```{block2, type='rmdtip'}
-The least-square estimator $\hat{\boldsymbol{\beta}}$ can be defined as
+The least-square estimator $\hat{\boldsymbol{\beta}}$ is given by
 
 \begin{equation*}
  \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
 \end{equation*}
 
-The first step of this derivation is to rexpress the term  $\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)$ as follows:
+The first step of this derivation is to reexpress the term $\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)$ as follows:
 
 \begin{equation*}
     \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
 \end{equation*}
 
-In case you were suprizied by the term $2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}$ remeber that a scalar can always be transpose with changing its value and therefore we have that $ \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =  \boldsymbol{y}^T \mathbf{X}  \boldsymbol{\beta}$. Now, out next step is the compute 
+In case you were suprizied by the term $2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}$ remeber that a scalar can always be transposed without changing its value and therefore we have that $ \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =  \boldsymbol{y}^T \mathbf{X}  \boldsymbol{\beta}$. Now, our next step is to the following derivative 
 
 \begin{equation*}
   \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
 \end{equation*}
 
-To do this we should remeber the following results
+To do this we should keep in mind the following results
 
 \begin{equation*}
   \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
@@ -754,7 +753,7 @@ which is equivalent to
   \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
 \end{equation*}
 
-If $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$ exist, $\hat{\boldsymbol{\beta}}$ is therefore given by
+If $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$ exists, $\hat{\boldsymbol{\beta}}$ is therefore given by
 
 \begin{equation*}
   \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
@@ -771,10 +770,10 @@ The variance of $\hat{\boldsymbol{\beta}}$ is given by
 (\#eq:lsvar)
 \end{equation}
 
-the derivation of this results is explain in the comment box below.
+the derivation of this result is explained in the comment box below.
 
 ```{block2, type='rmdtip'}
-We let $\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T$. Then, we have
+If we let $\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T$, then we have
 
 \begin{equation*}
 \begin{aligned}
@@ -783,7 +782,7 @@ We let $\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T$. Th
 \end{aligned}
 \end{equation*}
 
-which verifies Eq. \@ref(eq:lsvar). To understand the above derivation we might be usefull to remind and point out a few things:
+which verifies Eq. \@ref(eq:lsvar). To understand the above derivation it may be useful to remind and point out a few things:
 
 - $\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T$ since $\mathbf{A}$ is not a random variable.
 - $\mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T$ since$\text{Var} \left(  \mathbf{y} \right) = \sigma^2 \mathbf{I}$ and therefore we have $\mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T$.
@@ -792,7 +791,7 @@ Therefore since the matrix $\mathbf{X}^T \mathbf{X}$ is square and (by assumptio
 $[(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}$.
 ```
 
-In general, the residual variance is unknown and needs to estimate. A common and unbiased estimator of $\sigma^2$ is given by
+In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of $\sigma^2$ is given by
 
 \begin{equation}
   \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
@@ -801,8 +800,42 @@ In general, the residual variance is unknown and needs to estimate. A common and
 
 DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW.
 
-Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and compare with the `lm()` implemented in base R. Before doing maybe we could use the dataset `hubble`. I think it is quite cool as it can be used to estimate the "age" of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.
+ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)
 
+Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and compare the outcome with the `lm()` function for linear regression implemented in base R. Before doing maybe we could use the dataset `hubble`. I think it is quite cool as it can be used to estimate the "age" of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.
+
+```{r}
+# Load gamair library and retrieve Hubble dataset
+library(gamair)
+data(hubble)
+
+# Plot data
+plot(y = hubble$y, x = hubble$x, col="red", main="Cepheid Distance vs. Galaxy Velocity", ylab = "Galaxy Relative Velocity (in km/s)", xlab = "Distance (in Megaparsecs)")
+
+# Data parameters
+n = dim(hubble)[1] # number of observations
+p = 1 # number of explanatory variables
+df = n - p # degrees of freedom
+
+# Estimate of beta from Eq. (1.1)
+beta.hat = solve(t(hubble$x)%*%hubble$x)%*%t(hubble$x)%*%hubble$y
+
+# Estimate of the residual variance from Eq. (1.3)
+resid = hubble$y - hubble$x*beta.hat
+sigma2.hat = (1/df)*t(resid)%*%resid
+
+# Estimate of the variance of the estimated beta from Eq. (1.2)
+var.beta = sigma2.hat*solve(t(hubble$x)%*%hubble$x)
+
+# Linear regression with lm() function
+fit_lm = lm(hubble$y~hubble$x)
+summary(fit_lm)
+
+# Compare outputs
+manual_results = c(beta.hat, sigma.hat)
+function_results = c(fit_lm$coefficients[2], var(fit_lm$residuals))
+cbind(manual_results, function_results)
+```
 
 ## Array
 
