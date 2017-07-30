@@ -1,6 +1,9 @@
 ---
 title: "Example RMarkdown Document"
 author: "Justin Lee"
+output: 
+  pdf_document:
+    number_sections: yes
 ---
 
 This guide shows you how to use Markdown instead of HTML when
@@ -9,6 +12,7 @@ writing posts or comments.
 # Header Type 1
 ## Header Type 2 
 ### Header Type 3 
+
 
 ### Text
 

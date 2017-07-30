@@ -14,7 +14,20 @@ YAML stands for YAML Ain't Markup Language, and is used to specify document conf
 
 ![](images/rmd_yaml.png)
 
-You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient.  
+You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even custom CSS which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
+
+![](images/rmd_example_output.png)
+
+
+
+
+The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. Before, you must install a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). You can also include raw LaTeX and even define LaTeX macros.
+
+### Subsections 
+
+To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of YAML Metadata. 
+
+![](images/yaml_number_sections.png)
 
 ## Text 
 
@@ -23,7 +36,6 @@ In addition, due to its literate nature, text will be an essential part in expla
 ![](images/rmd_text.png)
 
 There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
-
 
 ## Code Chunks 
 
@@ -37,12 +49,78 @@ You can quickly insert chunks like these into your file with
 
 ![](images/rmd_code_chunk.png)
 
-Like third code chunk above, we can also set up chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
+### Code Chunk Options
+
+Like third code chunk above, we can also set up chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options exerted from above: 
+
+- eval: (TRUE; logical) whether to evaluate the code chunk
+- echo: (TRUE; logical or numeric) whether to include R source code in the output file
+- warning: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)
+- cache: (FALSE; logical) whether to cache a code chunk;
+
+Plot figure options: 
+
+- fig.path: ('figure/'; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)
+- fig.keep: ('high'; character) how plots in chunks should be kept
+- fig.show: ('asis'; character) how to show/arrange the plots
+- fig.width, fig.height: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric
+- fig.align: ('default'; character) alignment of figures in the output document (possible values are left, right and center
+
+
+### LaTeX Equations 
+
+Within the text section, you can also include LaTeX format to output equation format. 
+
+For example, the binomial probability in LaTeX
+
+`$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$`
+
+converts to...
+
+$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$
+
+A basic introduction to LaTeX format can be found [here](http://www.math.harvard.edu/texman/) if you want to learn more about the basics. An alternative can be to insert custom LaTeX formulas using a graphical interface such as [codecogs](https://www.codecogs.com/latex/eqneditor.php). 
+
+### Cross-referencing Sections 
+
+You can also use the same syntax `\@ref(label)` to reference sections, where label is the section ID. By default, Pandoc will generate IDs for all section headers, e.g., `# Hello World` will have an ID `hello-world`. To call header `hello-world` as a header, we type `\@ref(hello-world)` to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.
+
+
+### Tables 
+
+For simple tables, we can be manually insert values as such, 
+
+```
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| Bananas       | $1.34         | - built-in wrapper |
+|               |               | - bright color     |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | - cures scurvy     |
+|               |               | - tasty            |
++---------------+---------------+--------------------+
+```
+
+to produce... 
+
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| Bananas       | $1.34         | - built-in wrapper |
+|               |               | - bright color     |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | - cures scurvy     |
+|               |               | - tasty            |
++---------------+---------------+--------------------+
+
+Or we can use graphical user interfaces [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()`, which we will explain later. 
 
 ## Render Output 
 
 After you are done, run `rmarkdown::render()` or click the `knit HTML` button at the top of the RStudio scripts pane to save the output in your working directory. 
 
+![](images/rmd_knit.png)
 
 
 Click on the links below for more information on RMarkdown:
