@@ -495,10 +495,10 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 <h3><span class="header-section-number">1.1.8</span> Example: Apple Stock Price</h3>
 <p>Suppose that one is interested in analysing the behavior of Apple’s stock price over the last three months. The first thing that is needed is today’s date which can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-29&quot;</code></pre>
+<pre><code>## [1] &quot;2017-07-30&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-29&quot;</code></pre>
+<pre><code>## [1] &quot;2017-04-30&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.</p>
 <p>Just to note, <code>library()</code> loads and attaches add-on packages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
@@ -797,24 +797,24 @@ y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3<
 <span class="co"># Sample mean</span>
 one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
 (<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
-<pre><code>## [1] 0.06037076</code></pre>
+<pre><code>## [1] 0.1321123</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] 0.06037076</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.1321123</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
 H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
 (<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 4.272818</code></pre>
+<pre><code>## [1] 3.331476</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 4.272818</code></pre>
+## [1,] 3.331476</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
 y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
 (<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] 0.05105247</code></pre>
+<pre><code>## [1] 0.1647456</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] 0.05105247</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.1647456</code></pre>
 </div>
 <div id="example-least-squares" class="section level3">
 <h3><span class="header-section-number">1.2.4</span> Example: Least-squares</h3>
@@ -895,7 +895,41 @@ which verifies Eq. <a href="#eq:lsformula">(1.1)</a>.
   \tag{1.3}
 \end{equation}\]</span>
 <p>DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW.</p>
-<p>Let’s implement Eq. <a href="#eq:lsformula">(1.1)</a> to <a href="#eq:lssig2hat">(1.3)</a> and compare with the <code>lm()</code> implemented in base R. Before doing maybe we could use the dataset <code>hubble</code>. I think it is quite cool as it can be used to estimate the “age” of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.</p>
+<p>ROB COMMENT: Maybe I’d ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)</p>
+<p>Let’s implement Eq. <a href="#eq:lsformula">(1.1)</a> to <a href="#eq:lssig2hat">(1.3)</a> and compare the outcome with the <code>lm()</code> function for linear regression implemented in base R. As for the other functions, we can expect</p>
+<p>Before doing maybe we could use the dataset <code>hubble</code>. I think it is quite cool as it can be used to estimate the “age” of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load gamair library and retrieve Hubble dataset</span>
+<span class="kw">library</span>(gamair)
+<span class="kw">data</span>(hubble)
+
+<span class="co"># Plot data</span>
+<span class="kw">plot</span>(<span class="dt">y =</span> hubble$y, <span class="dt">x =</span> hubble$x, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Cepheid Distance vs. Galaxy Velocity&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Galaxy Relative Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</code></pre></div>
+<p><img src="01-data_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Data parameters</span>
+n =<span class="st"> </span><span class="kw">dim</span>(hubble)[<span class="dv">1</span>] <span class="co"># number of observations</span>
+p =<span class="st"> </span><span class="dv">2</span> <span class="co"># number of parameters to estimate (i.e. length of beta)</span>
+df =<span class="st"> </span>n -<span class="st"> </span>p <span class="co"># degrees of freedom</span>
+
+<span class="co"># Estimate of beta from Eq. (1.1)</span>
+beta.hat =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(hubble$x)%*%hubble$x)%*%<span class="kw">t</span>(hubble$x)%*%hubble$y
+
+<span class="co"># Estimate of the residual variance from Eq. (1.3)</span>
+resid =<span class="st"> </span>hubble$y -<span class="st"> </span>hubble$x*beta.hat
+sigma2.hat =<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
+
+<span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
+var.beta =<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(hubble$x)%*%hubble$x)
+
+<span class="co"># Linear regression with lm() function</span>
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble$y~hubble$x)
+
+<span class="co"># Compare outputs</span>
+manual_results =<span class="st"> </span><span class="kw">c</span>(beta.hat, sigma2.hat)
+function_results =<span class="st"> </span><span class="kw">c</span>(fit_lm$coefficients[<span class="dv">2</span>], <span class="kw">var</span>(fit_lm$residuals))
+<span class="kw">cbind</span>(manual_results, function_results)</code></pre></div>
+<pre><code>##          manual_results function_results
+## hubble$x       76.58117         76.12696
+##             70093.89218      67037.80088</code></pre>
 </div>
 </div>
 <div id="array" class="section level2">
@@ -941,7 +975,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="01-data_files/figure-html/unnamed-chunk-64-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="01-data_files/figure-html/unnamed-chunk-65-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
@@ -1067,7 +1101,7 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##  2.5% 97.5% 
-## 0.275 1.625</code></pre>
+##  0.25  1.55</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 </div>
 </div>
