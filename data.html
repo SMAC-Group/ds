@@ -495,10 +495,10 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 <h3><span class="header-section-number">1.1.8</span> Example: Apple Stock Price</h3>
 <p>Suppose that one is interested in analysing the behavior of Apple’s stock price over the last three months. The first thing that is needed is today’s date which can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-30&quot;</code></pre>
+<pre><code>## [1] &quot;2017-08-01&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-30&quot;</code></pre>
+<pre><code>## [1] &quot;2017-05-01&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.</p>
 <p>Just to note, <code>library()</code> loads and attaches add-on packages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
@@ -514,9 +514,9 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
 <p>where <code>na.omit</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and <code>as.numeric</code> is used to transform the computed returns into a numeric vector. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.0003870694</code></pre>
+<pre><code>## [1] 0.000299171</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.002557922</code></pre>
+<pre><code>## [1] 0.002366446</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
@@ -531,7 +531,7 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 \end{equation}\]</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.004566</code></pre>
+<pre><code>## [1] 2.029041</code></pre>
 <p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
 </div>
 </div>
@@ -797,24 +797,24 @@ y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3<
 <span class="co"># Sample mean</span>
 one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
 (<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
-<pre><code>## [1] 0.1321123</code></pre>
+<pre><code>## [1] -0.04324989</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##           [,1]
-## [1,] 0.1321123</code></pre>
+<pre><code>##             [,1]
+## [1,] -0.04324989</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
 H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
 (<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 3.331476</code></pre>
+<pre><code>## [1] 3.441427</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 3.331476</code></pre>
+## [1,] 3.441427</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
 y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
 (<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] 0.1647456</code></pre>
+<pre><code>## [1] 0.225873</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
-<pre><code>##           [,1]
-## [1,] 0.1647456</code></pre>
+<pre><code>##          [,1]
+## [1,] 0.225873</code></pre>
 </div>
 <div id="example-least-squares" class="section level3">
 <h3><span class="header-section-number">1.2.4</span> Example: Least-squares</h3>
@@ -896,40 +896,74 @@ which verifies Eq. <a href="#eq:lsformula">(1.1)</a>.
 \end{equation}\]</span>
 <p>DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW.</p>
 <p>ROB COMMENT: Maybe I’d ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)</p>
-<p>Let’s implement Eq. <a href="#eq:lsformula">(1.1)</a> to <a href="#eq:lssig2hat">(1.3)</a> and compare the outcome with the <code>lm()</code> function for linear regression implemented in base R. As for the other functions, we can expect</p>
-<p>Before doing maybe we could use the dataset <code>hubble</code>. I think it is quite cool as it can be used to estimate the “age” of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.</p>
+<p>Let’s implement Eq. <a href="#eq:lsformula">(1.1)</a> to <a href="#eq:lssig2hat">(1.3)</a> and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R. To do so, we will study an example taken from <span class="citation">@wood2017generalized</span> which discusses a dataset collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the “Hubble constant’’ which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the”big bang&quot; theory. The link is given by this simple linear relationship</p>
+<span class="math display">\[\begin{equation*}
+  y = \beta x ,
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(y\)</span> represents the velocity while <span class="math inline">\(x\)</span> is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. <span class="math inline">\(\beta^{-1}\)</span>) gives the age of the universe based on the big bang theory.</p>
+<p>Therefore let us use the abovementioned dataset to estimate Hubble’s constant to then get an estimate of the age of the universe. This dataset can be found in the <code>gamair</code> package under the name <code>hubble</code> and, if plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load gamair library and retrieve Hubble dataset</span>
 <span class="kw">library</span>(gamair)
 <span class="kw">data</span>(hubble)
 
 <span class="co"># Plot data</span>
-<span class="kw">plot</span>(<span class="dt">y =</span> hubble$y, <span class="dt">x =</span> hubble$x, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Cepheid Distance vs. Galaxy Velocity&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Galaxy Relative Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</code></pre></div>
+<span class="kw">plot</span>(<span class="dt">y =</span> hubble$y, <span class="dt">x =</span> hubble$x, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</code></pre></div>
 <p><img src="01-data_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Data parameters</span>
+<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="#eq:lsformula">(1.1)</a> to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define parameters and variables</span>
 n =<span class="st"> </span><span class="kw">dim</span>(hubble)[<span class="dv">1</span>] <span class="co"># number of observations</span>
-p =<span class="st"> </span><span class="dv">2</span> <span class="co"># number of parameters to estimate (i.e. length of beta)</span>
+p =<span class="st"> </span><span class="dv">1</span> <span class="co"># number of explanatory variables</span>
 df =<span class="st"> </span>n -<span class="st"> </span>p <span class="co"># degrees of freedom</span>
+x =<span class="st"> </span>hubble$x <span class="co"># distance (explanatory variable)</span>
+y =<span class="st"> </span>hubble$y <span class="co"># velocity (response variable)</span>
 
 <span class="co"># Estimate of beta from Eq. (1.1)</span>
-beta.hat =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(hubble$x)%*%hubble$x)%*%<span class="kw">t</span>(hubble$x)%*%hubble$y
-
-<span class="co"># Estimate of the residual variance from Eq. (1.3)</span>
-resid =<span class="st"> </span>hubble$y -<span class="st"> </span>hubble$x*beta.hat
+beta.hat =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(x)%*%x)%*%<span class="kw">t</span>(x)%*%y</code></pre></div>
+<p>We now have an estimated value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hubble.const =<span class="st"> </span>beta.hat/<span class="fl">3.09e19</span> <span class="co"># Estimated Hubble&#39;s constant in inverse seconds</span>
+age.sec =<span class="st"> </span><span class="dv">1</span>/hubble.const <span class="co"># Age of the universe in seconds</span>
+age.sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">24</span>*<span class="dv">365</span>) <span class="co"># Age of the universe in years</span></code></pre></div>
+<pre><code>##             [,1]
+## [1,] 12794692825</code></pre>
+<p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>. Suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. In order to do so we need to know the variance of <span class="math inline">\(\hat{\beta}\)</span> and we consequently need to estimate <span class="math inline">\(\sigma^2\)</span> since we don’t know it. Let us therefore use Eq. <a href="#eq:lsvar">(1.2)</a> and <a href="#eq:lssig2hat">(1.3)</a> to compute it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimate of the residual variance from Eq. (1.3)</span>
+resid =<span class="st"> </span>y -<span class="st"> </span>x*beta.hat
 sigma2.hat =<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
 
 <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
-var.beta =<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(hubble$x)%*%hubble$x)
-
-<span class="co"># Linear regression with lm() function</span>
-fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble$y~hubble$x)
+var.beta =<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(x)%*%x)</code></pre></div>
+<p>We now have all the information regarding the distribution of <span class="math inline">\(\hat{\beta}\)</span> to test the Creation Scientists’ hypothesis. Indeed, for this purpose we can build a 95% confidence interval for the true Hubble constant <span class="math inline">\(\beta\)</span> and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows</p>
+<span class="math display">\[\begin{equation*}
+  H_0 \, : \, \beta = 163 \times 10^6 ,
+\end{equation*}\]</span>
+<p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). Since we now have the necessary information, let us build a confidence interval for which we will assume that the estimated variance of <span class="math inline">\(\hat{\beta}\)</span> is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our analysis). Assuming therefore that</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\beta} \sim \mathcal{N}\left(\beta,\sigma^2(X^TX)^{-1}\right) ,
+\end{equation*}\]</span>
+<p>we consequently have that the confidence interval is given by</p>
+<span class="math display" id="eq:cibeta">\[\begin{equation}
+  \left[\hat{\beta} - z_{1-\alpha/2}\sqrt{\sigma^2(X^TX)^{-1}} \, , \, \hat{\beta} + z_{1-\alpha/2}\sqrt{\sigma^2(X^TX)^{-1}} \right] ,
+  \tag{1.4}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1-\alpha/2)^{th}\)</span> quantile of the standard normal distribution where, in our case, <span class="math inline">\(\alpha = 0.05\)</span> which delivers a 95% confidence interval. Let us therefore replace the values in Eq. <a href="#eq:cibeta">(1.4)</a>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for the Hubble constant</span>
+ci.beta =<span class="st"> </span><span class="kw">c</span>(beta.hat -<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.975</span>)*<span class="kw">sqrt</span>(var.beta), beta.hat +<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.975</span>)*<span class="kw">sqrt</span>(var.beta))
+ci.beta</code></pre></div>
+<pre><code>## [1] 68.81032 84.35203</code></pre>
+<p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level. To conclude this analysis, let us compare the results of Eq. <a href="#eq:lsformula">(1.1)</a> to <a href="#eq:lssig2hat">(1.3)</a> with the outputs of the linear regression function <code>lm()</code> that can be found in base R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(y~x<span class="dv">-1</span>)
 
 <span class="co"># Compare outputs</span>
-manual_results =<span class="st"> </span><span class="kw">c</span>(beta.hat, sigma2.hat)
-function_results =<span class="st"> </span><span class="kw">c</span>(fit_lm$coefficients[<span class="dv">2</span>], <span class="kw">var</span>(fit_lm$residuals))
-<span class="kw">cbind</span>(manual_results, function_results)</code></pre></div>
-<pre><code>##          manual_results function_results
-## hubble$x       76.58117         76.12696
-##             70093.89218      67037.80088</code></pre>
+equation_results =<span class="st"> </span><span class="kw">c</span>(beta.hat, sigma2.hat)
+function_results =<span class="st"> </span><span class="kw">c</span>(fit_lm$coefficients[<span class="dv">1</span>], (<span class="dv">1</span>/df)*<span class="kw">t</span>(fit_lm$residuals)%*%fit_lm$residuals)
+results =<span class="st"> </span><span class="kw">cbind</span>(equation_results, function_results)
+<span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;beta.hat&quot;</span>, <span class="st">&quot;sigma2.hat&quot;</span>)
+results</code></pre></div>
+<pre><code>##            equation_results function_results
+## beta.hat           76.58117         76.58117
+## sigma2.hat      67046.33165      67046.33165</code></pre>
+<p>As one can notice, the two procedures give exactly the same outputs.</p>
 </div>
 </div>
 <div id="array" class="section level2">
@@ -975,7 +1009,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="01-data_files/figure-html/unnamed-chunk-65-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="01-data_files/figure-html/unnamed-chunk-70-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
