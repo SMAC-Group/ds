@@ -64,3 +64,24 @@ table(my_colors) / length(my_colors)
 ```
 
 ### Dataset 
+
+For some datasets, there is another convenient way to get simple summary statistics. 
+
+In this example, we will explore the [Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) flower dataset contained in the `R` built-in `datasets` package. The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). Four features were measured from each sample: the length and the width of the sepals and petals, in centimetres. Based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.
+
+We can use `summary` to output the minimum, 1st quartile, median, mean, 3rd quartile, and maximum statistics, and frequency counts for factor inputs.
+
+```{r}
+summary(iris)
+```
+
+We can also `str` to get a basic feel for what the dataset looks like, in terms of feature types and the values that each feature contains.  
+
+```{r}
+str(iris)
+```
+
+Note that for big datasets, the computation time will be substantially longer. 
+
+
+
