@@ -1,0 +1,29 @@
+# Basic Probability and Statistics 
+
+## Probability Distributions 
+
+For probability distributions, we can compute basic values such as density, distribution, quantiles, draws using functions below. 
+
+-`dname` calculates density (pdf) at input `x`.
+-`pname` calculates distribution (cdf) at input `x`.
+-`qname` calculates the quantile at an input probability.
+-`rname` generates a random draw from a particular distribution.
+
+Note that we will replace `name` with the name of a given distribution. For example, a a random number generator for uniform distribution will be `runif`. To learn more about specific parameters and documentation for a function, type `?` before the function name into your `R` console. Common example probability distributions include, but are not limited to, binomial, chi-square, exponential, F, geometric, logistic, normal, poisson, t, and uniform. 
+
+Here's an example. 
+
+### Problem {-}
+
+Assume that the test scores of a college entrance exam fits a normal distribution. Furthermore, the mean test score is 70, and the standard deviation is 15. What is the percentage of students scoring 90 or more in the exam?
+
+### Answer {-}
+
+In this case, we consider a random variable $X$ that is normally distributed $X \sim N(\mu=70, \sigma^2=25)$. Since we are looking for the percentage of students scoring higher than 90, we are interested in the upper tail of the normal distribution.
+
+```{r}
+pnorm(q = 90, mean = 70, sd = 15, lower.tail = FALSE) 
+```
+
+We see that there is a 9% probability of students scoring 90 or more in the exam. Note that at `?pnorm` we see an additional parameter, `lower.tail` that indicates TRUE (default) if probabilities are P[X ≤ x] and FALSE otherwise, where P[X > x].
+
