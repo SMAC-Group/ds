@@ -2,7 +2,7 @@
 
 ## Probability Distributions 
 
-For probability distributions, we can compute basic values such as density, distribution, quantiles, draws using functions below. 
+For probability distributions, we can compute basic values such as density, distribution, quantiles, random sampling using `R` built-in functions below. 
 
 -`dname` calculates density (pdf) at input `x`.
 -`pname` calculates distribution (cdf) at input `x`.
@@ -27,3 +27,40 @@ pnorm(q = 90, mean = 70, sd = 15, lower.tail = FALSE)
 
 We see that there is a 9% probability of students scoring 90 or more in the exam. Note that at `?pnorm` we see an additional parameter, `lower.tail` that indicates TRUE (default) if probabilities are P[X ≤ x] and FALSE otherwise, where P[X > x].
 
+## Summary Statistics 
+
+### Numeric Input 
+
+For central tendency or spread statistics of numeric input, we can use the following `R` build-in functions below. 
+
+- `mean` calculates the mean of an input `x`.
+- `median` calculates the median of an input `x`.
+- `var` calculates the variance of an input `x`.
+- `sd` calculates the standard deviation of an input `x`.
+- `IQR` calculates the interquartile range of an input `x`.
+- `min` calculates the minimum value of an input `x`. 
+- `max` calculates the maximum value of an input `x`. 
+- `range` returns a vector containing the minimum and maximum of all given arguments.  
+
+### Factor Input 
+
+For factor input, we can extract counts and percentages as summary by using `table`. 
+
+Here I create an example dataset with colors 20 that are `Yellow`, 10 that are `Green` and 50 that are `Blue`.
+```{r}
+(my_colors = as.factor(c(rep("Yellow", 20), rep("Green", 10), rep("Blue", 50))))
+```
+
+By using `table` we can see a frequency (count) table of the colors. 
+
+```{r}
+table(my_colors)
+```
+
+By diving the table by the number of total colors, we can get percentages instead. 
+
+```{r}
+table(my_colors) / length(my_colors)
+```
+
+### Dataset 
