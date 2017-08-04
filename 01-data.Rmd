@@ -137,7 +137,7 @@ typeof(mix_int_char)
 
 ### Subsetting
 
-Naturally, it is possible to "subset" the values of in our vectror in many ways. Essentially, there are four main ways of subsetting a vector. Here we'll only discuss the first three:
+Naturally, it is possible to "subset" the values of in our vector in many ways. Essentially, there are four main ways of subsetting a vector. Here we'll only discuss the first three:
 
 - **Positive Index**: We can *access* or *subset* the $i$-th element of a vector by simply using `grand_slam_win[i]` where $i$ is a positive number between 1 and length of the vector.
 
@@ -162,7 +162,7 @@ grand_slam_win[-2]
 grand_slam_win[c(-1, -4)]
 ```
 
-- **Logical Indices**: Another usefull approach is based on *logical* operators:
+- **Logical Indices**: Another useful approach is based on *logical* operators:
 
 ```{r}
 # Access the first and fourth observations
@@ -900,6 +900,10 @@ results
 As one can notice, the two procedures give the same outputs.
 
 ## Array
+
+
+
+
 
 ## List
 

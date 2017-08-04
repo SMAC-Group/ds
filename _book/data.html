@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-29">
+<meta name="date" content="2017-08-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -117,7 +117,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>2.2.1</b> Subsetting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data.html"><a href="data.html#useful-functions-to-work-with-matrices"><i class="fa fa-check"></i><b>2.2.2</b> Useful Functions to Work with Matrices</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data.html"><a href="data.html#linear-algebra"><i class="fa fa-check"></i><b>2.2.2</b> Linear Algebra</a></li>
 <li class="chapter" data-level="2.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>2.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
 <li class="chapter" data-level="2.2.4" data-path="data.html"><a href="data.html#example-least-squares"><i class="fa fa-check"></i><b>2.2.4</b> Example: Least-squares</a></li>
 </ul></li>
@@ -139,6 +139,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a></li>
 <li class="chapter" data-level="9" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>9</b> GitHub</a></li>
+<li class="chapter" data-level="10" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Probability and Statistics</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -275,6 +276,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </li>
 </ul>
+<p><code>c()</code> is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. To learn more about what a specific function’s documentation, type <code>?yourfunction</code> onto the R Studio Console.</p>
 <p>For example, let us consider the number of grand slams won by the five players we are considering which are reported in the eigth column of the dataset:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)</code></pre></div>
 <p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
@@ -345,7 +347,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="subsetting" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Subsetting</h3>
-<p>Naturally, it is possible to “subset” the values of in our vectror in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
+<p>Naturally, it is possible to “subset” the values of in our vector in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
 <ul>
 <li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>grand_slam_win[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
 </ul>
@@ -368,7 +370,7 @@ grand_slam_win[-<span class="dv">2</span>]</code></pre></div>
 grand_slam_win[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">4</span>)]</code></pre></div>
 <pre><code>## [1] 15  5 18</code></pre>
 <ul>
-<li><strong>Logical Indices</strong>: Another usefull approach is based on <em>logical</em> operators:</li>
+<li><strong>Logical Indices</strong>: Another useful approach is based on <em>logical</em> operators:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access the first and fourth observations</span>
 grand_slam_win[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
@@ -493,13 +495,14 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 </div>
 <div id="example-apple-stock-price" class="section level3">
 <h3><span class="header-section-number">2.1.8</span> Example: Apple Stock Price</h3>
-<p>Suppose that one is interested in analysing the behavior of Apple’s stoch price over the last three months. The first thing that is need is today’s date which can be obtained as follows</p>
+<p>Suppose that one is interested in analysing the behavior of Apple’s stock price over the last three months. The first thing that is needed is today’s date which can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">today =</span> <span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-07-29&quot;</code></pre>
+<pre><code>## [1] &quot;2017-08-03&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three monmths ago</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">three_months_ago =</span> <span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-04-29&quot;</code></pre>
+<pre><code>## [1] &quot;2017-05-03&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices.</p>
+<p>Just to note, <code>library()</code> loads and attaches add-on packages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</code></pre></div>
 <pre><code>## [1] &quot;AAPL&quot;</code></pre>
@@ -511,11 +514,11 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 \end{equation}\]</span>
 <p>where <span class="math inline">\(r_t\)</span> are the returns at time <em>t</em> and <span class="math inline">\(S_t\)</span> is the stock price. This is implemented in the function <code>ClCl()</code> within the <code>quantmod</code> package. For example, we can create a vector of returns as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL)))</code></pre></div>
-<p>where <code>na.omit</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and <code>as.numeric</code> is used to transform the computed returns into a numeric vector. We can now compute the mean and median of the returns over the considered period</p>
+<p>where <code>na.omit</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and <code>as.numeric</code> is used to transform the computed returns into a numeric vector. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.0003870694</code></pre>
+<pre><code>## [1] 0.001137776</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.002557922</code></pre>
+<pre><code>## [1] 0.002749398</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{E}\left[\left(X - E[X]\right)^4\right]}{\left({E}\left[\left(X - E[X]\right)^2\right]\right)^2} - 3
@@ -530,7 +533,7 @@ Here we could add some remarks on weird cases, for example <code>grand_slam_win[
 \end{equation}\]</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu =<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (<span class="dt">k =</span> <span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.004566</code></pre>
+<pre><code>## [1] 2.815774</code></pre>
 <p>which is quite high tends to indicate the returns have a heavier tails than the normal distribution.</p>
 </div>
 </div>
@@ -594,8 +597,8 @@ mat</code></pre></div>
 ##             9            15             5</code></pre>
 <p>It can be noticed that, when a space is left blank before or after the comma, this means that respectively all the rows or all the columns are considered.</p>
 </div>
-<div id="useful-functions-to-work-with-matrices" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Useful Functions to Work with Matrices</h3>
+<div id="linear-algebra" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Linear Algebra</h3>
 <p>As with vectors, there are some useful functions that can be used with matrices. A first example is the function <code>dim()</code> that allows to determine the dimension of a matrix. For example, consider the following <span class="math inline">\(4 \times 2\)</span> matrix</p>
 <span class="math display">\[\begin{equation*}
 \mathbf{A} = \left[
@@ -796,69 +799,48 @@ y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3<
 <span class="co"># Sample mean</span>
 one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
 (<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
-<<<<<<< HEAD
-<pre><code>## [1] -0.3777272</code></pre>
+<pre><code>## [1] 0.1353213</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] -0.3777272</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.1353213</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
 H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
 (<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 4.661235</code></pre>
+<pre><code>## [1] 4.567581</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 4.661235</code></pre>
+## [1,] 4.567581</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
 y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
 (<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] -0.1118769</code></pre>
+<pre><code>## [1] -0.1375739</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
 <pre><code>##            [,1]
-## [1,] -0.1118769</code></pre>
-=======
-<pre><code>## [1] -0.1143037</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] -0.1143037</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
-H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
-(<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 3.539234</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
-<pre><code>##          [,1]
-## [1,] 3.539234</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
-y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
-(<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] -0.1127139</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] -0.1127139</code></pre>
->>>>>>> origin/master
+## [1,] -0.1375739</code></pre>
 </div>
 <div id="example-least-squares" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Example: Least-squares</h3>
-<p>If the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span>, the least-squares estimator for <span class="math inline">\(\boldsymbol{\beta}\)</span> is given by:</p>
+<p>If the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, the least-squares estimator for <span class="math inline">\(\boldsymbol{\beta}\)</span> is given by:</p>
 <span class="math display" id="eq:lsformula">\[\begin{equation}
   \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
 \tag{2.1}
 \end{equation}\]</span>
-<p>In the comment box below, we derive Eq. <a href="data.html#eq:lsformula">(2.1)</a>. If you aren’t familiar with such calculation it might to read or something like this</p>
+<p>In the comment box below, we derive Eq. <a href="data.html#eq:lsformula">(2.1)</a>. If you aren’t familiar with such calculations we suggest you read some introduction to linear regression (see for example <span class="citation">Seber and Lee (<a href="#ref-seber2012linear">2012</a>)</span>).</p>
 
 <div class="rmdtip">
-<p>The least-square estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> can be defined as</p>
+<p>The least-square estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
 <span class="math display">\[\begin{equation*}
  \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
 \end{equation*}\]</span>
-<p>The first step of this derivation is to rexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
+<p>The first step of this derivation is to reexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
 <span class="math display">\[\begin{equation*}
     \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
 \end{equation*}\]</span>
-<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transpose with changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, out next step is the compute</p>
+<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transposed without changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, our next step is to the following derivative</p>
 <span class="math display">\[\begin{equation*}
   \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
 \end{equation*}\]</span>
-<p>To do this we should remeber the following results</p>
+<p>To do this we should keep in mind the following results</p>
 <span class="math display">\[\begin{equation*}
   \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
    \boldsymbol{y}^T \mathbf{X},
@@ -879,7 +861,7 @@ y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum
 <span class="math display">\[\begin{equation*}
   \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
 \end{equation*}\]</span>
-<p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exist, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
+<p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
 <span class="math display">\[\begin{equation*}
   \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
 \end{equation*}\]</span>
@@ -891,17 +873,17 @@ which verifies Eq. <a href="data.html#eq:lsformula">(2.1)</a>.
 \text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
 \tag{2.2}
 \end{equation}\]</span>
-<p>the derivation of this results is explain in the comment box below.</p>
+<p>the derivation of this result is explained in the comment box below.</p>
 
 <div class="rmdtip">
-<p>We let <span class="math inline">\(\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T\)</span>. Then, we have</p>
+<p>If we let <span class="math inline">\(\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T\)</span>, then we have</p>
 <span class="math display">\[\begin{equation*}
 \begin{aligned}
   \text{Var} \left(\hat{\boldsymbol{\beta}} \right) &amp;= \text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T \\
   &amp; = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T  \mathbf{X} \left(\mathbf{X}^T \mathbf{X}\right)^{-1} = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
 \end{aligned}
 \end{equation*}\]</span>
-<p>which verifies Eq. <a href="data.html#eq:lsvar">(2.2)</a>. To understand the above derivation we might be usefull to remind and point out a few things:</p>
+<p>which verifies Eq. <a href="data.html#eq:lsvar">(2.2)</a>. To understand the above derivation it may be useful to remind and point out a few things:</p>
 <ul>
 <li><span class="math inline">\(\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T\)</span> since <span class="math inline">\(\mathbf{A}\)</span> is not a random variable.</li>
 <li><span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span> since<span class="math inline">\(\text{Var} \left( \mathbf{y} \right) = \sigma^2 \mathbf{I}\)</span> and therefore we have <span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span>.</li>
@@ -909,13 +891,85 @@ which verifies Eq. <a href="data.html#eq:lsformula">(2.1)</a>.
 </div>
 </li>
 </ul>
-<p>In general, the residual variance is unknown and needs to estimate. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
+<p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
 <span class="math display" id="eq:lssig2hat">\[\begin{equation}
   \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
   \tag{2.3}
 \end{equation}\]</span>
 <p>DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW.</p>
-<p>Let’s implement Eq. <a href="data.html#eq:lsformula">(2.1)</a> to <a href="data.html#eq:lssig2hat">(2.3)</a> and compare with the <code>lm()</code> implemented in base R. Before doing maybe we could use the dataset <code>hubble</code>. I think it is quite cool as it can be used to estimate the “age” of the universe and test wether the estimate of the age of the universe by Creation Scientists (based on a reading of the Bible) is reasonable. This is an example based on Simon Woods book. If we do this example, we should add something on confidence interval and I think he could the normal distribution (instead of t-distribution) to avoid going into details. Anyway the t-test relies on Normal assumption which is hard to verify. In the following chapter, we could use this example to show the various form of boostrap (parametric, non-parametric, semi-parametric). Let me know what you think.</p>
+<p>ROB COMMENT: Maybe I’d ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)</p>
+<p>Let’s implement Eq. <a href="data.html#eq:lsformula">(2.1)</a> to <a href="data.html#eq:lssig2hat">(2.3)</a> and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R. To do so, we will study an example taken from <span class="citation">Wood (<a href="#ref-wood2017generalized">2017</a>)</span> which discusses a dataset collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the “Hubble constant’’ which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the”big bang&quot; theory. The link is given by this simple linear relationship</p>
+<span class="math display">\[\begin{equation*}
+  y = \beta x ,
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(y\)</span> represents the velocity while <span class="math inline">\(x\)</span> is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. <span class="math inline">\(\beta^{-1}\)</span>) gives the age of the universe based on the big bang theory.</p>
+<p>Therefore let us use the abovementioned dataset to estimate Hubble’s constant to then get an estimate of the age of the universe. This dataset can be found in the <code>gamair</code> package under the name <code>hubble</code> and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load gamair library and retrieve Hubble dataset</span>
+<span class="kw">library</span>(gamair)</code></pre></div>
+<pre><code>## Warning: package &#39;gamair&#39; was built under R version 3.4.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(hubble)
+
+<span class="co"># Plot data</span>
+<span class="kw">plot</span>(<span class="dt">y =</span> hubble$y, <span class="dt">x =</span> hubble$x, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="data.html#eq:lsformula">(2.1)</a> to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define parameters and variables</span>
+n =<span class="st"> </span><span class="kw">dim</span>(hubble)[<span class="dv">1</span>] <span class="co"># number of observations</span>
+p =<span class="st"> </span><span class="dv">1</span> <span class="co"># number of explanatory variables</span>
+df =<span class="st"> </span>n -<span class="st"> </span>p <span class="co"># degrees of freedom</span>
+x =<span class="st"> </span>hubble$x <span class="co"># distance (explanatory variable)</span>
+y =<span class="st"> </span>hubble$y <span class="co"># velocity (response variable)</span>
+
+<span class="co"># Estimate of beta from Eq. (1.1)</span>
+beta.hat =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(x)%*%x)%*%<span class="kw">t</span>(x)%*%y</code></pre></div>
+<p>We now have an estimated value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hubble.const =<span class="st"> </span>beta.hat/<span class="fl">3.09e19</span> <span class="co"># Estimated Hubble&#39;s constant in inverse seconds</span>
+age.sec =<span class="st"> </span><span class="dv">1</span>/hubble.const <span class="co"># Age of the universe in seconds</span>
+age.sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">24</span>*<span class="dv">365</span>) <span class="co"># Age of the universe in years</span></code></pre></div>
+<pre><code>##             [,1]
+## [1,] 12794692825</code></pre>
+<p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>.</p>
+<p>Now, let’s suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. In order to do so we need to know the variance of <span class="math inline">\(\hat{\beta}\)</span> and we consequently need to estimate <span class="math inline">\(\sigma^2\)</span> since we don’t know it. Let us therefore use Eq. <a href="data.html#eq:lsvar">(2.2)</a> and <a href="data.html#eq:lssig2hat">(2.3)</a> to compute it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimate of the residual variance from Eq. (1.3)</span>
+resid =<span class="st"> </span>y -<span class="st"> </span>x*beta.hat</code></pre></div>
+<pre><code>## Warning in x * beta.hat: Recycling array of length 1 in vector-array arithmetic is deprecated.
+##   Use c() or as.vector() instead.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sigma2.hat =<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
+
+<span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
+var.beta =<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(x)%*%x)</code></pre></div>
+<p>We now have all the information regarding the distribution of <span class="math inline">\(\hat{\beta}\)</span> to test the Creation Scientists’ hypothesis. Indeed, for this purpose we can build a 95% confidence interval for the true Hubble constant <span class="math inline">\(\beta\)</span> and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows</p>
+<span class="math display">\[\begin{equation*}
+  H_0 \, : \, \beta = 163 \times 10^6 ,
+\end{equation*}\]</span>
+<p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). Since we now have the necessary information, let us build a confidence interval for which we will assume that the estimated variance of <span class="math inline">\(\hat{\beta}\)</span> is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our analysis). Assuming therefore that</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\beta} \sim \mathcal{N}\left(\beta,\hat{\sigma}^2(X^TX)^{-1}\right) ,
+\end{equation*}\]</span>
+<p>we consequently have that the confidence interval is given by</p>
+<span class="math display" id="eq:cibeta">\[\begin{equation}
+  \left[\hat{\beta} - z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \, , \, \hat{\beta} + z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \right] ,
+  \tag{2.4}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1-\alpha/2)^{th}\)</span> quantile of the standard normal distribution where, in our case, <span class="math inline">\(\alpha = 0.05\)</span> which delivers a 95% confidence interval. Let us therefore replace the values in Eq. <a href="data.html#eq:cibeta">(2.4)</a>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for the Hubble constant</span>
+ci.beta =<span class="st"> </span><span class="kw">c</span>(beta.hat -<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.975</span>)*<span class="kw">sqrt</span>(var.beta), beta.hat +<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.975</span>)*<span class="kw">sqrt</span>(var.beta))
+ci.beta</code></pre></div>
+<pre><code>## [1] 68.81032 84.35203</code></pre>
+<p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level. To conclude this analysis, let us compare the results of Eq. <a href="data.html#eq:lsformula">(2.1)</a> to <a href="data.html#eq:lssig2hat">(2.3)</a> with the outputs of the linear regression function <code>lm()</code> that can be found in base R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(y~x<span class="dv">-1</span>)
+
+<span class="co"># Compare outputs</span>
+equation_results =<span class="st"> </span><span class="kw">c</span>(beta.hat, sigma2.hat)
+function_results =<span class="st"> </span><span class="kw">c</span>(fit_lm$coefficients, (<span class="dv">1</span>/df)*<span class="kw">t</span>(fit_lm$residuals)%*%fit_lm$residuals)
+results =<span class="st"> </span><span class="kw">cbind</span>(equation_results, function_results)
+<span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;beta.hat&quot;</span>, <span class="st">&quot;sigma2.hat&quot;</span>)
+results</code></pre></div>
+<pre><code>##            equation_results function_results
+## beta.hat           76.58117         76.58117
+## sigma2.hat      67046.33165      67046.33165</code></pre>
+<p>As one can notice, the two procedures give the same outputs.</p>
 </div>
 </div>
 <div id="array" class="section level2">
@@ -932,6 +986,7 @@ which verifies Eq. <a href="data.html#eq:lsformula">(2.1)</a>.
                 <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)</code></pre></div>
 <pre><code>## Warning: package &#39;ggmap&#39; was built under R version 3.4.1</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glasgow_coord =<span class="st"> </span><span class="kw">geocode</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glasgow_coord</code></pre></div>
 <pre><code>##         lon      lat
@@ -962,7 +1017,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-64-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-70-1.png" width="720" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level2">
@@ -1088,16 +1143,22 @@ for (i in <span class="dv">1</span>:B){
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.275000 1.763125</code></pre>
+## 0.311875 1.613125</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
 </div>
 </div>
-<h3> GitHub</h3>
+<h3> Basic Probability and Statistics</h3>
 <div id="refs" class="references">
 <div id="ref-wickham2014advanced">
 <p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press.</p>
+</div>
+<div id="ref-seber2012linear">
+<p>Seber, George AF, and Alan J Lee. 2012. <em>Linear Regression Analysis</em>. Vol. 936. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-wood2017generalized">
+<p>Wood, Simon N. 2017. <em>Generalized Additive Models: An Introduction with R</em>. CRC press.</p>
 </div>
 </div>
             </section>
