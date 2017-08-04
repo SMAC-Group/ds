@@ -899,10 +899,31 @@ results
 
 As one can notice, the two procedures give the same outputs.
 
-## Array
+## Array {#array}
 
+Simply, vectors are one-dimensional and matrices are two-dimensional objects, and these homogenous objects are also known as **arrays**. We can extend the array into more than two dimensions by specifying the `dim` parameter within the `array` function. 
 
+Below we initialize a three dimensional array, from 2 to 13. 
+```{r}
+three_dim = array(data = 2:13, dim = c(2, 3, 2))
+three_dim
+```
 
+As you can see, two 2x3 matrices were created containing numbers from 2 to 13. The `, , *` syntax describes which specific dimension the matrix is contained in. 
+Like what we experimented with matrices, we can extract and manipulate information. 
+
+```{r}
+length(three_dim) # length is 12 
+dim(three_dim) # dimensions are 2x3x2
+is.array(three_dim) # yes it is an array!
+```
+
+Note that when changing the dimension names, we need to save it as a `list`. We will talk more about lists in the coming section. 
+
+```{r}
+dimnames(three_dim) = list(c("apple", "banana"), c("one", "two", "three"), c("Walmart", "Costco")) # feel free to make 
+three_dim
+```
 
 
 ## List
