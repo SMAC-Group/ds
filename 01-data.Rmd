@@ -802,6 +802,8 @@ DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE 
 
 ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)
 
+JUSTIN COMMENT: I agree with Rob's suggestion :) 
+
 Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. To do so, we will study an example taken from @wood2017generalized which discusses a dataset collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the "Hubble constant'' which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the "big bang" theory. The link is given by this simple linear relationship
 
 \begin{equation*}
