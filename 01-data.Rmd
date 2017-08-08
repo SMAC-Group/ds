@@ -802,6 +802,8 @@ DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE 
 
 ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)
 
+JUSTIN COMMENT: I agree with Rob's suggestion :) 
+
 Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. To do so, we will study an example taken from @wood2017generalized which discusses a dataset collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the "Hubble constant'' which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the "big bang" theory. The link is given by this simple linear relationship
 
 \begin{equation*}
@@ -927,6 +929,29 @@ three_dim
 
 
 ## List
+
+A list is one of the commonly used heterogeneous data structures, which depicts a generic vector containing other object types. For example, we can have a numeric vector as one element, a matrix, and a character vector as another element. Here we can create a list that contains all these different element types. 
+
+```{r}
+num_vec = c(160, 188, 140)
+char_vec = c("Height", "Weight", "Length")
+my_mat = matrix(0, nrow = 5, ncol = 5)
+
+# List Initialization without Names 
+# list(num_vec, char_vec, my_mat)
+
+# List Initialization with Custom Names 
+list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)
+```
+
+Let's store this list in a variable. 
+
+```{r}
+my_list = list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)
+```
+
+
+
 
 ## Dataframe
  
