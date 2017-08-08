@@ -1,5 +1,5 @@
 --- 
-title: "Let's find a good title"
+title: "An Introduction to Statistical Programming Methods with R"
 author: "Matthew Beckman, Stéphane Guerrier, Justin Lee & Roberto Molinari"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -16,9 +16,39 @@ includes:
 
 # Introduction
 
+A nice introduction to explain what this text is about + objectives (maybe a bullet points with objectives). Maybe add something along the lines of: R is used both for software development and data analysis. In this text we will operate in a grey area, somewhere between these two tasks. Indeed, this document presents an intro to statistical programming (i.e. software dev) where data and statical methods will be used to illustrate these concepts.
 
+## About this book
 
-Explain what this text is about + objectives.
+This book was originally (and currently) designed for use for various class (????? Matt should we add some details here?) at Penn State. This document is **under active development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due its current development of this book you may encounter errors ranging from broken code to poorly explained topics. If you do, please let us know! Simply send an email at ???????? (which email should we put??) or add an issue to the GitHub repository used for this document (which can be accessed here????) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself. 
+
+## Conventions
+
+Throughout this book, `R` code will be typeset using a `monospace` font which is syntax highlighted. For example:
+
+```{r, eval = FALSE}
+a = pi
+b = 0.5
+sin(a*b)
+```
+
+Similarly, `R` output lines, which would appear in your console will begin with `##` will not be syntax highlighted. The output of the above is given by:
+
+```{r, echo = FALSE}
+a = pi
+b = 0.5
+sin(a*b)
+```
+
+Maybe we should add something about the boxes we are using... Rob what do you think?
+
+## Liscence
+
+We probably should pick a liscence... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
+
+## Why R?
+
+Rob could you rewrite this a little?
 
 This chapter should summarize the advantage of using R. Following Hadley's Advanced R, here are the main points:
 
@@ -32,6 +62,74 @@ This chapter should summarize the advantage of using R. Following Hadley's Advan
 Maybe add drawback of R, for me the main one is that R is slow and doesn't manages well memory. There are certainly other just as the inconsistency between packages.
 
 It would be nice to add some kind of list of "what you should be able to do after reading this text".
+
+## Getting started with R
+
+`R` can be taught of a programming language as well as a software environment for statistical programming. `R` is free and open-source. To get started, you will need to install two software:
+
+- [`R`](https://cran.r-project.org/) (the programming language).
+- [RStudio](https://www.rstudio.com/) (integrated development environment recommended to work with `R`).
+
+**Matt** are we missing something here?
+
+### About RStudio
+
+**Matt** would you have something we could use here?
+**Justin** what about a video here to introduce RStudio???
+
+We should add a link to the RStudio "[cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)"
+
+
+### Simple calculations
+
+In this section, we present how simple calculations can be made in R. In the table below we show a few examples where the first column show a mathematical epxression, the second the equivalence of this expression in R and finally in the third its result.
+
+| Math.              |R                   | Result      |
+|:-------------------|:-------------------|:------------|
+| 2+2                | `2+2`              | `4`         |
+| $\frac{4}{2}$      | `4/2`              | `2`         |
+| $3 \cdot 2^{-0.8}$ | `3*2^(-0.8)`       | `1.723048`  |
+| $\sqrt{2}$         | `sqrt(2)`          | `1.414214`  |
+| $\pi$              | `pi`               | `3.141593`  |
+| $\log(2)$          | `log(2)`           | `0.6931472` |
+| $\log_{3}(9)$      | `log(9, base = 3)` | `2`         |
+| $e^{1.1}$          | `exp(1.1)`         | `3.004166`  |
+| $\cos(\sqrt{0.9})$ | `cos(sqrt(0.9))`   | `0.5827536` |
+
+
+### Getting help
+
+In the previous section, we presented some examples on how R can be used a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in R, simply put a question mark in front of the function name and its documentation will be displayed. For example, if you are interested about learning about the function `log()` you simply type:
+
+```{r}
+?log()
+```
+
+which will display something similar to:
+
+![](images/example-log-help.png)
+
+Frequently one of the most difficult things to do when learning R is asking for help. First, you need to decide to ask for help, then you need to know how to ask for help. Your very first line of defense should be to Google your error message or a short description of your issue. (The ability to solve problems using this method is quickly becoming an extremely valuable skill.) If that fails, and it eventually will, you should ask for help. There are a number of things you should include when emailing an instructor, or posting to a help website such as Stack Exchange.
+
+### Installing packages
+
+`R` comes with a number of built-in functions but one its main strengths is that there is a large numbers of packages that you can install. These packages add additional functions, features and data to the R environement. If you want to something in `R` which is not available by default, there is a good chance that there is packages that will do what you want. 
+
+`R` packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the `install.packages()` function. In Chapter ????? (github) we will see other ways of installing packages. The use of the `install.packages()` is quite simple, for example if you want to install the package `devtools` you can simply write:
+
+```{r, eval = FALSE}
+install.packages(devtools)
+```
+
+Once a package is installed, you will have to "load" it into your current `R` session before being able to used it. This is generally done with the function `library()` and for example with the `devtools` package you would write:
+
+```{r, eval = FALSE}
+library(devtools)
+```
+
+Once you close `R`, all packages will closed and you will have to load them again but you don't have to install packages again.
+
+## Main references 
 
 Finally, a few remarks on conventions, references (this text will use a lot Hadley's books) and some acknowledgements.
 
