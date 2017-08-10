@@ -950,7 +950,28 @@ Let's store this list in a variable.
 my_list = list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)
 ```
 
+We can subset lists like we did previously. 
 
+```{r}
+# Extract the first and third element 
+my_list[c(1, 3)]
+
+# Compare these two subsets  
+my_list[1]
+my_list[[1]]
+```
+
+Do you see what the difference is? One generally uses `[[` to select any single element, whereas `[` returns a list of the selected elements. Using one bracket retains the class information, while using two brackets simplifies the list into a numeric vector. 
+
+We can further subset the list. 
+
+```{r}
+# First element of the $Number list 
+my_list[[1]][1]
+
+# Why didn't this work? 
+my_list[1][1]
+```
 
 
 ## Dataframe
