@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Let’s find a good title</title>
+  <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="LEt’s add somethign here">
   <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Let’s find a good title" />
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="smac-group/ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Let’s find a good title" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
   
   <meta name="twitter:description" content="LEt’s add somethign here" />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-07-29">
+<meta name="date" content="2017-08-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -103,7 +103,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this book</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.2</b> Conventions</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#liscence"><i class="fa fa-check"></i><b>1.3</b> Liscence</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.4</b> Why R?</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.5</b> Getting started with R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.5.1</b> About RStudio</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.5.2</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.5.3</b> Getting help</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.5.4</b> Installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.6</b> Main references</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a><ul>
 <li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>2.1.1</b> Type</a></li>
@@ -117,7 +129,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>2.2.1</b> Subsetting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data.html"><a href="data.html#useful-functions-to-work-with-matrices"><i class="fa fa-check"></i><b>2.2.2</b> Useful Functions to Work with Matrices</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data.html"><a href="data.html#linear-algebra"><i class="fa fa-check"></i><b>2.2.2</b> Linear Algebra</a></li>
 <li class="chapter" data-level="2.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>2.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
 <li class="chapter" data-level="2.2.4" data-path="data.html"><a href="data.html#example-least-squares"><i class="fa fa-check"></i><b>2.2.4</b> Example: Least-squares</a></li>
 </ul></li>
@@ -158,9 +170,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
 <li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a><ul>
-<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a></li>
+<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="r-markdown.html"><a href="r-markdown.html#subsections"><i class="fa fa-check"></i><b>8.1.1</b> Subsections</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="r-markdown.html"><a href="r-markdown.html#text"><i class="fa fa-check"></i><b>8.2</b> Text</a></li>
-<li class="chapter" data-level="8.3" data-path="r-markdown.html"><a href="r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>8.3</b> Code Chunks</a></li>
+<li class="chapter" data-level="8.3" data-path="r-markdown.html"><a href="r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>8.3</b> Code Chunks</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="r-markdown.html"><a href="r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>8.3.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="8.3.2" data-path="r-markdown.html"><a href="r-markdown.html#latex-equations"><i class="fa fa-check"></i><b>8.3.2</b> LaTeX Equations</a></li>
+<li class="chapter" data-level="8.3.3" data-path="r-markdown.html"><a href="r-markdown.html#cross-referencing-sections"><i class="fa fa-check"></i><b>8.3.3</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="8.3.4" data-path="r-markdown.html"><a href="r-markdown.html#tables"><i class="fa fa-check"></i><b>8.3.4</b> Tables</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="r-markdown.html"><a href="r-markdown.html#render-output"><i class="fa fa-check"></i><b>8.4</b> Render Output</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>9</b> GitHub</a><ul>
@@ -170,6 +189,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.4" data-path="github.html"><a href="github.html#configuration"><i class="fa fa-check"></i><b>9.4</b> Configuration</a></li>
 <li class="chapter" data-level="9.5" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>9.5</b> GitHub Setup</a></li>
 <li class="chapter" data-level="9.6" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>9.6</b> Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Probability and Statistics</a><ul>
+<li class="chapter" data-level="10.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#probability-distributions"><i class="fa fa-check"></i><b>10.1</b> Probability Distributions</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#problem"><i class="fa fa-check"></i>Problem</a></li>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#answer"><i class="fa fa-check"></i>Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#summary-statistics"><i class="fa fa-check"></i><b>10.2</b> Summary Statistics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#numeric-input"><i class="fa fa-check"></i><b>10.2.1</b> Numeric Input</a></li>
+<li class="chapter" data-level="10.2.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#factor-input"><i class="fa fa-check"></i><b>10.2.2</b> Factor Input</a></li>
+<li class="chapter" data-level="10.2.3" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#dataset"><i class="fa fa-check"></i><b>10.2.3</b> Dataset</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -183,7 +213,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Let’s find a good title</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
           </h1>
         </div>
 
@@ -192,13 +222,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Let’s find a good title</h1>
+<h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
 <h4 class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari</em></h4>
-<h4 class="date"><em>2017-07-29</em></h4>
+<h4 class="date"><em>2017-08-08</em></h4>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Explain what this text is about + objectives.</p>
+<p>A nice introduction to explain what this text is about + objectives (maybe a bullet points with objectives). Maybe add something along the lines of: R is used both for software development and data analysis. In this text we will operate in a grey area, somewhere between these two tasks. Indeed, this document presents an intro to statistical programming (i.e. software dev) where data and statical methods will be used to illustrate these concepts.</p>
+<div id="about-this-book" class="section level2">
+<h2><span class="header-section-number">1.1</span> About this book</h2>
+<p>This book was originally (and currently) designed for use for various class (????? Matt should we add some details here?) at Penn State. This document is <strong>under active development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due its current development of this book you may encounter errors ranging from broken code to poorly explained topics. If you do, please let us know! Simply send an email at ???????? (which email should we put??) or add an issue to the GitHub repository used for this document (which can be accessed here????) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself.</p>
+</div>
+<div id="conventions" class="section level2">
+<h2><span class="header-section-number">1.2</span> Conventions</h2>
+<p>Throughout this book, <code>R</code> code will be typeset using a <code>monospace</code> font which is syntax highlighted. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span>pi
+b =<span class="st"> </span><span class="fl">0.5</span>
+<span class="kw">sin</span>(a*b)</code></pre></div>
+<p>Similarly, <code>R</code> output lines, which would appear in your console will begin with <code>##</code> will not be syntax highlighted. The output of the above is given by:</p>
+<pre><code>## [1] 1</code></pre>
+<p>Maybe we should add something about the boxes we are using… Rob what do you think?</p>
+</div>
+<div id="liscence" class="section level2">
+<h2><span class="header-section-number">1.3</span> Liscence</h2>
+<p>We probably should pick a liscence… How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?</p>
+</div>
+<div id="why-r" class="section level2">
+<h2><span class="header-section-number">1.4</span> Why R?</h2>
+<p>Rob could you rewrite this a little?</p>
 <p>This chapter should summarize the advantage of using R. Following Hadley’s Advanced R, here are the main points:</p>
 <ul>
 <li>Free, open source which implies easy results can easily be replicated.</li>
@@ -210,8 +261,106 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Maybe add drawback of R, for me the main one is that R is slow and doesn’t manages well memory. There are certainly other just as the inconsistency between packages.</p>
 <p>It would be nice to add some kind of list of “what you should be able to do after reading this text”.</p>
+</div>
+<div id="getting-started-with-r" class="section level2">
+<h2><span class="header-section-number">1.5</span> Getting started with R</h2>
+<p><code>R</code> can be taught of a programming language as well as a software environment for statistical programming. <code>R</code> is free and open-source. To get started, you will need to install two software:</p>
+<ul>
+<li><a href="https://cran.r-project.org/"><code>R</code></a> (the programming language).</li>
+<li><a href="https://www.rstudio.com/">RStudio</a> (integrated development environment recommended to work with <code>R</code>).</li>
+</ul>
+<p><strong>Matt</strong> are we missing something here?</p>
+<div id="about-rstudio" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> About RStudio</h3>
+<p><strong>Matt</strong> would you have something we could use here? <strong>Justin</strong> what about a video here to introduce RStudio???</p>
+<p>We should add a link to the RStudio “<a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">cheatsheet</a>”</p>
+</div>
+<div id="simple-calculations" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Simple calculations</h3>
+<p>In this section, we present how simple calculations can be made in R. In the table below we show a few examples where the first column show a mathematical epxression, the second the equivalence of this expression in R and finally in the third its result.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Math.</th>
+<th align="left">R</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2+2</td>
+<td align="left"><code>2+2</code></td>
+<td align="left"><code>4</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\frac{4}{2}\)</span></td>
+<td align="left"><code>4/2</code></td>
+<td align="left"><code>2</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(3 \cdot 2^{-0.8}\)</span></td>
+<td align="left"><code>3*2^(-0.8)</code></td>
+<td align="left"><code>1.723048</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\sqrt{2}\)</span></td>
+<td align="left"><code>sqrt(2)</code></td>
+<td align="left"><code>1.414214</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\pi\)</span></td>
+<td align="left"><code>pi</code></td>
+<td align="left"><code>3.141593</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\log(2)\)</span></td>
+<td align="left"><code>log(2)</code></td>
+<td align="left"><code>0.6931472</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\log_{3}(9)\)</span></td>
+<td align="left"><code>log(9, base = 3)</code></td>
+<td align="left"><code>2</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(e^{1.1}\)</span></td>
+<td align="left"><code>exp(1.1)</code></td>
+<td align="left"><code>3.004166</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\cos(\sqrt{0.9})\)</span></td>
+<td align="left"><code>cos(sqrt(0.9))</code></td>
+<td align="left"><code>0.5827536</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="getting-help" class="section level3">
+<h3><span class="header-section-number">1.5.3</span> Getting help</h3>
+<p>In the previous section, we presented some examples on how R can be used a calculator and we have already seen several functions such as <code>sqrt()</code> or <code>log()</code>. To obtain documentation about a function in R, simply put a question mark in front of the function name and its documentation will be displayed. For example, if you are interested about learning about the function <code>log()</code> you simply type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?<span class="kw">log</span>()</code></pre></div>
+<p>which will display something similar to:</p>
+<div class="figure">
+<img src="images/example-log-help.png" />
+
+</div>
+<p>Frequently one of the most difficult things to do when learning R is asking for help. First, you need to decide to ask for help, then you need to know how to ask for help. Your very first line of defense should be to Google your error message or a short description of your issue. (The ability to solve problems using this method is quickly becoming an extremely valuable skill.) If that fails, and it eventually will, you should ask for help. There are a number of things you should include when emailing an instructor, or posting to a help website such as Stack Exchange.</p>
+</div>
+<div id="installing-packages" class="section level3">
+<h3><span class="header-section-number">1.5.4</span> Installing packages</h3>
+<p><code>R</code> comes with a number of built-in functions but one its main strengths is that there is a large numbers of packages that you can install. These packages add additional functions, features and data to the R environement. If you want to something in <code>R</code> which is not available by default, there is a good chance that there is packages that will do what you want.</p>
+<p><code>R</code> packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the <code>install.packages()</code> function. In Chapter ????? (github) we will see other ways of installing packages. The use of the <code>install.packages()</code> is quite simple, for example if you want to install the package <code>devtools</code> you can simply write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(devtools)</code></pre></div>
+<p>Once a package is installed, you will have to “load” it into your current <code>R</code> session before being able to used it. This is generally done with the function <code>library()</code> and for example with the <code>devtools</code> package you would write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)</code></pre></div>
+<p>Once you close <code>R</code>, all packages will closed and you will have to load them again but you don’t have to install packages again.</p>
+</div>
+</div>
+<div id="main-references" class="section level2">
+<h2><span class="header-section-number">1.6</span> Main references</h2>
 <p>Finally, a few remarks on conventions, references (this text will use a lot Hadley’s books) and some acknowledgements.</p>
 
+</div>
 </div>
             </section>
 

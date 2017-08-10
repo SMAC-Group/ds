@@ -10,10 +10,9 @@ What are the advantages of these different inferential methods? Which approach a
 - *arguments*: the inputs the user gives to the function which will determine the value or type of output of a function;
 - *environment*: every R function is built within an enviroment of reference from which to source possible input values and/or other functions necessary for it to work.
 
-We will briefly go over these components by building a function implementing the non-parametric bootstrap to find a confidence interval for the sample mean which we saw in the previous chapter:
+While the first component is the collection of commands that we saw in the previous chapters which deliver the output of interest, we will focus more on the last two components by building a function implementing the non-parametric bootstrap to find a confidence interval for the sample mean which we saw in the previous chapter:
 
 ```{r}
-
 nonpar_boot <- function(x, B = 500, alpha = 0.05) {
   
   boot_mean <- rep(NA, B)
@@ -21,42 +20,84 @@ nonpar_boot <- function(x, B = 500, alpha = 0.05) {
 
   for (i in 1:B) {
     
-    sample_star = x[sample(1:n, replace = TRUE)]
-    boot_mean[i] = mean(sample_star)
+    sample_star <- x[sample(1:n, replace = TRUE)]
+    boot_mean[i] <- mean(sample_star)
     
   }
 
   return(quantile(boot_mean, c(alpha/2, 1 - alpha/2)))
   
 }
-
 ```
 
 ## Function arguments
 
 As you can see, the function's name is "nonpar_boot( )" and it has three arguments to it:
 
-- "x" which represents the original sample on which we would like to perform the bootstrap procedure;
-- "B" which represents the number of bootstrap samples we wish to generate;
-- "alpha" which determines the size of the confidence interval we wish to compute
+- `x` which represents the original sample on which we would like to perform the bootstrap procedure;
+- `B` which represents the number of bootstrap samples we wish to generate;
+- `alpha` which determines the size of the confidence interval we wish to compute
 
-The function therefore has three arguments to it and these can be extracted by using the function "formals( )"
+The function therefore has three arguments to it and these can be extracted by using the function `formals()`:
 
 ```{r}
-
 formals(nonpar_boot)
-
 ```
 
-A feature which can be underlined at this stage is that, as can be seen for the above mentioned function, it is possible to provide default values for some, all or none of the function arguments. In this case, default values have been given for the arguments B and alpha, consequently the user does not need to specify the value of these arguments unless they wish to specify different values compared to the default values given.
-
+A feature which can be underlined at this stage is that, as can be seen for the above mentioned function, it is possible to provide default values for some, all or none of the function arguments. In this case, default values have been given for the arguments `B` and `alpha`, consequently the user does not need to specify the value of these arguments unless they wish to specify different values compared to the default values given.
 
 ```{block2, type='rmdnote'}
 R functions are quite flexible when specifying the arguments. These can in fact be specified by exact name, prefix matching or position (and are given priority in this order). For example, one could specify the arguments for the above non-parametric bootstrap function as follows "nonpar_boot(B = 200, sim, a = 0.1)" where the object "sim" is the sample which in the function is named "x". For a more in-depth overview of this feature refer to @wickham2014advanced.
 ```
 
+The definition of the argument values can be very flexible and can also be defined as functions of other arguments. For example, we could have defined the bootstrap function as follows:
+
+```{r}
+nonpar_boot_numb1 <- function(x, B = ceiling(length(x)*alpha), alpha = 0.05) {
+  
+  boot_mean <- rep(NA, B)
+  n <- length(x)
+
+  for (i in 1:B) {
+    
+    sample_star <- x[sample(1:n, replace = TRUE)]
+    boot_mean[i] <- mean(sample_star)
+    
+  }
+
+  return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2))))
+  
+}
+
+sim <- rnorm(10e3)
+nonpar_boot_numb1(sim)$boot.number
+```
+
+or define it through variables that are included within the function itself:
+
+```{r}
+nonpar_boot_numb2 <- function(x, B = value, alpha = 0.05) {
+  
+  value <- ceiling(length(x)*alpha)
+  boot_mean <- rep(NA, B)
+  n <- length(x)
+
+  for (i in 1:B) {
+    
+    sample_star <- x[sample(1:n, replace = TRUE)]
+    boot_mean[i] <- mean(sample_star)
+    
+  }
+
+  return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2))))
+  
+}
+
+nonpar_boot_numb2(sim)$boot.number
+```
 
 
-## Function body
 
 ## Function environment
+
+## Function attributes

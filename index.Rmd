@@ -1,5 +1,5 @@
 --- 
-title: "Let's find a good title"
+title: "An Introduction to Statistical Programming Methods with R"
 author: "Matthew Beckman, Stéphane Guerrier, Justin Lee & Roberto Molinari"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -16,9 +16,26 @@ includes:
 
 # Introduction
 
+This book is currently under development and has been designed as a support for students who are following (or are interested in) courses that provide the basic knowledge to master "statistical programming". By the latter we mean that area of computer programming which focuses on the implementation of methods that not only manage data but also extract meaningful information from it. The importance of this area of research comes from the increased collection of data from different sources such as academic research, public institutions and private companies that has required a corresponding increase in data management and analysis tools. Consequently, the need to develop applications and methods that are able to deliver these tools has brought to a surge in the demand for expertise not only in computer programming but also in statistical and numerical analysis. Indeed, while it is essential to master the basics of programming to build the necessary software, it is now also paramount to understand the programming tools that can effectively respond to the need of finding, extracting and analysing the information to achieve the required goals.
 
+Within the above framework, the statistical software R has seen a rise in use due to its flexibility as an efficient language that builds a bridge between software development and data analysis. There are of course many other programming languages that have different advantages over R but, as explained further on, the latter is able to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions (as well as other interesting features described below). With this premise, this book intends to present the basic tools to statistical programming and software development using the wide variety of tools made available through R, from method-specific packages to version control programs. The general goals of the book are therefore the following:
 
-Explain what this text is about + objectives.
+* Understand data structures in order to manage data, computer memory and computations in an appropriate manner;
+* Manipulate data structures through controls, instructions and tailored functions in order to achieve the desired output;
+* Create software platforms (packages and web applications) that collect the developed functions in order to respond to a certain need;
+* Learn how to manage software development via version control tools (GitHub) and create documentation for this software (with embedded code) to allow others to make use of the software.
+
+All these goals are common to any basic programming course, however all these will be heavily focused on the use and development of statistical tools. In fact, as highlighted earlier, it has become increasingly important to include statistical methodologies within the programming framework thereby allowing software to not only manage data efficiently but also to extract and analyse data in an appropriate manner while doing so. The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents. In this perspective, 
+
+```{block2,  type='rmdimportant'}
+This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply send an email to ???????? or add an issue to the GitHub repository used for this document (which can be accessed here????) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you're not familiar with these tools, they will be explained later on in the book itself.
+```
+
+## R and RStudio
+
+### Why R?
+
+Rob could you rewrite this a little?
 
 This chapter should summarize the advantage of using R. Following Hadley's Advanced R, here are the main points:
 
@@ -33,5 +50,181 @@ Maybe add drawback of R, for me the main one is that R is slow and doesn't manag
 
 It would be nice to add some kind of list of "what you should be able to do after reading this text".
 
+
+### Getting started with R
+
+`R` can be taught of a programming language as well as a software environment for statistical programming. `R` is free and open-source. To get started, you will need to install two software:
+
+- [`R`](https://cran.r-project.org/) (the programming language).
+- [RStudio](https://www.rstudio.com/) (integrated development environment recommended to work with `R`).
+
+**Matt** are we missing something here?
+
+### About RStudio
+
+**Matt** would you have something we could use here?
+**Justin** what about a video here to introduce RStudio???
+
+We should add a link to the RStudio "[cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)"
+
+### Conventions
+
+Throughout this book, `R` code will be typeset using a `monospace` font which is syntax highlighted. For example:
+
+```{r, eval = FALSE}
+a = pi
+b = 0.5
+sin(a*b)
+```
+
+Similarly, `R` output lines, which would appear in your console will begin with `##` will not be syntax highlighted. The output of the above is given by:
+
+```{r, echo = FALSE}
+a = pi
+b = 0.5
+sin(a*b)
+```
+
+Maybe we should add something about the boxes we are using... Rob what do you think?
+
+### Simple calculations
+
+In this section, we present how simple calculations can be made in R. In the table below we show a few examples where the first column show a mathematical epxression, the second the equivalence of this expression in R and finally in the third its result.
+
+| Math.              |R                   | Result      |
+|:-------------------|:-------------------|:------------|
+| 2+2                | `2+2`              | `4`         |
+| $\frac{4}{2}$      | `4/2`              | `2`         |
+| $3 \cdot 2^{-0.8}$ | `3*2^(-0.8)`       | `1.723048`  |
+| $\sqrt{2}$         | `sqrt(2)`          | `1.414214`  |
+| $\pi$              | `pi`               | `3.141593`  |
+| $\log(2)$          | `log(2)`           | `0.6931472` |
+| $\log_{3}(9)$      | `log(9, base = 3)` | `2`         |
+| $e^{1.1}$          | `exp(1.1)`         | `3.004166`  |
+| $\cos(\sqrt{0.9})$ | `cos(sqrt(0.9))`   | `0.5827536` |
+
+
+### Getting help
+
+In the previous section, we presented some examples on how R can be used a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in R, simply put a question mark in front of the function name and its documentation will be displayed. For example, if you are interested about learning about the function `log()` you simply type:
+
+```{r}
+?log()
+```
+
+which will display something similar to:
+
+![](images/example-log-help.png)
+
+Frequently one of the most difficult things to do when learning R is asking for help. First, you need to decide to ask for help, then you need to know how to ask for help. Your very first line of defense should be to Google your error message or a short description of your issue. (The ability to solve problems using this method is quickly becoming an extremely valuable skill.) If that fails, and it eventually will, you should ask for help. There are a number of things you should include when emailing an instructor, or posting to a help website such as Stack Exchange.
+
+### Installing packages
+
+`R` comes with a number of built-in functions but one its main strengths is that there is a large numbers of packages that you can install. These packages add additional functions, features and data to the R environement. If you want to something in `R` which is not available by default, there is a good chance that there is packages that will do what you want. 
+
+`R` packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the `install.packages()` function. In Chapter ????? (github) we will see other ways of installing packages. The use of the `install.packages()` is quite simple, for example if you want to install the package `devtools` you can simply write:
+
+```{r, eval = FALSE}
+install.packages(devtools)
+```
+
+Once a package is installed, you will have to "load" it into your current `R` session before being able to used it. This is generally done with the function `library()` and for example with the `devtools` package you would write:
+
+```{r, eval = FALSE}
+library(devtools)
+```
+
+Once you close `R`, all packages will closed and you will have to load them again but you don't have to install packages again.
+
+## Basic Probability and Statistics with R
+
+### Probability Distributions 
+
+For probability distributions, we can compute basic values such as density, distribution, quantiles, random sampling using `R` built-in functions below. 
+
+-`dname` calculates density (pdf) at input `x`.
+-`pname` calculates distribution (cdf) at input `x`.
+-`qname` calculates the quantile at an input probability.
+-`rname` generates a random draw from a particular distribution.
+
+Note that we will replace `name` with the name of a given distribution. For example, a a random number generator for uniform distribution will be `runif`. To learn more about specific parameters and documentation for a function, type `?` before the function name into your `R` console. Common example probability distributions include, but are not limited to, binomial, chi-square, exponential, F, geometric, logistic, normal, poisson, t, and uniform. 
+
+Here's an example. 
+
+### Problem {-}
+
+Assume that the test scores of a college entrance exam fits a normal distribution. Furthermore, the mean test score is 70, and the standard deviation is 15. What is the percentage of students scoring 90 or more in the exam?
+
+### Answer {-}
+
+In this case, we consider a random variable $X$ that is normally distributed $X \sim N(\mu=70, \sigma^2=25)$. Since we are looking for the percentage of students scoring higher than 90, we are interested in the upper tail of the normal distribution.
+
+```{r}
+pnorm(q = 90, mean = 70, sd = 15, lower.tail = FALSE) 
+```
+
+We see that there is a 9% probability of students scoring 90 or more in the exam. Note that at `?pnorm` we see an additional parameter, `lower.tail` that indicates TRUE (default) if probabilities are P[X ≤ x] and FALSE otherwise, where P[X > x].
+
+### Summary Statistics 
+
+### Numeric Input 
+
+For central tendency or spread statistics of numeric input, we can use the following `R` build-in functions below. 
+
+- `mean` calculates the mean of an input `x`.
+- `median` calculates the median of an input `x`.
+- `var` calculates the variance of an input `x`.
+- `sd` calculates the standard deviation of an input `x`.
+- `IQR` calculates the interquartile range of an input `x`.
+- `min` calculates the minimum value of an input `x`. 
+- `max` calculates the maximum value of an input `x`. 
+- `range` returns a vector containing the minimum and maximum of all given arguments.  
+
+### Factor Input 
+
+For factor input, we can extract counts and percentages as summary by using `table`. 
+
+Here I create an example dataset with colors 20 that are `Yellow`, 10 that are `Green` and 50 that are `Blue`.
+```{r}
+(my_colors = as.factor(c(rep("Yellow", 20), rep("Green", 10), rep("Blue", 50))))
+```
+
+By using `table` we can see a frequency (count) table of the colors. 
+
+```{r}
+table(my_colors)
+```
+
+By diving the table by the number of total colors, we can get percentages instead. 
+
+```{r}
+table(my_colors) / length(my_colors)
+```
+
+### Dataset 
+
+For some datasets, there is another convenient way to get simple summary statistics. 
+
+In this example, we will explore the [Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) flower dataset contained in the `R` built-in `datasets` package. The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). Four features were measured from each sample: the length and the width of the sepals and petals, in centimetres. Based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.
+
+We can use `summary` to output the minimum, 1st quartile, median, mean, 3rd quartile, and maximum statistics, and frequency counts for factor inputs.
+
+```{r}
+summary(iris)
+```
+
+We can also `str` to get a basic feel for what the dataset looks like, in terms of feature types and the values that each feature contains.  
+
+```{r}
+str(iris)
+```
+
+Note that for big datasets, the computation time will be substantially longer. 
+
+## Main references 
+
 Finally, a few remarks on conventions, references (this text will use a lot Hadley's books) and some acknowledgements.
 
+## Liscence
+
+We probably should pick a liscence... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
