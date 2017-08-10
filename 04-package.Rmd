@@ -2,4 +2,55 @@
 
 Expalin how to build a package, I would add style guide and something on pkgdown
 
+## Using Packages 
 
+Packages can be used in many ways. Here is an example of its practical uses. 
+
+### Example: Making Maps
+
+
+```{r}
+birth_place = c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland",
+                "Belgrade, Serbia", "Basel, Switzerland")
+```
+
+```{r, message = FALSE}
+library(ggmap)
+glasgow_coord = geocode("Glasgow, Scotland")
+```
+
+```{r}
+glasgow_coord
+```
+
+```{r, message = FALSE, cache = TRUE}
+birth_coord = geocode(birth_place)
+```
+
+```{r}
+birth_coord
+```
+
+```{r}
+class(birth_coord)
+```
+
+```{r}
+birth_coord$Players = players
+birth_coord$GS = grand_slam_win
+```
+
+```{r}
+birth_coord
+```
+
+Let's represent this information graphically. We haven't seen how to make graph yet so don't worry to much about the details of how this graph is made
+
+```{r, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
+library(mapproj)
+map <- get_map(location = 'Switzerland', zoom = 4)
+ggmap(map) + geom_point(data = birth_coord, 
+             aes(lon, lat, col = Players, size = GS)) + 
+             scale_size(name="Grand Slam Wins") + 
+             xlab("Longitude") + ylab("Latitude")
+```
