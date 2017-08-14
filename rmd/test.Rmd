@@ -3,10 +3,11 @@ title: 'test'
 output: html_document
 ---
 
-## Some title
+## RMarkdown Playground
 
-Some intro text
+Experiment with the Rmd Code below and test output.
 
-- First 
-- Second 
-- Third 
+# Header Type 1
+## Header Type 2 
+### Header Type 3
+
