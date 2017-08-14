@@ -7,7 +7,13 @@ output: html_document
 
 Experiment with the Rmd Code below and test output.
 
-# Header Type 1
-## Header Type 2 
-### Header Type 3
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| *Bananas*     | $1.34         | - built-in wrapper |
+|               |               | - bright color     |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | - cures scurvy     |
+|               |               | - **tasty**        |
++---------------+---------------+--------------------+
 

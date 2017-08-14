@@ -20,8 +20,21 @@ make_files = function(input, rmd = FALSE){
     cat("# Header Type 1\n## Header Type 2 \n### Header Type 3\n\n")
   }
   
-  if(input$bullet){
-    cat("- First \n- Second \n- Third \n\n")
+  if(input$lists){
+    cat("* an asterisk starts an unordered list\n")
+    cat("* and this is another item in the list\n")
+    cat("+ or you can also use the + character\n")
+    cat("- or the - character\n\n")
+    
+    cat("To start an ordered list, write this:\n\n")
+      
+    cat("1. this starts a list *with* numbers\n")
+    cat("+  this will show as number '2'\n")
+    cat("*  this will show as number '3.'\n")
+    cat("9. any number, +, -, or * will keep the list going.\n")
+    cat("    * just indent by 4 spaces (or tab) to make a sub-list\n")
+    cat("        1. keep indenting for more sub lists\n")
+    cat("    * here i'm back to the second level\n\n")
   }
   
   if(input$bolditalic){
@@ -57,6 +70,18 @@ make_files = function(input, rmd = FALSE){
     cat("**Notice that the paragraph on one line and multiple lines without breaks are identical**\n\n")
   }
   
+  if(input$table){
+    cat("+---------------+---------------+--------------------+\n")
+    cat("| Fruit         | Price         | Advantages         |\n")
+    cat("+===============+===============+====================+\n")
+    cat("| *Bananas*     | $1.34         | - built-in wrapper |\n")
+    cat("|               |               | - bright color     |\n")
+    cat("+---------------+---------------+--------------------+\n")
+    cat("| Oranges       | $2.10         | - cures scurvy     |\n")
+    cat("|               |               | - **tasty**        |\n")
+    cat("+---------------+---------------+--------------------+\n\n")
+  }
+  
   if(input$quote){
     cat("> Use the > character in front of a line, *just like in email*.\n> Use it if you're quoting a person, a song or whatever.\n>>Add the >> if you want to quote within a quote.\n\n")
   }
@@ -64,6 +89,24 @@ make_files = function(input, rmd = FALSE){
   if(input$link){
     cat("**Links Full:** <https://google.com/>\n\n**Links Custom:** [Google](https://google.com)\n\n")
   }
+  
+  if(input$pic){
+    cat("**Picture (with caption):**\n\n")
+    cat("![Science Department Banner](http://science.psu.edu/psu_eberly_blue.png)\n\n")
+    cat("**Picture (without caption):**\n\n")
+    cat("![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)\n\n")
+  }
+  
+  if(input$code){
+    cat("Inline Code highlighting with `mean(x)`. \n\n")
+    cat("```{r calculate_mean, cache = TRUE}\n")
+    cat("n = 25\nset.seed(42)\nx = runif(n) # Generates 25 random numbers\n\nmean(x)\n```\n\n")
+    
+    cat("If you do not want code to run just use:\n")
+    cat("```r\nmean(x)\n```\n\n")
+  }
+  
+  
   
   if(rmd){
     sink()
@@ -80,11 +123,14 @@ ui <- shinyUI(
     sidebarLayout(
       sidebarPanel(
         checkboxInput("header", label = "Headers", value = FALSE),
-        checkboxInput("bullet", label = "Bullet Points", value = FALSE),
+        checkboxInput("lists", label = "Bullet Points", value = FALSE),
         checkboxInput("bolditalic", label = "Emphasis", value = FALSE),
         checkboxInput("p", label = "Paragraph", value = FALSE),
+        checkboxInput("table", label = "Tables", value = FALSE), 
         checkboxInput("quote", label = "Blockquotes", value = FALSE), 
-        checkboxInput("link", label = "Links", value = FALSE)
+        checkboxInput("link", label = "Links", value = FALSE),
+        checkboxInput("pic", label = "Pictures", value = FALSE),
+        checkboxInput("code", label = "Code", value = FALSE)
       ),
       
       mainPanel(

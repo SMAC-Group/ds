@@ -2,7 +2,7 @@
 title: "Example RMarkdown Document"
 author: "Justin Lee"
 output: 
-  pdf_document:
+  html_document:
     number_sections: yes
 ---
 
@@ -116,3 +116,7 @@ To start an ordered list, write this:
     * just indent by 4 spaces (or tab) to make a sub-list
         1. keep indenting for more sub lists
     * here i'm back to the second level
+    
+### Tables
+
+
