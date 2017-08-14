@@ -26,7 +26,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
   
-<meta name="date" content="2017-08-11">
+<meta name="date" content="2017-08-14">
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -155,7 +155,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
 <h4 class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari</em></h4>
-<h4 class="date"><em>2017-08-11</em></h4>
+<h4 class="date"><em>2017-08-14</em></h4>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -191,21 +191,24 @@ This document is <strong>under development</strong> and it is therefore preferab
 </div>
 <div id="getting-started-with-r" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Getting started with R</h3>
-<p>As mentioned earlier, <code>R</code> can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you you will need to do to install it is to download it from:</p>
+<p>As mentioned earlier, <code>R</code> can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from:</p>
 <ul>
 <li><a href="https://cran.r-project.org/"><code>R</code></a> .</li>
 </ul>
-<p>Once you’ve downloaded and installed <code>R</code> on your computer you will be able to start using the programming language and packages that the <code>R</code> environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called <code>RStudio</code> which can be downloaded from the following link:</p>
-<ul>
-<li><a href="https://www.rstudio.com/">RStudio</a> .</li>
-</ul>
+<p>Once you’ve downloaded and installed <code>R</code> on your computer you will be able to start using the programming language and packages that the <code>R</code> environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called <code>RStudio</code> which can be downloaded from the following link: - <a href="https://www.rstudio.com/">RStudio</a> .</p>
+
+<div class="rmdimportant">
+You cannot use <code>RStudio</code> without having installed <code>R</code> on your computer.
+</div>
+<p></p>
 <p><strong>Matt</strong> are we missing something here?</p>
 </div>
 <div id="about-rstudio" class="section level3">
 <h3><span class="header-section-number">1.1.3</span> About RStudio</h3>
+<p><code>RStudio</code> is a customizable IDE for the <code>R</code> enviornment where the user can have an easily accessbile overview of the working directory, files, plots, data, objects and many other features that are useful to work efficiently with R. Moreover, it is possible to create projects in which it is possible to develop a self-contained environment for sets of specific functions and files aimed to deal with various tasks.</p>
 <p><strong>Matt</strong> would you have something we could use here? <strong>Justin</strong> what about a video here to introduce RStudio???</p>
 <p>We should add a link to the RStudio “<a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">cheatsheet</a>”</p>
-<p>Powerful tools for communicating results (Rmarkdown, shinny)</p>
+<p>In addition, <code>RStudio</code> provides embedded functions that allow to synchronize your work on GitHub as well as a set of powerful tools to save and comunicate results (whether they be simulations, data analysis or presenting and making available a new package to other users). Some examples of these tools are <code>Rmarkdown</code> and <code>Shiny Web App</code> which can be used respectively to note down results with embedded <code>R</code> code and to create an online application which can provide a user interface to supply data and retrieve results using <code>R</code>. GitHub and <code>Rmarkdown</code> will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.</p>
 </div>
 <div id="conventions" class="section level3">
 <h3><span class="header-section-number">1.1.4</span> Conventions</h3>
@@ -213,7 +216,7 @@ This document is <strong>under development</strong> and it is therefore preferab
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span>pi
 b =<span class="st"> </span><span class="fl">0.5</span>
 <span class="kw">sin</span>(a*b)</code></pre></div>
-<p>Similarly, <code>R</code> output lines, which would appear in your console will begin with <code>##</code> will not be syntax highlighted. The output of the above is given by:</p>
+<p>Similarly, <code>R</code> output lines that will appear in your console will begin with <code>##</code> and will not be syntax highlighted. The output of the above is given by:</p>
 <pre><code>## [1] 1</code></pre>
 <p>Maybe we should add something about the boxes we are using… Rob what do you think?</p>
 </div>

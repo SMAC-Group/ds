@@ -53,24 +53,29 @@ In the perspective of improving the usage of computer memory, `R` has been devel
 
 ### Getting started with R
 
-As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you you will need to do to install it is to download it from:
+As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from:
 
 - [`R`](https://cran.r-project.org/) .
 
 Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link: 
-
 - [RStudio](https://www.rstudio.com/) .
+
+```{block2,  type='rmdimportant'}
+You cannot use `RStudio` without having installed `R` on your computer.
+```
 
 **Matt** are we missing something here?
 
 ### About RStudio
+
+`RStudio` is a customizable IDE for the `R` enviornment where the user can have an easily accessbile overview of the working directory, files, plots, data, objects and many other features that are useful to work efficiently with R. Moreover, it is possible to create projects in which it is possible to develop a self-contained environment for sets of specific functions and files aimed to deal with various tasks.
 
 **Matt** would you have something we could use here?
 **Justin** what about a video here to introduce RStudio???
 
 We should add a link to the RStudio "[cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)"
 
-Powerful tools for communicating results (Rmarkdown, shinny)
+In addition, `RStudio` provides embedded functions that allow to synchronize your work on GitHub as well as a set of powerful tools to save and comunicate results (whether they be simulations, data analysis or presenting and making available a new package to other users). Some examples of these tools are `Rmarkdown` and `Shiny Web App` which can be used respectively to note down results with embedded `R` code and to create an online application which can provide a user interface to supply data and retrieve results using `R`. GitHub and `Rmarkdown` will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.
 
 ### Conventions
 
@@ -82,7 +87,7 @@ b = 0.5
 sin(a*b)
 ```
 
-Similarly, `R` output lines, which would appear in your console will begin with `##` will not be syntax highlighted. The output of the above is given by:
+Similarly, `R` output lines that will appear in your console will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
 
 ```{r, echo = FALSE}
 a = pi
@@ -94,7 +99,7 @@ Maybe we should add something about the boxes we are using... Rob what do you th
 
 ### Simple calculations
 
-In this section, we present how simple calculations can be made in R. In the table below we show a few examples where the first column show a mathematical epxression, the second the equivalence of this expression in R and finally in the third its result.
+A basic aspect to underline about the `R` environment is that it serves as an advanced calculator which therefore allows also for simple calculations. In the table below we show a few examples of such calculations where the first column gives a mathematical expression (calculation), the second gives the equivalent of this expression in `R` and finally in the third column we can find the result that is output from `R`.
 
 | Math.              |R                   | Result      |
 |:-------------------|:-------------------|:------------|
@@ -111,7 +116,7 @@ In this section, we present how simple calculations can be made in R. In the tab
 
 ### Getting help
 
-In the previous section, we presented some examples on how R can be used a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in R, simply put a question mark in front of the function name and its documentation will be displayed. For example, if you are interested about learning about the function `log()` you simply type:
+In the previous section we presented some examples on how R can be used a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in R, simply put a question mark in front of the function name and its documentation will be displayed. For example, if you are interested about learning about the function `log()` you simply type:
 
 ```{r}
 ?log()
@@ -125,7 +130,7 @@ Frequently one of the most difficult things to do when learning R is asking for 
 
 ### Installing packages
 
-`R` comes with a number of built-in functions but one its main strengths is that there is a large numbers of packages that you can install. These packages add additional functions, features and data to the R environement. If you want to something in `R` which is not available by default, there is a good chance that there is packages that will do what you want. 
+`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages that you can install. These packages provide additional functions, features and data to the R environement. If you want to something in `R` which is not available by default, there is a good chance that there is packages that will do what you want. 
 
 `R` packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the `install.packages()` function. In Chapter ????? (github) we will see other ways of installing packages. The use of the `install.packages()` is quite simple, for example if you want to install the package `devtools` you can simply write:
 
@@ -230,6 +235,6 @@ Note that for big datasets, the computation time will be substantially longer.
 
 Finally, a few remarks on conventions, references (this text will use a lot Hadley's books) and some acknowledgements.
 
-## Liscence
+## Licence
 
 We probably should pick a liscence... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
