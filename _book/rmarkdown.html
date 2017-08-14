@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-08-11">
+<meta name="date" content="2017-08-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,21 +110,28 @@
 <li class="chapter" data-level="5" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>5</b> Build a package</a></li>
 <li class="chapter" data-level="6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>6</b> Case Study: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>7</b> Graphics</a></li>
-<li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a><ul>
-<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="r-markdown.html"><a href="r-markdown.html#subsections"><i class="fa fa-check"></i><b>8.1.1</b> Subsections</a></li>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> RMarkdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>8.1</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i><b>8.1.1</b> Subsections</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="r-markdown.html"><a href="r-markdown.html#text"><i class="fa fa-check"></i><b>8.2</b> Text</a></li>
-<li class="chapter" data-level="8.3" data-path="r-markdown.html"><a href="r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>8.3</b> Code Chunks</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="r-markdown.html"><a href="r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>8.3.1</b> Code Chunk Options</a></li>
-<li class="chapter" data-level="8.3.2" data-path="r-markdown.html"><a href="r-markdown.html#latex-equations"><i class="fa fa-check"></i><b>8.3.2</b> LaTeX Equations</a></li>
-<li class="chapter" data-level="8.3.3" data-path="r-markdown.html"><a href="r-markdown.html#cross-referencing-sections"><i class="fa fa-check"></i><b>8.3.3</b> Cross-referencing Sections</a></li>
-<li class="chapter" data-level="8.3.4" data-path="r-markdown.html"><a href="r-markdown.html#tables"><i class="fa fa-check"></i><b>8.3.4</b> Tables</a></li>
+<li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#text"><i class="fa fa-check"></i><b>8.2</b> Text</a></li>
+<li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.3</b> Code Chunks</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>8.3.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="8.3.2" data-path="rmarkdown.html"><a href="rmarkdown.html#hyperlinks"><i class="fa fa-check"></i><b>8.3.2</b> Hyperlinks</a></li>
+<li class="chapter" data-level="8.3.3" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i><b>8.3.3</b> Cache</a></li>
+<li class="chapter" data-level="8.3.4" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i><b>8.3.4</b> In-line R</a></li>
+<li class="chapter" data-level="8.3.5" data-path="rmarkdown.html"><a href="rmarkdown.html#latex-equations"><i class="fa fa-check"></i><b>8.3.5</b> LaTeX Equations</a></li>
+<li class="chapter" data-level="8.3.6" data-path="rmarkdown.html"><a href="rmarkdown.html#cross-referencing-sections"><i class="fa fa-check"></i><b>8.3.6</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="8.3.7" data-path="rmarkdown.html"><a href="rmarkdown.html#bullet-points"><i class="fa fa-check"></i><b>8.3.7</b> Bullet points</a></li>
+<li class="chapter" data-level="8.3.8" data-path="rmarkdown.html"><a href="rmarkdown.html#citations"><i class="fa fa-check"></i><b>8.3.8</b> Citations</a></li>
+<li class="chapter" data-level="8.3.9" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliography"><i class="fa fa-check"></i><b>8.3.9</b> Bibliography</a></li>
+<li class="chapter" data-level="8.3.10" data-path="rmarkdown.html"><a href="rmarkdown.html#tables"><i class="fa fa-check"></i><b>8.3.10</b> Tables</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="r-markdown.html"><a href="r-markdown.html#render-output"><i class="fa fa-check"></i><b>8.4</b> Render Output</a></li>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>8.4</b> Render Output</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>9</b> GitHub</a></li>
 <li class="chapter" data-level="10" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Probability and Statistics</a></li>
+<li class="chapter" data-level="11" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>11</b> Placeholder</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -108,8 +152,8 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-markdown" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> R Markdown</h1>
+<div id="rmarkdown" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> RMarkdown</h1>
 <p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.</p>
 <p><strong>JUSTIN: maybe we should add something on what literate programming is? Also, I think we should add something on reproducible analysis (research). Basically, RMarkdown offers a simple tool that allows to create rapports or presentation slides in a reproducible manner. At a higher level this means reproducible research which is a real problem now a days. Also, literate programming tools such as RMarkdown avoids repetitive tasks such changing all figures when new data are available. It could be nice to add a sketch to show what is going in RMarkdown (maybe data -&gt; RMarkdown -&gt; output, under RMarkdown show that data importation/cleaning, analysis, writing slide/repport content is done, output show the kind of output, from slides, html, this book, latex document (sweave) and so on). Finally, we could add a video somewhere in the intro to present RMarkdown in RStudio. What do you think?</strong></p>
 <p>An RMarkdown is a plain text file that contains three different aspects:</p>
@@ -142,7 +186,10 @@
 </div>
 <div id="text" class="section level2">
 <h2><span class="header-section-number">8.2</span> Text</h2>
-<p>In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as <em>italics</em>, <strong>bold</strong>, or even a <code>code style</code>. Headings are preceded with a #, breaks create a new paragraph.</p>
+<p><strong>JUSTIN wouldn’t it make more sense to move some subsections like tables, bullet points (if we keep it) in this section? To me they are move “text” than “code”. What do you think? Up to you of course!</strong></p>
+<p>In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as <em>italics</em>, <strong>bold</strong>, or even a <code>code style</code>. To understand how to format text, our previous would be as follows in RMarkdown:</p>
+<pre class="text"><code>[...] such as with emphasis such as *italics*, **bold**, or even a `code style`.</code></pre>
+<p>Headings are preceded with a #, breaks create a new paragraph.</p>
 <div class="figure">
 <img src="images/rmd_text.png" />
 
@@ -180,30 +227,65 @@
 <li>fig.align: (‘default’; character) alignment of figures in the output document (possible values are left, right and center</li>
 </ul>
 </div>
+<div id="hyperlinks" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Hyperlinks</h3>
+<p><strong>Justin: Maybe something on hyperlinks</strong></p>
+</div>
+<div id="cache" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> Cache</h3>
+<p><strong>Justin: Maybe something on caching</strong></p>
+<p>For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span>*a)</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="in-line-r" class="section level3">
+<h3><span class="header-section-number">8.3.4</span> In-line R</h3>
+<p><strong>Justin: </strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<p>The value of <span class="math inline">\(a\)</span> is 2.</p>
+</div>
 <div id="latex-equations" class="section level3">
-<h3><span class="header-section-number">8.3.2</span> LaTeX Equations</h3>
-<p>Within the text section, you can also include LaTeX format to output equation format.</p>
-<p>For example, the binomial probability in LaTeX</p>
+<h3><span class="header-section-number">8.3.5</span> LaTeX Equations</h3>
+<p><strong>JUSTIN: maybe add something on what is latex? WHat do you think?</strong></p>
+<p>Within the text section, you can also include LaTeX format to output equation format. Inline mathematical expressions can be added using the syntax: <code>$math expression$</code>. For example, if we want to write: “where <span class="math inline">\(\alpha\)</span> is in degrees” we would write:</p>
+<pre class="text"><code>&quot;where $\alpha$ is in degres&quot;</code></pre>
+<p>Using a slightly different syntax (i.e. <code>$$math expression$$</code>) centered mathematical expressions can be obtained. For example, the binomial probability in LaTeX</p>
 <p><code>$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$</code></p>
 <p>converts to…</p>
 <p><span class="math display">\[f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}\]</span></p>
 <p>A basic introduction to LaTeX format can be found <a href="http://www.math.harvard.edu/texman/">here</a> if you want to learn more about the basics. An alternative can be to insert custom LaTeX formulas using a graphical interface such as <a href="https://www.codecogs.com/latex/eqneditor.php">codecogs</a>.</p>
 </div>
 <div id="cross-referencing-sections" class="section level3">
-<h3><span class="header-section-number">8.3.3</span> Cross-referencing Sections</h3>
+<h3><span class="header-section-number">8.3.6</span> Cross-referencing Sections</h3>
 <p>You can also use the same syntax <code>\@ref(label)</code> to reference sections, where label is the section ID. By default, Pandoc will generate IDs for all section headers, e.g., <code># Hello World</code> will have an ID <code>hello-world</code>. To call header <code>hello-world</code> as a header, we type <code>\@ref(hello-world)</code> to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.</p>
 </div>
+<div id="bullet-points" class="section level3">
+<h3><span class="header-section-number">8.3.7</span> Bullet points</h3>
+<p><strong>Justin what do you think about saying something about bullet points? If so feel to move it where you want…</strong></p>
+</div>
+<div id="citations" class="section level3">
+<h3><span class="header-section-number">8.3.8</span> Citations</h3>
+<p><strong>Same thing for citation… What do you think?</strong></p>
+<blockquote>
+<p>blabla, someone</p>
+</blockquote>
+</div>
+<div id="bibliography" class="section level3">
+<h3><span class="header-section-number">8.3.9</span> Bibliography</h3>
+<p><strong>JUSTIN I think it would be cool to add something on bibliography. When I reviewed James slides for STAT 385 I suggested to to show student how bib files can be imported directely from google scholar so it might a good idea to do the same here. What do you think?</strong></p>
+</div>
 <div id="tables" class="section level3">
-<h3><span class="header-section-number">8.3.4</span> Tables</h3>
+<h3><span class="header-section-number">8.3.10</span> Tables</h3>
 <p>For simple tables, we can be manually insert values as such,</p>
 <pre><code>+---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
 +===============+===============+====================+
-| Bananas       | $1.34         | - built-in wrapper |
+| *Bananas*     | $1.34         | - built-in wrapper |
 |               |               | - bright color     |
 +---------------+---------------+--------------------+
 | Oranges       | $2.10         | - cures scurvy     |
-|               |               | - tasty            |
+|               |               | - **tasty**        |
 +---------------+---------------+--------------------+</code></pre>
 <p>to produce…</p>
 <table style="width:74%;">
@@ -221,7 +303,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><p>Bananas</p></td>
+<td><p><em>Bananas</em></p></td>
 <td><p>$1.34</p></td>
 <td><ul>
 <li>built-in wrapper</li>
@@ -233,7 +315,7 @@
 <td><p>$2.10</p></td>
 <td><ul>
 <li>cures scurvy</li>
-<li>tasty</li>
+<li><strong>tasty</strong></li>
 </ul></td>
 </tr>
 </tbody>
