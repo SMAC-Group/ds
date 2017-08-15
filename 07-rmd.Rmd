@@ -2,6 +2,16 @@
 
 RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.
 
+*What is **literate** programming?* 
+
+Literate programming is the notion for programmers to add narrative context with code to produce documententation for the program simultaneously. We can follow code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create rapports or presentation slides in a reproducible manner. We can avoid repetitive tasks such changing all figures when new data are available. 
+
+*What is **reproducible** research?* 
+
+Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by another person or body. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and eventually, the author. In essense, someone will run code and get the same exact results. RMarkdown is commonly used to solve this issue. 
+
+We will later enforce this notion by utilizing `set.seed()` in the following chapters. 
+
 **JUSTIN: maybe we should add something on what literate programming is? Also, I think we should add something on reproducible analysis (research). Basically, RMarkdown offers a simple tool that allows to create rapports or presentation slides in a reproducible manner. At a higher level this means reproducible research which is a real problem now a days. Also, literate programming tools such as RMarkdown avoids repetitive tasks such changing all figures when new data are available. It could be nice to add a sketch to show what is going in RMarkdown (maybe data -> RMarkdown -> output, under RMarkdown show that data importation/cleaning, analysis, writing slide/repport content is done, output show the kind of output, from slides, html, this book, latex document (sweave) and so on). Finally, we could add a video somewhere in the intro to present RMarkdown in RStudio. What do you think?**
 
 
