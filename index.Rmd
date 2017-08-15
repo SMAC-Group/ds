@@ -51,24 +51,23 @@ Like any other software, there are of course some drawbacks with using `R`. Firs
 
 In the perspective of improving the usage of computer memory, `R` has been developing efficient and "seemless" connections with high-performance languages which allow functions and packages to make use of them thereby greatly lightening and accelerating computations made through `R`. An important example of this is given by the connections made available to the `C++` language. In this book we will discuss the connections with this language that are particularly well implemented, but other high-performance languages can be used such as `C` and `FORTRAN`.
 
-### Getting started with R
+### Getting started with `R`
 
-As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from:
+As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:
 
 - [`R`](https://cran.r-project.org/) .
 
-Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link: 
+Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link:
+
 - [RStudio](https://www.rstudio.com/) .
 
 ```{block2,  type='rmdimportant'}
 You cannot use `RStudio` without having installed `R` on your computer.
 ```
 
-**Matt** are we missing something here?
-
 ### About RStudio
 
-`RStudio` is a customizable IDE for the `R` enviornment where the user can have an easily accessbile overview of the working directory, files, plots, data, objects and many other features that are useful to work efficiently with R. Moreover, it is possible to create projects in which it is possible to develop a self-contained environment for sets of specific functions and files aimed to deal with various tasks.
+`RStudio` is a customizable IDE for the `R` enviornment where the user can have an easily accessbile overview of the working directory, files, plots, data, objects and many other features that are useful to work efficiently with `R`. Moreover, it is possible to create projects in which it is possible to develop a self-contained environment for sets of specific functions and files aimed to deal with various tasks.
 
 **Matt** would you have something we could use here?
 **Justin** what about a video here to introduce RStudio???
@@ -87,7 +86,7 @@ b = 0.5
 sin(a*b)
 ```
 
-Similarly, `R` output lines that will appear in your console will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
+Similarly, `R` output lines (that usally appear in your Console) will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
 
 ```{r, echo = FALSE}
 a = pi
@@ -95,7 +94,27 @@ b = 0.5
 sin(a*b)
 ```
 
-Maybe we should add something about the boxes we are using... Rob what do you think?
+Aside from `R` code and its outputs, this book will also insert some boxes that will draw the reader's attention to some details that can be important, curious or purely informative in nature. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the "under construction" nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:
+
+```{block2,  type='rmdimportant'}
+This is an important piece of information.
+```
+
+```{block2, type='rmdnote'}
+This is some additional information that could be useful to the reader.
+```
+
+```{block2, type='rmdcaution'}
+This is something that the reader should pay caution to but should not create major problems if not considered. 
+```
+
+```{block2, type='rmdwarning'}
+This is a warning which should be considered by the reader to avoid problems of different nature.
+```
+
+```{block2, type='rmdtip'}
+This is a tip for the reader when following or developing something based on this book.
+```
 
 ### Simple calculations
 
@@ -108,7 +127,7 @@ A basic aspect to underline about the `R` environment is that it serves as an ad
 | $3 \cdot 2^{-0.8}$ | `3*2^(-0.8)`       | `1.723048`  |
 | $\sqrt{2}$         | `sqrt(2)`          | `1.414214`  |
 | $\pi$              | `pi`               | `3.141593`  |
-| $\log(2)$          | `log(2)`           | `0.6931472` |
+| $\ln(2)$           | `log(2)`           | `0.6931472` |
 | $\log_{3}(9)$      | `log(9, base = 3)` | `2`         |
 | $e^{1.1}$          | `exp(1.1)`         | `3.004166`  |
 | $\cos(\sqrt{0.9})$ | `cos(sqrt(0.9))`   | `0.5827536` |
@@ -116,125 +135,138 @@ A basic aspect to underline about the `R` environment is that it serves as an ad
 
 ### Getting help
 
-In the previous section we presented some examples on how R can be used a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in R, simply put a question mark in front of the function name and its documentation will be displayed. For example, if you are interested about learning about the function `log()` you simply type:
+In the previous section we presented some examples on how `R` can be used as a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in `R`, simply put a question mark in front of the function name (or just type `help()` around the function name) and its documentation will be displayed. For example, if you are interested in learning about the function `log()` you simply type:
 
 ```{r}
-?log()
+?log
 ```
 
 which will display something similar to:
 
 ![](images/example-log-help.png)
 
-Frequently one of the most difficult things to do when learning R is asking for help. First, you need to decide to ask for help, then you need to know how to ask for help. Your very first line of defense should be to Google your error message or a short description of your issue. (The ability to solve problems using this method is quickly becoming an extremely valuable skill.) If that fails, and it eventually will, you should ask for help. There are a number of things you should include when emailing an instructor, or posting to a help website such as Stack Exchange.
+The `R` documentation can sometimes be very technical or hard to interpret. In these cases, the best solution to understand a function is to search for help on any search engine and you will probably find different forums such as "CrossValidated" or "StackExchange" in which the questions you have about a function have probably already been asked and answered by many other users. 
+
+```{block2, type='rmdtip'}
+You can often use the error message to search for answers about a problem you may have with a function.
+```
 
 ### Installing packages
 
-`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages that you can install. These packages provide additional functions, features and data to the R environement. If you want to something in `R` which is not available by default, there is a good chance that there is packages that will do what you want. 
+`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages that you can install. These packages provide additional functions, features and data to the R environement. If you want to do something in `R` that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in `R` is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for `R` (see CRAN website). Another general approach to find a package in `R` is simply to use a search engine in which to type the keywords of the tools you are looking for followed by "R package".
 
-`R` packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the `install.packages()` function. In Chapter ????? (github) we will see other ways of installing packages. The use of the `install.packages()` is quite simple, for example if you want to install the package `devtools` you can simply write:
+`R` packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the `install.packages()` function. Another way is to use the "Tools -> Install Packages..." path from the dropdown menus in `RStudio` but the `install.packages()` function is nevertheless transversal to any platform for the `R` environment. It must be underlined that these approaches to install packages require that the packages are available within the CRAN repository. However, there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter ????? (github) will show other ways of installing packages from a commonly used repository called "GitHub". 
+
+Sticking momentarily to the packages available in the CRAN repository, the use of the `install.packages()` is quite simple. For example, if you want to install the package `devtools` you can simply write:
 
 ```{r, eval = FALSE}
-install.packages(devtools)
+install.packages("devtools")
 ```
 
-Once a package is installed, you will have to "load" it into your current `R` session before being able to used it. This is generally done with the function `library()` and for example with the `devtools` package you would write:
+Once a package is installed it is not directly usable within your `R` session. To do so you will have to "load" the package into your current `R` session which is generally done through the function `library()`. For example, after having installed the `devtools` package, in order to use it within your session you would write:
 
 ```{r, eval = FALSE}
 library(devtools)
 ```
 
-Once you close `R`, all packages will closed and you will have to load them again but you don't have to install packages again.
+Once this is done, all the functions and documentation of this package are available and can be used within your current session. However, once you close your `R` session, all loaded packages will be closed and you will have to load them again if you want to use them in a new `R` session.
 
-## Basic Probability and Statistics with R
+```{block2, type='rmdnote'}
+Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
+```
+
+## Basic Probability and Statistics with `R`
+
+The `R` environment provides an up-to-date and efficient programming language to develop different tools and applications. Nevertheless, its main functionality lies in the core statistical framework and tools that consistute the basis of this language. Indeed, this book aims at introducing and describing the methods and approaches of statistical programming which therefore require a basic knowledge of Probability and Statistics in order to grasp the logic and usefulness of the features presented in this book.
+
+For this reason, we will briefly take the reader through some of the basic functions that are available within `R` to obtain probabilities based on parametric distributions, compute summary statistics and understand basic data structures. The latter is just an introduction and a more in-depth description of different data structures will be given in Chapter ???.
 
 ### Probability Distributions 
 
-For probability distributions, we can compute basic values such as density, distribution, quantiles, random sampling using `R` built-in functions below. 
+Probability distributions can be uniquely characterized by different functions such as, for example, their density or distribution functions. Based on these it is possible to compute theoretical quantiles and also randomly sample observations from them. Replacing the `R` syntax for a given probability distribution with the general syntax `name`, all these functions and calculations are made available in `R` through the built-in functions: 
 
--`dname` calculates density (pdf) at input `x`.
--`pname` calculates distribution (cdf) at input `x`.
--`qname` calculates the quantile at an input probability.
--`rname` generates a random draw from a particular distribution.
+- `dname` calculates the value of the density function (pdf);
+- `pname` calculates the value of the distribution function (cdf);
+- `qname` calculates the value of the theoretical quantile;
+- `rname` generates a random sample from a particular distribution.
 
-Note that we will replace `name` with the name of a given distribution. For example, a a random number generator for uniform distribution will be `runif`. To learn more about specific parameters and documentation for a function, type `?` before the function name into your `R` console. Common example probability distributions include, but are not limited to, binomial, chi-square, exponential, F, geometric, logistic, normal, poisson, t, and uniform. 
-
-Here's an example. 
+Note that, when using these functions in practice, `name` is replaced with the syntax used in `R` to denote a specific probability distribution. For example, if we wish to deal with a Uniform probability distribution, then the syntax `name` is replaced by `unif` and, furthering the example, to randomly generate observations from a uniform distribution the function to use will be therefore `runif`. `R` allows to make use of these functions for a wide variety of probability distributions that include, but are not limited to: Gaussian (or Normal), Binomial, Chi-square, Exponential, F-distribution, Geometric, Poisson, Student-t and Uniform. In order to get an idea of how these functions can be used, below is an example of a problem that can be solved using them.
 
 ### Problem {-}
 
-Assume that the test scores of a college entrance exam fits a normal distribution. Furthermore, the mean test score is 70, and the standard deviation is 15. What is the percentage of students scoring 90 or more in the exam?
+Assume that the test scores of a college entrance exam follows a Normal distribution. Furthermore, suppose that the mean test score is 70 and that the standard deviation is 15. How would we find the percentage of students scoring 90 or more in this exam?
 
 ### Answer {-}
 
-In this case, we consider a random variable $X$ that is normally distributed $X \sim N(\mu=70, \sigma^2=25)$. Since we are looking for the percentage of students scoring higher than 90, we are interested in the upper tail of the normal distribution.
+In this case, we consider a random variable $X$ that is normally distributed as follows: $X \sim N(\mu=70, \sigma^2=225)$ where $\mu$ and $\sigma^2$ represent the mean and variance of the distribution respectively. Since we are looking for the probability of students scoring higher than 90, we are interested in finding $\mathbb{P}(X > x=90)$ and therefore we look at the upper tail of the Normal distribution. To find this probability we need the distribution function (`pname`) for which we therefore replace `name` with the `R` syntax for the Normal distribution: `norm`. The distribution function in `R` has various parameters to be specified in order to compute a probability which, at least for the Normal distribution, can be found by typing `?pnorm` in the Console and are:
+
+- `q`: the quantile we are interested in (e.g. 90);
+- `mean`: the mean of the distribution (e.g. 70);
+- `sd`: the standard deviation of the distribution (e.g. 15);
+- `lower.tail`: a boolean determining whether to compute the probability of being smaller than the given quantile (i.e. $\mathbb{P}(X \leq x)$) which requires the default argument `TRUE` or larger (i.e. $\mathbb{P}(X > x)$) which requires to specify the argument `FALSE`.
+
+Knowing these arguments, it is now possible to compute the probability we are interested in as follows:
 
 ```{r}
 pnorm(q = 90, mean = 70, sd = 15, lower.tail = FALSE) 
 ```
 
-We see that there is a 9% probability of students scoring 90 or more in the exam. Note that at `?pnorm` we see an additional parameter, `lower.tail` that indicates TRUE (default) if probabilities are P[X ≤ x] and FALSE otherwise, where P[X > x].
+As we can see from the output, there is roughly a 9% probability of students scoring 90 or more in the exam.
 
 ### Summary Statistics 
 
-### Numeric Input 
+While the previous functions deal with theoretical distributions, it is also necessary to deal with real data from which we would like to extract information. This data, for example, can be simulated using the function `rname` (e.g. `rnorm`) and, supposing we don't know from which distribution it is generated, we would be interested in understanding the behavior of the data in order to eventually identify a distribution and estimate its parameters.
 
-For central tendency or spread statistics of numeric input, we can use the following `R` build-in functions below. 
+The use of certain functions varies according to the nature of the inputs since these can be, for example, numerical or factors.
 
-- `mean` calculates the mean of an input `x`.
-- `median` calculates the median of an input `x`.
-- `var` calculates the variance of an input `x`.
-- `sd` calculates the standard deviation of an input `x`.
-- `IQR` calculates the interquartile range of an input `x`.
-- `min` calculates the minimum value of an input `x`. 
-- `max` calculates the maximum value of an input `x`. 
-- `range` returns a vector containing the minimum and maximum of all given arguments.  
+### Numerical Input
+
+A first step in analysing numerical inputs is given by computing summary statistics of the data which, in this section, we can generally denote as `x` (we will discuss the structure of this data more in detail in the following chapters). For central tendency or spread statistics of a numerical input, we can use the following `R` built-in functions:
+
+- `mean` calculates the mean of an input `x`;
+- `median` calculates the median of an input `x`;
+- `var` calculates the variance of an input `x`;
+- `sd` calculates the standard deviation of an input `x`;
+- `IQR` calculates the interquartile range of an input `x`;
+- `min` calculates the minimum value of an input `x`;
+- `max` calculates the maximum value of an input `x`; 
+- `range` returns a vector containing the minimum and maximum of all given arguments;
+- `summary` returns a vector containing a mixture of the above functions (i.e. mean, median, first and third quartile, minimum, maximum).
 
 ### Factor Input 
 
-For factor input, we can extract counts and percentages as summary by using `table`. 
-
-Here I create an example dataset with colors 20 that are `Yellow`, 10 that are `Green` and 50 that are `Blue`.
-```{r}
-(my_colors = as.factor(c(rep("Yellow", 20), rep("Green", 10), rep("Blue", 50))))
-```
-
-By using `table` we can see a frequency (count) table of the colors. 
+If the data of interest is a factor with different categories or levels, then it cannot obviously be treated as a numerical variable and other statistics need to be computed. For example, for a factor input we can extract counts and percentages to summarize the variable by using `table`. Using functions and data structures that will be described in the following chapters, below we create an example dataset with 90 observations of three different colors: 20 being `Yellow`, 10 being `Green` and 50 being `Blue`. We then apply the `table` function to it:
 
 ```{r}
-table(my_colors)
+table(as.factor(c(rep("Yellow", 20), rep("Green", 10), rep("Blue", 50))))
 ```
 
-By diving the table by the number of total colors, we can get percentages instead. 
+By doing so we obtain a frequency (count) table of the colors.
 
-```{r}
-table(my_colors) / length(my_colors)
-```
+### Dataset inputs
 
-### Dataset 
+In many cases, when dealing with data we are actually dealing with datasets (see Chapter ???) where variables of different nature are aligned together (usually in columns). For datasets there is another convenient way to get simple summary statistics which consists in applying the function `summary` to the dataset itself (instead of simply a numerical input as seen earlier). 
 
-For some datasets, there is another convenient way to get simple summary statistics. 
+As an example, let us explore the [Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) flower dataset contained in the `R` built-in `datasets` package. The data set consists of 50 samples from each of three species of Iris (Setosa, Virginica and Versicolor). Four features were measured from each sample consisting in the length and the width (in centimeters) of the both sepals and petals. This dataset is widely used as an example since it was used by Fisher to develop a linear discriminant model based on which he intended to distinguish the three species from each other using combinations of these four features.
 
-In this example, we will explore the [Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) flower dataset contained in the `R` built-in `datasets` package. The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). Four features were measured from each sample: the length and the width of the sepals and petals, in centimetres. Based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.
-
-We can use `summary` to output the minimum, 1st quartile, median, mean, 3rd quartile, and maximum statistics, and frequency counts for factor inputs.
+Using this dataset, let us use the `summary` function on it to output the minimum, first quartile and thrid quartile, median, mean and maximum statistics (for the numerical variables in the dataset) and frequency counts (for factor inputs).
 
 ```{r}
 summary(iris)
 ```
 
-We can also `str` to get a basic feel for what the dataset looks like, in terms of feature types and the values that each feature contains.  
-
-```{r}
-str(iris)
-```
-
-Note that for big datasets, the computation time will be substantially longer. 
-
 ## Main references 
 
-Finally, a few remarks on conventions, references (this text will use a lot Hadley's books) and some acknowledgements.
+This is not the first (or the last) book that has been written explaining and describing statistical programming in `R`. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:
+
+- @wickham2014advanced : a more technical and advanced introduction to `R`;
+- @xie2015 : an overview of document generation in `R`;
+- ...
+
 
 ## Licence
 
 We probably should pick a liscence... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
+
+## Acknowledgments
+...
