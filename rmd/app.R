@@ -20,7 +20,7 @@ make_files = function(input, rmd = FALSE){
   cat("Experiment with the Rmd Code below and test output.\n\n")
   
   if (input$ref){
-    cat("Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).\n")
+    cat("Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).\n\n")
   }
     
   if(input$header){
@@ -113,6 +113,22 @@ make_files = function(input, rmd = FALSE){
     cat("```r\nmean(x)\n```\n\n")
   }
   
+  if(input$plot){
+    cat("We will talk more about plots later, but here is an example of changing plot figure options.\n\n")
+    
+    cat("```{r simple_plot}\n")
+    cat("plot(1:10, main = 'Default Plot')\n")
+    cat("```\n\n")
+    
+    cat("```{r fig.width = 4, fig.height = 4}\n")
+    cat("plot(1:10, main = 'Changed Dimensions')\n")
+    cat("```\n\n")
+    
+    cat("```{r fig.width = 4, fig.align = 'right', fig.cap = 'Aligned to the right!'}\n")
+    cat("plot(1:10, main = 'Changed Alignment')\n")
+    cat("```\n\n")
+  }
+  
   # Last section...
   if (input$ref){
     cat("\n# References\n")
@@ -140,8 +156,9 @@ ui <- shinyUI(
         checkboxInput("quote", label = "Blockquotes", value = FALSE), 
         checkboxInput("link", label = "Links", value = FALSE),
         checkboxInput("pic", label = "Pictures", value = FALSE),
-        checkboxInput("ref", label = "Reference", value = FALSE),
-        checkboxInput("code", label = "Code", value = FALSE)
+        checkboxInput("code", label = "Code", value = FALSE), 
+        checkboxInput("plot", label = "Plot", value = FALSE),
+        checkboxInput("ref", label = "Reference", value = FALSE)
       ),
       
       mainPanel(

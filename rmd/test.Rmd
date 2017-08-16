@@ -8,4 +8,5 @@ Experiment with the Rmd Code below and test output.
 
 Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).
 
+
 # References
