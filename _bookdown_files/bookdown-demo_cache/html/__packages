@@ -9,3 +9,6 @@ ggmap
 maps
 mapproj
 support
+shiny
+knitr
+rmarkdown
