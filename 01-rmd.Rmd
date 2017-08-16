@@ -168,8 +168,37 @@ For example, in a recent paper two researchers from Oxford University investigat
 The easiest way ...
 
 
+Import with google scholar:
 
-**JUSTIN I think it would be cool to add something on bibliography. When I reviewed James slides for STAT 385 I suggested to to show student how bib files can be imported directely from google scholar so it might a good idea to do the same here. What do you think?**
+Search paper
+
+![](images/googlescholar1.png)
+
+Click on cite
+
+![](images/googlescholar2.png)
+
+Click on BibTex and this will appear. You can simply cut in paste in bib file.
+
+**Rob: should we make a video to avoid these screenshots?**
+
+
+![](images/googlescholar3.png)
+
+
+To inlcude refs (if you already have a bib file skip)
+
+1. Create empty text file and change its extension to bib (e.g. bibli.bib)
+2. Add references to your bib file (see e.g. importation from google scholar)
+3. Change YAML
+
+
+[Intro to bibtex](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM)
+
+[Ref on ref for rmd](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+
+
+
 
 ### Tables 
 
