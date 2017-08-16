@@ -178,6 +178,27 @@ You can also use the same syntax `\@ref(label)` to reference sections, where lab
 
 ### Citations and Bibliography {-}
 
+Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database, which is a simple plain text file (with the extension bib) where each references you would like to cite is entered in a specific manner. 
+For example, in a recent paper two researchers from Oxford University investigated the connection between the taste of food and various aspects cutlery such as weight and colour. The called this phenomon the "taste of cutlery". The bibtex "entry" for this paper is given below as an example:
+
+```
+@article{harrar2013taste,
+  title={The taste of cutlery: how the taste of food is affected by the weight, size,
+   shape, and colour of the cutlery used to eat it},
+  author={Harrar, Vanessa and Spence, Charles},
+  journal={Flavour},
+  volume={2},
+  number={1},
+  pages={21},
+  year={2013},
+  publisher={BioMed Central}
+}
+```
+
+The easiest way ...
+
+
+
 **JUSTIN I think it would be cool to add something on bibliography. When I reviewed James slides for STAT 385 I suggested to to show student how bib files can be imported directely from google scholar so it might a good idea to do the same here. What do you think?**
 
 ### Tables {-}
