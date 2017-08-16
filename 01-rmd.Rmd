@@ -148,19 +148,13 @@ You can also use the same syntax `\@ref(label)` to reference sections, where lab
 
 ### Bibliography
 
-Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database.  is a plain text file. The file must be given the extension bib. Here are some ways to create one.
-
-file where all our references will be store. 
-
-we are able to use BibTex to generate bibliographies.
-BibTex is a way to structure output of paper citations you can obtain from
-Google Scholar
-
-For example, it a recent paper two researchers from Oxford University investigated the connection between the taste of food and various aspects cutlery such as weight and colour. The called this phenomon the "taste of cutlery". The bibtex "entry" for this paper is given below:
+Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database, which is a simple plain text file (with the extension bib) where each references you would like to cite is entered in a specific manner. 
+For example, in a recent paper two researchers from Oxford University investigated the connection between the taste of food and various aspects cutlery such as weight and colour. The called this phenomon the "taste of cutlery". The bibtex "entry" for this paper is given below as an example:
 
 ```
 @article{harrar2013taste,
-  title={The taste of cutlery: how the taste of food is affected by the weight, size, shape, and colour of the cutlery used to eat it},
+  title={The taste of cutlery: how the taste of food is affected by the weight, size,
+   shape, and colour of the cutlery used to eat it},
   author={Harrar, Vanessa and Spence, Charles},
   journal={Flavour},
   volume={2},
@@ -171,16 +165,7 @@ For example, it a recent paper two researchers from Oxford University investigat
 }
 ```
 
-
-
-i,e. how plateware can affect the perceived taste and flavour of food, but very little is known about visual and proprioceptive influences of cutlery on the response of consumers to the food sampled from it
-
-
-Recent evidence has shown that changing the plateware can affect the perceived taste and flavour of food, but very little is known about visual and proprioceptive influences of cutlery on the response of consumers to the food sampled from it. In the present study, we report three experiments designed to investigate whether food tastes different when the visual and tactile properties of the plastic cutlery from which it is sampled are altered. We independently varied the weight, size, colour, and shape of cutlery. We assessed the impact of changing the sensory properties of the cutlery on participants’ ratings of the sweetness, saltiness, perceived value, and overall liking of the food tasted from it.
-
-
-
-Pandoc can automatically generate citations and a bibliography in a number of styles. In order to use this feature, you will need to specify a bibliography file using the bibliography metadata field in a YAML metadata section. For example:
+The easiest way ...
 
 
 
