@@ -1,5 +1,6 @@
 library(shiny)
 library(knitr)
+library(rmarkdown)
 
 make_files = function(input, rmd = FALSE){
   if (rmd){
@@ -16,6 +17,8 @@ make_files = function(input, rmd = FALSE){
   cat("\n## RMarkdown Playground\n\n")
   cat("Experiment with the Rmd Code below and test output.\n\n")
   
+
+    
   if(input$header){
     cat("# Header Type 1\n## Header Type 2 \n### Header Type 3\n\n")
   }
@@ -136,7 +139,8 @@ ui <- shinyUI(
       mainPanel(
         tabsetPanel(id = "tabs",
                     tabPanel("Raw code", verbatimTextOutput(outputId = "raw")),
-                    tabPanel("Compiled html", uiOutput('markdown'))
+                    tabPanel("Compiled html", uiOutput('markdown')),
+                    tabPanel("Compiled html", uiOutput('html'))
         )
       )
     )
@@ -152,6 +156,13 @@ server <- function(input, output) {
   output$markdown <- renderUI({
     make_files(input, rmd = TRUE)
     HTML(markdown::markdownToHTML(knit('test.Rmd', quiet = TRUE)))
+  })
+  
+  
+  output$html <- renderUI({
+    make_files(input, rmd = TRUE)
+    render("test.Rmd")
+    includeHTML("test.html")
   })
 }
 
