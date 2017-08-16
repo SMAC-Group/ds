@@ -36,7 +36,7 @@ You can also include additional formatting [options](http://rmarkdown.rstudio.co
 
 The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. Before, you must install a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). You can also include raw LaTeX and even define LaTeX macros.
 
-### Subsections 
+### Subsections {-}
 
 To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of YAML Metadata. 
 
@@ -100,7 +100,7 @@ To add hyperlinks with a custom link title, (ex: [Google](https://google.com)) f
 [Google](https://google.com)
 ```
 
-### Blockquotes
+### Blockquotes {-}
 
 **Same thing for citation... What do you think?**
 
@@ -109,7 +109,7 @@ To add hyperlinks with a custom link title, (ex: [Google](https://google.com)) f
 >> Add another > if you want to quote within a quote.
 
 
-### Pictures 
+### Pictures {-}
 
 To add a picture with captions, follow the syntax below:
 
@@ -176,11 +176,11 @@ A basic introduction to LaTeX format can be found [here](http://www.math.harvard
 You can also use the same syntax `\@ref(label)` to reference sections, where label is the section ID. By default, Pandoc will generate IDs for all section headers, e.g., `# Hello World` will have an ID `hello-world`. To call header `hello-world` as a header, we type `\@ref(hello-world)` to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.
 
 
-### Citations and Bibliography
+### Citations and Bibliography {-}
 
 **JUSTIN I think it would be cool to add something on bibliography. When I reviewed James slides for STAT 385 I suggested to to show student how bib files can be imported directely from google scholar so it might a good idea to do the same here. What do you think?**
 
-### Tables 
+### Tables {-}
 
 For simple tables, we can be manually insert values as such, 
 
