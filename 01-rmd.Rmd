@@ -222,8 +222,6 @@ To inlcude refs (if you already have a bib file skip)
 2. Add references to your bib file (see e.g. importation from google scholar)
 3. Change YAML
 
-![](images/images/rmd_yaml2.png)
-
 
 [Intro to bibtex](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM)
 
@@ -290,10 +288,10 @@ Like third code chunk above, we can also set up chunk options. Note that the `ec
 Plot figure options: 
 
 - fig.path: ('figure/'; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)
-- fig.keep: ('high'; character) how plots in chunks should be kept
 - fig.show: ('asis'; character) how to show/arrange the plots
 - fig.width, fig.height: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric
 - fig.align: ('default'; character) alignment of figures in the output document (possible values are left, right and center
+- fig.cap: (NULL; character) figure caption to be used in a figure environment 
 
 
 ### In-line R {-}
