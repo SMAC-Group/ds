@@ -7,7 +7,7 @@ Experiment with the Rmd Code below and test output.
 
 We will talk more about plots later, but here is an example of changing plot figure options.
 
-```{r fig.height = 8, fig.align = 'left'}
-plot(1:10, main = 'Changed Dimensions')
+```{r fig.width = 3, fig.align = 'right', fig.cap = '**Figure:** This is a figure'}
+plot(1:10)
 ```
 

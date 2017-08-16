@@ -120,10 +120,59 @@ make_files = function(input, rmd = FALSE){
     #cat("plot(1:10, main = 'Default Plot')\n")
     #cat("```\n\n")
     
-    option = paste("```{r fig.height = ", input$height, ", fig.align = '", input$align,"'}", sep = "")
-    cat(option)
-    cat("\n")
-    cat("plot(1:10, main = 'Changed Dimensions')\n")
+    
+    cat("```{r")
+    first_opt = TRUE
+    if (input$height != 7){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.height = ")
+      cat(input$height)
+    }
+    
+    if (input$width != 7){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.width = ")
+      cat(input$width)
+    }
+    
+    if (input$align != "default"){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.align = '")
+      cat(input$align)
+      cat("'")
+    }
+    
+    
+    if (input$caption){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.cap = '")
+      cat(input$cap_text)
+      cat("'")
+    }
+    
+    cat("}\n")
+    
+    cat("plot(1:10)\n")
     cat("```\n\n")
     
     #cat("```{r fig.width = 4, fig.align = 'right', fig.cap = 'Aligned to the right!'}\n")
@@ -164,10 +213,17 @@ ui <- shinyUI(
         conditionalPanel(
           condition = "input.plot",
           selectInput("align", label = "Figure position:", 
-                      choices = list("Left" = "left", "Right" = "right", "Center" = "center"), 
-                      selected = "left"),
+                      choices = list("Default" = "default", "Left" = "left", "Right" = "right", "Center" = "center"), 
+                      selected = "default"),
           
-          numericInput("height", label = "Figure height", value = 8, 1, 12)
+          numericInput("height", label = "Figure height", value = 7, 1, 12),
+          numericInput("width", label = "Figure width", value = 7, 1, 12),
+          checkboxInput("caption", label = "Add caption", value = FALSE),
+          
+          conditionalPanel(
+            condition = "input.caption",
+            textInput("cap_text", "Caption text", value = "**Figure:** This is a figure")
+          )
       ),
           
         checkboxInput("ref", label = "Reference", value = FALSE)
