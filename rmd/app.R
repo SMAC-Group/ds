@@ -11,12 +11,17 @@ make_files = function(input, rmd = FALSE){
 
   cat("---\n")
   cat("title: 'RMarkdown Playground'\n")
+  if (input$ref){
+    cat("bibliography: biblio.bib\n")
+  }
   cat("output: html_document\n")
-  cat("---\n")
+  cat("---\n\n")
 
   cat("Experiment with the Rmd Code below and test output.\n\n")
   
-
+  if (input$ref){
+    cat("Here is a citation: @harrar2013taste (see References section for details).\n")
+  }
     
   if(input$header){
     cat("# Header Type 1\n## Header Type 2 \n### Header Type 3\n\n")
@@ -108,7 +113,10 @@ make_files = function(input, rmd = FALSE){
     cat("```r\nmean(x)\n```\n\n")
   }
   
-  
+  # Last section...
+  if (input$ref){
+    cat("\n# References\n")
+  }
   
   if(rmd){
     sink()
@@ -132,13 +140,15 @@ ui <- shinyUI(
         checkboxInput("quote", label = "Blockquotes", value = FALSE), 
         checkboxInput("link", label = "Links", value = FALSE),
         checkboxInput("pic", label = "Pictures", value = FALSE),
+        checkboxInput("ref", label = "Reference", value = FALSE),
         checkboxInput("code", label = "Code", value = FALSE)
       ),
       
       mainPanel(
         tabsetPanel(id = "tabs",
                     tabPanel("Raw code", verbatimTextOutput(outputId = "raw")),
-                    tabPanel("Compiled html", uiOutput('html'))
+                    tabPanel("Compiled html", uiOutput('html')),
+                    tabPanel("BibTex file", verbatimTextOutput(outputId = "bib"))
         )
       )
     )
@@ -148,6 +158,20 @@ server <- function(input, output) {
   
   output$raw <- renderPrint({
     make_files(input, rmd = FALSE)
+  })
+  
+  output$bib <- renderPrint({
+    cat("@article{harrar2013taste,\n")
+    cat("  title={The taste of cutlery: how the taste of food is affected by \n")
+    cat("  the weight, size, shape, and colour of the cutlery used to eat it},\n")
+    cat("  author={Harrar, Vanessa and Spence, Charles},\n")
+    cat("  journal={Flavour},\n")
+    cat("  volume={2},\n")
+    cat("  number={1},\n")
+    cat("  pages={21},\n")
+    cat("  year={2013},\n")
+    cat("  publisher={BioMed Central}\n")
+    cat("  }\n")
   })
   
   output$html <- renderUI({
