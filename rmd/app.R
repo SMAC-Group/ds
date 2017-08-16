@@ -10,11 +10,10 @@ make_files = function(input, rmd = FALSE){
   
 
   cat("---\n")
-  cat("title: 'test'\n")
+  cat("title: 'RMarkdown Playground'\n")
   cat("output: html_document\n")
   cat("---\n")
-  
-  cat("\n## RMarkdown Playground\n\n")
+
   cat("Experiment with the Rmd Code below and test output.\n\n")
   
 
@@ -139,7 +138,6 @@ ui <- shinyUI(
       mainPanel(
         tabsetPanel(id = "tabs",
                     tabPanel("Raw code", verbatimTextOutput(outputId = "raw")),
-                    tabPanel("Compiled html", uiOutput('markdown')),
                     tabPanel("Compiled html", uiOutput('html'))
         )
       )
@@ -151,13 +149,6 @@ server <- function(input, output) {
   output$raw <- renderPrint({
     make_files(input, rmd = FALSE)
   })
-
-    
-  output$markdown <- renderUI({
-    make_files(input, rmd = TRUE)
-    HTML(markdown::markdownToHTML(knit('test.Rmd', quiet = TRUE)))
-  })
-  
   
   output$html <- renderUI({
     make_files(input, rmd = TRUE)
