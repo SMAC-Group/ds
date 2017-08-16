@@ -1,3 +1,23 @@
+--- 
+title: "An Introduction to Statistical Programming Methods with R"
+author: "Matthew Beckman, Stéphane Guerrier, Justin Lee & Roberto Molinari"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: smac-group/ds
+description: "Let's add something here"
+includes:
+      in_header: style.css
+---
+
+# Introduction
+
+<!--chapter:end:index.Rmd-->
+
 # RMarkdown
 
 RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.
@@ -328,4 +348,52 @@ Click on the links below for more information on RMarkdown:
 - [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
 
+
+
+<!--chapter:end:01-rmd.Rmd-->
+
+
+# GitHub 
+
+<!--chapter:end:02-github.Rmd-->
+
+
+# Data Structures {#data}
+
+<!--chapter:end:03-data.Rmd-->
+
+
+# Logical Operators and Control Stuctures {#control}
+
+<!--chapter:end:04-controls.Rmd-->
+
+
+# Functions
+
+<!--chapter:end:05-functions.Rmd-->
+
+
+# Build a package
+
+<!--chapter:end:06-package.Rmd-->
+
+
+# Graphics {#chap:graphs}
+
+<!--chapter:end:07-graphs.Rmd-->
+
+
+# Case Study: Monte-Carlo Integration
+
+<!--chapter:end:08-MC.Rmd-->
+
+
+# Basic Probability and Statistics 
+
+<!--chapter:end:10-statistics.Rmd-->
+
+
+# Placeholder
+
+<!--chapter:end:test.Rmd-->
 
