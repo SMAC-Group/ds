@@ -6,6 +6,6 @@ output: html_document
 
 Experiment with the Rmd Code below and test output.
 
-Here is a citation: @harrar2013taste (see Reference section for details).
+Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).
 
 # References

@@ -20,7 +20,7 @@ make_files = function(input, rmd = FALSE){
   cat("Experiment with the Rmd Code below and test output.\n\n")
   
   if (input$ref){
-    cat("Here is a citation: @harrar2013taste (see References section for details).\n")
+    cat("Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).\n")
   }
     
   if(input$header){
@@ -171,7 +171,19 @@ server <- function(input, output) {
     cat("  pages={21},\n")
     cat("  year={2013},\n")
     cat("  publisher={BioMed Central}\n")
-    cat("  }\n")
+    cat("}\n\n\n")
+    
+    cat("@article{harrar2011there,\n")
+    cat("  title={There's more to taste in a coloured bowl},\n")
+    cat("  author={Harrar, Vanessa and Piqueras-Fiszman, Betina and \n")
+    cat("  Spence, Charles},\n")
+    cat("  journal={Perception},\n")
+    cat("  volume={40},\n")
+    cat("  number={7},\n")
+    cat("  pages={880--882},\n")
+    cat("  year={2011},\n")
+    cat("  publisher={SAGE Publications Sage UK: London, England}\n")
+    cat("}\n")
   })
   
   output$html <- renderUI({
