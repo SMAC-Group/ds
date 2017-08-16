@@ -1,19 +1,13 @@
 ---
-title: 'test'
+title: 'RMarkdown Playground'
 output: html_document
 ---
 
-## RMarkdown Playground
-
 Experiment with the Rmd Code below and test output.
 
-+---------------+---------------+--------------------+
-| Fruit         | Price         | Advantages         |
-+===============+===============+====================+
-| *Bananas*     | $1.34         | - built-in wrapper |
-|               |               | - bright color     |
-+---------------+---------------+--------------------+
-| Oranges       | $2.10         | - cures scurvy     |
-|               |               | - **tasty**        |
-+---------------+---------------+--------------------+
+We will talk more about plots later, but here is an example of changing plot figure options.
+
+```{r fig.width = 3, fig.align = 'right', fig.cap = '**Figure:** This is a figure'}
+plot(1:10)
+```
 

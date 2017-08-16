@@ -1,5 +1,6 @@
 library(shiny)
 library(knitr)
+library(rmarkdown)
 
 make_files = function(input, rmd = FALSE){
   if (rmd){
@@ -9,13 +10,19 @@ make_files = function(input, rmd = FALSE){
   
 
   cat("---\n")
-  cat("title: 'test'\n")
+  cat("title: 'RMarkdown Playground'\n")
+  if (input$ref){
+    cat("bibliography: biblio.bib\n")
+  }
   cat("output: html_document\n")
-  cat("---\n")
-  
-  cat("\n## RMarkdown Playground\n\n")
+  cat("---\n\n")
+
   cat("Experiment with the Rmd Code below and test output.\n\n")
   
+  if (input$ref){
+    cat("Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).\n\n")
+  }
+    
   if(input$header){
     cat("# Header Type 1\n## Header Type 2 \n### Header Type 3\n\n")
   }
@@ -106,7 +113,77 @@ make_files = function(input, rmd = FALSE){
     cat("```r\nmean(x)\n```\n\n")
   }
   
+  if(input$plot){
+    cat("We will talk more about plots later, but here is an example of changing plot figure options.\n\n")
+    
+    #cat("```{r simple_plot}\n")
+    #cat("plot(1:10, main = 'Default Plot')\n")
+    #cat("```\n\n")
+    
+    
+    cat("```{r")
+    first_opt = TRUE
+    if (input$height != 7){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.height = ")
+      cat(input$height)
+    }
+    
+    if (input$width != 7){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.width = ")
+      cat(input$width)
+    }
+    
+    if (input$align != "default"){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.align = '")
+      cat(input$align)
+      cat("'")
+    }
+    
+    
+    if (input$caption){
+      if (!first_opt){
+        cat(", ")
+      }else{
+        cat(" ")
+      }
+      first_opt = FALSE
+      cat("fig.cap = '")
+      cat(input$cap_text)
+      cat("'")
+    }
+    
+    cat("}\n")
+    
+    cat("plot(1:10)\n")
+    cat("```\n\n")
+    
+    #cat("```{r fig.width = 4, fig.align = 'right', fig.cap = 'Aligned to the right!'}\n")
+    #cat("plot(1:10, main = 'Changed Alignment')\n")
+    #cat("```\n\n")
+  }
   
+  # Last section...
+  if (input$ref){
+    cat("\n# References\n")
+  }
   
   if(rmd){
     sink()
@@ -130,13 +207,33 @@ ui <- shinyUI(
         checkboxInput("quote", label = "Blockquotes", value = FALSE), 
         checkboxInput("link", label = "Links", value = FALSE),
         checkboxInput("pic", label = "Pictures", value = FALSE),
-        checkboxInput("code", label = "Code", value = FALSE)
+        checkboxInput("code", label = "Code", value = FALSE), 
+        checkboxInput("plot", label = "Plot", value = FALSE),
+        
+        conditionalPanel(
+          condition = "input.plot",
+          selectInput("align", label = "Figure position:", 
+                      choices = list("Default" = "default", "Left" = "left", "Right" = "right", "Center" = "center"), 
+                      selected = "default"),
+          
+          numericInput("height", label = "Figure height", value = 7, 1, 12),
+          numericInput("width", label = "Figure width", value = 7, 1, 12),
+          checkboxInput("caption", label = "Add caption", value = FALSE),
+          
+          conditionalPanel(
+            condition = "input.caption",
+            textInput("cap_text", "Caption text", value = "**Figure:** This is a figure")
+          )
+      ),
+          
+        checkboxInput("ref", label = "Reference", value = FALSE)
       ),
       
       mainPanel(
         tabsetPanel(id = "tabs",
                     tabPanel("Raw code", verbatimTextOutput(outputId = "raw")),
-                    tabPanel("Compiled html", uiOutput('markdown'))
+                    tabPanel("Compiled html", uiOutput('html')),
+                    tabPanel("BibTex file", verbatimTextOutput(outputId = "bib"))
         )
       )
     )
@@ -147,11 +244,37 @@ server <- function(input, output) {
   output$raw <- renderPrint({
     make_files(input, rmd = FALSE)
   })
-
+  
+  output$bib <- renderPrint({
+    cat("@article{harrar2013taste,\n")
+    cat("  title={The taste of cutlery: how the taste of food is affected by \n")
+    cat("  the weight, size, shape, and colour of the cutlery used to eat it},\n")
+    cat("  author={Harrar, Vanessa and Spence, Charles},\n")
+    cat("  journal={Flavour},\n")
+    cat("  volume={2},\n")
+    cat("  number={1},\n")
+    cat("  pages={21},\n")
+    cat("  year={2013},\n")
+    cat("  publisher={BioMed Central}\n")
+    cat("}\n\n\n")
     
-  output$markdown <- renderUI({
+    cat("@article{harrar2011there,\n")
+    cat("  title={There's more to taste in a coloured bowl},\n")
+    cat("  author={Harrar, Vanessa and Piqueras-Fiszman, Betina and \n")
+    cat("  Spence, Charles},\n")
+    cat("  journal={Perception},\n")
+    cat("  volume={40},\n")
+    cat("  number={7},\n")
+    cat("  pages={880--882},\n")
+    cat("  year={2011},\n")
+    cat("  publisher={SAGE Publications Sage UK: London, England}\n")
+    cat("}\n")
+  })
+  
+  output$html <- renderUI({
     make_files(input, rmd = TRUE)
-    HTML(markdown::markdownToHTML(knit('test.Rmd', quiet = TRUE)))
+    render("test.Rmd")
+    includeHTML("test.html")
   })
 }
 
