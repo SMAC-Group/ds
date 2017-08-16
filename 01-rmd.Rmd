@@ -2,11 +2,11 @@
 
 RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.
 
-*What is **literate** programming?* 
+What is **literate** programming? 
 
 Literate programming is the notion for programmers to add narrative context with code to produce documententation for the program simultaneously. We can follow code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create rapports or presentation slides in a reproducible manner. We can avoid repetitive tasks such changing all figures when new data are available. 
 
-*What is **reproducible** research?* 
+What is **reproducible** research?
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by another person or body. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and eventually, the author. In essense, someone will run code and get the same exact results. RMarkdown is commonly used to solve this issue. 
 
@@ -52,47 +52,43 @@ In addition, due to its literate nature, text will be an essential part in expla
 [...] such as with emphasis such as *italics*, **bold**, or even a `code style`.
 ```
 
-Headings are preceded with a #, breaks create a new paragraph. 
-
 ![](images/rmd_text.png)
 
-There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
+### Headers {-}
 
-## Code Chunks 
-
-This is where you enter your code. 
-
-You can quickly insert chunks like these into your file with
-
-- the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
-- the Add Chunk command in the editor toolbar
-- by typing the chunk delimiters ```{r} and ```.
-
-![](images/rmd_code_chunk.png)
-
-### Code Chunk Options
-
-Like third code chunk above, we can also set up chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options exerted from above: 
-
-- eval: (TRUE; logical) whether to evaluate the code chunk
-- echo: (TRUE; logical or numeric) whether to include R source code in the output file
-- warning: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)
-- cache: (FALSE; logical) whether to cache a code chunk;
-
-Plot figure options: 
-
-- fig.path: ('figure/'; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)
-- fig.keep: ('high'; character) how plots in chunks should be kept
-- fig.show: ('asis'; character) how to show/arrange the plots
-- fig.width, fig.height: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric
-- fig.align: ('default'; character) alignment of figures in the output document (possible values are left, right and center
+As seen above, headings are preceded with a #. To output smaller headings, simply add more #! 
 
 
-### Hyperlinks
+### Lists {-}
+
+**Justin what do you think about saying something about bullet points? If so feel to move it where you want...**
+
+```{r, eval = FALSE, highlight = FALSE}
+* You can create bullet points by using symbols such as *, +, or -. 
++ simply add an indent or four preceding spaces to indent a list. 
+    + You can manipulate the number of spaces or indents to your liking. 
+        - Like this. 
+    * Here we go back to the first indent. 
+1. To make the list ordered, use numbers. 
+1. We can use one again to continue our ordered list. 
+2. Or we can add the next consecutive number. 
+
+```
+
+* You can create bullet points by using symbols such as *, +, or -. 
++ Simply add an indent or four preceding spaces to indent a list. 
+    + You can manipulate the number of spaces or indents to your liking. 
+        - Like this. 
+    * Here we go back to the first indent. 
+1. To make the list ordered, use numbers instead of symbols. 
+2. Here we write the next consecutive number to continue.
+    - Add more content by indenting like before. 
+
+### Hyperlinks {-}
 
 **Justin: Maybe something on hyperlinks**
 
-### Cache
+### Cache {-}
 
 **Justin: Maybe something on caching**
 
@@ -141,9 +137,6 @@ A basic introduction to LaTeX format can be found [here](http://www.math.harvard
 
 You can also use the same syntax `\@ref(label)` to reference sections, where label is the section ID. By default, Pandoc will generate IDs for all section headers, e.g., `# Hello World` will have an ID `hello-world`. To call header `hello-world` as a header, we type `\@ref(hello-world)` to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.
 
-### Bullet points
-
-**Justin what do you think about saying something about bullet points? If so feel to move it where you want...**
 
 ### Citations
 
@@ -186,6 +179,42 @@ to produce...
 +---------------+---------------+--------------------+
 
 Or we can use graphical user interfaces [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()`, which we will explain later. 
+
+
+
+
+
+There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
+
+## Code Chunks 
+
+This is where you enter your code. 
+
+You can quickly insert chunks like these into your file with
+
+- the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
+- the Add Chunk command in the editor toolbar
+- by typing the chunk delimiters ```{r} and ```.
+
+![](images/rmd_code_chunk.png)
+
+### Code Chunk Options
+
+Like third code chunk above, we can also set up chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options exerted from above: 
+
+- eval: (TRUE; logical) whether to evaluate the code chunk
+- echo: (TRUE; logical or numeric) whether to include R source code in the output file
+- warning: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)
+- cache: (FALSE; logical) whether to cache a code chunk;
+
+Plot figure options: 
+
+- fig.path: ('figure/'; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)
+- fig.keep: ('high'; character) how plots in chunks should be kept
+- fig.show: ('asis'; character) how to show/arrange the plots
+- fig.width, fig.height: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric
+- fig.align: ('default'; character) alignment of figures in the output document (possible values are left, right and center
+
 
 ## Render Output 
 
