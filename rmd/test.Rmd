@@ -19,3 +19,15 @@ To start an ordered list, write this:
         1. keep indenting for more sub lists
     * here i'm back to the second level
 
+**Links Full:** <https://google.com/>
+
+**Links Custom:** [Google](https://google.com)
+
+**Picture (with caption):**
+
+![Science Department Banner](http://science.psu.edu/psu_eberly_blue.png)
+
+**Picture (without caption):**
+
+![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+

@@ -54,6 +54,7 @@ In addition, due to its literate nature, text will be an essential part in expla
 
 ![](images/rmd_text.png)
 
+
 ### Headers {-}
 
 As seen above, headings are preceded with a #. To output smaller headings, simply add more #! 
@@ -62,6 +63,8 @@ As seen above, headings are preceded with a #. To output smaller headings, simpl
 ### Lists {-}
 
 **Justin what do you think about saying something about bullet points? If so feel to move it where you want...**
+
+In RMarkdown, we can add and modify lists.  
 
 ```{r, eval = FALSE, highlight = FALSE}
 * You can create bullet points by using symbols such as *, +, or -. 
@@ -72,7 +75,6 @@ As seen above, headings are preceded with a #. To output smaller headings, simpl
 1. To make the list ordered, use numbers. 
 1. We can use one again to continue our ordered list. 
 2. Or we can add the next consecutive number. 
-
 ```
 
 * You can create bullet points by using symbols such as *, +, or -. 
@@ -86,7 +88,45 @@ As seen above, headings are preceded with a #. To output smaller headings, simpl
 
 ### Hyperlinks {-}
 
-**Justin: Maybe something on hyperlinks**
+To add hyperlinks with the full link, (ex: <https://google.com/>) follow the syntax below: 
+
+```{r, eval = FALSE, highlight = FALSE}
+<https://google.com/>
+```
+
+To add hyperlinks with a custom link title, (ex: [Google](https://google.com)) follow the syntax below: 
+
+```{r, eval = FALSE, highlight = FALSE}
+[Google](https://google.com)
+```
+
+### Blockquotes
+
+**Same thing for citation... What do you think?**
+
+> Use the > character in front of a line, *just like in email*.
+> Use it if you're quoting a person, a song or whatever.
+>> Add another > if you want to quote within a quote.
+
+
+### Pictures 
+
+To add a picture with captions, follow the syntax below:
+
+```{r, eval = FALSE, highlight = FALSE}
+![Science Department Banner](http://science.psu.edu/psu_eberly_blue.png)
+```
+
+![PSU Science Department Banner](http://science.psu.edu/psu_eberly_blue.png)
+
+Else, to add a picture without any captions, follow the syntax below:
+
+```{r, eval = FALSE, highlight = FALSE}}
+![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+```
+
+![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+
 
 ### Cache {-}
 
@@ -102,22 +142,20 @@ a = 2
 (d = 2*a)
 ```
 
-### In-line R
 
-**Justin: not sure how to call this but see example below! :) Maybe a good to mention it. What do you think?**
-
-
-```{r}
-a = 2
-```
-
-The value of $a$ is `r a`.
-
-### LaTeX Equations
+### LaTeX {-}
 
 **JUSTIN: maybe add something on what is latex? WHat do you think?**
 
-Within the text section, you can also include LaTeX format to output equation format. Inline mathematical expressions can be added using the syntax: `$math expression$`. For example, if we want to write: "where $\alpha$ is in degrees" we would write:
+What is **LaTeX**?
+
+LaTeX is a document preparation system, that uses plain text in comparison to formatted text used for applications like Microsoft Word. It is widely used in academia, as a standard for the publication of scientific documents. It has control over large documents containing sectioning, cross-references, tables and figures. 
+
+#### LaTeX in RMarkdown {-}
+
+Unlike a highly formatted word processor, we cannot produce equations by clicking on symbols. As data scientists, we need to explain distributions and equations to explain our ideas. Within the text section of RMarkdown, you can include LaTeX format to output equation format. 
+
+Inline mathematical expressions can be added using the syntax: `$math expression$`. For example, if we want to write: "where $\alpha$ is in degrees" we would write:
 
 ```{r, eval = FALSE, highlight = FALSE}
 "where $\alpha$ is in degres"
@@ -133,20 +171,12 @@ $$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \c
 
 A basic introduction to LaTeX format can be found [here](http://www.math.harvard.edu/texman/) if you want to learn more about the basics. An alternative can be to insert custom LaTeX formulas using a graphical interface such as [codecogs](https://www.codecogs.com/latex/eqneditor.php). 
 
-### Cross-referencing Sections 
+### Cross-referencing Sections {-}
 
 You can also use the same syntax `\@ref(label)` to reference sections, where label is the section ID. By default, Pandoc will generate IDs for all section headers, e.g., `# Hello World` will have an ID `hello-world`. To call header `hello-world` as a header, we type `\@ref(hello-world)` to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.
 
 
-### Citations
-
-**Same thing for citation... What do you think?**
-
->
-> blabla, someone
->
-
-### Bibliography
+### Citations and Bibliography
 
 **JUSTIN I think it would be cool to add something on bibliography. When I reviewed James slides for STAT 385 I suggested to to show student how bib files can be imported directely from google scholar so it might a good idea to do the same here. What do you think?**
 
@@ -178,11 +208,9 @@ to produce...
 |               |               | - **tasty**        |
 +---------------+---------------+--------------------+
 
-Or we can use graphical user interfaces [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()`, which we will explain later. 
+Or we can use the easy graphical user interface [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()`, which we will explain later. 
 
-
-
-
+### Additional References {-}
 
 There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
 
@@ -194,7 +222,7 @@ You can quickly insert chunks like these into your file with
 
 - the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
 - the Add Chunk command in the editor toolbar
-- by typing the chunk delimiters ```{r} and ```.
+- by typing the chunk delimiters **\`\`\`\{\r\}** and **\`\`\`**.
 
 ![](images/rmd_code_chunk.png)
 
@@ -214,6 +242,25 @@ Plot figure options:
 - fig.show: ('asis'; character) how to show/arrange the plots
 - fig.width, fig.height: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric
 - fig.align: ('default'; character) alignment of figures in the output document (possible values are left, right and center
+
+
+### In-line R {-}
+
+**Justin: not sure how to call this but see example below! :) Maybe a good to mention it. What do you think?**
+
+The variables we store in a RMarkdown will stay within the environment. This means that we can call and manipulate them anywhere within the document. In addition, we can also reference the variable in-line in the text section using the \`r something\` syntax. 
+
+```{r}
+a = 2
+```
+
+Above, we stored the value 2 into `a`. 
+
+```{r, eval = FALSE, highlight = FALSE}
+The value of $a$ is `r a`. 
+```
+
+This translates in R Markdown to "The value of $a$ is `r a`."
 
 
 ## Render Output 
