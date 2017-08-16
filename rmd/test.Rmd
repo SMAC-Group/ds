@@ -5,9 +5,40 @@ output: html_document
 
 Experiment with the Rmd Code below and test output.
 
+> Use the > character in front of a line, *just like in email*.
+> Use it if you're quoting a person, a song or whatever.
+>>Add the >> if you want to quote within a quote.
+
+**Links Full:** <https://google.com/>
+
+**Links Custom:** [Google](https://google.com)
+
+**Picture (with caption):**
+
+![Science Department Banner](http://science.psu.edu/psu_eberly_blue.png)
+
+**Picture (without caption):**
+
+![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+
+Inline Code highlighting with `mean(x)`. 
+
+```{r calculate_mean, cache = TRUE}
+n = 25
+set.seed(42)
+x = runif(n) # Generates 25 random numbers
+
+mean(x)
+```
+
+If you do not want code to run just use:
+```r
+mean(x)
+```
+
 We will talk more about plots later, but here is an example of changing plot figure options.
 
-```{r fig.width = 3, fig.align = 'right', fig.cap = '**Figure:** This is a figure'}
+```{r}
 plot(1:10)
 ```
 
