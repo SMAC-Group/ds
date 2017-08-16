@@ -4,11 +4,11 @@ RMarkdown is a framework that provides a literate programming format for data sc
 
 *What is **literate** programming?* 
 
-Literate programming is the notion for programmers to add narrative context with code to produce documententation for the program simultaneously. We can follow code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create rapports or presentation slides in a reproducible manner. We can avoid repetitive tasks such changing all figures when new data are available. 
+Literate programming is the notion for programmers of adding narrative context with code to produce documententation for the program simultaneously. Consequently it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated. 
 
 *What is **reproducible** research?* 
 
-Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by another person or body. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and eventually, the author. In essense, someone will run code and get the same exact results. RMarkdown is commonly used to solve this issue. 
+Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and eventually, the author. In essence, allowing for reproducible research implies that someone will run code and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
 We will later enforce this notion by utilizing `set.seed()` in the following chapters. 
 
