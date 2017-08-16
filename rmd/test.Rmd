@@ -1,12 +1,13 @@
 ---
 title: 'RMarkdown Playground'
-bibliography: biblio.bib
 output: html_document
 ---
 
 Experiment with the Rmd Code below and test output.
 
-Here are some examples: @harrar2013taste and @harrar2011there (see References section for details).
+We will talk more about plots later, but here is an example of changing plot figure options.
 
+```{r fig.height = 8, fig.align = 'left'}
+plot(1:10, main = 'Changed Dimensions')
+```
 
-# References

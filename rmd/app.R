@@ -116,17 +116,19 @@ make_files = function(input, rmd = FALSE){
   if(input$plot){
     cat("We will talk more about plots later, but here is an example of changing plot figure options.\n\n")
     
-    cat("```{r simple_plot}\n")
-    cat("plot(1:10, main = 'Default Plot')\n")
-    cat("```\n\n")
+    #cat("```{r simple_plot}\n")
+    #cat("plot(1:10, main = 'Default Plot')\n")
+    #cat("```\n\n")
     
-    cat("```{r fig.width = 4, fig.height = 4}\n")
+    option = paste("```{r fig.height = ", input$height, ", fig.align = '", input$align,"'}", sep = "")
+    cat(option)
+    cat("\n")
     cat("plot(1:10, main = 'Changed Dimensions')\n")
     cat("```\n\n")
     
-    cat("```{r fig.width = 4, fig.align = 'right', fig.cap = 'Aligned to the right!'}\n")
-    cat("plot(1:10, main = 'Changed Alignment')\n")
-    cat("```\n\n")
+    #cat("```{r fig.width = 4, fig.align = 'right', fig.cap = 'Aligned to the right!'}\n")
+    #cat("plot(1:10, main = 'Changed Alignment')\n")
+    #cat("```\n\n")
   }
   
   # Last section...
@@ -158,6 +160,16 @@ ui <- shinyUI(
         checkboxInput("pic", label = "Pictures", value = FALSE),
         checkboxInput("code", label = "Code", value = FALSE), 
         checkboxInput("plot", label = "Plot", value = FALSE),
+        
+        conditionalPanel(
+          condition = "input.plot",
+          selectInput("align", label = "Figure position:", 
+                      choices = list("Left" = "left", "Right" = "right", "Center" = "center"), 
+                      selected = "left"),
+          
+          numericInput("height", label = "Figure height", value = 8, 1, 12)
+      ),
+          
         checkboxInput("ref", label = "Reference", value = FALSE)
       ),
       
