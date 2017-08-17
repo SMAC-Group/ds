@@ -48,7 +48,7 @@ To make your sections numbered as sections and subsections, make sure you specif
 
 In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or even a `code style`. To understand how to format text, our previous would be as follows in RMarkdown:
 
-```{r, eval = FALSE, highlight = FALSE}
+```
 [...] such as with emphasis such as *italics*, **bold**, or even a `code style`.
 ```
 
@@ -121,7 +121,7 @@ To add a picture with captions, follow the syntax below:
 
 Else, to add a picture without any captions, follow the syntax below:
 
-```{r, eval = FALSE, highlight = FALSE}}
+```{r, eval = FALSE, highlight = FALSE}
 ![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
 ```
 
@@ -298,7 +298,9 @@ Plot figure options:
 
 **Justin: not sure how to call this but see example below! :) Maybe a good to mention it. What do you think?**
 
-The variables we store in a RMarkdown will stay within the environment. This means that we can call and manipulate them anywhere within the document. In addition, we can also reference the variable in-line in the text section using the \`r something\` syntax. 
+The variables we store in a RMarkdown will stay within the environment. This means that we can call and manipulate them anywhere within the document. In addition, we can also reference the variable in-line in the text section as follows:
+
+In Rmarkdown, this syntax would print \`r variable\` to show the value of our variable embedded within the sentence. 
 
 ```{r}
 a = 2
