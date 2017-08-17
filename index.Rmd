@@ -63,14 +63,13 @@ You cannot use `RStudio` without having installed `R` on your computer.
 
 ### About RStudio
 
-`RStudio` is a customizable IDE for the `R` enviornment where the user can have an easily accessbile overview of the working directory, files, plots, data, objects and many other features that are useful to work efficiently with `R`. Moreover, it is possible to create projects in which it is possible to develop a self-contained environment for sets of specific functions and files aimed to deal with various tasks.
+`RStudio` is a customizable IDE for the `R` enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with `R`. For the most part, `RStudio` provides everything the `R` user will need in a self-contained, and well-organized environment.  Moreover, it is possible to create "projects" in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.
 
-**Matt** would you have something we could use here?
 **Justin** what about a video here to introduce RStudio???
 
 We should add a link to the RStudio "[cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)"
 
-In addition, `RStudio` provides embedded functions that allow to synchronize your work on GitHub as well as a set of powerful tools to save and comunicate results (whether they be simulations, data analysis or presenting and making available a new package to other users). Some examples of these tools are `Rmarkdown` and `Shiny Web App` which can be used respectively to note down results with embedded `R` code and to create an online application which can provide a user interface to supply data and retrieve results using `R`. GitHub and `Rmarkdown` will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.
+In addition, `RStudio` provides embedded functionality to utilize collaborative version-control software including GitHub & Subversion as well as a set of powerful tools to save and communicate results (whether they be simulations, data analysis, or presenting and making available a new package to other users). Some examples of these tools are `Rmarkdown` which can be used respectively to integrate written narrative with embedded `R` code and other content, as well as and `Shiny Web Apps` which can provide an interactive user-friendly interface that permits a user to actively engage with a wide variety of tools built in `R` without the need to encounter raw `R` code. GitHub and `Rmarkdown` will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.
 
 ### Conventions
 
@@ -260,9 +259,9 @@ This is not the first (or the last) book that has been written explaining and de
 - ...
 
 
-## Licence
+## License
 
-We probably should pick a liscence... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
+We probably should pick a license... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
 
 ## Acknowledgments
 ...
