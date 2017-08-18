@@ -207,11 +207,11 @@ Knowing these arguments, it is now possible to compute the probability we are in
 pnorm(q = 90, mean = 70, sd = 15, lower.tail = FALSE) 
 ```
 
-As we can see from the output, there is roughly a 9% probability of students scoring 90 or more in the exam.
+As we can see from the output, there is roughly a 9% probability of students scoring 90 or more on the exam.
 
 ### Summary Statistics 
 
-While the previous functions deal with theoretical distributions, it is also necessary to deal with real data from which we would like to extract information. This data, for example, can be simulated using the function `rname` (e.g. `rnorm`) and, supposing we don't know from which distribution it is generated, we would be interested in understanding the behavior of the data in order to eventually identify a distribution and estimate its parameters.
+While the previous functions deal with theoretical distributions, it is also necessary to deal with real data from which we would like to extract information. Supposing--as is often the case in applied statistics--we don't know from which distribution it is generated, we would be interested in understanding the behavior of the data in order to eventually identify a distribution and estimate its parameters.
 
 The use of certain functions varies according to the nature of the inputs since these can be, for example, numerical or factors.
 
@@ -231,7 +231,7 @@ A first step in analysing numerical inputs is given by computing summary statist
 
 ### Factor Input 
 
-If the data of interest is a factor with different categories or levels, then it cannot obviously be treated as a numerical variable and other statistics need to be computed. For example, for a factor input we can extract counts and percentages to summarize the variable by using `table`. Using functions and data structures that will be described in the following chapters, below we create an example dataset with 90 observations of three different colors: 20 being `Yellow`, 10 being `Green` and 50 being `Blue`. We then apply the `table` function to it:
+If the data of interest is a factor with different categories or levels, then different summaries are more appropriate. For example, for a factor input we can extract counts and percentages to summarize the variable by using `table`. Using functions and data structures that will be described in the following chapters, below we create an example dataset with 90 observations of three different colors: 20 being `Yellow`, 10 being `Green` and 50 being `Blue`. We then apply the `table` function to it:
 
 ```{r}
 table(as.factor(c(rep("Yellow", 20), rep("Green", 10), rep("Blue", 50))))
@@ -241,7 +241,7 @@ By doing so we obtain a frequency (count) table of the colors.
 
 ### Dataset inputs
 
-In many cases, when dealing with data we are actually dealing with datasets (see Chapter ???) where variables of different nature are aligned together (usually in columns). For datasets there is another convenient way to get simple summary statistics which consists in applying the function `summary` to the dataset itself (instead of simply a numerical input as seen earlier). 
+In many cases, when dealing with data we are actually dealing with datasets (see Chapter 03) where variables of different nature are aligned together (usually in columns). For datasets there is another convenient way to get simple summary statistics which consists in applying the function `summary` to the dataset itself (instead of simply a numerical input as seen earlier). 
 
 As an example, let us explore the [Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) flower dataset contained in the `R` built-in `datasets` package. The data set consists of 50 samples from each of three species of Iris (Setosa, Virginica and Versicolor). Four features were measured from each sample consisting in the length and the width (in centimeters) of the both sepals and petals. This dataset is widely used as an example since it was used by Fisher to develop a linear discriminant model based on which he intended to distinguish the three species from each other using combinations of these four features.
 
