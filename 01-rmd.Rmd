@@ -189,7 +189,7 @@ You can also use the same syntax `\@ref(label)` to reference sections, where lab
 
 ### Citations and Bibliography {-}
 
-Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database, which is a simple plain text file (with the extension bib) where each reference you would like to cite is entered in a specific manner. 
+Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database, which is a simple plain text file (with the extension ".bib") where each reference you would like to cite is entered in a specific manner. 
 
 To illustrate how this is done, let us take the example of a recent paper where two researchers from Oxford University investigated the connection between the taste of food and various features of cutlery such as weight and colour (calling this phenomenon the "taste of cutlery"). The bibtex "entry" for this paper is given below:
 
@@ -207,41 +207,32 @@ To illustrate how this is done, let us take the example of a recent paper where 
 }
 ```
 
-This may look like a complicated 
-The easiest way ...
-
-
-Import with google scholar:
-
-Search paper
+This may look like a complicated format to save a reference but there is an easy way to obtain this format without having to manually fill in the different slots. To do so, go online and search for "Google Scholar" which is a search engine specifically dedicated to academic or other types of publications. In the latter search engine you can insert keywords or the title and/or authors of the publication you are interested in and find it in the list of results. In our example we search for "The tast of cutlery" and the publication we are interested in is the first in the results list.
 
 ![](images/googlescholar1.png)
 
-Click on cite
+Below every publication in the list there is a set of options among which the one we are interested in is the "Cite" option that should open a window in which a series of reference options are available. Aside from different reference formats that can be copied and pasted into your document, at the bottom of the window you can find another set of options (with related links) that refer to different bibliography managers.
 
 ![](images/googlescholar2.png)
 
-Click on BibTex and this will appear. You can simply cut in paste in bib file.
+For ".bib" files we are interested in the "BibTex" option and by clicking on it we will be taken to another tab in which the format of the reference we want is provided. All that needs to be done at this point is to copy this format (that we saw earlier in this section) and paste in the ".bib" file you created and save the changes.
 
 **Rob: should we make a video to avoid these screenshots?**
 
 
 ![](images/googlescholar3.png)
 
+However, your Rmarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file "biblio.bib" (saved in the same location as your Rmarkdown document). All that needs to be done is to add another line in the YAML metadata with `bibliography: biblio.bib` and your Rmarkdown will now be able to recognise the references within your ".bib" file. There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (for a more detailed overview the BibTex environment and managing references in Rmarkdown see, for example, this [link](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM) and this [link](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html) respectively).
 
-To inlcude refs (if you already have a bib file skip)
+Once the ".bib" file has been created and has been linked to your Rmarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the ".bib" file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your ".bib" file and place it immediately after the `@` symbol (without spaces). So, for example, say that we wanted to cite the publication on the "taste of cutlery": in your Rmarkdown all you have to do is to type `@harrar2013taste` at the point where you want this citation in the text and you will obtain: @harrar2013taste.
 
-1. Create empty text file and change its extension to bib (e.g. bibli.bib)
-2. Add references to your bib file (see e.g. importation from google scholar)
-3. Change YAML
+```{block2, type='rmdnote'}
+The user can also change the name used to call the desired reference as long as the same name is used to cite it in the Rmarkdown document and that this name is not the same as another reference. 
+```
 
-
-[Intro to bibtex](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM)
-
-[Ref on ref for rmd](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-
-
-
+```{block2, type='rmdcaution'}
+The references in the ".bib" file will not appear in the references outputted from the Rmarkdown compiling unless they are specifically used within the Rmarkdown document.
+```
 
 ### Tables {-}
 
