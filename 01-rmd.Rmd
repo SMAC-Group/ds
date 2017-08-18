@@ -23,7 +23,7 @@ An RMarkdown is a plain text file that contains three different aspects:
 
 ## YAML Metadata 
 
-YAML stands for *YAML Ain't Markup Language*, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header surrounded by ---s.
+YAML stands for *YAML Ain't Markup Language*, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header is delimited by "---" above and below.
 
 ![](images/rmd_yaml.png)
 
@@ -36,7 +36,7 @@ You can also include additional formatting [options](http://rmarkdown.rstudio.co
 
 The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. Before, you must install a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). You can also include raw LaTeX and even define LaTeX macros.
 
-### Subsections {-}
+### Subsections  {-}
 
 To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of YAML Metadata. 
 
@@ -130,18 +130,29 @@ Else, to add a picture without any captions, follow the syntax below:
 
 ### Cache {-}
 
-**Justin: Maybe something on caching**
+Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the `cache` argument. By default this argument is assigned the value `FALSE` and therefore the R code is run every time your document is compiled. However, if you specify this argument as `cache = TRUE`, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.
 
-For example:
+Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call `a`. This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the `cache` argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:
 
-```{r computeA, cache = TRUE}
+```{r computeA, cache = TRUE, highlight=FALSE}
 a = 2
 ```
 
-```{r, cache = TRUE, dependson = "computeA"}
+You will notice that we called this chunk of embedded R code `computeA` and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been "cached", then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.
+
+This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your "cached" R code with other chunks of R code within the document. In this case, the other chunks of R code can be modified thereby outputting different results these will not be considered by your "cached" R code. As an example, suppose we have another chunk of R code that we can "cache" and that takes the value of `a` from the previous chunk:
+
+```{r, cache = TRUE, highlight=FALSE}
 (d = 2*a)
 ```
 
+In this case, the output of this chunk will be `## 4` since `a = 2` (from the previous chunk). What happens however if we modify the value of `a` in the previous chunk? In this case, the previous chunk will be recomputed but the value of `d` (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the "cached" code depends on. This is why we initially gave a name to the first chunk of code ("computeA") so as to refer to it in following chunks of "cached" code that depend on it. To refer to this code you need to use the option `dependson` as follows:
+
+```{r, cache = TRUE, dependson = "computeA", highlight=FALSE}
+d = 2*a
+```
+
+In this manner, if the value of `a` changes in the first chunk, the value of `d` will also change but will be stored until either the `computeA` chunk or the latter chunk is modified.
 
 ### LaTeX {-}
 
@@ -158,7 +169,7 @@ Unlike a highly formatted word processor, we cannot produce equations by clickin
 Inline mathematical expressions can be added using the syntax: `$math expression$`. For example, if we want to write: "where $\alpha$ is in degrees" we would write:
 
 ```{r, eval = FALSE, highlight = FALSE}
-"where $\alpha$ is in degres"
+"where $\alpha$ is in degrees"
 ```
 
 Using a slightly different syntax (i.e. `$$math expression$$`) centered mathematical expressions can be obtained. For example, the binomial probability in LaTeX
@@ -178,8 +189,9 @@ You can also use the same syntax `\@ref(label)` to reference sections, where lab
 
 ### Citations and Bibliography {-}
 
-Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database, which is a simple plain text file (with the extension bib) where each references you would like to cite is entered in a specific manner. 
-For example, in a recent paper two researchers from Oxford University investigated the connection between the taste of food and various aspects cutlery such as weight and colour. The called this phenomon the "taste of cutlery". The bibtex "entry" for this paper is given below as an example:
+Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database, which is a simple plain text file (with the extension bib) where each reference you would like to cite is entered in a specific manner. 
+
+To illustrate how this is done, let us take the example of a recent paper where two researchers from Oxford University investigated the connection between the taste of food and various features of cutlery such as weight and colour (calling this phenomenon the "taste of cutlery"). The bibtex "entry" for this paper is given below:
 
 ```
 @article{harrar2013taste,
@@ -195,6 +207,7 @@ For example, in a recent paper two researchers from Oxford University investigat
 }
 ```
 
+This may look like a complicated 
 The easiest way ...
 
 

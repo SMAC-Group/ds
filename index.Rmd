@@ -9,11 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: smac-group/ds
-<<<<<<< HEAD
 description: "This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control."
-=======
-description: "Let's add something here"
->>>>>>> origin/master
 includes:
       in_header: style.css
 ---
