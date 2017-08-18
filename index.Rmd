@@ -81,6 +81,7 @@ b = 0.5
 sin(a*b)
 ```
 
+
 Similarly, `R` output lines (that usally appear in your Console) will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
 
 ```{r, echo = FALSE}
@@ -89,7 +90,7 @@ b = 0.5
 sin(a*b)
 ```
 
-Aside from `R` code and its outputs, this book will also insert some boxes that will draw the reader's attention to some details that can be important, curious or purely informative in nature. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the "under construction" nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:
+Aside from `R` code and its outputs, this book will also insert some boxes that will draw the reader's attention to  important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the "under construction" nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:
 
 ```{block2,  type='rmdimportant'}
 This is an important piece of information.
@@ -104,7 +105,7 @@ This is something that the reader should pay caution to but should not create ma
 ```
 
 ```{block2, type='rmdwarning'}
-This is a warning which should be considered by the reader to avoid problems of different nature.
+This is a warning which should be heeded by the reader to avoid problems of different nature.
 ```
 
 ```{block2, type='rmdtip'}
@@ -130,7 +131,7 @@ A basic aspect to underline about the `R` environment is that it serves as an ad
 
 ### Getting help
 
-In the previous section we presented some examples on how `R` can be used as a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in `R`, simply put a question mark in front of the function name (or just type `help()` around the function name) and its documentation will be displayed. For example, if you are interested in learning about the function `log()` you simply type:
+In the previous section we presented some examples on how `R` can be used as a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in `R`, simply put a question mark in front of the function name (or just type `help()` around the function name), or use the search bar on the "Help" tab in your RStudio window, and its documentation will be displayed. For example, if you are interested in learning about the function `log()` you could simply type:
 
 ```{r}
 ?log
@@ -140,7 +141,7 @@ which will display something similar to:
 
 ![](images/example-log-help.png)
 
-The `R` documentation can sometimes be very technical or hard to interpret. In these cases, the best solution to understand a function is to search for help on any search engine and you will probably find different forums such as "CrossValidated" or "StackExchange" in which the questions you have about a function have probably already been asked and answered by many other users. 
+The `R` documentation is written by the author of the package.  For mainstream packages in widespread use, the documentation is almost always quite good, but in some cases it can be quite technical, difficult to interpret, and possibly incomplete. In these cases, the best solution to understand a function is to search for help on any search engine.  Often a simple search like "side by side boxplots in R" or "side by side boxplots in ggplot2" will produce many useful results. The search results often include user forums such as "CrossValidated" or "StackExchange" in which the questions you have about a function have probably already been asked and answered by many other users. 
 
 ```{block2, type='rmdtip'}
 You can often use the error message to search for answers about a problem you may have with a function.
@@ -148,9 +149,9 @@ You can often use the error message to search for answers about a problem you ma
 
 ### Installing packages
 
-`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages that you can install. These packages provide additional functions, features and data to the R environement. If you want to do something in `R` that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in `R` is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for `R` (see CRAN website). Another general approach to find a package in `R` is simply to use a search engine in which to type the keywords of the tools you are looking for followed by "R package".
+`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages on an ever-increasing range of subjects available for you to install. These packages provide additional functions, features and data to the R environement. If you want to do something in `R` that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in `R` is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for `R` (see CRAN website). Another general approach to find a package in `R` is simply to use a search engine in which to type the keywords of the tools you are looking for followed by "R package".
 
-`R` packages can be installed in various ways but in this section we will only discuss the most straightforward approach to do so, which is through the `install.packages()` function. Another way is to use the "Tools -> Install Packages..." path from the dropdown menus in `RStudio` but the `install.packages()` function is nevertheless transversal to any platform for the `R` environment. It must be underlined that these approaches to install packages require that the packages are available within the CRAN repository. However, there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter ????? (github) will show other ways of installing packages from a commonly used repository called "GitHub". 
+`R` packages can be installed in various ways but the most widely used approach is through the `install.packages()` function. Another way is to use the "Tools -> Install Packages..." path from the dropdown menus in `RStudio` or clicking on the "install" button in the "Packages" pane in the RStudio environment. The `install.packages()` function is very straight-forward and transcends any platform for the `R` environment. It is noteworthy that this approach assumes that the desired package(s) are available within the CRAN repository. This is very often the case, but there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter 02 will show other ways of installing packages from a commonly used repository called "GitHub". 
 
 Sticking momentarily to the packages available in the CRAN repository, the use of the `install.packages()` is quite simple. For example, if you want to install the package `devtools` you can simply write:
 
