@@ -1,6 +1,12 @@
 # RMarkdown
 
-RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents.
+RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also is a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents. More specifically, an RMarkdown is a plain text file that contains three different building blocks:
+
+- YAML metadata
+- Text 
+- Code Chunks 
+
+We will discuss the features in the following sections.
 
 What is **literate** programming? 
 
@@ -10,16 +16,10 @@ What is **reproducible** research?
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and eventually, the author. In essence, allowing for reproducible research implies that someone will run code and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
+**JUSTIN: It could be nice to add a sketch to show what is going on in RMarkdown (maybe data -> RMarkdown -> output, under RMarkdown show that data importing/cleaning, analysis, writing slide/report content is done, output show the kind of output, from slides, html, this book, latex document (sweave) and so on). Finally, we could add a video somewhere in the intro to present RMarkdown in RStudio. What do you think?**
+
 We will later enforce this notion by utilizing `set.seed()` in the following chapters. 
 
-**JUSTIN: maybe we should add something on what literate programming is? Also, I think we should add something on reproducible analysis (research). Basically, RMarkdown offers a simple tool that allows to create rapports or presentation slides in a reproducible manner. At a higher level this means reproducible research which is a real problem now a days. Also, literate programming tools such as RMarkdown avoids repetitive tasks such changing all figures when new data are available. It could be nice to add a sketch to show what is going in RMarkdown (maybe data -> RMarkdown -> output, under RMarkdown show that data importation/cleaning, analysis, writing slide/repport content is done, output show the kind of output, from slides, html, this book, latex document (sweave) and so on). Finally, we could add a video somewhere in the intro to present RMarkdown in RStudio. What do you think?**
-
-
-An RMarkdown is a plain text file that contains three different aspects:
-
-- YAML metadata
-- Text 
-- Code Chunks 
 
 ## YAML Metadata 
 
