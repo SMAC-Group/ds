@@ -28,7 +28,7 @@ Within the above framework, the statistical software `R` has seen a rise in use 
 All these goals are common to any basic programming course, however all these will be heavily focused on the use and development of statistical tools. In fact, as highlighted earlier, it has become increasingly important to include statistical methodologies within the programming framework thereby allowing software to not only manage data efficiently but also to extract and analyse data in an appropriate manner while doing so. The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.
 
 ```{block2,  type='rmdimportant'}
-This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply send an email to ???????? or add an issue to the GitHub repository used for this document (which can be accessed here????) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you're not familiar with these tools, they will be explained later on in the book itself.
+This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here https://github.com/SMAC-Group/ds/issues) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you're not familiar with these tools, they will be explained later on in the book itself.
 ```
 
 ## `R` and `RStudio`
@@ -51,11 +51,11 @@ In the perspective of improving the usage of computer memory, `R` has been devel
 
 As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:
 
-- [`R`](https://cran.r-project.org/) .
+- [`R`](https://cran.r-project.org/)
 
 Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link:
 
-- [RStudio](https://www.rstudio.com/) .
+- [RStudio](https://www.rstudio.com/)
 
 ```{block2,  type='rmdimportant'}
 You cannot use `RStudio` without having installed `R` on your computer.
@@ -65,9 +65,7 @@ You cannot use `RStudio` without having installed `R` on your computer.
 
 `RStudio` is a customizable IDE for the `R` enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with `R`. For the most part, `RStudio` provides everything the `R` user will need in a self-contained, and well-organized environment.  Moreover, it is possible to create "projects" in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.
 
-**Justin** what about a video here to introduce RStudio???
-
-We should add a link to the RStudio "[cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)"
+**Rob** what about a video here to introduce RStudio???
 
 In addition, `RStudio` provides embedded functionality to utilize collaborative version-control software including GitHub & Subversion as well as a set of powerful tools to save and communicate results (whether they be simulations, data analysis, or presenting and making available a new package to other users). Some examples of these tools are `Rmarkdown` which can be used respectively to integrate written narrative with embedded `R` code and other content, as well as and `Shiny Web Apps` which can provide an interactive user-friendly interface that permits a user to actively engage with a wide variety of tools built in `R` without the need to encounter raw `R` code. GitHub and `Rmarkdown` will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.
 
@@ -171,6 +169,17 @@ Once this is done, all the functions and documentation of this package are avail
 Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
 ```
 
+One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub. 
+
+```{r, eval = FALSE}
+install_github("SMAC-Group/stat297")
+```
+
+
+### Additional References
+
+There are many more elements in RStudio, and we encourage you to use the [RStudio Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf) as a reference. 
+
 ## Basic Probability and Statistics with `R`
 
 The `R` environment provides an up-to-date and efficient programming language to develop different tools and applications. Nevertheless, its main functionality lies in the core statistical framework and tools that consistute the basis of this language. Indeed, this book aims at introducing and describing the methods and approaches of statistical programming which therefore require a basic knowledge of Probability and Statistics in order to grasp the logic and usefulness of the features presented in this book.
@@ -209,8 +218,8 @@ pnorm(q = 90, mean = 70, sd = 15, lower.tail = FALSE)
 
 As we can see from the output, there is roughly a 9% probability of students scoring 90 or more on the exam.
 
-### Summary Statistics 
-
+### Summary Statistics
+ 
 While the previous functions deal with theoretical distributions, it is also necessary to deal with real data from which we would like to extract information. Supposing--as is often the case in applied statistics--we don't know from which distribution it is generated, we would be interested in understanding the behavior of the data in order to eventually identify a distribution and estimate its parameters.
 
 The use of certain functions varies according to the nature of the inputs since these can be, for example, numerical or factors.
