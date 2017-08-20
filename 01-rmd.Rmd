@@ -12,6 +12,11 @@ Reproducible research or reproducible analysis is the notion that an experiment'
 
 **JUSTIN: It could be nice to add a sketch to show what is going on in RMarkdown (maybe data -> RMarkdown -> output, under RMarkdown show that data importing/cleaning, analysis, writing slide/report content is done, output show the kind of output, from slides, html, this book, latex document (sweave) and so on). Finally, we could add a video somewhere in the intro to present RMarkdown in RStudio. What do you think?**
 
+## Initialize and create an R Markdown file in RStudio
+
+Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
+(your name) and select the default output, HTML. We can change this later so don't worry about it. 
+
 An RMarkdown is a plain text file that contains three different aspects:
 
 - YAML metadata
@@ -42,11 +47,12 @@ To make your sections numbered as sections and subsections, make sure you specif
 
 In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or `code style`. To understand how to format text, our previous would be as follows in RMarkdown:
 
-![](images/rmd_text.png)
-
 ```
 With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or even a `code style`.
 ```
+
+![](images/rmd_text.png)
+
 
 ### Headers {-}
 
@@ -313,6 +319,7 @@ After you are done, run `rmarkdown::render()` or click the `Knit` button at the 
 
 ![](images/rmd_knit.png)
 
+The use of Markdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using `pandoc`. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format. 
 
 Click on the links below for more information on RMarkdown:
 
