@@ -876,24 +876,24 @@ y =<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3<
 <span class="co"># Sample mean</span>
 one =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)
 (<span class="dt">x_bar =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>(x))</code></pre></div>
-<pre><code>## [1] -0.3102889</code></pre>
+<pre><code>## [1] -0.328458</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">x_bar_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x)%*%one)</code></pre></div>
-<pre><code>##            [,1]
-## [1,] -0.3102889</code></pre>
+<pre><code>##           [,1]
+## [1,] -0.328458</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample variance</span>
 H =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) -<span class="st"> </span><span class="dv">1</span>/n *<span class="st"> </span>one %*%<span class="st"> </span><span class="kw">t</span>(one)
 (<span class="dt">s_x =</span> <span class="dv">1</span>/n *<span class="st"> </span><span class="kw">sum</span>((x -<span class="st"> </span>x_bar)^<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 3.478669</code></pre>
+<pre><code>## [1] 3.538565</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_x_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>x)</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 3.478669</code></pre>
+## [1,] 3.538565</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample covariance</span>
 y_bar =<span class="st"> </span><span class="dv">1</span>/n*<span class="kw">sum</span>(y)
 (<span class="dt">s_xy =</span> <span class="dv">1</span>/n*<span class="kw">sum</span>((x -<span class="st"> </span>x_bar)*(y -<span class="st"> </span>y_bar)))</code></pre></div>
-<pre><code>## [1] -0.09444162</code></pre>
+<pre><code>## [1] -0.09004543</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">s_xy_mat =</span> <span class="dv">1</span>/n*<span class="kw">t</span>(x) %*%<span class="st"> </span>H %*%<span class="st"> </span>y)</code></pre></div>
 <pre><code>##             [,1]
-## [1,] -0.09444162</code></pre>
+## [1,] -0.09004543</code></pre>
 </div>
 <div id="example-least-squares" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Least-squares</h3>
@@ -1267,8 +1267,8 @@ for (i in <span class="dv">1</span>:B){
 }
 
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
-<pre><code>##  2.5% 97.5% 
-##  0.25  1.65</code></pre>
+<pre><code>##    2.5%   97.5% 
+## 0.25000 1.60125</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
 
 </div>
