@@ -67,6 +67,11 @@ You cannot use `RStudio` without having installed `R` on your computer.
 
 **Rob** what about a video here to introduce RStudio???
 
+```{r, echo=FALSE}
+knitr::include_url("https://www.youtube.com/embed/5YmcEYTSN7k")
+```
+
+
 In addition, `RStudio` provides embedded functionality to utilize collaborative version-control software including GitHub & Subversion as well as a set of powerful tools to save and communicate results (whether they be simulations, data analysis, or presenting and making available a new package to other users). Some examples of these tools are `Rmarkdown` which can be used respectively to integrate written narrative with embedded `R` code and other content, as well as and `Shiny Web Apps` which can provide an interactive user-friendly interface that permits a user to actively engage with a wide variety of tools built in `R` without the need to encounter raw `R` code. GitHub and `Rmarkdown` will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.
 
 ### Conventions
@@ -131,7 +136,7 @@ A basic aspect to underline about the `R` environment is that it serves as an ad
 
 In the previous section we presented some examples on how `R` can be used as a calculator and we have already seen several functions such as `sqrt()` or `log()`. To obtain documentation about a function in `R`, simply put a question mark in front of the function name (or just type `help()` around the function name), or use the search bar on the "Help" tab in your RStudio window, and its documentation will be displayed. For example, if you are interested in learning about the function `log()` you could simply type:
 
-```{r}
+```{r, eval = FALSE}
 ?log
 ```
 
@@ -197,11 +202,9 @@ Probability distributions can be uniquely characterized by different functions s
 
 Note that, when using these functions in practice, `name` is replaced with the syntax used in `R` to denote a specific probability distribution. For example, if we wish to deal with a Uniform probability distribution, then the syntax `name` is replaced by `unif` and, furthering the example, to randomly generate observations from a uniform distribution the function to use will be therefore `runif`. `R` allows to make use of these functions for a wide variety of probability distributions that include, but are not limited to: Gaussian (or Normal), Binomial, Chi-square, Exponential, F-distribution, Geometric, Poisson, Student-t and Uniform. In order to get an idea of how these functions can be used, below is an example of a problem that can be solved using them.
 
-### Problem {-}
+#### Example: Normal Test Scores of College Entrance Exam
 
 Assume that the test scores of a college entrance exam follows a Normal distribution. Furthermore, suppose that the mean test score is 70 and that the standard deviation is 15. How would we find the percentage of students scoring 90 or more in this exam?
-
-### Answer {-}
 
 In this case, we consider a random variable $X$ that is normally distributed as follows: $X \sim N(\mu=70, \sigma^2=225)$ where $\mu$ and $\sigma^2$ represent the mean and variance of the distribution respectively. Since we are looking for the probability of students scoring higher than 90, we are interested in finding $\mathbb{P}(X > x=90)$ and therefore we look at the upper tail of the Normal distribution. To find this probability we need the distribution function (`pname`) for which we therefore replace `name` with the `R` syntax for the Normal distribution: `norm`. The distribution function in `R` has various parameters to be specified in order to compute a probability which, at least for the Normal distribution, can be found by typing `?pnorm` in the Console and are:
 
@@ -224,7 +227,7 @@ While the previous functions deal with theoretical distributions, it is also nec
 
 The use of certain functions varies according to the nature of the inputs since these can be, for example, numerical or factors.
 
-### Numerical Input
+#### Numerical Input
 
 A first step in analysing numerical inputs is given by computing summary statistics of the data which, in this section, we can generally denote as `x` (we will discuss the structure of this data more in detail in the following chapters). For central tendency or spread statistics of a numerical input, we can use the following `R` built-in functions:
 
@@ -238,7 +241,7 @@ A first step in analysing numerical inputs is given by computing summary statist
 - `range` returns a vector containing the minimum and maximum of all given arguments;
 - `summary` returns a vector containing a mixture of the above functions (i.e. mean, median, first and third quartile, minimum, maximum).
 
-### Factor Input 
+#### Factor Input 
 
 If the data of interest is a factor with different categories or levels, then different summaries are more appropriate. For example, for a factor input we can extract counts and percentages to summarize the variable by using `table`. Using functions and data structures that will be described in the following chapters, below we create an example dataset with 90 observations of three different colors: 20 being `Yellow`, 10 being `Green` and 50 being `Blue`. We then apply the `table` function to it:
 
@@ -248,7 +251,7 @@ table(as.factor(c(rep("Yellow", 20), rep("Green", 10), rep("Blue", 50))))
 
 By doing so we obtain a frequency (count) table of the colors.
 
-### Dataset inputs
+#### Dataset Inputs
 
 In many cases, when dealing with data we are actually dealing with datasets (see Chapter 03) where variables of different nature are aligned together (usually in columns). For datasets there is another convenient way to get simple summary statistics which consists in applying the function `summary` to the dataset itself (instead of simply a numerical input as seen earlier). 
 
@@ -260,18 +263,17 @@ Using this dataset, let us use the `summary` function on it to output the minimu
 summary(iris)
 ```
 
-## Main references 
+## Main References 
 
 This is not the first (or the last) book that has been written explaining and describing statistical programming in `R`. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:
 
 - @wickham2014advanced : a more technical and advanced introduction to `R`;
+- @wickham2015packages : basic building blocks of building packages in `R`; 
 - @xie2015 : an overview of document generation in `R`;
-- ...
-
 
 ## License
 
-We probably should pick a license... How about: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License???? We should probably move this at the end of this section, no?
+You can redistribute it and/or modify this book under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA) 4.0 License.
 
-## Acknowledgments
-...
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="images/licence.png" align="left" width="200"/></a>
+<br><br><br>
