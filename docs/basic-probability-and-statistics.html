@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+
+
+<meta name="date" content="2017-08-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="case-study-monte-carlo-integration.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.1</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.1.5</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.6</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.7</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.8" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.8</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.1</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i>Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#text"><i class="fa fa-check"></i><b>2.2</b> Text</a><ul>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i>Headers</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#hyperlinks"><i class="fa fa-check"></i>Hyperlinks</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#blockquotes"><i class="fa fa-check"></i>Blockquotes</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#pictures"><i class="fa fa-check"></i>Pictures</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i>Cache</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#latex"><i class="fa fa-check"></i>LaTeX</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cross-referencing-sections"><i class="fa fa-check"></i>Cross-referencing Sections</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#citations-and-bibliography"><i class="fa fa-check"></i>Citations and Bibliography</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#tables"><i class="fa fa-check"></i>Tables</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#additional-references-1"><i class="fa fa-check"></i>Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.3</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.3.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i>In-line R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.4</b> Render Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.3</b> Git Setup</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#configuration"><i class="fa fa-check"></i><b>3.4</b> Configuration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.5</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.6</b> Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="data.html"><a href="data.html#addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.6</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="4.1.7" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>4.1.7</b> Creation sequences</a></li>
+<li class="chapter" data-level="4.1.8" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.8</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>4.2</b> Matrix</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#linear-algebra"><i class="fa fa-check"></i><b>4.2.2</b> Linear Algebra</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-least-squares"><i class="fa fa-check"></i><b>4.2.4</b> Example: Least-squares</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>4.5.3</b> Application: Non-parametric bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Logical Operators and Control Stuctures</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#control-structures"><i class="fa fa-check"></i><b>5.2</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#selection-controls"><i class="fa fa-check"></i><b>5.2.1</b> Selection Controls</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#iteration-controls"><i class="fa fa-check"></i><b>5.2.2</b> Iteration Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#applications"><i class="fa fa-check"></i><b>5.3</b> Applications:</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#non-parametric-bootstrap"><i class="fa fa-check"></i><b>5.3.1</b> Non-parametric Bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#function-arguments"><i class="fa fa-check"></i><b>6.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>6.2</b> Function environment</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#function-attributes"><i class="fa fa-check"></i><b>6.3</b> Function attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>7</b> Build a package</a><ul>
+<li class="chapter" data-level="7.1" data-path="build-a-package.html"><a href="build-a-package.html#using-packages"><i class="fa fa-check"></i><b>7.1</b> Using Packages</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="build-a-package.html"><a href="build-a-package.html#example-making-maps"><i class="fa fa-check"></i><b>7.1.1</b> Example: Making Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>8</b> Graphics</a></li>
+<li class="chapter" data-level="9" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>9</b> Case Study: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="9.1" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#properties"><i class="fa fa-check"></i><b>9.2</b> Properties</a></li>
+<li class="chapter" data-level="9.3" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#implementation"><i class="fa fa-check"></i><b>9.3</b> Implementation</a></li>
+<li class="chapter" data-level="9.4" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-normal-distribution"><i class="fa fa-check"></i><b>9.4</b> Example: Normal Distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-nonelementary-integral"><i class="fa fa-check"></i><b>9.5</b> Example: Nonelementary integral</a></li>
+<li class="chapter" data-level="9.6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#problem-antithetic-sampling"><i class="fa fa-check"></i><b>9.6</b> Problem: antithetic sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Probability and Statistics</a><ul>
+<li class="chapter" data-level="10.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#probability-distributions-1"><i class="fa fa-check"></i><b>10.1</b> Probability Distributions</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#problem"><i class="fa fa-check"></i>Problem</a></li>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#answer"><i class="fa fa-check"></i>Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#summary-statistics-1"><i class="fa fa-check"></i><b>10.2</b> Summary Statistics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#numeric-input"><i class="fa fa-check"></i><b>10.2.1</b> Numeric Input</a></li>
+<li class="chapter" data-level="10.2.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#factor-input-1"><i class="fa fa-check"></i><b>10.2.2</b> Factor Input</a></li>
+<li class="chapter" data-level="10.2.3" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#dataset"><i class="fa fa-check"></i><b>10.2.3</b> Dataset</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-probability-and-statistics" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Basic Probability and Statistics</h1>
+<div id="probability-distributions-1" class="section level2">
+<h2><span class="header-section-number">10.1</span> Probability Distributions</h2>
+<p>For probability distributions, we can compute basic values such as density, distribution, quantiles, random sampling using <code>R</code> built-in functions below.</p>
+<p>-<code>dname</code> calculates density (pdf) at input <code>x</code>. -<code>pname</code> calculates distribution (cdf) at input <code>x</code>. -<code>qname</code> calculates the quantile at an input probability. -<code>rname</code> generates a random draw from a particular distribution.</p>
+<p>Note that we will replace <code>name</code> with the name of a given distribution. For example, a a random number generator for uniform distribution will be <code>runif</code>. To learn more about specific parameters and documentation for a function, type <code>?</code> before the function name into your <code>R</code> console. Common example probability distributions include, but are not limited to, binomial, chi-square, exponential, F, geometric, logistic, normal, poisson, t, and uniform.</p>
+<p>Here’s an example.</p>
+<div id="problem" class="section level3 unnumbered">
+<h3>Problem</h3>
+<p>Assume that the test scores of a college entrance exam fits a normal distribution. Furthermore, the mean test score is 70, and the standard deviation is 15. What is the percentage of students scoring 90 or more in the exam?</p>
+</div>
+<div id="answer" class="section level3 unnumbered">
+<h3>Answer</h3>
+<p>In this case, we consider a random variable <span class="math inline">\(X\)</span> that is normally distributed <span class="math inline">\(X \sim N(\mu=70, \sigma^2=25)\)</span>. Since we are looking for the percentage of students scoring higher than 90, we are interested in the upper tail of the normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dt">q =</span> <span class="dv">90</span>, <span class="dt">mean =</span> <span class="dv">70</span>, <span class="dt">sd =</span> <span class="dv">15</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) </code></pre></div>
+<pre><code>## [1] 0.09121122</code></pre>
+<p>We see that there is a 9% probability of students scoring 90 or more in the exam. Note that at <code>?pnorm</code> we see an additional parameter, <code>lower.tail</code> that indicates TRUE (default) if probabilities are P[X ≤ x] and FALSE otherwise, where P[X &gt; x].</p>
+</div>
+</div>
+<div id="summary-statistics-1" class="section level2">
+<h2><span class="header-section-number">10.2</span> Summary Statistics</h2>
+<div id="numeric-input" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> Numeric Input</h3>
+<p>For central tendency or spread statistics of numeric input, we can use the following <code>R</code> build-in functions below.</p>
+<ul>
+<li><code>mean</code> calculates the mean of an input <code>x</code>.</li>
+<li><code>median</code> calculates the median of an input <code>x</code>.</li>
+<li><code>var</code> calculates the variance of an input <code>x</code>.</li>
+<li><code>sd</code> calculates the standard deviation of an input <code>x</code>.</li>
+<li><code>IQR</code> calculates the interquartile range of an input <code>x</code>.</li>
+<li><code>min</code> calculates the minimum value of an input <code>x</code>.</li>
+<li><code>max</code> calculates the maximum value of an input <code>x</code>.</li>
+<li><code>range</code> returns a vector containing the minimum and maximum of all given arguments.</li>
+</ul>
+</div>
+<div id="factor-input-1" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> Factor Input</h3>
+<p>For factor input, we can extract counts and percentages as summary by using <code>table</code>.</p>
+<p>Here I create an example dataset with colors 20 that are <code>Yellow</code>, 10 that are <code>Green</code> and 50 that are <code>Blue</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">my_colors =</span> <span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Yellow&quot;</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="st">&quot;Green&quot;</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="st">&quot;Blue&quot;</span>, <span class="dv">50</span>))))</code></pre></div>
+<pre><code>##  [1] Yellow Yellow Yellow Yellow Yellow Yellow Yellow Yellow Yellow Yellow
+## [11] Yellow Yellow Yellow Yellow Yellow Yellow Yellow Yellow Yellow Yellow
+## [21] Green  Green  Green  Green  Green  Green  Green  Green  Green  Green 
+## [31] Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue  
+## [41] Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue  
+## [51] Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue  
+## [61] Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue  
+## [71] Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue   Blue  
+## Levels: Blue Green Yellow</code></pre>
+<p>By using <code>table</code> we can see a frequency (count) table of the colors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(my_colors)</code></pre></div>
+<pre><code>## my_colors
+##   Blue  Green Yellow 
+##     50     10     20</code></pre>
+<p>By diving the table by the number of total colors, we can get percentages instead.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(my_colors) /<span class="st"> </span><span class="kw">length</span>(my_colors)</code></pre></div>
+<pre><code>## my_colors
+##   Blue  Green Yellow 
+##  0.625  0.125  0.250</code></pre>
+</div>
+<div id="dataset" class="section level3">
+<h3><span class="header-section-number">10.2.3</span> Dataset</h3>
+<p>For some datasets, there is another convenient way to get simple summary statistics.</p>
+<p>In this example, we will explore the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris</a> flower dataset contained in the <code>R</code> built-in <code>datasets</code> package. The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). Four features were measured from each sample: the length and the width of the sepals and petals, in centimetres. Based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.</p>
+<p>We can use <code>summary</code> to output the minimum, 1st quartile, median, mean, 3rd quartile, and maximum statistics, and frequency counts for factor inputs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iris)</code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<p>We can also <code>str</code> to get a basic feel for what the dataset looks like, in terms of feature types and the values that each feature contains.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(iris)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>Note that for big datasets, the computation time will be substantially longer.</p>
+
+<p>Hello World</p>
+
+<div id="refs" class="references">
+<div>
+<p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central: 21.</p>
+</div>
+<div>
+<p>Seber, George AF, and Alan J Lee. 2012. <em>Linear Regression Analysis</em>. Vol. 936. John Wiley &amp; Sons.</p>
+</div>
+<div>
+<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press. <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>.</p>
+</div>
+<div>
+<p>———. 2015. <em>R Packages</em>. O’Reilly. <a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a>.</p>
+</div>
+<div>
+<p>Wood, Simon N. 2017. <em>Generalized Additive Models: An Introduction with R</em>. CRC press.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="case-study-monte-carlo-integration.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-statistics.Rmd",
+"text": "Edit"
+},
+"download": ["ds.pdf", "ds.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

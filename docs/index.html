@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+
+
+<meta name="date" content="2017-08-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="rmarkdown.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.1</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.1.5</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.6</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.7</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.8" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.8</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.1</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i>Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#text"><i class="fa fa-check"></i><b>2.2</b> Text</a><ul>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i>Headers</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#hyperlinks"><i class="fa fa-check"></i>Hyperlinks</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#blockquotes"><i class="fa fa-check"></i>Blockquotes</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#pictures"><i class="fa fa-check"></i>Pictures</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i>Cache</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#latex"><i class="fa fa-check"></i>LaTeX</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cross-referencing-sections"><i class="fa fa-check"></i>Cross-referencing Sections</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#citations-and-bibliography"><i class="fa fa-check"></i>Citations and Bibliography</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#tables"><i class="fa fa-check"></i>Tables</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#additional-references-1"><i class="fa fa-check"></i>Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.3</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.3.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i>In-line R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.4</b> Render Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.3</b> Git Setup</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#configuration"><i class="fa fa-check"></i><b>3.4</b> Configuration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.5</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.6</b> Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="data.html"><a href="data.html#addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.6</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="4.1.7" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>4.1.7</b> Creation sequences</a></li>
+<li class="chapter" data-level="4.1.8" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.8</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>4.2</b> Matrix</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#linear-algebra"><i class="fa fa-check"></i><b>4.2.2</b> Linear Algebra</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-least-squares"><i class="fa fa-check"></i><b>4.2.4</b> Example: Least-squares</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>4.5.3</b> Application: Non-parametric bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Logical Operators and Control Stuctures</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#control-structures"><i class="fa fa-check"></i><b>5.2</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#selection-controls"><i class="fa fa-check"></i><b>5.2.1</b> Selection Controls</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#iteration-controls"><i class="fa fa-check"></i><b>5.2.2</b> Iteration Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#applications"><i class="fa fa-check"></i><b>5.3</b> Applications:</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#non-parametric-bootstrap"><i class="fa fa-check"></i><b>5.3.1</b> Non-parametric Bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#function-arguments"><i class="fa fa-check"></i><b>6.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>6.2</b> Function environment</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#function-attributes"><i class="fa fa-check"></i><b>6.3</b> Function attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>7</b> Build a package</a><ul>
+<li class="chapter" data-level="7.1" data-path="build-a-package.html"><a href="build-a-package.html#using-packages"><i class="fa fa-check"></i><b>7.1</b> Using Packages</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="build-a-package.html"><a href="build-a-package.html#example-making-maps"><i class="fa fa-check"></i><b>7.1.1</b> Example: Making Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>8</b> Graphics</a></li>
+<li class="chapter" data-level="9" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>9</b> Case Study: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="9.1" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#properties"><i class="fa fa-check"></i><b>9.2</b> Properties</a></li>
+<li class="chapter" data-level="9.3" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#implementation"><i class="fa fa-check"></i><b>9.3</b> Implementation</a></li>
+<li class="chapter" data-level="9.4" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-normal-distribution"><i class="fa fa-check"></i><b>9.4</b> Example: Normal Distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-nonelementary-integral"><i class="fa fa-check"></i><b>9.5</b> Example: Nonelementary integral</a></li>
+<li class="chapter" data-level="9.6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#problem-antithetic-sampling"><i class="fa fa-check"></i><b>9.6</b> Problem: antithetic sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Probability and Statistics</a><ul>
+<li class="chapter" data-level="10.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#probability-distributions-1"><i class="fa fa-check"></i><b>10.1</b> Probability Distributions</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#problem"><i class="fa fa-check"></i>Problem</a></li>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#answer"><i class="fa fa-check"></i>Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#summary-statistics-1"><i class="fa fa-check"></i><b>10.2</b> Summary Statistics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#numeric-input"><i class="fa fa-check"></i><b>10.2.1</b> Numeric Input</a></li>
+<li class="chapter" data-level="10.2.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#factor-input-1"><i class="fa fa-check"></i><b>10.2.2</b> Factor Input</a></li>
+<li class="chapter" data-level="10.2.3" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#dataset"><i class="fa fa-check"></i><b>10.2.3</b> Dataset</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
+<h4 class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari</em></h4>
+<h4 class="date"><em>2017-08-20</em></h4>
+</div>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>This book is currently under development and has been designed as a support for students who are following (or are interested in) courses that provide the basic knowledge to master “statistical programming” with R. By the latter we mean that area of computer programming which focuses on the implementation of methods that not only manage data but also extract meaningful information from it. The importance of this area of research comes from the increased collection of data from different sources such as academic research, public institutions and private companies that has required a corresponding increase in data management and analysis tools. Consequently, the need to develop applications and methods that are able to deliver these tools has led to a surge in the demand for expertise not only in computer programming but also in statistical and numerical analysis. Indeed, while it is essential to master the basics of programming to build the necessary software, it is now also paramount to understand the programming tools that can effectively respond to the need of finding, extracting, and analyzing the information to achieve the required goals.</p>
+<p>Within the above framework, the statistical software <code>R</code> has seen a rise in use due to its flexibility as an efficient language that builds a bridge between software development and data analysis. There are of course many other programming languages that have different advantages over <code>R</code> but, as you will see, one strength of <code>R</code> is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions (as well as other interesting features described below). This book intends to present the basic tools to statistical programming and software development using the wide variety of tools made available through <code>R</code>, from method-specific packages to version control programs. The general goals of the book are therefore the following:</p>
+<ul>
+<li>understand data structures in order to appropriately manage data, computer memory and computations;</li>
+<li>manipulate data structures through controls, instructions, and tailored functions in order to achieve a desired output;</li>
+<li>create new software tools (packages and web applications) that accommodate a previously unmet need;</li>
+<li>learn how to manage software development via version control tools (e.g., GitHub) and create documentation for this software (with embedded code) to allow others to make use of the software.</li>
+</ul>
+<p>All these goals are common to any basic programming course, however all these will be heavily focused on the use and development of statistical tools. In fact, as highlighted earlier, it has become increasingly important to include statistical methodologies within the programming framework thereby allowing software to not only manage data efficiently but also to extract and analyse data in an appropriate manner while doing so. The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.</p>
+
+<div class="rmdimportant">
+This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you’re not familiar with these tools, they will be explained later on in the book itself.
+</div>
+<p></p>
+<div id="r-and-rstudio" class="section level2">
+<h2><span class="header-section-number">1.1</span> <code>R</code> and <code>RStudio</code></h2>
+<p>The statistical computing language <code>R</code> has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important programming languages, communication, and version-control features. The latter is also possible thanks to the development of the <code>RStudio</code> interface which provides a pleasant and functional user-interface for <code>R</code> as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are available to the user. In order to illustrate the relationship between R &amp; RStudio in statistical programming, one might think of a car analogy in which R would be like the engine and RStudio might be like leather seats. R is doing the work (for the most part), and RStudio generally is making you more comfortable while you use R.</p>
+<div id="why-r" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Why <code>R</code>?</h3>
+<p>There are many reasons to use <code>R</code>. Two compelling reasons are that R is both free as in “free pizza”, and free as in “free speech”). Free–like “free pizza”–means that there is never a need to pay for any part of the R software, or contributed packages (i.e. add-on modules). Free–like “free speech”–means that there are very few restrictions on how R can be used or barriers to those who would like to contribute packages (i.e. add-on modules).</p>
+<p>The fact that is a free and open-source software which <em>per se</em> does not necessarily imply that it is a good software (although it is also that). The reason why this is an important feature consists in the fact that the results of any code or program developed in the <code>R</code> environment can easily be replicated therefore ensuring accessibility and transparency for the general user. More importantly however, this replicability of results is also accompanied by a wide variety of packages that are made available through the <code>R</code> environment in which users can find a diversity of codes, functions and features that are designed to tackle a large amount of programming and analytical tasks. Moreover, these packages are relatively simple to create and are extremely useful for code-sharing purposes since they enclose the codes, functions and external dependencies that allow anyone to install any of these features all at once in easy and efficient manner.</p>
+<p>In addition to its accessibility and code-sharing features, <code>R</code> has acquired visibility and importance mainly due to the cutting-edge tools that it makes available to the general user. Indeed, a growing area of research both in academia and in industry is Statistics and Machine Learning through which it is possible to find, extract and make an efficient use of the increasing amount of data and information being collected. All the latest methods and approaches going from data-mining techniques to predictive analysis are available in <code>R</code> and, due to its nature, all future methods and approaches will be made available to all users through <code>R</code>. For this reason, any individual, company or organization has a keen interest in acquiring and developing expertise in <code>R</code> since it makes available the most appropriate tools for any data-based analysis and decision-making process.</p>
+<p>Like any other software, there are of course some drawbacks with using <code>R</code>. First, the presence of an extended amount of user-contributed packages can make its usage and bug-reporting problematic. Although this does not represent a major problem since many forums exist and solutions are usually quickly fixed, there can be many issues concerning package updates or deletions that can create problems for other existing packages that depend on them. This is fairly rare, but there can consequently be problems in the use of packages that become obsolete and need to be fixed due to dependency issues. Another drawback consists in the extensive use of computer memory that <code>R</code> entails through its commands which generally give little relevance to this issue. However, many different solutions are being developed which deal with this problem along with the increased memory made available by current operating systems.</p>
+<p>In the perspective of improving the usage of computer memory, <code>R</code> has been developing efficient and “seemless” connections with high-performance languages which allow functions and packages to make use of them thereby greatly lightening and accelerating computations made through <code>R</code>. An important example of this is given by the connections made available to the <code>C++</code> language. In this book we will discuss the connections with this language that are particularly well implemented, but other high-performance languages can be used such as <code>C</code> and <code>FORTRAN</code>.</p>
+</div>
+<div id="getting-started-with-r" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Getting started with <code>R</code></h3>
+<p>As mentioned earlier, <code>R</code> can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:</p>
+<ul>
+<li><a href="https://cran.r-project.org/"><code>R</code></a></li>
+</ul>
+<p>Once you’ve downloaded and installed <code>R</code> on your computer you will be able to start using the programming language and packages that the <code>R</code> environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called <code>RStudio</code> which can be downloaded from the following link:</p>
+<ul>
+<li><a href="https://www.rstudio.com/">RStudio</a></li>
+</ul>
+
+<div class="rmdimportant">
+You cannot use <code>RStudio</code> without having installed <code>R</code> on your computer.
+</div>
+<p></p>
+</div>
+<div id="about-rstudio" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> About RStudio</h3>
+<p><code>RStudio</code> is a customizable IDE for the <code>R</code> enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with <code>R</code>. For the most part, <code>RStudio</code> provides everything the <code>R</code> user will need in a self-contained, and well-organized environment. Moreover, it is possible to create “projects” in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.</p>
+<p><strong>Rob</strong> what about a video here to introduce RStudio???</p>
+<iframe src="https://www.youtube.com/embed/5YmcEYTSN7k" width="672" height="400px">
+</iframe>
+<p>In addition, <code>RStudio</code> provides embedded functionality to utilize collaborative version-control software including GitHub &amp; Subversion as well as a set of powerful tools to save and communicate results (whether they be simulations, data analysis, or presenting and making available a new package to other users). Some examples of these tools are <code>Rmarkdown</code> which can be used respectively to integrate written narrative with embedded <code>R</code> code and other content, as well as and <code>Shiny Web Apps</code> which can provide an interactive user-friendly interface that permits a user to actively engage with a wide variety of tools built in <code>R</code> without the need to encounter raw <code>R</code> code. GitHub and <code>Rmarkdown</code> will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.</p>
+</div>
+<div id="conventions" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Conventions</h3>
+<p>Throughout this book, <code>R</code> code will be typeset using a <code>monospace</code> font which is syntax highlighted. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span>pi
+b =<span class="st"> </span><span class="fl">0.5</span>
+<span class="kw">sin</span>(a*b)</code></pre></div>
+<p>Similarly, <code>R</code> output lines (that usally appear in your Console) will begin with <code>##</code> and will not be syntax highlighted. The output of the above example is the following:</p>
+<pre><code>## [1] 1</code></pre>
+<p>Aside from <code>R</code> code and its outputs, this book will also insert some boxes that will draw the reader’s attention to important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the “under construction” nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:</p>
+
+<div class="rmdimportant">
+This is an important piece of information.
+</div>
+<p></p>
+
+<div class="rmdnote">
+This is some additional information that could be useful to the reader.
+</div>
+<p></p>
+
+<div class="rmdcaution">
+This is something that the reader should pay caution to but should not create major problems if not considered.
+</div>
+<p></p>
+
+<div class="rmdwarning">
+This is a warning which should be heeded by the reader to avoid problems of different nature.
+</div>
+<p></p>
+
+<div class="rmdtip">
+This is a tip for the reader when following or developing something based on this book.
+</div>
+<p></p>
+</div>
+<div id="simple-calculations" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> Simple calculations</h3>
+<p>A basic aspect to underline about the <code>R</code> environment is that it serves as an advanced calculator which therefore allows also for simple calculations. In the table below we show a few examples of such calculations where the first column gives a mathematical expression (calculation), the second gives the equivalent of this expression in <code>R</code> and finally in the third column we can find the result that is output from <code>R</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Math.</th>
+<th align="left">R</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2+2</td>
+<td align="left"><code>2+2</code></td>
+<td align="left"><code>4</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\frac{4}{2}\)</span></td>
+<td align="left"><code>4/2</code></td>
+<td align="left"><code>2</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(3 \cdot 2^{-0.8}\)</span></td>
+<td align="left"><code>3*2^(-0.8)</code></td>
+<td align="left"><code>1.723048</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\sqrt{2}\)</span></td>
+<td align="left"><code>sqrt(2)</code></td>
+<td align="left"><code>1.414214</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\pi\)</span></td>
+<td align="left"><code>pi</code></td>
+<td align="left"><code>3.141593</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\ln(2)\)</span></td>
+<td align="left"><code>log(2)</code></td>
+<td align="left"><code>0.6931472</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\log_{3}(9)\)</span></td>
+<td align="left"><code>log(9, base = 3)</code></td>
+<td align="left"><code>2</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(e^{1.1}\)</span></td>
+<td align="left"><code>exp(1.1)</code></td>
+<td align="left"><code>3.004166</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\cos(\sqrt{0.9})\)</span></td>
+<td align="left"><code>cos(sqrt(0.9))</code></td>
+<td align="left"><code>0.5827536</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="getting-help" class="section level3">
+<h3><span class="header-section-number">1.1.6</span> Getting help</h3>
+<p>In the previous section we presented some examples on how <code>R</code> can be used as a calculator and we have already seen several functions such as <code>sqrt()</code> or <code>log()</code>. To obtain documentation about a function in <code>R</code>, simply put a question mark in front of the function name (or just type <code>help()</code> around the function name), or use the search bar on the “Help” tab in your RStudio window, and its documentation will be displayed. For example, if you are interested in learning about the function <code>log()</code> you could simply type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?log</code></pre></div>
+<p>which will display something similar to:</p>
+<div class="figure">
+<img src="images/example-log-help.png" />
+
+</div>
+<p>The <code>R</code> documentation is written by the author of the package. For mainstream packages in widespread use, the documentation is almost always quite good, but in some cases it can be quite technical, difficult to interpret, and possibly incomplete. In these cases, the best solution to understand a function is to search for help on any search engine. Often a simple search like “side by side boxplots in R” or “side by side boxplots in ggplot2” will produce many useful results. The search results often include user forums such as “CrossValidated” or “StackExchange” in which the questions you have about a function have probably already been asked and answered by many other users.</p>
+
+<div class="rmdtip">
+You can often use the error message to search for answers about a problem you may have with a function.
+</div>
+<p></p>
+</div>
+<div id="installing-packages" class="section level3">
+<h3><span class="header-section-number">1.1.7</span> Installing packages</h3>
+<p><code>R</code> comes with a number of built-in functions but one of its main strengths is that there is a large number of packages on an ever-increasing range of subjects available for you to install. These packages provide additional functions, features and data to the R environement. If you want to do something in <code>R</code> that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in <code>R</code> is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for <code>R</code> (see CRAN website). Another general approach to find a package in <code>R</code> is simply to use a search engine in which to type the keywords of the tools you are looking for followed by “R package”.</p>
+<p><code>R</code> packages can be installed in various ways but the most widely used approach is through the <code>install.packages()</code> function. Another way is to use the “Tools -&gt; Install Packages…” path from the dropdown menus in <code>RStudio</code> or clicking on the “install” button in the “Packages” pane in the RStudio environment. The <code>install.packages()</code> function is very straight-forward and transcends any platform for the <code>R</code> environment. It is noteworthy that this approach assumes that the desired package(s) are available within the CRAN repository. This is very often the case, but there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter 02 will show other ways of installing packages from a commonly used repository called “GitHub”.</p>
+<p>Sticking momentarily to the packages available in the CRAN repository, the use of the <code>install.packages()</code> is quite simple. For example, if you want to install the package <code>devtools</code> you can simply write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</code></pre></div>
+<p>Once a package is installed it is not directly usable within your <code>R</code> session. To do so you will have to “load” the package into your current <code>R</code> session which is generally done through the function <code>library()</code>. For example, after having installed the <code>devtools</code> package, in order to use it within your session you would write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)</code></pre></div>
+<p>Once this is done, all the functions and documentation of this package are available and can be used within your current session. However, once you close your <code>R</code> session, all loaded packages will be closed and you will have to load them again if you want to use them in a new <code>R</code> session.</p>
+
+<div class="rmdnote">
+Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
+</div>
+<p></p>
+<p>One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_github</span>(<span class="st">&quot;SMAC-Group/stat297&quot;</span>)</code></pre></div>
+</div>
+<div id="additional-references" class="section level3">
+<h3><span class="header-section-number">1.1.8</span> Additional References</h3>
+<p>There are many more elements in RStudio, and we encourage you to use the <a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">RStudio Cheatsheet</a> as a reference.</p>
+</div>
+</div>
+<div id="basic-probability-and-statistics-with-r" class="section level2">
+<h2><span class="header-section-number">1.2</span> Basic Probability and Statistics with <code>R</code></h2>
+<p>The <code>R</code> environment provides an up-to-date and efficient programming language to develop different tools and applications. Nevertheless, its main functionality lies in the core statistical framework and tools that consistute the basis of this language. Indeed, this book aims at introducing and describing the methods and approaches of statistical programming which therefore require a basic knowledge of Probability and Statistics in order to grasp the logic and usefulness of the features presented in this book.</p>
+<p>For this reason, we will briefly take the reader through some of the basic functions that are available within <code>R</code> to obtain probabilities based on parametric distributions, compute summary statistics and understand basic data structures. The latter is just an introduction and a more in-depth description of different data structures will be given in a future chapter.</p>
+<div id="probability-distributions" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Probability Distributions</h3>
+<p>Probability distributions can be uniquely characterized by different functions such as, for example, their density or distribution functions. Based on these it is possible to compute theoretical quantiles and also randomly sample observations from them. Replacing the <code>R</code> syntax for a given probability distribution with the general syntax <code>name</code>, all these functions and calculations are made available in <code>R</code> through the built-in functions:</p>
+<ul>
+<li><code>dname</code> calculates the value of the density function (pdf);</li>
+<li><code>pname</code> calculates the value of the distribution function (cdf);</li>
+<li><code>qname</code> calculates the value of the theoretical quantile;</li>
+<li><code>rname</code> generates a random sample from a particular distribution.</li>
+</ul>
+<p>Note that, when using these functions in practice, <code>name</code> is replaced with the syntax used in <code>R</code> to denote a specific probability distribution. For example, if we wish to deal with a Uniform probability distribution, then the syntax <code>name</code> is replaced by <code>unif</code> and, furthering the example, to randomly generate observations from a uniform distribution the function to use will be therefore <code>runif</code>. <code>R</code> allows to make use of these functions for a wide variety of probability distributions that include, but are not limited to: Gaussian (or Normal), Binomial, Chi-square, Exponential, F-distribution, Geometric, Poisson, Student-t and Uniform. In order to get an idea of how these functions can be used, below is an example of a problem that can be solved using them.</p>
+<div id="example-normal-test-scores-of-college-entrance-exam" class="section level4">
+<h4><span class="header-section-number">1.2.1.1</span> Example: Normal Test Scores of College Entrance Exam</h4>
+<p>Assume that the test scores of a college entrance exam follows a Normal distribution. Furthermore, suppose that the mean test score is 70 and that the standard deviation is 15. How would we find the percentage of students scoring 90 or more in this exam?</p>
+<p>In this case, we consider a random variable <span class="math inline">\(X\)</span> that is normally distributed as follows: <span class="math inline">\(X \sim N(\mu=70, \sigma^2=225)\)</span> where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> represent the mean and variance of the distribution respectively. Since we are looking for the probability of students scoring higher than 90, we are interested in finding <span class="math inline">\(\mathbb{P}(X &gt; x=90)\)</span> and therefore we look at the upper tail of the Normal distribution. To find this probability we need the distribution function (<code>pname</code>) for which we therefore replace <code>name</code> with the <code>R</code> syntax for the Normal distribution: <code>norm</code>. The distribution function in <code>R</code> has various parameters to be specified in order to compute a probability which, at least for the Normal distribution, can be found by typing <code>?pnorm</code> in the Console and are:</p>
+<ul>
+<li><code>q</code>: the quantile we are interested in (e.g. 90);</li>
+<li><code>mean</code>: the mean of the distribution (e.g. 70);</li>
+<li><code>sd</code>: the standard deviation of the distribution (e.g. 15);</li>
+<li><code>lower.tail</code>: a boolean determining whether to compute the probability of being smaller than the given quantile (i.e. <span class="math inline">\(\mathbb{P}(X \leq x)\)</span>) which requires the default argument <code>TRUE</code> or larger (i.e. <span class="math inline">\(\mathbb{P}(X &gt; x)\)</span>) which requires to specify the argument <code>FALSE</code>.</li>
+</ul>
+<p>Knowing these arguments, it is now possible to compute the probability we are interested in as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dt">q =</span> <span class="dv">90</span>, <span class="dt">mean =</span> <span class="dv">70</span>, <span class="dt">sd =</span> <span class="dv">15</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) </code></pre></div>
+<pre><code>## [1] 0.09121122</code></pre>
+<p>As we can see from the output, there is roughly a 9% probability of students scoring 90 or more on the exam.</p>
+</div>
+</div>
+<div id="summary-statistics" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Summary Statistics</h3>
+<p>While the previous functions deal with theoretical distributions, it is also necessary to deal with real data from which we would like to extract information. Supposing–as is often the case in applied statistics–we don’t know from which distribution it is generated, we would be interested in understanding the behavior of the data in order to eventually identify a distribution and estimate its parameters.</p>
+<p>The use of certain functions varies according to the nature of the inputs since these can be, for example, numerical or factors.</p>
+<div id="numerical-input" class="section level4">
+<h4><span class="header-section-number">1.2.2.1</span> Numerical Input</h4>
+<p>A first step in analysing numerical inputs is given by computing summary statistics of the data which, in this section, we can generally denote as <code>x</code> (we will discuss the structure of this data more in detail in the following chapters). For central tendency or spread statistics of a numerical input, we can use the following <code>R</code> built-in functions:</p>
+<ul>
+<li><code>mean</code> calculates the mean of an input <code>x</code>;</li>
+<li><code>median</code> calculates the median of an input <code>x</code>;</li>
+<li><code>var</code> calculates the variance of an input <code>x</code>;</li>
+<li><code>sd</code> calculates the standard deviation of an input <code>x</code>;</li>
+<li><code>IQR</code> calculates the interquartile range of an input <code>x</code>;</li>
+<li><code>min</code> calculates the minimum value of an input <code>x</code>;</li>
+<li><code>max</code> calculates the maximum value of an input <code>x</code>;</li>
+<li><code>range</code> returns a vector containing the minimum and maximum of all given arguments;</li>
+<li><code>summary</code> returns a vector containing a mixture of the above functions (i.e. mean, median, first and third quartile, minimum, maximum).</li>
+</ul>
+</div>
+<div id="factor-input" class="section level4">
+<h4><span class="header-section-number">1.2.2.2</span> Factor Input</h4>
+<p>If the data of interest is a factor with different categories or levels, then different summaries are more appropriate. For example, for a factor input we can extract counts and percentages to summarize the variable by using <code>table</code>. Using functions and data structures that will be described in the following chapters, below we create an example dataset with 90 observations of three different colors: 20 being <code>Yellow</code>, 10 being <code>Green</code> and 50 being <code>Blue</code>. We then apply the <code>table</code> function to it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(<span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Yellow&quot;</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="st">&quot;Green&quot;</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="st">&quot;Blue&quot;</span>, <span class="dv">50</span>))))</code></pre></div>
+<pre><code>## 
+##   Blue  Green Yellow 
+##     50     10     20</code></pre>
+<p>By doing so we obtain a frequency (count) table of the colors.</p>
+</div>
+<div id="dataset-inputs" class="section level4">
+<h4><span class="header-section-number">1.2.2.3</span> Dataset Inputs</h4>
+<p>In many cases, when dealing with data we are actually dealing with datasets (see Chapter 03) where variables of different nature are aligned together (usually in columns). For datasets there is another convenient way to get simple summary statistics which consists in applying the function <code>summary</code> to the dataset itself (instead of simply a numerical input as seen earlier).</p>
+<p>As an example, let us explore the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris</a> flower dataset contained in the <code>R</code> built-in <code>datasets</code> package. The data set consists of 50 samples from each of three species of Iris (Setosa, Virginica and Versicolor). Four features were measured from each sample consisting in the length and the width (in centimeters) of the both sepals and petals. This dataset is widely used as an example since it was used by Fisher to develop a linear discriminant model based on which he intended to distinguish the three species from each other using combinations of these four features.</p>
+<p>Using this dataset, let us use the <code>summary</code> function on it to output the minimum, first quartile and thrid quartile, median, mean and maximum statistics (for the numerical variables in the dataset) and frequency counts (for factor inputs).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iris)</code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+</div>
+</div>
+</div>
+<div id="main-references" class="section level2">
+<h2><span class="header-section-number">1.3</span> Main References</h2>
+<p>This is not the first (or the last) book that has been written explaining and describing statistical programming in <code>R</code>. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:</p>
+<ul>
+<li><span class="citation">Wickham (<a href="#ref-wickham2014advanced">2014</a>)</span> : a more technical and advanced introduction to <code>R</code>;</li>
+<li><span class="citation">Wickham (<a href="#ref-wickham2015packages">2015</a>)</span> : basic building blocks of building packages in <code>R</code>;</li>
+<li><span class="citation">Xie (<a href="#ref-xie2015">2015</a>)</span> : an overview of document generation in <code>R</code>;</li>
+</ul>
+</div>
+<div id="license" class="section level2">
+<h2><span class="header-section-number">1.4</span> License</h2>
+<p>You can redistribute it and/or modify this book under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA) 4.0 License.</p>
+<p><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="images/licence.png" align="left" width="200"/></a> <br><br><br></p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-wickham2014advanced">
+<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press. <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>.</p>
+</div>
+<div id="ref-wickham2015packages">
+<p>Wickham, Hadley. 2015. <em>R Packages</em>. O’Reilly. <a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a>.</p>
+</div>
+<div id="ref-xie2015">
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="rmarkdown.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": ["ds.pdf", "ds.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

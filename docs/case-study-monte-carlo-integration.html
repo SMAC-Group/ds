@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+
+
+<meta name="date" content="2017-08-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap-graphs.html">
+<link rel="next" href="basic-probability-and-statistics.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.1</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.1.5</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.6</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.7</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.8" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.8</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.1</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i>Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#text"><i class="fa fa-check"></i><b>2.2</b> Text</a><ul>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i>Headers</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#hyperlinks"><i class="fa fa-check"></i>Hyperlinks</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#blockquotes"><i class="fa fa-check"></i>Blockquotes</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#pictures"><i class="fa fa-check"></i>Pictures</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i>Cache</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#latex"><i class="fa fa-check"></i>LaTeX</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cross-referencing-sections"><i class="fa fa-check"></i>Cross-referencing Sections</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#citations-and-bibliography"><i class="fa fa-check"></i>Citations and Bibliography</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#tables"><i class="fa fa-check"></i>Tables</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#additional-references-1"><i class="fa fa-check"></i>Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.3</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.3.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i>In-line R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.4</b> Render Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.3</b> Git Setup</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#configuration"><i class="fa fa-check"></i><b>3.4</b> Configuration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.5</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.6</b> Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="data.html"><a href="data.html#addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.6</b> Useful functions with vectors</a></li>
+<li class="chapter" data-level="4.1.7" data-path="data.html"><a href="data.html#creation-sequences"><i class="fa fa-check"></i><b>4.1.7</b> Creation sequences</a></li>
+<li class="chapter" data-level="4.1.8" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.8</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>4.2</b> Matrix</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#linear-algebra"><i class="fa fa-check"></i><b>4.2.2</b> Linear Algebra</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-least-squares"><i class="fa fa-check"></i><b>4.2.4</b> Example: Least-squares</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#application-non-parametric-bootstrap"><i class="fa fa-check"></i><b>4.5.3</b> Application: Non-parametric bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Logical Operators and Control Stuctures</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#control-structures"><i class="fa fa-check"></i><b>5.2</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#selection-controls"><i class="fa fa-check"></i><b>5.2.1</b> Selection Controls</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#iteration-controls"><i class="fa fa-check"></i><b>5.2.2</b> Iteration Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#applications"><i class="fa fa-check"></i><b>5.3</b> Applications:</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#non-parametric-bootstrap"><i class="fa fa-check"></i><b>5.3.1</b> Non-parametric Bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#function-arguments"><i class="fa fa-check"></i><b>6.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>6.2</b> Function environment</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#function-attributes"><i class="fa fa-check"></i><b>6.3</b> Function attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="build-a-package.html"><a href="build-a-package.html"><i class="fa fa-check"></i><b>7</b> Build a package</a><ul>
+<li class="chapter" data-level="7.1" data-path="build-a-package.html"><a href="build-a-package.html#using-packages"><i class="fa fa-check"></i><b>7.1</b> Using Packages</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="build-a-package.html"><a href="build-a-package.html#example-making-maps"><i class="fa fa-check"></i><b>7.1.1</b> Example: Making Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-graphs.html"><a href="chap-graphs.html"><i class="fa fa-check"></i><b>8</b> Graphics</a></li>
+<li class="chapter" data-level="9" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html"><i class="fa fa-check"></i><b>9</b> Case Study: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="9.1" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#properties"><i class="fa fa-check"></i><b>9.2</b> Properties</a></li>
+<li class="chapter" data-level="9.3" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#implementation"><i class="fa fa-check"></i><b>9.3</b> Implementation</a></li>
+<li class="chapter" data-level="9.4" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-normal-distribution"><i class="fa fa-check"></i><b>9.4</b> Example: Normal Distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#example-nonelementary-integral"><i class="fa fa-check"></i><b>9.5</b> Example: Nonelementary integral</a></li>
+<li class="chapter" data-level="9.6" data-path="case-study-monte-carlo-integration.html"><a href="case-study-monte-carlo-integration.html#problem-antithetic-sampling"><i class="fa fa-check"></i><b>9.6</b> Problem: antithetic sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Probability and Statistics</a><ul>
+<li class="chapter" data-level="10.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#probability-distributions-1"><i class="fa fa-check"></i><b>10.1</b> Probability Distributions</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#problem"><i class="fa fa-check"></i>Problem</a></li>
+<li class="chapter" data-level="" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#answer"><i class="fa fa-check"></i>Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#summary-statistics-1"><i class="fa fa-check"></i><b>10.2</b> Summary Statistics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#numeric-input"><i class="fa fa-check"></i><b>10.2.1</b> Numeric Input</a></li>
+<li class="chapter" data-level="10.2.2" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#factor-input-1"><i class="fa fa-check"></i><b>10.2.2</b> Factor Input</a></li>
+<li class="chapter" data-level="10.2.3" data-path="basic-probability-and-statistics.html"><a href="basic-probability-and-statistics.html#dataset"><i class="fa fa-check"></i><b>10.2.3</b> Dataset</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="case-study-monte-carlo-integration" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Case Study: Monte-Carlo Integration</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<p>Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of “high-dimension”. A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to most basic form(s) of Monte Carlo Integration and briefly discuss the rational behind this method.</p>
+<p>Originally, such Monte Carlo methods were known under various names among which <em>statistical sampling</em> was probably the most commonly used. In fact, the name <em>Monte Carlo</em> was popularized by several physics researchers, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to this technique which he employed to study the properties newly-discovered neutron in the 1930s. Later, these methods played for example a central role in many of the simulations required for the Manhattan project.</p>
+<p>Suppose we are interested in computing the following integral:</p>
+<p><span class="math display">\[I = \int_a^b f(x) dx.\]</span></p>
+<p>Of course, this integral can be approximated by a Riemann sum,</p>
+<p><span class="math display">\[I \approx \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x),\]</span></p>
+<p>where <span class="math inline">\(\Delta x = \frac{b - a}{n}\;\)</span> and the idea behind this approximation is that as the number of partions <span class="math inline">\(n\)</span> increases the Riemann sum will become closer and closer to <span class="math inline">\(I\)</span>. Also (and under some technical conditions), we have that</p>
+<p><span class="math display">\[I = \lim_{n \to \infty} \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x).\]</span></p>
+<p>In fact, the rational of a Monte Carlo Integral is quite close to the Riemann sum since, in its most basic form, we approximate <span class="math inline">\(I\)</span> by averaging samples of the function <span class="math inline">\(f(x)\)</span> at uniform random point within the interval <span class="math inline">\([a, b]\)</span>. Therefore, the Monte Carlo <em>estimator</em> of <span class="math inline">\(I\)</span> is given by</p>
+<span class="math display" id="eq:binom">\[\begin{equation} 
+\hat{I} = \frac{b - a}{B} \sum_{i = 1}^B f(X_i), 
+ \tag{9.1}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(X_i = a + U_i (b - a)\)</span> and <span class="math inline">\(U_i \sim \mathcal{U}(0,1)\)</span>. In fact, <a href="case-study-monte-carlo-integration.html#eq:binom">(9.1)</a> is quite intuitive as <span class="math inline">\(\frac{1}{B} \sum_{i = 1}^B f(X_i)\)</span> represents an estimation of the average value of <span class="math inline">\(f(x)\)</span> in the interval <span class="math inline">\([a, b]\)</span> and thus <span class="math inline">\(\hat{I}\)</span> is simply the average value time the length of the interval, i.e. <span class="math inline">\((b-a)\)</span>.</p>
+</div>
+<div id="properties" class="section level2">
+<h2><span class="header-section-number">9.2</span> Properties</h2>
+<p>A more formal argument on the validity of this approach can be found in analyzing the statistical properties of the estimator <span class="math inline">\(\hat{I}\)</span>. In order to do so, we start by considering its expected value <span class="math display">\[
+\mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \mathbb{E}\left[ f(X_i)  \right]
+= \frac{b - a}{B} \sum_{i = 1}^B \int f(x) g(x) dx, 
+\]</span></p>
+<p>where <span class="math inline">\(g(x)\)</span> denotes the pdf of <span class="math inline">\(X_i\)</span>. Since <span class="math inline">\(X_i \sim \mathcal{U}(a, b)\)</span> it follows that</p>
+<p><span class="math display">\[
+g(x) = \left\{
+    \begin{array}{ll}
+        \frac{1}{b - a}  &amp; \mbox{if } x \in [a, b] \\
+        0 &amp; \mbox{if } x \not\in [a, b]
+    \end{array}
+\right.
+\]</span></p>
+<p>Therefore, we have</p>
+<p><span class="math display">\[
+\mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \int_a^b \frac{f(x)}{b-a} dx = \int_a^b f(x) dx = I, 
+\]</span></p>
+<p>Since <span class="math inline">\(X_i\)</span> are iid, the same can be said about <span class="math inline">\(f(X_i)\)</span> and therefore by the <strong>Strong Law of Large Numbers</strong> we have that <span class="math inline">\(\hat{I}\)</span> converge <em>almost surely</em> to <span class="math inline">\(I\)</span>, which means that</p>
+<p><span class="math display">\[
+\mathbb{P}\left(\lim_{B \to \infty} \hat{I} = I    \right) = 1.
+\]</span></p>
+<p>This result implies that as the number of simulations <span class="math inline">\(B\)</span> goes to infinity we can guarantee that the solution will be exact. If you are unfamiliar or don’t remeber well the Strong Law of Large Numbers we provide a reminder in the comment box below.</p>
+
+<div class="rmdtip">
+IS THAT USEFUL?
+</div>
+<p></p>
+<p>Unfortunately, this result does give us any information on how quickly this estimate converges to “sufficiently accurate” solution for the problem at hand. This can be done by studying the variance of <span class="math inline">\(\hat{I}\)</span> and its <em>rate of convergence</em>. Indeed, we have</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{var} \left( \hat{I} \right) &amp;= \left(\frac{b - a}{B}\right)^2  \sum_{i = 1}^B \left\{\mathbb{E}\left[f^2(X_i)\right] - \mathbb{E}^2\left[f(X_i)\right]\right\}\\
+&amp;= \frac{1}{B^2} \sum_{i = 1}^B \left\{(b-a) \int_a^b f^2(x) dx - \left(\int_a^b f(x) dx \right)^2 \right\}\\
+&amp;= \frac{(b-a) I_2 - I^2}{B}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(I_2 = \int_a^b f^2(x) dx\)</span>. A simple estimator of this quantity is given by</p>
+<p><span class="math display">\[
+\hat{I}_2 = \frac{b - a}{B} \sum_{i = 1}^B f^2(X_i),
+\]</span></p>
+<p>and therefore using <span class="math inline">\(\hat{I}\)</span> we obtain:</p>
+<p><span class="math display">\[
+\widehat{\operatorname{var}} \left(\hat{I} \right) = \frac{(b-a) \hat{I}_2 - \hat{I}^2}{B} = \frac{b - a}{B^2} \sum_{i = 1}^B\left[ (b - a )f^2(X_i) - f(X_i)\right]
+\]</span></p>
+<p>Thus, it is easy to see that the rate of convergence of <span class="math inline">\(\widehat{\operatorname{var}} \left(\hat{I} \right)\)</span> is <span class="math inline">\(B^{-1}\)</span> and we may write <span class="math inline">\({\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)\)</span>. This implies that if we wish to reduce the error (or standard deviation) by half we need to quadruple <span class="math inline">\(B\)</span>. Such phenomon is very common in many research such as Statistics is often called the <em>curse of dimensionality</em>.</p>
+</div>
+<div id="implementation" class="section level2">
+<h2><span class="header-section-number">9.3</span> Implementation</h2>
+<p>The function <code>mc_int()</code>, which is available in the <code>support</code> package, implements the above method. This functions has four inputs:</p>
+<ul>
+<li><code>x_range</code>: A vector containing the integration domain, i.e. <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>,</li>
+<li><code>fun</code>: A string containing the function you wish to integrate where <span class="math inline">\(x\)</span> is used to indicate the variable of integration,</li>
+<li><code>B</code>: A numeric value to denote the number of Monte-Carlo replications,</li>
+<li><code>seed</code>: A numeric to control the seed of the random number generator.</li>
+</ul>
+<p>For example, if you want to estimate</p>
+<p><span class="math display">\[
+\int_1^3 \frac{\exp\left(\sin(x)\right)}{x} dx,
+\]</span></p>
+<p>using <span class="math inline">\(10^4\)</span> Monte-Carlo replications, you can use the following command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">fun =</span> <span class="st">&quot;exp(sin(x))/x&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span>^<span class="dv">5</span>)</code></pre></div>
+<pre><code>## $I
+## [1] 2.558104
+## 
+## $var
+## [1] 1.401222e-05</code></pre>
+<p>At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function <code>mc_int()</code>. This should be rather easy to implement but one thing that may be a little delicate is how to pass as an input the function you wish to integrate. A possible way of doing this is to use a string for this purpose so that, for example, if we have to integrate the function <span class="math inline">\(\sin(x)\)</span> you could simply write <code>fun = sin(x)</code> when calling your function. This implies that we should be able to “transform” a string into a function that we can evaluate, which is something that we can achieve by combining the functions <code>eval</code> and <code>parse</code>. An example is provided below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_fun =<span class="st"> &quot;x^2&quot;</span>
+x =<span class="st"> </span><span class="dv">0</span>:<span class="dv">3</span>
+<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> my_fun))</code></pre></div>
+<pre><code>## [1] 0 1 4 9</code></pre>
+<p>If you having trouble to understand what these functions are doing have a look to their help files with write <code>?eval</code> and <code>?parse</code>.</p>
+</div>
+<div id="example-normal-distribution" class="section level2">
+<h2><span class="header-section-number">9.4</span> Example: Normal Distribution</h2>
+<p>Suppose that <span class="math inline">\(X \sim \mathcal{N}(4, 1.25^2)\)</span> and that we are interested in computing the following probability <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right)\)</span>. The probability density of the normal distribution for a random variable with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> is given by:</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2}{2 \sigma^2}\right).
+\]</span></p>
+<p>Therefore, the probability we are interested in can written as the following integral</p>
+<p><span class="math display">\[
+\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) = \int_1^{4.5} \frac{1}{\sqrt{3.125 \pi}} \exp \left(- \frac{\left(x - 4\right)^2}{3.125}\right).
+\]</span></p>
+<p>Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use Monte-Carlo integral to solve it. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_fun =<span class="st"> &quot;1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)&quot;</span>
+(<span class="dt">prob =</span> <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">4.5</span>), <span class="dt">fun =</span> my_fun, <span class="dt">B =</span> <span class="dv">10</span>^<span class="dv">7</span>))</code></pre></div>
+<pre><code>## $I
+## [1] 0.6471691
+## 
+## $var
+## [1] 1.449985e-08</code></pre>
+<p>Based on this result, we can write <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) \approx 64.72 \%\)</span> with a standard error of about 0.01%. We can compare our results with what we would obtain with the function <code>pnorm</code> which provide a nearly exact result:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="fl">4.5</span>, <span class="dv">4</span>, <span class="fl">1.25</span>) -<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">1.25</span>)</code></pre></div>
+<pre><code>## [1] 0.6472242</code></pre>
+<p>This shows that our estimation is within one standard error of a near perfect result.</p>
+</div>
+<div id="example-nonelementary-integral" class="section level2">
+<h2><span class="header-section-number">9.5</span> Example: Nonelementary integral</h2>
+<p>Layman’s terms, a nonelementary integral of a given (elementary) function is an integral that is cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to proof the existing of such nonelementary integral. An well-known example of such integrals are the Fresnel integrals, which have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:</p>
+<p><span class="math display">\[S(y) = \int_0^t \sin\left(x^2\right) dx \;\;\;\;\;\; \text{and}  \;\;\;\;\;\; 
+C(y) = \int_0^y \cos \left( x^2 \right) dx.\]</span></p>
+<p>In this example, we will only consider <span class="math inline">\(S(y)\)</span>. In general it is believed that the most convenient way of evaluating these functions to arbitrary precision is to use power series representation that converges for all <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[
+S(y) = \sum_{i = 1}^\infty \, \left(-1\right)^n \, \frac{y^{4i + 1}}{\left(2i + 1\right) \, !\left(4i + 3\right)}.
+\]</span></p>
+<p>In this example, we will study the estimation of <span class="math inline">\(S(\pi)\)</span> as well as the <em>precision</em> of this estimation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B =<span class="st"> </span><span class="dv">4</span>^(<span class="dv">4</span>:<span class="dv">13</span>)
+results =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="kw">length</span>(B), <span class="dv">2</span>)
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(B)){
+  mc_res =<span class="st"> </span><span class="kw">mc_int</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="st">&quot;sin(x^2)&quot;</span>, <span class="dt">B =</span> B[i], <span class="dt">seed =</span> i<span class="dv">+12</span>)
+  results[i, ] =<span class="st"> </span><span class="kw">c</span>(mc_res$I, <span class="kw">sqrt</span>(mc_res$var))
+}
+
+
+trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.15</span>)[<span class="dv">2</span>]
+<span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(B), <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">cbind</span>(results[, <span class="dv">1</span>] +<span class="st"> </span>results[,<span class="dv">2</span>], 
+      results[, <span class="dv">1</span>] -results[,<span class="dv">2</span>])), <span class="dt">log =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Estimated Integral&quot;</span>,
+      <span class="dt">xlab =</span> <span class="st">&quot;Number of Simulations B&quot;</span>, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>)
+<span class="kw">grid</span>()
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> B, <span class="dt">labels =</span> <span class="kw">parse</span>(<span class="dt">text =</span> <span class="kw">paste</span>(<span class="st">&quot;4^&quot;</span>, <span class="dv">4</span>:<span class="dv">13</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)))
+<span class="kw">polygon</span>(<span class="kw">c</span>(B, <span class="kw">rev</span>(B)), <span class="kw">c</span>(results[, <span class="dv">1</span>] +<span class="st"> </span>results[, <span class="dv">2</span>], 
+                        <span class="kw">rev</span>(results[, <span class="dv">1</span>] -<span class="st"> </span>results[, <span class="dv">2</span>])), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> trans_blue)
+<span class="kw">lines</span>(B, results[, <span class="dv">1</span>], <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue4&quot;</span>, <span class="dt">pch =</span> <span class="dv">16</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8048208</span>, <span class="dt">col =</span> <span class="st">&quot;red4&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimated value&quot;</span>, <span class="st">&quot;Standard error interval&quot;</span>, <span class="st">&quot;Good approximation (MatLab)&quot;</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
+       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="ot">NA</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>), 
+       <span class="dt">pt.cex =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue4&quot;</span>, trans_blue, <span class="st">&quot;red4&quot;</span>))</code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-134-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="problem-antithetic-sampling" class="section level2">
+<h2><span class="header-section-number">9.6</span> Problem: antithetic sampling</h2>
+<p>As we saw in the previous sections, “plain” Monte Carlo integration typically has an error variance of the form <span class="math inline">\(\sigma^2/B\)</span> (in the case of the estimator we consider previously we have <span class="math inline">\(\sigma^2 = (b-a)I_2 - I^2\)</span>). Therefore, to improve our answer we can sample with a larger value of <span class="math inline">\(B\)</span>, but this comes at the cost of a greater computational cost. Sometimes, we can find ways to <span class="math inline">\(\sigma^2\)</span> instead by modifying our estimator of <span class="math inline">\(I\)</span>. Methods to do this are known as variance reduction techniques, one them is know as <strong>antithetic sampling</strong>. Th</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-probability-and-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-MC.Rmd",
+"text": "Edit"
+},
+"download": ["ds.pdf", "ds.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
