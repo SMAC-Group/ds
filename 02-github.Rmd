@@ -1,8 +1,11 @@
 # GitHub 
 
-You may have experienced a moment like this once in your life: 
+You may have experienced a moment like this[^1] once in your life: 
 
 ![](images/bad-version-control.png)
+
+
+[^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
 
 After plenty hours of hard work, you only find yourself saving the same file over and over - even losing track of what changes you made. Version control is a software that keeps track of your changes for you. You know which saves you made where, and can even go back in time to revert to those changes. (Awesome!)
 
