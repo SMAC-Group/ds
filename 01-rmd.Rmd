@@ -10,8 +10,6 @@ What is **reproducible** research?
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
-**JUSTIN: It could be nice to add a sketch to show what is going on in RMarkdown (maybe data -> RMarkdown -> output, under RMarkdown show that data importing/cleaning, analysis, writing slide/report content is done, output show the kind of output, from slides, html, this book, latex document (sweave) and so on). Finally, we could add a video somewhere in the intro to present RMarkdown in RStudio. What do you think?**
-
 ## Initialize and create an R Markdown file in RStudio
 
 Within RStudio, click `File` → `New File` → `R Markdown`. Give the file[^1] a title and the author 
@@ -39,7 +37,7 @@ You can also include additional formatting [options](http://rmarkdown.rstudio.co
 The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. The pdf format, however, requires additional installation and configuration of a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary.
 
 
-### Subsections  {-}
+### Subsections 
 
 To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of the YAML Metadata as shown below. 
 
@@ -57,11 +55,11 @@ With RMarkdown, we can specify custom text formatting, such as with emphasis suc
 ![](images/rmd_text.png)
 
 
-### Headers {-}
+### Headers
 
 As seen above, headings are preceded with a #. A single `#` produces the largest heading text; to output smaller headings, simply add more #! Heading level also impacts section and subsection nesting in documents and tables of contents, as well as slide breaks in presentation formats.
 
-### Lists {-}
+### Lists 
 
 Lists can be extremely convienient to make text more readable or to take course notes during class. RMarkdown allows to create different list structures as shown in the code below:  
 
@@ -87,7 +85,7 @@ which delivers the following list structure:
 2. Here we write the next consecutive number to continue.
     - Add more content by indenting like before. 
 
-### Hyperlinks {-}
+### Hyperlinks 
 
 To add hyperlinks with the full link, (ex: <https://google.com/>) you can follow the syntax below: 
 
@@ -101,7 +99,7 @@ whereas to add hyperlinks with a custom link title, (ex: [Google](https://google
 [Google](https://google.com)
 ```
 
-### Blockquotes {-}
+### Blockquotes
 
 **Same thing for citation... What do you think?**
 
@@ -109,7 +107,7 @@ whereas to add hyperlinks with a custom link title, (ex: [Google](https://google
 > Use it if you're quoting a person, a song or whatever.
 
 
-### Pictures {-}
+### Pictures 
 
 To add a picture with captions, follow the syntax below:
 
@@ -127,40 +125,13 @@ Else, to add a picture without any captions, follow the syntax below:
 ![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
 
 
-### Cache {-}
-
-Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the `cache` argument. By default this argument is assigned the value `FALSE` and therefore the R code is run every time your document is compiled. However, if you specify this argument as `cache = TRUE`, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.
-
-Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call `a` (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the `cache` argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:
-
-```{r computeA, cache = TRUE, highlight=FALSE}
-a = 2
-```
-
-You will notice that we called this chunk of embedded R code `computeA` and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been "cached", then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.
-
-This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your "cached" R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your "cached" R code. As an example, suppose we have another chunk of R code that we can "cache" and that takes the value of `a` from the previous chunk:
-
-```{r, cache = TRUE, highlight=FALSE}
-(d = 2*a)
-```
-
-In this case, the output of this chunk will be `## 4` since `a = 2` (from the previous chunk). What happens however if we modify the value of `a` in the previous chunk? In this case, the previous chunk will be recomputed but the value of `d` (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the "cached" code depends on. This is why we initially gave a name to the first chunk of code ("computeA") so as to refer to it in following chunks of "cached" code that depend on it. To refer to this code you need to use the option `dependson` as follows:
-
-```{r, cache = TRUE, dependson = "computeA", highlight=FALSE}
-d = 2*a
-```
-
-In this manner, if the value of `a` changes in the first chunk, the value of `d` will also change but will be stored until either the `computeA` chunk or the latter chunk is modified.
-
-
-### LaTeX {-}
+### LaTeX 
 
 What is **LaTeX**?
 
 LaTeX is a document preparation system that uses plain text as opposed to formatted text used for applications such as Microsoft Word. It is widely used in academia as a standard for the publication of scientific documents. It has control over large documents containing sectioning, cross-references, tables and figures. 
 
-#### LaTeX in RMarkdown {-}
+#### LaTeX in RMarkdown 
 
 Unlike a highly formatted word processor, we cannot produce equations by clicking on symbols. As data scientists we need to explain distributions and equations that are behind the methods we present. Within the text section of an RMarkdown document you can include LaTeX format text to output different forms of text, mainly equations and mathematical expressions. 
 
@@ -180,11 +151,11 @@ $$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \c
 
 An introduction to the LaTeX format can be found [here](http://www.math.harvard.edu/texman/) if you want to learn more about the basics. An alternative can be to insert custom LaTeX formulas using a graphical interface such as [codecogs](https://www.codecogs.com/latex/eqneditor.php). 
 
-### Cross-referencing Sections {-}
+### Cross-referencing Sections 
 
 You can also use the same syntax `\@ref(label)` to reference sections, where label is the section identifier (ID). By default, Pandoc will generate IDs for all section headers, e.g., `# Hello World` will have an ID `hello-world`. To call header `hello-world` as a header, we type `\@ref(hello-world)` to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.
 
-### Citations and Bibliography {-}
+### Citations and Bibliography 
 
 Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a "BibTex" database which is a simple plain text file (with the extension ".bib") where each reference you would like to cite is entered in a specific manner. 
 
@@ -234,7 +205,7 @@ Additional References:
 - [Ref on ref for rmd](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
 
 
-### Tables {-}
+### Tables 
 
 For simple tables, we can be manually insert values as such, 
 
@@ -264,7 +235,7 @@ to produce:
 
 As an alternative we can use the simple graphical user interface [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()`, which we will explain later. 
 
-### Additional References {-}
+### Additional References 
 
 There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
 
@@ -315,6 +286,31 @@ The value of $a$ is `r a`.
 
 This translates in R Markdown to "The value of $a$ is `r a`."
 
+### Cache {-}
+
+Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the `cache` argument. By default this argument is assigned the value `FALSE` and therefore the R code is run every time your document is compiled. However, if you specify this argument as `cache = TRUE`, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.
+
+Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call `a` (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the `cache` argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:
+
+```{r computeA, cache = TRUE, highlight=FALSE}
+a = 2
+```
+
+You will notice that we called this chunk of embedded R code `computeA` and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been "cached", then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.
+
+This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your "cached" R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your "cached" R code. As an example, suppose we have another chunk of R code that we can "cache" and that takes the value of `a` from the previous chunk:
+
+```{r, cache = TRUE, highlight=FALSE}
+(d = 2*a)
+```
+
+In this case, the output of this chunk will be `## 4` since `a = 2` (from the previous chunk). What happens however if we modify the value of `a` in the previous chunk? In this case, the previous chunk will be recomputed but the value of `d` (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the "cached" code depends on. This is why we initially gave a name to the first chunk of code ("computeA") so as to refer to it in following chunks of "cached" code that depend on it. To refer to this code you need to use the option `dependson` as follows:
+
+```{r, cache = TRUE, dependson = "computeA", highlight=FALSE}
+d = 2*a
+```
+
+In this manner, if the value of `a` changes in the first chunk, the value of `d` will also change but will be stored until either the `computeA` chunk or the latter chunk is modified.
 
 ## Render Output 
 
