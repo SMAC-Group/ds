@@ -14,8 +14,11 @@ Reproducible research or reproducible analysis is the notion that an experiment'
 
 ## Initialize and create an R Markdown file in RStudio
 
-Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
+Within RStudio, click `File` → `New File` → `R Markdown`. Give the file[^1] a title and the author 
 (your name) and select the default output, HTML. We can change this later so don't worry about it. 
+
+![](images/rmd_new.png)
+
 
 An RMarkdown is a plain text file that contains three different aspects:
 
@@ -319,9 +322,11 @@ After you are done, run `rmarkdown::render()` or click the `Knit` button at the 
 
 ![](images/rmd_knit.png)
 
-The use of Markdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using `pandoc`. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format. 
+The use of RMarkdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using `pandoc`. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format. 
 
 Click on the links below for more information on RMarkdown:
 
 - [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
+
+[^1]: http://kbroman.org/datacarpentry_R_2017-01-10/img/New_R_Markdown.png
