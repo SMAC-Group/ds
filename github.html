@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+  
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#github"><i class="fa fa-check"></i><b>1</b> GitHub</a><ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#version-control"><i class="fa fa-check"></i><b>1.1</b> Version Control</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#git-and-github"><i class="fa fa-check"></i><b>1.2</b> Git and GitHub</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#git-setup"><i class="fa fa-check"></i><b>1.3</b> Git Setup</a></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#configuration"><i class="fa fa-check"></i><b>1.4</b> Configuration</a></li>
+<li class="chapter" data-level="1.5" data-path=""><a href="#github-setup"><i class="fa fa-check"></i><b>1.5</b> GitHub Setup</a></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#student-developer-pack"><i class="fa fa-check"></i><b>1.6</b> Student Developer Pack</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="github" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> GitHub</h1>
+<p>You may have experienced a moment like this once in your life:</p>
+<div class="figure">
+<img src="images/bad-version-control.png" />
+
+</div>
+<p>After plenty hours of hard work, you only find yourself saving the same file over and over - even losing track of what changes you made. Version control is a software that keeps track of your changes for you. You know which saves you made where, and can even go back in time to revert to those changes. (Awesome!)</p>
+<div id="version-control" class="section level2">
+<h2><span class="header-section-number">1.1</span> Version Control</h2>
+<p>Version control is a system that records changes to a file or a set of files over time, so that you can save changes over time. It allows you to:</p>
+<ul>
+<li>keep the entire history of a file</li>
+<li>revert to a specific version of the file</li>
+<li>collaborate on the same platform with other people</li>
+<li>make changes without modifying the main file</li>
+</ul>
+</div>
+<div id="git-and-github" class="section level2">
+<h2><span class="header-section-number">1.2</span> Git and GitHub</h2>
+<p>Among version control platform, Git is a powerful tool that is commonly used. GitHub is a commercial website that uses Git and stores local files into a “album” called a repository. For the purposes of this course, we will be using this platform.</p>
+<p>In addition, your GitHub profile will also serve as your data science <em>resume</em> that contain future projects that you save and commit so that employers know what you’re made of.</p>
+</div>
+<div id="git-setup" class="section level2">
+<h2><span class="header-section-number">1.3</span> Git Setup</h2>
+<p>To install Git, go to the <a href="https://git-scm.com/downloads">website</a> and choose the platform you are using. (eg. Windows/Mac/Linux/Solaris)</p>
+</div>
+<div id="configuration" class="section level2">
+<h2><span class="header-section-number">1.4</span> Configuration</h2>
+<p>The first thing you should do when you install Git is to set your user name and email address. This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:</p>
+<pre><code>$ git config --global user.name &quot;John Doe&quot;
+$ git config --global user.email johndoe@example.com</code></pre>
+<p>Again, you need to do this only once if you pass the –global option, because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the –global option when you’re in that project.</p>
+<p>Many of the GUI tools will help you do this when you first run them.</p>
+</div>
+<div id="github-setup" class="section level2">
+<h2><span class="header-section-number">1.5</span> GitHub Setup</h2>
+<p>To begin, head over to GitHub and sign up with your PSU email address. (don’t worry, you can change your Username/Email anytime after this course!)</p>
+<div class="figure">
+<img src="images/github_page.png" />
+
+</div>
+<p>On <code>Step 2: Choose your plan</code> choose the default plan (Unlimited public repositories for free.) and click <code>Continue</code>. You can either submit your information or skip <code>Step 3: Tailor your experience</code>.</p>
+<p>Once you have set up your profile, make sure you verify your email address. Also, send me your GitHub user ID (eg. jjl170) to <code>jjl170@psu.edu</code>.</p>
+</div>
+<div id="student-developer-pack" class="section level2">
+<h2><span class="header-section-number">1.6</span> Student Developer Pack</h2>
+<p>Once you have set up your profile, go to this <a href="https://education.github.com/discount_requests/new">link</a> and follow the steps below to set up a student developer pack discount request to GitHub. You will need this to make your own private repositories for free.</p>
+<div class="figure">
+<img src="images/developer_pack.png" />
+
+</div>
+<p>I will add a tutorial to how to submit your homework and assignments using GitHub.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>
