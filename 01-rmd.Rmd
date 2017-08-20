@@ -292,9 +292,7 @@ Plot figure options:
 
 ### In-line R {-}
 
-The variables we store in a RMarkdown will stay within the environment. This means that we can call and manipulate them anywhere within the document. In addition, we can also reference the variable in-line in the text section as follows:
-
-In Rmarkdown, this syntax would print \`r variable\` to show the value of our variable embedded within the sentence. 
+The variables we store in a RMarkdown will stay within the environment. This means that we can call and manipulate them anywhere within the document. In Rmarkdown, we can reference the variable in-line in the text section by using ` r variable` to show the value of our variable embedded within the sentence. Here is an example: 
 
 ```{r}
 a = 2
@@ -318,7 +316,6 @@ After you are done, run `rmarkdown::render()` or click the `Knit` button at the 
 
 Click on the links below for more information on RMarkdown:
 
-- <a href='downloads/example_rmd_document.Rmd' download>RMarkdown Example File</a>
 - [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
 
