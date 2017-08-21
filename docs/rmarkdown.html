@@ -140,8 +140,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
-<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i>In-line R</a></li>
-<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i>Cache</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i><b>2.4.2</b> In-line R</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i><b>2.4.3</b> Cache</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
 </ul></li>
@@ -167,9 +167,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="rmarkdown" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> RMarkdown</h1>
-<p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name “markdown” is an intentional contrast to other “markup” languages–e.g., hypertext markup language (HTML)–which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. “RMarkdown” is an implementation of the “markdown” language dsigned to accommodated embedded <code>R</code> code.</p>
+<p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name “markdown” is an intentional contrast to other “markup” languages–e.g., hypertext markup language (HTML)–which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. “RMarkdown” is an implementation of the “markdown” language designed to accommodated embedded <code>R</code> code.</p>
 <p>What is <strong>literate</strong> programming?</p>
-<p>Literate programming is the notion for programmers of adding narrative context with code to produce documententation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated.</p>
+<p>Literate programming is the notion for programmers of adding narrative context with code to produce documentation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated.</p>
 <p>What is <strong>reproducible</strong> research?</p>
 <p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author’s findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
 <div id="initialize-and-create-an-r-markdown-file-in-rstudio" class="section level2">
@@ -222,7 +222,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="lists" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Lists</h3>
-<p>Lists can be extremely convienient to make text more readable or to take course notes during class. RMarkdown allows to create different list structures as shown in the code below:</p>
+<p>Lists can be extremely convenient to make text more readable or to take course notes during class. RMarkdown allows to create different list structures as shown in the code below:</p>
 <pre class="text"><code>* You can create bullet points by using symbols such as *, +, or -. 
 + simply add an indent or four preceding spaces to indent a list. 
     + You can manipulate the number of spaces or indents to your liking. 
@@ -303,7 +303,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="citations-and-bibliography" class="section level3">
 <h3><span class="header-section-number">2.3.8</span> Citations and Bibliography</h3>
 <p>Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a “BibTex” database which is a simple plain text file (with the extension “.bib”) where each reference you would like to cite is entered in a specific manner.</p>
-<p>To illustrate how this is done, let us take the example of a recent paper where two researchers from Oxford University investigated the connection between the taste of food and various features of cutlery such as weight and colour (calling this phenomenon the “taste of cutlery”). The bibtex “entry” for this paper is given below:</p>
+<p>To illustrate how this is done, let us take the example of a recent paper where two researchers from Oxford University investigated the connection between the taste of food and various features of cutlery such as weight and color (calling this phenomenon the “taste of cutlery”). The BibTeX “entry” for this paper is given below:</p>
 <pre><code>@article{harrar2013taste,
   title={The taste of cutlery: how the taste of food is affected by the weight, size,
    shape, and colour of the cutlery used to eat it},
@@ -315,7 +315,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   year={2013},
   publisher={BioMed Central}
 }</code></pre>
-<p>This may look like a complicated format to save a reference but there is an easy way to obtain this format without having to manually fill in the different slots. To do so, go online and search for “Google Scholar” which is a search engine specifically dedicated to academic or other types of publications. In the latter search engine you can insert keywords or the title and/or authors of the publication you are interested in and find it in the list of results. In our example we search for “The tast of cutlery” and the publication we are interested in is the first in the results list.</p>
+<p>This may look like a complicated format to save a reference but there is an easy way to obtain this format without having to manually fill in the different slots. To do so, go online and search for “Google Scholar” which is a search engine specifically dedicated to academic or other types of publications. In the latter search engine you can insert keywords or the title and/or authors of the publication you are interested in and find it in the list of results. In our example we search for “The taste of cutlery” and the publication we are interested in is the first in the results list.</p>
 <div class="figure">
 <img src="images/googlescholar1.png" />
 
@@ -325,12 +325,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/googlescholar2.png" />
 
 </div>
-<p>For “.bib” files we are interested in the “BibTex” option and by clicking on it we will be taken to another tab in which the format of the reference we want is provided. All that needs to be done at this point is to copy this format (that we saw earlier in this section) and paste in the “.bib” file you created and save the changes.</p>
+<p>For “.bib” files we are interested in the “BibTeX” option and by clicking on it we will be taken to another tab in which the format of the reference we want is provided. All that needs to be done at this point is to copy this format (that we saw earlier in this section) and paste in the “.bib” file you created and save the changes.</p>
 <div class="figure">
 <img src="images/googlescholar3.png" />
 
 </div>
-<p>However, your Rmarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file “biblio.bib” (saved in the same location as your Rmarkdown document). All that needs to be done is to add another line in the YAML metadata with <code>bibliography: biblio.bib</code> and your Rmarkdown will now be able to recognise the references within your “.bib” file. There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (for a more detailed overview the BibTex environment and managing references in Rmarkdown see, for example, this <a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">link</a> and this <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">link</a> respectively).</p>
+<p>However, your Rmarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file “biblio.bib” (saved in the same location as your Rmarkdown document). All that needs to be done is to add another line in the YAML metadata with <code>bibliography: biblio.bib</code> and your Rmarkdown will now be able to recognize the references within your “.bib” file. There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (for a more detailed overview the BibTeX environment and managing references in Rmarkdown see, for example, this <a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">link</a> and this <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">link</a> respectively).</p>
 <p>Once the “.bib” file has been created and has been linked to your Rmarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the “.bib” file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your “.bib” file and place it immediately after the <code>@</code> symbol (without spaces). So, for example, say that we wanted to cite the publication on the “taste of cutlery”: in your Rmarkdown all you have to do is to type <code>@harrar2013taste</code> at the point where you want this citation in the text and you will obtain: <span class="citation">Harrar and Spence (<a href="#ref-harrar2013taste">2013</a>)</span>.</p>
 
 <div class="rmdnote">
@@ -342,10 +342,10 @@ The user can also change the name that is used to call the desired reference as 
 The references in the “.bib” file will not appear in the references that are output from the Rmarkdown compiling procedure unless they are specifically used within the Rmarkdown document.
 </div>
 <p></p>
-<p>Additional References:</p>
+<p>Additional information on BibTeX and reference in RMarkdown can be found in the links below:</p>
 <ul>
-<li><a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">Intro to bibtex</a></li>
-<li><a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">Ref on ref for rmd</a></li>
+<li><a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">Introduction to bibtex</a></li>
+<li><a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">Reference in RMarkdown</a></li>
 </ul>
 </div>
 <div id="tables" class="section level3">
@@ -417,39 +417,52 @@ The references in the “.bib” file will not appear in the references that are
 <h3><span class="header-section-number">2.4.1</span> Code Chunk Options</h3>
 <p>In the third code chunk above, we also configure chunk options. Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Rmarkdown Cheatsheet</a> and Yihui’s notes on knitr <a href="https://yihui.name/knitr/options/">options</a>. Here are some explanations of the most commonly used chunk options exerted from above:</p>
 <ul>
-<li>eval: (TRUE; logical) whether to evaluate the code chunk</li>
-<li>echo: (TRUE; logical or numeric) whether to include R source code in the output file</li>
-<li>warning: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)</li>
-<li>cache: (FALSE; logical) whether to cache a code chunk;</li>
+<li><code>eval</code>: (TRUE; logical) whether to evaluate the code chunk</li>
+<li><code>echo</code>: (TRUE; logical or numeric) whether to include R source code in the output file</li>
+<li><code>warning</code>: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)</li>
+<li><code>cache</code>: (FALSE; logical) whether to “<em>cache</em>” a code chunk. This option is particularly important in practice and is discussed in more details in Section <a href="rmarkdown.html#cache">2.4.3</a>.</li>
 </ul>
 <p>Plot figure options:</p>
 <ul>
-<li>fig.path: (‘figure/’; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)</li>
-<li>fig.show: (‘asis’; character) how to show/arrange the plots</li>
-<li>fig.width, fig.height: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric</li>
-<li>fig.align: (‘default’; character) alignment of figures in the output document (possible values are left, right and center</li>
-<li>fig.cap: (NULL; character) figure caption to be used in a figure environment</li>
+<li><code>fig.path</code>: (‘figure/’; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)</li>
+<li><code>fig.show</code>: (‘asis’; character) how to show/arrange the plots</li>
+<li><code>fig.width</code>, <code>fig.height</code>: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric</li>
+<li><code>fig.align</code>: (‘default’; character) alignment of figures in the output document (possible values are left, right and center</li>
+<li><code>fig.cap</code>: (NULL; character) figure caption to be used in a figure environment.</li>
 </ul>
 </div>
-<div id="in-line-r" class="section level3 unnumbered">
-<h3>In-line R</h3>
-<p>The variables we store in a RMarkdown will stay within the environment. This means that we can call and manipulate them anywhere within the document. In Rmarkdown, we can reference the variable in-line in the text section by using <code>r variable</code> to show the value of our variable embedded within the sentence. Here is an example:</p>
+<div id="in-line-r" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> In-line R</h3>
+<p>The variables we store in a RMarkdown document will stay within the environment. This means that we can call and manipulate them anywhere within the document. In Rmarkdown, we can reference variables by using <code>r x</code> to show the value of a variable (<code>x</code> in this case) directly in a sentence. Here is an example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">2</span></code></pre></div>
-<p>Above, we stored the value 2 into <code>a</code>.</p>
+<p>Above, we stored the value 2 into a variable called <code>a</code>. We can use the value of <code>a</code> as follows:</p>
 <pre class="text"><code>The value of $a$ is `r a`. </code></pre>
 <p>This translates in R Markdown to “The value of <span class="math inline">\(a\)</span> is 2.”</p>
 </div>
-<div id="cache" class="section level3 unnumbered">
-<h3>Cache</h3>
-<p>Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the <code>cache</code> argument. By default this argument is assigned the value <code>FALSE</code> and therefore the R code is run every time your document is compiled. However, if you specify this argument as <code>cache = TRUE</code>, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.</p>
+<div id="cache" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Cache</h3>
+<p>Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you compile the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the <code>cache</code> argument. By default this argument is assigned the value <code>FALSE</code> and therefore the R code is run every time your document is compiled. However, if you specify this argument as <code>cache = TRUE</code>, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.</p>
 <p>Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call <code>a</code> (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the <code>cache</code> argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:</p>
-<pre class="text"><code>a = 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<p>which would be written in RMarkdown as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r computeA, cache = TRUE}</span>
+<span class="dt">a = 2</span>
+<span class="st">```</span></code></pre></div>
 <p>You will notice that we called this chunk of embedded R code <code>computeA</code> and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been “cached”, then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.</p>
 <p>This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your “cached” R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your “cached” R code. As an example, suppose we have another chunk of R code that we can “cache” and that takes the value of <code>a</code> from the previous chunk:</p>
-<pre class="text"><code>(d = 2*a)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span>*a)</code></pre></div>
 <pre><code>## [1] 4</code></pre>
+<p>which would be written in RMarkdown as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE}</span>
+<span class="dt">(d = 2*a)</span>
+<span class="st">```</span></code></pre></div>
 <p>In this case, the output of this chunk will be <code>## 4</code> since <code>a = 2</code> (from the previous chunk). What happens however if we modify the value of <code>a</code> in the previous chunk? In this case, the previous chunk will be recomputed but the value of <code>d</code> (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the “cached” code depends on. This is why we initially gave a name to the first chunk of code (“computeA”) so as to refer to it in following chunks of “cached” code that depend on it. To refer to this code you need to use the option <code>dependson</code> as follows:</p>
-<pre class="text"><code>d = 2*a</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span>*a)</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>which we would write as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span>
+<span class="dt">(d = 2*a)</span>
+<span class="st">```</span></code></pre></div>
 <p>In this manner, if the value of <code>a</code> changes in the first chunk, the value of <code>d</code> will also change but will be stored until either the <code>computeA</code> chunk or the latter chunk is modified.</p>
 </div>
 </div>
