@@ -16,7 +16,7 @@ includes:
 
 # Introduction
 
-This book is currently under development and has been designed as a support for students who are following (or are interested in) courses that provide the basic knowledge to master "statistical programming" with R. By the latter we mean that area of computer programming which focuses on the implementation of methods that not only manage data but also extract meaningful information from it. The importance of this area of research comes from the increased collection of data from different sources such as academic research, public institutions and private companies that has required a corresponding increase in data management and analysis tools. Consequently, the need to develop applications and methods that are able to deliver these tools has led to a surge in the demand for expertise not only in computer programming but also in statistical and numerical analysis. Indeed, while it is essential to master the basics of programming to build the necessary software, it is now also paramount to understand the programming tools that can effectively respond to the need of finding, extracting, and analyzing the information to achieve the required goals.
+This book is currently under development and has been designed as a support for students who are following (or are interested in) courses that provide the basic knowledge to master "statistical programming" with R. By the latter we mean that area of computer programming which focuses on the implementation of methods that not only manage data but also extract meaningful information from it. The importance of this area of research comes from the increased collection of data from different sources such as academic research, public institutions and private companies that have required a corresponding increase in data management and analysis tools. Consequently, the need to develop applications and methods that are able to deliver these tools has led to a surge in the demand for expertise not only in computer programming but also in statistical and numerical analysis. Indeed, while it is essential to master the basics of programming to build the necessary software, it is now also paramount to understand the programming tools that can effectively respond to the need of finding, extracting, and analyzing the information to achieve the required goals.
 
 Within the above framework, the statistical software `R` has seen a rise in use due to its flexibility as an efficient language that builds a bridge between software development and data analysis. There are of course many other programming languages that have different advantages over `R` but, as you will see, one strength of `R` is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions (as well as other interesting features described below). This book intends to present the basic tools to statistical programming and software development using the wide variety of tools made available through `R`, from method-specific packages to version control programs. The general goals of the book are therefore the following:
 
@@ -47,19 +47,6 @@ Like any other software, there are of course some drawbacks with using `R`. Firs
 
 In the perspective of improving the usage of computer memory, `R` has been developing efficient and "seemless" connections with high-performance languages which allow functions and packages to make use of them thereby greatly lightening and accelerating computations made through `R`. An important example of this is given by the connections made available to the `C++` language. In this book we will discuss the connections with this language that are particularly well implemented, but other high-performance languages can be used such as `C` and `FORTRAN`.
 
-### Getting started with `R`
-
-As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:
-
-- [`R`](https://cran.r-project.org/)
-
-Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link:
-
-- [RStudio](https://www.rstudio.com/)
-
-```{block2,  type='rmdimportant'}
-You cannot use `RStudio` without having installed `R` on your computer.
-```
 
 ### About RStudio
 
@@ -74,6 +61,22 @@ knitr::include_url("https://www.youtube.com/embed/5YmcEYTSN7k")
 
 In addition, `RStudio` provides embedded functionality to utilize collaborative version-control software including GitHub & Subversion as well as a set of powerful tools to save and communicate results (whether they be simulations, data analysis, or presenting and making available a new package to other users). Some examples of these tools are `Rmarkdown` which can be used respectively to integrate written narrative with embedded `R` code and other content, as well as and `Shiny Web Apps` which can provide an interactive user-friendly interface that permits a user to actively engage with a wide variety of tools built in `R` without the need to encounter raw `R` code. GitHub and `Rmarkdown` will be the object of a more in-depth description in the first chapters of this book in order to provide the reader with the version-control and annotation tools that can be useful for the following chapters of this book.
 
+
+### Getting started with `R`
+
+As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:
+
+- [`R`](https://cran.r-project.org/)
+
+Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link:
+
+- [RStudio](https://www.rstudio.com/)
+
+```{block2,  type='rmdimportant'}
+You cannot use `RStudio` without having installed `R` on your computer.
+```
+
+
 ### Conventions
 
 Throughout this book, `R` code will be typeset using a `monospace` font which is syntax highlighted. For example:
@@ -85,7 +88,7 @@ sin(a*b)
 ```
 
 
-Similarly, `R` output lines (that usally appear in your Console) will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
+Similarly, `R` output lines (that usually appear in your Console) will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
 
 ```{r, echo = FALSE}
 a = pi
@@ -152,9 +155,9 @@ You can often use the error message to search for answers about a problem you ma
 
 ### Installing packages
 
-`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages on an ever-increasing range of subjects available for you to install. These packages provide additional functions, features and data to the R environement. If you want to do something in `R` that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in `R` is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for `R` (see CRAN website). Another general approach to find a package in `R` is simply to use a search engine in which to type the keywords of the tools you are looking for followed by "R package".
+`R` comes with a number of built-in functions but one of its main strengths is that there is a large number of packages on an ever-increasing range of subjects available for you to install. These packages provide additional functions, features and data to the R environement. If you want to do something in `R` that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in `R` is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for `R` (see CRAN website)[https://cran.r-project.org/]. Another general approach to find a package in `R` is simply to use a search engine in which to type the keywords of the tools you are looking for followed by "R package".
 
-`R` packages can be installed in various ways but the most widely used approach is through the `install.packages()` function. Another way is to use the "Tools -> Install Packages..." path from the dropdown menus in `RStudio` or clicking on the "install" button in the "Packages" pane in the RStudio environment. The `install.packages()` function is very straight-forward and transcends any platform for the `R` environment. It is noteworthy that this approach assumes that the desired package(s) are available within the CRAN repository. This is very often the case, but there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter 02 will show other ways of installing packages from a commonly used repository called "GitHub". 
+`R` packages can be installed in various ways but the most widely used approach is through the `install.packages()` function. Another way is to use the "Tools -> Install Packages..." path from the dropdown menus in `RStudio` or clicking on the "install" button in the "Packages" pane in the RStudio environment. The `install.packages()` function is very straight-forward and transcends any platform for the `R` environment. 
 
 Sticking momentarily to the packages available in the CRAN repository, the use of the `install.packages()` is quite simple. For example, if you want to install the package `devtools` you can simply write:
 
@@ -162,22 +165,23 @@ Sticking momentarily to the packages available in the CRAN repository, the use o
 install.packages("devtools")
 ```
 
+It is noteworthy that the above approach assumes that the desired package(s) are available within the CRAN repository. This is very often the case, but there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter 02 will show other ways of installing packages from a commonly used repository called "GitHub". For example, one of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub. 
+
+```{r, eval = FALSE}
+install_github("SMAC-Group/stat297")
+```
+
 Once a package is installed it is not directly usable within your `R` session. To do so you will have to "load" the package into your current `R` session which is generally done through the function `library()`. For example, after having installed the `devtools` package, in order to use it within your session you would write:
 
 ```{r, eval = FALSE}
 library(devtools)
+library(stat297)
 ```
 
 Once this is done, all the functions and documentation of this package are available and can be used within your current session. However, once you close your `R` session, all loaded packages will be closed and you will have to load them again if you want to use them in a new `R` session.
 
 ```{block2, type='rmdnote'}
 Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
-```
-
-One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub. 
-
-```{r, eval = FALSE}
-install_github("SMAC-Group/stat297")
 ```
 
 
