@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -122,7 +122,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
-<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#initialize-and-create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Initialize and create an R Markdown file in RStudio</a></li>
+<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming?</a></li>
+<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research?</a></li>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
 <li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
 </ul></li>
@@ -144,6 +146,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i><b>2.4.3</b> Cache</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
+<li class="chapter" data-level="2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#additional-references-2"><i class="fa fa-check"></i><b>2.6</b> Additional References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -168,17 +171,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="rmarkdown" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> RMarkdown</h1>
 <p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name “markdown” is an intentional contrast to other “markup” languages–e.g., hypertext markup language (HTML)–which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. “RMarkdown” is an implementation of the “markdown” language designed to accommodated embedded <code>R</code> code.</p>
-<p>What is <strong>literate</strong> programming?</p>
+<div id="what-is-literate-programming" class="section level3 unnumbered">
+<h3>What is <strong>literate</strong> programming?</h3>
 <p>Literate programming is the notion for programmers of adding narrative context with code to produce documentation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated.</p>
-<p>What is <strong>reproducible</strong> research?</p>
-<p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author’s findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
-<div id="initialize-and-create-an-r-markdown-file-in-rstudio" class="section level2">
-<h2><span class="header-section-number">2.1</span> Initialize and create an R Markdown file in RStudio</h2>
-<p>Within RStudio, click <code>File</code> → <code>New File</code> → <code>R Markdown</code>. Give the file<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> a title and the author (your name) and select the default output, HTML. We can change this later so don’t worry about it.</p>
-<div class="figure">
-<img src="images/rmd_new.png" />
-
 </div>
+<div id="what-is-reproducible-research" class="section level3 unnumbered">
+<h3>What is <strong>reproducible</strong> research?</h3>
+<p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author’s findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
+</div>
+<div id="create-an-r-markdown-file-in-rstudio" class="section level2">
+<h2><span class="header-section-number">2.1</span> Create an R Markdown file in RStudio</h2>
+<p>Within RStudio, click <code>File</code> → <code>New File</code> → <code>R Markdown</code>. Give the file a title and the author (your name) and select the default output, HTML. We can change this later so don’t worry about it.</p>
+<center>
+<img src="images/rmd_new.png" />
+</center>
 <p>An RMarkdown is a plain text file that contains three different aspects:</p>
 <ul>
 <li>YAML metadata</li>
@@ -189,33 +195,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="yaml-metadata" class="section level2">
 <h2><span class="header-section-number">2.2</span> YAML Metadata</h2>
 <p>YAML stands for <em>YAML Ain’t Markup Language</em>, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header surrounded before and after by “—” on a dedicated line.</p>
-<div class="figure">
+<center>
 <img src="images/rmd_yaml.png" />
-
-</div>
+</center>
 <p>You can also include additional formatting <a href="http://rmarkdown.rstudio.com/html_document_format.html">options</a>, such as a table of contents, or even a custom CSS style template which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file.</p>
-<div class="figure">
+<center>
 <img src="images/rmd_example_output.png" />
-
-</div>
+</center>
 <p>The default output above is an html_document format. However, this can be specified as well, such as <code>pdf_document</code>. The pdf format, however, requires additional installation and configuration of a TeX distribution such as <a href="https://miktex.org/2.9/setup">MikTeX</a>. Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary.</p>
 <div id="subsections" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Subsections</h3>
 <p>To make your sections numbered as sections and subsections, make sure you specify <code>number_sections: yes</code> as part of the YAML Metadata as shown below.</p>
-<div class="figure">
+<center>
 <img src="images/yaml_number_sections.png" />
-
-</div>
+</center>
 </div>
 </div>
 <div id="text" class="section level2">
 <h2><span class="header-section-number">2.3</span> Text</h2>
 <p>In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as <em>italics</em>, <strong>bold</strong>, or <code>code style</code>. To understand how to format text, our previous would be as follows in RMarkdown:</p>
 <pre><code>With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or even a `code style`.</code></pre>
-<div class="figure">
+<center>
 <img src="images/rmd_text.png" />
-
-</div>
+</center>
 <div id="headers" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Headers</h3>
 <p>As seen above, headings are preceded with a #. A single <code>#</code> produces the largest heading text; to output smaller headings, simply add more #! Heading level also impacts section and subsection nesting in documents and tables of contents, as well as slide breaks in presentation formats.</p>
@@ -269,16 +271,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.3.5</span> Pictures</h3>
 <p>To add a picture with captions, follow the syntax below:</p>
 <pre class="text"><code>![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)</code></pre>
-<div class="figure">
+<center>
 <img src="http://science.psu.edu/psu_eberly_blue.png" alt="Eberly College of Science Banner" />
-<p class="caption">Eberly College of Science Banner</p>
-</div>
+</center>
 <p>Else, to add a picture without any captions, follow the syntax below:</p>
-<pre class="text"><code>![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)</code></pre>
-<div class="figure">
-<img src="http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png" />
-
-</div>
+<pre class="text"><code>![](http://www.work.psu.edu/ldap/PS_HOR_RGB_2C.png)</code></pre>
+<center>
+<img src="http://www.work.psu.edu/ldap/PS_HOR_RGB_2C.png" />
+</center>
 </div>
 <div id="latex" class="section level3">
 <h3><span class="header-section-number">2.3.6</span> LaTeX</h3>
@@ -316,20 +316,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   publisher={BioMed Central}
 }</code></pre>
 <p>This may look like a complicated format to save a reference but there is an easy way to obtain this format without having to manually fill in the different slots. To do so, go online and search for “Google Scholar” which is a search engine specifically dedicated to academic or other types of publications. In the latter search engine you can insert keywords or the title and/or authors of the publication you are interested in and find it in the list of results. In our example we search for “The taste of cutlery” and the publication we are interested in is the first in the results list.</p>
-<div class="figure">
+<center>
 <img src="images/googlescholar1.png" />
-
-</div>
+</center>
 <p>Below every publication in the list there is a set of options among which the one we are interested in is the “Cite” option that should open a window in which a series of reference options are available. Aside from different reference formats that can be copied and pasted into your document, at the bottom of the window you can find another set of options (with related links) that refer to different bibliography managers.</p>
-<div class="figure">
+<center>
 <img src="images/googlescholar2.png" />
-
-</div>
+</center>
 <p>For “.bib” files we are interested in the “BibTeX” option and by clicking on it we will be taken to another tab in which the format of the reference we want is provided. All that needs to be done at this point is to copy this format (that we saw earlier in this section) and paste in the “.bib” file you created and save the changes.</p>
-<div class="figure">
+<center>
 <img src="images/googlescholar3.png" />
-
-</div>
+</center>
 <p>However, your Rmarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file “biblio.bib” (saved in the same location as your Rmarkdown document). All that needs to be done is to add another line in the YAML metadata with <code>bibliography: biblio.bib</code> and your Rmarkdown will now be able to recognize the references within your “.bib” file. There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (for a more detailed overview the BibTeX environment and managing references in Rmarkdown see, for example, this <a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">link</a> and this <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">link</a> respectively).</p>
 <p>Once the “.bib” file has been created and has been linked to your Rmarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the “.bib” file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your “.bib” file and place it immediately after the <code>@</code> symbol (without spaces). So, for example, say that we wanted to cite the publication on the “taste of cutlery”: in your Rmarkdown all you have to do is to type <code>@harrar2013taste</code> at the point where you want this citation in the text and you will obtain: <span class="citation">Harrar and Spence (<a href="#ref-harrar2013taste">2013</a>)</span>.</p>
 
@@ -409,10 +406,9 @@ The references in the “.bib” file will not appear in the references that are
 <li>the Add Chunk command in the editor toolbar</li>
 <li>by typing the chunk delimiters <strong>```{}</strong> and <strong>```</strong>.</li>
 </ul>
-<div class="figure">
+<center>
 <img src="images/rmd_code_chunk.png" />
-
-</div>
+</center>
 <div id="code-chunk-options" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Code Chunk Options</h3>
 <p>In the third code chunk above, we also configure chunk options. Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Rmarkdown Cheatsheet</a> and Yihui’s notes on knitr <a href="https://yihui.name/knitr/options/">options</a>. Here are some explanations of the most commonly used chunk options exerted from above:</p>
@@ -474,6 +470,9 @@ The references in the “.bib” file will not appear in the references that are
 
 </div>
 <p>The use of RMarkdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using <code>pandoc</code>. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format.</p>
+</div>
+<div id="additional-references-2" class="section level2">
+<h2><span class="header-section-number">2.6</span> Additional References</h2>
 <p>Click on the links below for more information on RMarkdown:</p>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/authoring_quick_tour.html">RStudio RMarkdown tutorial</a></li>
@@ -496,23 +495,11 @@ The references in the “.bib” file will not appear in the references that are
 </div>
 </div>
 </div>
-
-
-
-
-
-
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-harrar2013taste">
 <p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central: 21.</p>
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p><a href="http://kbroman.org/datacarpentry_R_2017-01-10/img/New_R_Markdown.png" class="uri">http://kbroman.org/datacarpentry_R_2017-01-10/img/New_R_Markdown.png</a><a href="rmarkdown.html#fnref1">↩</a></p></li>
-</ol>
 </div>
             </section>
 
@@ -531,7 +518,7 @@ The references in the “.bib” file will not appear in the references that are
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
