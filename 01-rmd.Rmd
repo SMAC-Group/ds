@@ -10,6 +10,10 @@ Literate programming is the notion for programmers of adding narrative context w
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
+## Shiny Application 
+
+
+
 ## Create an R Markdown file in RStudio
 
 Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
@@ -101,11 +105,11 @@ whereas to add hyperlinks with a custom link title, (ex: [Google](https://google
 
 ### Blockquotes
 
-**Same thing for citation... What do you think?**
+Use the > character in front of a line, *just like in email* to produce blockquotes, which styles the text in a way to use if we quote a person, a song or another entity. 
 
-> Use the > character in front of a line, *just like in email*.
-> Use it if you're quoting a person, a song or whatever.
-
+> "To grow taller, you should shave your head. Remember to bring the towels!"
+>
+> Justin Lee 
 
 ### Pictures 
 
@@ -120,10 +124,10 @@ To add a picture with captions, follow the syntax below:
 Else, to add a picture without any captions, follow the syntax below:
 
 ```{r, eval = FALSE, highlight = FALSE}
-![](http://www.work.psu.edu/ldap/PS_HOR_RGB_2C.png)
+![](http://www.alumni.psu.edu/s/1218/16/images/logo.png)
 ```
 
-<center>![](http://www.work.psu.edu/ldap/PS_HOR_RGB_2C.png){ width=50%}</center>
+<center>![](http://www.alumni.psu.edu/s/1218/16/images/logo.png){ width=50%}</center>
 
 
 ### LaTeX 
@@ -350,9 +354,11 @@ After you are done, run `rmarkdown::render()` or click the `Knit` button at the 
 
 The use of RMarkdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using `pandoc`. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format. 
 
-## Additional References
+## Main References
 
 Click on the links below for more information on RMarkdown:
 
 - [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
+
+
