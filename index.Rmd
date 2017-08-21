@@ -9,6 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: smac-group/ds
+description: "l"
 includes:
       in_header: style.css
 ---
