@@ -1,6 +1,6 @@
 # RMarkdown 
 
-RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name "markdown" is an intentional contrast to other "markup" languages--e.g., hypertext markup language (HTML)--which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. "RMarkdown" is an implementation of the "markdown" language designed to accommodated embedded `R` code.
+RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name "markdown" is an intentional contrast to other "markup" languages--e.g., hypertext markup language (HTML)--which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. "RMarkdown" is an implementation of the "markdown" language designed to accommodate embedded `R` code.
 
 ### What is **literate** programming? {-}
 
@@ -8,7 +8,7 @@ Literate programming is the notion for programmers of adding narrative context w
 
 ### What is **reproducible** research? {-}
 
-Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
+Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors' findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
 ## Shiny Application 
 
@@ -21,7 +21,7 @@ knitr::include_app("https://guerrier.shinyapps.io/rmd_example/", height = "650px
 ## Create an R Markdown file in RStudio
 
 Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
-(your name) and select the default output, HTML. We can change this later so don't worry about it. 
+(your name) and select the default output, HTML. We can change this later so don't worry about it for the moment. 
 
 <center>![](images/rmd_new.png)</center>
 
@@ -29,20 +29,20 @@ Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a ti
 An RMarkdown is a plain text file that contains three different aspects:
 
 - YAML metadata
-- Code Chunks 
 - Text 
+- Code Chunks
 
 ## YAML Metadata 
 
-YAML stands for *YAML Ain't Markup Language*, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header surrounded before and after by "---" on a dedicated line.
+YAML stands for *YAML Ain't Markup Language* and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header is surrounded before and after by "---" on a dedicated line.
 
 <center>![](images/rmd_yaml.png)</center>
 
-You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even a custom CSS style template which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
+You can also include additional formatting [options](http://RMarkdown.rstudio.com/html_document_format.html) such as a table of contents or even a custom CSS style template which can be used to further enhance the presentation. For the purpose of this book, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
 
 <center>![](images/rmd_example_output.png)</center>
 
-The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. The pdf format, however, requires additional installation and configuration of a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary.
+The default output above is an html_document format but this format can be modified using, for example, `pdf_document` to output a pdf. However, the pdf format requires additional installation and configuration of a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary (we'll discuss more about LaTeX further on).
 
 
 ### Subsections 
@@ -54,10 +54,10 @@ To make your sections numbered as sections and subsections, make sure you specif
 
 ## Text 
 
-In addition, due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or `code style`. To understand how to format text, our previous would be as follows in RMarkdown:
+Due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting with emphases such as *italics*, **bold**, or `code style`. To understand how to format text, our previous sentence would be typed out as follows in RMarkdown:
 
 ```
-With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or even a `code style`.
+With RMarkdown, we can specify custom text formatting with emphases such as *italics*, **bold**, or `code style
 ```
 
 <center>![](images/rmd_text.png)</center>
@@ -65,7 +65,7 @@ With RMarkdown, we can specify custom text formatting, such as with emphasis suc
 
 ### Headers
 
-As seen above, headings are preceded with a #. A single `#` produces the largest heading text; to output smaller headings, simply add more #! Heading level also impacts section and subsection nesting in documents and tables of contents, as well as slide breaks in presentation formats.
+As seen above, headers are preceded by a #. A single `#` produces the largest heading text while, to produce smaller headings, you simply need to add more `#`s! Heading level also impacts section and subsection nesting in documents and tables of contents, as well as slide breaks in presentation formats.
 
 ### Lists 
 
@@ -85,13 +85,13 @@ Lists can be extremely convenient to make text more readable or to take course n
 which delivers the following list structure:
 
 * You can create bullet points by using symbols such as *, +, or -. 
-+ Simply add an indent or four preceding spaces to indent a list. 
++ simply add an indent or four preceding spaces to indent a list. 
     + You can manipulate the number of spaces or indents to your liking. 
         - Like this. 
     * Here we go back to the first indent. 
-1. To make the list ordered, use numbers instead of symbols. 
-2. Here we write the next consecutive number to continue.
-    - Add more content by indenting like before. 
+1. To make the list ordered, use numbers. 
+1. We can use one again to continue our ordered list. 
+2. Or we can add the next consecutive number. 
 
 ### Hyperlinks 
 
@@ -109,7 +109,7 @@ whereas to add hyperlinks with a custom link title, (ex: [Google](https://google
 
 ### Blockquotes
 
-Use the > character in front of a line, *just like in email* to produce blockquotes, which styles the text in a way to use if we quote a person, a song or another entity. 
+Use the > character in front of a line, *just like in email* to produce blockquotes which styles the text in a way to use if we quote a person, a song or another entity. 
 
 > "To grow taller, you should shave your head. Remember to bring the towels!"
 >
@@ -123,26 +123,28 @@ To add a picture with captions, follow the syntax below:
 ![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)
 ```
 
+which will produce:
+
 <center>![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)</center>
 
-Else, to add a picture without any captions, follow the syntax below:
+Otherwise, to add a picture without any captions, follow the syntax below:
 
 ```{r, eval = FALSE, highlight = FALSE}
 ![](http://www.alumni.psu.edu/s/1218/16/images/logo.png)
 ```
+
+which delivers:
 
 <center>![](http://www.alumni.psu.edu/s/1218/16/images/logo.png){ width=50%}</center>
 
 
 ### LaTeX 
 
-What is **LaTeX**?
-
-LaTeX is a document preparation system that uses plain text as opposed to formatted text used for applications such as Microsoft Word. It is widely used in academia as a standard for the publication of scientific documents. It has control over large documents containing sectioning, cross-references, tables and figures. 
+LaTeX is a document preparation system that uses plain text as opposed to formatted text that is used for applications such as Microsoft Word. It is widely used in academia as a standard for the publication of scientific documents. It has control over large documents containing sectioning, cross-references, tables and figures. 
 
 #### LaTeX in RMarkdown 
 
-Unlike a highly formatted word processor, we cannot produce equations by clicking on symbols. As data scientists we need to explain distributions and equations that are behind the methods we present. Within the text section of an RMarkdown document you can include LaTeX format text to output different forms of text, mainly equations and mathematical expressions. 
+Unlike a highly formatted word processor, we cannot produce equations by clicking on symbols. As data scientists there is often the need to explain distributions and equations that are behind the methods we present. Within the text section of an RMarkdown document you can include LaTeX format text to output different forms of text, mainly equations and mathematical expressions. 
 
 Inline mathematical expressions can be added using the syntax: `$math expression$`. For example, if we want to write "where $\alpha$ is in degrees" we would write:
 
@@ -150,7 +152,7 @@ Inline mathematical expressions can be added using the syntax: `$math expression
 "where $\alpha$ is in degrees".
 ```
 
-Using a slightly different syntax (i.e. `$$math expression$$`) we can obtain centered mathematical expressions. For example, the binomial probability in LaTeX is written as
+Using a slightly different syntax (i.e. `$$math expression$$`) we can obtain centered mathematical expressions. For example, the binomial probability distribution in LaTeX is written as
 
 `$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$`
 
@@ -196,31 +198,31 @@ For ".bib" files we are interested in the "BibTeX" option and by clicking on it 
 
 <center>![](images/googlescholar3.png)</center>
 
-However, your Rmarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file "biblio.bib" (saved in the same location as your Rmarkdown document). All that needs to be done is to add another line in the YAML metadata with `bibliography: biblio.bib` and your Rmarkdown will now be able to recognize the references within your ".bib" file. 
+However, your RMarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file "biblio.bib" (saved in the same location as your RMarkdown document). All that needs to be done is to add another line in the YAML metadata with `bibliography: biblio.bib` and your RMarkdown will now be able to recognize the references within your ".bib" file. 
 
 <center>![](images/rmd_yaml2.png)</center>
 
-There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (for a more detailed overview the BibTeX environment and managing references in Rmarkdown see, for example, this [link](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM) and this [link](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html) respectively).
+There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (see links at the end of this section).
 
-Once the ".bib" file has been created and has been linked to your Rmarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the ".bib" file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your ".bib" file and place it immediately after the `@` symbol (without spaces). So, for example, say that we wanted to cite the publication on the "taste of cutlery": in your Rmarkdown all you have to do is to type `@harrar2013taste` at the point where you want this citation in the text and you will obtain: @harrar2013taste.
+Once the ".bib" file has been created and has been linked to your RMarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the ".bib" file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your ".bib" file and place it immediately after the `@` symbol (without spaces). So, for example, say that we wanted to cite the publication on the "taste of cutlery": in your RMarkdown all you have to do is to type `@harrar2013taste` at the point where you want this citation in the text and you will obtain: @harrar2013taste.
 
 ```{block2, type='rmdnote'}
-The user can also change the name that is used to call the desired reference as long as the same name is used to cite it in the Rmarkdown document and that this name is not the same as another reference. 
+The user can also change the name that is used to call the desired reference as long as the same name is used to cite it in the RMarkdown document and that this name is not the same as another reference. 
 ```
 
 ```{block2, type='rmdcaution'}
-The references in the ".bib" file will not appear in the references that are output from the Rmarkdown compiling procedure unless they are specifically used within the Rmarkdown document.
+The references in the ".bib" file will not appear in the references that are output from the RMarkdown compiling procedure unless they are specifically used within the RMarkdown document.
 ```
 
 Additional information on BibTeX and reference in RMarkdown can be found in the links below:
 
 - [Introduction to bibtex](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM)
-- [Reference in RMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+- [Reference in RMarkdown](http://RMarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
 
 
 ### Tables 
 
-For simple tables, we can be manually insert values as such, 
+For simple tables, we can be manually insert values as such follows: 
 
 ```
 +---------------+---------------+--------------------+
@@ -246,45 +248,45 @@ to produce:
 |               |               | - **tasty**        |
 +---------------+---------------+--------------------+
 
-As an alternative we can use the simple graphical user interface [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()`, which we will explain later. 
+As an alternative we can use the simple graphical user interface [online](http://www.tablesgenerator.com/markdown_tables). For more extensive tables, we create dataframe objects and project them using `knitr::kable()` which we will explain later on this book. 
 
 ### Additional References 
 
-There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
+There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf) as a reference. 
 
 
 ## Code Chunks 
 
-This is where you enter your code. 
-
-You can quickly insert chunks like these into your file with
+Code chunks are those parts of the RMarkdown document where it is possible to embed R code within your output. To insert these chunks within your RMarkdown file you can use the following shortcuts:
 
 - the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
 - the Add Chunk command in the editor toolbar
 - by typing the chunk delimiters **\`\`\`\{\r\}** and **\`\`\`**.
 
+The following example highlights the code chunks in the example RMarkdown document we saw at the start of this chapter:
+
 <center>![](images/rmd_code_chunk.png)</center>
 
 ### Code Chunk Options
 
-In the third code chunk above, we also configure chunk options. Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. This is a useful way to embed figures. More options can be referred from the [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options exerted from above: 
+A variety of options can be specified to manage the code chunks contained in the document. For example, as can be seen in the third code chunk in the example above, we specify an argument that reads `echo = FALSE` which is a parameter that was added to the code chunk to prevent printing the R code that generated the plot. This is a useful way to embed figures. More options can be found from the [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options taken from these references: 
 
-- `eval`: (TRUE; logical) whether to evaluate the code chunk
-- `echo`: (TRUE; logical or numeric) whether to include R source code in the output file
-- `warning`: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)
+- `eval`: (TRUE; logical) whether to evaluate the code chunk;
+- `echo`: (TRUE; logical or numeric) whether to include R source code in the output file;
+- `warning`: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document);
 - `cache`: (FALSE; logical) whether to "*cache*" a code chunk. This option is particularly important in practice and is discussed in more details in Section \@ref(cache).
 
 Plot figure options: 
 
-- `fig.path`: ('figure/'; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames)
-- `fig.show`: ('asis'; character) how to show/arrange the plots
-- `fig.width`, `fig.height`: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric
-- `fig.align`: ('default'; character) alignment of figures in the output document (possible values are left, right and center
+- `fig.path`: ('figure/'; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames);
+- `fig.show`: ('asis'; character) how to show/arrange the plots;
+- `fig.width`, `fig.height`: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric;
+- `fig.align`: ('default'; character) alignment of figures in the output document (possible values are left, right and center;
 - `fig.cap`: (NULL; character) figure caption to be used in a figure environment.
 
 ### Comments
 
-Adding comments to describe the code is very essential during every process. It helps **you** keep noted and remember what is going on, as well as helps others understand your code. Forgetting to comment or document your code often becomes a bigger problem in the future. 
+Adding comments to describe the code is extremely useful (if not essential) during every coding and programming process. It helps **you** take notes and remember what is going on and why you made use of these functions, as well as helping others understand your code. Forgetting to comment or document your code often becomes a larger problem in the future when, among numerous lines of code, you have forgotten the reason for using certain functions or algorithms. 
 
 > "Don't document bad code – rewrite it."
 > The Elements of Programming Style, Kernighan & Plauger
@@ -296,13 +298,13 @@ Adding comments to describe the code is very essential during every process. It 
 
 ### In-line R
 
-The variables we store in a RMarkdown document will stay within the environment. This means that we can call and manipulate them anywhere within the document. In Rmarkdown, we can reference variables by using ` r x` to show the value of a variable (`x` in this case) directly in a sentence. Here is an example: 
+The variables we store in an RMarkdown document will stay within the environment they were created in. This means that we can call and manipulate them anywhere within the document. For example, supposing we have a variable called `x` to which we assign a specific value, then in RMarkdown we can reference this variable by using ` r x`: this will affix the value of the variable directly in a sentence. Here is a practical example: 
 
 ```{r}
 a = 2
 ```
 
-Above, we stored the value 2 into a variable called `a`. We can use the value of `a` as follows:
+where we have stored the value 2 in a variable called `a`. We can use the value of `a` as follows:
 
 ```{r, eval = FALSE, highlight = FALSE}
 The value of $a$ is `r a`. 
@@ -312,7 +314,7 @@ This translates in R Markdown to "The value of $a$ is `r a`."
 
 ### Cache {#cache}
 
-Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you compile the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the `cache` argument. By default this argument is assigned the value `FALSE` and therefore the R code is run every time your document is compiled. However, if you specify this argument as `cache = TRUE`, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.
+Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the `cache` argument. By default this argument is assigned the value `FALSE` and therefore the R code is run every time your document is compiled. However, if you specify this argument as `cache = TRUE`, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.
 
 Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call `a` (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the `cache` argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:
 
@@ -363,18 +365,18 @@ In this manner, if the value of `a` changes in the first chunk, the value of `d`
 
 ## Render Output 
 
-After you are done, run `rmarkdown::render()` or click the `Knit` button at the top of the RStudio scripts pane to save the output in your working directory. 
+After you are done, run `RMarkdown::render()` or click the `Knit` button at the top of the RStudio scripts pane to save the output in your working directory. 
 
 ![](images/rmd_knit.png)
 
-The use of RMarkdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using `pandoc`. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format. 
+The use of RMarkdown makes it possible to generate any file format such as HTML, pdf and Word processor formats using `pandoc`. Pandoc is a free software that understands and converts useful markdown syntax, such as the code mentioned above, into a readable and clean format. 
 
 ## Main References
 
 Click on the links below for more information on RMarkdown:
 
-- [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
+- [RStudio RMarkdown tutorial](http://RMarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
-- [Rmarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf)
 
 <br><br><br>
