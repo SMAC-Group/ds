@@ -2,20 +2,20 @@
 
 RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio, and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name "markdown" is an intentional contrast to other "markup" languages--e.g., hypertext markup language (HTML)--which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. "RMarkdown" is an implementation of the "markdown" language designed to accommodated embedded `R` code.
 
-What is **literate** programming? 
+### What is **literate** programming? {-}
 
 Literate programming is the notion for programmers of adding narrative context with code to produce documentation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated. 
 
-What is **reproducible** research?
+### What is **reproducible** research? {-}
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis, and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the author's findings and potentially, the author. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
-## Initialize and create an R Markdown file in RStudio
+## Create an R Markdown file in RStudio
 
-Within RStudio, click `File` → `New File` → `R Markdown`. Give the file[^1] a title and the author 
+Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
 (your name) and select the default output, HTML. We can change this later so don't worry about it. 
 
-![](images/rmd_new.png)
+<center>![](images/rmd_new.png)</center>
 
 
 An RMarkdown is a plain text file that contains three different aspects:
@@ -28,11 +28,11 @@ An RMarkdown is a plain text file that contains three different aspects:
 
 YAML stands for *YAML Ain't Markup Language*, and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header surrounded before and after by "---" on a dedicated line.
 
-![](images/rmd_yaml.png)
+<center>![](images/rmd_yaml.png)</center>
 
 You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even a custom CSS style template which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
 
-![](images/rmd_example_output.png)
+<center>![](images/rmd_example_output.png)</center>
 
 The default output above is an html_document format. However, this can be specified as well, such as `pdf_document`. The pdf format, however, requires additional installation and configuration of a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary.
 
@@ -41,7 +41,7 @@ The default output above is an html_document format. However, this can be specif
 
 To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of the YAML Metadata as shown below. 
 
-![](images/yaml_number_sections.png)
+<center>![](images/yaml_number_sections.png)</center>
 
 
 ## Text 
@@ -52,7 +52,7 @@ In addition, due to its literate nature, text will be an essential part in expla
 With RMarkdown, we can specify custom text formatting, such as with emphasis such as *italics*, **bold**, or even a `code style`.
 ```
 
-![](images/rmd_text.png)
+<center>![](images/rmd_text.png)</center>
 
 
 ### Headers
@@ -114,15 +114,16 @@ To add a picture with captions, follow the syntax below:
 ```{r, eval = FALSE, highlight = FALSE}
 ![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)
 ```
-![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)
 
+<center>![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)</center>
 
 Else, to add a picture without any captions, follow the syntax below:
 
 ```{r, eval = FALSE, highlight = FALSE}
-![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+![](http://www.work.psu.edu/ldap/PS_HOR_RGB_2C.png)
 ```
-![](http://kefalosandassociates.com/wp-content/uploads/2015/07/facebook-banner.png)
+
+<center>![](http://www.work.psu.edu/ldap/PS_HOR_RGB_2C.png)</center>
 
 
 ### LaTeX 
@@ -177,15 +178,15 @@ To illustrate how this is done, let us take the example of a recent paper where 
 
 This may look like a complicated format to save a reference but there is an easy way to obtain this format without having to manually fill in the different slots. To do so, go online and search for "Google Scholar" which is a search engine specifically dedicated to academic or other types of publications. In the latter search engine you can insert keywords or the title and/or authors of the publication you are interested in and find it in the list of results. In our example we search for "The taste of cutlery" and the publication we are interested in is the first in the results list.
 
-![](images/googlescholar1.png)
+<center>![](images/googlescholar1.png)</center>
 
 Below every publication in the list there is a set of options among which the one we are interested in is the "Cite" option that should open a window in which a series of reference options are available. Aside from different reference formats that can be copied and pasted into your document, at the bottom of the window you can find another set of options (with related links) that refer to different bibliography managers.
 
-![](images/googlescholar2.png)
+<center>![](images/googlescholar2.png)</center>
 
 For ".bib" files we are interested in the "BibTeX" option and by clicking on it we will be taken to another tab in which the format of the reference we want is provided. All that needs to be done at this point is to copy this format (that we saw earlier in this section) and paste in the ".bib" file you created and save the changes.
 
-![](images/googlescholar3.png)
+<center>![](images/googlescholar3.png)</center>
 
 However, your Rmarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file "biblio.bib" (saved in the same location as your Rmarkdown document). All that needs to be done is to add another line in the YAML metadata with `bibliography: biblio.bib` and your Rmarkdown will now be able to recognize the references within your ".bib" file. There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (for a more detailed overview the BibTeX environment and managing references in Rmarkdown see, for example, this [link](https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM) and this [link](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html) respectively).
 
@@ -250,7 +251,7 @@ You can quickly insert chunks like these into your file with
 - the Add Chunk command in the editor toolbar
 - by typing the chunk delimiters **\`\`\`\{\r\}** and **\`\`\`**.
 
-![](images/rmd_code_chunk.png)
+<center>![](images/rmd_code_chunk.png)</center>
 
 ### Code Chunk Options
 
@@ -345,9 +346,9 @@ After you are done, run `rmarkdown::render()` or click the `Knit` button at the 
 
 The use of RMarkdown makes it possible to generate any file format such as HTML, pdf, and Word processor formats using `pandoc`. Pandoc is free software understands and converts useful markdown syntax such as code mentioned above into readable, clean format. 
 
+## Additional References
+
 Click on the links below for more information on RMarkdown:
 
 - [RStudio RMarkdown tutorial](http://rmarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
-
-[^1]: http://kbroman.org/datacarpentry_R_2017-01-10/img/New_R_Markdown.png
