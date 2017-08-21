@@ -282,6 +282,17 @@ Plot figure options:
 - `fig.align`: ('default'; character) alignment of figures in the output document (possible values are left, right and center
 - `fig.cap`: (NULL; character) figure caption to be used in a figure environment.
 
+### Comments
+
+Adding comments to describe the code is very essential during every process. It helps **you** keep noted and remember what is going on, as well as helps others understand your code. Forgetting to comment or document your code often becomes a bigger problem in the future. 
+
+> "Don't document bad code – rewrite it."
+> The Elements of Programming Style, Kernighan & Plauger
+
+```{r}
+# Comment your code by preceding text with a # 
+# Keep it brief but comprehensible, so you can return to it 
+```
 
 ### In-line R
 
