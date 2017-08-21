@@ -30,7 +30,7 @@ YAML stands for *YAML Ain't Markup Language*, and is used to specify document co
 
 ![](images/rmd_yaml.png)
 
-You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even a custom CSS style template which can utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
+You can also include additional formatting [options](http://rmarkdown.rstudio.com/html_document_format.html), such as a table of contents, or even a custom CSS style template which can be utilized to further enhance presentation. For the purpose of the class, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
 
 ![](images/rmd_example_output.png)
 
