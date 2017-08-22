@@ -31,9 +31,9 @@ All these goals are common to any basic programming course, however all these wi
 This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here https://github.com/SMAC-Group/ds/issues) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you're not familiar with these tools, they will be explained later on in the book itself.
 ```
 
-<center>![](images/diagram.png)</center>
+<center>![Note that this diagram is a adapted version of Figure 1 of http://r4ds.had.co.nz/explore-intro.html](images/diagram.png)</center>
 
-
+To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. Most cases, there is input that an audience provides, in which we then process and manipulate in R. Exploratory data analysis is performed using R, R Markdown, and Shiny applications as we preprocess, visualize, and model our data/input. We then communicate our results through websites, rapports, slides, we can use a narrative report using R Markdown with R as the backend. To communicate through a website, we can output interactive Shiny applications that take in multiple parameters and options. We can even use both. Some cases, after we communicate, we may find something new, and move back to the exploring stage. 
 
 ## `R` and `RStudio`
 
@@ -68,6 +68,8 @@ You cannot use `RStudio` without having installed `R` on your computer.
 ### About RStudio
 
 `RStudio` is a customizable IDE for the `R` enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with `R`. For the most part, `RStudio` provides everything the `R` user will need in a self-contained, and well-organized environment.  Moreover, it is possible to create "projects" in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.
+
+Below is short video demonstrating a basic introduction of RStudio and some of its elements. 
 
 ```{r, echo=FALSE}
 knitr::include_url("https://www.youtube.com/embed/mU9KSgiom5g")
