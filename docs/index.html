@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-08-21">
+<meta name="date" content="2017-08-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -173,7 +173,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
 <h4 class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari</em></h4>
-<h4 class="date"><em>2017-08-21</em></h4>
+<h4 class="date"><em>2017-08-22</em></h4>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -191,6 +191,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you’re not familiar with these tools, they will be explained later on in the book itself.
 </div>
 <p></p>
+<center>
+<img src="images/diagram.png" />
+</center>
 <div id="r-and-rstudio" class="section level2">
 <h2><span class="header-section-number">1.1</span> <code>R</code> and <code>RStudio</code></h2>
 <p>The statistical computing language <code>R</code> has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important programming languages, communication, and version-control features. The latter is also possible thanks to the development of the <code>RStudio</code> interface which provides a pleasant and functional user-interface for <code>R</code> as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are available to the user. In order to illustrate the relationship between R &amp; RStudio in statistical programming, one might think of a car analogy in which R would be like the engine and RStudio might be like leather seats. R is doing the work (for the most part), and RStudio generally is making you more comfortable while you use R.</p>
@@ -484,7 +487,7 @@ Please notice that although packages need to be loaded at each session if you wa
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
