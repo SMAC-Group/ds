@@ -10,12 +10,10 @@ Literate programming is the notion for programmers of adding narrative context w
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors' findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
-## Shiny Application 
-
 We've created a framework application that you can use to test out different R Markdown functions. 
 
 ```{r, echo=FALSE}
-knitr::include_app("https://guerrier.shinyapps.io/rmd_example/", height = "650px")
+knitr::include_app("http://shiny.science.psu.edu/mdb268/stat297/rmd_mini/", height = "650px")
 ```
 
 ## Create an R Markdown file in RStudio
