@@ -2,99 +2,343 @@
 
 This chapter aims at highlighting the main advantages, characteristics, arguments and structure of functions in R. As you already know, a function is a collection of logically connected commands and operations that allow the user to input some arguments and obtain a desired output (based on the given arguments) without having to rewrite the mentioned code each time that specific output is needed. Indeed, a common task in statistical research consists in running some simulation studies which give support (or not) to the use of a certain method of inference. In this case, it's not efficient to rewrite the code each time it is needed within a simulation study because it would lead to lengthy code and increased risk of miss-coding. 
 
-Considering this, in the previous chapter we discussed the non-parametric bootstrap which is a technique used to perform statistical inference in different cases (e.g. small sample sizes, uncertainty on the distribution of the underlying variable, etc.). However, there exist many other types of bootstrap techniques, including the parametric bootstrap which assumes a parametric model for the data (e.g. a Gaussian distribution with mean $\mu$ and variance $\sigma^2$ that represent the parameters). For this bootstrap technique, we assume that we know the underlying model generating the data and therefore estimate its parameters. Once this is done, we use the estimated parameters as if they were the true parameters and use them to simulate from the assumed model. In this manner we generate a parametric bootstrap sample on which we can compute the statistic we are intersted in (e.g. the sample mean), thereby obtaining a distribution for this statistic by simulating many other samples.
+Considering this, in the previous chapter we discussed matrix algebra in R. Using these notions, in this chapter we will implement a function that allows us to perform least-squares regression and inference. Indeed, it may be interesting to understand the behavior of this estimator in different simulation settings and it would not be practical to rewrite the series of commands to obtain the least-squares estimator in each setting. For this reason, a function that implements this estimator would be more appropriate and, in fact, this function already exists in the base R functions and is called `lm()`. However, in this chapter we will build our own least-squares regression function and compare its results with those of `lm()` to check if they're the same.
 
-What are the advantages of these different inferential methods? Which approach appears to be preferable to the others and under what circumstances? We can run some specific simulation studies to get an idea of the answers to these questions but, to do so, we will need to create functions the implement these methods. The next sections will present the main features of functions in R by studying their main components. R functions have three main components to them:
+In order to build our function, the next sections will present the main features of functions in R by studying their main components. R functions have three main components to them:
 
 - *body*: the code lines containing the commands and operations which deliver the desired output;
 - *arguments*: the inputs the user gives to the function which will determine the value or type of output of a function;
 - *environment*: every R function is built within an enviroment of reference from which to source possible input values and/or other functions necessary for it to work.
 
-While the first component is the collection of commands that we saw in the previous chapters which deliver the output of interest, we will focus more on the last two components by building a function implementing the non-parametric bootstrap to find a confidence interval for the sample mean which we saw in the previous chapter:
+While the first component is the collection of commands that we saw in the previous chapters which deliver the output of interest, we will focus more on the last two components by building our own function for least-squares estimation and inference. Before we implement the function, let us review the algebra behind least-squares regression which will also be helpful in revising matrix algebra in R that was seen in the previous chapter. 
+
+
+<!-- building a function implementing the non-parametric bootstrap to find a confidence interval for the sample mean which we saw in the previous chapter: -->
+
+<!-- ```{r} -->
+<!-- nonpar_boot <- function(x, B = 500, alpha = 0.05) { -->
+
+<!--   boot_mean <- rep(NA, B) -->
+<!--   n <- length(x) -->
+
+<!--   for (i in 1:B) { -->
+
+<!--     sample_star <- x[sample(1:n, replace = TRUE)] -->
+<!--     boot_mean[i] <- mean(sample_star) -->
+
+<!--   } -->
+
+<!--   return(quantile(boot_mean, c(alpha/2, 1 - alpha/2))) -->
+
+<!-- } -->
+<!-- ``` -->
+
+## The Algebra behind Least-Squares Inference
+
+In the framework of linear regression the goal is to explain an $n \times 1$ vector of observations $\mathbf{y}$  (representing the response variable) through a linear combination of $p$ explanatory variables (or predictors or covariates) that are stored in an $n \times p$ matrix $\mathbf{X}$. More specifically, the framework is the following:
+$$\mathbf{y} = \mathbf{X}^T\boldsymbol{\beta} + \mathbf{\epsilon}$$,
+where $\boldsymbol{\beta}$ is the $p \times 1$ parameter vector of interest that links the covariates with the response variable while $\mathbf{\epsilon}$ is the $n \times 1$ random error vector with null expectation and variance $\sigma^2$.
+
+When we collect data for the purpose of linear regression, the unknown terms in the above setting are the parameter vector $\boldsymbol{\beta}$ and the variance parameter $\sigma^2$. In order to estimate $\boldsymbol{\beta}$, assuming that the matrix $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$ exists, the least-squares estimator for it is given by:
+
+\begin{equation}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
+(\#eq:lsformula)
+\end{equation}
+
+In the comment box below, we derive Eq. \@ref(eq:lsformula). If you're not familiar with such calculations we suggest you read some introduction to linear regression (see for example @seber2012linear).
+
+```{block2, type='rmdtip'}
+The least-square estimator $\hat{\boldsymbol{\beta}}$ is given by
+
+\begin{equation*}
+ \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
+\end{equation*}
+
+The first step of this derivation is to reexpress the term $\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)$ as follows:
+
+\begin{equation*}
+    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}
+
+In case you were suprizied by the term $2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}$ remeber that a scalar can always be transposed without changing its value and therefore we have that $ \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =  \boldsymbol{y}^T \mathbf{X}  \boldsymbol{\beta}$. Now, our next step is to the following derivative 
+
+\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
+\end{equation*}
+
+To do this we should keep in mind the following results
+
+\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
+   \boldsymbol{y}^T \mathbf{X},
+\end{equation*}
+
+and
+
+\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} =  2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X}.
+\end{equation*}
+
+The proof of these two results can for example be found in Propositions 7 and 9 of [Prof. Barnes' notes](http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf). Using these two results we obtain
+
+\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
+\end{equation*}
+
+By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine $\hat{\boldsymbol{\beta}}$ through the follwing equation
+
+\begin{equation*}
+  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
+\end{equation*}
+
+which is equivalent to
+
+\begin{equation*}
+  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}
+
+If $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$ exists, $\hat{\boldsymbol{\beta}}$ is therefore given by
+
+\begin{equation*}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
+\end{equation*}
+
+which verifies Eq. \@ref(eq:lsformula).
+```
+
+The variance of $\hat{\boldsymbol{\beta}}$ is given by
+
+\begin{equation}
+\text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+(\#eq:lsvar)
+\end{equation}
+
+the derivation of this result is explained in the comment box below.
+
+```{block2, type='rmdtip'}
+If we let $\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T$, then we have
+
+\begin{equation*}
+\begin{aligned}
+  \text{Var} \left(\hat{\boldsymbol{\beta}} \right) &= \text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T \\
+  & = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T  \mathbf{X} \left(\mathbf{X}^T \mathbf{X}\right)^{-1} = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+\end{aligned}
+\end{equation*}
+
+which verifies Eq. \@ref(eq:lsvar). To understand the above derivation it may be useful to remind and point out a few things:
+
+- $\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T$ since $\mathbf{A}$ is not a random variable.
+- $\mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T$ since$\text{Var} \left(  \mathbf{y} \right) = \sigma^2 \mathbf{I}$ and therefore we have $\mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T$.
+- The result $\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}$ is based on the fact that $(\mathbf{X}^T \mathbf{X})^{-1}$ is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix $\mathbf{B}$ is such that the inverse and transpose operator commute, meaning that $( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T$.
+Therefore since the matrix $\mathbf{X}^T \mathbf{X}$ is square and (by assumption) invertible we have 
+$[(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}$.
+```
+
+In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of $\sigma^2$ is given by
+
+\begin{equation}
+  \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
+  (\#eq:lssig2hat)
+\end{equation}
+
+DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW.
+
+ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)
+
+JUSTIN COMMENT: I agree with Rob's suggestion :) 
+
+
+## Creating functions in R
+
+In the previous section we therefore went over the algebra behind least-squares regression. Based on this, let us implement a function that only estimates the parameter vector $\boldsymbol{\beta}$. Let us therefore define the skeleton of the R function we want to build:
 
 ```{r}
-nonpar_boot <- function(x, B = 500, alpha = 0.05) {
+my_lm <- function (...) {
   
-  boot_mean <- rep(NA, B)
-  n <- length(x)
-
-  for (i in 1:B) {
-    
-    sample_star <- x[sample(1:n, replace = TRUE)]
-    boot_mean[i] <- mean(sample_star)
-    
-  }
-
-  return(quantile(boot_mean, c(alpha/2, 1 - alpha/2)))
+  ...
   
 }
+
 ```
+
+As you can see, we find a name for the function we want to build, which in this case is `my_lm`, and specify that we are going to attribute a `function` to this name. Following this assignment, we find a set of round brackets `(...)` followed by a set of curly brackets `{...}` which should include the *arguments* and *body* of the function respectively. While the *body* of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspect such as their environment and attributes.
+
+### Function arguments
+
+Before implementing a function, we first need to ask ourselves what is the basic information that we need to obtain the desired output. In the case of least-squares regression, as mentioned earlier, the only information that is essential to perform estimation and inference is the vector of observations $\mathbf{y}$ representing the response variable and the matrix of covariates $\mathbf{X}$. These will therefore have to be the elements we need to provide to our function in order for it to deliver an estimate of $\boldsymbol{\beta}$. 
+
+```{r}
+my_lm <- function () {
+  
+  
+  
+}
+
+```
+
+Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. To do so, we will study an example taken from @wood2017generalized which discusses a dataset collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the "Hubble constant'' which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the "big bang" theory. The link is given by this simple linear relationship
+
+\begin{equation*}
+  y = \beta x ,
+\end{equation*}
+
+where $y$ represents the velocity while $x$ is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. $\beta^{-1}$) gives the age of the universe based on the big bang theory. 
+
+Therefore let us use the abovementioned dataset to estimate Hubble's constant to then get an estimate of the age of the universe. This dataset can be found in the `gamair` package under the name `hubble` and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.
+
+```{r}
+# Load gamair library and retrieve Hubble dataset
+library(gamair)
+data(hubble)
+
+# Plot data
+plot(y = hubble$y, x = hubble$x, col="red", main="Distance vs. Velocity", ylab = "Velocity (in km/s)", xlab = "Distance (in Megaparsecs)")
+```
+
+Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable $y$ and the distance as the explanatory variable $x$. Let us therefore start by implementing  Eq. \@ref(eq:lsformula) to get an estimate of $\beta$.
+
+```{r}
+# Define parameters and variables
+n = dim(hubble)[1] # number of observations
+p = 1 # number of explanatory variables
+df = n - p # degrees of freedom
+x = hubble$x # distance (explanatory variable)
+y = hubble$y # velocity (response variable)
+
+# Estimate of beta from Eq. (1.1)
+beta.hat = solve(t(x)%*%x)%*%t(x)%*%y
+```
+
+We now have an estimated value for $\beta$ that we denote as $\hat{\beta}$. Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of $s^{-1}$).
+
+```{r}
+hubble.const = beta.hat/3.09e19 # Estimated Hubble's constant in inverse seconds
+age.sec = 1/hubble.const # Age of the universe in seconds
+age.sec/(60^2*24*365) # Age of the universe in years
+```
+
+Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that $\hat{\beta}$ is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton $\beta$ and variance $\sigma^2(X^TX)^{-1}$. 
+
+Now, let's suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. In order to do so we need to know the variance of $\hat{\beta}$ and we consequently need to estimate $\sigma^2$ since we don't know it. Let us therefore use Eq. \@ref(eq:lsvar) and \@ref(eq:lssig2hat) to compute it.
+
+```{r}
+# Estimate of the residual variance from Eq. (1.3)
+resid = y - x*beta.hat
+sigma2.hat = (1/df)*t(resid)%*%resid
+
+# Estimate of the variance of the estimated beta from Eq. (1.2)
+var.beta = sigma2.hat*solve(t(x)%*%x)
+```
+
+We now have all the information regarding the distribution of $\hat{\beta}$ to test the Creation Scientists' hypothesis. Indeed, for this purpose we can build a 95\% confidence interval for the true Hubble constant $\beta$ and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows
+
+\begin{equation*}
+  H_0 \, : \, \beta = 163 \times 10^6 ,
+\end{equation*}
+
+since this value of $\beta$ would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true $\beta$ is not equal to the above quantity (i.e. $H_A \, : \, \beta \neq 163 \times 10^6$). Since we now have the necessary information, let us build a confidence interval for which we will assume that the estimated variance of $\hat{\beta}$ is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our analysis). Assuming therefore that
+
+\begin{equation*}
+  \hat{\beta} \sim \mathcal{N}\left(\beta,\hat{\sigma}^2(X^TX)^{-1}\right) ,
+\end{equation*}
+
+we consequently have that the confidence interval is given by
+
+\begin{equation}
+  \left[\hat{\beta} - z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \, , \, \hat{\beta} + z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \right] ,
+  (\#eq:cibeta)
+\end{equation}
+
+where $z_{1-\alpha/2}$ is the $(1-\alpha/2)^{th}$ quantile of the standard normal distribution where, in our case, $\alpha = 0.05$ which delivers a 95\% confidence interval. Let us therefore replace the values in Eq. \@ref(eq:cibeta):
+
+```{r}
+# 95% confidence interval for the Hubble constant
+ci.beta = c(beta.hat - qnorm(p = 0.975)*sqrt(var.beta), beta.hat + qnorm(p = 0.975)*sqrt(var.beta))
+ci.beta
+```
+
+The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95\% level. To conclude this analysis, let us compare the results of Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) with the outputs of the linear regression function `lm()` that can be found in base R. 
+
+```{r}
+# Linear regression with lm() function
+fit_lm = lm(y~x-1)
+
+# Compare outputs
+equation_results = c(beta.hat, sigma2.hat)
+function_results = c(fit_lm$coefficients, (1/df)*t(fit_lm$residuals)%*%fit_lm$residuals)
+results = cbind(equation_results, function_results)
+row.names(results) = c("beta.hat", "sigma2.hat")
+results
+```
+
+As one can notice, the two procedures give the same outputs.
 
 ## Function arguments
 
-As you can see, the function's name is "nonpar_boot( )" and it has three arguments to it:
+<!-- As you can see, the function's name is "nonpar_boot( )" and it has three arguments to it: -->
 
-- `x` which represents the original sample on which we would like to perform the bootstrap procedure;
-- `B` which represents the number of bootstrap samples we wish to generate;
-- `alpha` which determines the size of the confidence interval we wish to compute
+<!-- - `x` which represents the original sample on which we would like to perform the bootstrap procedure; -->
+<!-- - `B` which represents the number of bootstrap samples we wish to generate; -->
+<!-- - `alpha` which determines the size of the confidence interval we wish to compute -->
 
-The function therefore has three arguments to it and these can be extracted by using the function `formals()`:
+<!-- The function therefore has three arguments to it and these can be extracted by using the function `formals()`: -->
 
-```{r}
-formals(nonpar_boot)
-```
+<!-- ```{r} -->
+<!-- formals(nonpar_boot) -->
+<!-- ``` -->
 
-A feature which can be underlined at this stage is that, as can be seen for the above mentioned function, it is possible to provide default values for some, all or none of the function arguments. In this case, default values have been given for the arguments `B` and `alpha`, consequently the user does not need to specify the value of these arguments unless they wish to specify different values compared to the default values given.
+<!-- A feature which can be underlined at this stage is that, as can be seen for the above mentioned function, it is possible to provide default values for some, all or none of the function arguments. In this case, default values have been given for the arguments `B` and `alpha`, consequently the user does not need to specify the value of these arguments unless they wish to specify different values compared to the default values given. -->
 
-```{block2, type='rmdnote'}
-R functions are quite flexible when specifying the arguments. These can in fact be specified by exact name, prefix matching or position (and are given priority in this order). For example, one could specify the arguments for the above non-parametric bootstrap function as follows "nonpar_boot(B = 200, sim, a = 0.1)" where the object "sim" is the sample which in the function is named "x". For a more in-depth overview of this feature refer to @wickham2014advanced.
-```
+<!-- ```{block2, type='rmdnote'} -->
+<!-- R functions are quite flexible when specifying the arguments. These can in fact be specified by exact name, prefix matching or position (and are given priority in this order). For example, one could specify the arguments for the above non-parametric bootstrap function as follows "nonpar_boot(B = 200, sim, a = 0.1)" where the object "sim" is the sample which in the function is named "x". For a more in-depth overview of this feature refer to @wickham2014advanced. -->
+<!-- ``` -->
 
-The definition of the argument values can be very flexible and can also be defined as functions of other arguments. For example, we could have defined the bootstrap function as follows:
+<!-- The definition of the argument values can be very flexible and can also be defined as functions of other arguments. For example, we could have defined the bootstrap function as follows: -->
 
-```{r}
-nonpar_boot_numb1 <- function(x, B = ceiling(length(x)*alpha), alpha = 0.05) {
-  
-  boot_mean <- rep(NA, B)
-  n <- length(x)
+<!-- ```{r} -->
+<!-- nonpar_boot_numb1 <- function(x, B = ceiling(length(x)*alpha), alpha = 0.05) { -->
 
-  for (i in 1:B) {
-    
-    sample_star <- x[sample(1:n, replace = TRUE)]
-    boot_mean[i] <- mean(sample_star)
-    
-  }
+<!--   boot_mean <- rep(NA, B) -->
+<!--   n <- length(x) -->
 
-  return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2))))
-  
-}
+<!--   for (i in 1:B) { -->
 
-sim <- rnorm(10e3)
-nonpar_boot_numb1(sim)$boot.number
-```
+<!--     sample_star <- x[sample(1:n, replace = TRUE)] -->
+<!--     boot_mean[i] <- mean(sample_star) -->
 
-or define it through variables that are included within the function itself:
+<!--   } -->
 
-```{r}
-nonpar_boot_numb2 <- function(x, B = value, alpha = 0.05) {
-  
-  value <- ceiling(length(x)*alpha)
-  boot_mean <- rep(NA, B)
-  n <- length(x)
+<!--   return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2)))) -->
 
-  for (i in 1:B) {
-    
-    sample_star <- x[sample(1:n, replace = TRUE)]
-    boot_mean[i] <- mean(sample_star)
-    
-  }
+<!-- } -->
 
-  return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2))))
-  
-}
+<!-- sim <- rnorm(10e3) -->
+<!-- nonpar_boot_numb1(sim)$boot.number -->
+<!-- ``` -->
 
-nonpar_boot_numb2(sim)$boot.number
-```
+<!-- or define it through variables that are included within the function itself: -->
+
+<!-- ```{r} -->
+<!-- nonpar_boot_numb2 <- function(x, B = value, alpha = 0.05) { -->
+
+<!--   value <- ceiling(length(x)*alpha) -->
+<!--   boot_mean <- rep(NA, B) -->
+<!--   n <- length(x) -->
+
+<!--   for (i in 1:B) { -->
+
+<!--     sample_star <- x[sample(1:n, replace = TRUE)] -->
+<!--     boot_mean[i] <- mean(sample_star) -->
+
+<!--   } -->
+
+<!--   return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2)))) -->
+
+<!-- } -->
+
+<!-- nonpar_boot_numb2(sim)$boot.number -->
+<!-- ``` -->
 
 
 
