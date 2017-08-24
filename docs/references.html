@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+
+
+<meta name="date" content="2017-08-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="rmarkdown.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.1</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.1.5</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.6</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.7</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.8" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.8</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="part"><span><b>I Whatever</b></span></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming?</a></li>
+<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research?</a></li>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#text"><i class="fa fa-check"></i><b>2.3</b> Text</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i><b>2.3.1</b> Headers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rmarkdown.html"><a href="rmarkdown.html#lists"><i class="fa fa-check"></i><b>2.3.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3.3" data-path="rmarkdown.html"><a href="rmarkdown.html#hyperlinks"><i class="fa fa-check"></i><b>2.3.3</b> Hyperlinks</a></li>
+<li class="chapter" data-level="2.3.4" data-path="rmarkdown.html"><a href="rmarkdown.html#blockquotes"><i class="fa fa-check"></i><b>2.3.4</b> Blockquotes</a></li>
+<li class="chapter" data-level="2.3.5" data-path="rmarkdown.html"><a href="rmarkdown.html#pictures"><i class="fa fa-check"></i><b>2.3.5</b> Pictures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="rmarkdown.html"><a href="rmarkdown.html#latex"><i class="fa fa-check"></i><b>2.3.6</b> LaTeX</a></li>
+<li class="chapter" data-level="2.3.7" data-path="rmarkdown.html"><a href="rmarkdown.html#cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="2.3.8" data-path="rmarkdown.html"><a href="rmarkdown.html#citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
+<li class="chapter" data-level="2.3.9" data-path="rmarkdown.html"><a href="rmarkdown.html#tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
+<li class="chapter" data-level="2.3.10" data-path="rmarkdown.html"><a href="rmarkdown.html#additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#in-line-r"><i class="fa fa-check"></i><b>2.4.3</b> In-line R</a></li>
+<li class="chapter" data-level="2.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#cache"><i class="fa fa-check"></i><b>2.4.4</b> Cache</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
+<li class="chapter" data-level="2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#addition-information"><i class="fa fa-check"></i><b>2.6</b> Addition Information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>3</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> References</h1>
+
+<div id="refs" class="references">
+<div>
+<p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central: 21.</p>
+</div>
+<div>
+<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press. <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>.</p>
+</div>
+<div>
+<p>———. 2015. <em>R Packages</em>. O’Reilly. <a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a>.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rmarkdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-references.Rmd",
+"text": "Edit"
+},
+"download": ["ds.pdf", "ds.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

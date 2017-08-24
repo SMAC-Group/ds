@@ -1,3 +1,5 @@
+# (PART) Foundation {-}
+
 # RMarkdown 
 
 RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name "markdown" is an intentional contrast to other "markup" languages--e.g., hypertext markup language (HTML)--which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. "RMarkdown" is an implementation of the "markdown" language designed to accommodate embedded `R` code.
@@ -383,12 +385,10 @@ After you are done, run `RMarkdown::render()` or click the `Knit` button at the 
 
 The use of RMarkdown makes it possible to generate any file format such as HTML, pdf and Word processor formats using `pandoc`. Pandoc is a free software that understands and converts useful markdown syntax, such as the code mentioned above, into a readable and clean format. 
 
-## Main References
+## Addition Information
 
 Click on the links below for more information on RMarkdown:
 
 - [RStudio RMarkdown tutorial](http://RMarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
 - [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf)
-
-<br><br><br>
