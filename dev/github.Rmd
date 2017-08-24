@@ -1,28 +1,28 @@
 # GitHub 
 
-You may have experienced a moment like this[^1] once in your life: 
+When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this[^1] at least once in your life: 
 
 ![](images/bad-version-control.png)
 
 
 [^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
 
-After plenty hours of hard work, you only find yourself saving the same file over and over - even losing track of what changes you made. Version control is a software that keeps track of your changes for you. You know which saves you made where, and can even go back in time to revert to those changes. (Awesome!)
-
+In these cases, after having modified and changed different parts of a report, you probably find yourself saving the same file over and over again while losing track of what changes you made. To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This software is generally called "version control" and this chapter discusses the features of this software as well as introducing a specific version control platform called "GitHub". The latter includes a series of highly useful tools that can be extremely helpful, not only for the projects developed based on this book, but also for any personal or collaborative project you may undertake in the future. 
 
 ## Version Control 
 
-Version control is a system that records changes to a file or a set of files over time, so that you can save changes over time. It allows you to: 
+As mentioned above, *version control* is a system that records changes to a file or a set of files in order to keep track and possibly revert to or modify those changes over time. More specifically, it allows you to: 
 
-- keep the entire history of a file 
-- revert to a specific version of the file 
-- collaborate on the same platform with other people 
-- make changes without modifying the main file 
+- record the entire history of a file;
+- revert to a specific version of the file;
+- collaborate on the same platform with other people;
+- make changes without modifying the main file and add them once you feel comfortable with them. 
 
+All these features are highly important when projects start becoming more complex and/or different collaborators contribute to it. In the next section we present a version control platform called "GitHub" that is commonly used among programmers and software developers thereby allowing them also to make their work visible and available to the general public. 
 
 ## Git and GitHub
 
-Among version control platform, Git is a powerful tool that is commonly used. GitHub is a commercial website that uses Git and stores local files into a "album" called a repository. For the purposes of this course, we will be using this platform. 
+Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible thtough GitHub which is a commercial website that uses this platform and stores local files into an "album" called a repository. For the purposes of this course, we will be using this platform. 
 
 In addition, your GitHub profile will also serve as your data science *resume* that contain future projects that you save and commit so that employers know what you're made of. 
 
