@@ -1,0 +1,20 @@
+---
+title: "Cache Example"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r computeA, cache = TRUE}
+a = 4
+```
+
+```{r, cache = TRUE}
+(d = 2*a) 
+```
+
+```{r, cache = TRUE, dependson = "computeA"}
+(d = 2*a)
+```

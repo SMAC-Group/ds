@@ -12,8 +12,8 @@ Reproducible research or reproducible analysis is the notion that an experiment'
 
 Below is a short video showing a basic overview of R Markdown.  
 
-```{r}
-knitr::include_url("https://www.youtube.com/embed/Fti30-mZkC0&t=25s")
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/Fti30-mZkC0")
 ```
 
 Below, we have created a framework application that you can use to test out different R Markdown functions. Experiment with different R Markdown elements and utilize it to practice building and knitting HTML output. 
@@ -320,6 +320,12 @@ This translates in R Markdown to "The value of $a$ is `r a`."
 
 Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the `cache` argument. By default this argument is assigned the value `FALSE` and therefore the R code is run every time your document is compiled. However, if you specify this argument as `cache = TRUE`, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.
 
+Below is a short video introducing caching in R Markdown. 
+
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/9q1eJyOQQsE")
+```
+
 Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call `a` (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the `cache` argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:
 
 ```{r computeA, cache = TRUE}
@@ -365,6 +371,8 @@ which we would write as:
 ````
 
 In this manner, if the value of `a` changes in the first chunk, the value of `d` will also change but will be stored until either the `computeA` chunk or the latter chunk is modified. 
+
+The code used for this particular example can be found here: [caching.Rmd](code_examples/caching.Rmd). 
 
 
 ## Render Output 

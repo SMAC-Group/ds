@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-08-22">
+<meta name="date" content="2017-08-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -180,8 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>What is <strong>reproducible</strong> research?</h3>
 <p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors’ findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
 <p>Below is a short video showing a basic overview of R Markdown.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">include_url</span>(<span class="st">&quot;https://www.youtube.com/embed/Fti30-mZkC0&amp;t=25s&quot;</span>)</code></pre></div>
-<iframe src="https://www.youtube.com/embed/Fti30-mZkC0&amp;t=25s" width="672" height="400px">
+<iframe src="https://www.youtube.com/embed/Fti30-mZkC0" width="672" height="400px">
 </iframe>
 <p>Below, we have created a framework application that you can use to test out different R Markdown functions. Experiment with different R Markdown elements and utilize it to practice building and knitting HTML output.</p>
 <iframe src="https://guerrier.shinyapps.io/rmd_example/?showcase=0" width="672" height="650px">
@@ -459,6 +458,9 @@ The references in the “.bib” file will not appear in the references that are
 <div id="cache" class="section level3">
 <h3><span class="header-section-number">2.4.4</span> Cache</h3>
 <p>Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the <code>cache</code> argument. By default this argument is assigned the value <code>FALSE</code> and therefore the R code is run every time your document is compiled. However, if you specify this argument as <code>cache = TRUE</code>, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.</p>
+<p>Below is a short video introducing caching in R Markdown.</p>
+<iframe src="https://www.youtube.com/embed/9q1eJyOQQsE" width="672" height="400px">
+</iframe>
 <p>Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call <code>a</code> (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the <code>cache</code> argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <p>which would be written in RMarkdown as:</p>
@@ -481,6 +483,7 @@ The references in the “.bib” file will not appear in the references that are
 <span class="dt">(d = 2*a)</span>
 <span class="st">```</span></code></pre></div>
 <p>In this manner, if the value of <code>a</code> changes in the first chunk, the value of <code>d</code> will also change but will be stored until either the <code>computeA</code> chunk or the latter chunk is modified.</p>
+<p>The code used for this particular example can be found here: <a href="code_examples/caching.Rmd">caching.Rmd</a>.</p>
 </div>
 </div>
 <div id="render-output" class="section level2">
