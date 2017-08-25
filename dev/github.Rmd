@@ -22,45 +22,54 @@ All these features are highly important when projects start becoming more comple
 
 ## Git and GitHub
 
-Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible thtough GitHub which is a commercial website that uses this platform and stores local files into an "album" called a repository. For the purposes of this course, we will be using this platform. 
-
-In addition, your GitHub profile will also serve as your data science *resume* that contain future projects that you save and commit so that employers know what you're made of. 
+Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible through GitHub which is a commercial website. The latter uses the Git platform and stores local files into a flexible folder called a "repository". For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.
 
 
-## Git Setup 
+### Git Setup 
 
-To install Git, go to the [website](https://git-scm.com/downloads) and choose the platform you are using. (eg. Windows/Mac/Linux/Solaris)
+To install Git, go to the [website](https://git-scm.com/downloads) and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Once you've downloaded and installed Git, the first thing you should do is to configure it by setting your username and email address. This is important because each time you interact with the platform and upload (commit) your changes to Git, this information is used to synchronize versions and keep track of project evolution. 
 
-
-## Configuration 
-
-The first thing you should do when you install Git is to set your user name and email address. This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:
+ROB COMMENT: Justin, explain:
+what the configuration is for (in some more detail)
+where and how these configuration instructions below are entered
 
 ```
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
 
-Again, you need to do this only once if you pass the --global option, because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the --global option when you’re in that project.
+This operation only needs to be done once if using the "--global" option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
 
 Many of the GUI tools will help you do this when you first run them.
 
+ROB COMMENT: Justin, 
+above explain what "GUI" stands for and what it is. Give more details on this and how it can be used
+explain why it is important to use GitHub which is introduced in the next section
 
-## GitHub Setup 
 
-To begin, head over to GitHub and sign up with your PSU email address. (don't worry, you can change your Username/Email anytime after this course!) 
+### GitHub Setup 
+
+In order to set up GitHub, go to the [GitHub website](https://github.com/) and, for the purposes of the course, the first step is to sign up with your PSU email address.
+
+```{block2, type='rmdnote'}
+Your username and email can be changed at any time so, if you want to change it, you can easily do so once this course is over.
+```
 
 ![](images/github_page.png)
 
-On `Step 2: Choose your plan` choose the default plan (Unlimited public repositories for free.) and click `Continue`. You can either submit your information or skip `Step 3: Tailor your experience`. 
+Once this is done, you reach `Step 2: Choose your plan` where you can choose the default plan ("Unlimited public repositories for free") and click `Continue`. The last (optional) step is `Step 3: Tailor your experience` which allows you to submit your information but this can also be skipped. 
 
-Once you have set up your profile, make sure you verify your email address. Also, send me your GitHub user ID (eg. jjl170) to `jjl170@psu.edu`. 
+```{block2, type='rmdnote'}
+Your GitHub profile can also serve as a *resume* of your data science skills that will be highlighted by possilbe future projects that you save and commit.
+```
 
-## Student Developer Pack
+After you have set up your profile, make sure you verify your email address and, for the purposes of evaluating your performance in this course, send us your GitHub user ID (eg. jjl170) to `jjl170@psu.edu`. 
 
-Once you have set up your profile, go to this [link](https://education.github.com/discount_requests/new) and follow the steps below to set up a student developer pack discount request to GitHub. You will need this to make your own private repositories for free. 
+### Student Developer Pack
+
+As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this [link](https://education.github.com/discount_requests/new) and follow the steps below to set up a "student developer pack" discount request to GitHub. Through this setup it will be possible for you not only to have free *public* repositories but also to make your own *private* repositories for free. 
 
 ![](images/developer_pack.png)
 
-I will add a tutorial to how to submit your homework and assignments using GitHub. 
+JUSTIN COMMENT: I will add a tutorial to how to submit your homework and assignments using GitHub. 
 
