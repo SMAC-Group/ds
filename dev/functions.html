@@ -142,8 +142,8 @@ $(document).ready(function () {
 <!--   return(quantile(boot_mean, c(alpha/2, 1 - alpha/2))) -->
 <!-- } -->
 <!-- ``` -->
-<div id="the-algebra-behind-least-squares-inference" class="section level3">
-<h3>The Algebra behind Least-Squares Inference</h3>
+<div id="the-algebra-behind-least-squares-inference" class="section level2">
+<h2>The Algebra behind Least-Squares Inference</h2>
 <p>In the framework of linear regression the goal is to explain an <span class="math inline">\(n \times 1\)</span> vector of observations <span class="math inline">\(\mathbf{y}\)</span> (representing the response variable) through a linear combination of <span class="math inline">\(p\)</span> explanatory variables (or predictors or covariates) that are stored in an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{X}\)</span>. More specifically, the framework is the following: <span class="math display">\[\mathbf{y} = \mathbf{X}^T\boldsymbol{\beta} + \mathbf{\epsilon}\]</span>, where <span class="math inline">\(\boldsymbol{\beta}\)</span> is the <span class="math inline">\(p \times 1\)</span> parameter vector of interest that links the covariates with the response variable while <span class="math inline">\(\mathbf{\epsilon}\)</span> is the <span class="math inline">\(n \times 1\)</span> random error vector with null expectation and variance <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>When we collect data for the purpose of linear regression, the unknown terms in the above setting are the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and the variance parameter <span class="math inline">\(\sigma^2\)</span>. In order to estimate <span class="math inline">\(\boldsymbol{\beta}\)</span>, assuming that the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, the least-squares estimator for it is given by:</p>
 <span class="math display">\[\begin{equation}
@@ -225,16 +225,19 @@ which verifies Eq. @ref(eq:lsformula).
 <p>ROB COMMENT: Maybe I’d ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta)</p>
 <p>JUSTIN COMMENT: I agree with Rob’s suggestion :)</p>
 </div>
-<div id="creating-functions-in-r" class="section level3">
-<h3>Creating functions in R</h3>
+<div id="creating-functions-in-r" class="section level2">
+<h2>Creating functions in R</h2>
 <p>In the previous section we therefore went over the algebra behind least-squares regression. Based on this, let us implement a function that only estimates the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span>. Let us therefore define the skeleton of the R function we want to build:</p>
-<pre class="r"><code>my.lm &lt;- function (...) {
+<pre class="r"><code>my_lm &lt;- function (...) {
   
   ...
   
 }</code></pre>
+<p>As you can see, we find a name for the function we want to build, which in this case is <code>my_lm</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of round brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. While the <em>body</em> of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspect such as their environment and attributes.</p>
+<div id="function-arguments" class="section level3">
+<h3>Function arguments</h3>
 <p>Before implementing a function, we first need to ask ourselves what is the basic information that we need to obtain the desired output. In the case of least-squares regression, as mentioned earlier, the only information that is essential to perform estimation and inference is the vector of observations <span class="math inline">\(\mathbf{y}\)</span> representing the response variable and the matrix of covariates <span class="math inline">\(\mathbf{X}\)</span>. These will therefore have to be the elements we need to provide to our function in order for it to deliver an estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p>
-<pre class="r"><code>my.lm &lt;- function () {
+<pre class="r"><code>my_lm &lt;- function () {
   
   
   
@@ -309,7 +312,8 @@ results</code></pre>
 ## sigma2.hat      67046.33165      67046.33165</code></pre>
 <p>As one can notice, the two procedures give the same outputs.</p>
 </div>
-<div id="function-arguments" class="section level2">
+</div>
+<div id="function-arguments-1" class="section level2">
 <h2>Function arguments</h2>
 <!-- As you can see, the function's name is "nonpar_boot( )" and it has three arguments to it: -->
 <!-- - `x` which represents the original sample on which we would like to perform the bootstrap procedure; -->
