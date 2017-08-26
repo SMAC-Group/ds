@@ -2,7 +2,10 @@
 
 ## Logical Operators
 
+
 ## Control Structures
+
+
 
 ### Selection Controls
 
@@ -12,7 +15,11 @@ Basically if, if/else, if/elseif/else and switch
 
 #### for {#forloop}
 
+(apply methods)
+
 ## Applications: 
+
+
 
 ### Non-parametric Bootstrap
 

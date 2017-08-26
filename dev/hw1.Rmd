@@ -1,0 +1,22 @@
+---
+title: "Homework 1"
+output: pdf_document
+---
+
+This will be your first assignment with these main objectives in mind: 
+
+- Build your own RMarkdown document and report from scratch 
+- Master different aspects of RMarkdown syntax
+- Practice git and GitHub workflow
+
+# Part 1: Biography 
+
+Create a biography of yourself. This can be any format, but make sure to include:
+
+- A picture of yourself 
+- Paragraph including  
+  - Your Name
+  - 
+  
+Example)
+Justin is a research assistant at the Statistical Methods, Applications and Computing Group in University of Illinois at Urbana-Champaign. He is a Senior with a double major in Statistics and Psychology. He has held a position as an Undergraduate Statistical Consultant for the School of Architecture and a Teaching Assistant position for the Department of Computer Science. 

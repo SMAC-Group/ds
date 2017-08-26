@@ -328,6 +328,8 @@ Below is a short video introducing caching in R Markdown.
 knitr::include_url("https://www.youtube.com/embed/9q1eJyOQQsE")
 ```
 
+The RMarkdown file used for this particular example can be found here: [caching.Rmd](code_examples/caching.Rmd). 
+
 Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call `a` (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the `cache` argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:
 
 ```{r computeA, cache = TRUE}
@@ -373,8 +375,6 @@ which we would write as:
 ````
 
 In this manner, if the value of `a` changes in the first chunk, the value of `d` will also change but will be stored until either the `computeA` chunk or the latter chunk is modified. 
-
-The code used for this particular example can be found here: [caching.Rmd](code_examples/caching.Rmd). 
 
 
 ## Render Output 
