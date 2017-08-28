@@ -9,14 +9,31 @@ This will be your first assignment with these main objectives in mind:
 - Master different aspects of RMarkdown syntax
 - Practice git and GitHub workflow
 
+# Part 0: First git commit!
+
+
+
 # Part 1: Biography 
 
-Create a biography of yourself. This can be any format, but make sure to include:
+Create a biography of yourself. This can be in any format or order, but make sure to include:
 
-- A picture of yourself 
-- Paragraph including  
-  - Your Name
-  - 
-  
-Example)
-Justin is a research assistant at the Statistical Methods, Applications and Computing Group in University of Illinois at Urbana-Champaign. He is a Senior with a double major in Statistics and Psychology. He has held a position as an Undergraduate Statistical Consultant for the School of Architecture and a Teaching Assistant position for the Department of Computer Science. 
+- A `picture` of yourself with any `caption` 
+- A `paragraph` including  
+  - Your name
+  - Favorite hobby 
+  - One interesting fact about yourself 
+- Your favorite equation in `LaTeX` form 
+- Your favorite quote in `blockquote` format
+  - Be sure to `cite` it as well using .bib
+- A `table` with your courses (column 1) and  time (column 2) allocated for the course 
+
+# Part 2: R Markdown Syntax 
+
+For the rest of this assignment, perform these tasks:
+
+- Show how `cache = T` leads to a misleading answer (recreate video example)
+- Simulate 100 random samples from a N(0, 1) distribution
+  - Calculate its `mean` and `variance` 
+  - Are these values what you expected? Explain why or why not. 
+
+norm(100) and find mean
