@@ -2,7 +2,7 @@
 
 When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this[^1] at least once in your life: 
 
-![](images/bad-version-control.png)
+![](../images/bad-version-control.png)
 
 
 [^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
@@ -55,7 +55,7 @@ In order to set up GitHub, go to the [GitHub website](https://github.com/) and, 
 Your username and email can be changed at any time so, if you want to change it, you can easily do so once this course is over.
 ```
 
-![](images/github_page.png)
+![](../images/github_page.png)
 
 Once this is done, you reach `Step 2: Choose your plan` where you can choose the default plan ("Unlimited public repositories for free") and click `Continue`. The last (optional) step is `Step 3: Tailor your experience` which allows you to submit your information but this can also be skipped. 
 
@@ -69,7 +69,7 @@ After you have set up your profile, make sure you verify your email address and,
 
 As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this [link](https://education.github.com/discount_requests/new) and follow the steps below to set up a "student developer pack" discount request to GitHub. Through this setup it will be possible for you not only to have free *public* repositories but also to make your own *private* repositories for free. 
 
-![](images/developer_pack.png)
+![](../images/developer_pack.png)
 
 JUSTIN COMMENT: I will add a tutorial to how to submit your homework and assignments using GitHub. 
 
