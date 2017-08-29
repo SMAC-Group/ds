@@ -11,6 +11,15 @@
 
 Basically if, if/else, if/elseif/else and switch
 
+#### If/else
+
+```{r, eval = FALSE}
+if (conditon){
+  do something (if conditon is TRUE)
+}else{
+  do seomthing else (if condition is false)
+}
+```
 ### Iteration Controls
 
 #### for {#forloop}
@@ -45,6 +54,11 @@ We can see that our confidence interval includes a negative values which clearly
 
 Here is a simple function to implement this approach:
 
+
+```{r, eval = FALSE, highlight=FALSE}
+step 1 do this
+step 2 do that
+```
 ```{r}
 # Number of boostrap replications
 B = 500
@@ -68,3 +82,24 @@ quantile(boot_mean, c(alpha/2, 1 - alpha/2))
 
 ```
 
+```{r}
+n = 10^(2:6)
+m = 50
+res = matrix(NA, m, length(n))
+
+for (j in 1:length(n)){
+  for (i in 1:m){
+    set.seed(i)
+    x = rnorm(n[j])
+    res[i,j] = mean(x)
+  }
+}
+
+min_range = apply(res, 2, min)
+mean_range = apply(res, 2, mean)
+max_range = apply(res, 2, max)
+
+plot(mean_range, type = "l", ylim = range(cbind(min_range, max_range)))
+lines(min_range)
+lines(max_range)
+```
