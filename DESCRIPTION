@@ -1,3 +1,5 @@
+Package: ds
+Type: Package
 Title: An Introduction to Statistical Programming Methods with R
 Version: 1.0
 Date: 2017-05-28
@@ -9,16 +11,11 @@ Authors@R: c(
     person("Matthew", "Beckman", role = "aut")
     )
 Maintainer: Justin Lee <justinlee@psu.edu>
-Description: This book is under construction and serves as a reference 
-for students or other interested readers who intend to learn the basics 
-of statistical programming using the R language. The book will provide 
-the reader with notions of data management, manipulation and analysis as 
-well as of reproducible research, result-sharing and version control.
+Description: This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.
 Depends: R (>= 3.1.0)
 License: CC BY-NC-SA 4.0
 RoxygenNote: 6.0.1.9000
-Imports: 
-  bookdown, 
+Imports: bookdown, 
   quantmod, 
   gamair, 
   stat297, 
@@ -26,6 +23,5 @@ Imports:
   mapproj, 
   shiny, 
   devtools
-Remotes: 
-  rstudio/bookdown, 
+Remotes: rstudio/bookdown, 
   SMAC-Group/stat297
