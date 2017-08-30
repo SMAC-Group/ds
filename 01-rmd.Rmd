@@ -24,6 +24,17 @@ Below, we have created a framework application that you can use to test out diff
 knitr::include_app("https://guerrier.shinyapps.io/rmd_example/", height = "650px")
 ```
 
+You can access the online version here: 
+
+- [RMarkdown Web](https://guerrier.shinyapps.io/rmd_full/)
+- [RMarkdown Mobile](https://guerrier.shinyapps.io/rmd_example/)
+
+or simply run it within the `stat297` package using
+
+```{r}
+
+```
+
 ## Create an R Markdown file in RStudio
 
 Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
@@ -258,7 +269,7 @@ As an alternative we can use the simple graphical user interface [online](http:/
 
 ### Additional References 
 
-There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf) as a reference. 
+There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) as a reference. 
 
 
 ## Code Chunks 
@@ -275,7 +286,7 @@ The following example highlights the code chunks in the example RMarkdown docume
 
 ### Code Chunk Options
 
-A variety of options can be specified to manage the code chunks contained in the document. For example, as can be seen in the third code chunk in the example above, we specify an argument that reads `echo = FALSE` which is a parameter that was added to the code chunk to prevent printing the R code that generated the plot. This is a useful way to embed figures. More options can be found from the [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options taken from these references: 
+A variety of options can be specified to manage the code chunks contained in the document. For example, as can be seen in the third code chunk in the example above, we specify an argument that reads `echo = FALSE` which is a parameter that was added to the code chunk to prevent printing the R code that generated the plot. This is a useful way to embed figures. More options can be found from the [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and Yihui's notes on knitr [options](https://yihui.name/knitr/options/). Here are some explanations of the most commonly used chunk options taken from these references: 
 
 - `eval`: (TRUE; logical) whether to evaluate the code chunk;
 - `echo`: (TRUE; logical or numeric) whether to include R source code in the output file;
@@ -391,4 +402,4 @@ Click on the links below for more information on RMarkdown:
 
 - [RStudio RMarkdown tutorial](http://RMarkdown.rstudio.com/authoring_quick_tour.html)
 - [R-blogger's RMarkdown tutorial](https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/)
-- [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/RMarkdown-cheatsheet.pdf)
+- [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
