@@ -1,8 +1,8 @@
 # Case Study: Monte-Carlo Integration
 
 ```{r, echo=FALSE}
-# devtools::install_github("SMAC-Group/support")
-library(support)
+# devtools::install_github("SMAC-Group/stat297")
+library(stat297)
 ```
 
 ## Introduction
