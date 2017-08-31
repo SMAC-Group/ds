@@ -1,7 +1,23 @@
 ---
 title: "Homework 1"
+author: Stéphane Guerrier and Justin Lee
 output: pdf_document
 ---
+
+
+
+Part 1: set up github
+Part 2: all members write bio in the same rmarkdown doc
+Called file: stat297HW1groupX.Rmd (X being the group number)
+Give us access to repo (before deadline)
+Set-up slack channel with github integration
+Each member should push at least once
+cache example different from textbook
+Record video explaining your work and add it to rmarkdown (check google)
+Change font (check google)
+Add some text in blue (check google)
+Add class info (number, TA, instructor, deadline = 09/12)
+
 
 This will be your first assignment with these main objectives in mind: 
 
