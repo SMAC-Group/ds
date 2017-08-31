@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-08-24">
+<meta name="date" content="2017-08-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -341,7 +341,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/rmd_yaml2.png" />
 </center>
 <p>There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (see links at the end of this section).</p>
-<p>Once the “.bib” file has been created and has been linked to your RMarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the “.bib” file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your “.bib” file and place it immediately after the <code>@</code> symbol (without spaces). So, for example, say that we wanted to cite the publication on the “taste of cutlery”: in your RMarkdown all you have to do is to type <code>@harrar2013taste</code> at the point where you want this citation in the text and you will obtain: <span class="citation">Harrar and Spence (<a href="#ref-harrar2013taste">2013</a>)</span>.</p>
+<p>Once the “.bib” file has been created and has been linked to your RMarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the “.bib” file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your “.bib” file and place it immediately after the <code>@</code> symbol (without spaces). So, for example, say that we wanted to cite the publication on the “taste of cutlery”: in your RMarkdown all you have to do is to type <code>@harrar2013taste</code> at the point where you want this citation in the text and you will obtain: <span class="citation">Harrar and Spence (<a href="#ref-harrar2013taste">2013</a>)</span>. Moreover, it is often useful to put a citation in braces and for example if you want to obtain <span class="citation">(see e.g. Harrar and Spence <a href="#ref-harrar2013taste">2013</a>)</span> you can simply write <code>[see e.g. @harrar2013taste]</code>.</p>
 
 <div class="rmdnote">
 The user can also change the name that is used to call the desired reference as long as the same name is used to cite it in the RMarkdown document and that this name is not the same as another reference.
@@ -463,6 +463,7 @@ The references in the “.bib” file will not appear in the references that are
 <p>Below is a short video introducing caching in R Markdown.</p>
 <iframe src="https://www.youtube.com/embed/9q1eJyOQQsE" width="672" height="400px">
 </iframe>
+<p>The RMarkdown file used for this particular example can be found here: <a href="code_examples/caching.Rmd">caching.Rmd</a>.</p>
 <p>Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call <code>a</code> (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the <code>cache</code> argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <p>which would be written in RMarkdown as:</p>
@@ -485,7 +486,6 @@ The references in the “.bib” file will not appear in the references that are
 <span class="dt">(d = 2*a)</span>
 <span class="st">```</span></code></pre></div>
 <p>In this manner, if the value of <code>a</code> changes in the first chunk, the value of <code>d</code> will also change but will be stored until either the <code>computeA</code> chunk or the latter chunk is modified.</p>
-<p>The code used for this particular example can be found here: <a href="code_examples/caching.Rmd">caching.Rmd</a>.</p>
 </div>
 </div>
 <div id="render-output" class="section level2">
@@ -531,7 +531,7 @@ The references in the “.bib” file will not appear in the references that are
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
