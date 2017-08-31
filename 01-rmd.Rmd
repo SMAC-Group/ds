@@ -24,15 +24,19 @@ Below, we have created a framework application that you can use to test out diff
 knitr::include_app("https://guerrier.shinyapps.io/rmd_example/", height = "650px")
 ```
 
-You can access the online version here: 
+You can access the online versions here: 
 
-- [RMarkdown Web](https://guerrier.shinyapps.io/rmd_full/)
-- [RMarkdown Mobile](https://guerrier.shinyapps.io/rmd_example/)
+- [RMarkdown Web](http://shiny.science.psu.edu/mdb268/stat297/rmd/)
+- [RMarkdown Mobile](http://shiny.science.psu.edu/mdb268/stat297/rmd_mini/)
 
-or simply run it within the `stat297` package using
+or simply run it within the `stat297` package by using either
 
-```{r}
+```{r, eval = FALSE}
+# RMarkdown Web
+stat297::runShiny('rmd')
 
+# RMarkdown Mobile
+stat297::runShiny('rmd_mini')
 ```
 
 ## Create an R Markdown file in RStudio
