@@ -1,4 +1,7 @@
 ---
+bibliography: [book.bib, packages.bib]
+biblio-style: "acm"
+link-citations: yes
 output: github_document
 ---
 
@@ -42,7 +45,7 @@ This document is **under development** and it is therefore preferable to always 
 The statistical computing language `R` has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important programming languages, communication, and version-control features. The latter is also possible thanks to the development of the `RStudio` interface which provides a pleasant and functional user-interface for `R` as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are available to the user.  In order to illustrate the relationship between R & RStudio in statistical programming, one might think of a car analogy in which R would be like the engine and RStudio might be like leather seats.  R is doing the work (for the most part), and RStudio generally is making you more comfortable while you use R.
 
 
-## Main References 
+## Main References
 
 This is not the first (or the last) book that has been written explaining and describing statistical programming in `R`. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:
 
@@ -57,3 +60,6 @@ You can redistribute it and/or modify this book under the terms of the Creative 
 
 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="/images/licence.png" align="left" width="200"/></a>
 <br><br><br>
+
+# References 
+

@@ -34,9 +34,9 @@ Main References
 
 This is not the first (or the last) book that has been written explaining and describing statistical programming in `R`. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:
 
--   @wickham2014advanced : a more technical and advanced introduction to `R`;
--   @wickham2015packages : basic building blocks of building packages in `R`;
--   @xie2015 : an overview of document generation in `R`;
+-   Wickham ([2014](#ref-wickham2014advanced)) : a more technical and advanced introduction to `R`;
+-   Wickham ([2015](#ref-wickham2015packages)) : basic building blocks of building packages in `R`;
+-   Xie ([2015](#ref-xie2015)) : an overview of document generation in `R`;
 
 License
 -------
@@ -44,3 +44,12 @@ License
 You can redistribute it and/or modify this book under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA) 4.0 License.
 
 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="/images/licence.png" align="left" width="200"/></a> <br><br><br>
+
+References
+==========
+
+Wickham, Hadley. 2014. *Advanced R*. CRC Press. <http://adv-r.had.co.nz/>.
+
+Wickham, Hadley. 2015. *R Packages*. O’Reilly. <http://r-pkgs.had.co.nz/>.
+
+Xie, Yihui. 2015. *Dynamic Documents with R and Knitr*. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <http://yihui.name/knitr/>.
