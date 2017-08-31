@@ -6,6 +6,8 @@ An Introduction to Statistical Programming Methods with R
 <center>
 Matthew Beckman, Stéphane Guerrier, Justin Lee & Roberto Molinari
 </center>
+<br>
+
 Introduction
 ------------
 
@@ -22,12 +24,23 @@ All these goals are common to any basic programming course, however all these wi
 
 This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here <https://github.com/SMAC-Group/ds/issues>) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you're not familiar with these tools, they will be explained later on in the book itself.
 
-<center>
-![Note that this diagram is a adapted version of Figure 1 of <http://r4ds.had.co.nz/explore-intro.html>](images/diagram.png)
-</center>
-To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. Most cases, there is input that an audience provides, in which we then process and manipulate in R. Exploratory data analysis is performed using R, R Markdown, and Shiny applications as we preprocess, visualize, and model our data/input. We then communicate our results through websites, rapports, slides, we can use a narrative report using R Markdown with R as the backend. To communicate through a website, we can output interactive Shiny applications that take in multiple parameters and options. We can even use both. Some cases, after we communicate, we may find something new, and move back to the exploring stage.
-
 `R` and `RStudio`
 -----------------
 
 The statistical computing language `R` has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important programming languages, communication, and version-control features. The latter is also possible thanks to the development of the `RStudio` interface which provides a pleasant and functional user-interface for `R` as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are available to the user. In order to illustrate the relationship between R & RStudio in statistical programming, one might think of a car analogy in which R would be like the engine and RStudio might be like leather seats. R is doing the work (for the most part), and RStudio generally is making you more comfortable while you use R.
+
+Main References
+---------------
+
+This is not the first (or the last) book that has been written explaining and describing statistical programming in `R`. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:
+
+-   @wickham2014advanced : a more technical and advanced introduction to `R`;
+-   @wickham2015packages : basic building blocks of building packages in `R`;
+-   @xie2015 : an overview of document generation in `R`;
+
+License
+-------
+
+You can redistribute it and/or modify this book under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA) 4.0 License.
+
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="/images/licence.png" align="left" width="200"/></a> <br><br><br>
