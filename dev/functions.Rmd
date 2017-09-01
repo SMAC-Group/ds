@@ -166,12 +166,12 @@ As you can see, we find a name for the function we want to build, which in this 
 
 ### Function arguments
 
-Before implementing a function, we first need to ask ourselves what is the basic information that we need to obtain the desired output. In the case of least-squares regression, as mentioned earlier, the only information that is essential to perform estimation and inference is the vector of observations $\mathbf{y}$ representing the response variable and the matrix of covariates $\mathbf{X}$. These will therefore have to be the elements we need to provide to our function in order for it to deliver an estimate of $\boldsymbol{\beta}$. 
+Before implementing a function, we first need to ask ourselves what is the basic information that we need to obtain the desired output. In the case of least-squares regression, as mentioned earlier, the only information that is essential to perform estimation and inference is the vector of observations $\mathbf{y}$ representing the response variable and the matrix of covariates $\mathbf{X}$. These will therefore have to be the elements we need to provide to our function in order for it to deliver an estimate of $\boldsymbol{\beta}$ and, in R, we can provide the names we want for them (say `y` and `X` respectively): 
 
 ```{r}
-my_lm <- function () {
+my_lm <- function (y, X) {
   
-  
+  ...
   
 }
 
