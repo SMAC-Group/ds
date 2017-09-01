@@ -2,10 +2,9 @@
 
 When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this[^1] at least once in your life: 
 
+<center>
 ![](../images/bad-version-control.png)
-
-
-[^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
+</center>
 
 In these cases, after having modified and changed different parts of a report, you probably find yourself saving the same file over and over again while losing track of what changes you made. To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This software is generally called "version control" and this chapter discusses the features of this software as well as introducing a specific version control platform called "GitHub". The latter includes a series of highly useful tools that can be extremely helpful, not only for the projects developed based on this book, but also for any personal or collaborative project you may undertake in the future. 
 
@@ -30,15 +29,19 @@ Among the different version control platforms, Git is a commonly used and powerf
 To install Git, go to the [website](https://git-scm.com/downloads) and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Once you've downloaded and installed Git, the first thing you should do is to configure it by setting your username and email address. This is important because each time you interact with the platform and upload (commit) your changes to Git, this information is used to synchronize versions and keep track of project evolution. 
 
 ROB COMMENT: Justin, explain:
-what the configuration is for (in some more detail)
-where and how these configuration instructions below are entered
+what the configuration is for (in some more detail) *check* 
+where and how these configuration instructions below are entered *check* 
+
+#### Tell Git Who You Are
+
+Once you have installed Git, run the `Git Bash` software and type the following code below. 
 
 ```
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
 
-This operation only needs to be done once if using the "--global" option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
+This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once if using the "--global" option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
 
 Many of the GUI tools will help you do this when you first run them.
 
@@ -72,4 +75,23 @@ As a student, it is possible to benefit from specific advantages when using GitH
 ![](../images/developer_pack.png)
 
 JUSTIN COMMENT: I will add a tutorial to how to submit your homework and assignments using GitHub. 
+
+
+[^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
+
+
+## Basic Git Commands 
+
+
+
+| Command                        | Function                                      |
+|--------------------------------|-----------------------------------------------|
+| git init                       | Create a **local** repository                 |
+| git status                     | List all the files that you have modified     |
+| git add -A                     | Add **all** files to staging                  |
+| git commit -m "commit message" | Commit staged changes to **local** repository |
+| git push                       | Commit saved changes to **remote** repository |
+| git pull                       | Update changes from the **remote** repository |
+
+
 

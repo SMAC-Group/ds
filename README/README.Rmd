@@ -5,14 +5,6 @@ link-citations: yes
 output: github_document
 ---
 
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-"
-)
-library(ds)
-```
 
 <!--[![Travis-CI Build Status](https://travis-ci.org/SMAC-Group/ds.svg?branch=master)](https://travis-ci.org/SMAC-Group/ds)-->
 
