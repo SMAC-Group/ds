@@ -22,9 +22,9 @@ Dimension      Homogenous    Heterogeneous
 2               Matrix        Data Frame
 n               Array
 
-To illustrate how to use these data structures, we will consider the simple data set of the five best male single tennis players (as ranked by ATP on 07-15-2017). The data are presented in the table below:
+Consider a simple data set of the top five male single tennis players presented below:
 
-Table: (\#tab:tennis) Five best male single tennis players (as ranked by ATP on 07-15-2017).
+Table: (\#tab:tennis) Five best male single tennis players as ranked by ATP  (07-15-2017).
 
  Name              Date of Birth         Born                Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
 ----------------  ---------------  ---------------------- -------------------  ---------------  -------------- ---------------- ------------------
@@ -34,22 +34,22 @@ Stan Wawrinka      28 March 1985   Lausanne, Switzerland    Switzerland         
 Novak Djokovic    22 May 1987       Belgrade, Serbia          Serbia                4            109,447,408        82.77              12
 Roger Federer      8 August 1981    Basel, Switzerland      Switzerland            5            104,445,185        81.80              18
 
-It can be noticed that this data set contains columns with a variety of data types and in the next sections we will use these data to illustrate how to work with five types of data structrures mentionned earlier.
+Notice that this data set contains a variety of data types; in the next sections we will use these data to illustrate how to work with five common data structures.
 
 ## Vectors 
 
 A vector has three important properties:
 
 ```{block2, note-text, type='rmdimportant'}
-- **Type**, which corresponds the "kind" of objects in contains. It is possible to use the function `typeof()` to evaluate the type of objects in a vector.
-- **Length**, i.e. the number of elements in a vector. This information can be obtained using the function `length()`.
-- **Attributes**, some additional metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
+- The **Type** of objects contained in the vector. The function `typeof()` returns a description of the type of objects in a vector.
+- The **Length** of a vector indicates the number of elements in the vector. This information can be obtained using the function `length()`.
+- **Attributes** are metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
 ```
 
-`c()` is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. For example, let us consider the number of grand slams won by the five players considered in the eighth column of Table \@ref(tab:tennis): 
+`c()` is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table \@ref(tab:tennis): 
 
 ```{r}
-grand_slam_win = c(9, 15, 5, 12, 18)
+grand_slam_win <- c(9, 15, 5, 12, 18)
 ```
 
 To display the values stored in `grand_slam_win` we could simply enter the following in the R console:
@@ -61,13 +61,13 @@ grand_slam_win
 Alternatively, we could have created and displayed the value by using `()` around the definition of the object itself as follows:
 
 ```{r}
-(grand_slam_win = c(9, 15, 5, 12, 18))
+(grand_slam_win <- c(9, 15, 5, 12, 18))
 ```
 
 Various forms of "nested concatenation" can be used to defined vectors, for example we could also define `grand_slam_win` as
 
 ```{r}
-(grand_slam_win = c(9, c(15, 5, c(12, c(18)))))
+(grand_slam_win <- c(9, c(15, 5, c(12, c(18)))))
 ```
 
 This approach is often used to assemble vectors in various ways.
