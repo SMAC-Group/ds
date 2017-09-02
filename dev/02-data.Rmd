@@ -274,7 +274,7 @@ There are many other reason for using this format (or other date formats). A mor
 
 The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain manner which can be of interest to the user. Among the most commonly used functions we can find the following ones 
 
-`length()` `sum()` `mean()` `sort()` and `order()`
+`length()` `sum()` `mean()` `order()` and `sort()` 
 
 whose name is self-explanatory in most cases. For example we have
 
@@ -329,16 +329,16 @@ players[order(players_dob, decreasing = TRUE)]
 There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references [see e.g. @wickham2014advanced].
 
 
-### Creation sequences
+### Creating sequences
 
-When using R for statistical programming or even data analysis it is very common to create sequences of numbers. Here are three common ways used to create such sequences:
+When using R for statistical programming and data analysis it is very common to create sequences of numbers. Here are three common ways used to create such sequences:
 
 - `from:to`: This method is quite intuitive and very compact. For example:
 
 ```{r}
-(x <- 1:3)
-(y <- 3:1)
-(w <- -1:-4)
+1:3
+(x <- 3:1)
+(y <- -1:-4)
 (z <- 1.3:3)
 ```
 
@@ -361,7 +361,7 @@ seq_len(n)
 (y <- seq(1, 2.8, length.out = 6))
 ```
 
-It could be interesting to use a function like `rep()` that allows to create vectors with repeated values or sequences, for example:
+This can be combined with the `rep()` function to create vectors with repeated values or sequences, for example:
 
 ```{r}
 rep(c(1,2), times = 3, each = 1)
@@ -376,16 +376,16 @@ It is also possible to generates sequences of dates using the function `seq()`. 
 seq(from = players_dob[1], to = players_dob[2], length.out = 10)
 ```
 
-Similarly, we can create a sequence of between the two dates increasing by increment of one week
+Similarly, we can create a sequence between the two dates by increment of one week (backward)
 
 ```{r}
 seq(players_dob[1], players_dob[2], by = "-1 week")
 ```
 
-or by increment of one month
+or by increment of one month (forward)
 
 ```{r}
-seq(players_dob[1], players_dob[2], by = "-1 month")
+seq(players_dob[2], players_dob[1], by = "1 month")
 ```
 
 ### Example: Apple Stock Price 
