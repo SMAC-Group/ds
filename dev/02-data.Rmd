@@ -169,7 +169,7 @@ Let's suppose that we conducted an experiment under specific conditions, say a d
 
 ```{r}
 attr(grand_slam_win, "date") = "07-15-2017"
-attr(grand_slam_win, "type") = "Men, Single"
+attr(grand_slam_win, "type") = "Men, Singles"
 ```
 
 To display the vector with its attributes
@@ -192,7 +192,7 @@ attr(grand_slam_win, "date")
 
 ### Adding Labels {#addlab}
 
-In some cases it might be useful to add labels to vectors. For example, we could define the vector `grand_slam_win` and use the player's names as labels, i.e.
+In some cases, it is useful to augment vector elements with labels. For example, we could define the vector `grand_slam_win` and associate the name of each corresponding athlete as a labels, i.e.
 
 ```{r}
 (grand_slam_win = c("Andy Murray" = 9, "Rafael Nadal" = 15, 
@@ -207,7 +207,7 @@ grand_slam_win["Andy Murray"]
 grand_slam_win[c("Andy Murray","Roger Federer")]
 ```
 
-All labels (players' names in our case) can be obtained with the function `names`, i.e.
+All labels (athlete names in this case) can be obtained with the function `names()`, i.e.
 
 ```{r}
 names(grand_slam_win)
