@@ -274,11 +274,7 @@ $(document).ready(function () {
 <pre><code>## [1]  9 15  5 12 18</code></pre>
 <pre class="r"><code>typeof(grand_slam_win_int)</code></pre>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Naturally, the difference between the two in general is relatively unimportant but we can see that <code>grand_slam_win_int</code> takes less “space” among the two. Indeed we have</p>
-<pre class="r"><code>object.size(grand_slam_win)</code></pre>
-<pre><code>## 88 bytes</code></pre>
-<pre class="r"><code>object.size(grand_slam_win_int)</code></pre>
-<pre><code>## 72 bytes</code></pre>
+<p>In general, the difference between the two is relatively unimportant.</p>
 </div>
 <div id="coercion" class="section level3">
 <h3>Coercion</h3>
@@ -286,25 +282,15 @@ $(document).ready(function () {
 <span class="math display">\[\begin{equation*}
  \text{logical} &lt; \text{integer} &lt; \text{numeric} &lt; \text{character},
 \end{equation*}\]</span>
-<p>which simply means that if a vector contains more than one data type, the “shared” type will be that of the “largest” type according to the above equations. Here are a few examples:</p>
-<pre class="r"><code># Logical + integer
-(mix_logic_int = c(TRUE, 1L))</code></pre>
-<pre><code>## [1] 1 1</code></pre>
+<p>which simply means that if a vector contains more than one data type, the “shared” type will be that of the “largest” type according to the progression shown above. For example:</p>
+<pre class="r"><code># Logical + numeric
+(mix_logic_int = c(TRUE, 12, 0.5))</code></pre>
+<pre><code>## [1]  1.0 12.0  0.5</code></pre>
 <pre class="r"><code>typeof(mix_logic_int)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code># Logical + character
-(mix_logic_char = c(TRUE, &quot;Hi&quot;))</code></pre>
-<pre><code>## [1] &quot;TRUE&quot; &quot;Hi&quot;</code></pre>
-<pre class="r"><code>typeof(mix_logic_char)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code># Integer + numeric
-(mix_int_num = c(1, 1L))</code></pre>
-<pre><code>## [1] 1 1</code></pre>
-<pre class="r"><code>typeof(mix_int_num)</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="r"><code># Integer + character
-(mix_int_char = c(1L, &quot;Hi&quot;))</code></pre>
-<pre><code>## [1] &quot;1&quot;  &quot;Hi&quot;</code></pre>
+<pre class="r"><code># Numeric + character
+(mix_int_char = c(14.3, &quot;Hi&quot;))</code></pre>
+<pre><code>## [1] &quot;14.3&quot; &quot;Hi&quot;</code></pre>
 <pre class="r"><code>typeof(mix_int_char)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
@@ -340,7 +326,7 @@ grand_slam_win[c(TRUE, FALSE, FALSE, TRUE, FALSE)]</code></pre>
 <pre><code>## [1]  9 12</code></pre>
 
 <div class="rmdcaution">
-It is interesting to point out that non-integer indices can be used for subsetting. If that happends the indices will be rounded to the nearest integer and, for example, <code>grand_slam_win[c(1.2, 2.8)]</code> would be equivalent to <code>grand_slam_win[c(1, 3)]</code>. In addition, it is not possible to “mix” positive and negative indices. For example, if we try to run <code>grand_slam_win[c(-1, 2)]</code> we would obtain an error message.
+Note that it is not permitted to “mix” positive and negative indices. For example, <code>grand_slam_win[c(-1, 2)]</code> would produce an error message.
 </div>
 <p></p>
 </div>
@@ -816,24 +802,24 @@ y = rnorm(n, 3, 1)
 # Sample mean
 one = rep(1, n)
 (x_bar = 1/n*sum(x))</code></pre>
-<pre><code>## [1] 0.01300148</code></pre>
+<pre><code>## [1] 0.2952152</code></pre>
 <pre class="r"><code>(x_bar_mat = 1/n*t(x)%*%one)</code></pre>
-<pre><code>##            [,1]
-## [1,] 0.01300148</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.2952152</code></pre>
 <pre class="r"><code># Sample variance
 H = diag(rep(1, n)) - 1/n * one %*% t(one)
 (s_x = 1/n * sum((x - x_bar)^2))</code></pre>
-<pre><code>## [1] 3.63643</code></pre>
+<pre><code>## [1] 3.460666</code></pre>
 <pre class="r"><code>(s_x_mat = 1/n*t(x) %*% H %*% x)</code></pre>
-<pre><code>##         [,1]
-## [1,] 3.63643</code></pre>
+<pre><code>##          [,1]
+## [1,] 3.460666</code></pre>
 <pre class="r"><code># Sample covariance
 y_bar = 1/n*sum(y)
 (s_xy = 1/n*sum((x - x_bar)*(y - y_bar)))</code></pre>
-<pre><code>## [1] 0.289525</code></pre>
+<pre><code>## [1] 0.3004692</code></pre>
 <pre class="r"><code>(s_xy_mat = 1/n*t(x) %*% H %*% y)</code></pre>
-<pre><code>##          [,1]
-## [1,] 0.289525</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.3004692</code></pre>
 </div>
 </div>
 <div id="array" class="section level2">
@@ -1055,7 +1041,7 @@ for (i in 1:B){
 
 quantile(boot_mean, c(alpha/2, 1 - alpha/2))</code></pre>
 <pre><code>##  2.5% 97.5% 
-## 0.275 1.575</code></pre>
+## 0.275 1.650</code></pre>
 <pre class="r"><code>#hist(boot_mean, probability = TRUE)</code></pre>
 </div>
 </div>

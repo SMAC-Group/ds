@@ -102,12 +102,7 @@ Therefore, we could express `grand_slam_win` as follows:
 typeof(grand_slam_win_int)
 ```
 
-Naturally, the difference between the two in general is relatively unimportant but we can see that `grand_slam_win_int` takes less "space" among the two. Indeed we have
-
-```{r}
-object.size(grand_slam_win)
-object.size(grand_slam_win_int)
-```
+In general, the difference between the two is relatively unimportant.
 
 ### Coercion
 
@@ -117,23 +112,15 @@ As indicated earlier, a vector has a homogeneous data structure meaning that it 
  \text{logical} < \text{integer} < \text{numeric} < \text{character},
 \end{equation*}
 
-which simply means that if a vector contains more than one data type, the "shared" type will be that of the "largest" type according to the above equations. Here are a few examples:
+which simply means that if a vector contains more than one data type, the "shared" type will be that of the "largest" type according to the progression shown above. For example:
 
 ```{r}
-# Logical + integer
-(mix_logic_int = c(TRUE, 1L))
+# Logical + numeric
+(mix_logic_int = c(TRUE, 12, 0.5))
 typeof(mix_logic_int)
 
-# Logical + character
-(mix_logic_char = c(TRUE, "Hi"))
-typeof(mix_logic_char)
-
-# Integer + numeric
-(mix_int_num = c(1, 1L))
-typeof(mix_int_num)
-
-# Integer + character
-(mix_int_char = c(1L, "Hi"))
+# Numeric + character
+(mix_int_char = c(14.3, "Hi"))
 typeof(mix_int_char)
 ```
 
@@ -173,7 +160,7 @@ grand_slam_win[c(TRUE, FALSE, FALSE, TRUE, FALSE)]
 ```
 
 ```{block2, type='rmdcaution'}
-It is interesting to point out that non-integer indices can be used for subsetting. If that happends the indices will be rounded to the nearest integer and, for example, `grand_slam_win[c(1.2, 2.8)]` would be equivalent to `grand_slam_win[c(1, 3)]`. In addition, it is not possible to "mix" positive and negative indices. For example, if we try to run `grand_slam_win[c(-1, 2)]` we would obtain an error message.
+Note that it is not permitted to "mix" positive and negative indices. For example, `grand_slam_win[c(-1, 2)]` would produce an error message.
 ```
 
 ### Attributes {#vectattr}
