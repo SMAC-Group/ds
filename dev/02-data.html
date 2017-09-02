@@ -253,7 +253,7 @@ $(document).ready(function () {
 <pre><code>## [1]  9 15  5 12 18</code></pre>
 <p>This approach is often used to assemble vectors in various ways.</p>
 <p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
-<pre class="r"><code>(players = c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
+<pre class="r"><code>(players &lt;- c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
              &quot;Novak Djokovic&quot;, &quot;Roger Federer&quot;))</code></pre>
 <pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
 ## [5] &quot;Roger Federer&quot;</code></pre>
@@ -270,7 +270,7 @@ $(document).ready(function () {
 <pre class="r"><code>typeof(1L)</code></pre>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Therefore, we could express <code>grand_slam_win</code> as follows:</p>
-<pre class="r"><code>(grand_slam_win_int = c(9L, 15L, 5L, 12L, 18L))</code></pre>
+<pre class="r"><code>(grand_slam_win_int &lt;- c(9L, 15L, 5L, 12L, 18L))</code></pre>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
 <pre class="r"><code>typeof(grand_slam_win_int)</code></pre>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
@@ -284,12 +284,12 @@ $(document).ready(function () {
 \end{equation*}\]</span>
 <p>which simply means that if a vector contains more than one data type, the “shared” type will be that of the “largest” type according to the progression shown above. For example:</p>
 <pre class="r"><code># Logical + numeric
-(mix_logic_int = c(TRUE, 12, 0.5))</code></pre>
+(mix_logic_int &lt;- c(TRUE, 12, 0.5))</code></pre>
 <pre><code>## [1]  1.0 12.0  0.5</code></pre>
 <pre class="r"><code>typeof(mix_logic_int)</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <pre class="r"><code># Numeric + character
-(mix_int_char = c(14.3, &quot;Hi&quot;))</code></pre>
+(mix_int_char &lt;- c(14.3, &quot;Hi&quot;))</code></pre>
 <pre><code>## [1] &quot;14.3&quot; &quot;Hi&quot;</code></pre>
 <pre class="r"><code>typeof(mix_int_char)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
@@ -333,8 +333,8 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <div id="vectattr" class="section level3">
 <h3>Attributes</h3>
 <p>Let’s suppose that we conducted an experiment under specific conditions, say a date and a place which should be stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:</p>
-<pre class="r"><code>attr(grand_slam_win, &quot;date&quot;) = &quot;07-15-2017&quot;
-attr(grand_slam_win, &quot;type&quot;) = &quot;Men, Singles&quot;</code></pre>
+<pre class="r"><code>attr(grand_slam_win, &quot;date&quot;) &lt;- &quot;07-15-2017&quot;
+attr(grand_slam_win, &quot;type&quot;) &lt;- &quot;Men, Singles&quot;</code></pre>
 <p>To display the vector with its attributes</p>
 <pre class="r"><code>grand_slam_win</code></pre>
 <pre><code>## [1]  9 15  5 12 18
@@ -356,7 +356,7 @@ attr(grand_slam_win, &quot;type&quot;) = &quot;Men, Singles&quot;</code></pre>
 <div id="addlab" class="section level3">
 <h3>Adding Labels</h3>
 <p>In some cases, it is useful to augment vector elements with labels. For example, we could define the vector <code>grand_slam_win</code> and associate the name of each corresponding athlete as a labels, i.e.</p>
-<pre class="r"><code>(grand_slam_win = c(&quot;Andy Murray&quot; = 9, &quot;Rafael Nadal&quot; = 15, 
+<pre class="r"><code>(grand_slam_win &lt;- c(&quot;Andy Murray&quot; = 9, &quot;Rafael Nadal&quot; = 15, 
                    &quot;Stan Wawrinka&quot; = 5, &quot;Novak Djokovic&quot; = 12, 
                    &quot;Roger Federer&quot; = 18))</code></pre>
 <pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
@@ -375,13 +375,71 @@ attr(grand_slam_win, &quot;type&quot;) = &quot;Men, Singles&quot;</code></pre>
 </div>
 <div id="working-with-dates" class="section level3">
 <h3>Working with Dates</h3>
-<p>When working with dates it is generally useful to treat them as actual dates rather than “simple” characters (such as our definition of of the vector <code>players</code> contain the players’ names). Transforming characters into dates can be for example be done using the function <code>as.Date</code>, which is typically employed as</p>
+<p>When working with dates it is useful to treat them as actual dates rather than character strings that <em>look</em> like dates (to a human) but don’t otherwise <em>behave</em> like dates. For example, consider a vector of three dates: <code>c(&quot;03-21-2015&quot;, &quot;12-13-2011&quot;, &quot;06-27-2008&quot;)</code>.</p>
+<p>The <code>sort()</code> function returns the elements of a vector in ascending order, but since these dates are actually just character strings that <em>look</em> like dates (to a human), R sorts them in alphanumeric order (for characters) rather than chronological order (for dates):</p>
+<pre class="r"><code># The `sort()` function sorts elements in a vector in ascending order
+sort(c(&quot;03-21-2015&quot;, &quot;12-13-2011&quot;, &quot;06-27-2008&quot;))</code></pre>
+<pre><code>## [1] &quot;03-21-2015&quot; &quot;06-27-2008&quot; &quot;12-13-2011&quot;</code></pre>
+<p>The <code>as.Date()</code> function is one straight-forward method for converting character strings into dates. The typical syntax is of the form:</p>
 <pre class="r"><code>as.Dates(&lt;vector of dates&gt;, format = &lt;your format&gt;)</code></pre>
 <p>Considering the dates of birth presented in Table @ref(tab:tennis) we can save them in an appropriate format using:</p>
-<pre class="r"><code>(players_dob = as.Date(c(&quot;15 May 1987&quot;, &quot;3 June 1986&quot;, &quot;28 March 1985&quot;, 
+<pre class="r"><code>(players_dob &lt;- as.Date(c(&quot;15 May 1987&quot;, &quot;3 June 1986&quot;, &quot;28 March 1985&quot;, 
                          &quot;22 May 1987&quot;, &quot;8 August 1981&quot;), 
                        format = &quot;%d %b %Y&quot;))</code></pre>
 <pre><code>## [1] &quot;1987-05-15&quot; &quot;1986-06-03&quot; &quot;1985-03-28&quot; &quot;1987-05-22&quot; &quot;1981-08-08&quot;</code></pre>
+<p>Note the format syntax <code>format = &quot;%d %b %Y&quot;</code>. The following table produces common format elements for use with the <code>as.Date()</code> function:</p>
+<table>
+<caption>(#tab:dateFormats) Common date formatting elements for use with <code>as.Date()</code> reproduced from <a href="http://www.statmethods.net/input/dates.html">http://www.statmethods.net/</a>.</caption>
+<thead>
+<tr class="header">
+<th align="left">Symbol</th>
+<th align="center">Meaning</th>
+<th align="center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">%d</td>
+<td align="center">day as a number (0-31)</td>
+<td align="center">01-31</td>
+</tr>
+<tr class="even">
+<td align="left">%a</td>
+<td align="center">abbreviated weekday</td>
+<td align="center">Mon</td>
+</tr>
+<tr class="odd">
+<td align="left">%A</td>
+<td align="center">unabbreviated weekday</td>
+<td align="center">Monday</td>
+</tr>
+<tr class="even">
+<td align="left">%m</td>
+<td align="center">month (00-12)</td>
+<td align="center">00-12</td>
+</tr>
+<tr class="odd">
+<td align="left">%b</td>
+<td align="center">abbreviated month</td>
+<td align="center">Jan</td>
+</tr>
+<tr class="even">
+<td align="left">%B</td>
+<td align="center">unabbreviated month</td>
+<td align="center">January</td>
+</tr>
+<tr class="odd">
+<td align="left">%y</td>
+<td align="center">2-digit year</td>
+<td align="center">07</td>
+</tr>
+<tr class="even">
+<td align="left">%Y</td>
+<td align="center">4-digit year</td>
+<td align="center">2007</td>
+</tr>
+</tbody>
+</table>
 <p>There are many advantages that comes with using this format. For example, the subtraction between two dates becomes more meaningful and yields to the difference in days between them. As an example, the number of days between Rafael Nadal’s and Andy Murray’s dates of birth can be obtained as</p>
 <pre class="r"><code>players_dob[1] - players_dob[2]</code></pre>
 <pre><code>## Time difference of 346 days</code></pre>
@@ -436,23 +494,23 @@ attr(grand_slam_win, &quot;type&quot;) = &quot;Men, Singles&quot;</code></pre>
 <ul>
 <li><code>from:to</code>: This method is quite intuitive and very compact. For example:</li>
 </ul>
-<pre class="r"><code>(x = 1:3)</code></pre>
+<pre class="r"><code>(x &lt;- 1:3)</code></pre>
 <pre><code>## [1] 1 2 3</code></pre>
-<pre class="r"><code>(y = 3:1)</code></pre>
+<pre class="r"><code>(y &lt;- 3:1)</code></pre>
 <pre><code>## [1] 3 2 1</code></pre>
-<pre class="r"><code>(w = -1:-4)</code></pre>
+<pre class="r"><code>(w &lt;- -1:-4)</code></pre>
 <pre><code>## [1] -1 -2 -3 -4</code></pre>
-<pre class="r"><code>(z = 1.3:3)</code></pre>
+<pre class="r"><code>(z &lt;- 1.3:3)</code></pre>
 <pre><code>## [1] 1.3 2.3</code></pre>
 <ul>
 <li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exceptions where <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exceptions will become clear in Section @ref(forloop). Let’s see a few examples:</li>
 </ul>
-<pre class="r"><code>n = 3
+<pre class="r"><code>n &lt;- 3
 1:n</code></pre>
 <pre><code>## [1] 1 2 3</code></pre>
 <pre class="r"><code>seq_len(n)</code></pre>
 <pre><code>## [1] 1 2 3</code></pre>
-<pre class="r"><code>n = 0
+<pre class="r"><code>n &lt;- 0
 1:n</code></pre>
 <pre><code>## [1] 1 0</code></pre>
 <pre class="r"><code>seq_len(n)</code></pre>
@@ -460,9 +518,9 @@ attr(grand_slam_win, &quot;type&quot;) = &quot;Men, Singles&quot;</code></pre>
 <ul>
 <li><code>seq(a, b, by/length.out = d)</code>: This function can be used to create more “complex” sequences. It can either be used to create a sequence from <code>a</code> to <code>b</code> by increments of <code>d</code> (using the option <code>by</code>) or of a total length of <code>d</code> (using the option <code>length.out</code>). A few examples:</li>
 </ul>
-<pre class="r"><code>(x = seq(1, 2.8, by = 0.4))</code></pre>
+<pre class="r"><code>(x &lt;- seq(1, 2.8, by = 0.4))</code></pre>
 <pre><code>## [1] 1.0 1.4 1.8 2.2 2.6</code></pre>
-<pre class="r"><code>(y = seq(1, 2.8, length.out = 6))</code></pre>
+<pre class="r"><code>(y &lt;- seq(1, 2.8, length.out = 6))</code></pre>
 <pre><code>## [1] 1.00 1.36 1.72 2.08 2.44 2.80</code></pre>
 <p>It could be interesting to use a function like <code>rep()</code> that allows to create vectors with repeated values or sequences, for example:</p>
 <pre class="r"><code>rep(c(1,2), times = 3, each = 1)</code></pre>
@@ -495,10 +553,10 @@ attr(grand_slam_win, &quot;type&quot;) = &quot;Men, Singles&quot;</code></pre>
 <div id="example-apple-stock-price" class="section level3">
 <h3>Example: Apple Stock Price</h3>
 <p>Suppose that one is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing that is needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
-<pre class="r"><code>(today = Sys.Date())</code></pre>
+<pre class="r"><code>(today &lt;- Sys.Date())</code></pre>
 <pre><code>## [1] &quot;2017-09-01&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
-<pre class="r"><code>(three_months_ago = seq(today, length = 2, by = &quot;-3 months&quot;)[2])</code></pre>
+<pre class="r"><code>(three_months_ago &lt;- seq(today, length = 2, by = &quot;-3 months&quot;)[2])</code></pre>
 <pre><code>## [1] &quot;2017-06-01&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <pre class="r"><code>library(quantmod)
@@ -515,7 +573,7 @@ Candlestick chart for Apple’s stock price for the last three months.
   r_t = \frac{S_t - S_{t-1}}{S_{t-1}},
 \end{equation}\]</span>
 <p>where <span class="math inline">\(r_t\)</span> are the returns at time <em>t</em> and <span class="math inline">\(S_t\)</span> is the stock price. This is implemented in the function <code>ClCl()</code> within the <code>quantmod</code> package. For example, we can create a vector of returns as follows</p>
-<pre class="r"><code>AAPL_returns = na.omit(ClCl(AAPL))</code></pre>
+<pre class="r"><code>AAPL_returns &lt;- na.omit(ClCl(AAPL))</code></pre>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
 <pre class="r"><code>mean(AAPL_returns)</code></pre>
 <pre><code>## [1] 0.001153738</code></pre>
@@ -534,8 +592,8 @@ Candlestick chart for Apple’s stock price for the last three months.
   \bar{k} = \frac{1}{n} \sum_{i = 1}^n r_i.
 \end{equation}\]</span>
 <p>In R, this can simply be done as follows:</p>
-<pre class="r"><code>mu = mean(AAPL_returns)
-(k = mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)</code></pre>
+<pre class="r"><code>mu &lt;- mean(AAPL_returns)
+(k &lt;- mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)</code></pre>
 <pre><code>## [1] 2.589313</code></pre>
 <p>Therefore, we observe an estimated Excess Kurtosis of 2.59 which is quite high tends to indicate the returns have a heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
@@ -543,7 +601,7 @@ Candlestick chart for Apple’s stock price for the last three months.
 <div id="matrix" class="section level2">
 <h2>Matrix</h2>
 <p>Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional vectors within the same object. Below is an example of how to create a matrix in R:</p>
-<pre class="r"><code>(mat = matrix(1:12, ncol = 4,  nrow = 3))</code></pre>
+<pre class="r"><code>(mat &lt;- matrix(1:12, ncol = 4,  nrow = 3))</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
@@ -560,11 +618,11 @@ Candlestick chart for Apple’s stock price for the last three months.
 </div>
 <p></p>
 <p>It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are <code>cbind()</code> and <code>rbind()</code> where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:</p>
-<pre class="r"><code>players = c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
+<pre class="r"><code>players &lt;- c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
              &quot;Novak Djokovic&quot;, &quot;Roger Federer&quot;)
-grand_slam_win = c(9, 15, 5, 12, 18)
-win_percentage = c(78.07, 82.48, 63.96, 82.77, 81.80)
-(mat = cbind(grand_slam_win, win_percentage))</code></pre>
+grand_slam_win &lt;- c(9, 15, 5, 12, 18)
+win_percentage &lt;- c(78.07, 82.48, 63.96, 82.77, 81.80)
+(mat &lt;- cbind(grand_slam_win, win_percentage))</code></pre>
 <pre><code>##      grand_slam_win win_percentage
 ## [1,]              9          78.07
 ## [2,]             15          82.48
@@ -614,7 +672,7 @@ mat</code></pre>
 \right]
 \end{equation*}\]</span>
 <p>which can be created in R as follows:</p>
-<pre class="r"><code>(A = matrix(1:8, 4, 2))</code></pre>
+<pre class="r"><code>(A &lt;- matrix(1:8, 4, 2))</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    5
 ## [2,]    2    6
@@ -649,7 +707,7 @@ mat</code></pre>
 \right],
 \end{equation*}\]</span>
 <p>which can be done in R as follows:</p>
-<pre class="r"><code>(B = At %*% A)</code></pre>
+<pre class="r"><code>(B &lt;- At %*% A)</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]   30   70
 ## [2,]   70  174</code></pre>
@@ -697,7 +755,7 @@ d_3 &amp; d_4
 \end{matrix}
 \right] = 
 \end{equation*}\]</span>
-<pre class="r"><code>(B_inv = solve(B))</code></pre>
+<pre class="r"><code>(B_inv &lt;- solve(B))</code></pre>
 <pre><code>##          [,1]     [,2]
 ## [1,]  0.54375 -0.21875
 ## [2,] -0.21875  0.09375</code></pre>
@@ -706,7 +764,7 @@ d_3 &amp; d_4
 \mathbf{G} = \mathbf{B} \mathbf{B}^{-1},
 \end{equation*}\]</span>
 <p>should be equal to the identity matrix,</p>
-<pre class="r"><code>(G = B %*% B_inv)</code></pre>
+<pre class="r"><code>(G &lt;- B %*% B_inv)</code></pre>
 <pre><code>##      [,1]          [,2]
 ## [1,]    1 -8.881784e-16
 ## [2,]    0  1.000000e+00</code></pre>
@@ -738,7 +796,7 @@ a_1     &amp; 0       &amp; \cdots &amp; 0  \\
 \end{equation*}\]</span>
 <p>Therefore, this provides a simple way of creating an identity matrix by combining the functions <code>diag()</code> and <code>rep()</code> (discussed in the previous section) as follows:</p>
 <pre class="r"><code>n = 4
-(ident = diag(rep(1, n)))</code></pre>
+(ident &lt;- diag(rep(1, n)))</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -787,46 +845,46 @@ a_1     &amp; 0       &amp; \cdots &amp; 0  \\
 \end{equation*}\]</span>
 <p>In the code below we verify the validity of these results by comparing the value of the three statistics based on the different formulas.</p>
 <pre class="r"><code># Sample size
-n = 100
+n &lt;- 100
 
 # Simulate random numbers from a zero mean normal distribution with
 # variance equal to 4.
-x = rnorm(n, 0, sqrt(4))
+x &lt;- rnorm(n, 0, sqrt(4))
 
 # Simulate random numbers from normal distribution with mean 3 and
 # variance equal to 1.
-y = rnorm(n, 3, 1)
+y &lt;- rnorm(n, 3, 1)
 
 # Note that x and y are independent.
 
 # Sample mean
-one = rep(1, n)
-(x_bar = 1/n*sum(x))</code></pre>
-<pre><code>## [1] 0.06186929</code></pre>
-<pre class="r"><code>(x_bar_mat = 1/n*t(x)%*%one)</code></pre>
+one &lt;- rep(1, n)
+(x_bar &lt;- 1/n*sum(x))</code></pre>
+<pre><code>## [1] 0.06512018</code></pre>
+<pre class="r"><code>(x_bar_mat &lt;- 1/n*t(x)%*%one)</code></pre>
 <pre><code>##            [,1]
-## [1,] 0.06186929</code></pre>
+## [1,] 0.06512018</code></pre>
 <pre class="r"><code># Sample variance
-H = diag(rep(1, n)) - 1/n * one %*% t(one)
-(s_x = 1/n * sum((x - x_bar)^2))</code></pre>
-<pre><code>## [1] 3.445567</code></pre>
-<pre class="r"><code>(s_x_mat = 1/n*t(x) %*% H %*% x)</code></pre>
+H &lt;- diag(rep(1, n)) - 1/n * one %*% t(one)
+(s_x &lt;- 1/n * sum((x - x_bar)^2))</code></pre>
+<pre><code>## [1] 4.371051</code></pre>
+<pre class="r"><code>(s_x_mat &lt;- 1/n*t(x) %*% H %*% x)</code></pre>
 <pre><code>##          [,1]
-## [1,] 3.445567</code></pre>
+## [1,] 4.371051</code></pre>
 <pre class="r"><code># Sample covariance
-y_bar = 1/n*sum(y)
-(s_xy = 1/n*sum((x - x_bar)*(y - y_bar)))</code></pre>
-<pre><code>## [1] 0.08938788</code></pre>
-<pre class="r"><code>(s_xy_mat = 1/n*t(x) %*% H %*% y)</code></pre>
-<pre><code>##            [,1]
-## [1,] 0.08938788</code></pre>
+y_bar &lt;- 1/n*sum(y)
+(s_xy &lt;- 1/n*sum((x - x_bar)*(y - y_bar)))</code></pre>
+<pre><code>## [1] 0.3373742</code></pre>
+<pre class="r"><code>(s_xy_mat &lt;- 1/n*t(x) %*% H %*% y)</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.3373742</code></pre>
 </div>
 </div>
 <div id="array" class="section level2">
 <h2>Array</h2>
 <p>Simply, vectors are one-dimensional and matrices are two-dimensional objects, and these homogenous objects are also known as <strong>arrays</strong>. We can extend the array into more than two dimensions by specifying the <code>dim</code> parameter within the <code>array</code> function. Arrays are rarer than matrices and vectors, but worth being aware of.</p>
 <p>Below we initialize a three dimensional array, from 2 to 13.</p>
-<pre class="r"><code>three_dim = array(data = 2:13, dim = c(2, 3, 2))
+<pre class="r"><code>three_dim &lt;- array(data = 2:13, dim = c(2, 3, 2))
 three_dim</code></pre>
 <pre><code>## , , 1
 ## 
@@ -847,7 +905,7 @@ three_dim</code></pre>
 <pre class="r"><code>is.array(three_dim) # yes it is an array!</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>Note that when changing the dimension names, we need to save it as a <code>list</code>. We will talk more about lists in the coming section.</p>
-<pre class="r"><code>dimnames(three_dim) = list(c(&quot;apple&quot;, &quot;banana&quot;), c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;), c(&quot;Walmart&quot;, &quot;Costco&quot;)) # feel free to make 
+<pre class="r"><code>dimnames(three_dim) &lt;- list(c(&quot;apple&quot;, &quot;banana&quot;), c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;), c(&quot;Walmart&quot;, &quot;Costco&quot;)) # feel free to make 
 three_dim</code></pre>
 <pre><code>## , , Walmart
 ## 
@@ -864,16 +922,16 @@ three_dim</code></pre>
 <div id="list" class="section level2">
 <h2>List</h2>
 <p>A list is one of the commonly used heterogeneous data structures, which depicts a generic vector containing other object types. For example, we can have a numeric vector as one element, a matrix, and a character vector as another element. Here we can create a list that contains all these different element types.</p>
-<pre class="r"><code>num_vec = c(160, 188, 140)
-char_vec = c(&quot;Height&quot;, &quot;Weight&quot;, &quot;Length&quot;)
-my_mat = matrix(0, nrow = 5, ncol = 5)
+<pre class="r"><code>num_vec &lt;- c(160, 188, 140)
+char_vec &lt;- c(&quot;Height&quot;, &quot;Weight&quot;, &quot;Length&quot;)
+my_mat &lt;- matrix(0, nrow = 5, ncol = 5)
 
 # List Initialization without Names 
 # list(num_vec, char_vec, my_mat)
 
 # List Initialization with Custom Names 
-list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
-<pre><code>## $Number
+list(Number &lt;- num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
+<pre><code>## [[1]]
 ## [1] 160 188 140
 ## 
 ## $Character
@@ -887,7 +945,7 @@ list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
 ## [4,]    0    0    0    0    0
 ## [5,]    0    0    0    0    0</code></pre>
 <p>Let’s store this list in a variable.</p>
-<pre class="r"><code>my_list = list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
+<pre class="r"><code>my_list &lt;- list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
 <p>We can subset lists like we did previously.</p>
 <pre class="r"><code># Extract the first and third element 
 my_list[c(1, 3)]</code></pre>
@@ -924,24 +982,24 @@ my_list[1][1]</code></pre>
 <p>We can create a data frame using data.frame()</p>
 <pre class="r"><code>### Creation
 
-players = c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
+players &lt;- c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
              &quot;Novak Djokovic&quot;, &quot;Roger Federer&quot;)
 
-grand_slam_win = c(9, 15, 5, 12, 18)
+grand_slam_win &lt;- c(9, 15, 5, 12, 18)
 
-date_of_birth = c(&quot;15 May 1987&quot;, &quot;3 June 1986&quot;, &quot;28 March 1985&quot;, 
+date_of_birth &lt;- c(&quot;15 May 1987&quot;, &quot;3 June 1986&quot;, &quot;28 March 1985&quot;, 
                   &quot;22 May 1981&quot;, &quot;8 August 1981&quot;)
 
 country = c(&quot;Great Britain&quot;, &quot;Spain&quot;, &quot;Switzerland&quot;, 
             &quot;Serbia&quot;, &quot;Switzerland&quot;)
-ATP_ranking = c(1, 2, 3, 4, 5)
+ATP_ranking &lt;- c(1, 2, 3, 4, 5)
 
-prize_money = c(60449649, 85920132, 30577981, 109447408, 104445185)
+prize_money &lt;- c(60449649, 85920132, 30577981, 109447408, 104445185)
 
-tennis = data.frame(date_of_birth, grand_slam_win, country, 
+tennis &lt;- data.frame(date_of_birth, grand_slam_win, country, 
                     ATP_ranking, prize_money)
 
-dimnames(tennis)[[1]] = players
+dimnames(tennis)[[1]] &lt;- players
 tennis</code></pre>
 <pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
 ## Andy Murray      15 May 1987              9 Great Britain           1
@@ -965,7 +1023,7 @@ tennis</code></pre>
 <pre class="r"><code>height &lt;- c(1.90, 1.85, 1.83, 1.88, 1.85)
 hand &lt;- c(&quot;R&quot;,&quot;L&quot;,&quot;R&quot;,&quot;R&quot;,&quot;R&quot;)
 
-(tennis = cbind(tennis, data.frame(height, hand)))</code></pre>
+(tennis &lt;- cbind(tennis, data.frame(height, hand)))</code></pre>
 <pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
 ## Andy Murray      15 May 1987              9 Great Britain           1
 ## Rafael Nadal     3 June 1986             15         Spain           2
@@ -1023,25 +1081,25 @@ tennis$date_of_birth</code></pre>
 <p>We can see that our confidence interval includes a negative values which clearly isn’t meaningful. Solution: (non-parametric) bootstrap which works as follows….. ADD SOMETHING</p>
 <p>Here is a simple function to implement this approach:</p>
 <pre class="r"><code># Number of boostrap replications
-B = 500
+B &lt;- 500
 
 # Compute the length of vector
-n = length(student_work)
+n &lt;- length(student_work)
 
 # Confidence level
-alpha = 0.05
+alpha &lt;- 0.05
 
 # Initialisation of 
-boot_mean = rep(NA, B)
+boot_mean &lt;- rep(NA, B)
 
 for (i in 1:B){
-  student_work_star = student_work[sample(1:n, replace = TRUE)]
-  boot_mean[i] = mean(student_work_star)
+  student_work_star &lt;- student_work[sample(1:n, replace = TRUE)]
+  boot_mean[i] &lt;- mean(student_work_star)
 }
 
 quantile(boot_mean, c(alpha/2, 1 - alpha/2))</code></pre>
 <pre><code>##     2.5%    97.5% 
-## 0.275000 1.638125</code></pre>
+## 0.275000 1.513125</code></pre>
 <pre class="r"><code>#hist(boot_mean, probability = TRUE)</code></pre>
 </div>
 </div>
