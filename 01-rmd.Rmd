@@ -44,7 +44,7 @@ stat297::runShiny('rmd_mini')
 Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a title and the author 
 (your name) and select the default output, HTML. We can change this later so don't worry about it for the moment. 
 
-<center>![](images/rmd_new.png)</center>
+<center>![Screenshot of RMarkdown Creation](images/rmd_new.png)</center>
 
 
 An RMarkdown is a plain text file that contains three different aspects:
@@ -57,11 +57,11 @@ An RMarkdown is a plain text file that contains three different aspects:
 
 YAML stands for *YAML Ain't Markup Language* and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header is surrounded before and after by "---" on a dedicated line.
 
-<center>![](images/rmd_yaml.png)</center>
+<center>![Screenshot of RMarkdown YAML section](images/rmd_yaml.png)</center>
 
 You can also include additional formatting [options](http://RMarkdown.rstudio.com/html_document_format.html) such as a table of contents or even a custom CSS style template which can be used to further enhance the presentation. For the purpose of this book, the default options should be sufficient. Below is an example knit output of the above RMarkdown file. 
 
-<center>![](images/rmd_example_output.png)</center>
+<center>![Screenshot of RMarkdown Example Output](images/rmd_example_output.png)</center>
 
 The default output above is an html_document format but this format can be modified using, for example, `pdf_document` to output a pdf. However, the pdf format requires additional installation and configuration of a TeX distribution such as [MikTeX](https://miktex.org/2.9/setup). Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary (we'll discuss more about LaTeX further on).
 
@@ -70,7 +70,7 @@ The default output above is an html_document format but this format can be modif
 
 To make your sections numbered as sections and subsections, make sure you specify `number_sections: yes` as part of the YAML Metadata as shown below. 
 
-<center>![](images/yaml_number_sections.png)</center>
+<center>![Screenshot of RMarkdown YAML Subsection Option](images/yaml_number_sections.png)</center>
 
 
 ## Text 
@@ -81,7 +81,7 @@ Due to its literate nature, text will be an essential part in explaining your an
 With RMarkdown, we can specify custom text formatting with emphases such as *italics*, **bold**, or `code style
 ```
 
-<center>![](images/rmd_text.png)</center>
+<center>![Screenshot of RMarkdown text section](images/rmd_text.png)</center>
 
 
 ### Headers
