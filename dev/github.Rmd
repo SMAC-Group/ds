@@ -1,6 +1,6 @@
 # GitHub 
 
-When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this[^1] at least once in your life: 
+When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this at least once in your life: 
 
 <center>
 ![](../images/bad-version-control.png)
@@ -35,9 +35,6 @@ Among the different version control platforms, Git is a commonly used and powerf
 
 To install Git, go to the [website](https://git-scm.com/downloads) and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Once you've downloaded and installed Git, the first thing you should do is to configure it by setting your username and email address. This is important because each time you interact with the platform and upload (commit) your changes to Git, this information is used to synchronize versions and keep track of project evolution. 
 
-ROB COMMENT: Justin, explain:
-what the configuration is for (in some more detail) *check* 
-where and how these configuration instructions below are entered *check* 
 
 #### Tell Git Who You Are
 
@@ -49,12 +46,6 @@ $ git config --global user.email johndoe@example.com
 ```
 
 This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once if using the "--global" option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
-
-Many of the GUI tools will help you do this when you first run them.
-
-ROB COMMENT: Justin, 
-above explain what "GUI" stands for and what it is. Give more details on this and how it can be used
-explain why it is important to use GitHub which is introduced in the next section
 
 
 ### GitHub Setup 
@@ -81,24 +72,36 @@ As a student, it is possible to benefit from specific advantages when using GitH
 
 ![](../images/developer_pack.png)
 
-JUSTIN COMMENT: I will add a tutorial to how to submit your homework and assignments using GitHub. 
-
-
-[^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
-
 
 ## GitHub Workflow 
 
-Below is a video of the basic GitHub workflow (initializing, committing, pushing, and pulling) we will follow for our assignments and projects. 
+Here is a video of the basic GitHub workflow in GitHub Desktop (initializing, committing, pushing, and pulling) we will follow for our assignments and projects. 
 
 ```{r, echo = FALSE}
-knitr::include_url("")
+knitr::include_url("https://www.youtube.com/embed/-cLn7Uk-Zo0")
 ```
+
+### Branching 
+
+Above, we talk about the workflow in terms of directly making changes in the master branch. Branching is essentially creating an environment in which we can change anything without obstructing our original document. This idea is very useful for group-based activities, where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main `master` branch. You can learn more about branching [here](https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging) and [here](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a). 
+
+### Commits 
+
+After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. After we have made these changes, we need to `commit` it with an informative message, explaining why a particular change is being made. These specific messages allow us to backtrack on these changes later on if we decide to look at the history of any of these files and find a bug. 
+
+### Pull Request 
+
+
+
+### Push or Merge 
+
+
+
 
 
 ## Basic Git Commands 
 
-
+Here are commands that we can use within `Git Bash` if we are more comfortable working on the command line. 
 
 | Command                        | Function                                      |
 |--------------------------------|-----------------------------------------------|
