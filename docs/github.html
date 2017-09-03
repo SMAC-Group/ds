@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+
+
+<meta name="date" content="2017-09-03">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="rmarkdown.html">
+<link rel="next" href="data.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.2.1</b> Git Setup</a></li>
+<li class="chapter" data-level="3.2.2" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.2.3</b> Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#github-workflow"><i class="fa fa-check"></i><b>3.3</b> GitHub Workflow</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="github.html"><a href="github.html#branching"><i class="fa fa-check"></i><b>3.3.1</b> Branching</a></li>
+<li class="chapter" data-level="3.3.2" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.3.2</b> Commits</a></li>
+<li class="chapter" data-level="3.3.3" data-path="github.html"><a href="github.html#push-or-merge"><i class="fa fa-check"></i><b>3.3.3</b> Push or Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#github-workflow-on-command-line-git-bash"><i class="fa fa-check"></i><b>3.4</b> GitHub Workflow on Command Line / Git Bash</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.5</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#additional-references"><i class="fa fa-check"></i><b>3.6</b> Additional References</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a></li>
+<li class="chapter" data-level="5" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>5</b> Placeholder</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="github" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> GitHub</h1>
+<p>When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this at least once in your life:</p>
+<center>
+<img src="images/bad-version-control.png" />
+</center>
+<p>In these cases, after having modified and changed different parts of a report, you probably find yourself saving the same file over and over again while losing track of what changes you made. To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This software is generally called “version control” and this chapter discusses the features of this software as well as introducing a specific version control platform called “GitHub”. The latter includes a series of highly useful tools that can be extremely helpful, not only for the projects developed based on this book, but also for any personal or collaborative project you may undertake in the future.</p>
+<p>Below is a video introducing GitHub.</p>
+<center>
+<iframe src="https://www.youtube.com/embed/SB5YkjB9FWc" width="672" height="400px">
+</iframe>
+</center>
+<div id="version-control" class="section level2">
+<h2><span class="header-section-number">3.1</span> Version Control</h2>
+<p>As mentioned above, <em>version control</em> is a system that records changes to a file or a set of files in order to keep track and possibly revert to or modify those changes over time. More specifically, it allows you to:</p>
+<ul>
+<li>record the entire history of a file;</li>
+<li>revert to a specific version of the file;</li>
+<li>collaborate on the same platform with other people;</li>
+<li>make changes without modifying the main file and add them once you feel comfortable with them.</li>
+</ul>
+<p>All these features are highly important when projects start becoming more complex and/or different collaborators contribute to it. In the next section we present a version control platform called “GitHub” that is commonly used among programmers and software developers thereby allowing them also to make their work visible and available to the general public.</p>
+</div>
+<div id="git-and-github" class="section level2">
+<h2><span class="header-section-number">3.2</span> Git and GitHub</h2>
+<p>Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible through GitHub which is a commercial website. The latter uses the Git platform and stores local files into a flexible folder called a “repository”. For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.</p>
+<div id="git-setup" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Git Setup</h3>
+<p>To install Git, go to the <a href="https://git-scm.com/downloads">website</a> and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Once you’ve downloaded and installed Git, the first thing you should do is to configure it by setting your username and email address. This is important because each time you interact with the platform and upload (commit) your changes to Git, this information is used to synchronize versions and keep track of project evolution.</p>
+<div id="tell-git-who-you-are" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Tell Git Who You Are</h4>
+<p>Once you have installed Git, run the <code>Git Bash</code> software and type the following code below.</p>
+<pre><code>$ git config --global user.name &quot;John Doe&quot;
+$ git config --global user.email johndoe@example.com</code></pre>
+<p>This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once if using the “–global” option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the “–global” option while working on those projects.</p>
+</div>
+</div>
+<div id="github-setup" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> GitHub Setup</h3>
+<p>In order to set up GitHub, go to the <a href="https://github.com/">GitHub website</a> and, for the purposes of the course, the first step is to sign up with your University email address.</p>
+
+<div class="rmdnote">
+Your username and email can be changed at any time so, if you want to change it, you can easily do so once this course is over.
+</div>
+<p></p>
+<center>
+<img src="images/github_page.png" />
+</center>
+<p>Once this is done, you reach <code>Step 2: Choose your plan</code> where you can choose the default plan (“Unlimited public repositories for free”) and click <code>Continue</code>. The last (optional) step is <code>Step 3: Tailor your experience</code> which allows you to submit your information but this can also be skipped.</p>
+
+<div class="rmdnote">
+Your GitHub profile can also serve as a <em>resume</em> of your Data Science skills that will be highlighted by possible future projects that you save and commit.
+</div>
+<p></p>
+</div>
+<div id="student-developer-pack" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Student Developer Pack</h3>
+<p>As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this <a href="https://education.github.com/discount_requests/new">link</a> and follow the steps below to set up a “student developer pack” discount request to GitHub. Through this setup it will be possible for you not only to have free <em>public</em> repositories but also to make your own <em>private</em> repositories for free.</p>
+<center>
+<img src="images/developer_pack.png" />
+</center>
+</div>
+</div>
+<div id="github-workflow" class="section level2">
+<h2><span class="header-section-number">3.3</span> GitHub Workflow</h2>
+<p>Here is a video demonstrating basic GitHub workflow in GitHub Desktop (initializing, committing, pushing, and pulling) we will follow for our assignments and projects.</p>
+<center>
+<iframe src="https://www.youtube.com/embed/-cLn7Uk-Zo0" width="672" height="400px">
+</iframe>
+</center>
+<p>Here is a video demonstrating basic GitHub workflow within RStudio.</p>
+<center>
+</center>
+<div id="branching" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Branching</h3>
+<p>Above, we talk about the workflow in terms of directly making changes in the master branch. Branching is essentially creating an environment in which we can change anything without obstructing our original document. This idea is very useful for group-based activities, where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main <code>master</code> branch. You can learn more about branching <a href="https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging">here</a> and <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">here</a>.</p>
+</div>
+<div id="commits" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Commits</h3>
+<p>After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. After we have made these changes, we need to <code>commit</code> it with an informative message, explaining why a particular change is being made. These specific messages allow us to backtrack on these changes later on if we decide to look at the history of any of these files and find a bug. Without it being informative, there will be no point in using version control like GitHub.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<center>
+<img src="images/git_commit.png" />
+</center>
+<div id="pull-request" class="section level4">
+<h4><span class="header-section-number">3.3.2.1</span> Pull Request</h4>
+<p>If you are directly working on the master branch, please disregard this section. Else, a <code>pull request</code> may be made by the person working on the branch, so that other collaborators can discuss about the commits made in the branch. Also, there are options for conversation in which they can review and comment directly onto the code as well.</p>
+</div>
+</div>
+<div id="push-or-merge" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Push or Merge</h3>
+<p>Once you have either made the commits on your master branch or have gotten the pull request confirmed by other collaborators, we can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow. After this step, we rinse and repeat the above procedure.</p>
+</div>
+</div>
+<div id="github-workflow-on-command-line-git-bash" class="section level2">
+<h2><span class="header-section-number">3.4</span> GitHub Workflow on Command Line / Git Bash</h2>
+<p>Here are commands that we can use within <code>Git Bash</code> if we are more comfortable working on the command line.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>git init</td>
+<td>Create a <strong>local</strong> repository</td>
+</tr>
+<tr class="even">
+<td>git branch “newbranch”</td>
+<td>Create a new branch with given name</td>
+</tr>
+<tr class="odd">
+<td>git checkout “newbranch”</td>
+<td>Switch to specified branch</td>
+</tr>
+<tr class="even">
+<td>git status</td>
+<td>List all the files that you have modified</td>
+</tr>
+<tr class="odd">
+<td>git add -A</td>
+<td>Add <strong>all</strong> files to staging</td>
+</tr>
+<tr class="even">
+<td>git commit -m “commit message”</td>
+<td>Commit staged changes to <strong>local</strong> repository</td>
+</tr>
+<tr class="odd">
+<td>git push</td>
+<td>Commit saved changes to <strong>remote</strong> repository</td>
+</tr>
+<tr class="even">
+<td>git pull</td>
+<td>Update changes from the <strong>remote</strong> repository</td>
+</tr>
+</tbody>
+</table>
+<p>However, it is better for us to start with using more graphical user interface options, since they help us understand better of what is going on. You <strong>do not</strong> want to follow this example<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>…</p>
+<center>
+<img src="images/git_misuse.png" />
+</center>
+<p>It is important to know what is happening when we create, change, push, branch, and pull from a repository.</p>
+</div>
+<div id="slack-integration" class="section level2">
+<h2><span class="header-section-number">3.5</span> Slack Integration</h2>
+<p>Slack is a platform created for utilizing communication between group members. It allows for direct message, as well as group messages. (like group chatting) More information on how to use Slack can be found in this <a href="https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members">Slack Tutorial</a>.</p>
+<center>
+<img src="images/slack.png" alt="Screenshot of an Example Slack Group" />
+</center>
+<p>An added benefit of using Slack is that we can integrate GitHub, in a way that whenever someone pushes or makes a pull request, notifications will be posted to the group. More information on GitHub integration on Slack can be found <a href="https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack">here</a>.</p>
+</div>
+<div id="additional-references" class="section level2">
+<h2><span class="header-section-number">3.6</span> Additional References</h2>
+<p>Here are some supplemental references for your comprehension.</p>
+<ul>
+<li><a href="https://www.r-bloggers.com/rstudio-and-github/">GitHub Introduction with RStudio</a></li>
+<li><a href="https://guides.github.com/introduction/flow/">GitHub Workflow</a></li>
+<li><a href="https://www.youtube.com/watch?v=oFYyTZwMyAg">GitHub on Command Line (video)</a></li>
+</ul>
+
+</div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="https://xkcd.com/1296/" class="uri">https://xkcd.com/1296/</a><a href="github.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="https://xkcd.com/1597/" class="uri">https://xkcd.com/1597/</a><a href="github.html#fnref2">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-github.Rmd",
+"text": "Edit"
+},
+"download": ["ds.pdf", "ds.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
