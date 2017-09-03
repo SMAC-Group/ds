@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,15 +25,15 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-08-31">
+<meta name="date" content="2017-09-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="rmarkdown.html">
-<link rel="next" href="an-introduction-to-statistical-programming-methods-with-r.html">
+<link rel="prev" href="data.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -150,11 +150,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
 <li class="chapter" data-level="2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#addition-information"><i class="fa fa-check"></i><b>2.6</b> Addition Information</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>3</b> References</a></li>
-<li class="chapter" data-level="4" data-path="an-introduction-to-statistical-programming-methods-with-r.html"><a href="an-introduction-to-statistical-programming-methods-with-r.html"><i class="fa fa-check"></i><b>4</b> An Introduction to Statistical Programming Methods with R</a><ul>
-<li class="chapter" data-level="4.1" data-path="an-introduction-to-statistical-programming-methods-with-r.html"><a href="an-introduction-to-statistical-programming-methods-with-r.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="an-introduction-to-statistical-programming-methods-with-r.html"><a href="an-introduction-to-statistical-programming-methods-with-r.html#r-and-rstudio-1"><i class="fa fa-check"></i><b>4.2</b> <code>R</code> and <code>RStudio</code></a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data.html"><a href="data.html#type"><i class="fa fa-check"></i><b>3.1.1</b> Type</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data.html"><a href="data.html#coercion"><i class="fa fa-check"></i><b>3.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data.html"><a href="data.html#subsetting"><i class="fa fa-check"></i><b>3.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data.html"><a href="data.html#vectattr"><i class="fa fa-check"></i><b>3.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data.html"><a href="data.html#addlab"><i class="fa fa-check"></i><b>3.1.5</b> Adding Labels</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data.html"><a href="data.html#working-with-dates"><i class="fa fa-check"></i><b>3.1.6</b> Working with Dates</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data.html"><a href="data.html#useful-functions-with-vectors"><i class="fa fa-check"></i><b>3.1.7</b> Useful Functions with Vectors</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data.html"><a href="data.html#creating-sequences"><i class="fa fa-check"></i><b>3.1.8</b> Creating sequences</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>3.1.9</b> Example: Apple Stock Price</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -176,17 +186,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="references" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> References</h1>
+<h1><span class="header-section-number">Chapter 4</span> References</h1>
 
-<!--[![Travis-CI Build Status](https://travis-ci.org/SMAC-Group/ds.svg?branch=master)](https://travis-ci.org/SMAC-Group/ds)-->
+<div id="refs" class="references">
+<div>
+<p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central: 21.</p>
+</div>
+<div>
+<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press. <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>.</p>
+</div>
+<div>
+<p>———. 2015. <em>R Packages</em>. O’Reilly. <a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a>.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="an-introduction-to-statistical-programming-methods-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
