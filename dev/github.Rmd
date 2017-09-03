@@ -8,7 +8,7 @@ When working on a report or a project, it is often the case that you keep separa
 
 In these cases, after having modified and changed different parts of a report, you probably find yourself saving the same file over and over again while losing track of what changes you made. To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This software is generally called "version control" and this chapter discusses the features of this software as well as introducing a specific version control platform called "GitHub". The latter includes a series of highly useful tools that can be extremely helpful, not only for the projects developed based on this book, but also for any personal or collaborative project you may undertake in the future. 
 
-Below is a video explaining some of the benefits of using GitHub. 
+Below is a video introducing GitHub. 
 
 ```{r, echo=FALSE}
 knitr::include_url("https://www.youtube.com/embed/SB5YkjB9FWc")
@@ -73,7 +73,7 @@ Once this is done, you reach `Step 2: Choose your plan` where you can choose the
 Your GitHub profile can also serve as a *resume* of your data science skills that will be highlighted by possilbe future projects that you save and commit.
 ```
 
-After you have set up your profile, make sure you verify your email address and, for the purposes of evaluating your performance in this course, send us your GitHub user ID (eg. jjl170) to `jjl170@psu.edu`. 
+After you have set up your profile, make sure you verify your email address and, for the purposes of evaluating your performance in this course, send us your GitHub user ID (eg. jjl70) to `justinlee@psu.edu`. 
 
 ### Student Developer Pack
 
@@ -85,6 +85,15 @@ JUSTIN COMMENT: I will add a tutorial to how to submit your homework and assignm
 
 
 [^1]: http://fundamentals.generalassemb.ly/02_unit/assets/version-control-and-git/bad-version-control.png
+
+
+## GitHub Workflow 
+
+Below is a video of the basic GitHub workflow (initializing, committing, pushing, and pulling) we will follow for our assignments and projects. 
+
+```{r, echo = FALSE}
+knitr::include_url("")
+```
 
 
 ## Basic Git Commands 

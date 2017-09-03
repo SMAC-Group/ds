@@ -46,7 +46,6 @@ Within RStudio, click `File` → `New File` → `R Markdown`. Give the file a ti
 
 <center>![Screenshot of RMarkdown Creation](images/rmd_new.png)</center>
 
-
 An RMarkdown is a plain text file that contains three different aspects:
 
 - YAML metadata
