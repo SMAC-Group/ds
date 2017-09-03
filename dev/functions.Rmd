@@ -2,9 +2,46 @@
 
 This chapter aims at highlighting the main advantages, characteristics, arguments and structure of functions in R. As you already know, a function is a collection of logically connected commands and operations that allow the user to input some arguments and obtain a desired output (based on the given arguments) without having to rewrite the mentioned code each time that specific output is needed. Indeed, a common task in statistical research consists in running some simulation studies which give support (or not) to the use of a certain method of inference. In this case, it's not efficient to rewrite the code each time it is needed within a simulation study because it would lead to lengthy code and increased risk of miss-coding. 
 
-Considering this, in the previous chapter we discussed matrix algebra in R. Using these notions, in this chapter we will implement a function that allows us to perform least-squares regression and inference. Indeed, it may be interesting to understand the behavior of this estimator in different simulation settings and it would not be practical to rewrite the series of commands to obtain the least-squares estimator in each setting. For this reason, a function that implements this estimator would be more appropriate and, in fact, this function already exists in the base R functions and is called `lm()`. However, in this chapter we will build our own least-squares regression function and compare its results with those of `lm()` to check if they're the same.
+Considering this, in the previous chapter we discussed matrix algebra in R. Using these notions, in this chapter we will implement a function that allows us to perform least-squares regression and inference. Indeed, it may be interesting to understand the behavior of this estimator in different simulation settings and it would not be practical to rewrite the series of commands to obtain the least-squares estimator in each setting. For this reason, a function that implements this estimator would be more appropriate and, in fact, this function already exists in the base R functions and is called `lm()`. However, in this chapter we will build our own least-squares regression function and compare its results with those of `lm()` to check if they're the same. To do so, we will consider a dataset in which linear regression is used to study the age of the universe.
 
-In order to build our function, the next sections will present the main features of functions in R by studying their main components. R functions have three main components to them:
+### Example: The Hubble Constant
+
+The example dataset we will study is taken from @wood2017generalized which discusses data collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the "Hubble constant" which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the "Big Bang" theory. The link is given by this simple linear relationship
+
+\begin{equation*}
+  y = \beta x ,
+\end{equation*}
+
+where $y$ represents the velocity while $x$ is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. $\beta^{-1}$) gives the age of the universe based on the big bang theory. 
+
+Therefore let us use the abovementioned dataset to estimate Hubble's constant to then get an estimate of the age of the universe. This dataset can be found in the `gamair` package under the name `hubble` and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.
+
+```{r}
+# Load gamair library and retrieve Hubble dataset
+library(gamair)
+data(hubble)
+
+# Plot data
+plot(y = hubble$y, x = hubble$x, col="red", main="Distance vs. Velocity", ylab = "Velocity (in km/s)", xlab = "Distance (in Megaparsecs)")
+```
+
+In this chapter we will therefore build a function to estimate $\beta$ in order to obtain an estimate of the age of the universe based on this theory.
+
+## R functions
+
+In order to build our function, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that takes two values and sums them:
+
+<center>![Function Structure](images/function_scheme.png)</center>
+
+As can be noticed, we first define the name we want to give to the function. 
+
+```{block2, type='rmdwarning'}
+It is important to make sure that the function name is specific and does not correspond to other functions that may need to be used within your work session. If two functions have the same name, just as with other R objects, the function that will be used is the last one that has been defined within the R working session.
+```
+
+Once we have defined the name, we then attribute a function to this name by using the `function` syntax to which we assign some parameters (or attributes). The latter are the values or data that the user will input in order for the function to deliver the desired output which is obtained through the code constituting the *body* of the function. Once the code has made the necessary computations, the function needs to know which results need to be given as an output. This can be done, for example, using the `return` syntax.
+
+Having seen the general structure of an R function, let us go more into detail by analysing the three main components to R functions:
 
 - *body*: the code lines containing the commands and operations which deliver the desired output;
 - *arguments*: the inputs the user gives to the function which will determine the value or type of output of a function;
@@ -33,7 +70,7 @@ While the first component is the collection of commands that we saw in the previ
 <!-- } -->
 <!-- ``` -->
 
-## The Algebra behind Least-Squares Inference
+### The Algebra behind Least-Squares Inference
 
 In the framework of linear regression the goal is to explain an $n \times 1$ vector of observations $\mathbf{y}$  (representing the response variable) through a linear combination of $p$ explanatory variables (or predictors or covariates) that are stored in an $n \times p$ matrix $\mathbf{X}$. More specifically, the framework is the following:
 $$\mathbf{y} = \mathbf{X}^T\boldsymbol{\beta} + \mathbf{\epsilon}$$,
@@ -148,12 +185,13 @@ ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theor
 
 JUSTIN COMMENT: I agree with Rob's suggestion :) 
 
+Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. To do so,
 
 ## Creating functions in R
 
 In the previous section we therefore went over the algebra behind least-squares regression. Based on this, let us implement a function that only estimates the parameter vector $\boldsymbol{\beta}$. Let us therefore define the skeleton of the R function we want to build:
 
-```{r}
+```{r, eval=FALSE}
 my_lm <- function (...) {
   
   ...
@@ -162,13 +200,13 @@ my_lm <- function (...) {
 
 ```
 
-As you can see, we find a name for the function we want to build, which in this case is `my_lm`, and specify that we are going to attribute a `function` to this name. Following this assignment, we find a set of round brackets `(...)` followed by a set of curly brackets `{...}` which should include the *arguments* and *body* of the function respectively. While the *body* of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspect such as their environment and attributes.
+As you can see, we find a name for the function we want to build, which in this case is `my_lm`, and specify that we are going to attribute a `function` to this name. Following this assignment, we find a set of curved brackets `(...)` followed by a set of curly brackets `{...}` which should include the *arguments* and *body* of the function respectively. While the *body* of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.
 
 ### Function arguments
 
 Before implementing a function, we first need to ask ourselves what is the basic information that we need to obtain the desired output. In the case of least-squares regression, as mentioned earlier, the only information that is essential to perform estimation and inference is the vector of observations $\mathbf{y}$ representing the response variable and the matrix of covariates $\mathbf{X}$. These will therefore have to be the elements we need to provide to our function in order for it to deliver an estimate of $\boldsymbol{\beta}$ and, in R, we can provide the names we want for them (say `y` and `X` respectively): 
 
-```{r}
+```{r, eval=FALSE}
 my_lm <- function (y, X) {
   
   ...
@@ -177,24 +215,44 @@ my_lm <- function (y, X) {
 
 ```
 
-Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. To do so, we will study an example taken from @wood2017generalized which discusses a dataset collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the "Hubble constant'' which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the "big bang" theory. The link is given by this simple linear relationship
+In the above syntax, we used so-called *positional matching* where arguments to the function must be entered in the same order as they are defined in the function itself. In our example, the response variable is given by `hubble$y` while the covariates (in this case only one covariate) is given by `hubble$x`. These arguments need to be entered in the correct order:
 
-\begin{equation*}
-  y = \beta x ,
-\end{equation*}
-
-where $y$ represents the velocity while $x$ is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. $\beta^{-1}$) gives the age of the universe based on the big bang theory. 
-
-Therefore let us use the abovementioned dataset to estimate Hubble's constant to then get an estimate of the age of the universe. This dataset can be found in the `gamair` package under the name `hubble` and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.
-
-```{r}
-# Load gamair library and retrieve Hubble dataset
-library(gamair)
-data(hubble)
-
-# Plot data
-plot(y = hubble$y, x = hubble$x, col="red", main="Distance vs. Velocity", ylab = "Velocity (in km/s)", xlab = "Distance (in Megaparsecs)")
+```{r, eval=FALSE}
+my_lm(hubble$y,hubble$x)
 ```
+
+since otherwise the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of the function, but it is suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:
+
+```{r, eval=FALSE}
+my_lm <- function (response = NA, covariates = NA) {
+  
+  ...
+  
+}
+
+```
+
+
+where `response` and `covariates` become the names of the variables that will be used within the body of the function. You can notice that we assigned the value `NA` to both of these variables. This is their "default" value which, if not specified otherwise, is used as input for the function (which in this case would either give an error or output `NA`).
+
+```{block2, type='rmdnote'}
+According to the type of function, it is possible to give other default values that would deliver an output (see for example the values of the arguments `mean` and `sd` in the base function `rnorm()`).
+```
+
+In this new setting, we would therefore use the function as follows:
+
+```{r, eval=FALSE}
+my_lm(response = hubble$y, covariates = hubble$x)
+```
+
+Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through *perfect matching*, meaning that it searches for the arguments matching the exact name (in our case "response" and "covariates"). Failing to match the arguments by their exact name, R then searches for the arguments through *prefix matching*, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:
+
+```{r, eval=FALSE}
+my_lm(r = hubble$y, cova = hubble$x)
+```
+
+So, as long 
+Let's implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. 
 
 Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable $y$ and the distance as the explanatory variable $x$. Let us therefore start by implementing  Eq. \@ref(eq:lsformula) to get an estimate of $\beta$.
 
