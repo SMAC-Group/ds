@@ -8,13 +8,6 @@ When working on a report or a project, it is often the case that you keep separa
 
 In these cases, after having modified and changed different parts of a report, you probably find yourself saving the same file over and over again while losing track of what changes you made. To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This software is generally called "version control" and this chapter discusses the features of this software as well as introducing a specific version control platform called "GitHub". The latter includes a series of highly useful tools that can be extremely helpful, not only for the projects developed based on this book, but also for any personal or collaborative project you may undertake in the future. 
 
-Below is a video introducing GitHub. 
-
-<center>
-```{r, echo=FALSE}
-knitr::include_url("https://www.youtube.com/embed/SB5YkjB9FWc")
-```
-</center>
 
 ## Version Control 
 
@@ -27,10 +20,18 @@ As mentioned above, *version control* is a system that records changes to a file
 
 All these features are highly important when projects start becoming more complex and/or different collaborators contribute to it. In the next section we present a version control platform called "GitHub" that is commonly used among programmers and software developers thereby allowing them also to make their work visible and available to the general public. 
 
+
 ## Git and GitHub
 
 Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible through GitHub which is a commercial website. The latter uses the Git platform and stores local files into a flexible folder called a "repository". For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.
 
+Below is a video introducing GitHub. 
+
+<center>
+```{r, echo=FALSE}
+knitr::include_url("https://www.youtube.com/embed/SB5YkjB9FWc")
+```
+</center>
 
 ### Git Setup 
 
@@ -69,6 +70,7 @@ Your GitHub profile can also serve as a *resume* of your data science skills tha
 
 After you have set up your profile, make sure you verify your email address and, for the purposes of evaluating your performance in this course, send us your GitHub user ID (eg. jjl70) to `justinlee@psu.edu`. 
 
+
 ### Student Developer Pack
 
 As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this [link](https://education.github.com/discount_requests/new) and follow the steps below to set up a "student developer pack" discount request to GitHub. Through this setup it will be possible for you not only to have free *public* repositories but also to make your own *private* repositories for free. 
@@ -76,6 +78,7 @@ As a student, it is possible to benefit from specific advantages when using GitH
 <center>
 ![](../images/developer_pack.png)
 </center>
+
 
 ## GitHub Workflow 
 
@@ -88,15 +91,22 @@ knitr::include_url("https://www.youtube.com/embed/-cLn7Uk-Zo0")
 </center>
 
 Here is a video demonstrating basic GitHub workflow within RStudio. 
-
 <center>
 ```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/VOIQgViCyTo")
 ```
 </center>
+
 
 ### Branching 
 
 Above, we talk about the workflow in terms of directly making changes in the master branch. Branching is essentially creating an environment in which we can change anything without obstructing our original document. This idea is very useful for group-based activities, where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main `master` branch. You can learn more about branching [here](https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging) and [here](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a). 
+
+
+### Pull 
+
+Before starting, make sure to always review changes that another collaborator has made. After reviewing, pull or synchronize with the most recent version of the repository to avoid merge conflicts. If merge conflicts were to happen, it can still be solved, but will most likely cause some confusion. 
+
 
 ### Commits 
 
@@ -104,13 +114,19 @@ After we have created the branch, we can start modifying the documents (add, edi
 
 <center>![](../images/git_commit.png)</center>
 
+
 #### Pull Request 
 
 If you are directly working on the master branch, please disregard this section. Else, a `pull request` may be made by the person working on the branch, so that other collaborators can discuss about the commits made in the branch. Also, there are options for conversation in which they can review and comment directly onto the code as well. 
 
+
 ### Push or Merge 
 
 Once you have either made the commits on your master branch or have gotten the pull request confirmed by other collaborators, we can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow. After this step, we rinse and repeat the above procedure.  
+
+### Merge Conflicts 
+
+Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted. These may not be the only situations. To resolve the conflicts, we must directly edit the documents. Make sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups. 
 
 
 ## GitHub Workflow on Command Line / Git Bash 
@@ -135,6 +151,17 @@ However, it is better for us to start with using more graphical user interface o
 It is important to know what is happening when we create, change, push, branch, and pull from a repository.
 
 
+## Issues 
+
+Issues within GitHub is a very good way to keep track of group tasks, bugs, and announcements for your projects. Below is a basic video introducing `issues` in GitHub. 
+
+<center>
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/HRikDvXEpVM")
+```
+</center>
+
+
 ## Slack Integration 
 
 Slack is a platform created for utilizing communication between group members. It allows for direct message, as well as group messages. (like group chatting) More information on how to use Slack can be found in this [Slack Tutorial](https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members).
@@ -142,6 +169,14 @@ Slack is a platform created for utilizing communication between group members. I
 <center>![Screenshot of an Example Slack Group](../images/slack.png)</center>
 
 An added benefit of using Slack is that we can integrate GitHub, in a way that whenever someone pushes or makes a pull request, notifications will be posted to the group. More information on GitHub integration on Slack can be found [here](https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack). 
+
+Below is a video demonstrating Slack in a real-life setting.
+
+<center>
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/PpnFCp4Wr_g")
+```
+</center>
 
 
 ## Additional References 
