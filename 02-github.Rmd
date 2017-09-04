@@ -163,8 +163,6 @@ knitr::include_url("https://www.youtube.com/embed/HRikDvXEpVM")
 
 Slack is a platform created for utilizing communication between group members. It allows for direct message, as well as group messages. (like group chatting) More information on how to use Slack can be found in this [Slack Tutorial](https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members).
 
-<center>![Screenshot of an Example Slack Group](images/slack.png)</center>
-
 An added benefit of using Slack is that we can integrate GitHub, in a way that whenever someone pushes or makes a pull request, notifications will be posted to the group. More information on GitHub integration on Slack can be found [here](https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack). 
 
 Below is a video demonstrating Slack in a real-life setting.
