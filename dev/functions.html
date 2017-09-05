@@ -275,34 +275,52 @@ which verifies Eq. @ref(eq:lsformula).
 <p>In the above syntax, we used so-called <em>positional matching</em> where arguments to the function must be entered in the same order as they are defined in the function itself. In our example, the response variable is given by <code>hubble$y</code> while the covariates (in this case only one covariate) is given by <code>hubble$x</code>. These arguments need to be entered in the correct order:</p>
 <pre class="r"><code>my_lm(hubble$y,hubble$x)</code></pre>
 <p>since otherwise the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of the function, but it is suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:</p>
-<pre class="r"><code>my_lm &lt;- function (y = NA, X = NA) {
+<pre class="r"><code>my_lm &lt;- function (response = NA, covariates = NA) {
   
   ...
   
 }</code></pre>
-<p>where <code>y</code> and <code>X</code> become the names of the variables that will be used within the body of the function. You can notice that we assigned the value <code>NA</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would either give an error or output <code>NA</code>).</p>
+<p>where <code>response</code> and <code>covariates</code> become the names of the variables that will be used within the body of the function. You can notice that we assigned the value <code>NA</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would either give an error or output <code>NA</code>).</p>
 
 <div class="rmdnote">
-According to the type of function, it is possible to give other default values that would deliver an output (see for example the values of the arguments <code>mean</code> and <code>sd</code> in the function)
+According to the type of function, it is possible to give other default values that would deliver an output (see for example the values of the arguments <code>mean</code> and <code>sd</code> in the base function <code>rnorm()</code>).
 </div>
 <p></p>
-<p>Let’s implement Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat) and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R.</p>
-<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. @ref(eq:lsformula) to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
-<pre class="r"><code># Define parameters and variables
-n = dim(hubble)[1] # number of observations
-p = 1 # number of explanatory variables
-df = n - p # degrees of freedom
-x = hubble$x # distance (explanatory variable)
-y = hubble$y # velocity (response variable)
+<p>In this new setting, we would therefore use the function as follows:</p>
+<pre class="r"><code>my_lm(response = hubble$y, covariates = hubble$x)</code></pre>
+<p>Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through <em>perfect matching</em>, meaning that it searches for the arguments matching the exact name (in our case “response” and “covariates”). Failing to match the arguments by their exact name, R then searches for the arguments through <em>prefix matching</em>, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:</p>
+<pre class="r"><code>my_lm(r = hubble$y, cova = hubble$x)</code></pre>
+<p>So, as long we correctly specify the beginning of the argument’s name and as long as it’s not ambigiuous (meaning that its name cannot be confused with that of another argument), then it is possible to provide only part of the argument’s name and R will recognise and correctly associate the provided value with the corresponding variable.</p>
+<p>Finally, failing to match arguments in any of the above cases, then R uses positional matching and therefore assigns values to the variables based on the order they have been entered when calling the function.</p>
 
-# Estimate of beta from Eq. (1.1)
-beta.hat = solve(t(x)%*%x)%*%t(x)%*%y</code></pre>
+<div class="rmdnote">
+It is possible to also specify arguments in terms of the default value of other arguments. For example, the <code>add()</code> function seen in the toy example seen at the beginning of this chapter could specify the arguments as <code>a = 1, b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">@wickham2014advanced</span> .
+</div>
+<p></p>
+<p>Additional arguments can be left to be specified by the user when there is the possibility to specify arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> representing the coordinates of the points in the plot and other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = &quot;l&quot;</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
+</div>
+<div id="function-body" class="section level3">
+<h3>Function body</h3>
+<p>The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat) and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R.</p>
+<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. @ref(eq:lsformula) within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
+<pre class="r"><code>my_lm = function(response = NA, covariates = NA) {
+  
+  # Define parameters
+  n &lt;- length(response) # we could also use dim(covariates)[1]
+  p &lt;- dim(covariates)[2]
+  df &lt;- n - p
+  
+  # Estimate beta through Eq. (1.1)
+  beta.hat &lt;- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
+  
+  # Return the estimated value of beta
+  return(beta.hat)
+  
+}</code></pre>
 <p>We now have an estimated value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
 <pre class="r"><code>hubble.const = beta.hat/3.09e19 # Estimated Hubble's constant in inverse seconds
 age.sec = 1/hubble.const # Age of the universe in seconds
 age.sec/(60^2*24*365) # Age of the universe in years</code></pre>
-<pre><code>##             [,1]
-## [1,] 12794692825</code></pre>
 <p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>.</p>
 <p>Now, let’s suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. In order to do so we need to know the variance of <span class="math inline">\(\hat{\beta}\)</span> and we consequently need to estimate <span class="math inline">\(\sigma^2\)</span> since we don’t know it. Let us therefore use Eq. @ref(eq:lsvar) and @ref(eq:lssig2hat) to compute it.</p>
 <pre class="r"><code># Estimate of the residual variance from Eq. (1.3)
@@ -328,7 +346,6 @@ var.beta = sigma2.hat*solve(t(x)%*%x)</code></pre>
 <pre class="r"><code># 95% confidence interval for the Hubble constant
 ci.beta = c(beta.hat - qnorm(p = 0.975)*sqrt(var.beta), beta.hat + qnorm(p = 0.975)*sqrt(var.beta))
 ci.beta</code></pre>
-<pre><code>## [1] 68.81032 84.35203</code></pre>
 <p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level. To conclude this analysis, let us compare the results of Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat) with the outputs of the linear regression function <code>lm()</code> that can be found in base R.</p>
 <pre class="r"><code># Linear regression with lm() function
 fit_lm = lm(y~x-1)
@@ -339,54 +356,8 @@ function_results = c(fit_lm$coefficients, (1/df)*t(fit_lm$residuals)%*%fit_lm$re
 results = cbind(equation_results, function_results)
 row.names(results) = c(&quot;beta.hat&quot;, &quot;sigma2.hat&quot;)
 results</code></pre>
-<pre><code>##            equation_results function_results
-## beta.hat           76.58117         76.58117
-## sigma2.hat      67046.33165      67046.33165</code></pre>
 <p>As one can notice, the two procedures give the same outputs.</p>
 </div>
-</div>
-<div id="function-arguments-1" class="section level2">
-<h2>Function arguments</h2>
-<!-- As you can see, the function's name is "nonpar_boot( )" and it has three arguments to it: -->
-<!-- - `x` which represents the original sample on which we would like to perform the bootstrap procedure; -->
-<!-- - `B` which represents the number of bootstrap samples we wish to generate; -->
-<!-- - `alpha` which determines the size of the confidence interval we wish to compute -->
-<!-- The function therefore has three arguments to it and these can be extracted by using the function `formals()`: -->
-<!-- ```{r} -->
-<!-- formals(nonpar_boot) -->
-<!-- ``` -->
-<!-- A feature which can be underlined at this stage is that, as can be seen for the above mentioned function, it is possible to provide default values for some, all or none of the function arguments. In this case, default values have been given for the arguments `B` and `alpha`, consequently the user does not need to specify the value of these arguments unless they wish to specify different values compared to the default values given. -->
-<!-- ```{block2, type='rmdnote'} -->
-<!-- R functions are quite flexible when specifying the arguments. These can in fact be specified by exact name, prefix matching or position (and are given priority in this order). For example, one could specify the arguments for the above non-parametric bootstrap function as follows "nonpar_boot(B = 200, sim, a = 0.1)" where the object "sim" is the sample which in the function is named "x". For a more in-depth overview of this feature refer to @wickham2014advanced. -->
-<!-- ``` -->
-<!-- The definition of the argument values can be very flexible and can also be defined as functions of other arguments. For example, we could have defined the bootstrap function as follows: -->
-<!-- ```{r} -->
-<!-- nonpar_boot_numb1 <- function(x, B = ceiling(length(x)*alpha), alpha = 0.05) { -->
-<!--   boot_mean <- rep(NA, B) -->
-<!--   n <- length(x) -->
-<!--   for (i in 1:B) { -->
-<!--     sample_star <- x[sample(1:n, replace = TRUE)] -->
-<!--     boot_mean[i] <- mean(sample_star) -->
-<!--   } -->
-<!--   return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2)))) -->
-<!-- } -->
-<!-- sim <- rnorm(10e3) -->
-<!-- nonpar_boot_numb1(sim)$boot.number -->
-<!-- ``` -->
-<!-- or define it through variables that are included within the function itself: -->
-<!-- ```{r} -->
-<!-- nonpar_boot_numb2 <- function(x, B = value, alpha = 0.05) { -->
-<!--   value <- ceiling(length(x)*alpha) -->
-<!--   boot_mean <- rep(NA, B) -->
-<!--   n <- length(x) -->
-<!--   for (i in 1:B) { -->
-<!--     sample_star <- x[sample(1:n, replace = TRUE)] -->
-<!--     boot_mean[i] <- mean(sample_star) -->
-<!--   } -->
-<!--   return(list(boot.number = B, boot.quant = quantile(boot_mean, c(alpha/2, 1 - alpha/2)))) -->
-<!-- } -->
-<!-- nonpar_boot_numb2(sim)$boot.number -->
-<!-- ``` -->
 </div>
 <div id="function-environment" class="section level2">
 <h2>Function environment</h2>
