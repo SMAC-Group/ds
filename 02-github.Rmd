@@ -47,7 +47,7 @@ $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
 
-This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once if using the "--global" option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
+This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once when using the "--global" option because, in this case, Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
 
 
 ### GitHub Setup 
@@ -79,7 +79,7 @@ As a student, it is possible to benefit from specific advantages when using GitH
 
 ## GitHub Workflow 
 
-Here is a video demonstrating basic GitHub workflow in GitHub Desktop (initializing, committing, pushing, and pulling) we will follow for our assignments and projects. 
+Here is a video demonstrating the basic GitHub workflow in GitHub Desktop (initializing, committing, pushing and pulling) that we will follow for our assignments and projects. 
 
 <center>
 ```{r, echo = FALSE}
@@ -87,27 +87,28 @@ knitr::include_url("https://www.youtube.com/embed/-cLn7Uk-Zo0")
 ```
 </center>
 
-Here is a video demonstrating basic GitHub workflow within RStudio. 
+In addition, here is a video demonstrating the basic GitHub workflow within RStudio. 
 <center>
 ```{r, echo = FALSE}
 knitr::include_url("https://www.youtube.com/embed/VOIQgViCyTo")
 ```
 </center>
 
+While the main features and actions to manage the workflow in GitHub are desribed in the above videos, the following paragraphs give some extra details that can be helpful to consider when working with this version-control platform.
 
 ### Branching 
 
-Above, we talk about the workflow in terms of directly making changes in the master branch. Branching is essentially creating an environment in which we can change anything without obstructing our original document. This idea is very useful for group-based activities, where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main `master` branch. You can learn more about branching [here](https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging) and [here](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a). 
+In the previous section we discussed the workflow as a means of directly making changes in the so-called *master* branch which is where our original and up-to-date work is stored. However, when working with different collaborators for example, it may be appropriate to create separate branches that will avoid modifying the original one until you're sure of the changes. In this perspective, *branching* is essentially creating an environment in which we can change anything without obstructing our original document. As mentioned, this idea is very useful for group-based activities where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main `master` branch. You can learn more about branching [here](https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging) and [here](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a). 
 
 
 ### Pull 
 
-Before starting, make sure to always review changes that another collaborator has made. After reviewing, pull or synchronize with the most recent version of the repository to avoid merge conflicts. If merge conflicts were to happen, it can still be solved, but will most likely cause some confusion. 
+Before starting (or continuing) to work on your project, make sure to always review changes that another collaborator has made. Once this is done you can make sure there are no merge conflicts and you can pull (or synchronize) your local branch with the most recent version of the repository. If merge conflicts were to happen, these can still be solved but it would be preferable to avoid them generating confusion. 
 
 
 ### Commits 
 
-After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. After we have made these changes, we need to `commit` it with an informative message, explaining why a particular change is being made. These specific messages allow us to backtrack on these changes later on if we decide to look at the history of any of these files and find a bug. Without it being informative, there will be no point in using version control like GitHub. [^1]
+After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. Once these changes are made, you need to `commit` them with an informative message, explaining why a particular change is being made. These specific messages allow you to backtrack on these changes later if you decide to look at the history of any of these files and find a bug. This information is extremely important since otherwise there's little point in using version control like GitHub. [^1]
 
 <center>![](images/git_commit.png)</center>
 
@@ -119,11 +120,11 @@ If you are directly working on the master branch, please disregard this section.
 
 ### Push or Merge 
 
-Once you have either made the commits on your master branch or have gotten the pull request confirmed by other collaborators, we can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow. After this step, we rinse and repeat the above procedure.  
+Once you have either made the commits on your master branch or have the pull request confirmed by other collaborators, you can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow after which we can clear and repeat the above procedure.  
 
 ### Merge Conflicts 
 
-Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted. These may not be the only situations. To resolve the conflicts, we must directly edit the documents. Make sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups. 
+Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted (although these may not be the only situations). To resolve these conflicts, we must directly edit the documents making sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups. 
 
 
 ## GitHub Workflow on Command Line / Git Bash 
@@ -141,16 +142,16 @@ Here are commands that we can use within `Git Bash` if we are more comfortable w
 | git push                       | Commit saved changes to **remote** repository |
 | git pull                       | Update changes from the **remote** repository |
 
-However, it is better for us to start with using more graphical user interface options, since they help us understand better of what is going on. You **do not** want to follow this example[^2]...
+However, it is better for us to startby using more graphical user-interface options since they allow us to better understand what is going on. You **do not** want to follow this example[^2]...
 
 <center>![](images/git_misuse.png)</center>
 
-It is important to know what is happening when we create, change, push, branch, and pull from a repository.
+It is always important to know what is happening when we create, change, push, branch and pull from a repository.
 
 
 ## Issues 
 
-Issues within GitHub is a very good way to keep track of group tasks, bugs, and announcements for your projects. Below is a basic video introducing `issues` in GitHub. 
+*Issues* are a very good way to keep track of group tasks, bugs and announcements for your projects within GitHub. Below is a basic video introducing `issues` in GitHub. 
 
 <center>
 ```{r, echo = FALSE}
@@ -161,11 +162,11 @@ knitr::include_url("https://www.youtube.com/embed/HRikDvXEpVM")
 
 ## Slack Integration 
 
-Slack is a platform created for utilizing communication between group members. It allows for direct message, as well as group messages. (like group chatting) More information on how to use Slack can be found in this [Slack Tutorial](https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members).
+Slack is a platform created to communicate between group members, allowing for both direct individual messages as well as group messages. More information on how to use Slack can be found in this [Slack Tutorial](https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members).
 
-An added benefit of using Slack is that we can integrate GitHub, in a way that whenever someone pushes or makes a pull request, notifications will be posted to the group. More information on GitHub integration on Slack can be found [here](https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack). 
+An added benefit of using Slack is that it can be integrated with GitHub in such a way that notifications will be posted to the group whenever someone pushes or makes a pull request. More information on GitHub integration with Slack can be found [here](https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack). 
 
-Below is a video demonstrating Slack in a real-life setting.
+A more detailed video providing a demonstration on the use of Slack in a real-life setting can be found below.
 
 <center>
 ```{r, echo = FALSE}
@@ -176,7 +177,7 @@ knitr::include_url("https://www.youtube.com/embed/PpnFCp4Wr_g")
 
 ## Additional References 
 
-Here are some supplemental references for your comprehension.
+Below are some supplemental references that can support you in a better use of GitHub.
 
 - [GitHub Introduction with RStudio](https://www.r-bloggers.com/rstudio-and-github/)
 - [GitHub Workflow](https://guides.github.com/introduction/flow/)
