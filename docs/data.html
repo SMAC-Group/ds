@@ -672,11 +672,13 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
 \end{equation}\]</span>
 <p>The reason for defining this statistic as <em>Excess</em> Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on button below:</p>
-<button id="hidebutton1">
+<button id="hidebutton">
 Excess Kurtosis Derivation
 </button>
-<div id="hideclass1">
-<p>Assuming <span class="math inline">\(X\)</span> to be Gaussian we have <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span>. Then, we define <span class="math inline">\(Z\)</span> as <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> and <span class="math inline">\(Y\)</span> as <span class="math inline">\(Y = Z^2 \sim \chi^2_1\)</span>. Remember that the variance of a random variable following a <span class="math inline">\(\chi^2_1\)</span> distribution has the following properties: <span class="math inline">\(\text{Var}[Y] = 2\)</span> and <span class="math inline">\(\mathbb{E}[Y] = 1\)</span>. Using these definitions and properties, we obtain:</p>
+<div id="hideclass">
+
+<div class="rmdnote">
+<p>Assuming <span class="math inline">\(X\)</span> to be Gaussian we have <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span>. Then, we define <span class="math inline">\(Z\)</span> as <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> and <span class="math inline">\(Y\)</span> as <span class="math inline">\(Y = Z^2 \sim \chi^2_1\)</span>. Remember that a random variable following a <span class="math inline">\(\chi^2_1\)</span> distribution has the following properties: <span class="math inline">\(\text{Var}[Y] = 2\)</span> and <span class="math inline">\(\mathbb{E}[Y] = 1\)</span>. Using these definitions and properties, we obtain:</p>
 <span class="math display">\[\begin{equation}
   \begin{aligned}
 \text{Kurt}  &amp;= \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3 = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left[\text{Var} \left(X\right)\right]^2} - 3 = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\sigma^4}  - 3\\
@@ -684,17 +686,11 @@ Excess Kurtosis Derivation
 &amp;= \text{Var}[Y] + \mathbb{E}^2\left[Y\right]  - 3 = 0.
   \end{aligned}
 \end{equation}\]</span>
-<p>This implies that the theoretical value of the excess Kurtosis for a normally distributed random variable is <span class="math inline">\(0\)</span>.</p>
+This implies that the theoretical value of the excess Kurtosis for a normally distributed random variable is <span class="math inline">\(0\)</span>.
 </div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript">
-  $("#hidebutton1").click(function(){
-    $("#hideclass1").toggle();
-  });
-  $("#hidebutton2").click(function(){
-    $("#hideclass2").toggle();
-  });
-</script>
+<p></p>
+</div>
+<p></p>
 <p>Given this statistic, it is useful to compute this on the observed data and for this purpose a common estimator of the excess Kurtosis is</p>
 <span class="math display">\[\begin{equation}
   k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3,
@@ -927,10 +923,6 @@ a_1     &amp; 0       &amp; \cdots &amp; 0  \\
 </div>
 <div id="example-summary-statistics-with-matrix-notation" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Example: Summary Statistics with Matrix Notation</h3>
-<button id="hidebutton1">
-Hide/Show Example
-</button>
-<div id="hideclass1">
 <p>A simple example of the operations we discussed in the previous section is given by many common statistics that can be re-expressed using matrix notation. As an example, we will consider three common statistics that are the sample mean, variance and covariance. Let us consider the following two samples of size <span class="math inline">\(n\)</span></p>
 <span class="math display">\[\begin{equation*}
   \begin{aligned}
@@ -1034,14 +1026,11 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 <pre><code>##           x         y
 ## x 3.6375070 0.0789763
 ## y 0.0789763 1.0274490</code></pre>
-</div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
-  $("#hidebutton1").click(function(){
-    $("#hideclass1").toggle();
-  });
-  $("#hidebutton2").click(function(){
-    $("#hideclass2").toggle();
+    $("#hideclass").hide();
+    $("#hidebutton").click(function(){
+    $("#hideclass").toggle();
   });
 </script>
 
