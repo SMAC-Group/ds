@@ -448,7 +448,7 @@ Assuming $X$ to be Gaussian we have $X \sim \mathcal{N}(\mu, \sigma^2)$. Then, w
 \begin{equation}
   \begin{aligned}
 \text{Kurt}  &= \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3 = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left[\text{Var} \left(X\right)\right]^2} - 3 = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\sigma^4}  - 3\\
-&= {\mathbb{E}}\left[\left(\frac{X - \mathbb{E}[X]}{\sigma}\right)^4\right] = \mathbb{E}\left[Z^4\right] - 3 = \text{Var}[Z^2] + \mathbb{E}^2\left[Z^2\right]  - 3\\
+&= {\mathbb{E}}\left[\left(\frac{X - \mathbb{E}[X]}{\sigma}\right)^4\right] - 3 = \mathbb{E}\left[Z^4\right] - 3 = \text{Var}[Z^2] + \mathbb{E}^2\left[Z^2\right]  - 3\\
 &= \text{Var}[Y] + \mathbb{E}^2\left[Y\right]  - 3 = 0.
   \end{aligned}
 \end{equation}
