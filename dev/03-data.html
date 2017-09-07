@@ -119,243 +119,900 @@ $(document).ready(function () {
 </div>
 
 
-<button onclick="myFunction()">
-Click Me
+<div id="part-introduction-to-r" class="section level1 unnumbered">
+<h1>(PART) Introduction to R</h1>
+</div>
+<div id="data" class="section level1">
+<h1>Data Structures</h1>
+<p>There are different data types that are commonly used in R among which the most important ones are the following:</p>
+<ul>
+<li><p><strong>Numeric</strong> (or double): these are used to store real numbers. Examples: -4, 12.4532, 6.</p></li>
+<li><p><strong>Integer</strong>: examples: 2L, 12L.</p></li>
+<li><p><strong>Logical</strong> (or boolean): examples: <code>TRUE</code>, <code>FALSE</code>.</p></li>
+<li><p><strong>Character</strong>: examples: <code>&quot;a&quot;</code>, <code>&quot;Bonjour&quot;</code>.</p></li>
+</ul>
+<p>In R there are basically five types of data structures in which elements can be stored. A data structure is said to <em>homogeneous</em> if it only contains elements of the same type (for example it only contains character or only numeric values) and <em>heterogenous</em> if it contains elements of more than one type. The five types of data structrures are commonly summarized in a table similar to the one below <span class="citation">[see e.g. @wickham2014advanced]</span>:</p>
+<table>
+<caption>(#tab:ds) Five most common types of data structrures used in R <span class="citation">[@wickham2014advanced]</span>.</caption>
+<thead>
+<tr class="header">
+<th align="left">Dimension</th>
+<th align="center">Homogenous</th>
+<th align="center">Heterogeneous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">Vector</td>
+<td align="center">List</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">Matrix</td>
+<td align="center">Data Frame</td>
+</tr>
+<tr class="odd">
+<td align="left">n</td>
+<td align="center">Array</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Consider a simple data set of the top five male single tennis players presented below:</p>
+<table>
+<caption>(#tab:tennis) Five best male single tennis players as ranked by ATP (07-15-2017).</caption>
+<thead>
+<tr class="header">
+<th align="center">Name</th>
+<th align="center">Date of Birth</th>
+<th align="center">Born</th>
+<th align="center">Country</th>
+<th align="center">ATP Ranking</th>
+<th align="left">Prize Money</th>
+<th align="left">Win Percentage</th>
+<th align="left">Grand Slam Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Andy Murray</td>
+<td align="center">15 May 1987</td>
+<td align="center">Glasgow, Scotland</td>
+<td align="center">Great Britain</td>
+<td align="center">1</td>
+<td align="left">60,449,649</td>
+<td align="left">78.07</td>
+<td align="left">9</td>
+</tr>
+<tr class="even">
+<td align="center">Rafael Nadal</td>
+<td align="center">3 June 1986</td>
+<td align="center">Manacor, Spain</td>
+<td align="center">Spain</td>
+<td align="center">2</td>
+<td align="left">85,920,132</td>
+<td align="left">82.48</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="center">Stan Wawrinka</td>
+<td align="center">28 March 1985</td>
+<td align="center">Lausanne, Switzerland</td>
+<td align="center">Switzerland</td>
+<td align="center">3</td>
+<td align="left">30,577,981</td>
+<td align="left">63.96</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="center">Novak Djokovic</td>
+<td align="center">22 May 1987</td>
+<td align="center">Belgrade, Serbia</td>
+<td align="center">Serbia</td>
+<td align="center">4</td>
+<td align="left">109,447,408</td>
+<td align="left">82.77</td>
+<td align="left">12</td>
+</tr>
+<tr class="odd">
+<td align="center">Roger Federer</td>
+<td align="center">8 August 1981</td>
+<td align="center">Basel, Switzerland</td>
+<td align="center">Switzerland</td>
+<td align="center">5</td>
+<td align="left">104,445,185</td>
+<td align="left">81.80</td>
+<td align="left">18</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that this data set contains a variety of data types; in the next sections we will use these data to illustrate how to work with five common data structures.</p>
+<button data-toggle="collapse" data-target="#demo">
+More info
 </button>
-<div id="myDIV">
-<p>This is my DIV element.</p>
+<div id="demo" class="collapse">
+<p>Some additional info… :)</p>
 </div>
-<script>
-function myFunction() {
-    var x = document.getElementById('myDIV');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-<div id="array" class="section level2">
-<h2>Array</h2>
-<p>Simply, vectors are one-dimensional and matrices are two-dimensional objects, and these homogenous objects are also known as <strong>arrays</strong>. We can extend the array into more than two dimensions by specifying the <code>dim</code> parameter within the <code>array</code> function. Arrays are rarer than matrices and vectors, but worth being aware of.</p>
-<p>Below we initialize a three dimensional array, from 2 to 13.</p>
-<pre class="r"><code>three_dim &lt;- array(data = 2:13, dim = c(2, 3, 2))
-three_dim</code></pre>
-<pre><code>## , , 1
-## 
-##      [,1] [,2] [,3]
-## [1,]    2    4    6
-## [2,]    3    5    7
-## 
-## , , 2
-## 
-##      [,1] [,2] [,3]
-## [1,]    8   10   12
-## [2,]    9   11   13</code></pre>
-<p>As you can see, two 2x3 matrices were created containing numbers from 2 to 13. The <code>, , *</code> syntax describes which specific dimension the matrix is contained in. Like what we experimented with matrices, we can extract and manipulate information.</p>
-<pre class="r"><code>length(three_dim) # length is 12 </code></pre>
-<pre><code>## [1] 12</code></pre>
-<pre class="r"><code>dim(three_dim) # dimensions are 2x3x2</code></pre>
-<pre><code>## [1] 2 3 2</code></pre>
-<pre class="r"><code>is.array(three_dim) # yes it is an array!</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<p>Note that when changing the dimension names, we need to save it as a <code>list</code>. We will talk more about lists in the coming section.</p>
-<pre class="r"><code>dimnames(three_dim) &lt;- list(c(&quot;apple&quot;, &quot;banana&quot;), c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;), c(&quot;Walmart&quot;, &quot;Costco&quot;)) # feel free to make 
-three_dim</code></pre>
-<pre><code>## , , Walmart
-## 
-##        one two three
-## apple    2   4     6
-## banana   3   5     7
-## 
-## , , Costco
-## 
-##        one two three
-## apple    8  10    12
-## banana   9  11    13</code></pre>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<p>A vector has three important properties:</p>
+
+<div class="rmdimportant">
+<ul>
+<li>The <strong>Type</strong> of objects contained in the vector. The function <code>typeof()</code> returns a description of the type of objects in a vector.</li>
+<li>The <strong>Length</strong> of a vector indicates the number of elements in the vector. This information can be obtained using the function <code>length()</code>.</li>
+<li><strong>Attributes</strong> are metadata attached to a vector. The functions <code>attr()</code> and <code>attributes()</code> can be used to store and retrive attributes (more details can be found in Section @ref(vectattr))
 </div>
-<div id="list" class="section level2">
-<h2>List</h2>
-<p>A list is one of the commonly used heterogeneous data structures, which depicts a generic vector containing other object types. For example, we can have a numeric vector as one element, a matrix, and a character vector as another element. Here we can create a list that contains all these different element types.</p>
-<pre class="r"><code>num_vec &lt;- c(160, 188, 140)
-char_vec &lt;- c(&quot;Height&quot;, &quot;Weight&quot;, &quot;Length&quot;)
-my_mat &lt;- matrix(0, nrow = 5, ncol = 5)
-
-# List Initialization without Names 
-# list(num_vec, char_vec, my_mat)
-
-# List Initialization with Custom Names 
-list(Number &lt;- num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
-<pre><code>## [[1]]
-## [1] 160 188 140
-## 
-## $Character
-## [1] &quot;Height&quot; &quot;Weight&quot; &quot;Length&quot;
-## 
-## $Empty_Mat
-##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    0    0    0    0    0
-## [2,]    0    0    0    0    0
-## [3,]    0    0    0    0    0
-## [4,]    0    0    0    0    0
-## [5,]    0    0    0    0    0</code></pre>
-<p>Let’s store this list in a variable.</p>
-<pre class="r"><code>my_list &lt;- list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)</code></pre>
-<p>We can subset lists like we did previously.</p>
-<pre class="r"><code># Extract the first and third element 
-my_list[c(1, 3)]</code></pre>
-<pre><code>## $Number
-## [1] 160 188 140
-## 
-## $Empty_Mat
-##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    0    0    0    0    0
-## [2,]    0    0    0    0    0
-## [3,]    0    0    0    0    0
-## [4,]    0    0    0    0    0
-## [5,]    0    0    0    0    0</code></pre>
-<pre class="r"><code># Compare these two subsets  
-my_list[1]</code></pre>
-<pre><code>## $Number
-## [1] 160 188 140</code></pre>
-<pre class="r"><code>my_list[[1]]</code></pre>
-<pre><code>## [1] 160 188 140</code></pre>
-<p>Do you see what the difference is? One generally uses <code>[[</code> to select any single element, whereas <code>[</code> returns a list of the selected elements. Using one bracket retains the class information, while using two brackets simplifies the list into a numeric vector.</p>
-<p>We can further subset the list.</p>
-<pre class="r"><code># First element of the $Number list 
-my_list[[1]][1]</code></pre>
-<pre><code>## [1] 160</code></pre>
-<pre class="r"><code># Why didn't this work? 
-my_list[1][1]</code></pre>
-<pre><code>## $Number
-## [1] 160 188 140</code></pre>
+</li>
+</ul>
+<p><code>c()</code> is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table @ref(tab:tennis):</p>
+<pre class="r"><code>grand_slam_win &lt;- c(9, 15, 5, 12, 18)</code></pre>
+<p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
+<pre class="r"><code>grand_slam_win</code></pre>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>Alternatively, we could have created and displayed the value by using <code>()</code> around the definition of the object itself as follows:</p>
+<pre class="r"><code>(grand_slam_win &lt;- c(9, 15, 5, 12, 18))</code></pre>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>Various forms of “nested concatenation” can be used to defined vectors, for example we could also define <code>grand_slam_win</code> as</p>
+<pre class="r"><code>(grand_slam_win &lt;- c(9, c(15, 5, c(12, c(18)))))</code></pre>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<p>This approach is often used to assemble vectors in various ways.</p>
+<p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
+<pre class="r"><code>(players &lt;- c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
+             &quot;Novak Djokovic&quot;, &quot;Roger Federer&quot;))</code></pre>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
+## [5] &quot;Roger Federer&quot;</code></pre>
+<div id="type" class="section level3">
+<h3>Type</h3>
+<p>We can evaluate the kind or type of elements that are stored in a vector using the function <code>typeof()</code>. For example, for the vectors we just created we obtain:</p>
+<pre class="r"><code>typeof(grand_slam_win)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>typeof(players)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>This is a little surprising as all the elements in <code>grand_slam_win</code> are integers and it would therefore seem natural to expect this as an output of the function <code>typeof()</code>. This is because R considers any number as a “double” by default, except when adding the suffix <code>L</code> after an integer. For example:</p>
+<pre class="r"><code>typeof(1)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>typeof(1L)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Therefore, we could express <code>grand_slam_win</code> as follows:</p>
+<pre class="r"><code>(grand_slam_win_int &lt;- c(9L, 15L, 5L, 12L, 18L))</code></pre>
+<pre><code>## [1]  9 15  5 12 18</code></pre>
+<pre class="r"><code>typeof(grand_slam_win_int)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>In general, the difference between the two is relatively unimportant.</p>
 </div>
-<div id="dataframe" class="section level2">
-<h2>Dataframe</h2>
-<p><em>Needs some rewording</em></p>
-<p>A data frame is used for storing data tables. A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list. The table contains lists of equal-length vectors, and most datasets will have a data frame format.</p>
-<p>We can create a data frame using data.frame()</p>
-<pre class="r"><code>### Creation
-
-players &lt;- c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
-             &quot;Novak Djokovic&quot;, &quot;Roger Federer&quot;)
-
-grand_slam_win &lt;- c(9, 15, 5, 12, 18)
-
-date_of_birth &lt;- c(&quot;15 May 1987&quot;, &quot;3 June 1986&quot;, &quot;28 March 1985&quot;, 
-                  &quot;22 May 1981&quot;, &quot;8 August 1981&quot;)
-
-country = c(&quot;Great Britain&quot;, &quot;Spain&quot;, &quot;Switzerland&quot;, 
-            &quot;Serbia&quot;, &quot;Switzerland&quot;)
-ATP_ranking &lt;- c(1, 2, 3, 4, 5)
-
-prize_money &lt;- c(60449649, 85920132, 30577981, 109447408, 104445185)
-
-tennis &lt;- data.frame(date_of_birth, grand_slam_win, country, 
-                    ATP_ranking, prize_money)
-
-dimnames(tennis)[[1]] &lt;- players
-tennis</code></pre>
-<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
-## Andy Murray      15 May 1987              9 Great Britain           1
-## Rafael Nadal     3 June 1986             15         Spain           2
-## Stan Wawrinka  28 March 1985              5   Switzerland           3
-## Novak Djokovic   22 May 1981             12        Serbia           4
-## Roger Federer  8 August 1981             18   Switzerland           5
-##                prize_money
-## Andy Murray       60449649
-## Rafael Nadal      85920132
-## Stan Wawrinka     30577981
-## Novak Djokovic   109447408
-## Roger Federer    104445185</code></pre>
-<p>We can check if we have achived our goal by using:</p>
-<pre class="r"><code>is.data.frame(tennis)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<div id="combination" class="section level3">
-<h3>Combination</h3>
-<p>Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player’s height and if he is right-handed or letf-handed.</p>
-<p>We can do so by using <code>cbind()</code> and <code>rbind()</code>:</p>
-<pre class="r"><code>height &lt;- c(1.90, 1.85, 1.83, 1.88, 1.85)
-hand &lt;- c(&quot;R&quot;,&quot;L&quot;,&quot;R&quot;,&quot;R&quot;,&quot;R&quot;)
-
-(tennis &lt;- cbind(tennis, data.frame(height, hand)))</code></pre>
-<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
-## Andy Murray      15 May 1987              9 Great Britain           1
-## Rafael Nadal     3 June 1986             15         Spain           2
-## Stan Wawrinka  28 March 1985              5   Switzerland           3
-## Novak Djokovic   22 May 1981             12        Serbia           4
-## Roger Federer  8 August 1981             18   Switzerland           5
-##                prize_money height hand
-## Andy Murray       60449649   1.90    R
-## Rafael Nadal      85920132   1.85    L
-## Stan Wawrinka     30577981   1.83    R
-## Novak Djokovic   109447408   1.88    R
-## Roger Federer    104445185   1.85    R</code></pre>
+<div id="coercion" class="section level3">
+<h3>Coercion</h3>
+<p>As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R <em>coerces</em> the data into a “shared” type. To identify this “shared” type we can use this simple rule:</p>
+<span class="math display">\[\begin{equation*}
+ \text{logical} &lt; \text{integer} &lt; \text{numeric} &lt; \text{character},
+\end{equation*}\]</span>
+<p>which simply means that if a vector contains more than one data type, the “shared” type will be that of the “largest” type according to the progression shown above. For example:</p>
+<pre class="r"><code># Logical + numeric
+(mix_logic_int &lt;- c(TRUE, 12, 0.5))</code></pre>
+<pre><code>## [1]  1.0 12.0  0.5</code></pre>
+<pre class="r"><code>typeof(mix_logic_int)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code># Numeric + character
+(mix_int_char &lt;- c(14.3, &quot;Hi&quot;))</code></pre>
+<pre><code>## [1] &quot;14.3&quot; &quot;Hi&quot;</code></pre>
+<pre class="r"><code>typeof(mix_int_char)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="subsetting" class="section level3">
 <h3>Subsetting</h3>
-<p>Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.</p>
-<pre class="r"><code># Let say we want only want to know the country and date of 
-# birth of the players
+<p>Naturally, it is possible to “subset” the values of in our vector in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
+<ul>
+<li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>grand_slam_win[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
+</ul>
+<pre class="r"><code># Accesing the first element
+grand_slam_win[1]</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code># Accesing the third and first value
+grand_slam_win[c(3, 1)]</code></pre>
+<pre><code>## [1] 5 9</code></pre>
+<pre class="r"><code># Duplicated indices yield duplicated values
+grand_slam_win[c(1, 1, 2, 2, 3, 4)]</code></pre>
+<pre><code>## [1]  9  9 15 15  5 12</code></pre>
+<ul>
+<li><strong>Negative Index</strong>: We <em>remove</em> elements in a vector using negative indices:</li>
+</ul>
+<pre class="r"><code># Removing the second obervation
+grand_slam_win[-2]</code></pre>
+<pre><code>## [1]  9  5 12 18</code></pre>
+<pre class="r"><code># Removing the first and fourth obserations
+grand_slam_win[c(-1, -4)]</code></pre>
+<pre><code>## [1] 15  5 18</code></pre>
+<ul>
+<li><strong>Logical Indices</strong>: Another useful approach is based on <em>logical</em> operators:</li>
+</ul>
+<pre class="r"><code># Access the first and fourth observations
+grand_slam_win[c(TRUE, FALSE, FALSE, TRUE, FALSE)]</code></pre>
+<pre><code>## [1]  9 12</code></pre>
 
-# There are two ways to select columns from a data frame
-# Like a list:
-tennis[c(&quot;country&quot;, &quot;date_of_birth&quot;)]</code></pre>
-<pre><code>##                      country date_of_birth
-## Andy Murray    Great Britain   15 May 1987
-## Rafael Nadal           Spain   3 June 1986
-## Stan Wawrinka    Switzerland 28 March 1985
-## Novak Djokovic        Serbia   22 May 1981
-## Roger Federer    Switzerland 8 August 1981</code></pre>
-<pre class="r"><code># Like a matrix
-tennis[, c(&quot;country&quot;, &quot;date_of_birth&quot;)]</code></pre>
-<pre><code>##                      country date_of_birth
-## Andy Murray    Great Britain   15 May 1987
-## Rafael Nadal           Spain   3 June 1986
-## Stan Wawrinka    Switzerland 28 March 1985
-## Novak Djokovic        Serbia   22 May 1981
-## Roger Federer    Switzerland 8 August 1981</code></pre>
-<pre class="r"><code># To acces a single element, let say the date of birth, 
-# you can also use:
-tennis$date_of_birth</code></pre>
-<pre><code>## [1] 15 May 1987   3 June 1986   28 March 1985 22 May 1981   8 August 1981
-## 5 Levels: 15 May 1987 22 May 1981 28 March 1985 ... 8 August 1981</code></pre>
+<div class="rmdcaution">
+Note that it is not permitted to “mix” positive and negative indices. For example, <code>grand_slam_win[c(-1, 2)]</code> would produce an error message.
 </div>
-<div id="application-non-parametric-bootstrap" class="section level3">
-<h3>Application: Non-parametric bootstrap</h3>
-<p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
-<pre class="r"><code>student_work &lt;- c(0, 0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1.25, 4)</code></pre>
-<p>We can compute the mean time spent</p>
-<pre class="r"><code>mean(student_work)</code></pre>
-<pre><code>## [1] 0.825</code></pre>
-<p><em>ADD SOMETHING ON T TEST</em></p>
-<pre class="r"><code>t.test(student_work)$conf.int</code></pre>
-<pre><code>## [1] -0.03495865  1.68495865
-## attr(,&quot;conf.level&quot;)
-## [1] 0.95</code></pre>
-<p>We can see that our confidence interval includes a negative values which clearly isn’t meaningful. Solution: (non-parametric) bootstrap which works as follows….. ADD SOMETHING</p>
-<p>Here is a simple function to implement this approach:</p>
-<pre class="r"><code># Number of boostrap replications
-B &lt;- 500
+<p></p>
+</div>
+<div id="vectattr" class="section level3">
+<h3>Attributes</h3>
+<p>Let’s suppose that we conducted an experiment under specific conditions, say a date and a place which should be stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:</p>
+<pre class="r"><code>attr(grand_slam_win, &quot;date&quot;) &lt;- &quot;07-15-2017&quot;
+attr(grand_slam_win, &quot;type&quot;) &lt;- &quot;Men, Singles&quot;</code></pre>
+<p>To display the vector with its attributes</p>
+<pre class="r"><code>grand_slam_win</code></pre>
+<pre><code>## [1]  9 15  5 12 18
+## attr(,&quot;date&quot;)
+## [1] &quot;07-15-2017&quot;
+## attr(,&quot;type&quot;)
+## [1] &quot;Men, Singles&quot;</code></pre>
+<p>To only display the attributes we can use</p>
+<pre class="r"><code>attributes(grand_slam_win)</code></pre>
+<pre><code>## $date
+## [1] &quot;07-15-2017&quot;
+## 
+## $type
+## [1] &quot;Men, Singles&quot;</code></pre>
+<p>It is also possible to extract a specific attribute</p>
+<pre class="r"><code>attr(grand_slam_win, &quot;date&quot;)</code></pre>
+<pre><code>## [1] &quot;07-15-2017&quot;</code></pre>
+</div>
+<div id="addlab" class="section level3">
+<h3>Adding Labels</h3>
+<p>In some cases, it is useful to augment vector elements with labels. For example, we could define the vector <code>grand_slam_win</code> and associate the name of each corresponding athlete as a labels, i.e.</p>
+<pre class="r"><code>(grand_slam_win &lt;- c(&quot;Andy Murray&quot; = 9, &quot;Rafael Nadal&quot; = 15, 
+                   &quot;Stan Wawrinka&quot; = 5, &quot;Novak Djokovic&quot; = 12, 
+                   &quot;Roger Federer&quot; = 18))</code></pre>
+<pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
+##              9             15              5             12             18</code></pre>
+<p>The main advantage of this approach is that the number of grand slams won can now be referred to by the player’s name. For example:</p>
+<pre class="r"><code>grand_slam_win[&quot;Andy Murray&quot;]</code></pre>
+<pre><code>## Andy Murray 
+##           9</code></pre>
+<pre class="r"><code>grand_slam_win[c(&quot;Andy Murray&quot;,&quot;Roger Federer&quot;)]</code></pre>
+<pre><code>##   Andy Murray Roger Federer 
+##             9            18</code></pre>
+<p>All labels (athlete names in this case) can be obtained with the function <code>names()</code>, i.e.</p>
+<pre class="r"><code>names(grand_slam_win)</code></pre>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
+## [5] &quot;Roger Federer&quot;</code></pre>
+</div>
+<div id="working-with-dates" class="section level3">
+<h3>Working with Dates</h3>
+<p>When working with dates it is useful to treat them as actual dates rather than character strings that <em>look</em> like dates (to a human) but don’t otherwise <em>behave</em> like dates. For example, consider a vector of three dates: <code>c(&quot;03-21-2015&quot;, &quot;12-13-2011&quot;, &quot;06-27-2008&quot;)</code>.</p>
+<p>The <code>sort()</code> function returns the elements of a vector in ascending order, but since these dates are actually just character strings that <em>look</em> like dates (to a human), R sorts them in alphanumeric order (for characters) rather than chronological order (for dates):</p>
+<pre class="r"><code># The `sort()` function sorts elements in a vector in ascending order
+sort(c(&quot;03-21-2015&quot;, &quot;12-31-2011&quot;, &quot;06-27-2008&quot;, &quot;01-01-2012&quot;))</code></pre>
+<pre><code>## [1] &quot;01-01-2012&quot; &quot;03-21-2015&quot; &quot;06-27-2008&quot; &quot;12-31-2011&quot;</code></pre>
+<p>Converting the character strings to “yyyy-mm-dd” would solve our sorting problem, but perhaps we also want to calculate the number of days between two events that are several months or years apart.</p>
+<p>The <code>as.Date()</code> function is one straight-forward method for converting character strings into dates that can be used as such. The typical syntax is of the form:</p>
+<pre class="r"><code>as.Dates(&lt;vector of dates&gt;, format = &lt;your format&gt;)</code></pre>
+<p>Considering the dates of birth presented in Table @ref(tab:tennis) we can save them in an appropriate format using:</p>
+<pre class="r"><code>(players_dob &lt;- as.Date(c(&quot;15 May 1987&quot;, &quot;3 June 1986&quot;, &quot;28 March 1985&quot;, 
+                         &quot;22 May 1987&quot;, &quot;8 August 1981&quot;), 
+                       format = &quot;%d %b %Y&quot;))</code></pre>
+<pre><code>## [1] &quot;1987-05-15&quot; &quot;1986-06-03&quot; &quot;1985-03-28&quot; &quot;1987-05-22&quot; &quot;1981-08-08&quot;</code></pre>
+<p>Note the syntax of <code>format = &quot;%d %b %Y&quot;</code>. The following table shows common format elements for use with the <code>as.Date()</code> function:</p>
+<table>
+<caption>(#tab:dateFormats) Common date formatting elements for use with <code>as.Date()</code> reproduced from <a href="http://www.statmethods.net/input/dates.html">http://www.statmethods.net/</a>.</caption>
+<thead>
+<tr class="header">
+<th align="left">Symbol</th>
+<th align="center">Meaning</th>
+<th align="center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">%d</td>
+<td align="center">day as a number (0-31)</td>
+<td align="center">01-31</td>
+</tr>
+<tr class="even">
+<td align="left">%a</td>
+<td align="center">abbreviated weekday</td>
+<td align="center">Mon</td>
+</tr>
+<tr class="odd">
+<td align="left">%A</td>
+<td align="center">unabbreviated weekday</td>
+<td align="center">Monday</td>
+</tr>
+<tr class="even">
+<td align="left">%m</td>
+<td align="center">month (00-12)</td>
+<td align="center">00-12</td>
+</tr>
+<tr class="odd">
+<td align="left">%b</td>
+<td align="center">abbreviated month</td>
+<td align="center">Jan</td>
+</tr>
+<tr class="even">
+<td align="left">%B</td>
+<td align="center">unabbreviated month</td>
+<td align="center">January</td>
+</tr>
+<tr class="odd">
+<td align="left">%y</td>
+<td align="center">2-digit year</td>
+<td align="center">07</td>
+</tr>
+<tr class="even">
+<td align="left">%Y</td>
+<td align="center">4-digit year</td>
+<td align="center">2007</td>
+</tr>
+</tbody>
+</table>
+<p>There are many advantages to recommend the <code>as.Date()</code> format (in addition to proper sorting). For example, the subtraction between two dates becomes more meaningful and yields to the difference in days between them. As an example, the number of days between Rafael Nadal’s and Andy Murray’s dates of birth can be obtained as</p>
+<pre class="r"><code>players_dob[1] - players_dob[2]</code></pre>
+<pre><code>## Time difference of 346 days</code></pre>
+<p>In addition, subsetting becomes also more intuitive and to find out the players born after 1 January 1986 we can simply run:</p>
+<pre class="r"><code>players[players_dob &gt; &quot;1986-01-01&quot;]</code></pre>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Novak Djokovic&quot;</code></pre>
+<p>There are many other reason for using this format (or other date formats). A more detailed discussion on this topic can for example be found in <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Cole Beck’s notes</a>.</p>
+</div>
+<div id="useful-functions-with-vectors" class="section level3">
+<h3>Useful Functions with Vectors</h3>
+<p>The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain manner which can be of interest to the user. Among the most commonly used functions we can find the following ones</p>
+<p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>order()</code> and <code>sort()</code></p>
+<p>whose name is self-explanatory in most cases. For example we have</p>
+<pre class="r"><code>length(grand_slam_win)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>sum(grand_slam_win)</code></pre>
+<pre><code>## [1] 59</code></pre>
+<pre class="r"><code>mean(grand_slam_win)</code></pre>
+<pre><code>## [1] 11.8</code></pre>
+<p>To sort the players by number of grand slam wins, we could use the function <code>order()</code> which returns the <em>position</em> of the elements of a vector sorted in an ascending order,</p>
+<pre class="r"><code>order(grand_slam_win)</code></pre>
+<pre><code>## [1] 3 1 4 2 5</code></pre>
+<p>Therefore, we can sort the players in ascending order of wins as follows</p>
+<pre class="r"><code>players[order(grand_slam_win)]</code></pre>
+<pre><code>## [1] &quot;Stan Wawrinka&quot;  &quot;Andy Murray&quot;    &quot;Novak Djokovic&quot; &quot;Rafael Nadal&quot;  
+## [5] &quot;Roger Federer&quot;</code></pre>
+<p>which implies that Roger Federer won most grand slams. Another related function is <code>sort()</code> which simply sorts the elements of a vector in an ascending manner. For example,</p>
+<pre class="r"><code>sort(grand_slam_win)</code></pre>
+<pre><code>##  Stan Wawrinka    Andy Murray Novak Djokovic   Rafael Nadal  Roger Federer 
+##              5              9             12             15             18</code></pre>
+<p>which is compact version of</p>
+<pre class="r"><code>grand_slam_win[order(grand_slam_win)]</code></pre>
+<pre><code>##  Stan Wawrinka    Andy Murray Novak Djokovic   Rafael Nadal  Roger Federer 
+##              5              9             12             15             18</code></pre>
+<p>It is also possible to use the functions <code>sort()</code> and <code>order()</code> with characters and dates. For example, to sort the players’ names alphabetically (by first name) we can use:</p>
+<pre class="r"><code>sort(players)</code></pre>
+<pre><code>## [1] &quot;Andy Murray&quot;    &quot;Novak Djokovic&quot; &quot;Rafael Nadal&quot;   &quot;Roger Federer&quot; 
+## [5] &quot;Stan Wawrinka&quot;</code></pre>
+<p>Similarly, we can sort players by age (oldest first)</p>
+<pre class="r"><code>players[order(players_dob)]</code></pre>
+<pre><code>## [1] &quot;Roger Federer&quot;  &quot;Stan Wawrinka&quot;  &quot;Rafael Nadal&quot;   &quot;Andy Murray&quot;   
+## [5] &quot;Novak Djokovic&quot;</code></pre>
+<p>or in an reversed manner (oldest last):</p>
+<pre class="r"><code>players[order(players_dob, decreasing = TRUE)]</code></pre>
+<pre><code>## [1] &quot;Novak Djokovic&quot; &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot; 
+## [5] &quot;Roger Federer&quot;</code></pre>
+<p>There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references <span class="citation">[see e.g. @wickham2014advanced]</span>.</p>
+</div>
+<div id="creating-sequences" class="section level3">
+<h3>Creating sequences</h3>
+<p>When using R for statistical programming and data analysis it is very common to create sequences of numbers. Here are three common ways used to create such sequences:</p>
+<ul>
+<li><code>from:to</code>: This method is quite intuitive and very compact. For example:</li>
+</ul>
+<pre class="r"><code>1:3</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>(x &lt;- 3:1)</code></pre>
+<pre><code>## [1] 3 2 1</code></pre>
+<pre class="r"><code>(y &lt;- -1:-4)</code></pre>
+<pre><code>## [1] -1 -2 -3 -4</code></pre>
+<pre class="r"><code>(z &lt;- 1.3:3)</code></pre>
+<pre><code>## [1] 1.3 2.3</code></pre>
+<ul>
+<li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exceptions where <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exceptions will become clear in Section @ref(forloop). Let’s see a few examples:</li>
+</ul>
+<pre class="r"><code>n &lt;- 3
+1:n</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>seq_len(n)</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>n &lt;- 0
+1:n</code></pre>
+<pre><code>## [1] 1 0</code></pre>
+<pre class="r"><code>seq_len(n)</code></pre>
+<pre><code>## integer(0)</code></pre>
+<ul>
+<li><code>seq(a, b, by/length.out = d)</code>: This function can be used to create more “complex” sequences. It can either be used to create a sequence from <code>a</code> to <code>b</code> by increments of <code>d</code> (using the option <code>by</code>) or of a total length of <code>d</code> (using the option <code>length.out</code>). A few examples:</li>
+</ul>
+<pre class="r"><code>(x &lt;- seq(1, 2.8, by = 0.4))</code></pre>
+<pre><code>## [1] 1.0 1.4 1.8 2.2 2.6</code></pre>
+<pre class="r"><code>(y &lt;- seq(1, 2.8, length.out = 6))</code></pre>
+<pre><code>## [1] 1.00 1.36 1.72 2.08 2.44 2.80</code></pre>
+<p>This can be combined with the <code>rep()</code> function to create vectors with repeated values or sequences, for example:</p>
+<pre class="r"><code>rep(c(1,2), times = 3, each = 1)</code></pre>
+<pre><code>## [1] 1 2 1 2 1 2</code></pre>
+<pre class="r"><code>rep(c(1,2), times = 1, each = 3)</code></pre>
+<pre><code>## [1] 1 1 1 2 2 2</code></pre>
+<p>where the option <code>times</code> allows to specify how many times the object needs to be repeated and <code>each</code> regulates how many times each element in the object is repeated.</p>
+<p>It is also possible to generates sequences of dates using the function <code>seq()</code>. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use</p>
+<pre class="r"><code>seq(from = players_dob[1], to = players_dob[2], length.out = 10)</code></pre>
+<pre><code>##  [1] &quot;1987-05-15&quot; &quot;1987-04-06&quot; &quot;1987-02-27&quot; &quot;1987-01-19&quot; &quot;1986-12-12&quot;
+##  [6] &quot;1986-11-03&quot; &quot;1986-09-26&quot; &quot;1986-08-18&quot; &quot;1986-07-11&quot; &quot;1986-06-03&quot;</code></pre>
+<p>Similarly, we can create a sequence between the two dates by increment of one week (backward)</p>
+<pre class="r"><code>seq(players_dob[1], players_dob[2], by = &quot;-1 week&quot;)</code></pre>
+<pre><code>##  [1] &quot;1987-05-15&quot; &quot;1987-05-08&quot; &quot;1987-05-01&quot; &quot;1987-04-24&quot; &quot;1987-04-17&quot;
+##  [6] &quot;1987-04-10&quot; &quot;1987-04-03&quot; &quot;1987-03-27&quot; &quot;1987-03-20&quot; &quot;1987-03-13&quot;
+## [11] &quot;1987-03-06&quot; &quot;1987-02-27&quot; &quot;1987-02-20&quot; &quot;1987-02-13&quot; &quot;1987-02-06&quot;
+## [16] &quot;1987-01-30&quot; &quot;1987-01-23&quot; &quot;1987-01-16&quot; &quot;1987-01-09&quot; &quot;1987-01-02&quot;
+## [21] &quot;1986-12-26&quot; &quot;1986-12-19&quot; &quot;1986-12-12&quot; &quot;1986-12-05&quot; &quot;1986-11-28&quot;
+## [26] &quot;1986-11-21&quot; &quot;1986-11-14&quot; &quot;1986-11-07&quot; &quot;1986-10-31&quot; &quot;1986-10-24&quot;
+## [31] &quot;1986-10-17&quot; &quot;1986-10-10&quot; &quot;1986-10-03&quot; &quot;1986-09-26&quot; &quot;1986-09-19&quot;
+## [36] &quot;1986-09-12&quot; &quot;1986-09-05&quot; &quot;1986-08-29&quot; &quot;1986-08-22&quot; &quot;1986-08-15&quot;
+## [41] &quot;1986-08-08&quot; &quot;1986-08-01&quot; &quot;1986-07-25&quot; &quot;1986-07-18&quot; &quot;1986-07-11&quot;
+## [46] &quot;1986-07-04&quot; &quot;1986-06-27&quot; &quot;1986-06-20&quot; &quot;1986-06-13&quot; &quot;1986-06-06&quot;</code></pre>
+<p>or by increment of one month (forward)</p>
+<pre class="r"><code>seq(players_dob[2], players_dob[1], by = &quot;1 month&quot;)</code></pre>
+<pre><code>##  [1] &quot;1986-06-03&quot; &quot;1986-07-03&quot; &quot;1986-08-03&quot; &quot;1986-09-03&quot; &quot;1986-10-03&quot;
+##  [6] &quot;1986-11-03&quot; &quot;1986-12-03&quot; &quot;1987-01-03&quot; &quot;1987-02-03&quot; &quot;1987-03-03&quot;
+## [11] &quot;1987-04-03&quot; &quot;1987-05-03&quot;</code></pre>
+</div>
+<div id="example-apple-stock-price" class="section level3">
+<h3>Example: Apple Stock Price</h3>
+<p>Suppose that one is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing that is needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
+<pre class="r"><code>(today &lt;- Sys.Date())</code></pre>
+<pre><code>## [1] &quot;2017-09-06&quot;</code></pre>
+<p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
+<pre class="r"><code>(three_months_ago &lt;- seq(today, length = 2, by = &quot;-3 months&quot;)[2])</code></pre>
+<pre><code>## [1] &quot;2017-06-06&quot;</code></pre>
+<p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
+<pre class="r"><code>library(quantmod)
+getSymbols(&quot;AAPL&quot;, from = three_months_ago, to = today)
+candleChart(AAPL, theme='white', type='candles')</code></pre>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="Candlestick chart for Apple's stock price for the last three months." width="576" />
+<p class="caption">
+Candlestick chart for Apple’s stock price for the last three months.
+</p>
+</div>
+<p>Using the price contained in the object we downloaded (i.e. <code>AAPL</code>), we can compute Apple’s arithmetic returns which are defined as follows</p>
+<span class="math display">\[\begin{equation}
+  r_t = \frac{S_t - S_{t-1}}{S_{t-1}},
+\end{equation}\]</span>
+<p>where <span class="math inline">\(r_t\)</span> are the returns at time <em>t</em> and <span class="math inline">\(S_t\)</span> is the stock price. This is implemented in the function <code>ClCl()</code> within the <code>quantmod</code> package. For example, we can create a vector of returns as follows</p>
+<pre class="r"><code>AAPL_returns &lt;- na.omit(ClCl(AAPL))</code></pre>
+<p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
+<pre class="r"><code>mean(AAPL_returns)</code></pre>
+<pre><code>## [1] 0.0008526397</code></pre>
+<pre class="r"><code>median(AAPL_returns)</code></pre>
+<pre><code>## [1] 0.003240046</code></pre>
+<p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
+<span class="math display">\[\begin{equation}
+  \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
+\end{equation}\]</span>
+<p>The reason for defining this statistic as <em>Excess</em> Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. Given this statistic, it is useful to compute this on the observed data and for this purpose a common estimator of the excess Kurtosis is</p>
+<span class="math display">\[\begin{equation}
+  k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3,
+\end{equation}\]</span>
+<p>where <span class="math inline">\(\bar{k}\)</span> denotes the sample average of the returns, i.e.</p>
+<span class="math display">\[\begin{equation}
+  \bar{k} = \frac{1}{n} \sum_{i = 1}^n r_i.
+\end{equation}\]</span>
+<p>In R, this can simply be done as follows:</p>
+<pre class="r"><code>mu &lt;- mean(AAPL_returns)
+(k &lt;- mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)</code></pre>
+<pre><code>## [1] 2.62369</code></pre>
+<p>Therefore, we observe an estimated Excess Kurtosis of 2.62 which is quite high tends to indicate the returns have a heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
+</div>
+</div>
+<div id="matrix" class="section level2">
+<h2>Matrix</h2>
+<p>Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional vectors within the same object. Below is an example of how to create a matrix in R:</p>
+<pre class="r"><code>(mat &lt;- matrix(1:12, ncol = 4,  nrow = 3))</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<p>Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (<code>ncol = 4</code>) and three rows (<code>nrow = 3</code>).</p>
 
-# Compute the length of vector
-n &lt;- length(student_work)
+<div class="rmdtip">
+<p>By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument <code>byrow = T</code>.</p>
+</div>
+<p></p>
 
-# Confidence level
-alpha &lt;- 0.05
+<div class="rmdwarning">
+<p>Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements?</p>
+</div>
+<p></p>
+<p>It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are <code>cbind()</code> and <code>rbind()</code> where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:</p>
+<pre class="r"><code>players &lt;- c(&quot;Andy Murray&quot;, &quot;Rafael Nadal&quot;, &quot;Stan Wawrinka&quot;, 
+             &quot;Novak Djokovic&quot;, &quot;Roger Federer&quot;)
+grand_slam_win &lt;- c(9, 15, 5, 12, 18)
+win_percentage &lt;- c(78.07, 82.48, 63.96, 82.77, 81.80)
+(mat &lt;- cbind(grand_slam_win, win_percentage))</code></pre>
+<pre><code>##      grand_slam_win win_percentage
+## [1,]              9          78.07
+## [2,]             15          82.48
+## [3,]              5          63.96
+## [4,]             12          82.77
+## [5,]             18          81.80</code></pre>
+<p>The result in this case is a <span class="math inline">\(5 \times 2\)</span> matrix (while with <code>rbind()</code> it would have been a <span class="math inline">\(2 \times 5\)</span> matrix). Once the matrix is defined, we can assign names to its rows and columns by using respectively <code>rownames</code> and <code>colnames</code>. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the <code>players</code> vector) and each column corresponds to a specific statistic on the players.</p>
+<pre class="r"><code>rownames(mat) &lt;- players
+colnames(mat) &lt;- c(&quot;GS win&quot;, &quot;Win rate&quot;)
+mat</code></pre>
+<pre><code>##                GS win Win rate
+## Andy Murray         9    78.07
+## Rafael Nadal       15    82.48
+## Stan Wawrinka       5    63.96
+## Novak Djokovic     12    82.77
+## Roger Federer      18    81.80</code></pre>
+<div id="subsetting-1" class="section level3">
+<h3>Subsetting</h3>
+<p>As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we’re dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use <code>[ ]</code> but, as opposed to vectors, we need to add <code>,</code> within the square brackets where the rows are specified before the comma and the columns after it. Below are a few examples:</p>
+<pre class="r"><code>mat[c(&quot;Stan Wawrinka&quot;, &quot;Roger Federer&quot;), ]</code></pre>
+<pre><code>##               GS win Win rate
+## Stan Wawrinka      5    63.96
+## Roger Federer     18    81.80</code></pre>
+<pre class="r"><code>mat[c(1, 3), ]</code></pre>
+<pre><code>##               GS win Win rate
+## Andy Murray        9    78.07
+## Stan Wawrinka      5    63.96</code></pre>
+<pre class="r"><code>mat[, 2]</code></pre>
+<pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
+##          78.07          82.48          63.96          82.77          81.80</code></pre>
+<pre class="r"><code>mat[1:3, 1]</code></pre>
+<pre><code>##   Andy Murray  Rafael Nadal Stan Wawrinka 
+##             9            15             5</code></pre>
+<p>It can be noticed that, when a space is left blank before or after the comma, this means that respectively all the rows or all the columns are considered.</p>
+</div>
+<div id="matrix-operators-in-r" class="section level3">
+<h3>Matrix Operators in R</h3>
+<p>As with vectors, there are some useful functions that can be used with matrices. A first example is the function <code>dim()</code> that allows to determine the dimension of a matrix. For example, consider the following <span class="math inline">\(4 \times 2\)</span> matrix</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A} = \left[
+\begin{matrix}
+1 &amp; 5\\
+2 &amp; 6\\
+3 &amp; 7\\
+4 &amp; 8
+\end{matrix}
+\right]
+\end{equation*}\]</span>
+<p>which can be created in R as follows:</p>
+<pre class="r"><code>(A &lt;- matrix(1:8, 4, 2))</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## [3,]    3    7
+## [4,]    4    8</code></pre>
+<p>Therefore, we expect <code>dim(A)</code> to return the vector <code>c(4, 2)</code>. Indeed, we have</p>
+<pre class="r"><code>dim(A)</code></pre>
+<pre><code>## [1] 4 2</code></pre>
+<p>Next, we consider the function <code>t()</code> allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{A}^T = \left[
+\begin{matrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+5 &amp; 6 &amp; 7 &amp; 8
+\end{matrix}
+\right],
+\end{equation*}\]</span>
+<p>which is a <span class="math inline">\(2 \times 4\)</span> matrix. In R, we achieve this as follows</p>
+<pre class="r"><code>(At &lt;- t(A))</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8</code></pre>
+<pre class="r"><code>dim(At)</code></pre>
+<pre><code>## [1] 2 4</code></pre>
+<p>Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator <code>%*%</code> is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator <code>*</code> performs the Hadamard product (or element by element product) when applied to matrices. For example, consider the following matrix product</p>
+<span class="math display">\[\begin{equation*}
+  \mathbf{B} = \mathbf{A}^T \mathbf{A} =   \left[
+\begin{matrix}
+30 &amp; 70\\
+70 &amp; 174
+\end{matrix}
+\right],
+\end{equation*}\]</span>
+<p>which can be done in R as follows:</p>
+<pre class="r"><code>(B &lt;- At %*% A)</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   30   70
+## [2,]   70  174</code></pre>
+<p>Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are <code>det()</code> and <code>solve()</code> that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function <code>det()</code> can be used to compute the determinant of a (squared) matrix. In the case of a <span class="math inline">\(2 \times 2\)</span> matrix, there exists a simple solution for the determinant which is</p>
+<span class="math display">\[\begin{equation*}
+\text{det} \left( \mathbf{D} \right) = \text{det} \left( \left[
+\begin{matrix}
+d_1 &amp; d_2\\
+d_3 &amp; d_4
+\end{matrix}
+\right] \right) = d_1 d_4 - d_2 d_3.
+\end{equation*}\]</span>
+<p>Consider the matrix <span class="math inline">\(\mathbf{B}\)</span>, we have</p>
+<span class="math display">\[\begin{equation*}
+  \text{det} \left( \mathbf{B}\right) = 30 \cdot 174 - 70^2 = 320.
+\end{equation*}\]</span>
+<p>In R, we can simply do</p>
+<pre class="r"><code>det(B)</code></pre>
+<pre><code>## [1] 320</code></pre>
+<p>The function <code>solve()</code> is also an important function when working with matrices as it allows to inverse a matrix. It is worth remembering that a square matrix that is not invertible (i.e. <span class="math inline">\(\mathbf{A}^{-1}\)</span> doesn’t exist) is called <em>singular</em> and the determinant offers a way to “check” if this is the case for a given matrix. Indeed, a square matrix is singular if and only if its determinant is 0. Therefore, in the case of <span class="math inline">\(\mathbf{B}\)</span>, we should be able to compute its inverse. As for the determinant, there exists a formula to compute the inverse of <span class="math inline">\(2 \times 2\)</span> matrices, i.e.</p>
+<span class="math display">\[\begin{equation*}
+ \mathbf{D}^{-1} = \left[
+\begin{matrix}
+d_1 &amp; d_2\\
+d_3 &amp; d_4
+\end{matrix}
+\right]^{-1} = \frac{1}{\text{det}\left( \mathbf{D} \right)} \left[
+\begin{matrix}
+\phantom{-}d_4 &amp; -d_2\\
+-d_3 &amp; \phantom{-}d_1
+\end{matrix}
+\right].
+\end{equation*}\]</span>
+<p>Considering the matrix <span class="math inline">\(\mathbf{B}\)</span>, we obtain</p>
+<span class="math display">\[\begin{equation*}
+ \mathbf{B}^{-1} = \left[
+\begin{matrix}
+30 &amp; 70\\
+70 &amp; 174
+\end{matrix}
+\right]^{-1} = \frac{1}{320}\left[
+\begin{matrix}
+  \phantom{-}174 &amp; -70\\
+-70 &amp; \phantom{-}30
+\end{matrix}
+\right] = 
+\end{equation*}\]</span>
+<pre class="r"><code>(B_inv &lt;- solve(B))</code></pre>
+<pre><code>##          [,1]     [,2]
+## [1,]  0.54375 -0.21875
+## [2,] -0.21875  0.09375</code></pre>
+<p>Finally, we can verify that</p>
+<span class="math display">\[\begin{equation*}
+\mathbf{G} = \mathbf{B} \mathbf{B}^{-1},
+\end{equation*}\]</span>
+<p>should be equal to the identity matrix,</p>
+<pre class="r"><code>(G &lt;- B %*% B_inv)</code></pre>
+<pre><code>##      [,1]          [,2]
+## [1,]    1 -8.881784e-16
+## [2,]    0  1.000000e+00</code></pre>
+<p>The result is of course extremely close but <span class="math inline">\(\mathbf{G}\)</span> is not exactly equal to the identity matrix due to rounding and other numerical errors.</p>
+<p>Another function of interest is the function <code>diag()</code> that can be used to extract the diagonal of a matrix. For example, we have</p>
+<span class="math display">\[\begin{equation*}
+\text{diag} \left( \mathbf{B} \right) = \left[30 \;\; 174\right],
+\end{equation*}\]</span>
+<p>which can be done in R as follows:</p>
+<pre class="r"><code>diag(B)</code></pre>
+<pre><code>## [1]  30 174</code></pre>
+<p>Therefore, the function <code>diag()</code> allows to easily compute the trace of matrix (i.e. the sum of the diagonal elements). For example,</p>
+<span class="math display">\[\begin{equation*}
+\text{tr} \left( \mathbf{B} \right) = 204,
+\end{equation*}\]</span>
+<p>or in R</p>
+<pre class="r"><code>sum(diag(B))</code></pre>
+<pre><code>## [1] 204</code></pre>
+<p>Another use of the function <code>diag()</code> is to create diagonal matrices. Indeed, if the argument of this function is a vector, its behavior is the following:</p>
+<span class="math display">\[\begin{equation*}
+  \text{diag} \left(\left[a_1 \;\; a_2 \;\; \cdots \;\; a_n\right]\right) = \left[
+\begin{matrix}
+a_1     &amp; 0       &amp; \cdots &amp; 0  \\
+0       &amp; a_2     &amp; \cdots &amp; 0  \\
+\vdots  &amp; \vdots  &amp; \ddots       &amp; \vdots    \\
+0       &amp; 0       &amp;   \cdots     &amp; a_n
+\end{matrix}
+\right].
+\end{equation*}\]</span>
+<p>Therefore, this provides a simple way of creating an identity matrix by combining the functions <code>diag()</code> and <code>rep()</code> (discussed in the previous section) as follows:</p>
+<pre class="r"><code>n = 4
+(ident &lt;- diag(rep(1, n)))</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1</code></pre>
+</div>
+<div id="example-summary-statistics-with-matrix-notation" class="section level3">
+<h3>Example: Summary Statistics with Matrix Notation</h3>
+<p>A simple example of the operations we discussed in the previous section is given by many common statistics that can be re-expressed using matrix notation. As an example, we will consider three common statistics that are the sample mean, variance and covariance. Let us consider the following two samples of size <span class="math inline">\(n\)</span></p>
+<span class="math display">\[\begin{equation*}
+  \begin{aligned}
+    \mathbf{x} &amp;= \left[x_1 \;\; x_2 \; \;\cdots \;\; x_n\right]^T\\
+    \mathbf{y} &amp;= \left[y_1 \;\;\; y_2 \; \;\;\cdots \;\;\; y_n\right]^T.
+  \end{aligned}
+\end{equation*}\]</span>
+<p>The sample mean of <span class="math inline">\(\mathbf{x}\)</span> is</p>
+<span class="math display">\[\begin{equation*}
+  \bar{x} = \frac{1}{n} \sum_{i = 1}^{n} x_i,
+\end{equation*}\]</span>
+<p>and its sample variance is</p>
+<span class="math display">\[\begin{equation*}
+  s_x^2 = \frac{1}{n} \sum_{i = 1}^n \left(x_i - \bar{x}\right)^2.
+\end{equation*}\]</span>
+<p>The sample covariance between <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> is</p>
+<span class="math display">\[\begin{equation*}
+  s_{x,y} = \frac{1}{n} \sum_{i = 1}^n \left(X_i - \bar{x}\right) \left(Y_i - \bar{y}\right),
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\bar{y}\)</span> denotes the sample mean of <span class="math inline">\(\mathbf{y}\)</span>.</p>
+<p>Consider the sample mean, this statistic can be expressed in matrix notation as follows</p>
+<span class="math display">\[\begin{equation*}
+  \bar{x} = \frac{1}{n} \sum_{i = 1}^{n} x_i =  \frac{1}{n} \mathbf{x}^T \mathbf{1},
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\mathbf{1}\)</span> is a column vector of <span class="math inline">\(n\)</span> ones.</p>
+<span class="math display">\[\begin{equation*}
+  \begin{aligned}
+    s_x^2 &amp;= \frac{1}{n} \sum_{i = 1}^n \left(x_i - \bar{x}\right)^2 = \frac{1}{n} \sum_{i = 1}^n x_i^2 - \bar{x}^2 = \frac{1}{n} \mathbf{x}^T \mathbf{x} - \bar{x}^2\\
+    &amp;= \frac{1}{n} \mathbf{x}^T \mathbf{x} - \left(\frac{1}{n} \mathbf{x}^T \mathbf{1}\right)^2 = \frac{1}{n} \left(\mathbf{x}^T \mathbf{x} - \frac{1}{n} \mathbf{x}^T \mathbf{1} \mathbf{1}^T \mathbf{x}\right)\\
+    &amp;= \frac{1}{n}\mathbf{x}^T \left( \mathbf{I} - \frac{1}{n} \mathbf{1} \mathbf{1}^T \right) \mathbf{x} = \frac{1}{n}\mathbf{x}^T \mathbf{H} \mathbf{x},
+  \end{aligned}
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\mathbf{H} = \mathbf{I} - \frac{1}{n} \mathbf{1} \mathbf{1}^T\)</span>. This matrix is often called the <em>centering</em> matrix. Similarly, for the sample covariance we obtain</p>
+<span class="math display">\[\begin{equation*}
+  \begin{aligned}
+    s_{x,y} &amp;= \frac{1}{n} \sum_{i = 1}^n \left(x_i - \bar{x}\right) \left(y_i - \bar{y}\right) = \frac{1}{n}\mathbf{x}^T \mathbf{H} \mathbf{y}.
+  \end{aligned}
+\end{equation*}\]</span>
+<p>In the code below we verify the validity of these results through a simple simulated example where we compare the values of the three statistics based on the different formulas discussed above.</p>
+<pre class="r"><code># Sample size
+n &lt;- 100
 
-# Initialisation of 
-boot_mean &lt;- rep(NA, B)
+# Simulate random numbers from a zero mean normal distribution with
+# variance equal to 4.
+x &lt;- rnorm(n, 0, sqrt(4))
 
-for (i in 1:B){
-  student_work_star &lt;- student_work[sample(1:n, replace = TRUE)]
-  boot_mean[i] &lt;- mean(student_work_star)
-}
+# Simulate random numbers from normal distribution with mean 3 and
+# variance equal to 1.
+y &lt;- rnorm(n, 3, 1)
 
-quantile(boot_mean, c(alpha/2, 1 - alpha/2))</code></pre>
-<pre><code>##    2.5%   97.5% 
-## 0.27500 1.65125</code></pre>
-<pre class="r"><code>#hist(boot_mean, probability = TRUE)</code></pre>
+# Note that x and y are independent.
+
+# Sample mean
+one &lt;- rep(1, n)
+(x_bar &lt;- 1/n*sum(x))</code></pre>
+<pre><code>## [1] 0.02854971</code></pre>
+<pre class="r"><code>(x_bar_mat &lt;- 1/n*t(x)%*%one)</code></pre>
+<pre><code>##            [,1]
+## [1,] 0.02854971</code></pre>
+<pre class="r"><code># Sample variance of x
+H &lt;- diag(rep(1, n)) - 1/n * one %*% t(one)
+(s_x &lt;- 1/n * sum((x - x_bar)^2))</code></pre>
+<pre><code>## [1] 3.732892</code></pre>
+<pre class="r"><code>(s_x_mat &lt;- 1/n*t(x) %*% H %*% x)</code></pre>
+<pre><code>##          [,1]
+## [1,] 3.732892</code></pre>
+<pre class="r"><code># Sample covariance
+y_bar &lt;- 1/n*sum(y)
+(s_xy &lt;- 1/n*sum((x - x_bar)*(y - y_bar)))</code></pre>
+<pre><code>## [1] 0.1664371</code></pre>
+<pre class="r"><code>(s_xy_mat &lt;- 1/n*t(x) %*% H %*% y)</code></pre>
+<pre><code>##           [,1]
+## [1,] 0.1664371</code></pre>
+<p>Therefore, using the previously obtained results we can onstruct the following <em>empirical</em> covariance matrix</p>
+<span class="math display">\[\begin{equation} 
+  \widehat{\text{Cov}}(X, Y) =  \left[
+\begin{matrix}
+s_x^2        &amp; s_{x,y}    \\
+s_{x,y}      &amp; s_y^2
+\end{matrix}
+\right].
+\end{equation}\]</span>
+<p>In R, this can be done as</p>
+<pre class="r"><code># Sample variance of y
+s_y_mat &lt;- 1/n*t(y) %*% H %*% y
+
+# Covariance matrix
+(V &lt;- matrix(c(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), 2, 2))</code></pre>
+<pre><code>##           [,1]      [,2]
+## [1,] 3.7328922 0.1664371
+## [2,] 0.1664371 1.1510685</code></pre>
+<p>This result can now be compared to</p>
+<pre class="r"><code>cov(cbind(x, y))</code></pre>
+<pre><code>##           x         y
+## x 3.7705982 0.1681183
+## y 0.1681183 1.1626955</code></pre>
+<pre class="r"><code>(n-1)/n*cov(cbind(x, y))</code></pre>
+<pre><code>##           x         y
+## x 3.7328922 0.1664371
+## y 0.1664371 1.1510685</code></pre>
+</div>
+<div id="example-portfolio-optimzation" class="section level3">
+<h3>Example: Portfolio Optimzation</h3>
+<p>Supose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest <span class="math inline">\(\omega X\)</span> in Apple and <span class="math inline">\((1-\omega) X\)</span> in Amazon, where <span class="math inline">\(X\)</span> denotes the amount of money you would like to invest and <span class="math inline">\(\omega\)</span> is such that <span class="math inline">\(\omega \in [0, \, 1]\)</span>. A possible way to decide the value <span class="math inline">\(\omega\)</span> would be the most approriate for your person risk aversion, would be to find the value of <span class="math inline">\(\omega\)</span> that would minimize the <em>risk</em> of your investement. Let us denote with <span class="math inline">\(Z_t\)</span> and <span class="math inline">\(W_t\)</span> the <em>returns</em> of Apple and Amazon at time <span class="math inline">\(t\)</span>, respectively. Then the return of our portfolio at a given time is then</p>
+<p><span class="math display">\[
+Y_t = \omega Z_t + (1 - \omega) W_t.
+\]</span></p>
+<p>The variance of <span class="math inline">\(Y_t\)</span> is then given by</p>
+<p><span class="math display">\[
+\text{Var}(Y_t) = \omega^2 \sigma_z^2 + (1 - \omega)^2 \sigma_w^2 + 2 \omega (1 - \omega) \sigma_{z,w},
+\]</span></p>
+<p>where <span class="math inline">\(\sigma_z^2\)</span>, <span class="math inline">\(\sigma_z^2\)</span> and <span class="math inline">\(\sigma_{z,w}\)</span> denote respectively the variances of <span class="math inline">\(Z_t\)</span> and <span class="math inline">\(W_t\)</span> as well as their covariance.</p>
+<p><span class="math display">\[
+\mathbf{Z} = \left[
+\begin{matrix}
+ Z_1\\
+ Z_2
+\end{matrix}
+\right] \sim \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\mathbf{Z} = \left[
+\begin{matrix}
+ Z_1\\
+ Z_2
+\end{matrix} 
+\right], \;\;\;\; \boldsymbol{\mu} = \left[
+\begin{matrix}
+ \mu_1\\
+ \mu_2
+\end{matrix} 
+\right], \;\; \text{and}\;\; \boldsymbol{\Sigma} = \left[
+\begin{matrix}
+ \sigma_1^2 &amp; \sigma_{12}\\
+ \sigma_{12} &amp; \sigma_2^2
+\end{matrix} 
+\right],
+\]</span></p>
+<p>and where <span class="math inline">\(Z_1\)</span> and <span class="math inline">\(Z_2\)</span> denotes the returns of Apple and Amazon, respectively. Under this simplified setting, the risk of our investement is easy quantified by the variance of our investement, which is simply</p>
+<p><span class="math display">\[
+ f(\omega) = \omega^2 \sigma_z^2 + (1 - \omega)^2 \sigma_w^2 + 2 \omega (1 - \omega) \sigma_{z,w}
+\]</span></p>
+<p><span class="math inline">\(\sigma_1^2 = \sigma_z^2, \sigma_2^2 = \sigma_w^2, \sigma_{12} = \sigma_{z,w}\)</span></p>
+<span class="math display">\[\begin{equation}
+  \omega^* = \frac{\sigma^2_2 - \sigma_{12}}{\sigma^2_1 + \sigma^2_2 - 2\sigma_{12}}
+\end{equation}\]</span>
+<span class="math display">\[\begin{equation}
+    f(\omega) = \omega^2 \sigma_1^2 + (1 - \omega)^2 \sigma_2^2 + 2 \omega (1 - \omega) \sigma_{12}
+\end{equation}\]</span>
+<span class="math display">\[\begin{equation}
+  \frac{\partial}{\partial \omega} \, f(\omega) = 2 \omega \sigma_1^2 - 2 (1 - \omega) \sigma_2^2 + 2  (1 - 2\omega) \sigma_{12}
+\end{equation}\]</span>
+<span class="math display">\[\begin{equation}
+  \omega^* \; : \frac{\partial}{\partial \omega} \, f(\omega) = 0,
+\end{equation}\]</span>
+<p>which</p>
+<span class="math display">\[\begin{equation}
+  \omega^* \left(\sigma_1^2 + \sigma_2^2 - 2 \sigma_{12}\right) = \sigma_2^2 - \sigma_{12}
+\end{equation}\]</span>
+<p>implying</p>
+<span class="math display">\[\begin{equation}
+  \omega^*  = \frac{\sigma_2^2 - \sigma_{12}}{\sigma_1^2 + \sigma_2^2 - 2 \sigma_{12}}
+\end{equation}\]</span>
+<p>estimation</p>
+<pre class="r"><code>library(quantmod)
+getSymbols(c(&quot;AAPL&quot;, &quot;AMZN&quot;))</code></pre>
+<pre><code>## [1] &quot;AAPL&quot; &quot;AMZN&quot;</code></pre>
+<pre class="r"><code>Zt = na.omit(ClCl(AAPL))
+Wt = na.omit(ClCl(AMZN))
+stock_returns = cbind(Zt, Wt)
+(Sigma = cov(stock_returns))</code></pre>
+<pre><code>##              ClCl.AAPL    ClCl.AMZN
+## ClCl.AAPL 0.0004106178 0.0002265105
+## ClCl.AMZN 0.0002265105 0.0006452273</code></pre>
+<pre class="r"><code>(mu = apply(stock_returns, 2, mean))</code></pre>
+<pre><code>##   ClCl.AAPL   ClCl.AMZN 
+## 0.001176049 0.001513099</code></pre>
+<pre class="r"><code>(omega_star = (Sigma[2, 2] - Sigma[1, 2])/(Sigma[1, 1] + Sigma[2, 2] - 2*Sigma[1, 2]) )</code></pre>
+<pre><code>## [1] 0.694592</code></pre>
+<pre class="r"><code># Mean of min-var portfolio
+mu_mv = omega_star*mu[1] + (1 - omega_star)*mu[2]
+
+# Var
+(var_mv = omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] + 2*omega_star*(1 - omega_star)*Sigma[1,2])</code></pre>
+<pre><code>## [1] 0.0003543899</code></pre>
+<pre class="r"><code>c(sqrt(diag(Sigma)), sqrt(var_mv))</code></pre>
+<pre><code>##  ClCl.AAPL  ClCl.AMZN            
+## 0.02026371 0.02540132 0.01882525</code></pre>
+<pre class="r"><code>c(mu, mu_mv)</code></pre>
+<pre><code>##   ClCl.AAPL   ClCl.AMZN   ClCl.AAPL 
+## 0.001176049 0.001513099 0.001278987</code></pre>
+<pre class="r"><code>plot(NA, xlim = range(c(sqrt(diag(Sigma)), sqrt(var_mv))), ylim = range(c(mu, mu_mv)), xlab = &quot;sigma&quot;, ylab = &quot;mu&quot;)
+grid()
+points(sqrt(diag(Sigma)), mu)
+text(sqrt(diag(Sigma)), mu, c(&quot;AAPL&quot;, &quot;AMZN&quot;))
+
+points(sqrt(var_mv), mu_mv)
+text(sqrt(var_mv), mu_mv, c(&quot;Min-var&quot;))</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
+</div>
 </div>
 </div>
 

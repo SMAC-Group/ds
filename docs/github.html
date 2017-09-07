@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-09-04">
+<meta name="date" content="2017-09-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -182,6 +182,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1.8" data-path="data.html"><a href="data.html#creating-sequences"><i class="fa fa-check"></i><b>4.1.8</b> Creating sequences</a></li>
 <li class="chapter" data-level="4.1.9" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.9</b> Example: Apple Stock Price</a></li>
 </ul></li>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>4.2</b> Matrix</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-portfolio-optimzation"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimzation</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>5</b> References</a></li>
 <li class="divider"></li>
@@ -238,7 +244,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Once you have installed Git, run the <code>Git Bash</code> software and type the following code below.</p>
 <pre><code>$ git config --global user.name &quot;John Doe&quot;
 $ git config --global user.email johndoe@example.com</code></pre>
-<p>This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once if using the “–global” option because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the “–global” option while working on those projects.</p>
+<p>This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once when using the “–global” option because, in this case, Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the “–global” option while working on those projects.</p>
 </div>
 </div>
 <div id="github-setup" class="section level3">
@@ -269,27 +275,28 @@ Your GitHub profile can also serve as a <em>resume</em> of your data science ski
 </div>
 <div id="github-workflow" class="section level2">
 <h2><span class="header-section-number">3.3</span> GitHub Workflow</h2>
-<p>Here is a video demonstrating basic GitHub workflow in GitHub Desktop (initializing, committing, pushing, and pulling) we will follow for our assignments and projects.</p>
+<p>Here is a video demonstrating the basic GitHub workflow in GitHub Desktop (initializing, committing, pushing and pulling) that we will follow for our assignments and projects.</p>
 <center>
 <iframe src="https://www.youtube.com/embed/-cLn7Uk-Zo0" width="672" height="400px">
 </iframe>
 </center>
-Here is a video demonstrating basic GitHub workflow within RStudio.
+In addition, here is a video demonstrating the basic GitHub workflow within RStudio.
 <center>
 <iframe src="https://www.youtube.com/embed/VOIQgViCyTo" width="672" height="400px">
 </iframe>
 </center>
+<p>While the main features and actions to manage the workflow in GitHub are desribed in the above videos, the following paragraphs give some extra details that can be helpful to consider when working with this version-control platform.</p>
 <div id="branching" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Branching</h3>
-<p>Above, we talk about the workflow in terms of directly making changes in the master branch. Branching is essentially creating an environment in which we can change anything without obstructing our original document. This idea is very useful for group-based activities, where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main <code>master</code> branch. You can learn more about branching <a href="https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging">here</a> and <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">here</a>.</p>
+<p>In the previous section we discussed the workflow as a means of directly making changes in the so-called <em>master</em> branch which is where our original and up-to-date work is stored. However, when working with different collaborators for example, it may be appropriate to create separate branches that will avoid modifying the original one until you’re sure of the changes. In this perspective, <em>branching</em> is essentially creating an environment in which we can change anything without obstructing our original document. As mentioned, this idea is very useful for group-based activities where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main <code>master</code> branch. You can learn more about branching <a href="https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging">here</a> and <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">here</a>.</p>
 </div>
 <div id="pull" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Pull</h3>
-<p>Before starting, make sure to always review changes that another collaborator has made. After reviewing, pull or synchronize with the most recent version of the repository to avoid merge conflicts. If merge conflicts were to happen, it can still be solved, but will most likely cause some confusion.</p>
+<p>Before starting (or continuing) to work on your project, make sure to always review changes that another collaborator has made. Once this is done you can make sure there are no merge conflicts and you can pull (or synchronize) your local branch with the most recent version of the repository. If merge conflicts were to happen, these can still be solved but it would be preferable to avoid them generating confusion.</p>
 </div>
 <div id="commits" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Commits</h3>
-<p>After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. After we have made these changes, we need to <code>commit</code> it with an informative message, explaining why a particular change is being made. These specific messages allow us to backtrack on these changes later on if we decide to look at the history of any of these files and find a bug. Without it being informative, there will be no point in using version control like GitHub.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. Once these changes are made, you need to <code>commit</code> them with an informative message, explaining why a particular change is being made. These specific messages allow you to backtrack on these changes later if you decide to look at the history of any of these files and find a bug. This information is extremely important since otherwise there’s little point in using version control like GitHub.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
 <center>
 <img src="images/git_commit.png" />
 </center>
@@ -300,11 +307,11 @@ Here is a video demonstrating basic GitHub workflow within RStudio.
 </div>
 <div id="push-or-merge" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Push or Merge</h3>
-<p>Once you have either made the commits on your master branch or have gotten the pull request confirmed by other collaborators, we can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow. After this step, we rinse and repeat the above procedure.</p>
+<p>Once you have either made the commits on your master branch or have the pull request confirmed by other collaborators, you can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow after which we can clear and repeat the above procedure.</p>
 </div>
 <div id="merge-conflicts" class="section level3">
 <h3><span class="header-section-number">3.3.5</span> Merge Conflicts</h3>
-<p>Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted. These may not be the only situations. To resolve the conflicts, we must directly edit the documents. Make sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups.</p>
+<p>Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted (although these may not be the only situations). To resolve these conflicts, we must directly edit the documents making sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups.</p>
 </div>
 </div>
 <div id="github-workflow-on-command-line-git-bash" class="section level2">
@@ -352,15 +359,15 @@ Here is a video demonstrating basic GitHub workflow within RStudio.
 </tr>
 </tbody>
 </table>
-<p>However, it is better for us to start with using more graphical user interface options, since they help us understand better of what is going on. You <strong>do not</strong> want to follow this example<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>…</p>
+<p>However, it is better for us to startby using more graphical user-interface options since they allow us to better understand what is going on. You <strong>do not</strong> want to follow this example<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>…</p>
 <center>
 <img src="images/git_misuse.png" />
 </center>
-<p>It is important to know what is happening when we create, change, push, branch, and pull from a repository.</p>
+<p>It is always important to know what is happening when we create, change, push, branch and pull from a repository.</p>
 </div>
 <div id="issues" class="section level2">
 <h2><span class="header-section-number">3.5</span> Issues</h2>
-<p>Issues within GitHub is a very good way to keep track of group tasks, bugs, and announcements for your projects. Below is a basic video introducing <code>issues</code> in GitHub.</p>
+<p><em>Issues</em> are a very good way to keep track of group tasks, bugs and announcements for your projects within GitHub. Below is a basic video introducing <code>issues</code> in GitHub.</p>
 <center>
 <iframe src="https://www.youtube.com/embed/HRikDvXEpVM" width="672" height="400px">
 </iframe>
@@ -368,9 +375,9 @@ Here is a video demonstrating basic GitHub workflow within RStudio.
 </div>
 <div id="slack-integration" class="section level2">
 <h2><span class="header-section-number">3.6</span> Slack Integration</h2>
-<p>Slack is a platform created for utilizing communication between group members. It allows for direct message, as well as group messages. (like group chatting) More information on how to use Slack can be found in this <a href="https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members">Slack Tutorial</a>.</p>
-<p>An added benefit of using Slack is that we can integrate GitHub, in a way that whenever someone pushes or makes a pull request, notifications will be posted to the group. More information on GitHub integration on Slack can be found <a href="https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack">here</a>.</p>
-<p>Below is a video demonstrating Slack in a real-life setting.</p>
+<p>Slack is a platform created to communicate between group members, allowing for both direct individual messages as well as group messages. More information on how to use Slack can be found in this <a href="https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members">Slack Tutorial</a>.</p>
+<p>An added benefit of using Slack is that it can be integrated with GitHub in such a way that notifications will be posted to the group whenever someone pushes or makes a pull request. More information on GitHub integration with Slack can be found <a href="https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack">here</a>.</p>
+<p>A more detailed video providing a demonstration on the use of Slack in a real-life setting can be found below.</p>
 <center>
 <iframe src="https://www.youtube.com/embed/PpnFCp4Wr_g" width="672" height="400px">
 </iframe>
@@ -378,7 +385,7 @@ Here is a video demonstrating basic GitHub workflow within RStudio.
 </div>
 <div id="additional-references-2" class="section level2">
 <h2><span class="header-section-number">3.7</span> Additional References</h2>
-<p>Here are some supplemental references for your comprehension.</p>
+<p>Below are some supplemental references that can support you in a better use of GitHub.</p>
 <ul>
 <li><a href="https://www.r-bloggers.com/rstudio-and-github/">GitHub Introduction with RStudio</a></li>
 <li><a href="https://guides.github.com/introduction/flow/">GitHub Workflow</a></li>

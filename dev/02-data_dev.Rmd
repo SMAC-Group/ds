@@ -1,9 +1,4 @@
 
-
-
-
-
-
 ## Array {#array}
 
 Simply, vectors are one-dimensional and matrices are two-dimensional objects, and these homogenous objects are also known as **arrays**. We can extend the array into more than two dimensions by specifying the `dim` parameter within the `array` function. Arrays are rarer than matrices and vectors, but worth being aware of.

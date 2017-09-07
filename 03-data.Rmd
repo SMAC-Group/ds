@@ -24,6 +24,7 @@ n               Array
 
 Consider a simple data set of the top five male single tennis players presented below:
 
+
 Table: (\#tab:tennis) Five best male single tennis players as ranked by ATP  (07-15-2017).
 
  Name              Date of Birth         Born                Country            ATP Ranking     Prize Money    Win Percentage   Grand Slam Wins
@@ -35,6 +36,7 @@ Novak Djokovic    22 May 1987       Belgrade, Serbia          Serbia            
 Roger Federer      8 August 1981    Basel, Switzerland      Switzerland            5            104,445,185        81.80              18
 
 Notice that this data set contains a variety of data types; in the next sections we will use these data to illustrate how to work with five common data structures.
+
 
 ## Vectors 
 
@@ -459,7 +461,7 @@ Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is qu
 
 ## Matrix
 
-Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional vectors within the same object. Below is an example of how to create a matrix in R:
+Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional (same length) vectors within the same object. Below is an example of how to create a matrix containing consecutive numbers in R:
 
 ```{r}
 (mat <- matrix(1:12, ncol = 4,  nrow = 3))
@@ -473,13 +475,18 @@ By default, the vectors are transformed into matrices by placing the elements by
 
 ```
 
+```{r}
+# Compare with the matrix above
+matrix(1:12, ncol = 4,  nrow = 3, byrow = T)
+```
+
 ```{block2, type='rmdwarning'}
 
 Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements? 
 
 ```
 
-It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are `cbind()` and `rbind()` where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:
+It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are `cbind()` - column bind - and `rbind()` - row bind - where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:
 
 ```{r}
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
@@ -489,7 +496,7 @@ win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
 (mat <- cbind(grand_slam_win, win_percentage))
 ```
 
-The result in this case is a $5 \times 2$ matrix (while with `rbind()` it would have been a $2 \times 5$ matrix). Once the matrix is defined, we can assign names to its rows and columns by using respectively `rownames` and `colnames`. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the `players` vector) and each column corresponds to a specific statistic on the players.
+The result in this case is a $5 \times 2$ matrix (with `rbind()` it would have been a $2 \times 5$ matrix). Once the matrix is defined, we can assign names to its rows and columns by using respectively `rownames` and `colnames`. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the `players` vector) and each column corresponds to a specific statistic of the players.
 
 ```{r}
 rownames(mat) <- players
@@ -499,12 +506,16 @@ mat
 
 ### Subsetting
 
-As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we're dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use `[ ]` but, as opposed to vectors, we need to add `,` within the square brackets where the rows are specified before the comma and the columns after it. Below are a few examples:
+As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we're dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use `[ ]` but, as opposed to vectors, we need to add `,` within the square brackets where the rows are specified before the comma and the columns after it. (eg. `matrix[row, column]`) Below are a few examples:
 
 ```{r}
+# Subset players "Stan Wawrinka" and "Roger Federer"
 mat[c("Stan Wawrinka", "Roger Federer"), ]
+# Subset row 1 and 3 
 mat[c(1, 3), ]
+# Subset column 2 only 
 mat[, 2]
+# Subset column 1 of (row 1, 2, and 3)
 mat[1:3, 1]
 ```
 
@@ -690,6 +701,10 @@ n = 4
 
 ### Example: Summary Statistics with Matrix Notation
 
+<button id="hidebutton1">Hide/Show Example</button>
+
+<div id="hideclass1">
+
 A simple example of the operations we discussed in the previous section is given by many common statistics that can be re-expressed using matrix notation. As an example, we will consider three common statistics that are the sample mean, variance and covariance. Let us consider the following two samples of size $n$
 
 \begin{equation*}
@@ -761,21 +776,30 @@ y <- rnorm(n, 3, 1)
 
 # Sample mean
 one <- rep(1, n)
-(x_bar <- 1/n*sum(x))
-(x_bar_mat <- 1/n*t(x)%*%one)
+x_bar <- 1/n*sum(x)
+x_bar_mat <- 1/n*t(x)%*%one
 
 # Sample variance of x
 H <- diag(rep(1, n)) - 1/n * one %*% t(one)
-(s_x <- 1/n * sum((x - x_bar)^2))
-(s_x_mat <- 1/n*t(x) %*% H %*% x)
+s_x <- 1/n * sum((x - x_bar)^2)
+s_x_mat <- 1/n*t(x) %*% H %*% x
 
 # Sample covariance
 y_bar <- 1/n*sum(y)
-(s_xy <- 1/n*sum((x - x_bar)*(y - y_bar)))
-(s_xy_mat <- 1/n*t(x) %*% H %*% y)
+s_xy <- 1/n*sum((x - x_bar)*(y - y_bar))
+s_xy_mat <- 1/n*t(x) %*% H %*% y
 ```
 
-Therefore, using the previously obtained results we can onstruct the following *empirical* covariance matrix
+To compare, let's construct a matrix of all the results that we calculated. 
+
+```{r}
+cp_matrix = matrix(c(x_bar, x_bar_mat, s_x, s_x_mat, s_xy, s_xy_mat), ncol = 2, byrow = T)
+row.names(cp_matrix) = c("Sample Mean", "Sample Variance", "Sample Covariance")
+colnames(cp_matrix) = c("Scalar", "Matrix")
+cp_matrix
+```
+
+Therefore, using the previously obtained results we can construct the following *empirical* covariance matrix
 
 \begin{equation} 
   \widehat{\text{Cov}}(X, Y) =  \left[
@@ -800,14 +824,23 @@ This result can now be compared to
 
 ```{r}
 cov(cbind(x, y))
+```
 
+We can see that the results are slightly different from what we expected. This is because the calculation of `cov()` within the default R `stats` package is based on an unbiased estimator which is not the one we used. To obtain the exact same result, we can go back to our estimation by calculating via the below method
+
+```{r}
 (n-1)/n*cov(cbind(x, y))
 ```
 
+</div>
 
 ### Example: Portfolio Optimzation
 
-Supose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega X$ in Apple and $(1-\omega) X$ in Amazon, where $X$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. A possible way to decide the value $\omega$ would be the most approriate for your person risk aversion, would be to find the value of $\omega$ that would minimize the *risk* of your investement. Let us denote with $Z_t$ and $W_t$ the *returns* of Apple and Amazon at time $t$, respectively. Then the return of our portfolio at a given time is then
+<button id="hidebutton2">Hide/Show Example</button>
+
+<div id="hideclass2">
+
+Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega X$ in Apple and $(1-\omega) X$ in Amazon, where $X$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. A possible way to decide the value $\omega$ would be the most approriate for your person risk aversion, would be to find the value of $\omega$ that would minimize the *risk* of your investement. Let us denote with $Z_t$ and $W_t$ the *returns* of Apple and Amazon at time $t$, respectively. Then the return of our portfolio at a given time is then
 
 \[
 Y_t = \omega Z_t + (1 - \omega) W_t.
@@ -928,5 +961,18 @@ points(sqrt(var_mv), mu_mv)
 text(sqrt(var_mv), mu_mv, c("Min-var"))
 
 ```
+
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $("#hidebutton1").click(function(){
+    $("#hideclass1").toggle();
+  });
+  $("#hidebutton2").click(function(){
+    $("#hideclass2").toggle();
+  });
+</script>
+
 
  
