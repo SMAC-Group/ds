@@ -1,4 +1,6 @@
-# Logical Operators and Control Stuctures {#control}
+# Control Flow {#control}
+
+Often when we are coding, we need to control the flow of our actions. Just like in daily day to day life, we need to place conditions in which we manipulate our behavior. For example, 
 
 ## Logical Operators
 
