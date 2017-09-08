@@ -673,10 +673,10 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
 \end{equation}\]</span>
 <p>The reason for defining this statistic as <em>Excess</em> Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on button below:</p>
-<button id="hidebutton">
+<button id="hidebutton1">
 Excess Kurtosis Derivation
 </button>
-<div id="hideclass">
+<div id="hideclass1">
 
 <div class="rmdnote">
 <p>Assuming <span class="math inline">\(X\)</span> to be Gaussian we have <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span>. Then, we define <span class="math inline">\(Z\)</span> as <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> and <span class="math inline">\(Y\)</span> as <span class="math inline">\(Y = Z^2 \sim \chi^2_1\)</span>. Remember that a random variable following a <span class="math inline">\(\chi^2_1\)</span> distribution has the following properties: <span class="math inline">\(\text{Var}[Y] = 2\)</span> and <span class="math inline">\(\mathbb{E}[Y] = 1\)</span>. Using these definitions and properties, we obtain:</p>
@@ -996,10 +996,10 @@ s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="
 <span class="kw">row.names</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sample Mean&quot;</span>, <span class="st">&quot;Sample Variance&quot;</span>, <span class="st">&quot;Sample Covariance&quot;</span>)
 <span class="kw">colnames</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)
 cp_matrix</code></pre></div>
-<pre><code>##                        Scalar      Matrix
-## Sample Mean        0.06582356  0.06582356
-## Sample Variance    3.45597528  3.45597528
-## Sample Covariance -0.34757748 -0.34757748</code></pre>
+<pre><code>##                      Scalar    Matrix
+## Sample Mean       0.3195439 0.3195439
+## Sample Variance   3.6375070 3.6375070
+## Sample Covariance 0.0789763 0.0789763</code></pre>
 <p>Therefore, using the previously obtained results we can construct the following <em>empirical</em> covariance matrix</p>
 <span class="math display">\[\begin{equation} 
   \widehat{\text{Cov}}(X, Y) =  \left[
@@ -1015,19 +1015,19 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 
 <span class="co"># Covariance matrix</span>
 (V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</code></pre></div>
-<pre><code>##            [,1]       [,2]
-## [1,]  3.4559753 -0.3475775
-## [2,] -0.3475775  0.8691623</code></pre>
+<pre><code>##           [,1]      [,2]
+## [1,] 3.6375070 0.0789763
+## [2,] 0.0789763 1.0274490</code></pre>
 <p>This result can now be compared to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
 <pre><code>##            x          y
-## x  3.4908841 -0.3510884
-## y -0.3510884  0.8779417</code></pre>
+## x 3.67424953 0.07977404
+## y 0.07977404 1.03782723</code></pre>
 <p>We can see that the results are slightly different from what we expected. This is because the calculation of <code>cov()</code> within the default R <code>stats</code> package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(n<span class="dv">-1</span>)/n*<span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##            x          y
-## x  3.4559753 -0.3475775
-## y -0.3475775  0.8691623</code></pre>
+<pre><code>##           x         y
+## x 3.6375070 0.0789763
+## y 0.0789763 1.0274490</code></pre>
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
@@ -1065,10 +1065,10 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 \end{equation}\]</span>
 <p>If you interested in understanding how Equation <a href="data.html#eq:omega">(4.2)</a> was obtain click on the button below:</p>
 
-<button id="hidebutton">
+<button id="hidebutton2">
 Minimum Variance Portfolio Derivation
 </button>
-<div id="hideclass">
+<div id="hideclass2">
 
 <div class="rmdnote">
 <p>To obtain <span class="math inline">\(\omega^*\)</span> we first differentiate the function <span class="math inline">\(f(\omega)\)</span> with respect to <span class="math inline">\(\omega\)</span>, which gives</p>
@@ -1162,8 +1162,8 @@ knitr::<span class="kw">kable</span>(investment_summary, <span class="dt">captio
 </tbody>
 </table>
 <p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above.</p>
-<div class="figure"><span id="fig:unnamed-chunk-195"></span>
-<img src="ds_files/figure-html/unnamed-chunk-195-1.png" alt="Plot of Expected Return and Variance / Risk" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-111"></span>
+<img src="ds_files/figure-html/unnamed-chunk-111-1.png" alt="Plot of Expected Return and Variance / Risk" width="672" />
 <p class="caption">
 Figure 4.2: Plot of Expected Return and Variance / Risk
 </p>
@@ -1180,9 +1180,13 @@ Note that we may revisit this example in the next chapter where we will discuss 
 <p></p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
-    $("#hideclass").hide();
-    $("#hidebutton").click(function(){
-      $("#hideclass").toggle();
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
     });
 </script>
 

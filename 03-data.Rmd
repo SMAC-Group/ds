@@ -439,8 +439,8 @@ However, a statistic that is of particular interest to financial operators is th
 
 The reason for defining this statistic as *Excess* Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on button below:
 
-<button id="hidebutton">Excess Kurtosis Derivation</button>
-<div id="hideclass">
+<button id="hidebutton1">Excess Kurtosis Derivation</button>
+<div id="hideclass1">
 
 ```{block2, type='rmdnote'}
 Assuming $X$ to be Gaussian we have $X \sim \mathcal{N}(\mu, \sigma^2)$. Then, we define $Z$ as $Z \sim \mathcal{N}(0,1)$ and $Y$ as $Y = Z^2 \sim \chi^2_1$. Remember that a random variable following a $\chi^2_1$ distribution has the following properties: $\text{Var}[Y] = 2$ and $\mathbb{E}[Y] = 1$. Using these definitions and properties, we obtain:
@@ -899,8 +899,8 @@ The function $f(\omega)$ is minimized for the value $\omega^*$ which is given by
 
 If you interested in understanding how Equation \@ref(eq:omega) was obtain click on the button below:
 
-<button id="hidebutton">Minimum Variance Portfolio Derivation</button>
-<div id="hideclass">
+<button id="hidebutton2">Minimum Variance Portfolio Derivation</button>
+<div id="hideclass2">
 
 ```{block2, type='rmdnote'}
 To obtain $\omega^*$ we first differentiate the function $f(\omega)$ with respect to $\omega$, which gives
@@ -1008,9 +1008,13 @@ Note that we may revisit this example in the next chapter where we will discuss 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
-    $("#hideclass").hide();
-    $("#hidebutton").click(function(){
-      $("#hideclass").toggle();
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
     });
 </script>
 
