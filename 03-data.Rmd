@@ -415,10 +415,10 @@ candleChart(AAPL, theme='white', type='candles')
 Using the price contained in the object we downloaded (i.e. `AAPL`), we can compute Apple's arithmetic returns which are defined as follows
 
 \begin{equation}
-  r_t = \frac{S_t - S_{t-1}}{S_{t-1}},
+  R_t = \frac{S_t - S_{t-1}}{S_{t-1}},
 \end{equation}
 
-where $r_t$ are the returns at time *t* and $S_t$ is the stock price. This is implemented in the function `ClCl()` within the `quantmod` package. For example, we can create a vector of returns as follows 
+where $R_t$ are the returns at time *t* and $S_t$ is the stock price. This is implemented in the function `ClCl()` within the `quantmod` package. For example, we can create a vector of returns as follows 
 
 ```{r}
 AAPL_returns <- na.omit(ClCl(AAPL))
@@ -463,13 +463,14 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 Given this statistic, it is useful to compute this on the observed data and for this purpose a common estimator of the excess Kurtosis is
 
 \begin{equation}
-  k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(r_t -\bar{r}\right)^2 \right)^2} - 3,
+  k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(R_t -\bar{R}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(R_t -\bar{R}\right)^2 \right)^2} - 3,
 \end{equation}
 
-where $\bar{k}$ denotes the sample average of the returns, i.e.
+where $\bar{R}$ denotes the sample average of the returns, i.e.
 
 \begin{equation}
-  \bar{k} = \frac{1}{n} \sum_{i = 1}^n r_i.
+  \bar{R} = \frac{1}{n} \sum_{i = 1}^n R_i.
+  (\#eq:returns)
 \end{equation}
 
 In R, this can simply be done as follows:
@@ -849,6 +850,152 @@ We can see that the results are slightly different from what we expected. This i
 
 ```{r}
 (n-1)/n*cov(cbind(x, y))
+```
+
+
+### Example: Portfolio Optimzation
+
+Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $X$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remeber what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
+
+\[
+\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
+\]
+
+where
+
+\[
+\mathbf{R} = \left[
+\begin{matrix}
+ R_A\\
+ R_N
+\end{matrix} 
+\right], \;\;\;\; \boldsymbol{\mu} = \left[
+\begin{matrix}
+ \mu_A\\
+ \mu_N
+\end{matrix} 
+\right], \;\; \text{and}\;\; \boldsymbol{\Sigma} = \left[
+\begin{matrix}
+ \sigma_A^2 & \sigma_{AN}\\
+ \sigma_{AN} & \sigma_N^2
+\end{matrix} 
+\right].
+\]
+
+Using these assumptions, the classical portfolio optimzation problem, which would allow you to determine a "good" value of $\omega$, can stated as follows. Given our initial wealth $X$, the investement problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mention earlier we assume that $\omega \in [0,\,1]$, implying that it is only possible to buy the two assets (i.e. *short positions* are not allowed). Therefore, to solve our investement problem we must choose the value of $\omega$ which would maximize your personal *utility*. Informally speaking the utility represent a measurement of the "useful-ness" that a is obtained from your investement. To consider a simple case, we will assume that you are a particularly *risk adverse* individual (i.e. you are looking for an investement that is as sure as possible) and as such you want to pick the value of $\omega$ providing you with the smallest investement risk. We can then the optimal value of $\omega$ as follows. First, we construct a new random variable, say $Y$, which denotes the return of your portfolio. Since you invest $\omega W$ in Apple and $(1 - \omega) W$ in Netflix, it is easy to see that
+
+\[Y = \left[\omega R_A + (1 - \omega) R_N \right]W.\]
+
+In general the risk and variance of an investement are two different things but in our case we assumed that $\mathbf{R}$ is normally distributed and in such the variance perfectely characterize the risk of your investement. Therefore, we can define the risk of our investement as the following function of $\omega$
+
+\[f(\omega) = \text{Risk}(Y) = \text{Var} (Y) =  \left[\omega^2 \sigma_A^2 + (1 - \omega)^2 \sigma_N^2 + 2 \omega (1 - \omega) \sigma_{AN}\right]W^2.\]
+
+The function $f(\omega)$ is minimized for the value $\omega^*$ which is given by
+
+\begin{equation}
+  \omega^* = \frac{\sigma^2_N - \sigma_{AN}}{\sigma^2_A + \sigma^2_N - 2\sigma_{AN}}.
+  (\#eq:omega)
+\end{equation}
+
+If you interested in understanding how Equation \@ref(eq:omega) was obtain click on the button below:
+
+<button id="hidebutton">Minimum Variance Portfolio Derivation</button>
+<div id="hideclass">
+
+```{block2, type='rmdnote'}
+To obtain $\omega^*$ we first differentiate the function $f(\omega)$ with respect to $\omega$, which gives
+
+\begin{equation}
+  \frac{\partial}{\partial \omega} \, f(\omega) = \left[2 \omega \sigma_A^2 - 2 (1 - \omega) \sigma_N^2 + 2  (1 - 2\omega) \sigma_{AN}\right]W^2
+\end{equation}
+
+Then, we define $\omega^*$ as
+
+\begin{equation}
+  \omega^* \; : \frac{\partial}{\partial \omega} \, f(\omega) = 0.
+\end{equation}
+
+Therefore, we obtain
+
+\begin{equation}
+  \omega^* \left(\sigma_A^2 + \sigma_N^2 - 2 \sigma_{AN}\right) = \sigma_N^2 - \sigma_{AN},
+\end{equation}
+
+which simplifies to
+
+\begin{equation}
+  \omega^*  = \frac{\sigma_N^2 - \sigma_{AN}}{\sigma_A^2 + \sigma_N^2 - 2 \sigma_{AN}}. 
+\end{equation}
+
+Finally, we verify that our result is a minimum by considering the second derivative, i.e.
+
+\begin{equation}
+  \frac{\partial^2}{\partial \omega^2} \, f(\omega) = 2W\left[\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN}\right].
+\end{equation}
+
+Since $W$ is strictely positive all that remains to conclude our derivation is veryfying that $\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0$. In fact, this is a well known inequality which is a direct consequence of Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that $\text{Var}(R_A - R_N) \leq 0$ and we also have $\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}$. Thus, we obtain
+
+\[\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \leq 0,\]
+
+which verifies that our result is a minimum.
+```
+</div>
+
+
+Using \@ref(eq:omega), we obtain that the expected value and variance of our investement are given by
+
+\[
+\begin{aligned}
+\text{Expected Value Investement} &=\left[\omega^* \mu_A + (1 - \omega^*) \mu_N\right] W,\\
+\text{Variance Investement} &=  \left[(\omega^*)^2 \sigma_A^2 + (1 - \omega^*)^2 \sigma_N^2 + 2 \omega^* (1 - \omega^*) \sigma_{AN}\right]W^2.
+\end{aligned}
+\]
+
+In practice, the vector $\boldsymbol{\mu}$ and matrix $\boldsymbol{\Sigma}$ are unknown and must be estimated on historical data. In the code below, we compute the optimal value of $\omega$ based on \@ref(eq:omega) using the last five years of historical data for the two stocks considered.
+  
+```{r downloadaaplandamaz, message = FALSE, warning = FALSE, results = 'hide'}
+# Load quantmod
+library(quantmod)
+
+# Download data
+today <- Sys.Date()
+five_years_ago <- seq(today, length = 2, by = "-5 year")[2]
+getSymbols("AAPL", from = five_years_ago, to = today)
+getSymbols("NFLX", from = five_years_ago, to = today)
+
+# Compute returns
+Ra <- na.omit(ClCl(AAPL))
+Rn <- na.omit(ClCl(NFLX)) 
+
+# Estimation of mu and Sigma
+Sigma <- cov(cbind(Ra, Rn))
+mu <- c(mean(Ra), mean(Rn))
+
+# Compute omega^*
+omega_star = (Sigma[2, 2] - Sigma[1, 2])/(Sigma[1, 1] + Sigma[2, 2] - 2*Sigma[1, 2])
+
+# Compute investement expected value and variance
+mu_investement = omega_star*mu[1] + (1 - omega_star)*mu[2]
+var_investement = omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] + 
+  2*omega_star*(1 - omega_star)*Sigma[1,2]
+```
+
+From this code, we obtain $\omega^* \approx$ `r round(100*omega_star, 2)`%. In the table below we compare the empirical expected values and variances of the stocks stocks as well as those of our investement:
+
+```{r tableprtexample}
+investement_summary = matrix(NA, 2, 3)
+dimnames(investement_summary)[[1]] = c("Expected value", "Variance")
+dimnames(investement_summary)[[2]] = c("Apple", "Netflix", "Investement")
+investement_summary[1, ] = c(mu, mu_investement)
+investement_summary[2, ] = c(diag(Sigma), var_investement)
+knitr::kable(investement_summary, caption = "TO DO")
+```
+
+In Table \@ref(tab:tableprtexample) we can observe that our ...
+
+
+```{r}
+plot(sqrt(c(diag(Sigma), var_investement)), c(mu, mu_investement))
 ```
 
 
