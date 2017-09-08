@@ -3,5 +3,13 @@
 language: R
 sudo: false
 cache: packages
+
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov()'
+  
 notifications:
     slack: smac-group:CqtVdLdbV1sCbO7c1gkVDpQE
+    
