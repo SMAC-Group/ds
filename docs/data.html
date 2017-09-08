@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -1031,7 +1031,7 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
-<p>Suppose that you are interested in investing your money in two stocks, say <code>Apple</code> and <code>Amazon</code>. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest <span class="math inline">\(\omega W\)</span> in <code>Apple</code> (AAPL) and <span class="math inline">\((1-\omega) W\)</span> in <code>Netflix</code> (NFLX), where <span class="math inline">\(W\)</span> denotes the amount of money you would like to invest and <span class="math inline">\(\omega\)</span> is such that <span class="math inline">\(\omega \in [0, \, 1]\)</span>. Let <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> denote, respectively, the daily return (see Equation <a href="data.html#eq:returns">(4.1)</a> if you don’t remember what returns are) of <code>Apple</code> and <code>Netflix</code>. To make things simple we assume that the returns <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> are jointly normally distributed so we can write</p>
+<p>Suppose that you are interested in investing your money in two stocks, say <code>Apple</code> and <code>Amazon</code>. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest <span class="math inline">\(\omega W\)</span> in Apple (AAPL) and <span class="math inline">\((1-\omega) W\)</span> in Netflix (NFLX), where <span class="math inline">\(W\)</span> denotes the amount of money you would like to invest and <span class="math inline">\(\omega\)</span> is such that <span class="math inline">\(\omega \in [0, \, 1]\)</span>. Let <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> denote, respectively, the daily return (see Equation <a href="data.html#eq:returns">(4.1)</a> if you don’t remember what returns are) of <code>Apple</code> and <code>Netflix</code>. To make things simple we assume that the returns <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> are jointly normally distributed so we can write</p>
 <p><span class="math display">\[
 \mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
 \]</span></p>
@@ -1104,7 +1104,7 @@ which verifies that our result is a minimum.
 \text{Variance Investment} &amp;=  \left[(\omega^*)^2 \sigma_A^2 + (1 - \omega^*)^2 \sigma_N^2 + 2 \omega^* (1 - \omega^*) \sigma_{AN}\right]W^2.
 \end{aligned}
 \]</span></p>
-<p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated on historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="data.html#eq:omega">(4.2)</a> using the last five years of historical data for the two stocks considered.</p>
+<p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated on historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="data.html#eq:omega">(4.2)</a> using the last five years of historical data for the two stocks considered. For simplicity we set <span class="math inline">\(W\)</span> to one but note that <span class="math inline">\(W\)</span> plays no role in determining <span class="math inline">\(\omega^*\)</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load quantmod</span>
 <span class="kw">library</span>(quantmod)
 
@@ -1135,7 +1135,7 @@ var_investment =<span class="st"> </span>omega_star^<span class="dv">2</span>*Si
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)
 investment_summary[<span class="dv">1</span>, ] =<span class="st"> </span><span class="kw">c</span>(mu, mu_investment)
 investment_summary[<span class="dv">2</span>, ] =<span class="st"> </span><span class="kw">c</span>(<span class="kw">diag</span>(Sigma), var_investment)
-knitr::<span class="kw">kable</span>(investment_summary, <span class="dt">caption =</span> <span class="st">&quot;Expected value and variance of stocks and our investment&quot;</span>)</code></pre></div>
+knitr::<span class="kw">kable</span>(investment_summary)</code></pre></div>
 <table>
 <caption><span id="tab:tableprtexample">Table 4.4: </span>Expected value and variance of stocks and our investment</caption>
 <thead>
@@ -1161,23 +1161,14 @@ knitr::<span class="kw">kable</span>(investment_summary, <span class="dt">captio
 </tr>
 </tbody>
 </table>
-<p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above.</p>
-<div class="figure"><span id="fig:unnamed-chunk-111"></span>
-<img src="ds_files/figure-html/unnamed-chunk-111-1.png" alt="Plot of Expected Return and Variance / Risk" width="672" />
+<p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-111"></span>
+<img src="ds_files/figure-html/unnamed-chunk-111-1.png" alt="Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
 <p class="caption">
-Figure 4.2: Plot of Expected Return and Variance / Risk
+Figure 4.2: Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets.
 </p>
 </div>
-<p>Below, we can analyze such risk and return situations from other companies such as those demonstrated below.</p>
-<div class="figure">
-<img src="images/finance_ex.png" />
-
-</div>
-
-<div class="rmdnote">
-Note that we may revisit this example in the next chapter where we will discuss a more flexible solution to this problem.
-</div>
-<p></p>
+<p>In the next chapter we will revisit this example where we will new programming tools to consider a more flexible solution to this investment problem.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
