@@ -985,20 +985,26 @@ From this code, we obtain $\omega^* \approx$ `r round(100*omega_star, 2)`%. In t
 ```{r tableprtexample}
 investment_summary = matrix(NA, 2, 3)
 dimnames(investment_summary)[[1]] = c("Expected value", "Variance")
-dimnames(investment_summary)[[2]] = c("Apple", "Netflix", "investment")
+dimnames(investment_summary)[[2]] = c("Apple", "Netflix", "Investment")
 investment_summary[1, ] = c(mu, mu_investment)
 investment_summary[2, ] = c(diag(Sigma), var_investment)
-knitr::kable(investment_summary, caption = "TO DO")
+knitr::kable(investment_summary, caption = "Expected value and variance of stocks and our investment")
 ```
 
-In Table \@ref(tab:tableprtexample) we can observe that our ...
+In Table \@ref(tab:tableprtexample) and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above.  
 
-
-```{r}
-plot(sqrt(c(diag(Sigma), var_investment)), c(mu, mu_investment))
+```{r, echo = FALSE, fig.cap="Plot of Expected Return and Variance / Risk"}
+plot(investment_summary[2, ], investment_summary[1, ], ylab = "Expected Value / Return", xlab = "Variance / Risk", pch = 19, cex = 1, lty = "solid", lwd = 2, xlim = c(min(investment_summary[2, ]), max(investment_summary[2, ]+1e-04)), col = c(4,2,3))
+text(investment_summary[2, ], investment_summary[1, ], labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
 ```
 
+Below, we can analyze such risk and return situations from other companies such as those demonstrated below.  
 
+![](images/finance_ex.png)
+
+```{block2, type='rmdnote'}
+Note that we may revisit this example in the next chapter where we will discuss a more flexible solution to this problem.
+```
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
