@@ -853,7 +853,7 @@ We can see that the results are slightly different from what we expected. This i
 
 ### Example: Portfolio Optimization
 
-Suppose that you are interested in investing your money in two stocks, say `Apple` and `Amazon`. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of `Apple` and `Netflix`. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
+Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
 
 \[
 \mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
@@ -938,6 +938,7 @@ Since $W$ is strictly positive all that remains to conclude our derivation is ve
 which verifies that our result is a minimum.
 ```
 </div>
+\newline
 
 
 Using \@ref(eq:omega), we obtain that the expected value and variance of our investment are given by
