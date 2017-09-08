@@ -12,9 +12,9 @@ There are different data types that are commonly used in R among which the most 
 
 - **Character**: examples: `"a"`, `"Bonjour"`. 
 
-In R there are basically five types of data structures in which elements can be stored. A data structure is said to *homogeneous* if it only contains elements of the same type (for example it only contains character or only numeric values) and *heterogenous* if it contains elements of more than one type. The five types of data structrures are commonly summarized in a table similar to the one below [see e.g. @wickham2014advanced]:
+In R there are five types of data structures in which elements can be stored. A data structure is said to *homogeneous* if it only contains elements of the same type (for example it only contains character or only numeric values) and *heterogenous* if it contains elements of more than one type. The five types of data structures are commonly summarized in a table similar to the one below [see e.g. @wickham2014advanced]:
 
-Table: (\#tab:ds) Five most common types of data structrures used in R [@wickham2014advanced].
+Table: (\#tab:ds) Five most common types of data structures used in R [@wickham2014advanced].
 
 Dimension      Homogenous    Heterogeneous
 ------------- ------------- ----------------
@@ -35,7 +35,7 @@ Stan Wawrinka      28 March 1985   Lausanne, Switzerland    Switzerland         
 Novak Djokovic    22 May 1987       Belgrade, Serbia          Serbia                4            109,447,408        82.77              12
 Roger Federer      8 August 1981    Basel, Switzerland      Switzerland            5            104,445,185        81.80              18
 
-Notice that this data set contains a variety of data types; in the next sections we will use these data to illustrate how to work with five common data structures.
+Notice that this data set contains a variety of data types; in the next sections we will use this data to illustrate how to work with five common data structures.
 
 
 ## Vectors 
@@ -45,7 +45,7 @@ A vector has three important properties:
 ```{block2, note-text, type='rmdimportant'}
 - The **Type** of objects contained in the vector. The function `typeof()` returns a description of the type of objects in a vector.
 - The **Length** of a vector indicates the number of elements in the vector. This information can be obtained using the function `length()`.
-- **Attributes** are metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrive attributes (more details can be found in Section \@ref(vectattr))
+- **Attributes** are metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrieve attributes (more details can be found in Section \@ref(vectattr))
 ```
 
 `c()` is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table \@ref(tab:tennis): 
@@ -66,7 +66,7 @@ Alternatively, we could have created and displayed the value by using `()` aroun
 (grand_slam_win <- c(9, 15, 5, 12, 18))
 ```
 
-Various forms of "nested concatenation" can be used to defined vectors, for example we could also define `grand_slam_win` as
+Various forms of "nested concatenation" can be used to define vectors. For example, we could also define `grand_slam_win` as
 
 ```{r}
 (grand_slam_win <- c(9, c(15, 5, c(12, c(18)))))
@@ -90,7 +90,7 @@ typeof(grand_slam_win)
 typeof(players)
 ```
 
-This is a little surprising as all the elements in `grand_slam_win` are integers and it would therefore seem natural to expect this as an output of the function `typeof()`. This is because R considers any number as a "double" by default, except when adding the suffix `L` after an integer. For example:
+This is a little surprising as all the elements in `grand_slam_win` are integers and it would seem natural to expect this as an output of the function `typeof()`. This is because R considers any number as a "double" by default, except when adding the suffix `L` after an integer. For example:
 
 ```{r}
 typeof(1)
@@ -108,13 +108,13 @@ In general, the difference between the two is relatively unimportant.
 
 ### Coercion
 
-As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R *coerces* the data into a "shared" type. To identify this "shared" type we can use this simple rule:
+As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, R will *coerce* the data into a "shared" type. To identify this "shared" type we can use this simple rule:
 
 \begin{equation*}
  \text{logical} < \text{integer} < \text{numeric} < \text{character},
 \end{equation*}
 
-which simply means that if a vector contains more than one data type, the "shared" type will be that of the "largest" type according to the progression shown above. For example:
+which simply means that if a vector has more than one data type, the "shared" type will be that of the "largest" type according to the progression shown above. For example:
 
 ```{r}
 # Logical + numeric
@@ -134,10 +134,10 @@ Naturally, it is possible to "subset" the values of in our vector in many ways. 
 - **Positive Index**: We can *access* or *subset* the $i$-th element of a vector by simply using `grand_slam_win[i]` where $i$ is a positive number between 1 and length of the vector.
 
 ```{r}
-# Accesing the first element
+# Accessing the first element
 grand_slam_win[1]
 
-# Accesing the third and first value
+# Accessing the third and first value
 grand_slam_win[c(3, 1)]
 
 # Duplicated indices yield duplicated values
@@ -147,10 +147,10 @@ grand_slam_win[c(1, 1, 2, 2, 3, 4)]
 - **Negative Index**: We *remove* elements in a vector using negative indices:
 
 ```{r}
-# Removing the second obervation
+# Removing the second observation
 grand_slam_win[-2]
 
-# Removing the first and fourth obserations
+# Removing the first and fourth observations
 grand_slam_win[c(-1, -4)]
 ```
 
@@ -167,7 +167,7 @@ Note that it is not permitted to "mix" positive and negative indices. For exampl
 
 ### Attributes {#vectattr}
 
-Let's suppose that we conducted an experiment under specific conditions, say a date and a place which should be stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:
+Let's suppose that we conduct an experiment under specific conditions, say a date and place which are stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:
 
 ```{r}
 attr(grand_slam_win, "date") <- "07-15-2017"
@@ -217,9 +217,9 @@ names(grand_slam_win)
 
 ### Working with Dates
 
-When working with dates it is useful to treat them as actual dates rather than character strings that *look* like dates (to a human) but don't otherwise *behave* like dates. For example, consider a vector of three dates: `c("03-21-2015", "12-13-2011", "06-27-2008")`. 
+When working with dates it is useful to treat them as real dates than character strings that *look* like dates (to a human) but don't otherwise *behave* like dates. For example, consider a vector of three dates: `c("03-21-2015", "12-13-2011", "06-27-2008")`. 
 
-The `sort()` function returns the elements of a vector in ascending order, but since these dates are actually just character strings that *look* like dates (to a human), R sorts them in alphanumeric order (for characters) rather than chronological order (for dates):
+The `sort()` function returns the elements of a vector in ascending order, but since these dates are actually just character strings that *look* like dates (to a human), R sorts them in alphanumeric order (for characters) than chronological order (for dates):
 
 ```{r}
 # The `sort()` function sorts elements in a vector in ascending order
@@ -270,11 +270,11 @@ In addition, subsetting becomes also more intuitive and to find out the players 
 players[players_dob > "1986-01-01"]
 ```
 
-There are many other reason for using this format (or other date formats). A more detailed discussion on this topic can for example be found in [Cole Beck's notes](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf).
+There are many other reason for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in [Cole Beck's notes](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf).
 
 ### Useful Functions with Vectors
 
-The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain manner which can be of interest to the user. Among the most commonly used functions we can find the following ones 
+The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain way which can be of interest to the user. Among the most commonly used functions we can find the following ones 
 
 `length()` `sum()` `mean()` `order()` and `sort()` 
 
@@ -392,7 +392,7 @@ seq(players_dob[2], players_dob[1], by = "1 month")
 
 ### Example: Apple Stock Price 
 
-Suppose that one is interested in analyzing the behavior of Apple's stock price over the last three months. The first thing that is needed to perform such analysis is to recover (automatically) today's date.  In R, this can be obtained as follows
+Suppose that one is interested in analyzing the behavior of Apple's stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today's date.  In R, this can be obtained as follows
 
 ```{r}
 (today <- Sys.Date())
@@ -485,7 +485,7 @@ Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is qu
 
 ## Matrix
 
-Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equidimensional (same length) vectors within the same object. Below is an example of how to create a matrix containing consecutive numbers in R:
+Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equi-dimensional (same length) vectors within the same object. Below is an example of how to create a matrix containing consecutive numbers in R:
 
 ```{r}
 (mat <- matrix(1:12, ncol = 4,  nrow = 3))
@@ -509,7 +509,7 @@ matrix(1:12, ncol = 4,  nrow = 3, byrow = T)
 Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements? 
 ```
 
-It is often the case however that we already have equidimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are `cbind()` - column bind - and `rbind()` - row bind - where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:
+It is often the case however that we already have equi-dimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are `cbind()` - column bind - and `rbind()` - row bind - where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:
 
 ```{r}
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
@@ -846,16 +846,16 @@ This result can now be compared to
 cov(cbind(x, y))
 ```
 
-We can see that the results are slightly different from what we expected. This is because the calculation of `cov()` within the default R `stats` package is based on an unbiased estimator which is not the one we used. To obtain the exact same result, we can go back to our estimation by calculating via the below method
+We can see that the results are slightly different from what we expected. This is because the calculation of `cov()` within the default R `stats` package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method
 
 ```{r}
 (n-1)/n*cov(cbind(x, y))
 ```
 
 
-### Example: Portfolio Optimzation
+### Example: Portfolio Optimization
 
-Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $X$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remeber what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
+Suppose that you are interested in investing your money in two stocks, say `Apple` and `Amazon`. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in `Apple` (AAPL) and $(1-\omega) W$ in `Netflix` (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of `Apple` and `Netflix`. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
 
 \[
 \mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
@@ -882,11 +882,11 @@ where
 \right].
 \]
 
-Using these assumptions, the classical portfolio optimzation problem, which would allow you to determine a "good" value of $\omega$, can stated as follows. Given our initial wealth $X$, the investement problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mention earlier we assume that $\omega \in [0,\,1]$, implying that it is only possible to buy the two assets (i.e. *short positions* are not allowed). Therefore, to solve our investement problem we must choose the value of $\omega$ which would maximize your personal *utility*. Informally speaking the utility represent a measurement of the "useful-ness" that a is obtained from your investement. To consider a simple case, we will assume that you are a particularly *risk adverse* individual (i.e. you are looking for an investement that is as sure as possible) and as such you want to pick the value of $\omega$ providing you with the smallest investement risk. We can then the optimal value of $\omega$ as follows. First, we construct a new random variable, say $Y$, which denotes the return of your portfolio. Since you invest $\omega W$ in Apple and $(1 - \omega) W$ in Netflix, it is easy to see that
+Using these assumptions, the classical portfolio optimization problem, which would allow you to determine a "good" value of $\omega$, can stated as follows: Given our initial wealth $W$, the investment problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mention earlier we assume that $\omega \in [0,\,1]$, implying that it is only possible to buy the two assets (i.e. *short positions* are not allowed). Therefore, to solve our investment problem we must choose the value of $\omega$ which would maximize your personal *utility*. Informally speaking, the utility represent a measurement of the "usefulness" that is obtained from your investment. To consider a simple case, we will assume that you are a particularly *risk averse* individual (i.e. you are looking for an investment that is as sure and safe as possible) and as such you want to pick the value of $\omega$ providing you with the smallest investment risk. We can then the optimal value of $\omega$ as follows. First, we construct a new random variable, say $Y$, which denotes the return of your portfolio. Since you invest $\omega W$ in Apple and $(1 - \omega) W$ in Netflix, it is easy to see that
 
 \[Y = \left[\omega R_A + (1 - \omega) R_N \right]W.\]
 
-In general the risk and variance of an investement are two different things but in our case we assumed that $\mathbf{R}$ is normally distributed and in such the variance perfectely characterize the risk of your investement. Therefore, we can define the risk of our investement as the following function of $\omega$
+In general the risk and variance of an investment are two different things but in our case we assumed that the return $\mathbf{R}$ is normally distributed and in such the variance can perfectly characterize the risk of your investment. Therefore, we can define the risk of our investment as the following function of $\omega$
 
 \[f(\omega) = \text{Risk}(Y) = \text{Var} (Y) =  \left[\omega^2 \sigma_A^2 + (1 - \omega)^2 \sigma_N^2 + 2 \omega (1 - \omega) \sigma_{AN}\right]W^2.\]
 
@@ -933,7 +933,7 @@ Finally, we verify that our result is a minimum by considering the second deriva
   \frac{\partial^2}{\partial \omega^2} \, f(\omega) = 2W\left[\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN}\right].
 \end{equation}
 
-Since $W$ is strictely positive all that remains to conclude our derivation is veryfying that $\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0$. In fact, this is a well known inequality which is a direct consequence of Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that $\text{Var}(R_A - R_N) \leq 0$ and we also have $\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}$. Thus, we obtain
+Since $W$ is strictly positive all that remains to conclude our derivation is verifying that $\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0$. In fact, this is a well known inequality which is a direct consequence of Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that $\text{Var}(R_A - R_N) \leq 0$ and we also have $\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}$. Thus, we obtain
 
 \[\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \leq 0,\]
 
@@ -942,12 +942,12 @@ which verifies that our result is a minimum.
 </div>
 
 
-Using \@ref(eq:omega), we obtain that the expected value and variance of our investement are given by
+Using \@ref(eq:omega), we obtain that the expected value and variance of our investment are given by
 
 \[
 \begin{aligned}
-\text{Expected Value Investement} &=\left[\omega^* \mu_A + (1 - \omega^*) \mu_N\right] W,\\
-\text{Variance Investement} &=  \left[(\omega^*)^2 \sigma_A^2 + (1 - \omega^*)^2 \sigma_N^2 + 2 \omega^* (1 - \omega^*) \sigma_{AN}\right]W^2.
+\text{Expected Value Investment} &=\left[\omega^* \mu_A + (1 - \omega^*) \mu_N\right] W,\\
+\text{Variance Investment} &=  \left[(\omega^*)^2 \sigma_A^2 + (1 - \omega^*)^2 \sigma_N^2 + 2 \omega^* (1 - \omega^*) \sigma_{AN}\right]W^2.
 \end{aligned}
 \]
 
@@ -974,28 +974,28 @@ mu <- c(mean(Ra), mean(Rn))
 # Compute omega^*
 omega_star = (Sigma[2, 2] - Sigma[1, 2])/(Sigma[1, 1] + Sigma[2, 2] - 2*Sigma[1, 2])
 
-# Compute investement expected value and variance
-mu_investement = omega_star*mu[1] + (1 - omega_star)*mu[2]
-var_investement = omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] + 
+# Compute investment expected value and variance
+mu_investment = omega_star*mu[1] + (1 - omega_star)*mu[2]
+var_investment = omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] + 
   2*omega_star*(1 - omega_star)*Sigma[1,2]
 ```
 
-From this code, we obtain $\omega^* \approx$ `r round(100*omega_star, 2)`%. In the table below we compare the empirical expected values and variances of the stocks stocks as well as those of our investement:
+From this code, we obtain $\omega^* \approx$ `r round(100*omega_star, 2)`%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:
 
 ```{r tableprtexample}
-investement_summary = matrix(NA, 2, 3)
-dimnames(investement_summary)[[1]] = c("Expected value", "Variance")
-dimnames(investement_summary)[[2]] = c("Apple", "Netflix", "Investement")
-investement_summary[1, ] = c(mu, mu_investement)
-investement_summary[2, ] = c(diag(Sigma), var_investement)
-knitr::kable(investement_summary, caption = "TO DO")
+investment_summary = matrix(NA, 2, 3)
+dimnames(investment_summary)[[1]] = c("Expected value", "Variance")
+dimnames(investment_summary)[[2]] = c("Apple", "Netflix", "investment")
+investment_summary[1, ] = c(mu, mu_investment)
+investment_summary[2, ] = c(diag(Sigma), var_investment)
+knitr::kable(investment_summary, caption = "TO DO")
 ```
 
 In Table \@ref(tab:tableprtexample) we can observe that our ...
 
 
 ```{r}
-plot(sqrt(c(diag(Sigma), var_investement)), c(mu, mu_investement))
+plot(sqrt(c(diag(Sigma), var_investment)), c(mu, mu_investment))
 ```
 
 
@@ -1004,8 +1004,8 @@ plot(sqrt(c(diag(Sigma), var_investement)), c(mu, mu_investement))
 <script type="text/javascript">
     $("#hideclass").hide();
     $("#hidebutton").click(function(){
-    $("#hideclass").toggle();
-  });
+      $("#hideclass").toggle();
+    });
 </script>
 
  
