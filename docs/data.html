@@ -997,9 +997,9 @@ s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="
 <span class="kw">colnames</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)
 cp_matrix</code></pre></div>
 <pre><code>##                       Scalar     Matrix
-## Sample Mean       0.35557010 0.35557010
-## Sample Variance   3.70789790 3.70789790
-## Sample Covariance 0.04831488 0.04831488</code></pre>
+## Sample Mean       -0.3882042 -0.3882042
+## Sample Variance    4.3323067  4.3323067
+## Sample Covariance -0.2282617 -0.2282617</code></pre>
 <p>Therefore, using the previously obtained results we can construct the following <em>empirical</em> covariance matrix</p>
 <span class="math display">\[\begin{equation} 
   \widehat{\text{Cov}}(X, Y) =  \left[
@@ -1016,24 +1016,24 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 <span class="co"># Covariance matrix</span>
 (V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</code></pre></div>
 <pre><code>##            [,1]       [,2]
-## [1,] 3.70789790 0.04831488
-## [2,] 0.04831488 1.01578369</code></pre>
+## [1,]  4.3323067 -0.2282617
+## [2,] -0.2282617  1.0157038</code></pre>
 <p>This result can now be compared to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##           x         y
-## x 3.7453514 0.0488029
-## y 0.0488029 1.0260441</code></pre>
+<pre><code>##            x          y
+## x  4.3760674 -0.2305674
+## y -0.2305674  1.0259634</code></pre>
 <p>We can see that the results are slightly different from what we expected. This is because the calculation of <code>cov()</code> within the default R <code>stats</code> package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(n<span class="dv">-1</span>)/n*<span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
 <pre><code>##            x          y
-## x 3.70789790 0.04831488
-## y 0.04831488 1.01578369</code></pre>
+## x  4.3323067 -0.2282617
+## y -0.2282617  1.0157038</code></pre>
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
 <p>Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest <span class="math inline">\(\omega W\)</span> in Apple (AAPL) and <span class="math inline">\((1-\omega) W\)</span> in Netflix (NFLX), where <span class="math inline">\(W\)</span> denotes the amount of money you would like to invest and <span class="math inline">\(\omega\)</span> is such that <span class="math inline">\(\omega \in [0, \, 1]\)</span>. Let <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> denote, respectively, the daily return (see Equation <a href="data.html#eq:returns">(4.1)</a> if you don’t remember what returns are) of Apple and Netflix. To make things simple we assume that the returns <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> are jointly normally distributed so we can write</p>
 <p><span class="math display">\[
-\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
+\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right),
 \]</span></p>
 <p>where</p>
 <p><span class="math display">\[
@@ -1105,7 +1105,7 @@ which verifies that our result is a minimum.
 \text{Variance Investment} &amp;=  \left[(\omega^*)^2 \sigma_A^2 + (1 - \omega^*)^2 \sigma_N^2 + 2 \omega^* (1 - \omega^*) \sigma_{AN}\right]W^2.
 \end{aligned}
 \]</span></p>
-<p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated on historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="data.html#eq:omega">(4.2)</a> using the last five years of historical data for the two stocks considered. For simplicity we set <span class="math inline">\(W\)</span> to one but note that <span class="math inline">\(W\)</span> plays no role in determining <span class="math inline">\(\omega^*\)</span></p>
+<p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated on historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="data.html#eq:omega">(4.2)</a> using the last five years of historical data for the two stocks considered. For simplicity we set <span class="math inline">\(W\)</span> to one but note that <span class="math inline">\(W\)</span> plays no role in determining <span class="math inline">\(\omega^*\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load quantmod</span>
 <span class="kw">library</span>(quantmod)
 
@@ -1163,8 +1163,8 @@ knitr::<span class="kw">kable</span>(investment_summary)</code></pre></div>
 </tbody>
 </table>
 <p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-111"></span>
-<img src="ds_files/figure-html/unnamed-chunk-111-1.png" alt="Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-114"></span>
+<img src="ds_files/figure-html/unnamed-chunk-114-1.png" alt="Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
 <p class="caption">
 Figure 4.2: Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets.
 </p>

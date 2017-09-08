@@ -856,7 +856,7 @@ We can see that the results are slightly different from what we expected. This i
 Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
 
 \[
-\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
+\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right),
 \]
 
 where
@@ -950,7 +950,7 @@ Using \@ref(eq:omega), we obtain that the expected value and variance of our inv
 \end{aligned}
 \]
 
-In practice, the vector $\boldsymbol{\mu}$ and matrix $\boldsymbol{\Sigma}$ are unknown and must be estimated on historical data. In the code below, we compute the optimal value of $\omega$ based on \@ref(eq:omega) using the last five years of historical data for the two stocks considered. For simplicity we set $W$ to one but note that $W$ plays no role in determining $\omega^*$
+In practice, the vector $\boldsymbol{\mu}$ and matrix $\boldsymbol{\Sigma}$ are unknown and must be estimated on historical data. In the code below, we compute the optimal value of $\omega$ based on \@ref(eq:omega) using the last five years of historical data for the two stocks considered. For simplicity we set $W$ to one but note that $W$ plays no role in determining $\omega^*$.
   
 ```{r downloadaaplandamaz, message = FALSE, warning = FALSE, results = 'hide'}
 # Load quantmod
@@ -1002,9 +1002,9 @@ knitr::kable(investment_summary, caption = "Expected value and variance of stock
 In Table \@ref(tab:tableprtexample) and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below. 
 
 ```{r, echo = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE, results = 'hide', fig.cap = "Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets."}
-plot(investment_summary[2, ], investment_summary[1, ], ylab = "Daily Expected Value of Investement", xlab = "Daily Investement Variance", pch = 19, cex = 1, lty = "solid", lwd = 2, xlim = c(min(investment_summary[2, ]), max(investment_summary[2, ]+1e-04)), col = c(4,2,3))
+plot(sqrt(investment_summary[2, ]), investment_summary[1, ], ylab = "Daily Expected Value of Investement", xlab = "Daily Investement Standard Deviation", pch = 19, cex = 1, lty = "solid", lwd = 2, xlim = c(min(sqrt(investment_summary[2, ])), max(sqrt(investment_summary[2, ])+3e-03)), col = c(4,2,3))
 grid()
-text(investment_summary[2, ], investment_summary[1, ], labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
+text(sqrt(investment_summary[2, ]), investment_summary[1, ], labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
 ```
 
 In the next chapter we will revisit this example where we will new programming tools to consider a more flexible solution to this investment problem.
