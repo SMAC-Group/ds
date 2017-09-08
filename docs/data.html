@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-09-07">
+<meta name="date" content="2017-09-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -328,7 +328,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </li>
 </ul>
-<p><code>c()</code> is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table <a href="data.html#tab:tennis">4.2</a>:</p>
+<p><code>c()</code> is a generic function that combines arguments to form a vector. All arguments are coerced to a common type (which is the type of the returned value) and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table <a href="data.html#tab:tennis">4.2</a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)</code></pre></div>
 <p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand_slam_win</code></pre></div>
@@ -340,7 +340,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">12</span>, <span class="kw">c</span>(<span class="dv">18</span>)))))</code></pre></div>
 <pre><code>## [1]  9 15  5 12 18</code></pre>
 <p>This approach is often used to assemble vectors in various ways.</p>
-<p>It is also possible to define vector with characters, for example we could define a vector with the player names as follows:</p>
+<p>It is also possible to define vectors with characters, for example we could define a vector with the player names as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
              <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Stan Wawrinka&quot;  &quot;Novak Djokovic&quot;
@@ -352,7 +352,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(players)</code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<p>This is a little surprising as all the elements in <code>grand_slam_win</code> are integers and it would seem natural to expect this as an output of the function <code>typeof()</code>. This is because R considers any number as a “double” by default, except when adding the suffix <code>L</code> after an integer. For example:</p>
+<p>This is a little surprising since all the elements in <code>grand_slam_win</code> are integers and it would seem natural to expect this as an output of the function <code>typeof()</code>. This is because R considers any number as a “double” by default, except when adding the suffix <code>L</code> after an integer. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">1</span>)</code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(1L)</code></pre></div>
@@ -384,9 +384,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="subsetting" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Subsetting</h3>
-<p>Naturally, it is possible to “subset” the values of in our vector in many ways. Essentially, there are four main ways of subsetting a vector. Here we’ll only discuss the first three:</p>
+<p>Naturally, it is possible to “subset” the values of in our vector in many ways. Essentially, there are four main ways to subset a vector. Here we’ll only discuss the first three:</p>
 <ul>
-<li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>grand_slam_win[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and length of the vector.</li>
+<li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>grand_slam_win[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and the length of the vector.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Accessing the first element</span>
 grand_slam_win[<span class="dv">1</span>]</code></pre></div>
@@ -420,7 +420,7 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 </div>
 <div id="vectattr" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Attributes</h3>
-<p>Let’s suppose that we conduct an experiment under specific conditions, say a date and place which are stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:</p>
+<p>Let’s suppose that we conduct an experiment under specific conditions, say a date and place that are stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) &lt;-<span class="st"> &quot;07-15-2017&quot;</span>
 <span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;type&quot;</span>) &lt;-<span class="st"> &quot;Men, Singles&quot;</span></code></pre></div>
 <p>To display the vector with its attributes</p>
@@ -443,7 +443,7 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 </div>
 <div id="addlab" class="section level3">
 <h3><span class="header-section-number">4.1.5</span> Adding Labels</h3>
-<p>In some cases, it is useful to augment vector elements with labels. For example, we could define the vector <code>grand_slam_win</code> and associate the name of each corresponding athlete as a labels, i.e.</p>
+<p>In some cases, it is useful to characterize vector elements with labels. For example, we could define the vector <code>grand_slam_win</code> and associate the name of each corresponding athlete as a label, i.e.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span> =<span class="st"> </span><span class="dv">9</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">15</span>, 
                    <span class="st">&quot;Stan Wawrinka&quot;</span> =<span class="st"> </span><span class="dv">5</span>, <span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">12</span>, 
                    <span class="st">&quot;Roger Federer&quot;</span> =<span class="st"> </span><span class="dv">18</span>))</code></pre></div>
@@ -463,8 +463,8 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 </div>
 <div id="working-with-dates" class="section level3">
 <h3><span class="header-section-number">4.1.6</span> Working with Dates</h3>
-<p>When working with dates it is useful to treat them as real dates than character strings that <em>look</em> like dates (to a human) but don’t otherwise <em>behave</em> like dates. For example, consider a vector of three dates: <code>c(&quot;03-21-2015&quot;, &quot;12-13-2011&quot;, &quot;06-27-2008&quot;)</code>.</p>
-<p>The <code>sort()</code> function returns the elements of a vector in ascending order, but since these dates are actually just character strings that <em>look</em> like dates (to a human), R sorts them in alphanumeric order (for characters) than chronological order (for dates):</p>
+<p>When working with dates it is useful to treat them as real dates rather than character strings that <em>look</em> like dates (to a human) but don’t otherwise <em>behave</em> like dates. For example, consider a vector of three dates: <code>c(&quot;03-21-2015&quot;, &quot;12-13-2011&quot;, &quot;06-27-2008&quot;)</code>.</p>
+<p>The <code>sort()</code> function returns the elements of a vector in ascending order, but since these dates are actually just character strings that <em>look</em> like dates (to a human), R sorts them in alphanumeric order (for characters) rather than chronological order (for dates):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The `sort()` function sorts elements in a vector in ascending order</span>
 <span class="kw">sort</span>(<span class="kw">c</span>(<span class="st">&quot;03-21-2015&quot;</span>, <span class="st">&quot;12-31-2011&quot;</span>, <span class="st">&quot;06-27-2008&quot;</span>, <span class="st">&quot;01-01-2012&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;01-01-2012&quot; &quot;03-21-2015&quot; &quot;06-27-2008&quot; &quot;12-31-2011&quot;</code></pre>
@@ -472,8 +472,8 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <p>The <code>as.Date()</code> function is one straight-forward method for converting character strings into dates that can be used as such. The typical syntax is of the form:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.Dates</span>(&lt;vector of dates&gt;, <span class="dt">format =</span> &lt;your format&gt;)</code></pre></div>
 <p>Considering the dates of birth presented in Table <a href="data.html#tab:tennis">4.2</a> we can save them in an appropriate format using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(players_dob &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;15 May 1987&quot;</span>, <span class="st">&quot;3 June 1986&quot;</span>, <span class="st">&quot;28 March 1985&quot;</span>, 
-                         <span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;8 August 1981&quot;</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(players_dob &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;15 May 1987&quot;</span>, <span class="st">&quot;3 Jun 1986&quot;</span>, <span class="st">&quot;28 Mar 1985&quot;</span>, 
+                         <span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;8 Aug 1981&quot;</span>), 
                        <span class="dt">format =</span> <span class="st">&quot;%d %b %Y&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;1987-05-15&quot; &quot;1986-06-03&quot; &quot;1985-03-28&quot; &quot;1987-05-22&quot; &quot;1981-08-08&quot;</code></pre>
 <p>Note the syntax of <code>format = &quot;%d %b %Y&quot;</code>. The following table shows common format elements for use with the <code>as.Date()</code> function:</p>
@@ -529,13 +529,13 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 </tr>
 </tbody>
 </table>
-<p>There are many advantages to recommend the <code>as.Date()</code> format (in addition to proper sorting). For example, the subtraction between two dates becomes more meaningful and yields to the difference in days between them. As an example, the number of days between Rafael Nadal’s and Andy Murray’s dates of birth can be obtained as</p>
+<p>There are many advantages to using the <code>as.Date()</code> format (in addition to proper sorting). For example, the subtraction between two dates becomes more meaningful and yields the difference in days between them. As an example, the number of days between Rafael Nadal’s and Andy Murray’s dates of birth can be obtained as</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players_dob[<span class="dv">1</span>] -<span class="st"> </span>players_dob[<span class="dv">2</span>]</code></pre></div>
 <pre><code>## Time difference of 346 days</code></pre>
-<p>In addition, subsetting becomes also more intuitive and to find out the players born after 1 January 1986 we can simply run:</p>
+<p>In addition, subsetting becomes also more intuitive and, for example, to find the players born after 1 January 1986 we can simply run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players[players_dob &gt;<span class="st"> &quot;1986-01-01&quot;</span>]</code></pre></div>
 <pre><code>## [1] &quot;Andy Murray&quot;    &quot;Rafael Nadal&quot;   &quot;Novak Djokovic&quot;</code></pre>
-<p>There are many other reason for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Cole Beck’s notes</a>.</p>
+<p>There are many other reasons for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Cole Beck’s notes</a>.</p>
 </div>
 <div id="useful-functions-with-vectors" class="section level3">
 <h3><span class="header-section-number">4.1.7</span> Useful Functions with Vectors</h3>
@@ -617,11 +617,11 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">1</span>, <span class="dt">each =</span> <span class="dv">3</span>)</code></pre></div>
 <pre><code>## [1] 1 1 1 2 2 2</code></pre>
 <p>where the option <code>times</code> allows to specify how many times the object needs to be repeated and <code>each</code> regulates how many times each element in the object is repeated.</p>
-<p>It is also possible to generates sequences of dates using the function <code>seq()</code>. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use</p>
+<p>It is also possible to generate sequences of dates using the function <code>seq()</code>. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> players_dob[<span class="dv">1</span>], <span class="dt">to =</span> players_dob[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span>)</code></pre></div>
 <pre><code>##  [1] &quot;1987-05-15&quot; &quot;1987-04-06&quot; &quot;1987-02-27&quot; &quot;1987-01-19&quot; &quot;1986-12-12&quot;
 ##  [6] &quot;1986-11-03&quot; &quot;1986-09-26&quot; &quot;1986-08-18&quot; &quot;1986-07-11&quot; &quot;1986-06-03&quot;</code></pre>
-<p>Similarly, we can create a sequence between the two dates by increment of one week (backward)</p>
+<p>Similarly, we can create a sequence between the two dates by increments of one week (backwards)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(players_dob[<span class="dv">1</span>], players_dob[<span class="dv">2</span>], <span class="dt">by =</span> <span class="st">&quot;-1 week&quot;</span>)</code></pre></div>
 <pre><code>##  [1] &quot;1987-05-15&quot; &quot;1987-05-08&quot; &quot;1987-05-01&quot; &quot;1987-04-24&quot; &quot;1987-04-17&quot;
 ##  [6] &quot;1987-04-10&quot; &quot;1987-04-03&quot; &quot;1987-03-27&quot; &quot;1987-03-20&quot; &quot;1987-03-13&quot;
@@ -633,7 +633,7 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 ## [36] &quot;1986-09-12&quot; &quot;1986-09-05&quot; &quot;1986-08-29&quot; &quot;1986-08-22&quot; &quot;1986-08-15&quot;
 ## [41] &quot;1986-08-08&quot; &quot;1986-08-01&quot; &quot;1986-07-25&quot; &quot;1986-07-18&quot; &quot;1986-07-11&quot;
 ## [46] &quot;1986-07-04&quot; &quot;1986-06-27&quot; &quot;1986-06-20&quot; &quot;1986-06-13&quot; &quot;1986-06-06&quot;</code></pre>
-<p>or by increment of one month (forward)</p>
+<p>or by increments of one month (forwards)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(players_dob[<span class="dv">2</span>], players_dob[<span class="dv">1</span>], <span class="dt">by =</span> <span class="st">&quot;1 month&quot;</span>)</code></pre></div>
 <pre><code>##  [1] &quot;1986-06-03&quot; &quot;1986-07-03&quot; &quot;1986-08-03&quot; &quot;1986-09-03&quot; &quot;1986-10-03&quot;
 ##  [6] &quot;1986-11-03&quot; &quot;1986-12-03&quot; &quot;1987-01-03&quot; &quot;1987-02-03&quot; &quot;1987-03-03&quot;
@@ -641,12 +641,12 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 </div>
 <div id="example-apple-stock-price" class="section level3">
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
-<p>Suppose that one is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
+<p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-09-07&quot;</code></pre>
+<pre><code>## [1] &quot;2017-09-08&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-06-07&quot;</code></pre>
+<pre><code>## [1] &quot;2017-06-08&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)
@@ -665,21 +665,21 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</code></pre></div>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.000741442</code></pre>
+<pre><code>## [1] 0.0007165385</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
 <pre><code>## [1] 0.00270089</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
 \end{equation}\]</span>
-<p>The reason for defining this statistic as <em>Excess</em> Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on button below:</p>
+<p>The reason for defining this statistic as <em>Excess</em> Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on the button below:</p>
 <button id="hidebutton1">
 Excess Kurtosis Derivation
 </button>
 <div id="hideclass1">
 
 <div class="rmdnote">
-<p>Assuming <span class="math inline">\(X\)</span> to be Gaussian we have <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span>. Then, we define <span class="math inline">\(Z\)</span> as <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> and <span class="math inline">\(Y\)</span> as <span class="math inline">\(Y = Z^2 \sim \chi^2_1\)</span>. Remember that a random variable following a <span class="math inline">\(\chi^2_1\)</span> distribution has the following properties: <span class="math inline">\(\text{Var}[Y] = 2\)</span> and <span class="math inline">\(\mathbb{E}[Y] = 1\)</span>. Using these definitions and properties, we obtain:</p>
+<p>Assuming <span class="math inline">\(X\)</span> to be Gaussian, we have <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span>. Then, we define <span class="math inline">\(Z\)</span> as <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> and <span class="math inline">\(Y\)</span> as <span class="math inline">\(Y = Z^2 \sim \chi^2_1\)</span>. Remember that a random variable following a <span class="math inline">\(\chi^2_1\)</span> distribution has the following properties: <span class="math inline">\(\text{Var}[Y] = 2\)</span> and <span class="math inline">\(\mathbb{E}[Y] = 1\)</span>. Using these definitions and properties, we obtain:</p>
 <span class="math display">\[\begin{equation}
   \begin{aligned}
 \text{Kurt}  &amp;= \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3 = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left[\text{Var} \left(X\right)\right]^2} - 3 = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\sigma^4}  - 3\\
@@ -704,8 +704,8 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 <p>In R, this can simply be done as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.644067</code></pre>
-<p>Therefore, we observe an estimated Excess Kurtosis of 2.64 which is quite high tends to indicate the returns have a heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
+<pre><code>## [1] 2.630871</code></pre>
+<p>Therefore, we observe an estimated Excess Kurtosis of 2.63 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
 </div>
 <div id="matrix" class="section level2">
@@ -801,7 +801,7 @@ mat[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</spa
 <p>Therefore, we expect <code>dim(A)</code> to return the vector <code>c(4, 2)</code>. Indeed, we have</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(A)</code></pre></div>
 <pre><code>## [1] 4 2</code></pre>
-<p>Next, we consider the function <code>t()</code> allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
+<p>Next, we consider the function <code>t()</code> that allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
 <span class="math display">\[\begin{equation*}
 \mathbf{A}^T = \left[
 \begin{matrix}
@@ -997,9 +997,9 @@ s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="
 <span class="kw">colnames</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)
 cp_matrix</code></pre></div>
 <pre><code>##                       Scalar     Matrix
-## Sample Mean       -0.3882042 -0.3882042
-## Sample Variance    4.3323067  4.3323067
-## Sample Covariance -0.2282617 -0.2282617</code></pre>
+## Sample Mean       0.35557010 0.35557010
+## Sample Variance   3.70789790 3.70789790
+## Sample Covariance 0.04831488 0.04831488</code></pre>
 <p>Therefore, using the previously obtained results we can construct the following <em>empirical</em> covariance matrix</p>
 <span class="math display">\[\begin{equation} 
   \widehat{\text{Cov}}(X, Y) =  \left[
@@ -1016,18 +1016,18 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 <span class="co"># Covariance matrix</span>
 (V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</code></pre></div>
 <pre><code>##            [,1]       [,2]
-## [1,]  4.3323067 -0.2282617
-## [2,] -0.2282617  1.0157038</code></pre>
+## [1,] 3.70789790 0.04831488
+## [2,] 0.04831488 1.01578369</code></pre>
 <p>This result can now be compared to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##            x          y
-## x  4.3760674 -0.2305674
-## y -0.2305674  1.0259634</code></pre>
+<pre><code>##           x         y
+## x 3.7453514 0.0488029
+## y 0.0488029 1.0260441</code></pre>
 <p>We can see that the results are slightly different from what we expected. This is because the calculation of <code>cov()</code> within the default R <code>stats</code> package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(n<span class="dv">-1</span>)/n*<span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
 <pre><code>##            x          y
-## x  4.3323067 -0.2282617
-## y -0.2282617  1.0157038</code></pre>
+## x 3.70789790 0.04831488
+## y 0.04831488 1.01578369</code></pre>
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
@@ -1054,16 +1054,16 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 \end{matrix} 
 \right].
 \]</span></p>
-<p>Using these assumptions, the classical portfolio optimization problem, which would allow you to determine a “good” value of <span class="math inline">\(\omega\)</span>, can stated as follows: Given our initial wealth <span class="math inline">\(W\)</span>, the investment problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mention earlier we assume that <span class="math inline">\(\omega \in [0,\,1]\)</span>, implying that it is only possible to buy the two assets (i.e. <em>short positions</em> are not allowed). Therefore, to solve our investment problem we must choose the value of <span class="math inline">\(\omega\)</span> which would maximize your personal <em>utility</em>. Informally speaking, the utility represent a measurement of the “usefulness” that is obtained from your investment. To consider a simple case, we will assume that you are a particularly <em>risk averse</em> individual (i.e. you are looking for an investment that is as sure and safe as possible) and as such you want to pick the value of <span class="math inline">\(\omega\)</span> providing you with the smallest investment risk. We can then the optimal value of <span class="math inline">\(\omega\)</span> as follows. First, we construct a new random variable, say <span class="math inline">\(Y\)</span>, which denotes the return of your portfolio. Since you invest <span class="math inline">\(\omega W\)</span> in Apple and <span class="math inline">\((1 - \omega) W\)</span> in Netflix, it is easy to see that</p>
+<p>Using these assumptions, the classical portfolio optimization problem, which would allow you to determine a “good” value of <span class="math inline">\(\omega\)</span>, can be stated as follows: Given our initial wealth <span class="math inline">\(W\)</span>, the investment problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mentioned earlier, we assume that <span class="math inline">\(\omega \in [0,\,1]\)</span>, implying that it is only possible to buy the two assets (i.e. <em>short positions</em> are not allowed). Therefore, to solve our investment problem we must choose the value of <span class="math inline">\(\omega\)</span> which would maximize your personal <em>utility</em>. Informally speaking, the utility represents a measurement of the “usefulness” that is obtained from your investment. To consider a simple case, we will assume that you are a particularly <em>risk averse</em> individual (i.e. you are looking for an investment that is as sure and safe as possible) and as such you want to pick the value of <span class="math inline">\(\omega\)</span> providing you with the smallest investment risk. We can then determine the optimal value of <span class="math inline">\(\omega\)</span> as follows. First, we construct a new random variable, say <span class="math inline">\(Y\)</span>, which denotes the return of your portfolio. Since you invest <span class="math inline">\(\omega W\)</span> in Apple and <span class="math inline">\((1 - \omega) W\)</span> in Netflix, it is easy to see that</p>
 <p><span class="math display">\[Y = \left[\omega R_A + (1 - \omega) R_N \right]W.\]</span></p>
-<p>In general the risk and variance of an investment are two different things but in our case we assumed that the return <span class="math inline">\(\mathbf{R}\)</span> is normally distributed and in such the variance can perfectly characterize the risk of your investment. Therefore, we can define the risk of our investment as the following function of <span class="math inline">\(\omega\)</span></p>
+<p>In general the risk and variance of an investment are two different things but in our case we assume that the return <span class="math inline">\(\mathbf{R}\)</span> is normally distributed and in this case the variance can perfectly characterize the risk of our investment. Therefore, we can define the risk of our investment as the following function of <span class="math inline">\(\omega\)</span></p>
 <p><span class="math display">\[f(\omega) = \text{Risk}(Y) = \text{Var} (Y) =  \left[\omega^2 \sigma_A^2 + (1 - \omega)^2 \sigma_N^2 + 2 \omega (1 - \omega) \sigma_{AN}\right]W^2.\]</span></p>
 <p>The function <span class="math inline">\(f(\omega)\)</span> is minimized for the value <span class="math inline">\(\omega^*\)</span> which is given by</p>
 <span class="math display" id="eq:omega">\[\begin{equation}
   \omega^* = \frac{\sigma^2_N - \sigma_{AN}}{\sigma^2_A + \sigma^2_N - 2\sigma_{AN}}.
   \tag{4.2}
 \end{equation}\]</span>
-<p>If you interested in understanding how Equation <a href="data.html#eq:omega">(4.2)</a> was obtain click on the button below:</p>
+<p>If you are interested in understanding how Equation <a href="data.html#eq:omega">(4.2)</a> was obtained, click on the button below:</p>
 
 <button id="hidebutton2">
 Minimum Variance Portfolio Derivation
@@ -1091,7 +1091,7 @@ Minimum Variance Portfolio Derivation
 <span class="math display">\[\begin{equation}
   \frac{\partial^2}{\partial \omega^2} \, f(\omega) = 2W\left[\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN}\right].
 \end{equation}\]</span>
-<p>Since <span class="math inline">\(W\)</span> is strictly positive all that remains to conclude our derivation is verifying that <span class="math inline">\(\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0\)</span>. In fact, this is a well known inequality which is a direct consequence of Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that <span class="math inline">\(\text{Var}(R_A - R_N) \leq 0\)</span> and we also have <span class="math inline">\(\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}\)</span>. Thus, we obtain</p>
+<p>Since <span class="math inline">\(W\)</span> is strictly positive, all that remains to conclude our derivation is to verify that <span class="math inline">\(\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0\)</span>. In fact, this is a well known inequality which is a direct consequence of the Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that <span class="math inline">\(\text{Var}(R_A - R_N) \leq 0\)</span> and we also have <span class="math inline">\(\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}\)</span>. Thus, we obtain</p>
 <p><span class="math display">\[\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \leq 0,\]</span></p>
 which verifies that our result is a minimum.
 </div>
@@ -1105,7 +1105,7 @@ which verifies that our result is a minimum.
 \text{Variance Investment} &amp;=  \left[(\omega^*)^2 \sigma_A^2 + (1 - \omega^*)^2 \sigma_N^2 + 2 \omega^* (1 - \omega^*) \sigma_{AN}\right]W^2.
 \end{aligned}
 \]</span></p>
-<p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated on historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="data.html#eq:omega">(4.2)</a> using the last five years of historical data for the two stocks considered. For simplicity we set <span class="math inline">\(W\)</span> to one but note that <span class="math inline">\(W\)</span> plays no role in determining <span class="math inline">\(\omega^*\)</span>.</p>
+<p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and the matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated using historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="data.html#eq:omega">(4.2)</a> by using the last five years of historical data for the two stocks considered. For simplicity we set <span class="math inline">\(W\)</span> to one but note that <span class="math inline">\(W\)</span> plays no role in determining <span class="math inline">\(\omega^*\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load quantmod</span>
 <span class="kw">library</span>(quantmod)
 
@@ -1130,7 +1130,7 @@ omega_star =<span class="st"> </span>(Sigma[<span class="dv">2</span>, <span cla
 mu_investment =<span class="st"> </span>omega_star*mu[<span class="dv">1</span>] +<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>omega_star)*mu[<span class="dv">2</span>]
 var_investment =<span class="st"> </span>omega_star^<span class="dv">2</span>*Sigma[<span class="dv">1</span>,<span class="dv">1</span>] +<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>omega_star)^<span class="dv">2</span>*Sigma[<span class="dv">2</span>,<span class="dv">2</span>] +<span class="st"> </span>
 <span class="st">  </span><span class="dv">2</span>*omega_star*(<span class="dv">1</span> -<span class="st"> </span>omega_star)*Sigma[<span class="dv">1</span>,<span class="dv">2</span>]</code></pre></div>
-<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 82.33%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
+<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 82.35%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">investment_summary =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">1</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Expected value&quot;</span>, <span class="st">&quot;Variance&quot;</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)
@@ -1150,26 +1150,26 @@ knitr::<span class="kw">kable</span>(investment_summary)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td>Expected value</td>
-<td align="right">0.0005302</td>
-<td align="right">0.0029468</td>
-<td align="right">0.0009572</td>
+<td align="right">0.0005477</td>
+<td align="right">0.0029561</td>
+<td align="right">0.0009728</td>
 </tr>
 <tr class="even">
 <td>Variance</td>
-<td align="right">0.0002469</td>
-<td align="right">0.0010042</td>
-<td align="right">0.0002103</td>
+<td align="right">0.0002463</td>
+<td align="right">0.0010040</td>
+<td align="right">0.0002098</td>
 </tr>
 </tbody>
 </table>
-<p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-114"></span>
-<img src="ds_files/figure-html/unnamed-chunk-114-1.png" alt="Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
+<p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, meaning that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-111"></span>
+<img src="ds_files/figure-html/unnamed-chunk-111-1.png" alt="Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
 <p class="caption">
-Figure 4.2: Graphical repsresentation of Apple, Netflix and min-variance portfolio based on these two assets.
+Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets.
 </p>
 </div>
-<p>In the next chapter we will revisit this example where we will new programming tools to consider a more flexible solution to this investment problem.</p>
+<p>In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
