@@ -48,7 +48,7 @@ A vector has three important properties:
 - **Attributes** are metadata attached to a vector. The functions `attr()` and `attributes()` can be used to store and retrieve attributes (more details can be found in Section \@ref(vectattr))
 ```
 
-`c()` is a generic function which combines arguments to form a vector. All arguments are coerced to a common type which is the type of the returned value, and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table \@ref(tab:tennis): 
+`c()` is a generic function that combines arguments to form a vector. All arguments are coerced to a common type (which is the type of the returned value) and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table \@ref(tab:tennis): 
 
 ```{r}
 grand_slam_win <- c(9, 15, 5, 12, 18)
@@ -74,7 +74,7 @@ Various forms of "nested concatenation" can be used to define vectors. For examp
 
 This approach is often used to assemble vectors in various ways.
 
-It is also possible to define vector with characters, for example we could define a vector with the player names as follows:
+It is also possible to define vectors with characters, for example we could define a vector with the player names as follows:
 
 ```{r}
 (players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
@@ -90,7 +90,7 @@ typeof(grand_slam_win)
 typeof(players)
 ```
 
-This is a little surprising as all the elements in `grand_slam_win` are integers and it would seem natural to expect this as an output of the function `typeof()`. This is because R considers any number as a "double" by default, except when adding the suffix `L` after an integer. For example:
+This is a little surprising since all the elements in `grand_slam_win` are integers and it would seem natural to expect this as an output of the function `typeof()`. This is because R considers any number as a "double" by default, except when adding the suffix `L` after an integer. For example:
 
 ```{r}
 typeof(1)
@@ -129,9 +129,9 @@ typeof(mix_int_char)
 
 ### Subsetting
 
-Naturally, it is possible to "subset" the values of in our vector in many ways. Essentially, there are four main ways of subsetting a vector. Here we'll only discuss the first three:
+Naturally, it is possible to "subset" the values of in our vector in many ways. Essentially, there are four main ways to subset a vector. Here we'll only discuss the first three:
 
-- **Positive Index**: We can *access* or *subset* the $i$-th element of a vector by simply using `grand_slam_win[i]` where $i$ is a positive number between 1 and length of the vector.
+- **Positive Index**: We can *access* or *subset* the $i$-th element of a vector by simply using `grand_slam_win[i]` where $i$ is a positive number between 1 and the length of the vector.
 
 ```{r}
 # Accessing the first element
@@ -167,7 +167,7 @@ Note that it is not permitted to "mix" positive and negative indices. For exampl
 
 ### Attributes {#vectattr}
 
-Let's suppose that we conduct an experiment under specific conditions, say a date and place which are stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:
+Let's suppose that we conduct an experiment under specific conditions, say a date and place that are stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:
 
 ```{r}
 attr(grand_slam_win, "date") <- "07-15-2017"
@@ -194,7 +194,7 @@ attr(grand_slam_win, "date")
 
 ### Adding Labels {#addlab}
 
-In some cases, it is useful to augment vector elements with labels. For example, we could define the vector `grand_slam_win` and associate the name of each corresponding athlete as a labels, i.e.
+In some cases, it is useful to characterize vector elements with labels. For example, we could define the vector `grand_slam_win` and associate the name of each corresponding athlete as a label, i.e.
 
 ```{r}
 (grand_slam_win <- c("Andy Murray" = 9, "Rafael Nadal" = 15, 
@@ -217,9 +217,9 @@ names(grand_slam_win)
 
 ### Working with Dates
 
-When working with dates it is useful to treat them as real dates than character strings that *look* like dates (to a human) but don't otherwise *behave* like dates. For example, consider a vector of three dates: `c("03-21-2015", "12-13-2011", "06-27-2008")`. 
+When working with dates it is useful to treat them as real dates rather than character strings that *look* like dates (to a human) but don't otherwise *behave* like dates. For example, consider a vector of three dates: `c("03-21-2015", "12-13-2011", "06-27-2008")`. 
 
-The `sort()` function returns the elements of a vector in ascending order, but since these dates are actually just character strings that *look* like dates (to a human), R sorts them in alphanumeric order (for characters) than chronological order (for dates):
+The `sort()` function returns the elements of a vector in ascending order, but since these dates are actually just character strings that *look* like dates (to a human), R sorts them in alphanumeric order (for characters) rather than chronological order (for dates):
 
 ```{r}
 # The `sort()` function sorts elements in a vector in ascending order
@@ -237,8 +237,8 @@ as.Dates(<vector of dates>, format = <your format>)
 Considering the dates of birth presented in Table \@ref(tab:tennis) we can save them in an appropriate format using:
 
 ```{r}
-(players_dob <- as.Date(c("15 May 1987", "3 June 1986", "28 March 1985", 
-                         "22 May 1987", "8 August 1981"), 
+(players_dob <- as.Date(c("15 May 1987", "3 Jun 1986", "28 Mar 1985", 
+                         "22 May 1987", "8 Aug 1981"), 
                        format = "%d %b %Y"))
 ```
 
@@ -258,19 +258,19 @@ Symbol   Meaning                    Example
 %Y        4-digit year               2007
 
 
-There are many advantages to recommend the `as.Date()` format (in addition to proper sorting). For example, the subtraction between two dates becomes more meaningful and yields to the difference in days between them. As an example, the number of days between Rafael Nadal's and Andy Murray's dates of birth can be obtained as
+There are many advantages to using the `as.Date()` format (in addition to proper sorting). For example, the subtraction between two dates becomes more meaningful and yields the difference in days between them. As an example, the number of days between Rafael Nadal's and Andy Murray's dates of birth can be obtained as
 
 ```{r}
 players_dob[1] - players_dob[2]
 ```
 
-In addition, subsetting becomes also more intuitive and to find out the players born after 1 January 1986 we can simply run: 
+In addition, subsetting becomes also more intuitive and, for example, to find the players born after 1 January 1986 we can simply run: 
 
 ```{r}
 players[players_dob > "1986-01-01"]
 ```
 
-There are many other reason for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in [Cole Beck's notes](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf).
+There are many other reasons for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in [Cole Beck's notes](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf).
 
 ### Useful Functions with Vectors
 
@@ -372,19 +372,19 @@ rep(c(1,2), times = 1, each = 3)
 
 where the option `times` allows to specify how many times the object needs to be repeated and `each` regulates how many times each element in the object is repeated.
 
-It is also possible to generates sequences of dates using the function `seq()`. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use
+It is also possible to generate sequences of dates using the function `seq()`. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use
 
 ```{r}
 seq(from = players_dob[1], to = players_dob[2], length.out = 10)
 ```
 
-Similarly, we can create a sequence between the two dates by increment of one week (backward)
+Similarly, we can create a sequence between the two dates by increments of one week (backwards)
 
 ```{r}
 seq(players_dob[1], players_dob[2], by = "-1 week")
 ```
 
-or by increment of one month (forward)
+or by increments of one month (forwards)
 
 ```{r}
 seq(players_dob[2], players_dob[1], by = "1 month")
@@ -392,7 +392,7 @@ seq(players_dob[2], players_dob[1], by = "1 month")
 
 ### Example: Apple Stock Price 
 
-Suppose that one is interested in analyzing the behavior of Apple's stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today's date.  In R, this can be obtained as follows
+Suppose that someone is interested in analyzing the behavior of Apple's stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today's date. In R, this can be obtained as follows
 
 ```{r}
 (today <- Sys.Date())
@@ -437,13 +437,13 @@ However, a statistic that is of particular interest to financial operators is th
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
 \end{equation}
 
-The reason for defining this statistic as *Excess* Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on button below:
+The reason for defining this statistic as *Excess* Kurtosis lies in the fact that the standardized kurtosis is compared to that of a Gaussian distribution (whose kurtosis is equal to 3) which has exponentially decaying tails. Consequently, if the Excess Kurtosis is positive, this implies that the distribution has heavier tails than a Gaussian and therefore has higher probabilities of extreme events occurring. To understand why the Excess Kurtosis is equal to 0 for a Gaussian distribution click on the button below:
 
 <button id="hidebutton1">Excess Kurtosis Derivation</button>
 <div id="hideclass1">
 
 ```{block2, type='rmdnote'}
-Assuming $X$ to be Gaussian we have $X \sim \mathcal{N}(\mu, \sigma^2)$. Then, we define $Z$ as $Z \sim \mathcal{N}(0,1)$ and $Y$ as $Y = Z^2 \sim \chi^2_1$. Remember that a random variable following a $\chi^2_1$ distribution has the following properties: $\text{Var}[Y] = 2$ and $\mathbb{E}[Y] = 1$. Using these definitions and properties, we obtain:
+Assuming $X$ to be Gaussian, we have $X \sim \mathcal{N}(\mu, \sigma^2)$. Then, we define $Z$ as $Z \sim \mathcal{N}(0,1)$ and $Y$ as $Y = Z^2 \sim \chi^2_1$. Remember that a random variable following a $\chi^2_1$ distribution has the following properties: $\text{Var}[Y] = 2$ and $\mathbb{E}[Y] = 1$. Using these definitions and properties, we obtain:
 
 \begin{equation}
   \begin{aligned}
@@ -480,7 +480,7 @@ mu <- mean(AAPL_returns)
 (k <- mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)
 ```
  
-Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is quite high tends to indicate the returns have a heavier tails than the normal distribution. In Chapter \@ref(#control), we will revisit this example and investigate if there is **enough evidence** to conclude that Apple's stock has Excess Kurtosis larger than zero.
+Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter \@ref(#control), we will revisit this example and investigate if there is **enough evidence** to conclude that Apple's stock has Excess Kurtosis larger than zero.
 
 
 ## Matrix
@@ -494,7 +494,6 @@ Matrices are another extremely common data structure in R. Compared to vectors, 
 Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (`ncol = 4`) and three rows (`nrow = 3`). 
 
 ```{block2, type='rmdtip'}
-
 By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument `byrow = T`.
 
 ```
@@ -505,7 +504,6 @@ matrix(1:12, ncol = 4,  nrow = 3, byrow = T)
 ```
 
 ```{block2, type='rmdwarning'}
-
 Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements? 
 ```
 
@@ -570,7 +568,7 @@ Therefore, we expect `dim(A)` to return the vector `c(4, 2)`. Indeed, we have
 dim(A)
 ```
 
-Next, we consider the function `t()` allows transpose a matrix. For example, $\mathbf{A}^T$ is equal to:
+Next, we consider the function `t()` that allows transpose a matrix. For example, $\mathbf{A}^T$ is equal to:
 
 \begin{equation*}
 \mathbf{A}^T = \left[
@@ -855,10 +853,10 @@ We can see that the results are slightly different from what we expected. This i
 
 ### Example: Portfolio Optimization
 
-Suppose that you are interested in investing your money in two stocks, say `Apple` and `Amazon`. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in `Apple` (AAPL) and $(1-\omega) W$ in `Netflix` (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of `Apple` and `Netflix`. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
+Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
 
 \[
-\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right) 
+\mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right),
 \]
 
 where
@@ -882,11 +880,11 @@ where
 \right].
 \]
 
-Using these assumptions, the classical portfolio optimization problem, which would allow you to determine a "good" value of $\omega$, can stated as follows: Given our initial wealth $W$, the investment problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mention earlier we assume that $\omega \in [0,\,1]$, implying that it is only possible to buy the two assets (i.e. *short positions* are not allowed). Therefore, to solve our investment problem we must choose the value of $\omega$ which would maximize your personal *utility*. Informally speaking, the utility represent a measurement of the "usefulness" that is obtained from your investment. To consider a simple case, we will assume that you are a particularly *risk averse* individual (i.e. you are looking for an investment that is as sure and safe as possible) and as such you want to pick the value of $\omega$ providing you with the smallest investment risk. We can then the optimal value of $\omega$ as follows. First, we construct a new random variable, say $Y$, which denotes the return of your portfolio. Since you invest $\omega W$ in Apple and $(1 - \omega) W$ in Netflix, it is easy to see that
+Using these assumptions, the classical portfolio optimization problem, which would allow you to determine a "good" value of $\omega$, can be stated as follows: Given our initial wealth $W$, the investment problem is to decide how much should be invested in our first asset (Apple) and in our second asset (Netflix). As mentioned earlier, we assume that $\omega \in [0,\,1]$, implying that it is only possible to buy the two assets (i.e. *short positions* are not allowed). Therefore, to solve our investment problem we must choose the value of $\omega$ which would maximize your personal *utility*. Informally speaking, the utility represents a measurement of the "usefulness" that is obtained from your investment. To consider a simple case, we will assume that you are a particularly *risk averse* individual (i.e. you are looking for an investment that is as sure and safe as possible) and as such you want to pick the value of $\omega$ providing you with the smallest investment risk. We can then determine the optimal value of $\omega$ as follows. First, we construct a new random variable, say $Y$, which denotes the return of your portfolio. Since you invest $\omega W$ in Apple and $(1 - \omega) W$ in Netflix, it is easy to see that
 
 \[Y = \left[\omega R_A + (1 - \omega) R_N \right]W.\]
 
-In general the risk and variance of an investment are two different things but in our case we assumed that the return $\mathbf{R}$ is normally distributed and in such the variance can perfectly characterize the risk of your investment. Therefore, we can define the risk of our investment as the following function of $\omega$
+In general the risk and variance of an investment are two different things but in our case we assume that the return $\mathbf{R}$ is normally distributed and in this case the variance can perfectly characterize the risk of our investment. Therefore, we can define the risk of our investment as the following function of $\omega$
 
 \[f(\omega) = \text{Risk}(Y) = \text{Var} (Y) =  \left[\omega^2 \sigma_A^2 + (1 - \omega)^2 \sigma_N^2 + 2 \omega (1 - \omega) \sigma_{AN}\right]W^2.\]
 
@@ -897,7 +895,7 @@ The function $f(\omega)$ is minimized for the value $\omega^*$ which is given by
   (\#eq:omega)
 \end{equation}
 
-If you interested in understanding how Equation \@ref(eq:omega) was obtain click on the button below:
+If you are interested in understanding how Equation \@ref(eq:omega) was obtained, click on the button below:
 
 <button id="hidebutton2">Minimum Variance Portfolio Derivation</button>
 <div id="hideclass2">
@@ -933,13 +931,14 @@ Finally, we verify that our result is a minimum by considering the second deriva
   \frac{\partial^2}{\partial \omega^2} \, f(\omega) = 2W\left[\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN}\right].
 \end{equation}
 
-Since $W$ is strictly positive all that remains to conclude our derivation is verifying that $\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0$. In fact, this is a well known inequality which is a direct consequence of Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that $\text{Var}(R_A - R_N) \leq 0$ and we also have $\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}$. Thus, we obtain
+Since $W$ is strictly positive, all that remains to conclude our derivation is to verify that $\sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \sigma_{AN} \leq 0$. In fact, this is a well known inequality which is a direct consequence of the Tchebychev inequality. However, here is a simpler argument to understand why this is the case. Indeed, it is obvious that $\text{Var}(R_A - R_N) \leq 0$ and we also have $\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN}$. Thus, we obtain
 
 \[\text{Var}(R_A - R_N) = \sigma_A^2 + \sigma_N^2 - 2\sigma_{AN} \leq 0,\]
 
 which verifies that our result is a minimum.
 ```
 </div>
+\newline
 
 
 Using \@ref(eq:omega), we obtain that the expected value and variance of our investment are given by
@@ -951,7 +950,7 @@ Using \@ref(eq:omega), we obtain that the expected value and variance of our inv
 \end{aligned}
 \]
 
-In practice, the vector $\boldsymbol{\mu}$ and matrix $\boldsymbol{\Sigma}$ are unknown and must be estimated on historical data. In the code below, we compute the optimal value of $\omega$ based on \@ref(eq:omega) using the last five years of historical data for the two stocks considered.
+In practice, the vector $\boldsymbol{\mu}$ and the matrix $\boldsymbol{\Sigma}$ are unknown and must be estimated using historical data. In the code below, we compute the optimal value of $\omega$ based on \@ref(eq:omega) by using the last five years of historical data for the two stocks considered. For simplicity we set $W$ to one but note that $W$ plays no role in determining $\omega^*$.
   
 ```{r downloadaaplandamaz, message = FALSE, warning = FALSE, results = 'hide'}
 # Load quantmod
@@ -982,7 +981,16 @@ var_investment = omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] +
 
 From this code, we obtain $\omega^* \approx$ `r round(100*omega_star, 2)`%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:
 
-```{r tableprtexample}
+```{r tableprtexample2, eval = FALSE}
+investment_summary = matrix(NA, 2, 3)
+dimnames(investment_summary)[[1]] = c("Expected value", "Variance")
+dimnames(investment_summary)[[2]] = c("Apple", "Netflix", "Investment")
+investment_summary[1, ] = c(mu, mu_investment)
+investment_summary[2, ] = c(diag(Sigma), var_investment)
+knitr::kable(investment_summary)
+```
+
+```{r tableprtexample, echo = FALSE}
 investment_summary = matrix(NA, 2, 3)
 dimnames(investment_summary)[[1]] = c("Expected value", "Variance")
 dimnames(investment_summary)[[2]] = c("Apple", "Netflix", "Investment")
@@ -991,20 +999,16 @@ investment_summary[2, ] = c(diag(Sigma), var_investment)
 knitr::kable(investment_summary, caption = "Expected value and variance of stocks and our investment")
 ```
 
-In Table \@ref(tab:tableprtexample) and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk, but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, in that it has low risk and a return that is between the two stocks mentioned above.  
+In Table \@ref(tab:tableprtexample) and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, meaning that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below. 
 
-```{r, echo = FALSE, fig.cap="Plot of Expected Return and Variance / Risk"}
-plot(investment_summary[2, ], investment_summary[1, ], ylab = "Expected Value / Return", xlab = "Variance / Risk", pch = 19, cex = 1, lty = "solid", lwd = 2, xlim = c(min(investment_summary[2, ]), max(investment_summary[2, ]+1e-04)), col = c(4,2,3))
-text(investment_summary[2, ], investment_summary[1, ], labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
+```{r, echo = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE, results = 'hide', fig.cap = "Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets."}
+plot(sqrt(investment_summary[2, ]), investment_summary[1, ], ylab = "Daily Expected Value of Investement", xlab = "Daily Investement Standard Deviation", pch = 19, cex = 1, lty = "solid", lwd = 2, xlim = c(min(sqrt(investment_summary[2, ])), max(sqrt(investment_summary[2, ])+3e-03)), col = c(4,2,3))
+grid()
+text(sqrt(investment_summary[2, ]), investment_summary[1, ], labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
 ```
 
-Below, we can analyze such risk and return situations from other companies such as those demonstrated below.  
+In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem.
 
-![](images/finance_ex.png)
-
-```{block2, type='rmdnote'}
-Note that we may revisit this example in the next chapter where we will discuss a more flexible solution to this problem.
-```
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
