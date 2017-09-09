@@ -4,9 +4,39 @@ Often when we are coding, we need to control the flow of our actions. Just like 
 
 ## Logical Operators
 
+Logical operators are used very commonly across all platforms. 
+
+| Command     | Description                |
+|-------------|----------------------------|
+| x `>` y     | x greater than y           |
+| x `>=` y    | x greater or equals to y   |
+| x `<` y     | x less than y              |
+| x `<=` y    | x less than or equals to y |
+| x `==` y    | x equal to y               |
+| x `!=` y    | x not equal to y           |
+| `!`x        | Not x                      |
+| x `| `y     | x or y                     |
+| x `&` y     | x and y                    |
+| `isTRUE`(x) | test if all of x is TRUE   |
+
+Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them. 
+
+```{r}
+x = c(3,6,3,4,5)
+y = c(2,3,4,5,6)
+x>y
+```
+
+This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
+
+```{r}
+isTRUE(TRUE)
+isTRUE(x>y)
+```
 
 ## Control Structures
 
+Control structures allow us to control the flow of code execution. For example, 
 
 
 ### Selection Controls
