@@ -483,18 +483,18 @@ mu <- mean(AAPL_returns)
 Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter \@ref(#control), we will revisit this example and investigate if there is **enough evidence** to conclude that Apple's stock has Excess Kurtosis larger than zero.
 
 
-## Matrix
+## Matrices
 
-Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equi-dimensional (same length) vectors within the same object. Below is an example of how to create a matrix containing consecutive numbers in R:
+Matrices are a common data structure in R which have two dimensions to store multiple vectors of the same length combined as a unified object. The `matrix()` function can be used to create a matrix from a vector:
 
 ```{r}
 (mat <- matrix(1:12, ncol = 4,  nrow = 3))
 ```
 
-Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (`ncol = 4`) and three rows (`nrow = 3`). 
+Notice that the first argument to the function is a vector (in this case the sequence 1 to 12) which is then transformed into a matrix with four columns (`ncol = 4`) and three rows (`nrow = 3`). 
 
 ```{block2, type='rmdtip'}
-By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument `byrow = T`.
+By default, the vectors are transformed into matrices by placing the elements by column (i.e. top to the bottom of ech column in sequence until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument `byrow = T`.
 
 ```
 
@@ -507,7 +507,7 @@ matrix(1:12, ncol = 4,  nrow = 3, byrow = T)
 Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements? 
 ```
 
-It is often the case however that we already have equi-dimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are `cbind()` - column bind - and `rbind()` - row bind - where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:
+It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as matrix. In these cases, two useful functions are `cbind()` to combine vectors as vertical **c**olumns side-by-side, and `rbind()` to combine vectors as horizontal **r**ows. An example of `cbind()` is shown here:
 
 ```{r}
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
@@ -517,7 +517,7 @@ win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
 (mat <- cbind(grand_slam_win, win_percentage))
 ```
 
-The result in this case is a $5 \times 2$ matrix (with `rbind()` it would have been a $2 \times 5$ matrix). Once the matrix is defined, we can assign names to its rows and columns by using respectively `rownames` and `colnames`. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the `players` vector) and each column corresponds to a specific statistic of the players.
+The result in this case is a $5 \times 2$ matrix (with `rbind()` it would have been a $2 \times 5$ matrix). Once the matrix is defined, we can assign names to its rows and columns by using `rownames()` and `colnames()`, respectively. Of course, the number of names must match the corresponding matrix dimension. In the following example, each row corresponds to a specific player (thereby using the `players` vector) and each column corresponds to a specific statistic of the players.
 
 ```{r}
 rownames(mat) <- players
