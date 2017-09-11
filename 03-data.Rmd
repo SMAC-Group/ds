@@ -483,18 +483,18 @@ mu <- mean(AAPL_returns)
 Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter \@ref(#control), we will revisit this example and investigate if there is **enough evidence** to conclude that Apple's stock has Excess Kurtosis larger than zero.
 
 
-## Matrix
+## Matrices
 
-Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equi-dimensional (same length) vectors within the same object. Below is an example of how to create a matrix containing consecutive numbers in R:
+Matrices are a common data structure in R which have two dimensions to store multiple vectors of the same length combined as a unified object. The `matrix()` function can be used to create a matrix from a vector:
 
 ```{r}
 (mat <- matrix(1:12, ncol = 4,  nrow = 3))
 ```
 
-Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (`ncol = 4`) and three rows (`nrow = 3`). 
+Notice that the first argument to the function is a vector (in this case the sequence 1 to 12) which is then transformed into a matrix with four columns (`ncol = 4`) and three rows (`nrow = 3`). 
 
 ```{block2, type='rmdtip'}
-By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument `byrow = T`.
+By default, the vectors are transformed into matrices by placing the elements by column (i.e. top to the bottom of ech column in sequence until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument `byrow = T`.
 
 ```
 
@@ -507,7 +507,7 @@ matrix(1:12, ncol = 4,  nrow = 3, byrow = T)
 Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements? 
 ```
 
-It is often the case however that we already have equi-dimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are `cbind()` - column bind - and `rbind()` - row bind - where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:
+It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as matrix. In these cases, two useful functions are `cbind()` to combine vectors as vertical **c**olumns side-by-side, and `rbind()` to combine vectors as horizontal **r**ows. An example of `cbind()` is shown here:
 
 ```{r}
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
@@ -517,7 +517,7 @@ win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
 (mat <- cbind(grand_slam_win, win_percentage))
 ```
 
-The result in this case is a $5 \times 2$ matrix (with `rbind()` it would have been a $2 \times 5$ matrix). Once the matrix is defined, we can assign names to its rows and columns by using respectively `rownames` and `colnames`. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the `players` vector) and each column corresponds to a specific statistic of the players.
+The result in this case is a $5 \times 2$ matrix (with `rbind()` it would have been a $2 \times 5$ matrix). Once the matrix is defined, we can assign names to its rows and columns by using `rownames()` and `colnames()`, respectively. Of course, the number of names must match the corresponding matrix dimension. In the following example, each row corresponds to a specific player (thereby using the `players` vector) and each column corresponds to a specific statistic of the players.
 
 ```{r}
 rownames(mat) <- players
@@ -527,18 +527,19 @@ mat
 
 ### Subsetting
 
-As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we're dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use `[ ]` but, as opposed to vectors, we need to add `,` within the square brackets where the rows are specified before the comma and the columns after it. (eg. `matrix[row, column]`) Below are a few examples:
+As with vectors, it is possible to subset the elements of a matrix. Since matrices are two-dimensional data structures, it is necessary to specify the position of the elements of interest in both dimensions. For this purpose we can use `[ , ]` immediately following the named matrix.  Note the use of `,` within the square brackets in order to specify both row and column position of desired elements within the matrix (e.g. `matrixName[row, column]`).  Consider the following examples:
 
 ```{r}
-# Subset players "Stan Wawrinka" and "Roger Federer"
+# Subset players "Stan Wawrinka" and "Roger Federer" in matrix named "mat"
 mat[c("Stan Wawrinka", "Roger Federer"), ]
-# Subset row 1 and 3 
+# Subset includes row 1 and 3 for all columns 
 mat[c(1, 3), ]
-# Subset column 2 only 
-mat[, 2]
-# Subset column 1 of (row 1, 2, and 3)
+# Subset includes all rows for column 2  
+mat[ , 2]
+# Subset includes rows 1, 2, & 3 for column 1  
 mat[1:3, 1]
 ```
+
 
 It can be noticed that, when a space is left blank before or after the comma, this means that respectively all the rows or all the columns are considered.
 
@@ -586,7 +587,7 @@ which is a $2 \times 4$ matrix. In R, we achieve this as follows
 dim(At)
 ```
 
-Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator `%*%` is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator `*` performs the Hadamard product (or element by element product) when applied to matrices. For example, consider the following matrix product
+Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator `%*%` is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator `*` performs the element by element product (or Hadamard product) when applied to matrices. For example, consider the following matrix product:
 
 \begin{equation*}
   \mathbf{B} = \mathbf{A}^T \mathbf{A} =   \left[
@@ -603,7 +604,7 @@ which can be done in R as follows:
 (B <- At %*% A)
 ```
 
-Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are `det()` and `solve()` that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function `det()` can be used to compute the determinant of a (squared) matrix. In the case of a $2 \times 2$ matrix, there exists a simple solution for the determinant which is
+Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are `det()` and `solve()` that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function `det()` can be used to compute the determinant of a square matrix. In the case of a $2 \times 2$ matrix, there exists a simple solution for the determinant which is
 
 \begin{equation*}
 \text{det} \left( \mathbf{D} \right) = \text{det} \left( \left[
@@ -688,13 +689,13 @@ which can be done in R as follows:
 diag(B)
 ```
 
-Therefore, the function `diag()` allows to easily compute the trace of matrix (i.e. the sum of the diagonal elements). For example,
+Therefore, the function `diag()` computes the trace of matrix (i.e. the sum of the diagonal elements). For example,
 
 \begin{equation*}
 \text{tr} \left( \mathbf{B} \right) = 204,
 \end{equation*}
 
-or in R
+or in R:
 
 ```{r}
 sum(diag(B))
@@ -853,7 +854,7 @@ We can see that the results are slightly different from what we expected. This i
 
 ### Example: Portfolio Optimization
 
-Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
+Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest, and $\omega \in [0, \, 1]$ dictates the proportion allocated to each investment. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
 
 \[
 \mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right),
