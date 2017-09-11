@@ -587,7 +587,7 @@ which is a $2 \times 4$ matrix. In R, we achieve this as follows
 dim(At)
 ```
 
-Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator `%*%` is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator `*` performs the Hadamard product (or element by element product) when applied to matrices. For example, consider the following matrix product
+Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator `%*%` is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator `*` performs the element by element product (or Hadamard product) when applied to matrices. For example, consider the following matrix product:
 
 \begin{equation*}
   \mathbf{B} = \mathbf{A}^T \mathbf{A} =   \left[
@@ -604,7 +604,7 @@ which can be done in R as follows:
 (B <- At %*% A)
 ```
 
-Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are `det()` and `solve()` that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function `det()` can be used to compute the determinant of a (squared) matrix. In the case of a $2 \times 2$ matrix, there exists a simple solution for the determinant which is
+Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are `det()` and `solve()` that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function `det()` can be used to compute the determinant of a square matrix. In the case of a $2 \times 2$ matrix, there exists a simple solution for the determinant which is
 
 \begin{equation*}
 \text{det} \left( \mathbf{D} \right) = \text{det} \left( \left[
@@ -689,13 +689,13 @@ which can be done in R as follows:
 diag(B)
 ```
 
-Therefore, the function `diag()` allows to easily compute the trace of matrix (i.e. the sum of the diagonal elements). For example,
+Therefore, the function `diag()` computes the trace of matrix (i.e. the sum of the diagonal elements). For example,
 
 \begin{equation*}
 \text{tr} \left( \mathbf{B} \right) = 204,
 \end{equation*}
 
-or in R
+or in R:
 
 ```{r}
 sum(diag(B))
@@ -854,7 +854,7 @@ We can see that the results are slightly different from what we expected. This i
 
 ### Example: Portfolio Optimization
 
-Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest and $\omega$ is such that $\omega \in [0, \, 1]$. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
+Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest $\omega W$ in Apple (AAPL) and $(1-\omega) W$ in Netflix (NFLX), where $W$ denotes the amount of money you would like to invest, and $\omega \in [0, \, 1]$ dictates the proportion allocated to each investment. Let $R_A$ and $R_N$ denote, respectively, the daily return (see Equation \@ref(eq:returns) if you don't remember what returns are) of Apple and Netflix. To make things simple we assume that the returns $R_A$ and $R_N$ are jointly normally distributed so we can write
 
 \[
 \mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right),
