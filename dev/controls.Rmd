@@ -1,6 +1,6 @@
 # Control Flow {#control}
 
-Often when we are coding, we need to control the flow of our actions. Just like in daily day to day life, we need to place conditions in which we manipulate our behavior. 
+Often when we are coding, we need to control the flow of our actions. Just like in daily day to day life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. 
 
 ## Logical Operators
 
@@ -36,8 +36,21 @@ isTRUE(x>y)
 
 ## Control Structures
 
-Control structures allow us to control the flow of code execution. For example, 
+Control structures allow us to control the flow of code execution. We control the flow of code by using selection controls with logical operators and iterative controls like for-loops. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
 
+<center>![](../images/maze.jpg)</center>
+
+It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. 
+
+Try to follow the below procedure on the maze above, considering the direction you face while moving. Pretend that you cannot step backward or look behind you. 
+
+- if there is space in front of you, go forward 
+- else, if there is space on your right and left, turn right 
+- else, if there is only space on your right, turn right 
+- else, if there is only space on your left, turn left
+- else, [all three sides (forward, left, right) are closed] turn around
+
+Did you escape? Notice the way I structured my solution. Do you see a pattern? Though it might take some time, this way will in turn solve any maze. 
 
 ### Selection Controls
 
@@ -47,11 +60,12 @@ Basically if, if/else, if/elseif/else and switch
 
 ```{r, eval = FALSE}
 if (conditon){
-  do something (if conditon is TRUE)
+  do something (if condition is TRUE)
 }else{
-  do seomthing else (if condition is false)
+  do something else (if condition is false)
 }
 ```
+
 ### Iteration Controls
 
 #### for {#forloop}
