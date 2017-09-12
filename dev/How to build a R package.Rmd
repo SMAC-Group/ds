@@ -1,0 +1,251 @@
+---
+title: "How to build a R package"
+author: "Yuming Zhang"
+output: html_document
+---
+
+# Basic R Package Elements
+- DESCRIPTION
+
+- NAMESPACE: do not edit by hand
+
+- `man` folder: A folder that contains all the object documentations (ie: guide to use the R functions, such as what the function is supposed to do and how to use the function) of the package. There's no need to manully make changes in the files in this folder. The files will automatically update if we follow the procedure described in the below sections to make changes.
+
+- `R` folder: Core of the package. The folder contains all the R files for this package.  
+
+- projectname.Rproj: Always make sure to work inside this R project.
+
+
+# DESCRIPTION
+`DESCRIPTION` file is a text file that stores the metadata of this package. It is important for the following reasons:
+
+- Every package must have a `DESCRIPTION`. In fact, it’s the defining feature of a package (RStudio and devtools consider any directory containing DESCRIPTION to be a package).
+
+- As time goes by and we start sharing our package with others, the metadata file becomes increasingly important because it specifies who can use it (the license) and whom to contact (us!) if there are any problems.
+
+
+`DESCRIPTION` file looks like below: 
+```{text}
+Package: test  (ie: name of package. You can change the name of package here if you want.)
+Type: Package
+Title: What The Package Does (one line, title case required)
+Version: 0.1.0
+Authors@R: who wrote the package (see below for more info about the format standard)
+Maintainer: The package maintainer <yourself@psu.edu>
+Description: What the package does (one paragraph)
+     Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+```
+
+Specifically, to input information about the authors in `Authors@R`:
+
+```{text}
+c(
+    person("First Name", "Last Name", email = "email@psu.edu", role = c("aut", "cre", "ctb")),
+    person("Stéphane", "Guerrier", role = "aut"),
+    person("Justin", "Lee", role = "cre"),
+    person("Yuming", "Zhang", role = "ctb"),
+  )
+```
+    
+The list of some of the roles is like:    
+
+- cre: the creator or maintainer, the person we should bother if we encounter problems with the package.
+
+- aut: authors, those who have made significant contributions to the package.
+
+- ctb: contributors, those who have made smaller contributions, like patches.
+
+
+
+# Set Up a R Package Project
+To set up a R package project in RStudio: File -> New Project -> New Directory -> R Package -> set up "package name" (eg: test; can be changed in `DESCRIPTION`) and save the whole project in a designated local folder (eg: Desktop). Again, make sure we always work inside the project when building the package.
+
+After setting up the project, we can first clean up the original functions come with the package (eg: the `hello` function). We can do so by deleting the `hello.R` inside `R` folder and `hello.Rd` inside `man` folder, so that we clean both the R code and documentation for the function.
+
+# Build Functions for the Package
+Code and documentation for functions are intermingled in the same R file, first documentation then code. In this way, we're always reminded to update the documentation when we modify the code.
+
+## Step 1: Write R function
+Usual way to build R functions. Example:
+```{r}
+add = function(x, y) {
+  x + y
+}
+```
+
+Save the R file inside the `R` folder. Note: There's no need to match each R file with each function name, or save all functions in one R file. One R file can contains one or more than one functions. So the R files can work as categories to sort out different R functions in the package for easy reference in the future use.
+
+## Step 2: Add roxygen comments to the R files
+Write in the standard way to document the above function.
+```{r}
+#' @title title of this function
+#' @description 
+#' here writes a brief description for this function, such as what it's supposed to do.
+#' @export  # if add this, we will export the function so that user can use it.
+#' @usage add(x, y)   # give a example of how to use the function
+#' @param x A number.  # give the name of argument, its type/class and brief description
+#' @param y A number.  # keep adding @param until we exhaust all parameters for this function 
+#' @return  # tell the user what this function returns
+#' @note
+#' Extra note for this function. Useful when we want to give more detailed explanation of this  #' function or refer to the source of the theoretical origin (eg: paper) of this function.
+#' @author Stephane Guerrier    #  who comes up with or who writes this function
+#' @examples    # below give examples of how to use the function
+#' add(1, 1)
+#' add(10, 1)
+```
+
+## Step 3: Update documentation to .Rd file 
+Run `devtools::document()` in console to convert the above roxygen comments to .Rd files in `man` folder. The `Writing add.Rd` shown in the console when running `devtools::document()` tells us that the `add.Rd` is created or modified. That's why we don't need to manually update any file in `man` folder as mentioned above. 
+
+## Step 4: Preview and Revise
+In this step, we can try in console to see if the function works as expected. Preview the documentation of the function by typing `?function_name` or `help(function_name)`. Then repeat the above steps to keep modifying the code and/or documentation until they work and look as the way expected.
+
+## Step 5: Update the function into the package
+After we confirm the code and documentation, we can `Build & Reload` the package to see if things work well after we add a new function. If it works, the console will show `library(package_name)` indicating that the updated package can be used now. 
+
+
+# Add Data to the Package
+We can also add data to the package so that everytime the users load the package, they will also load the data that come with the package. With the data available, here are a few steps to follow in order to add the data to the package:
+
+- create a folder called `data` (only need to do this step once)
+
+- put the .RData into `data` folder
+
+- create an R file inside `R` folder (recommend to call `data.R` for easy comprehension. only need to do this step once, as we can put all documentations for data in the same R file)
+
+- use the following standard format to document the data
+
+```{text}
+#' title of the dataset
+#'
+#' brief description of the data
+#' which can be more than one lines
+#'
+#' @format specify the object class and number of observations in the data
+#'
+#' @source \url{link to dataset source}
+"data" # the name of the .RData
+```
+
+
+# Create Pkgdown Website 
+This section introduces how to make an elegant and well organized website for the R package to present. To create the website, we refer to another package called `pkgdown`, which can make the process of building a website much easier. 
+
+There are five parts of a pkgdown site:
+
+- Homepage
+
+- Function reference
+
+- Articles
+
+- News
+
+- Navbar
+
+Every time we modify the website, we can run `pkgdown::build_site()` in the console to re-build the website. For the first time we run `pkgdown::build_site()`, a folder called `docs/` will automatically be created. Note: Everything inside `docs/` is built based on the things outside the `docs/` folder. So in other words, we should never manually modify documents and folders inside `docs/`. 
+
+`pkgdown::build_site()` function has some arguments (mostly to control where the output), but most of the configuration options are controlled by _pkgdown.yaml. So for customization, we may need to self create a file called `_pkgdown.yml`.
+
+## Homepage
+Homepage is usually used for guidance to install the package. Usually we create the homepage with an R markdown file called `README.Rmd`. To do so, we should change the output as `github_document`. Also, to include big graphics in the README, we can use `knitr::include_graphics("foo.png")` combined with chunk option out.width = '100%'. This will make the graphic scale with the size of the page. 
+
+After we write up the contents for homepage in `README.Rmd`, we can run `pkgdown::build_site()` in the console, which will not only build up the website for us, but also build another file called `README.md` (which should not be modified manually as it will update automatically everytime we modify the `README.Rmd` and run `pkgdown::build_site()`).
+
+## Reference
+Reference page of the website includes the introduction of the functions in the package. When we run `pkgdown::build_site()`, pkgdown will by default generate the reference section in the website that simply lists all the functions in alphabetical order. However, we can also override this by providing a `reference` key in the `_pkgdown.yml` file. As an example:
+
+```{text}
+reference:
+  - title: function name 1
+    desc: >
+      description of function 1
+      with more than one lines
+    contents: 
+      - content 1
+      - content 2
+      - content 3
+  - title: function name 2
+    desc: description of function 2
+    contents:
+      - content 1
+      - content 2
+      - content 3
+```
+
+## Articles
+`pkgdown` will automatically build all .Rmd vignettes, including those in subdirectories, and render output to `articles/` (automatically created) inside `doc/`. Like the function reference, articles will also get a default index, and it can be customized in a similar way (referring to file names rather than function names).
+
+## News
+
+## Navbar
+By default, the navbar will show:
+
+- The home page, with a “home” icon.
+
+- "Get Started", if we have an article with the same name as the package.
+
+- Reference
+
+- Articles, if present.
+
+- News, if present.
+
+- A link to our github repo (if listed in the DESCRIPTION url field).
+
+We can also override this by providing a `navbar` key in the `_pkgdown.yml` file. As an example:
+
+```{text}
+navbar:
+  title: "sparklyr"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html (docs/ is the starting directory here for reference)
+    - text: "dplyr"
+      href: articles/dplyr.html (subdirectory in docs/html file)
+    - text: "Reference"
+      href: "reference/" 
+  right:
+    - icon: fa-github
+      href: https://github.com/SMAC-Group/stat297
+```
+
+
+# Connect to GitHub
+After we kind of initialize the package, we can start a new project in GitHub to continue working on it with others. 
+
+## Initialize the package repo in GitHub
+- start a project in GitHub and create a repository name (recommend to be the same as package name) 
+
+- "quick setup" -> set up in desktop 
+
+- transfer everything from the original local project folder into the GitHub local folder
+
+- initialize the commit to master, and publish branch
+
+These steps will help us initialize the package repo in GitHub. After this, we can continue working on the package with others via GitHub.
+
+
+## Repo homepage
+After we initialize the package repo, we can see that there's a README.md page show up in the homepage of the repo. This is exactly the same contents we have in the `README.md` file. Thus, by modifying the `README.Rmd` (not `README.md`!) following the steps in the previous sections, we can update the homepage of the repo in GitHub as well. 
+
+## pkgdown website vs github page
+Above we tried to build a pkgdown website for the package. Here we can also link the pkgdown website with the github page. To do so, we need to enable the github page in setting (choose `use only master branch docs/ folder ` option). This will help us link the pkgdown site with the GitHub page
+
+
+# Package Check
+When we are building the package, especially when we are almost done, we will want to make sure that everything in the package is working correctly and as expected. The `Build & Reload` option in RStudio is a rough and quick way to help us detect whether there's any big or even fatal mistake in the package. To have an even much more detailed check for our package, we introduce the tool called Travis CI (url: https://travis-ci.org/).
+
+Travis CI is connected with GitHub repo. It can help us to test and deploy our package. If there's any unmatches or small mistake in the package, Travis CI can detect them, tell us the package is failing, and help us locate the warning. After we fix all the issues, we can have Travis CI run again to check the package until it succeeds. 
+
+
+
+# Reference for This Document
+http://r-pkgs.had.co.nz/
+
+https://hadley.github.io/pkgdown/articles/pkgdown.html
