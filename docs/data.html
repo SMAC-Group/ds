@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-09-08">
+<meta name="date" content="2017-09-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -182,7 +182,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1.8" data-path="data.html"><a href="data.html#creating-sequences"><i class="fa fa-check"></i><b>4.1.8</b> Creating sequences</a></li>
 <li class="chapter" data-level="4.1.9" data-path="data.html"><a href="data.html#example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.9</b> Example: Apple Stock Price</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#matrix"><i class="fa fa-check"></i><b>4.2</b> Matrix</a><ul>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#matrices"><i class="fa fa-check"></i><b>4.2</b> Matrices</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="data.html"><a href="data.html#subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
 <li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
 <li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
@@ -643,10 +643,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
 <p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-09-08&quot;</code></pre>
+<pre><code>## [1] &quot;2017-09-11&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-06-08&quot;</code></pre>
+<pre><code>## [1] &quot;2017-06-11&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)
@@ -658,16 +658,17 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
 </p>
 </div>
 <p>Using the price contained in the object we downloaded (i.e. <code>AAPL</code>), we can compute Apple’s arithmetic returns which are defined as follows</p>
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:returns">\[\begin{equation}
   R_t = \frac{S_t - S_{t-1}}{S_{t-1}},
+    \tag{4.1}
 \end{equation}\]</span>
 <p>where <span class="math inline">\(R_t\)</span> are the returns at time <em>t</em> and <span class="math inline">\(S_t\)</span> is the stock price. This is implemented in the function <code>ClCl()</code> within the <code>quantmod</code> package. For example, we can create a vector of returns as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</code></pre></div>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.0007165385</code></pre>
+<pre><code>## [1] 0.001475895</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.00270089</code></pre>
+<pre><code>## [1] 0.002970468</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
@@ -697,29 +698,28 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
   k = \frac{\frac{1}{n} \sum_{t = 1}^{n} \left(R_t -\bar{R}\right)^4}{\left(\frac{1}{n} \sum_{t = 1}^{n} \left(R_t -\bar{R}\right)^2 \right)^2} - 3,
 \end{equation}\]</span>
 <p>where <span class="math inline">\(\bar{R}\)</span> denotes the sample average of the returns, i.e.</p>
-<span class="math display" id="eq:returns">\[\begin{equation}
+<span class="math display">\[\begin{equation*}
   \bar{R} = \frac{1}{n} \sum_{i = 1}^n R_i.
-  \tag{4.1}
-\end{equation}\]</span>
+\end{equation*}\]</span>
 <p>In R, this can simply be done as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.630871</code></pre>
-<p>Therefore, we observe an estimated Excess Kurtosis of 2.63 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
+<pre><code>## [1] 2.95456</code></pre>
+<p>Therefore, we observe an estimated Excess Kurtosis of 2.95 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
 </div>
-<div id="matrix" class="section level2">
-<h2><span class="header-section-number">4.2</span> Matrix</h2>
-<p>Matrices are another extremely common data structure in R. Compared to vectors, matrices have an additional dimension which, for example, allows to stock multiple equi-dimensional (same length) vectors within the same object. Below is an example of how to create a matrix containing consecutive numbers in R:</p>
+<div id="matrices" class="section level2">
+<h2><span class="header-section-number">4.2</span> Matrices</h2>
+<p>Matrices are a common data structure in R which have two dimensions to store multiple vectors of the same length combined as a unified object. The <code>matrix()</code> function can be used to create a matrix from a vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
-<p>Notice that the first argument to the function is a vector (in this case a vector with increasing elements from 1 to 12) which is then transformed into a matrix with four columns (<code>ncol = 4</code>) and three rows (<code>nrow = 3</code>).</p>
+<p>Notice that the first argument to the function is a vector (in this case the sequence 1 to 12) which is then transformed into a matrix with four columns (<code>ncol = 4</code>) and three rows (<code>nrow = 3</code>).</p>
 
 <div class="rmdtip">
-<p>By default, the vectors are transformed into matrices by placing the elements by column (i.e. starting from the top of the first column to the bottom and then passing to the following column until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument <code>byrow = T</code>.</p>
+<p>By default, the vectors are transformed into matrices by placing the elements by column (i.e. top to the bottom of ech column in sequence until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument <code>byrow = T</code>.</p>
 </div>
 <p></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare with the matrix above</span>
@@ -733,7 +733,7 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 Usually the length of the vector (i.e. number of elements in the vector) is the result of the multiplication between the number of columns and number of rows. What happens if the vector has fewer elements for the same matrix dimension? What happens if the vector has more elements?
 </div>
 <p></p>
-<p>It is often the case however that we already have equi-dimensional vectors available and we wish to stock them into a matrix. In these cases, two useful functions are <code>cbind()</code> - column bind - and <code>rbind()</code> - row bind - where the first function stocks the vectors vertically side-by-side while the second stocks the vectors horizontally one below the other. An example of the former is given below:</p>
+<p>It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as matrix. In these cases, two useful functions are <code>cbind()</code> to combine vectors as vertical <strong>c</strong>olumns side-by-side, and <code>rbind()</code> to combine vectors as horizontal <strong>r</strong>ows. An example of <code>cbind()</code> is shown here:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andy Murray&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Stan Wawrinka&quot;</span>, 
              <span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>)
 grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">18</span>)
@@ -745,7 +745,7 @@ win_percentage &lt;-<span class="st"> </span><span class="kw">c</span>(<span cla
 ## [3,]              5          63.96
 ## [4,]             12          82.77
 ## [5,]             18          81.80</code></pre>
-<p>The result in this case is a <span class="math inline">\(5 \times 2\)</span> matrix (with <code>rbind()</code> it would have been a <span class="math inline">\(2 \times 5\)</span> matrix). Once the matrix is defined, we can assign names to its rows and columns by using respectively <code>rownames</code> and <code>colnames</code>. Of course, the number of names must correspond to the respective matrix dimensions as shown in the following example where each row corresponds to a specific player (thereby using the <code>players</code> vector) and each column corresponds to a specific statistic of the players.</p>
+<p>The result in this case is a <span class="math inline">\(5 \times 2\)</span> matrix (with <code>rbind()</code> it would have been a <span class="math inline">\(2 \times 5\)</span> matrix). Once the matrix is defined, we can assign names to its rows and columns by using <code>rownames()</code> and <code>colnames()</code>, respectively. Of course, the number of names must match the corresponding matrix dimension. In the following example, each row corresponds to a specific player (thereby using the <code>players</code> vector) and each column corresponds to a specific statistic of the players.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players
 <span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)
 mat</code></pre></div>
@@ -757,22 +757,22 @@ mat</code></pre></div>
 ## Roger Federer      18    81.80</code></pre>
 <div id="subsetting-1" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Subsetting</h3>
-<p>As for vectors, it is possible to subset the elements of a matrix. However, in the case of matrices we’re dealing with two-dimensional data structures and it is therefore necessary to specify the position of the elements of interest in both dimensions. For this purpose, as with vectors, we can use <code>[ ]</code> but, as opposed to vectors, we need to add <code>,</code> within the square brackets where the rows are specified before the comma and the columns after it. (eg. <code>matrix[row, column]</code>) Below are a few examples:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset players &quot;Stan Wawrinka&quot; and &quot;Roger Federer&quot;</span>
+<p>As with vectors, it is possible to subset the elements of a matrix. Since matrices are two-dimensional data structures, it is necessary to specify the position of the elements of interest in both dimensions. For this purpose we can use <code>[ , ]</code> immediately following the named matrix. Note the use of <code>,</code> within the square brackets in order to specify both row and column position of desired elements within the matrix (e.g. <code>matrixName[row, column]</code>). Consider the following examples:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset players &quot;Stan Wawrinka&quot; and &quot;Roger Federer&quot; in matrix named &quot;mat&quot;</span>
 mat[<span class="kw">c</span>(<span class="st">&quot;Stan Wawrinka&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>), ]</code></pre></div>
 <pre><code>##               GS win Win rate
 ## Stan Wawrinka      5    63.96
 ## Roger Federer     18    81.80</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset row 1 and 3 </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset includes row 1 and 3 for all columns </span>
 mat[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</code></pre></div>
 <pre><code>##               GS win Win rate
 ## Andy Murray        9    78.07
 ## Stan Wawrinka      5    63.96</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset column 2 only </span>
-mat[, <span class="dv">2</span>]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset includes all rows for column 2  </span>
+mat[ , <span class="dv">2</span>]</code></pre></div>
 <pre><code>##    Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
 ##          78.07          82.48          63.96          82.77          81.80</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset column 1 of (row 1, 2, and 3)</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset includes rows 1, 2, &amp; 3 for column 1  </span>
 mat[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>]</code></pre></div>
 <pre><code>##   Andy Murray  Rafael Nadal Stan Wawrinka 
 ##             9            15             5</code></pre>
@@ -817,7 +817,7 @@ mat[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</spa
 ## [2,]    5    6    7    8</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(At)</code></pre></div>
 <pre><code>## [1] 2 4</code></pre>
-<p>Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator <code>%*%</code> is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator <code>*</code> performs the Hadamard product (or element by element product) when applied to matrices. For example, consider the following matrix product</p>
+<p>Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator <code>%*%</code> is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator <code>*</code> performs the element by element product (or Hadamard product) when applied to matrices. For example, consider the following matrix product:</p>
 <span class="math display">\[\begin{equation*}
   \mathbf{B} = \mathbf{A}^T \mathbf{A} =   \left[
 \begin{matrix}
@@ -831,7 +831,7 @@ mat[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</spa
 <pre><code>##      [,1] [,2]
 ## [1,]   30   70
 ## [2,]   70  174</code></pre>
-<p>Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are <code>det()</code> and <code>solve()</code> that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function <code>det()</code> can be used to compute the determinant of a (squared) matrix. In the case of a <span class="math inline">\(2 \times 2\)</span> matrix, there exists a simple solution for the determinant which is</p>
+<p>Other common matrix operations include finding the determinant of a matrix and finding its inverse. These are often used, for example, when computing the likelihood function for a variable following a Gaussian distribution or when simulating time series or spatial data. The functions that perform these operations are <code>det()</code> and <code>solve()</code> that respectively find the determinant and the inverse of a matrix (which necessarily has to be square). The function <code>det()</code> can be used to compute the determinant of a square matrix. In the case of a <span class="math inline">\(2 \times 2\)</span> matrix, there exists a simple solution for the determinant which is</p>
 <span class="math display">\[\begin{equation*}
 \text{det} \left( \mathbf{D} \right) = \text{det} \left( \left[
 \begin{matrix}
@@ -873,7 +873,12 @@ d_3 &amp; d_4
   \phantom{-}174 &amp; -70\\
 -70 &amp; \phantom{-}30
 \end{matrix}
-\right] = 
+\right] = \left[
+\begin{matrix}
+  \phantom{-}0.54375 &amp; -0.21875\\
+-0.21875 &amp; \phantom{-}0.09375
+\end{matrix}
+\right] 
 \end{equation*}\]</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(B_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(B))</code></pre></div>
 <pre><code>##          [,1]     [,2]
@@ -896,11 +901,11 @@ d_3 &amp; d_4
 <p>which can be done in R as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(B)</code></pre></div>
 <pre><code>## [1]  30 174</code></pre>
-<p>Therefore, the function <code>diag()</code> allows to easily compute the trace of matrix (i.e. the sum of the diagonal elements). For example,</p>
+<p>Therefore, the function <code>diag()</code> computes the trace of matrix (i.e. the sum of the diagonal elements). For example,</p>
 <span class="math display">\[\begin{equation*}
 \text{tr} \left( \mathbf{B} \right) = 204,
 \end{equation*}\]</span>
-<p>or in R</p>
+<p>or in R:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">diag</span>(B))</code></pre></div>
 <pre><code>## [1] 204</code></pre>
 <p>Another use of the function <code>diag()</code> is to create diagonal matrices. Indeed, if the argument of this function is a vector, its behavior is the following:</p>
@@ -1031,7 +1036,7 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
-<p>Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest <span class="math inline">\(\omega W\)</span> in Apple (AAPL) and <span class="math inline">\((1-\omega) W\)</span> in Netflix (NFLX), where <span class="math inline">\(W\)</span> denotes the amount of money you would like to invest and <span class="math inline">\(\omega\)</span> is such that <span class="math inline">\(\omega \in [0, \, 1]\)</span>. Let <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> denote, respectively, the daily return (see Equation <a href="data.html#eq:returns">(4.1)</a> if you don’t remember what returns are) of Apple and Netflix. To make things simple we assume that the returns <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> are jointly normally distributed so we can write</p>
+<p>Suppose that you are interested in investing your money in two stocks, say Apple and Amazon. However, you are wondering how much of each stock you should buy. To make it simple let us assume that you will invest <span class="math inline">\(\omega W\)</span> in Apple (AAPL) and <span class="math inline">\((1-\omega) W\)</span> in Netflix (NFLX), where <span class="math inline">\(W\)</span> denotes the amount of money you would like to invest, and <span class="math inline">\(\omega \in [0, \, 1]\)</span> dictates the proportion allocated to each investment. Let <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> denote, respectively, the daily return (see Equation <a href="data.html#eq:returns">(4.1)</a> if you don’t remember what returns are) of Apple and Netflix. To make things simple we assume that the returns <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_N\)</span> are jointly normally distributed so we can write</p>
 <p><span class="math display">\[
 \mathbf{R} \stackrel{iid}{\sim} \mathcal{N} \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right),
 \]</span></p>
@@ -1150,15 +1155,15 @@ knitr::<span class="kw">kable</span>(investment_summary)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td>Expected value</td>
-<td align="right">0.0005477</td>
-<td align="right">0.0029561</td>
-<td align="right">0.0009728</td>
+<td align="right">0.0005373</td>
+<td align="right">0.0029270</td>
+<td align="right">0.0009591</td>
 </tr>
 <tr class="even">
 <td>Variance</td>
-<td align="right">0.0002463</td>
-<td align="right">0.0010040</td>
-<td align="right">0.0002098</td>
+<td align="right">0.0002466</td>
+<td align="right">0.0010039</td>
+<td align="right">0.0002101</td>
 </tr>
 </tbody>
 </table>

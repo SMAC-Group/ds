@@ -416,6 +416,7 @@ Using the price contained in the object we downloaded (i.e. `AAPL`), we can comp
 
 \begin{equation}
   R_t = \frac{S_t - S_{t-1}}{S_{t-1}},
+    (\#eq:returns)
 \end{equation}
 
 where $R_t$ are the returns at time *t* and $S_t$ is the stock price. This is implemented in the function `ClCl()` within the `quantmod` package. For example, we can create a vector of returns as follows 
@@ -468,10 +469,9 @@ Given this statistic, it is useful to compute this on the observed data and for 
 
 where $\bar{R}$ denotes the sample average of the returns, i.e.
 
-\begin{equation}
+\begin{equation*}
   \bar{R} = \frac{1}{n} \sum_{i = 1}^n R_i.
-  (\#eq:returns)
-\end{equation}
+\end{equation*}
 
 In R, this can simply be done as follows:
 
@@ -656,7 +656,12 @@ Considering the matrix $\mathbf{B}$, we obtain
   \phantom{-}174 & -70\\
 -70 & \phantom{-}30
 \end{matrix}
-\right] = 
+\right] = \left[
+\begin{matrix}
+  \phantom{-}0.54375 & -0.21875\\
+-0.21875 & \phantom{-}0.09375
+\end{matrix}
+\right] 
 \end{equation*}
 
 ```{r}
