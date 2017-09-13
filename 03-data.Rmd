@@ -1015,6 +1015,60 @@ text(sqrt(investment_summary[2, ]), investment_summary[1, ], labels = names(inve
 
 In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem.
 
+## Array {#array}
+
+Arrays allow to construct **multidimensional** objects. Indeed, vectors and matrices are respectively objects in one and two dimensions while arrays can in be in an arbitrary $n$ dimension. Essentially, matrices are a special case of arrays which is only in two dimensions. Matrices are commonly used in Statistics while arrays are much rarer but nevertheless worth being aware of. To consider a simple using arrays we will revisit an example presented in the previous section where we constructed a matrix containing the number of Grand Slam won and the win rate of the five players considered in Table \@ref(tab:tennis). This matrix was constructed as follows:
+
+```{r}
+players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+grand_slam_win <- c(9, 15, 5, 12, 18)
+win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
+mat <- cbind(grand_slam_win, win_percentage)
+rownames(mat) <- players
+colnames(mat) <- c("GS win", "Win rate")
+mat
+```
+
+The data used to construct this matrix we collected in mid-July 2017 and suppose that we now would like to add to this existing the object the updated numbers from mid-September 2017. This can be done by constructing an array as shown in the example below.
+
+```{r}
+# Constuct "empty" array
+my_array <- array(NA, dim = c(5, 2, 2))
+dimnames(my_array)[[1]] <- players
+dimnames(my_array)[[2]] <- c("GS win", "Win rate")
+dimnames(my_array)[[3]] <- c("07-15-2017", "09-13-2017")
+
+# Construct matrix
+my_array[,,1] <- mat
+my_array[,,2] <- cbind(c(9, 16, 5, 12, 19), 
+                       c(78.07, 82.49, 63.96, 82.77, 81.80))
+my_array
+```
+
+Like what we experimented with matrices, we can extract and manipulate information. 
+
+```{r}
+length(my_array)    # length is 20, i.e. 5x2x2 = 20
+dim(my_array)       # dimensions are 5x2x2
+is.array(my_array)  # yes it is an array!
+```
+
+Subsetting the elements of an array works similarly to what we already discussed with matrices. Below are a few examples:
+
+```{r}
+my_array[,,1]
+my_array[1,,2]
+my_array[,1,]
+```
+
+Finally, we can assess if some our five won any Grand Slam between mid-July and mid-September 2017 by using the code below:
+
+```{r}
+players[my_array[,1,2] > my_array[,1,1]]
+```
+
+
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
