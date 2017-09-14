@@ -1068,6 +1068,50 @@ Finally, we can assess if some our five won any Grand Slam between mid-July and 
 players[my_array[,1,2] > my_array[,1,1]]
 ```
 
+## List
+
+A list is one of the commonly used **heterogeneous** data structures, which depicts a generic vector containing other object types. For example, we can have a numeric vector as one element, a matrix, and a character vector as another element. Here we can create a list that contains all these different element types. 
+
+```{r}
+num_vec <- c(160, 188, 140)
+char_vec <- c("Height", "Weight", "Length")
+my_mat <- matrix(0, nrow = 5, ncol = 5)
+
+# List Initialization without Names 
+# list(num_vec, char_vec, my_mat)
+
+# List Initialization with Custom Names 
+list(Number <- num_vec, Character = char_vec, Empty_Mat = my_mat)
+```
+
+Let's store this list in a variable. 
+
+```{r}
+my_list <- list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)
+```
+
+We can subset lists like we did previously. 
+
+```{r}
+# Extract the first and third element 
+my_list[c(1, 3)]
+
+# Compare these two subsets  
+my_list[1]
+my_list[[1]]
+```
+
+Do you see what the difference is? One generally uses `[[` to select any single element, whereas `[` returns a list of the selected elements. Using one bracket retains the class information, while using two brackets simplifies the list into a numeric vector. 
+
+We can further subset the list. 
+
+```{r}
+# First element of the $Number list 
+my_list[[1]][1]
+
+# Why didn't this work? 
+my_list[1][1]
+```
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
