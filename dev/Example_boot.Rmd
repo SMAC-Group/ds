@@ -1,0 +1,82 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+### Application: Non-parametric bootstrap
+
+The (non-parametric) bootstrap was introduced by Efron (1979) (**ADD REF**) as a numerical method to provide a simple estimator of the distribution of an estimator. This method became rapidely very popular since it is completely automatic, requires no theoretical derivation and is (almost) always available no matter how complicated our estimator of interest is. Moreover, most statistical methods are based on various asymptotic approximations (often through the central limit theorem) can often imply some poor results in finite sample. Bootstrap techniques generally enjoy from better finite sample performance while implying additional computation burden. A formal discussion of the properties of (non-parametric) bootstrap techniques is far beyond the scope of this textbook but it is actually quite simple to understand its algorithm. To motivate this discussion, suppose that we ask 10 students how much time they work at home for their STAT 297 class, we obtain the following results (in hour)
+
+```{r}
+student_work <- c(0, 0, 0, 0, 0, 0.25, 0.75, 0.75, 1, 1.25, 6)
+```
+
+We can compute the mean time spent
+
+```{r}
+mean_hour <- mean(student_work)
+```
+
+Moreover, we compute a simple confidence interval of the **average number** of hours spend by a student enrolled in STAT 297. Since we have no reason to believe that the number of hours spent working at home for this class is Gaussian, we can construct an asymtotic confidence interval using
+
+\[
+\bar{X} \pm z_{1-\alpha/2} \frac{\hat{\sigma}}{\sqrt{n}},
+\]
+
+where.... 
+
+
+In R, this can be as follows:
+
+
+```{r}
+alpha <- 0.05
+n <- length(student_work)
+sd_hour <- sd(student_work)
+z <- qnorm(1 - alpha/2)
+mean_hour + c(-1, 1)*z*sd_hour/sqrt(n)
+```
+
+Based on this your instructor is very disappointed to concluded that their isn't enough evidence to conclude that....
+
+ALGO
+
+Let $\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right] denote sample
+
+
+- **Step 1:** Let $i = 1$.
+- **Step 2:** Construct a new sample, say $\mathbf{X}^*$, by sampling **with replacement** $n$ observation from $\mathbf{X}$.
+- **Step 3:** Compute the average of $\mathbf{X}^*$ which we will write as $\bar{X}_i$. Let $i = i + 1$ and if $i < B$ go to **Step 2** otherwise go to **Step 4**.
+- **Step 4**: Compute the empirical quantiles of $\bar{X}_i$.
+
+
+
+Here is a simple function to implement this approach:
+
+```{r}
+# Number of boostrap replications
+B <- 500
+
+# Compute the length of vector
+n <- length(student_work)
+
+# Confidence level
+alpha <- 0.05
+
+# Initialisation of 
+boot_mean <- rep(NA, B)
+
+# Step 1
+for (i in 1:B){
+  # Step 2
+  student_work_star <- student_work[sample(1:n, replace = TRUE)]
+  
+  # Step 3
+  boot_mean[i] <- mean(student_work_star)
+}
+
+# Step 4
+quantile(boot_mean, c(alpha/2, 1 - alpha/2))
+```
+
+Then your instructor is happy as their is enough evidence to believe that you are spending more than 0 hour.
