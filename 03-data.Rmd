@@ -1070,47 +1070,128 @@ players[my_array[,1,2] > my_array[,1,1]]
 
 ## List
 
-A list is one of the commonly used **heterogeneous** data structures, which depicts a generic vector containing other object types. For example, we can have a numeric vector as one element, a matrix, and a character vector as another element. Here we can create a list that contains all these different element types. 
+A list is one of the commonly used **heterogeneous** data structures, which depicts a generic "vector" containing other object types. For example, we can a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains all these different element types. 
 
-```{r}
-num_vec <- c(160, 188, 140)
+```{r list_eg1}
+# List elements
+num_vec <- c(188, 140)
 char_vec <- c("Height", "Weight", "Length")
+logic_vec <- rep(TRUE, 8)
 my_mat <- matrix(0, nrow = 5, ncol = 5)
 
-# List Initialization without Names 
-# list(num_vec, char_vec, my_mat)
+# List initialization 
+(my_list <- list(num_vec, char_vec, logic_vec, my_mat))
+```
+Alternatively, it is possible to add labels to the elements of your list. For example,
 
-# List Initialization with Custom Names 
-list(Number <- num_vec, Character = char_vec, Empty_Mat = my_mat)
+```{r list_eg2}
+# List initialization with custom names 
+(my_list <- list(number = num_vec, character = char_vec, 
+                 logic = logic_vec, matrix = my_mat))
 ```
 
-Let's store this list in a variable. 
+Subsetting is very similar to what we have already discussed. Indeed, we have
 
-```{r}
-my_list <- list(Number = num_vec, Character = char_vec, Empty_Mat = my_mat)
-```
-
-We can subset lists like we did previously. 
-
-```{r}
+```{r list_sub}
 # Extract the first and third element 
 my_list[c(1, 3)]
 
 # Compare these two subsets  
 my_list[1]
 my_list[[1]]
+
+# Using labels
+my_list$number
+my_list$matrix
+my_list$matrix[,3]
 ```
 
-Do you see what the difference is? One generally uses `[[` to select any single element, whereas `[` returns a list of the selected elements. Using one bracket retains the class information, while using two brackets simplifies the list into a numeric vector. 
 
-We can further subset the list. 
+It is interesting to notice the difference between `my_list[1]` and `my_list[[1]]`. To understand this difference suppose that we are interested in retrieving the second element of the vector `num_vec` which is stored in list `my_list`. In general most people use of the two ways presented below:
+
+```{r list_sub2}
+my_list[[1]][2]
+my_list$number[2]
+```
+
+However, `my_list[1][2]` **doesn't work** and if you wish to use `my_list[1]` you will have to a syntax similar to the ones presented below:
+
+```{r list_sub3}
+my_list[1][[1]][2]
+my_list[1]$number[2]
+```
+
+Therefore, most people generally uses `[[` to select any single element, whereas `[` returns a list of the selected elements. Using one bracket retains the class information, while using two brackets simplifies the list into a numeric vector. 
+
+
+## Dataframe
+ 
+A data frame is used for storing data tables. A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list. The table contains lists of equal-length vectors, and most datasets will have a data frame format. 
+
+We can create a data frame using data.frame() 
 
 ```{r}
-# First element of the $Number list 
-my_list[[1]][1]
+### Creation
 
-# Why didn't this work? 
-my_list[1][1]
+players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+
+grand_slam_win <- c(9, 15, 5, 12, 18)
+
+date_of_birth <- c("15 May 1987", "3 June 1986", "28 March 1985", 
+                  "22 May 1981", "8 August 1981")
+
+country = c("Great Britain", "Spain", "Switzerland", 
+            "Serbia", "Switzerland")
+ATP_ranking <- c(1, 2, 3, 4, 5)
+
+prize_money <- c(60449649, 85920132, 30577981, 109447408, 104445185)
+
+tennis <- data.frame(date_of_birth, grand_slam_win, country, 
+                    ATP_ranking, prize_money)
+
+dimnames(tennis)[[1]] <- players
+tennis
+
+```
+
+We can check if we have achived our goal by using:
+
+```{r}
+is.data.frame(tennis)
+```
+
+### Combination
+
+Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player's height and if he is right-handed or letf-handed. 
+
+We can do so by using `cbind()` and `rbind()`:
+
+```{r}
+height <- c(1.90, 1.85, 1.83, 1.88, 1.85)
+hand <- c("R","L","R","R","R")
+
+(tennis <- cbind(tennis, data.frame(height, hand)))
+```
+
+### Subsetting
+
+Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.
+
+```{r}
+# Let say we want only want to know the country and date of 
+# birth of the players
+
+# There are two ways to select columns from a data frame
+# Like a list:
+tennis[c("country", "date_of_birth")]
+
+# Like a matrix
+tennis[, c("country", "date_of_birth")]
+
+# To acces a single element, let say the date of birth, 
+# you can also use:
+tennis$date_of_birth
 ```
 
 
