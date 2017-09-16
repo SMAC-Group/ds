@@ -37,7 +37,7 @@ z <- qnorm(1 - alpha/2)
 mean_hour + c(-1, 1)*z*sd_hour/sqrt(n)
 ```
 
-Based on this your instructor is very disappointed to concluded that their isn't enough evidence to conclude that....
+Based on this your instructor is very disappointed to concluded that their isn't enough evidence to conclude that.... + result is meaningless!
 
 ALGO
 
