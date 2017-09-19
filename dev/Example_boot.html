@@ -138,7 +138,7 @@ sd_hour &lt;- sd(student_work)
 z &lt;- qnorm(1 - alpha/2)
 mean_hour + c(-1, 1)*z*sd_hour/sqrt(n)</code></pre>
 <pre><code>## [1] -0.1256494  1.9438313</code></pre>
-<p>Based on this your instructor is very disappointed to concluded that their isn’t enough evidence to conclude that….</p>
+<p>Based on this your instructor is very disappointed to concluded that their isn’t enough evidence to conclude that…. + result is meaningless!</p>
 <p>ALGO</p>
 <p>Let $ = denote sample</p>
 <ul>
@@ -172,7 +172,8 @@ for (i in 1:B){
 # Step 4
 quantile(boot_mean, c(alpha/2, 1 - alpha/2))</code></pre>
 <pre><code>##      2.5%     97.5% 
-## 0.2045455 2.0000000</code></pre>
+## 0.1818182 1.9545455</code></pre>
+<p>Then your instructor is happy as their is enough evidence to believe that you are spending more than 0 hour.</p>
 </div>
 
 
