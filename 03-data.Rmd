@@ -1162,7 +1162,6 @@ tennis <- data.frame(date_of_birth, grand_slam_win, country,
 
 dimnames(tennis)[[1]] <- players
 tennis
-
 ```
 
 Notice that each column has its own type. We can check if we have achieved our goal by using:
@@ -1206,7 +1205,36 @@ tennis$date_of_birth
 
 ### Example: Maps 
 
+Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. The functionality of the package we will talk more about later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
 
+```{r, message = FALSE, cache = TRUE}
+library(ggmap)
+birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland",
+                "Belgrade, Serbia", "Basel, Switzerland")
+birth_coord <- geocode(birth_place)
+```
+
+Furthermore, we can create new columns of dataframes using vectors that we created before. 
+
+```{r}
+birth_coord$Players <- players
+birth_coord$GS <- grand_slam_win
+birth_coord
+is.data.frame(birth_coord)
+```
+
+Let's represent this information graphically. We haven't seen how to make graph yet so don't worry to much about the details of how this graph is made. 
+
+```{r, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
+library(mapproj)
+map <- get_map(location = 'Switzerland', zoom = 4)
+ggmap(map) + geom_point(data = birth_coord, 
+             aes(lon, lat, col = Players, size = GS)) + 
+             scale_size(name="Grand Slam Wins") + 
+             xlab("Longitude") + ylab("Latitude")
+```
+
+As we see, we can produce various output using dataframe objects. 
 
 
 
