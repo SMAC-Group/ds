@@ -1070,7 +1070,7 @@ players[my_array[,1,2] > my_array[,1,1]]
 
 ## List
 
-A list is one of the commonly used **heterogeneous** data structures, which depicts a generic "vector" containing other object types. For example, we can a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains all these different element types. 
+A list is one of the commonly used **heterogeneous** data structures, which depicts a generic "vector" containing other object types. For example, we can a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains different element types. (numeric, character, logical, matrix)
 
 ```{r list_eg1}
 # List elements
@@ -1082,7 +1082,8 @@ my_mat <- matrix(0, nrow = 5, ncol = 5)
 # List initialization 
 (my_list <- list(num_vec, char_vec, logic_vec, my_mat))
 ```
-Alternatively, it is possible to add labels to the elements of your list. For example,
+
+Alternatively, it is possible to add named labels to the elements of your list. For example,
 
 ```{r list_eg2}
 # List initialization with custom names 
@@ -1100,33 +1101,42 @@ my_list[c(1, 3)]
 my_list[1]
 my_list[[1]]
 
-# Using labels
+# Using labels to subset 
 my_list$number
 my_list$matrix
-my_list$matrix[,3]
+my_list$matrix[,3] # Extract third column of matrix 
 ```
 
 
 It is interesting to notice the difference between `my_list[1]` and `my_list[[1]]`. To understand this difference suppose that we are interested in retrieving the second element of the vector `num_vec` which is stored in list `my_list`. In general most people use of the two ways presented below:
 
 ```{r list_sub2}
+# These mean the same thing! 
 my_list[[1]][2]
 my_list$number[2]
 ```
 
-However, `my_list[1][2]` **doesn't work** and if you wish to use `my_list[1]` you will have to a syntax similar to the ones presented below:
+Simply including one bracket like `my_list[1]` will return the first element of the list, but will retain the `list` structure. `my_list` is a list, and `my_list[1]` is also a list. In other words, one bracket retains the class information, while using two brackets simplifies the list into a numeric vector.
+
+```{r}
+# type of object 
+typeof(my_list)
+typeof(my_list[1])
+```
+
+Therefore, `my_list[1][2]` **does not work** and if you wish to use `my_list[1]` you will have to a syntax similar to the ones presented below:
 
 ```{r list_sub3}
 my_list[1][[1]][2]
 my_list[1]$number[2]
 ```
 
-Therefore, most people generally uses `[[` to select any single element, whereas `[` returns a list of the selected elements. Using one bracket retains the class information, while using two brackets simplifies the list into a numeric vector. 
+Most people generally uses `[[` to select any single element, whereas `[` returns a list of the selected elements.  
 
 
 ## Dataframe
  
-A data frame is used for storing data tables. A data frame is the most common way of storing data in R, it has a 2D structure and shares properties of both the matrix and the list. The table contains lists of equal-length vectors, and most datasets will have a data frame format. 
+A data frame is a **heterogeneous** data structure used for storing data tables. A data frame is the most common way of storing data in R, and it has a 2D structure and shares properties of both the matrix and the list. The table contains lists of equal-length, same-type vectors, and most datasets will have a data frame format. 
 
 We can create a data frame using data.frame() 
 
@@ -1155,7 +1165,7 @@ tennis
 
 ```
 
-We can check if we have achived our goal by using:
+Notice that each column has its own type. We can check if we have achieved our goal by using:
 
 ```{r}
 is.data.frame(tennis)
@@ -1163,9 +1173,9 @@ is.data.frame(tennis)
 
 ### Combination
 
-Different data frames can also be combined. Let say we want to add some ifomrmation to our initial table e.g. the player's height and if he is right-handed or letf-handed. 
+Data frames can also be combined. Let say we want to add some information to the table above (e.g. the player's height) and if he is right-handed or left-handed. 
 
-We can do so by using `cbind()` and `rbind()`:
+We can do so by using `cbind()` - column bind and `rbind()` - row bind:
 
 ```{r}
 height <- c(1.90, 1.85, 1.83, 1.88, 1.85)
@@ -1193,6 +1203,11 @@ tennis[, c("country", "date_of_birth")]
 # you can also use:
 tennis$date_of_birth
 ```
+
+### Example: Maps 
+
+
+
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
