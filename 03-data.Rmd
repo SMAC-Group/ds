@@ -1187,20 +1187,58 @@ hand <- c("R","L","R","R","R")
 
 Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.
 
-```{r}
-# Let say we want only want to know the country and date of 
-# birth of the players
+Let us say we want only want to know the country and date of birth of the players.
 
+```{r}
 # There are two ways to select columns from a data frame
 # Like a list:
 tennis[c("country", "date_of_birth")]
 
 # Like a matrix
 tennis[, c("country", "date_of_birth")]
+```
 
-# To acces a single element, let say the date of birth, 
+We can extract column names of dataframes by using `names`. 
+
+```{r}
+names(tennis)
+
+# To access a single element, let say the date of birth, 
 # you can also use:
 tennis$date_of_birth
+```
+
+We can change the ordering of the columns outputted by simply changing the order within the `c()` subsetting. 
+
+```{r}
+# Note the difference between 
+tennis[, c(1, 3)]
+
+# and 
+tennis[, c(3, 1)]
+```
+
+Let us say we want only want to know right-handed players. We can subset `rows` using similar syntax as above. 
+
+```{r}
+# We will talk more about == in the next chapter
+# This represents all players with hand equal to "R"
+tennis[hand=="R",]
+
+# Note what this returns 
+hand=="R"
+```
+
+Often data are better view when it is sorted. The function `order` helps do this, which can be utilized with subsetting to output a custom sorted dataframe based on a column(s). 
+
+Below we will order the tennis players by the number of grand slam wins. Set `decreasing=TRUE` to order the rows in descreasing order. 
+
+```{r}
+# increasing order
+tennis[order(tennis[,"grand_slam_win"]),]
+
+# descreasing order
+tennis[order(tennis[,"grand_slam_win"], decreasing = TRUE),]
 ```
 
 ### Example: Maps 
