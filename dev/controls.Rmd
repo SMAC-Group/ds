@@ -2,6 +2,7 @@
 
 ### Cesare 
 
+ddd
 
 Often when we are coding, we need to control the flow of our actions. Just like in daily day to day life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. 
 
