@@ -1,8 +1,8 @@
 # Control Flow {#control}
 
-### Title 
+### Title
 
-Often when we are coding, we need to control the flow of our actions. Just like in daily day to day life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. 
+Often when we are coding, we need to control the flow of our actions. Just like in day to day life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. 
 
 ## Logical Operators
 
@@ -60,7 +60,7 @@ Basically if, if/else, if/elseif/else and switch
 
 #### If/else
 
-With this selection control, the user is able to define a strategy which consist of a series of moves that should complete all the hypothetical scenarios that may occur. Try to remember that time when you have played at "capture the flag" and you were thinking at a series of moves depending on what your competitor was going to do. If he is going left, I will go right and take the flag. Else I will stop him and prevent the capture of the flag. This hypothetical reasoning is at the core of the if/else statements.    
+With this selection control, the user is able to define a strategy which consist of a series of moves that should consider all the hypothetical scenarios that may occur. Try to remember that time when you have played at "capture the flag" and you were thinking at a series of moves depending on what your competitor was going to do. If he is going left, I will go right and take the flag. Else I will stop him and prevent the capture of the flag. This hypothetical reasoning is at the core of the if/else statements.    
 
 ## Applications: 
 
@@ -74,15 +74,40 @@ if (conditon){
 }
 ```
 
-My alternative:
+One alternative:
 
-Imagine that you are playing a game of tic-tac-toe and you are in this situation (here we can put a picture): if you want to design the best response strategy, an if/else statement is the perfect way to go. Here is how a pseudo-code will look like:
+Imagine that you are playing a game of tic-tac-toe and you are in this situation (here we can put a picture with just two possible moves): if you want to design the best response strategy, an if/else statement is the perfect way to go. Here is how a pseudo-code will look like:
 
 ```{r}
-if (player 1 cross){
-  make your circle (if condition is TRUE)
+if (player 1 cross M[1,1]){
+  circle M[1,2]
 }else{
-  do something else (if condition is false)
+  circle M[1,1]
+}
+```
+
+Another alternative:
+
+Imagine that you are a member of the admission office of a prestigious university. You have received a file with all the scores of the LSAT test, now you would like to create a list that contains both the accepted and the rejected applicants. In order to do so, you may use an if/else statement for each candidate as explained in the pseudo-code below:
+
+```{r}
+if (score_candidate[i] > cut_off_value){
+  final_list[i] = "ACCEPTED"
+} else {
+  final_list[i] = "REJECTED"
+}
+
+```
+
+Now think that your boss wants, in case of a répechage, an alternative list where you need to underline the scores which are exactly equal to the cut off value. Here is how to modify the previous code:
+
+```{r}
+if (score_candidate[i] > cut_off_value){
+  final_list[i] = "ACCEPTED"
+} else if (score_candidate[i] = cut_off_value) {
+  final_list[i] = "REPECHAGE"
+} else {
+  final_list[i] = "REJECTED"
 }
 ```
 
@@ -123,7 +148,6 @@ for(i in 1:length(price_vector)-1){
 ```
 
 
-
 ### Non-parametric Bootstrap
 
 Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)
@@ -139,16 +163,14 @@ mean(student_work)
 ```
 
 *ADD SOMETHING ON T TEST*
-At this point we would like to make an inference over the whole class of students, basing our judgments on the sample values we have collected. The  to obtain a credible interval for our class mean time, is to perform a t-test  
+At this point we would like to make an inference over the whole class of students relying on the sample values we have collected. The first attempt to obtain a confidence interval for the class mean time, can be done with a t-test:   
 
 ```{r}
 t.test(student_work)$conf.int
 ```
 
-We can see that our confidence interval includes a negative values which clearly isn't meaningful. Solution: (non-parametric) bootstrap which works as follows..... ADD SOMETHING
-
-Here is a simple function to implement this approach:
-
+We can spot easily that our confidence interval has a negative lower bound which clearly isn't meaningful. One possible solution, is to to use the non-parametric bootstrap tecnique in order to create a better confidence interval.
+Imagine an urn in which we have placed 10 colored balls that represent the values we have observed in our sample. Now we can have fun and try to draw with replacement until we reach ten draws. What do you observe? Of course there will be values which are sampled more than once and values which may not appear in a given draw. With the help of our computer, we can perform thousands or millions of draws and store the data. At this point we can calculate the mean value for each of the, say, 500 draws and represent the results in an histogram. Then it suffices to fix a confidence level (i.e. alpha) for our interval and calculate the quantiles at alpha/2 and 1-alpha/2 level to obtain respectively the lower and the upper bound of the confidence interval. Here is a simple function to implement this approach:
 
 ```{r, eval = FALSE, highlight=FALSE}
 step 1 do this
