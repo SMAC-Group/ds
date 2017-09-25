@@ -111,7 +111,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a></li>
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Flow</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#logical-operators"><i class="fa fa-check"></i><b>5.2</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2</b> Selection Operators</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
 <li class="divider"></li>
@@ -138,11 +140,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 5</span> Control Flow</h1>
 <div id="introduction-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
-<p>When you are building a larger program than the examples we considered previously, we need use various <strong>programming statements</strong> to control the flow of our actions.</p>
+<p>When you are building a larger program than the examples we considered previously, we need use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making process in computing. There exist essentially two kinds of control structures. The first ones allow to assess whether a given condition is satisfied and take appropriate in response. A simple analogy to our day to day life would be “<strong>if</strong> it raining outside <strong>then</strong> take an umbrella”, we will come back to this example later in this chapter. The second kind of control structures allow to repeat of a block code multiple times. For example such approach can be used to convert a color image to gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kind control structures previously mentioned and then present various example to build our intuition.</p>
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 </div>
-<div id="logical-operators" class="section level2">
-<h2><span class="header-section-number">5.2</span> Logical Operators</h2>
+<div id="selection-operators" class="section level2">
+<h2><span class="header-section-number">5.2</span> Selection Operators</h2>
+<p>Suppose that we are interested in creating a simple code to check if it rained in last hour and this is the case to let us that we should probably take an umbrella today. To write such a code we essentially need three things:</p>
+<ol style="list-style-type: decimal">
+<li>Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package <code>rwunderground</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf">package documentation</a> for more details). Then, the precipitation amount (in inch) in the last hour can be retrieve using the code below:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rwunderground)
+(rain &lt;-<span class="st"> </span><span class="kw">conditions</span>(<span class="kw">set_location</span>(<span class="dt">zip_code =</span> <span class="st">&quot;16802&quot;</span>), <span class="dt">message =</span> <span class="ot">FALSE</span>)$precip_1hr)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Construct a logical (or boolean) variable created from the variable <code>rain</code> to assess whether or a umbrella is need. For example we could judged that there was any water in the last hour we should take an umbrella. This can be done as in the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more details.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(umbrella &lt;-<span class="st"> </span>rain &gt;<span class="st"> </span><span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Finally, we need to selection operator based on the logical variable constructed in the previous step to bring everything together. For example, we could the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably take an umbrella</em>” is the logical variable <code>umbrella</code> is <code>TRUE</code> and print “<em>An umbrella is probably not necessary</em>”, otherwise.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (umbrella){
+  <span class="kw">print</span>(<span class="st">&quot;You should probably take an umbrella&quot;</span>)
+}else{
+  <span class="kw">print</span>(<span class="st">&quot;An umbrella is probably not necessary&quot;</span>)
+}</code></pre></div>
+<pre><code>## [1] &quot;An umbrella is probably not necessary&quot;</code></pre>
+<div id="sec_logical" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
 <p>Logical operators are used very commonly across all platforms.</p>
 <table>
 <thead>
@@ -205,6 +230,7 @@ x&gt;y</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">isTRUE</span>(x&gt;y)</code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 
+</div>
 </div>
 </div>
             </section>
