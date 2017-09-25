@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+
+
+<meta name="date" content="2017-09-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data.html">
+<link rel="next" href="placeholder.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Flow</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="control.html"><a href="control.html#title"><i class="fa fa-check"></i><b>5.0.1</b> Title</a></li>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#control-structures"><i class="fa fa-check"></i><b>5.2</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#selection-controls"><i class="fa fa-check"></i><b>5.2.1</b> Selection Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#applications"><i class="fa fa-check"></i><b>5.3</b> Applications:</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#iteration-controls"><i class="fa fa-check"></i><b>5.3.1</b> Iteration Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="control.html"><a href="control.html#applications-1"><i class="fa fa-check"></i><b>5.4</b> Applications:</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="control.html"><a href="control.html#non-parametric-bootstrap"><i class="fa fa-check"></i><b>5.4.1</b> Non-parametric Bootstrap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="control" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Control Flow</h1>
+<div id="title" class="section level3">
+<h3><span class="header-section-number">5.0.1</span> Title</h3>
+<p>Often when we are coding, we need to control the flow of our actions. Just like in daily day to day life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping.</p>
+</div>
+<div id="logical-operators" class="section level2">
+<h2><span class="header-section-number">5.1</span> Logical Operators</h2>
+<p>Logical operators are used very commonly across all platforms.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x <code>&gt;</code> y</td>
+<td>x greater than y</td>
+</tr>
+<tr class="even">
+<td>x <code>&gt;=</code> y</td>
+<td>x greater or equals to y</td>
+</tr>
+<tr class="odd">
+<td>x <code>&lt;</code> y</td>
+<td>x less than y</td>
+</tr>
+<tr class="even">
+<td>x <code>&lt;=</code> y</td>
+<td>x less than or equals to y</td>
+</tr>
+<tr class="odd">
+<td>x <code>==</code> y</td>
+<td>x equal to y</td>
+</tr>
+<tr class="even">
+<td>x <code>!=</code> y</td>
+<td>x not equal to y</td>
+</tr>
+<tr class="odd">
+<td><code>!</code>x</td>
+<td>Not x</td>
+</tr>
+<tr class="even">
+<td>x <code>|</code>y</td>
+<td>x or y</td>
+</tr>
+<tr class="odd">
+<td>x <code>&amp;</code> y</td>
+<td>x and y</td>
+</tr>
+<tr class="even">
+<td><code>isTRUE</code>(x)</td>
+<td>test if all of x is TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
+y =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)
+x&gt;y</code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<p>This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. <code>isTRUE()</code> checks if all the elements within the object is <code>TRUE</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">isTRUE</span>(<span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">isTRUE</span>(x&gt;y)</code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="control-structures" class="section level2">
+<h2><span class="header-section-number">5.2</span> Control Structures</h2>
+<p>Control structures allow us to control the flow of code execution. We control the flow of code by using selection controls with logical operators and iterative controls like for-loops. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
+<center>
+<img src="../images/maze.jpg" />
+</center>
+<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited.</p>
+<p>Try to follow the below procedure on the maze above, considering the direction you face while moving. Pretend that you cannot step backward or look behind you.</p>
+<ul>
+<li>if there is space in front of you, go forward</li>
+<li>else, if there is space on your right and left, turn right</li>
+<li>else, if there is only space on your right, turn right</li>
+<li>else, if there is only space on your left, turn left</li>
+<li>else, [all three sides (forward, left, right) are closed] turn around</li>
+</ul>
+<p>Did you escape? Notice the way I structured my solution. Do you see a pattern? Though it might take some time, this way will in turn solve any maze.</p>
+<div id="selection-controls" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Selection Controls</h3>
+<p>Basically if, if/else, if/elseif/else and switch</p>
+<div id="ifelse" class="section level4">
+<h4><span class="header-section-number">5.2.1.1</span> If/else</h4>
+<p>With this selection control, the user is able to define a strategy which consist of a series of moves that should complete all the hypothetical scenarios that may occur. Try to remember that time when you have played at “capture the flag” and you were thinking at a series of moves depending on what your competitor was going to do. If he is going left, I will go right and take the flag. Else I will stop him and prevent the capture of the flag. This hypothetical reasoning is at the core of the if/else statements.</p>
+</div>
+</div>
+</div>
+<div id="applications" class="section level2">
+<h2><span class="header-section-number">5.3</span> Applications:</h2>
+<p>Past version:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (conditon){
+  do <span class="kw">something</span> (if condition is <span class="ot">TRUE</span>)
+}else{
+  do something else (if condition is false)
+}</code></pre></div>
+<p>My alternative:</p>
+<p>Imagine that you are playing a game of tic-tac-toe and you are in this situation (here we can put a picture): if you want to design the best response strategy, an if/else statement is the perfect way to go. Here is how a pseudo-code will look like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (player <span class="dv">1</span> cross){
+  make your <span class="kw">circle</span> (if condition is <span class="ot">TRUE</span>)
+}else{
+  do something else (if condition is false)
+}</code></pre></div>
+<div id="iteration-controls" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Iteration Controls</h3>
+<div id="forloop" class="section level4">
+<h4><span class="header-section-number">5.3.1.1</span> for</h4>
+<p>The idea behind this specific control structure, is to repeat a given block of code as much times as you wish. Imagine a boring and repetitive task that you may have done during your life, with a for-loop you can tell your computer to perform that very same task again and again just on a different input unit each time.</p>
+</div>
+</div>
+</div>
+<div id="applications-1" class="section level2">
+<h2><span class="header-section-number">5.4</span> Applications:</h2>
+<p>Anyone who has taken at least one introductory course in Statistics knows how to perform a standardization. It suffices to subtract the average and divide by the standard deviation. This is exactly the kind of repetitive task that is well managed by a for-loop. Below you can have a look at how a pseudo-code will look like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="kw">length</span>(vector_name)){
+  
+  stand_vector[i] =<span class="st"> </span>(vector_name[i] -<span class="st"> </span>mu) /<span class="st"> </span>sigma
+  
+}</code></pre></div>
+<p>alternative example: (finance)</p>
+<p>When we need to perform a financial analysis on stocks, we always work with returns rather than prices. Imagine a vector containing the closing daily prices of a stock in a given year and that you need to calculate the arithmetic returns. It suffices to subtract the price of the day before and divide the result by the same past price in order to retrieve the return for that specific day. This is exactly the kind of repetitive task that is well managed by a for-loop. Below you can have a look at a pseudo-code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">returns =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,<span class="dt">times=</span><span class="kw">length</span>(price_vector)-<span class="dv">1</span>)
+
+for(i in <span class="dv">1</span>:<span class="kw">length</span>(price_vector)-<span class="dv">1</span>){
+  
+  returns[i] =<span class="st"> </span>(price_vector[i<span class="dv">+1</span>]-price_vector[i])/price_vector[i]
+  
+}</code></pre></div>
+<div id="non-parametric-bootstrap" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Non-parametric Bootstrap</h3>
+<p>Suppose we ask 10 students how much time they work at home for their calculus class, we obtain the following results (in hour)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">student_work =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">4</span>)</code></pre></div>
+<p>We can compute the mean time spent</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(student_work)</code></pre></div>
+<pre><code>## [1] 0.825</code></pre>
+<p><em>ADD SOMETHING ON T TEST</em> At this point we would like to make an inference over the whole class of students, basing our judgments on the sample values we have collected. The to obtain a credible interval for our class mean time, is to perform a t-test</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(student_work)$conf.int</code></pre></div>
+<pre><code>## [1] -0.03495865  1.68495865
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>We can see that our confidence interval includes a negative values which clearly isn’t meaningful. Solution: (non-parametric) bootstrap which works as follows….. ADD SOMETHING</p>
+<p>Here is a simple function to implement this approach:</p>
+<pre class="text"><code>step 1 do this
+step 2 do that</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Number of boostrap replications</span>
+B =<span class="st"> </span><span class="dv">500</span>
+
+<span class="co"># Compute the length of vector</span>
+n =<span class="st"> </span><span class="kw">length</span>(student_work)
+
+<span class="co"># Confidence level</span>
+alpha =<span class="st"> </span><span class="fl">0.05</span>
+
+<span class="co"># Initialisation of </span>
+boot_mean =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
+
+for (i in <span class="dv">1</span>:B){
+  student_work_star =<span class="st"> </span>student_work[<span class="kw">sample</span>(<span class="dv">1</span>:n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)]
+  boot_mean[i] =<span class="st"> </span><span class="kw">mean</span>(student_work_star)
+}
+
+<span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha/<span class="dv">2</span>, <span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>))</code></pre></div>
+<pre><code>##  2.5% 97.5% 
+##  0.25  1.55</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#hist(boot_mean, probability = TRUE)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">10</span>^(<span class="dv">2</span>:<span class="dv">6</span>)
+m =<span class="st"> </span><span class="dv">50</span>
+res =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, m, <span class="kw">length</span>(n))
+
+for (j in <span class="dv">1</span>:<span class="kw">length</span>(n)){
+  for (i in <span class="dv">1</span>:m){
+    <span class="kw">set.seed</span>(i)
+    x =<span class="st"> </span><span class="kw">rnorm</span>(n[j])
+    res[i,j] =<span class="st"> </span><span class="kw">mean</span>(x)
+  }
+}
+
+min_range =<span class="st"> </span><span class="kw">apply</span>(res, <span class="dv">2</span>, min)
+mean_range =<span class="st"> </span><span class="kw">apply</span>(res, <span class="dv">2</span>, mean)
+max_range =<span class="st"> </span><span class="kw">apply</span>(res, <span class="dv">2</span>, max)
+
+<span class="kw">plot</span>(mean_range, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">cbind</span>(min_range, max_range)))
+<span class="kw">lines</span>(min_range)
+<span class="kw">lines</span>(max_range)</code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="placeholder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-control.Rmd",
+"text": "Edit"
+},
+"download": ["ds.pdf", "ds.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
