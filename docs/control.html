@@ -268,8 +268,26 @@ y &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
 </tbody>
 </table>
 <p>Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> =<span class="st"> </span><span class="dv">2</span>
-<span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>) ||<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</code></pre></div>
+
+<div class="rmdcaution">
+Common errors: <code>2 = 2</code> others????
+</div>
+<p></p>
+
+<div class="rmdnote">
+<p><strong>Difference between || | and &amp; &amp;&amp;</strong></p>
+<p><code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> or <code>c(TRUE,FALSE) &amp;&amp; c(FALSE, FALSE)</code>.</p>
+</div>
+<p></p>
+
+<div class="rmdnote">
+<p><strong>Short-circuit evaluation</strong></p>
+<ul>
+<li><code>x &amp; y</code>: if <code>x</code> is <code>FALSE</code> then <code>y</code> is not evaluated. Therefore, if <code>y</code> contains a some kind of error using such expression can create bugs that are hard to find. For example, consider the expression <code>y = x &amp;&amp; 2 == NULL</code>, then if <code>x</code> is <code>FALSE</code> <code>y</code> will be <code>FALSE</code> while if <code>x</code> is <code>TRUE</code> <code>y</code> will be <code>NA</code>!</li>
+<li>Similarly, <code>x | y</code> if <code>x</code> is <code>TRUE</code> then <code>y</code> is not evaluated.
+</div>
+</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
 y =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)
 x&gt;y</code></pre></div>

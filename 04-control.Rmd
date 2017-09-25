@@ -64,10 +64,25 @@ y <- 2
 
 Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them. 
 
-```{r, eval = FALSE}
-2 = 2
-c(TRUE,FALSE) || c(FALSE, FALSE)
+
+```{block2, type='rmdcaution'}
+Common errors: `2 = 2` others????
 ```
+
+```{block2, type='rmdnote'}
+**Difference between || | and & &&**
+
+`c(TRUE,FALSE) || c(FALSE, FALSE)` or `c(TRUE,FALSE) && c(FALSE, FALSE)`.
+
+```
+
+```{block2, type='rmdnote'}
+**Short-circuit evaluation**
+
+- `x & y`: if `x` is `FALSE` then `y` is not evaluated. Therefore, if `y` contains a some kind of error using such expression can create bugs that are hard to find. For example, consider the expression `y = x && 2 == NULL`, then if `x` is `FALSE` `y` will be `FALSE` while if `x` is `TRUE` `y` will be `NA`!
+- Similarly, `x | y` if `x` is `TRUE` then `y` is not evaluated.
+```
+
 
 ```{r}
 x = c(3,6,3,4,5)
