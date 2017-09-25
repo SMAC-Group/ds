@@ -37,22 +37,37 @@ if (umbrella){
 
 ### Logical Operators {#sec_logical}
 
-Logical operators are used very commonly across all platforms. 
+Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. 
 
-| Command     | Description                |
-|-------------|----------------------------|
-| x `>` y     | x greater than y           |
-| x `>=` y    | x greater or equals to y   |
-| x `<` y     | x less than y              |
-| x `<=` y    | x less than or equals to y |
-| x `==` y    | x equal to y               |
-| x `!=` y    | x not equal to y           |
-| `!`x        | Not x                      |
-| x `| `y     | x or y                     |
-| x `&` y     | x and y                    |
-| `isTRUE`(x) | test if all of x is TRUE   |
+```{r}
+x <- 4
+y <- 2
+```
+
+
+| Command     | Description                |   Example                           |    Result                             |
+|-------------|----------------------------|-------------------------------------|---------------------------------------|
+| x `>` y     | x greater than y           | `4 > 3`                             | `r 4 > 3`                             |
+| x `>=` y    | x greater or equals to y   | `1 >= 1`                            | `r 1 >= 1`                            |
+| x `<` y     | x less than y              | `c(12 < 20, 1 < 1)`                 | `r c(12 < 20, 1 < 1)`                 |
+| x `<=` y    | x less than or equals to y | `12 <= 1`                           | `r 12 <= 1`                           |
+| x `==` y    | x equal to y               | `c(2 == 2, 1 == 2)`                 | `r c(2 == 2, 1 == 2)`                 |
+| x `!=` y    | x not equal to y           | `c(2 != 2, F != T)`                 | `r c(2 != 2, FALSE != TRUE)`          |
+| `!`x        | Not x                      | `c(!(2 > 1), !FALSE)`               | `r c(!(2 > 1), !FALSE)`               |
+| x `|| `y    | x or y (not vectorized)    | `(1 > 1) || (2 < 3)`                | `r (1 > 1) || (2 < 3)`                |
+| x `| `y     | x or y (vectorized)        | `c(1 > 1, F) || c(T, 2 < 3)`        | `r c(1 > 1, F) || c(T, 2 < 3)`        |
+| x `&&` y    | x and y (not vectorized)   | `TRUE && TRUE`                      | `r TRUE && TRUE`                      |
+| x `&` y     | x and y (vectorized)       | `c(TRUE, T) & c(TRUE, F)`           | `r c(TRUE, T) & c(TRUE, F)`           |
+| xor(x,y)    | test if only one is TRUE   | `xor(TRUE, TRUE)`                   | `r xor(TRUE, TRUE)`                   |
+| `all`(x)    | test if all are TRUE       |  `all(c(T, F, F))`                  | `r all(c(T, F, F))`                   |
+| `any`(x)    | test if one or more is TRUE|  `any(c(T, F, F))`                  | `r any(c(T, F, F))`                   |
 
 Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them. 
+
+```{r, eval = FALSE}
+2 = 2
+c(TRUE,FALSE) || c(FALSE, FALSE)
+```
 
 ```{r}
 x = c(3,6,3,4,5)

@@ -168,58 +168,108 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## [1] &quot;An umbrella is probably not necessary&quot;</code></pre>
 <div id="sec_logical" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
-<p>Logical operators are used very commonly across all platforms.</p>
+<p>Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span>
+y &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
 <th>Command</th>
 <th>Description</th>
+<th>Example</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>x <code>&gt;</code> y</td>
 <td>x greater than y</td>
+<td><code>4 &gt; 3</code></td>
+<td>TRUE</td>
 </tr>
 <tr class="even">
 <td>x <code>&gt;=</code> y</td>
 <td>x greater or equals to y</td>
+<td><code>1 &gt;= 1</code></td>
+<td>TRUE</td>
 </tr>
 <tr class="odd">
 <td>x <code>&lt;</code> y</td>
 <td>x less than y</td>
+<td><code>c(12 &lt; 20, 1 &lt; 1)</code></td>
+<td>TRUE, FALSE</td>
 </tr>
 <tr class="even">
 <td>x <code>&lt;=</code> y</td>
 <td>x less than or equals to y</td>
+<td><code>12 &lt;= 1</code></td>
+<td>FALSE</td>
 </tr>
 <tr class="odd">
 <td>x <code>==</code> y</td>
 <td>x equal to y</td>
+<td><code>c(2 == 2, 1 == 2)</code></td>
+<td>TRUE, FALSE</td>
 </tr>
 <tr class="even">
 <td>x <code>!=</code> y</td>
 <td>x not equal to y</td>
+<td><code>c(2 != 2, F != T)</code></td>
+<td>FALSE, TRUE</td>
 </tr>
 <tr class="odd">
 <td><code>!</code>x</td>
 <td>Not x</td>
+<td><code>c(!(2 &gt; 1), !FALSE)</code></td>
+<td>FALSE, TRUE</td>
 </tr>
 <tr class="even">
+<td>x <code>||</code>y</td>
+<td>x or y (not vectorized)</td>
+<td><code>(1 &gt; 1) || (2 &lt; 3)</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
 <td>x <code>|</code>y</td>
-<td>x or y</td>
+<td>x or y (vectorized)</td>
+<td><code>c(1 &gt; 1, F) || c(T, 2 &lt; 3)</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>x <code>&amp;&amp;</code> y</td>
+<td>x and y (not vectorized)</td>
+<td><code>TRUE &amp;&amp; TRUE</code></td>
+<td>TRUE</td>
 </tr>
 <tr class="odd">
 <td>x <code>&amp;</code> y</td>
-<td>x and y</td>
+<td>x and y (vectorized)</td>
+<td><code>c(TRUE, T) &amp; c(TRUE, F)</code></td>
+<td>TRUE, FALSE</td>
 </tr>
 <tr class="even">
-<td><code>isTRUE</code>(x)</td>
-<td>test if all of x is TRUE</td>
+<td>xor(x,y)</td>
+<td>test if only one is TRUE</td>
+<td><code>xor(TRUE, TRUE)</code></td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td><code>all</code>(x)</td>
+<td>test if all are TRUE</td>
+<td><code>all(c(T, F, F))</code></td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td><code>any</code>(x)</td>
+<td>test if one or more is TRUE</td>
+<td><code>any(c(T, F, F))</code></td>
+<td>TRUE</td>
 </tr>
 </tbody>
 </table>
 <p>Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> =<span class="st"> </span><span class="dv">2</span>
+<span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>) ||<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
 y =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)
 x&gt;y</code></pre></div>
