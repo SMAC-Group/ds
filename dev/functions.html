@@ -257,7 +257,7 @@ which verifies Eq. @ref(eq:lsformula).
 </div>
 <div id="creating-functions-in-r" class="section level2">
 <h2>Creating functions in R</h2>
-<p>In the previous section we therefore went over the algebra behind least-squares regression. Based on this, let us implement a function that only estimates the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span>. Let us therefore define the skeleton of the R function we want to build:</p>
+<p>In the previous section we therefore went over the algebra behind least-squares regression. Based on this, let us implement a function that delivers inference on the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span>. Let us therefore define the skeleton of the R function we want to build:</p>
 <pre class="r"><code>my_lm &lt;- function (...) {
   
   ...
@@ -275,12 +275,18 @@ which verifies Eq. @ref(eq:lsformula).
 <p>In the above syntax, we used so-called <em>positional matching</em> where arguments to the function must be entered in the same order as they are defined in the function itself. In our example, the response variable is given by <code>hubble$y</code> while the covariates (in this case only one covariate) is given by <code>hubble$x</code>. These arguments need to be entered in the correct order:</p>
 <pre class="r"><code>my_lm(hubble$y,hubble$x)</code></pre>
 <p>since otherwise the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of the function, but it is suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:</p>
-<pre class="r"><code>my_lm &lt;- function (response = NA, covariates = NA) {
+<pre class="r"><code>my_lm &lt;- function (y = NA, X = NA) {
   
   ...
   
 }</code></pre>
-<p>where <code>response</code> and <code>covariates</code> become the names of the variables that will be used within the body of the function. You can notice that we assigned the value <code>NA</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would either give an error or output <code>NA</code>).</p>
+<p>You can notice that we assigned the value <code>NA</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would either give an error or output <code>NA</code>). For the purpose of illustration however, we will change the argument names as follows:</p>
+<pre class="r"><code>my_lm &lt;- function (response, covariates) {
+  
+  ...
+  
+}</code></pre>
+<p>where <code>response</code> and <code>covariates</code> become the names of the variables that will be used within the body of the function for which we don’t specify default values.</p>
 
 <div class="rmdnote">
 According to the type of function, it is possible to give other default values that would deliver an output (see for example the values of the arguments <code>mean</code> and <code>sd</code> in the base function <code>rnorm()</code>).
@@ -291,10 +297,10 @@ According to the type of function, it is possible to give other default values t
 <p>Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through <em>perfect matching</em>, meaning that it searches for the arguments matching the exact name (in our case “response” and “covariates”). Failing to match the arguments by their exact name, R then searches for the arguments through <em>prefix matching</em>, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:</p>
 <pre class="r"><code>my_lm(r = hubble$y, cova = hubble$x)</code></pre>
 <p>So, as long we correctly specify the beginning of the argument’s name and as long as it’s not ambigiuous (meaning that its name cannot be confused with that of another argument), then it is possible to provide only part of the argument’s name and R will recognise and correctly associate the provided value with the corresponding variable.</p>
-<p>Finally, failing to match arguments in any of the above cases, then R uses positional matching and therefore assigns values to the variables based on the order they have been entered when calling the function.</p>
+<p>Finally, failing to match arguments in any of the above cases, R uses positional matching and therefore assigns values to the variables based on the order they have been entered when calling the function. We could therefore go back to using the function like we did at the start by specifying <code>my_lm(hubble$y, hubble$x)</code>.</p>
 
 <div class="rmdnote">
-It is possible to also specify arguments in terms of the default value of other arguments. For example, the <code>add()</code> function seen in the toy example seen at the beginning of this chapter could specify the arguments as <code>a = 1, b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">@wickham2014advanced</span> .
+It is possible to also specify arguments in terms of the default value of other arguments. For example, the <code>add()</code> function in the toy example seen at the beginning of this chapter could specify the arguments as <code>a = 1, b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">@wickham2014advanced</span> .
 </div>
 <p></p>
 <p>Additional arguments can be left to be specified by the user when there is the possibility to specify arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> representing the coordinates of the points in the plot and other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = &quot;l&quot;</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
@@ -303,10 +309,10 @@ It is possible to also specify arguments in terms of the default value of other 
 <h3>Function body</h3>
 <p>The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat) and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R.</p>
 <p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. @ref(eq:lsformula) within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
-<pre class="r"><code>my_lm = function(response = NA, covariates = NA) {
+<pre class="r"><code>my_lm = function(response, covariates) {
   
   # Define parameters
-  n &lt;- length(response) # we could also use dim(covariates)[1]
+  n &lt;- length(response)
   p &lt;- dim(covariates)[2]
   df &lt;- n - p
   
@@ -314,10 +320,67 @@ It is possible to also specify arguments in terms of the default value of other 
   beta.hat &lt;- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
   
   # Return the estimated value of beta
-  return(beta.hat)
+  beta.hat
   
 }</code></pre>
-<p>We now have an estimated value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
+
+<div class="rmdimportant">
+Before discussing the body and output of this function, we can first underline an important aspect of programming. Indeed, we defined the number of covariates (and length of the vector <span class="math inline">\(\boldsymbol{\beta}\)</span>) as <code>p &lt;- dim(covariates)[2]</code> where the function <code>dim()</code> presupposes that the object <code>covariates</code> is a matrix. Nevertheless, in our case the object <code>covariates</code> would correspond to <code>hubble$x</code> which is a vector and therefore this operation would return <code>NULL</code> as an output. When programming it is therefore important to think ahead and understand if there are any particular cases where parts of the body of your function may not work.
+</div>
+<p></p>
+<p>Taking into account the above note, it would be appropriate to make sure that the code in the body of the function works also in particular cases (e.g. the <code>covariates</code> object is a vector and not a matrix). In our case we therefore use the function <code>as.matrix()</code> which forces an object to be considered as a matrix in order for it to be used within matrix opeations.</p>
+<pre class="r"><code>my_lm = function(response, covariates) {
+  
+  # Make sure data formats are appropriate
+  response &lt;- as.vector(response)
+  covariates &lt;- as.matrix(covariates)
+  
+  # Define parameters
+  n &lt;- length(response)
+  p &lt;- dim(covariates)[2]
+  df &lt;- n - p
+  
+  # Estimate beta through Eq. (1.1)
+  beta.hat &lt;- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
+  
+  # Return the estimated value of beta
+  beta.hat
+  
+}</code></pre>
+
+<div class="rmdtip">
+Other checks can be introduced at the beginning of the function to make sure that the function is used correctly and obtain an appropriate output. In our case, for example, we could even introduce a check to understand if <code>response</code> and <code>covariates</code> have the same number of rows and interrupt the function execution and output an error message if this is not the case, making the user aware of this probem.
+</div>
+<p></p>
+<p>As you may notice, using the matrix operators we obtain an object we decide to call <code>beta.hat</code> and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the <code>return()</code> function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using <code>return()</code> we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on).</p>
+<p>With the <code>my_lm()</code> function we can now estimate the value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. However, we don’t have an estimate of its variance for which we would need to implement Equations @ref(eq:lsvar) and @ref(eq:lssig2hat). We can therefore add these equations to the body of our <code>my_lm()</code> function:</p>
+<pre class="r"><code>my_lm = function(response, covariates) {
+  
+  # Make sure data formats are appropriate
+  response &lt;- as.vector(response)
+  covariates &lt;- as.matrix(covariates)
+  
+  # Define parameters
+  n &lt;- length(response)
+  p &lt;- dim(covariates)[2]
+  df &lt;- n - p
+  
+  # Estimate beta through Eq. (1.1)
+  beta.hat &lt;- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
+  
+  # Estimate of the residual variance (sigma2) from Eq. (1.3)
+  resid &lt;- response - covariates%*%as.matrix(beta.hat) # compute residuals
+  sigma2.hat &lt;- (1/df)*t(resid)%*%resid
+  
+  # Estimate of the variance of the estimated beta from Eq. (1.2)
+  var.beta &lt;- sigma2.hat*solve(t(covariates)%*%covariates)
+  
+  # Return all estimated values
+  return(list(beta = beta.hat, sigma2 = sigma2.hat, variance_beta = var.beta))
+  
+}</code></pre>
+<p>There are a couple of things to underline in the above function. Firstly, when defining the <code>resid</code> object we also used as … then <code>return(list(...))</code>…</p>
+<p>Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
 <pre class="r"><code>hubble.const = beta.hat/3.09e19 # Estimated Hubble's constant in inverse seconds
 age.sec = 1/hubble.const # Age of the universe in seconds
 age.sec/(60^2*24*365) # Age of the universe in years</code></pre>
@@ -361,9 +424,6 @@ results</code></pre>
 </div>
 <div id="function-environment" class="section level2">
 <h2>Function environment</h2>
-</div>
-<div id="function-attributes" class="section level2">
-<h2>Function attributes</h2>
 </div>
 </div>
 

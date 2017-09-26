@@ -325,7 +325,7 @@ my_lm = function(response, covariates) {
 Other checks can be introduced at the beginning of the function to make sure that the function is used correctly and obtain an appropriate output. In our case, for example, we could even introduce a check to understand if `response` and `covariates` have the same number of rows and interrupt the function execution and output an error message if this is not the case, making the user aware of this probem.
 ```
 
-As you my notice, using the matrix operators we obtain an object we decide to call `beta.hat` and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the `return()` function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using `return()` we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on). 
+As you may notice, using the matrix operators we obtain an object we decide to call `beta.hat` and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the `return()` function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using `return()` we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on). 
 
 With the `my_lm()` function we can now estimate the value for $\beta$ that we denote as $\hat{\beta}$. However, we don't have an estimate of its variance for which we would need to implement Equations \@ref(eq:lsvar) and \@ref(eq:lssig2hat). We can therefore add these equations to the body of our `my_lm()` function:
 
@@ -345,7 +345,7 @@ my_lm = function(response, covariates) {
   beta.hat <- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
   
   # Estimate of the residual variance (sigma2) from Eq. (1.3)
-  resid <- response - covariates*as.matrix(beta.hat) # compute residuals
+  resid <- response - covariates%*%as.matrix(beta.hat) # compute residuals
   sigma2.hat <- (1/df)*t(resid)%*%resid
   
   # Estimate of the variance of the estimated beta from Eq. (1.2)
@@ -357,7 +357,7 @@ my_lm = function(response, covariates) {
 }
 ```
 
-There are a couple of things to underline in the above function. Firstly the `resid` object ... then `return(list(...))`...
+There are a couple of things to underline in the above function. Firstly, when defining the `resid` object we also used `as.matrix()` for the object `beta.hat`: this is because it can happen (as in our example) that the dimension of $\boldsymbol{\beta}$ could be equal to one (i.e. a scalar) and the matrix multiplication would not work and output an error. By using the `as.matrix()` function, we ensure that this multiplication will work also when $\boldsymbol{\beta}$ is a scalar (i.e. when there is only one covariate) ... then `return(list(...))`...
 
 Due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of $s^{-1}$).
 
