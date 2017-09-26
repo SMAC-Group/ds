@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-09-19">
+<meta name="date" content="2017-09-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="github.html">
-<link rel="next" href="references.html">
+<link rel="next" href="control.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -196,7 +196,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>5</b> References</a></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2</b> Selection Operators</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators-1"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -623,6 +630,8 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <pre><code>## [1] 1 2 1 2 1 2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">1</span>, <span class="dt">each =</span> <span class="dv">3</span>)</code></pre></div>
 <pre><code>## [1] 1 1 1 2 2 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">2</span>, <span class="dt">each =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 1 1 2 2 1 1 2 2</code></pre>
 <p>where the option <code>times</code> allows to specify how many times the object needs to be repeated and <code>each</code> regulates how many times each element in the object is repeated.</p>
 <p>It is also possible to generate sequences of dates using the function <code>seq()</code>. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> players_dob[<span class="dv">1</span>], <span class="dt">to =</span> players_dob[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span>)</code></pre></div>
@@ -650,10 +659,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
 <p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-09-19&quot;</code></pre>
+<pre><code>## [1] &quot;2017-09-26&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-06-19&quot;</code></pre>
+<pre><code>## [1] &quot;2017-06-26&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)
@@ -673,9 +682,9 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</code></pre></div>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.001351857</code></pre>
+<pre><code>## [1] 0.0005793417</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.00270089</code></pre>
+<pre><code>## [1] 0.001443043</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
@@ -711,8 +720,8 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 <p>In R, this can simply be done as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 3.434852</code></pre>
-<p>Therefore, we observe an estimated Excess Kurtosis of 3.43 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
+<pre><code>## [1] 2.742235</code></pre>
+<p>Therefore, we observe an estimated Excess Kurtosis of 2.74 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
 </div>
 <div id="matrices" class="section level2">
@@ -1008,10 +1017,10 @@ s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="
 <span class="kw">row.names</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sample Mean&quot;</span>, <span class="st">&quot;Sample Variance&quot;</span>, <span class="st">&quot;Sample Covariance&quot;</span>)
 <span class="kw">colnames</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)
 cp_matrix</code></pre></div>
-<pre><code>##                      Scalar    Matrix
-## Sample Mean       0.3195439 0.3195439
-## Sample Variance   3.6375070 3.6375070
-## Sample Covariance 0.0789763 0.0789763</code></pre>
+<pre><code>##                       Scalar     Matrix
+## Sample Mean       0.35557010 0.35557010
+## Sample Variance   3.70789790 3.70789790
+## Sample Covariance 0.04831488 0.04831488</code></pre>
 <p>Therefore, using the previously obtained results we can construct the following <em>empirical</em> covariance matrix</p>
 <span class="math display">\[\begin{equation} 
   \widehat{\text{Cov}}(X, Y) =  \left[
@@ -1027,19 +1036,19 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 
 <span class="co"># Covariance matrix</span>
 (V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</code></pre></div>
-<pre><code>##           [,1]      [,2]
-## [1,] 3.6375070 0.0789763
-## [2,] 0.0789763 1.0274490</code></pre>
+<pre><code>##            [,1]       [,2]
+## [1,] 3.70789790 0.04831488
+## [2,] 0.04831488 1.01578369</code></pre>
 <p>This result can now be compared to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##            x          y
-## x 3.67424953 0.07977404
-## y 0.07977404 1.03782723</code></pre>
+<pre><code>##           x         y
+## x 3.7453514 0.0488029
+## y 0.0488029 1.0260441</code></pre>
 <p>We can see that the results are slightly different from what we expected. This is because the calculation of <code>cov()</code> within the default R <code>stats</code> package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(n<span class="dv">-1</span>)/n*<span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##           x         y
-## x 3.6375070 0.0789763
-## y 0.0789763 1.0274490</code></pre>
+<pre><code>##            x          y
+## x 3.70789790 0.04831488
+## y 0.04831488 1.01578369</code></pre>
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
@@ -1142,7 +1151,7 @@ omega_star =<span class="st"> </span>(Sigma[<span class="dv">2</span>, <span cla
 mu_investment =<span class="st"> </span>omega_star*mu[<span class="dv">1</span>] +<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>omega_star)*mu[<span class="dv">2</span>]
 var_investment =<span class="st"> </span>omega_star^<span class="dv">2</span>*Sigma[<span class="dv">1</span>,<span class="dv">1</span>] +<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>omega_star)^<span class="dv">2</span>*Sigma[<span class="dv">2</span>,<span class="dv">2</span>] +<span class="st"> </span>
 <span class="st">  </span><span class="dv">2</span>*omega_star*(<span class="dv">1</span> -<span class="st"> </span>omega_star)*Sigma[<span class="dv">1</span>,<span class="dv">2</span>]</code></pre></div>
-<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 82.33%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
+<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 82.28%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">investment_summary =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">1</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Expected value&quot;</span>, <span class="st">&quot;Variance&quot;</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)
@@ -1162,15 +1171,15 @@ knitr::<span class="kw">kable</span>(investment_summary)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td>Expected value</td>
-<td align="right">0.0004889</td>
-<td align="right">0.0029630</td>
-<td align="right">0.0009261</td>
+<td align="right">0.0004900</td>
+<td align="right">0.0029628</td>
+<td align="right">0.0009281</td>
 </tr>
 <tr class="even">
 <td>Variance</td>
-<td align="right">0.0002464</td>
-<td align="right">0.0010001</td>
-<td align="right">0.0002100</td>
+<td align="right">0.0002462</td>
+<td align="right">0.0009987</td>
+<td align="right">0.0002096</td>
 </tr>
 </tbody>
 </table>
@@ -1261,7 +1270,7 @@ my_array</code></pre></div>
 </div>
 <div id="list" class="section level2">
 <h2><span class="header-section-number">4.4</span> List</h2>
-<p>A list is one of the commonly used <strong>heterogeneous</strong> data structures, which depicts a generic “vector” containing other object types. For example, we can a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains different element types. (numeric, character, logical, matrix)</p>
+<p>A list is one of the commonly used <strong>heterogeneous</strong> data structures, which depicts a generic “vector” containing other object types. For example, we can create a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains different element types. (numeric, character, logical, matrix)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># List elements</span>
 num_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">188</span>, <span class="dv">140</span>)
 char_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>)
@@ -1415,10 +1424,8 @@ hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&q
 <div id="subsetting-2" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Subsetting</h3>
 <p>Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let say we want only want to know the country and date of </span>
-<span class="co"># birth of the players</span>
-
-<span class="co"># There are two ways to select columns from a data frame</span>
+<p>Let us say we want only want to know the country and date of birth of the players.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># There are two ways to select columns from a data frame</span>
 <span class="co"># Like a list:</span>
 tennis[<span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</code></pre></div>
 <pre><code>##                      country date_of_birth
@@ -1435,15 +1442,83 @@ tennis[, <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, 
 ## Stan Wawrinka    Switzerland 28 March 1985
 ## Novak Djokovic        Serbia   22 May 1981
 ## Roger Federer    Switzerland 8 August 1981</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To acces a single element, let say the date of birth, </span>
+<p>We can extract column names of dataframes by using <code>names</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(tennis)</code></pre></div>
+<pre><code>## [1] &quot;date_of_birth&quot;  &quot;grand_slam_win&quot; &quot;country&quot;        &quot;ATP_ranking&quot;   
+## [5] &quot;prize_money&quot;    &quot;height&quot;         &quot;hand&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To access a single element, let say the date of birth, </span>
 <span class="co"># you can also use:</span>
 tennis$date_of_birth</code></pre></div>
 <pre><code>## [1] 15 May 1987   3 June 1986   28 March 1985 22 May 1981   8 August 1981
 ## 5 Levels: 15 May 1987 22 May 1981 28 March 1985 ... 8 August 1981</code></pre>
+<p>We can change the ordering of the columns outputted by simply changing the order within the <code>c()</code> subsetting.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note the difference between </span>
+tennis[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</code></pre></div>
+<pre><code>##                date_of_birth       country
+## Andy Murray      15 May 1987 Great Britain
+## Rafael Nadal     3 June 1986         Spain
+## Stan Wawrinka  28 March 1985   Switzerland
+## Novak Djokovic   22 May 1981        Serbia
+## Roger Federer  8 August 1981   Switzerland</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># and </span>
+tennis[, <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</code></pre></div>
+<pre><code>##                      country date_of_birth
+## Andy Murray    Great Britain   15 May 1987
+## Rafael Nadal           Spain   3 June 1986
+## Stan Wawrinka    Switzerland 28 March 1985
+## Novak Djokovic        Serbia   22 May 1981
+## Roger Federer    Switzerland 8 August 1981</code></pre>
+<p>Let us say we want only want to know right-handed players. We can subset <code>rows</code> using similar syntax as above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We will talk more about == in the next chapter</span>
+<span class="co"># This represents all players with hand equal to &quot;R&quot;</span>
+tennis[hand==<span class="st">&quot;R&quot;</span>,]</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Roger Federer  8 August 1981             18   Switzerland           5
+##                prize_money height hand
+## Andy Murray       60449649   1.90    R
+## Stan Wawrinka     30577981   1.83    R
+## Novak Djokovic   109447408   1.88    R
+## Roger Federer    104445185   1.85    R</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note what this returns </span>
+hand==<span class="st">&quot;R&quot;</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
+<p>Often data are better view when it is sorted. The function <code>order</code> helps do this, which can be utilized with subsetting to output a custom sorted dataframe based on a column(s).</p>
+<p>Below we will order the tennis players by the number of grand slam wins. Set <code>decreasing=TRUE</code> to order the rows in descreasing order.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># increasing order</span>
+tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>]),]</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Rafael Nadal     3 June 1986             15         Spain           2
+## Roger Federer  8 August 1981             18   Switzerland           5
+##                prize_money height hand
+## Stan Wawrinka     30577981   1.83    R
+## Andy Murray       60449649   1.90    R
+## Novak Djokovic   109447408   1.88    R
+## Rafael Nadal      85920132   1.85    L
+## Roger Federer    104445185   1.85    R</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># descreasing order</span>
+tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>], <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]</code></pre></div>
+<pre><code>##                date_of_birth grand_slam_win       country ATP_ranking
+## Roger Federer  8 August 1981             18   Switzerland           5
+## Rafael Nadal     3 June 1986             15         Spain           2
+## Novak Djokovic   22 May 1981             12        Serbia           4
+## Andy Murray      15 May 1987              9 Great Britain           1
+## Stan Wawrinka  28 March 1985              5   Switzerland           3
+##                prize_money height hand
+## Roger Federer    104445185   1.85    R
+## Rafael Nadal      85920132   1.85    L
+## Novak Djokovic   109447408   1.88    R
+## Andy Murray       60449649   1.90    R
+## Stan Wawrinka     30577981   1.83    R</code></pre>
 </div>
 <div id="example-maps" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Example: Maps</h3>
-<p>Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, <code>ggmap</code> to map simple cities. The functionality of the package we will talk more about later. We can extract the latitude - longitude information of the specific cities of the tennis players using <code>geocode</code> within <code>ggmap</code>.</p>
+<p>Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, <code>ggmap</code> to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using <code>geocode</code> within <code>ggmap</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
 birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
                 <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)
@@ -1460,14 +1535,14 @@ birth_coord</code></pre></div>
 ## 5  7.588576 47.55960  Roger Federer 18</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.data.frame</span>(birth_coord)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry to much about the details of how this graph is made.</p>
+<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mapproj)
 map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)
 <span class="kw">ggmap</span>(map) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, 
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) +<span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-124-1.png" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-128-1.png" width="720" style="display: block; margin: auto;" /></p>
 <p>As we see, we can produce various output using dataframe objects.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -1496,7 +1571,7 @@ map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="d
         </div>
       </div>
 <a href="github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="control.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
