@@ -18,7 +18,7 @@ library(rwunderground)
 (rain <- conditions(set_location(zip_code = "16802"), message = FALSE)$precip_1hr)
 ```
 
-2) Construct a logical (or boolean) variable created from the variable `rain` to assess whether or a umbrella is need. For example we could judged that there was any water in the last hour we should take an umbrella. This can be done as in the code below and in Section \@ref(logical_operators) we will discuss how to construct logical variables in more details.
+2) Construct a logical (or Boolean) variable created from the variable `rain` to assess whether or a umbrella is need. For example we could judged that there was any water in the last hour we should take an umbrella. This can be done as in the code below and in Section \@ref(logical_operators) we will discuss how to construct logical variables in more details.
 
 ```{r}
 (umbrella <- rain > 0)
@@ -37,13 +37,7 @@ if (umbrella){
 
 ### Logical Operators {#sec_logical}
 
-Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. 
-
-```{r}
-x <- 4
-y <- 2
-```
-
+Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table summarizes the commonly used logical operators:
 
 | Command     | Description                |   Example                           |    Result                             |
 |-------------|----------------------------|-------------------------------------|---------------------------------------|
@@ -62,28 +56,17 @@ y <- 2
 | `all`(x)    | test if all are TRUE       |  `all(c(T, F, F))`                  | `r all(c(T, F, F))`                   |
 | `any`(x)    | test if one or more is TRUE|  `any(c(T, F, F))`                  | `r any(c(T, F, F))`                   |
 
-Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them. 
 
-
-```{block2, type='rmdcaution'}
-Common errors: `2 = 2` others????
+```{block2, type='rmdnote'}
+There is subtle difference between `||`and `|` (or `&&` and `&`). Indeed, when using `x && y` or `x || y` it implicitely assumed that `x` and `y`are of length 1 and when there are applied to vectors **only the first elements** of each vectors will be considered. For example, `c(TRUE,FALSE) || c(FALSE, FALSE)` is equivalent to `TRUE || FALSE` and will only return `TRUE`. On the other hand, `&` and `|` can be applied to vectors and `c(TRUE,FALSE) || c(FALSE, FALSE)` is equivalent to `c(TRUE || FALSE, FALSE || FALSE)` and will return `TRUE FALSE`. It is also worth mentionning that `TRUE | c(FALSE, FALSE)` is equivalent to `c(TRUE || FALSE, TRUE || FALSE)` (i.e. the `TRUE` is used twice) and will return `TRUE TRUE`. These differences are common source of bugs. 
 ```
 
 ```{block2, type='rmdnote'}
-**Difference between || | and & &&**
-
-`c(TRUE,FALSE) || c(FALSE, FALSE)` or `c(TRUE,FALSE) && c(FALSE, FALSE)`.
-
-```
-
-```{block2, type='rmdnote'}
-**Short-circuit evaluation**
-
-- `x & y`: if `x` is `FALSE` then `y` is not evaluated. Therefore, if `y` contains a some kind of error using such expression can create bugs that are hard to find. For example, consider the expression `y = x && 2 == NULL`, then if `x` is `FALSE` `y` will be `FALSE` while if `x` is `TRUE` `y` will be `NA`!
-- Similarly, `x | y` if `x` is `TRUE` then `y` is not evaluated.
+When using `&` or `|` to create/return logical variables we have to aware of something called **short-circuit evaluation** which can create bugs that may be difficult to find. Indeed, suppose that we interested using an expression such `x & y` and that the variable `x` is `FALSE` then `y` will not evaluated. The idea behind this evaluation is that regardless of the value of `y` the expression `x & y` should be `TRUE`. However, this implicitely assumes that `y` does not contain any mistakes and if this were to happend this could create bugs that will be hard to find. For example, consider the expression `y = x && 2 == NULL`, then if `x` is `FALSE` `y` will be `FALSE` while if `x` is `TRUE` `y` will be `NA`, which obviously is likely to be problematic. Similarly, when considering an expression such as `x | y` the variable `y` will only be evaluated if `x` is `FALSE`.
 ```
 
 
+<!--
 ```{r}
 x = c(3,6,3,4,5)
 y = c(2,3,4,5,6)
@@ -96,4 +79,58 @@ This method outputs a vector of boolean TRUE and FALSE values that perform eleme
 isTRUE(TRUE)
 isTRUE(x>y)
 ```
+-->
+
+### Selection Operators 
+
+SMALL INTRO MISSING! 
+
+#### `if` Statements
+
+The most basic selection operator is called an `if` statement. Essentially, an `if` statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, "If this is true, do that" or as in our motivation example "If it rains take an umbrella". In R, you would say:
+
+```{r, eval = FALSE}
+if (<this is TRUE>){
+  <do that>
+}
+```
+
+or
+
+```{r, eval = FALSE}
+if (<it rains>){
+  <take an umbrella>
+}
+```
+
+In general, we can represent an `if` statement using the following diagram:
+
+<center>
+![](images/if.png)
+</center>
+
+and a simple example of an `if` statement is given below to find out if `x` is even number:
+
+```{r}
+x = 4
+if (x %% 2 == 0){
+  print(paste(x, "is an even number"))
+}
+```
+
+
+#### `if/else` Statements
+
+<center>
+![](images/ifelse.png)
+</center>
+
+#### `if/elseif/else` Statements
+
+<center>
+![](images/ifelseifelse.png)
+</center>
+
+#### `switch` Statements
+
 

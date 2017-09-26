@@ -1,0 +1,46 @@
+\documentclass[tikz,border=5]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, calc}
+
+\begin{document}
+\begin{tikzpicture}
+	
+	\tikzstyle{process1} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!10]
+	\tikzstyle{process2} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!10]
+	\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=black!10]
+	\tikzstyle{arrow} = [thick,->,>=stealth]
+
+	\node[anchor = west, color = red] at (0,-0.5) {\LARGE\# Code block A};
+	\node[anchor = west, color = black] at (0,-1.25) {\LARGE\texttt{if} $(<condition1>)\{$};
+	\node[anchor = west, color = blue] at (1,-2.25) {\LARGE\# Code block B};
+	\node[anchor = west, color = black] at (0,-3.25) {\LARGE$\}$\texttt{else if} $(<condition2>)\{$};
+	\node[anchor = west, color = blue] at (1,-4.25) {\LARGE\# Code block C};
+	\node[anchor = west, color = black] at (0,-5.25) {\LARGE$\}$\texttt{else}$\{$};
+	\node[anchor = west, color = blue] at (1,-6.25) {\LARGE\# Code block D};
+	\node[anchor = west, color = black] at (0,-7.25) {\LARGE$\}$};
+	\node[anchor = west, color = red] at (0,-8.25) {\LARGE\# Code block E};
+	
+	\node (pro1) [process1] at (14,0.5) {\texttt{Run:} \# Code block A};
+	\node (desc2) [decision] at (14,-2) {\texttt{if/else}};
+	\node (pro2) [process2] at (11,-4.5) {\texttt{Run:} \# Code block B};
+	\node (desc3) [decision] at (17,-4.5) {\texttt{if/else}};
+	\node (pro4) [process2] at (14,-7) {\texttt{Run:} \# Code block C};
+	\node (pro5) [process2] at (20,-7) {\texttt{Run:} \# Code block D};
+	\node (pro6) [process1] at (14,-9) {\texttt{Run:} \# Code block E};
+	
+	\node at (11, -2.8) {\scriptsize $<condition1>$ is TRUE};
+	\node at (17, -2.8) {\scriptsize $<condition1>$ is FALSE};
+	\node at (20, -5.5) {\scriptsize $<condition2>$ is FALSE};
+	\node at (14, -5.5) {\scriptsize $<condition2>$ is TRUE};
+	\draw [arrow] (pro1) -- (desc2);
+	\draw [arrow] (desc2) -- (pro2);
+	\draw [arrow] (desc2) -- (desc3);
+	\draw [arrow] (desc3) -- (pro4);
+	\draw [arrow] (desc3) -- (pro5);
+	\draw [arrow] (pro2) -- (pro6.west);
+	\draw [arrow] (pro5) -- (pro6.east);
+	\draw [arrow] (pro4) -- (pro6);
+	
+	
+\end{tikzpicture}
+\end{document}

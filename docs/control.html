@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-09-25">
+<meta name="date" content="2017-09-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -113,6 +113,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2</b> Selection Operators</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators-1"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
@@ -153,7 +154,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 (rain &lt;-<span class="st"> </span><span class="kw">conditions</span>(<span class="kw">set_location</span>(<span class="dt">zip_code =</span> <span class="st">&quot;16802&quot;</span>), <span class="dt">message =</span> <span class="ot">FALSE</span>)$precip_1hr)</code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Construct a logical (or boolean) variable created from the variable <code>rain</code> to assess whether or a umbrella is need. For example we could judged that there was any water in the last hour we should take an umbrella. This can be done as in the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more details.</li>
+<li>Construct a logical (or Boolean) variable created from the variable <code>rain</code> to assess whether or a umbrella is need. For example we could judged that there was any water in the last hour we should take an umbrella. This can be done as in the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more details.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(umbrella &lt;-<span class="st"> </span>rain &gt;<span class="st"> </span><span class="dv">0</span>)</code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
@@ -168,9 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## [1] &quot;An umbrella is probably not necessary&quot;</code></pre>
 <div id="sec_logical" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
-<p>Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span>
-y &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<p>Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table summarizes the commonly used logical operators:</p>
 <table>
 <thead>
 <tr class="header">
@@ -267,37 +266,102 @@ y &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
 </tr>
 </tbody>
 </table>
-<p>Logical operators can be applied to vectors as well. For example, here we create two random numerical vectors and compare them.</p>
 
-<div class="rmdcaution">
-Common errors: <code>2 = 2</code> others????
+<div class="rmdnote">
+There is subtle difference between <code>||</code>and <code>|</code> (or <code>&amp;&amp;</code> and <code>&amp;</code>). Indeed, when using <code>x &amp;&amp; y</code> or <code>x || y</code> it implicitely assumed that <code>x</code> and <code>y</code>are of length 1 and when there are applied to vectors <strong>only the first elements</strong> of each vectors will be considered. For example, <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>TRUE || FALSE</code> and will only return <code>TRUE</code>. On the other hand, <code>&amp;</code> and <code>|</code> can be applied to vectors and <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, FALSE || FALSE)</code> and will return <code>TRUE FALSE</code>. It is also worth mentionning that <code>TRUE | c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, TRUE || FALSE)</code> (i.e. the <code>TRUE</code> is used twice) and will return <code>TRUE TRUE</code>. These differences are common source of bugs.
 </div>
 <p></p>
 
 <div class="rmdnote">
-<p><strong>Difference between || | and &amp; &amp;&amp;</strong></p>
-<p><code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> or <code>c(TRUE,FALSE) &amp;&amp; c(FALSE, FALSE)</code>.</p>
+When using <code>&amp;</code> or <code>|</code> to create/return logical variables we have to aware of something called <strong>short-circuit evaluation</strong> which can create bugs that may be difficult to find. Indeed, suppose that we interested using an expression such <code>x &amp; y</code> and that the variable <code>x</code> is <code>FALSE</code> then <code>y</code> will not evaluated. The idea behind this evaluation is that regardless of the value of <code>y</code> the expression <code>x &amp; y</code> should be <code>TRUE</code>. However, this implicitely assumes that <code>y</code> does not contain any mistakes and if this were to happend this could create bugs that will be hard to find. For example, consider the expression <code>y = x &amp;&amp; 2 == NULL</code>, then if <code>x</code> is <code>FALSE</code> <code>y</code> will be <code>FALSE</code> while if <code>x</code> is <code>TRUE</code> <code>y</code> will be <code>NA</code>, which obviously is likely to be problematic. Similarly, when considering an expression such as <code>x | y</code> the variable <code>y</code> will only be evaluated if <code>x</code> is <code>FALSE</code>.
 </div>
 <p></p>
+<!--
 
-<div class="rmdnote">
-<p><strong>Short-circuit evaluation</strong></p>
+```r
+x = c(3,6,3,4,5)
+y = c(2,3,4,5,6)
+x>y
+```
+
+```
+## [1]  TRUE  TRUE FALSE FALSE FALSE
+```
+
+This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
+
+
+```r
+isTRUE(TRUE)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+isTRUE(x>y)
+```
+
+```
+## [1] FALSE
+```
+-->
+</div>
+<div id="selection-operators-1" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Selection Operators</h3>
+<p>SMALL INTRO MISSING!</p>
+<p>Control structures allow us to control the flow of code execution. We control the flow of code by using selection controls with logical operators and iterative controls like for-loops. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
+<center>
+<img src="images/maze.jpg" />
+</center>
+<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited.</p>
+<p>Try to follow the below procedure on the maze above, considering the direction you face while moving. Pretend that you cannot step backward or look behind you.</p>
 <ul>
-<li><code>x &amp; y</code>: if <code>x</code> is <code>FALSE</code> then <code>y</code> is not evaluated. Therefore, if <code>y</code> contains a some kind of error using such expression can create bugs that are hard to find. For example, consider the expression <code>y = x &amp;&amp; 2 == NULL</code>, then if <code>x</code> is <code>FALSE</code> <code>y</code> will be <code>FALSE</code> while if <code>x</code> is <code>TRUE</code> <code>y</code> will be <code>NA</code>!</li>
-<li>Similarly, <code>x | y</code> if <code>x</code> is <code>TRUE</code> then <code>y</code> is not evaluated.
-</div>
-</li>
+<li>if there is space in front of you, go forward</li>
+<li>else, if there is space on your right and left, turn right</li>
+<li>else, if there is only space on your right, turn right</li>
+<li>else, if there is only space on your left, turn left</li>
+<li>else, [all three sides (forward, left, right) are closed] turn around</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
-y =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)
-x&gt;y</code></pre></div>
-<pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<p>This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. <code>isTRUE()</code> checks if all the elements within the object is <code>TRUE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">isTRUE</span>(<span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">isTRUE</span>(x&gt;y)</code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
+<p>Did you escape? Notice the way I structured my solution. Do you see a pattern? Though it might take some time, this way will in turn solve any maze.</p>
+<div id="if-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
+<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivation example “If it rains take an umbrella”. In R, you would say:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (&lt;this is <span class="ot">TRUE</span>&gt;){
+  &lt;do that&gt;
+}</code></pre></div>
+<p>or</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (&lt;it rains&gt;){
+  &lt;take an umbrella&gt;
+}</code></pre></div>
+<p>In general, we can represent an <code>if</code> statement using the following diagram:</p>
+<center>
+<img src="images/if.png" />
+</center>
+<p>and a simple example of an <code>if</code> statement is given below to find out if <code>x</code> is even number:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">4</span>
+if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
+}</code></pre></div>
+<pre><code>## [1] &quot;4 is an even number&quot;</code></pre>
+</div>
+<div id="ifelse-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.2</span> <code>if/else</code> Statements</h4>
+<center>
+<img src="images/ifelse.png" />
+</center>
+</div>
+<div id="ifelseifelse-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.3</span> <code>if/elseif/else</code> Statements</h4>
+<center>
+<img src="images/ifelseifelse.png" />
+</center>
+</div>
+<div id="switch-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.4</span> <code>switch</code> Statements</h4>
 
+</div>
 </div>
 </div>
 </div>
