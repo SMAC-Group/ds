@@ -9,7 +9,7 @@ When you are building a larger program than the examples we considered previousl
 
 ## Selection Operators
 
-Suppose that we are interested in creating a simple code to check if it rained in last hour and this is the case to let us that we should probably take an umbrella today. To write such a code we essentially need three things:
+Suppose that we are interested in creating a simple code to check if it rained in last hour and this is the case to let us decide that we should probably take an umbrella today. To write such a code we essentially need three things:
 
 1) Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package `rwunderground` to access this information. Note that you will need to create an account and request an API key before being able to use it (see [package documentation](https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf) for more details). Then, the precipitation amount (in inch) in the last hour can be retrieve using the code below: 
 
@@ -24,7 +24,7 @@ library(rwunderground)
 (umbrella <- rain > 0)
 ```
 
-3) Finally, we need to selection operator based on the logical variable constructed in the previous step to bring everything together. For example, we could the `if/else` statement presented below. This simple code will print "*You should probably take an umbrella*" is the logical variable `umbrella` is `TRUE` and print "*An umbrella is probably not necessary*", otherwise.
+3) Finally, we need to selection operator based on the logical variable constructed in the previous step to bring everything together. For example, we could the `if/else` statement presented below. This simple code will print "*You should probably take an umbrella*" if the logical variable `umbrella` is `TRUE` and print "*An umbrella is probably not necessary*", otherwise.
 
 ```{r}
 if (umbrella){
@@ -73,7 +73,7 @@ y = c(2,3,4,5,6)
 x>y
 ```
 
-This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
+This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in more details later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
 
 ```{r}
 isTRUE(TRUE)

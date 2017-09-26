@@ -368,6 +368,7 @@ This can be combined with the `rep()` function to create vectors with repeated v
 ```{r}
 rep(c(1,2), times = 3, each = 1)
 rep(c(1,2), times = 1, each = 3)
+rep(c(1,2), times = 2, each = 2)
 ```
 
 where the option `times` allows to specify how many times the object needs to be repeated and `each` regulates how many times each element in the object is repeated.
@@ -1070,7 +1071,7 @@ players[my_array[,1,2] > my_array[,1,1]]
 
 ## List
 
-A list is one of the commonly used **heterogeneous** data structures, which depicts a generic "vector" containing other object types. For example, we can a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains different element types. (numeric, character, logical, matrix)
+A list is one of the commonly used **heterogeneous** data structures, which depicts a generic "vector" containing other object types. For example, we can create a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains different element types. (numeric, character, logical, matrix)
 
 ```{r list_eg1}
 # List elements
@@ -1243,7 +1244,7 @@ tennis[order(tennis[,"grand_slam_win"], decreasing = TRUE),]
 
 ### Example: Maps 
 
-Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. The functionality of the package we will talk more about later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
+Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
 
 ```{r, message = FALSE, cache = TRUE}
 library(ggmap)
@@ -1261,7 +1262,7 @@ birth_coord
 is.data.frame(birth_coord)
 ```
 
-Let's represent this information graphically. We haven't seen how to make graph yet so don't worry to much about the details of how this graph is made. 
+Let's represent this information graphically. We haven't seen how to make graph yet so don't worry too much about the details of how this graph is made. 
 
 ```{r, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
 library(mapproj)
