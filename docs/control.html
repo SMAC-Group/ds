@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="data.html">
-<link rel="next" href="placeholder.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -191,20 +191,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
 <li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
 <li class="chapter" data-level="4.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#creation"><i class="fa fa-check"></i><b>4.5.1</b> Creation</a></li>
-<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.2</b> Combination</a></li>
-<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.3</b> Subsetting</a></li>
-<li class="chapter" data-level="4.5.4" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.4</b> Example: Maps</a></li>
+<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Flow</a><ul>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2</b> Selection Operators</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators-1"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -226,28 +225,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="control" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Control Flow</h1>
+<h1><span class="header-section-number">Chapter 5</span> Control Structures</h1>
 <div id="introduction-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
-<p>When you are building a larger program than the examples we considered previously, we need use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making process in computing. There exist essentially two kinds of control structures. The first ones allow to assess whether a given condition is satisfied and take appropriate in response. A simple analogy to our day to day life would be “<strong>if</strong> it raining outside <strong>then</strong> take an umbrella”, we will come back to this example later in this chapter. The second kind of control structures allow to repeat of a block code multiple times. For example such approach can be used to convert a color image to gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kind control structures previously mentioned and then present various example to build our intuition.</p>
+<p>When you’re building a larger or more complex program than the examples we considered previously, we need to use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is a “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making processes in computing.</p>
+<p>There exist essentially two kinds of control structures.</p>
+<ul>
+<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s raining outside, <strong>then</strong> take an umbrella” (we will come back to this example later in this chapter).</li>
+<li>The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.</li>
+</ul>
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 </div>
 <div id="selection-operators" class="section level2">
 <h2><span class="header-section-number">5.2</span> Selection Operators</h2>
-<p>Suppose that we are interested in creating a simple code to check if it rained in last hour and this is the case to let us that we should probably take an umbrella today. To write such a code we essentially need three things:</p>
+<p>Suppose that we are interested in creating a simple code to check if it rained over the last hour and, if this is the case, lead us to decide whether we should take an umbrella today. To write such a code we essentially need three things:</p>
 <ol style="list-style-type: decimal">
-<li>Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package <code>rwunderground</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf">package documentation</a> for more details). Then, the precipitation amount (in inch) in the last hour can be retrieve using the code below:</li>
+<li>Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package <code>rwunderground</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf">package documentation</a> for more details). Then, the amount of precipitation (in inches) in the last hour can be retrieved using the code below:</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rwunderground)
 (rain &lt;-<span class="st"> </span><span class="kw">conditions</span>(<span class="kw">set_location</span>(<span class="dt">zip_code =</span> <span class="st">&quot;16802&quot;</span>), <span class="dt">message =</span> <span class="ot">FALSE</span>)$precip_1hr)</code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Construct a logical (or Boolean) variable created from the variable <code>rain</code> to assess whether or a umbrella is need. For example we could judged that there was any water in the last hour we should take an umbrella. This can be done as in the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more details.</li>
+<li>Construct a logical (or Boolean) variable created from the variable <code>rain</code> to assess whether or not an umbrella is needed. For example, we can say that if we see signs of rain in the last hour, then we should take an umbrella. This can be done using the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more detail.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(umbrella &lt;-<span class="st"> </span>rain &gt;<span class="st"> </span><span class="dv">0</span>)</code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Finally, we need to selection operator based on the logical variable constructed in the previous step to bring everything together. For example, we could the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably take an umbrella</em>” is the logical variable <code>umbrella</code> is <code>TRUE</code> and print “<em>An umbrella is probably not necessary</em>”, otherwise.</li>
+<li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably take an umbrella</em>” if the logical variable <code>umbrella</code> is <code>TRUE</code> and print “<em>An umbrella is probably not necessary</em>”, otherwise.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (umbrella){
   <span class="kw">print</span>(<span class="st">&quot;You should probably take an umbrella&quot;</span>)
@@ -257,7 +261,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## [1] &quot;An umbrella is probably not necessary&quot;</code></pre>
 <div id="sec_logical" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
-<p>Logical operators are used very commonly used in programming to create (or return) logical (Boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table summarizes the commonly used logical operators:</p>
+<p>Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table below summarizes the commonly used logical operators:</p>
 <table>
 <thead>
 <tr class="header">
@@ -356,12 +360,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </table>
 
 <div class="rmdnote">
-There is subtle difference between <code>||</code>and <code>|</code> (or <code>&amp;&amp;</code> and <code>&amp;</code>). Indeed, when using <code>x &amp;&amp; y</code> or <code>x || y</code> it implicitely assumed that <code>x</code> and <code>y</code>are of length 1 and when there are applied to vectors <strong>only the first elements</strong> of each vectors will be considered. For example, <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>TRUE || FALSE</code> and will only return <code>TRUE</code>. On the other hand, <code>&amp;</code> and <code>|</code> can be applied to vectors and <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, FALSE || FALSE)</code> and will return <code>TRUE FALSE</code>. It is also worth mentionning that <code>TRUE | c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, TRUE || FALSE)</code> (i.e. the <code>TRUE</code> is used twice) and will return <code>TRUE TRUE</code>. These differences are common source of bugs.
+There is a subtle difference between <code>||</code>and <code>|</code> (or <code>&amp;&amp;</code> and <code>&amp;</code>). Indeed, when using <code>x &amp;&amp; y</code> or <code>x || y</code> it implicitly assumes that <code>x</code> and <code>y</code>are of length 1 and when these are applied to vectors <strong>only the first elements</strong> of each vector will be considered. For example, <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>TRUE || FALSE</code> and will only return <code>TRUE</code>. On the other hand, <code>&amp;</code> and <code>|</code> can be applied to vectors and <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, FALSE || FALSE)</code> and will return <code>TRUE FALSE</code>. It is also worth mentioning that <code>TRUE | c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, TRUE || FALSE)</code> (i.e. the <code>TRUE</code> is used twice) and will return <code>TRUE TRUE</code>. These differences are a common source of bugs.
 </div>
 <p></p>
 
 <div class="rmdnote">
-When using <code>&amp;</code> or <code>|</code> to create/return logical variables we have to aware of something called <strong>short-circuit evaluation</strong> which can create bugs that may be difficult to find. Indeed, suppose that we interested using an expression such <code>x &amp; y</code> and that the variable <code>x</code> is <code>FALSE</code> then <code>y</code> will not evaluated. The idea behind this evaluation is that regardless of the value of <code>y</code> the expression <code>x &amp; y</code> should be <code>TRUE</code>. However, this implicitely assumes that <code>y</code> does not contain any mistakes and if this were to happend this could create bugs that will be hard to find. For example, consider the expression <code>y = x &amp;&amp; 2 == NULL</code>, then if <code>x</code> is <code>FALSE</code> <code>y</code> will be <code>FALSE</code> while if <code>x</code> is <code>TRUE</code> <code>y</code> will be <code>NA</code>, which obviously is likely to be problematic. Similarly, when considering an expression such as <code>x | y</code> the variable <code>y</code> will only be evaluated if <code>x</code> is <code>FALSE</code>.
+When using <code>&amp;</code> or <code>|</code> to create/return logical variables we have to be aware of something called <strong>short-circuit evaluation</strong> which can create bugs that may be difficult to find. Indeed, suppose that we interested in using an expression such as <code>x &amp; y</code> and that if the variable <code>x</code> is <code>FALSE</code> then <code>y</code> will not be evaluated. The idea behind this evaluation is that, regardless of the value of <code>y</code>, the expression <code>x &amp; y</code> should be <code>TRUE</code>. However, this implicitly assumes that <code>y</code> does not contain any mistakes and if this were indeed to be the case, this could create bugs that would be hard to find. For example, consider the expression <code>y = x &amp;&amp; 2 == NULL</code>, then if <code>x</code> is <code>FALSE</code> <code>y</code> will be <code>FALSE</code> while if <code>x</code> is <code>TRUE</code> <code>y</code> will be <code>NA</code>, which obviously is likely to be problematic. Similarly, when considering an expression such as <code>x | y</code>, the variable <code>y</code> will only be evaluated if <code>x</code> is <code>FALSE</code>.
 </div>
 <p></p>
 <!--
@@ -376,7 +380,7 @@ x>y
 ## [1]  TRUE  TRUE FALSE FALSE FALSE
 ```
 
-This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
+This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in more details later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
 
 
 ```r
@@ -398,10 +402,10 @@ isTRUE(x>y)
 </div>
 <div id="selection-operators-1" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Selection Operators</h3>
-<p>SMALL INTRO MISSING!</p>
+<p>Selection operators govern the flow of code. We can observe if/else statements everywhere, no matter what language.</p>
 <div id="if-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
-<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivation example “If it rains take an umbrella”. In R, you would say:</p>
+<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it rains take an umbrella”. In R, you would say:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (&lt;this is <span class="ot">TRUE</span>&gt;){
   &lt;do that&gt;
 }</code></pre></div>
@@ -432,7 +436,7 @@ if (x &lt;<span class="st"> </span><span class="dv">0</span>){
 
 x</code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<p>In the second example, we use an <code>if</code> statement to assess <code>x</code> is an even number and if this is the case we print a simple message.</p>
+<p>In the second example, we use an <code>if</code> statement to assess if <code>x</code> is an even number and, if this is the case, we print a simple message.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
   <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
 }</code></pre></div>
@@ -453,7 +457,7 @@ if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> <
 if (!condition){
   plan B
 }</code></pre></div>
-<p>However, the above syntax is somewhat clumsy and one generally prefers to use an <code>if/else</code> statement. In plain English it would correspond to something like, “If this is true, then do plan A otherwise do plan B”. In R we would write:</p>
+<p>However, the above syntax is somewhat clumsy and one generally would prefer to use an <code>if/else</code> statement. In plain English it would correspond to something like, “If this is true, then do plan A otherwise do plan B”. In R we would write:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (condition){
   plan A
 }else{
@@ -463,7 +467,7 @@ if (!condition){
 <center>
 <img src="images/ifelse.png" />
 </center>
-<p>Therefore, when <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and then <code>Code block D</code> while when <code>&lt;condition&gt;</code> is <code>FALSE</code> will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block D</code>. Using this new tool we can revist our previous example on even numbers to include an custum message in the case of an odd number. This can be done as follows:</p>
+<p>Therefore, when <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and then <code>Code block D</code> while when <code>&lt;condition&gt;</code> is <code>FALSE</code> it will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block D</code>. Using this new tool we can revisit our previous example on even numbers to include a custom message in the case of an odd number. This can be done as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">2</span>
 
 if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
@@ -500,7 +504,7 @@ if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> <
         </div>
       </div>
 <a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="placeholder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -540,6 +544,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
