@@ -29,16 +29,16 @@ y = c(2,3,4,5,6)
 x>y
 ```
 
-This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
+This method outputs a vector of boolean `TRUE` and `FALSE` values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in some detail later. The function `isTRUE()` checks if all the elements within the object is `TRUE`. 
 
 ```{r}
 isTRUE(TRUE)
-isTRUE(x>y)
+isTRUE(x>y) # Note that the output is FALSE since there exists at least one FALSE element 
 ```
 
 ## Control Structures
 
-Control structures allow us to control the flow of code execution. We control the flow of code by using selection controls with logical operators and iterative controls like for-loops. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
+Control structures allow us to control the flow of code execution. We control the flow of code by using selection controls with logical operators and iterative controls with for-loops. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
 
 <center>![](../images/maze.jpg)</center>
 
