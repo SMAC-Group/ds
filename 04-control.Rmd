@@ -109,10 +109,43 @@ In general, we can represent an `if` statement using the following diagram:
 ![](images/if.png)
 </center>
 
-and a simple example of an `if` statement is given below to find out if `x` is even number:
+The `<conditon>` denotes a **logical** variable that is used determine if the code inside of `{ }` will be evaluated. For example, if `<condition>` is `FALSE` then our program will run `Code block A` and then `Code block C`. On the other hand, if `<condition>` is `TRUE` our program will run `Code block A`, `Code block B` and finally `Code block C`.
+
+Below we present two examples where two `if` statements are used. In the first example, we use an `if` statement to compute the absolute value of a variable called `x`:
 
 ```{r}
-x = 4
+x <- 4
+
+if (x < 0){
+  x <- -x
+}
+
+x
+```
+
+Now we change `x` to a negative value:
+
+```{r}
+x <- -4
+
+if (x < 0){
+  x <- -x
+}
+
+x
+```
+
+In the second example, we use an `if` statement to assess `x` is an even number and if this is the case we print a simple message.
+
+```{r}
+if (x %% 2 == 0){
+  print(paste(x, "is an even number"))
+}
+```
+
+```{r}
+x <- 3
+
 if (x %% 2 == 0){
   print(paste(x, "is an even number"))
 }
@@ -121,9 +154,55 @@ if (x %% 2 == 0){
 
 #### `if/else` Statements
 
+Often when we write a program we want to tell R what to do when our condition is `TRUE` and also what to do when it is `FALSE`. Of course, we could do something like:
+
+```{r, eval = FALSE}
+if (condition){
+  plan A
+}
+
+if (!condition){
+  plan B
+}
+```
+
+However, the above syntax is somewhat clumsy and one generally prefers to use an `if/else` statement. In plain English it would correspond to something like, "If this is true, then do plan A otherwise do plan B". In R we would write:
+
+```{r, eval=FALSE}
+if (condition){
+  plan A
+}else{
+  plan B
+}
+```
+
+Similarly to an `if` statement, we can represent an `if/else` statement using the diagram below:
+
 <center>
 ![](images/ifelse.png)
 </center>
+
+Therefore, when `<condition>` is `TRUE` our program will run `Code block A`, `Code block B` and then `Code block D` while when `<condition>` is `FALSE` will run `Code block A`, `Code block B` and finally `Code block D`. Using this new tool we can revist our previous example on even numbers to include an custum message in the case of an odd number. This can be done as follows:
+
+```{r}
+x <- 2
+
+if (x %% 2 == 0){
+  print(paste(x, "is an even number"))
+}else{
+  print(paste(x, "is an odd number"))
+}
+```
+
+```{r}
+x <- 3
+
+if (x %% 2 == 0){
+  print(paste(x, "is an even number"))
+}else{
+  print(paste(x, "is an odd number"))
+}
+```
 
 #### `if/elseif/else` Statements
 

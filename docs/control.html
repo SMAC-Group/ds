@@ -311,20 +311,6 @@ isTRUE(x>y)
 <div id="selection-operators-1" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Selection Operators</h3>
 <p>SMALL INTRO MISSING!</p>
-<p>Control structures allow us to control the flow of code execution. We control the flow of code by using selection controls with logical operators and iterative controls like for-loops. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
-<center>
-<img src="images/maze.jpg" />
-</center>
-<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited.</p>
-<p>Try to follow the below procedure on the maze above, considering the direction you face while moving. Pretend that you cannot step backward or look behind you.</p>
-<ul>
-<li>if there is space in front of you, go forward</li>
-<li>else, if there is space on your right and left, turn right</li>
-<li>else, if there is only space on your right, turn right</li>
-<li>else, if there is only space on your left, turn left</li>
-<li>else, [all three sides (forward, left, right) are closed] turn around</li>
-</ul>
-<p>Did you escape? Notice the way I structured my solution. Do you see a pattern? Though it might take some time, this way will in turn solve any maze.</p>
 <div id="if-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
 <p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivation example “If it rains take an umbrella”. In R, you would say:</p>
@@ -339,18 +325,73 @@ isTRUE(x>y)
 <center>
 <img src="images/if.png" />
 </center>
-<p>and a simple example of an <code>if</code> statement is given below to find out if <code>x</code> is even number:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">4</span>
-if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+<p>The <code>&lt;conditon&gt;</code> denotes a <strong>logical</strong> variable that is used determine if the code inside of <code>{ }</code> will be evaluated. For example, if <code>&lt;condition&gt;</code> is <code>FALSE</code> then our program will run <code>Code block A</code> and then <code>Code block C</code>. On the other hand, if <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block C</code>.</p>
+<p>Below we present two examples where two <code>if</code> statements are used. In the first example, we use an <code>if</code> statement to compute the absolute value of a variable called <code>x</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span>
+
+if (x &lt;<span class="st"> </span><span class="dv">0</span>){
+  x &lt;-<span class="st"> </span>-x
+}
+
+x</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Now we change <code>x</code> to a negative value:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>-<span class="dv">4</span>
+
+if (x &lt;<span class="st"> </span><span class="dv">0</span>){
+  x &lt;-<span class="st"> </span>-x
+}
+
+x</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>In the second example, we use an <code>if</code> statement to assess <code>x</code> is an even number and if this is the case we print a simple message.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
   <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
 }</code></pre></div>
 <pre><code>## [1] &quot;4 is an even number&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>
+
+if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
+}</code></pre></div>
 </div>
 <div id="ifelse-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.2</span> <code>if/else</code> Statements</h4>
+<p>Often when we write a program we want to tell R what to do when our condition is <code>TRUE</code> and also what to do when it is <code>FALSE</code>. Of course, we could do something like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (condition){
+  plan A
+}
+
+if (!condition){
+  plan B
+}</code></pre></div>
+<p>However, the above syntax is somewhat clumsy and one generally prefers to use an <code>if/else</code> statement. In plain English it would correspond to something like, “If this is true, then do plan A otherwise do plan B”. In R we would write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (condition){
+  plan A
+}else{
+  plan B
+}</code></pre></div>
+<p>Similarly to an <code>if</code> statement, we can represent an <code>if/else</code> statement using the diagram below:</p>
 <center>
 <img src="images/ifelse.png" />
 </center>
+<p>Therefore, when <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and then <code>Code block D</code> while when <code>&lt;condition&gt;</code> is <code>FALSE</code> will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block D</code>. Using this new tool we can revist our previous example on even numbers to include an custum message in the case of an odd number. This can be done as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">2</span>
+
+if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
+}else{
+  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))
+}</code></pre></div>
+<pre><code>## [1] &quot;2 is an even number&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>
+
+if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
+}else{
+  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))
+}</code></pre></div>
+<pre><code>## [1] &quot;3 is an odd number&quot;</code></pre>
 </div>
 <div id="ifelseifelse-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.3</span> <code>if/elseif/else</code> Statements</h4>
