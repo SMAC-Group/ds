@@ -1,4 +1,4 @@
-# Control Flow {#control}
+# Control Structures {#control}
 
 ## Introduction
 
@@ -182,7 +182,7 @@ Similarly to an `if` statement, we can represent an `if/else` statement using th
 ![](images/ifelse.png)
 </center>
 
-Therefore, when `<condition>` is `TRUE` our program will run `Code block A`, `Code block B` and then `Code block D` while when `<condition>` is `FALSE` will run `Code block A`, `Code block B` and finally `Code block D`. Using this new tool we can revist our previous example on even numbers to include an custum message in the case of an odd number. This can be done as follows:
+Therefore, when `<condition>` is `TRUE` our program will run `Code block A`, `Code block B` and then `Code block D` while when `<condition>` is `FALSE` will run `Code block A`, `Code block B` and finally `Code block D`. Using this new tool we can revisit our previous example on even numbers to include an custom message in the case of an odd number. This can be done as follows:
 
 ```{r}
 x <- 2
