@@ -211,6 +211,8 @@ if (x %% 2 == 0){
 
 #### `if/elseif/else` Statements
 
+We can also control the flow of statements with multiple if/else statements, depending on the number of cases we consider. Typically, the more cases we have, the more else if statements. An example visualization is provided below.
+
 <center>
 ![](images/ifelseifelse.png)
 </center>
