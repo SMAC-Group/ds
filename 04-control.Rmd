@@ -219,4 +219,126 @@ We can also control the flow of statements with multiple if/else statements, dep
 
 #### `switch` Statements
 
+Above we mentioned that if/elseif/else statement allowed us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options, we can simply use nested if else statement. What about when we have say 20 options to choose from? In this case, if we still sticks on using nested if else statement, the programming logic will be very difficult to understand. Switch statement option in R programming can help us handle this type of problems more effectively.
 
+Before we put switch statement into case study, let's first start to understand the basic switch statement syntax in R. 
+
+```{r, eval = FALSE}
+switch (Expression,
+        "Option 1" = Execute this statement when the expression result matches Option 1,
+        "Option 2" = Execute this statement when the expression result matches Option 2,
+        "Option 3" = Execute this statement when the expression result matches Option 3,
+        ....
+        ....
+        "Option N" = Execute this statement when the expression result matches Option N,
+        Default Statements
+)
+```
+
+- The `expression` value is the condition which R will evaluate. This should be either integer or character. 
+- When the `expression` value matches more than one option, the first matching statemnet will be returned.
+- Besides the conditional statement, R also allows us to add the `default statement`, which will be returned when none of the listed options are matched.
+
+
+With the above syntax in mind, now let's check out a simple case study with R switch statement.
+```{r}
+number1 = 20
+number2 = 5
+operator = readline(prompt="Please enter any ARITHMETIC OPERATOR: ")
+
+switch(operator,
+       "+" = print(paste("Addition of two numbers is: ", number1 + number2)),
+       "-" = print(paste("Subtraction of two numbers is: ", number1 - number2)),
+       "*" = print(paste("Multiplication of two numbers is: ", number1 * number2)),
+       "/" = print(paste("Division of two numbers is: ", number1 / number2))
+)
+```
+
+When running the above code in R, we can expect results like:
+<center>
+![](images/switch_example.png)
+</center>
+
+
+In conclusion, we can visualize the R switch statement as follows: 
+<center>
+![](images/flowchart_switch.png)
+</center>
+
+
+#### `for` Statements
+Now let's consider the following situation.
+```{r, eval = FALSE}
+print(1)
+print(2)
+print(3)
+print(4)
+print(5)
+print(6)
+```
+
+This seems feasible when we only need to print out the numbers from 1 to 6. What if we want to print out the numbers from 1 to 100? It is such a clumsy and tedious approach if we keep repeating `print()` line by line to do so.
+
+For loops in R help us solve this type of problems much more effectively in only a couple lines of codes. It allows us to repeat the same part of code, or say a sequence of same instructions, under certain conditions without explicitly writing out the code everytime. For example, to do exactly the same as the above example with for loops, all I need is:
+
+```{r, eval = FALSE}
+for (number in 1:6){
+  print(number)
+}
+```
+
+To interpret the above for loops in plain English, we can read it as "When the number is in the sequence {1,2,3,4,5,6}, we will print this number until we exhaust all numbers in the sequence". As we can see obviously, this approach simplifies our code so much more as we only need to write the code chunk (`print()` in this case) once, not six times, not to mention when we want to print out the numbers from 1 to 100 compared to repeating `print()` line by line for 100 times.
+
+The basic syntax of for loops in R is as follows:
+```{r, eval = FALSE}
+for (some specified condition){
+  execute this statement when the specified condition is satisfied 
+}
+```
+
+`Next` also helps when you want to skip for some cases when you don't want the statement to be executed. To see how `next` works together with for loops in R, let's consider the following more mathematical example when you want to print out all the odd numbers between 1 to 10. 
+
+```{r}
+for (i in 1:10) {
+  if (!i %% 2){
+    next
+  }
+    print(i)
+}
+```
+
+From the results, we notice that R automatically skip to run `print(i)` when `!i %%2` is satisfied. To interpret the above in plain English, we can read it as "if i cannot be divided by 2, we skip the below and consider the NEXT one in iteration". In this case, we can still use for loops when we have some exceptional cases.
+
+In conclusion, we can visualize the R for loops as follows: 
+MISSING FLOWCHART!!!
+
+
+Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter. We will see how these approaches can help accelerate our work later. (WILL WE???)
+
+
+#### `while` Statements
+As an alternative of for loops, while statement in R is another approach that can help us repeat the code chunk only when specific conditions are satisfied. For example, we can use while statement to do exactly the same as above to print out all numbers from 1 to 10 as followings:
+
+```{r}
+i = 1
+while (i <= 10){
+  print(i)
+  i = i+1
+}
+```
+
+The above code can be interprented in plain English as: "Let's start with number 1. When i is still smaller than or equal to 10, we print it out. Then we consider the next integer of it and stop when we finish all the numbers smaller than or equal to 10."
+
+As we can see, while loops are used to loop until a specific condition is met. To make use of while statement in R, we introduce the basic syntax of it as following: 
+
+```{r eval = FALSE}
+while (some specified condition)
+{
+   statement to execute when the above condition is satisfied
+}
+```
+
+Here we evaluate the condition and if it is `TRUE`, then we execute the statement inside the chunk. Once we finish running the statement, we evaluate the condition again and exit the loops until the condition is evaluated as `FALSE`.
+
+In conclusion, we can visualize how the while statement works in R as following:
+MISSING FLOWCHART!!!

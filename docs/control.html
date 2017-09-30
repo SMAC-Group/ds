@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-09-26">
+<meta name="date" content="2017-09-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="data.html">
-<link rel="next" href="references.html">
+<link rel="next" href="placeholder.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -191,9 +191,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
 <li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
 <li class="chapter" data-level="4.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
-<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
-<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
+<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#creation"><i class="fa fa-check"></i><b>4.5.1</b> Creation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.2</b> Combination</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.4</b> Example: Maps</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
@@ -203,7 +204,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators-1"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -487,12 +488,110 @@ if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> <
 </div>
 <div id="ifelseifelse-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.3</span> <code>if/elseif/else</code> Statements</h4>
+<p>We can also control the flow of statements with multiple if/else statements, depending on the number of cases we consider. Typically, the more cases we have, the more else if statements. An example visualization is provided below.</p>
 <center>
 <img src="images/ifelseifelse.png" />
 </center>
 </div>
 <div id="switch-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.4</span> <code>switch</code> Statements</h4>
+<p>Above we mentioned that if/elseif/else statement allowed us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options, we can simply use nested if else statement. What about when we have say 20 options to choose from? In this case, if we still sticks on using nested if else statement, the programming logic will be very difficult to understand. Switch statement option in R programming can help us handle this type of problems more effectively.</p>
+<p>Before we put switch statement into case study, let’s first start to understand the basic switch statement syntax in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">switch (Expression,
+        <span class="st">&quot;Option 1&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">1</span>,
+        <span class="st">&quot;Option 2&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">2</span>,
+        <span class="st">&quot;Option 3&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">3</span>,
+        ....
+        ....
+        <span class="st">&quot;Option N&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option N,
+        Default Statements
+)</code></pre></div>
+<ul>
+<li>The <code>expression</code> value is the condition which R will evaluate. This should be either integer or character.</li>
+<li>When the <code>expression</code> value matches more than one option, the first matching statemnet will be returned.</li>
+<li>Besides the conditional statement, R also allows us to add the <code>default statement</code>, which will be returned when none of the listed options are matched.</li>
+</ul>
+<p>With the above syntax in mind, now let’s check out a simple case study with R switch statement.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">number1 =<span class="st"> </span><span class="dv">20</span>
+number2 =<span class="st"> </span><span class="dv">5</span>
+operator =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt=</span><span class="st">&quot;Please enter any ARITHMETIC OPERATOR: &quot;</span>)</code></pre></div>
+<pre><code>## Please enter any ARITHMETIC OPERATOR:</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">switch(operator,
+       <span class="st">&quot;+&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Addition of two numbers is: &quot;</span>, number1 +<span class="st"> </span>number2)),
+       <span class="st">&quot;-&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Subtraction of two numbers is: &quot;</span>, number1 -<span class="st"> </span>number2)),
+       <span class="st">&quot;*&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Multiplication of two numbers is: &quot;</span>, number1 *<span class="st"> </span>number2)),
+       <span class="st">&quot;/&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Division of two numbers is: &quot;</span>, number1 /<span class="st"> </span>number2))
+)</code></pre></div>
+When running the above code in R, we can expect results like:
+<center>
+<img src="images/switch_example.png" />
+</center>
+In conclusion, we can visualize the R switch statement as follows:
+<center>
+<img src="images/flowchart_switch.png" />
+</center>
+</div>
+<div id="for-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.5</span> <code>for</code> Statements</h4>
+<p>Now let’s consider the following situation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="dv">1</span>)
+<span class="kw">print</span>(<span class="dv">2</span>)
+<span class="kw">print</span>(<span class="dv">3</span>)
+<span class="kw">print</span>(<span class="dv">4</span>)
+<span class="kw">print</span>(<span class="dv">5</span>)
+<span class="kw">print</span>(<span class="dv">6</span>)</code></pre></div>
+<p>This seems feasible when we only need to print out the numbers from 1 to 6. What if we want to print out the numbers from 1 to 100? It is such a clumsy and tedious approach if we keep repeating <code>print()</code> line by line to do so.</p>
+<p>For loops in R help us solve this type of problems much more effectively in only a couple lines of codes. It allows us to repeat the same part of code, or say a sequence of same instructions, under certain conditions without explicitly writing out the code everytime. For example, to do exactly the same as the above example with for loops, all I need is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (number in <span class="dv">1</span>:<span class="dv">6</span>){
+  <span class="kw">print</span>(number)
+}</code></pre></div>
+<p>To interpret the above for loops in plain English, we can read it as “When the number is in the sequence {1,2,3,4,5,6}, we will print this number until we exhaust all numbers in the sequence”. As we can see obviously, this approach simplifies our code so much more as we only need to write the code chunk (<code>print()</code> in this case) once, not six times, not to mention when we want to print out the numbers from 1 to 100 compared to repeating <code>print()</code> line by line for 100 times.</p>
+<p>The basic syntax of for loops in R is as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (some specified condition){
+  execute this statement when the specified condition is satisfied 
+}</code></pre></div>
+<p><code>Next</code> also helps when you want to skip for some cases when you don’t want the statement to be executed. To see how <code>next</code> works together with for loops in R, let’s consider the following more mathematical example when you want to print out all the odd numbers between 1 to 10.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">10</span>) {
+  if (!i %%<span class="st"> </span><span class="dv">2</span>){
+    next
+  }
+    <span class="kw">print</span>(i)
+}</code></pre></div>
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9</code></pre>
+<p>From the results, we notice that R automatically skip to run <code>print(i)</code> when <code>!i %%2</code> is satisfied. To interpret the above in plain English, we can read it as “if i cannot be divided by 2, we skip the below and consider the NEXT one in iteration”. In this case, we can still use for loops when we have some exceptional cases.</p>
+<p>In conclusion, we can visualize the R for loops as follows: MISSING FLOWCHART!!!</p>
+<p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter. We will see how these approaches can help accelerate our work later. (WILL WE???)</p>
+</div>
+<div id="while-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.6</span> <code>while</code> Statements</h4>
+<p>As an alternative of for loops, while statement in R is another approach that can help us repeat the code chunk only when specific conditions are satisfied. For example, we can use while statement to do exactly the same as above to print out all numbers from 1 to 10 as followings:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i =<span class="st"> </span><span class="dv">1</span>
+while (i &lt;=<span class="st"> </span><span class="dv">10</span>){
+  <span class="kw">print</span>(i)
+  i =<span class="st"> </span>i<span class="dv">+1</span>
+}</code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10</code></pre>
+<p>The above code can be interprented in plain English as: “Let’s start with number 1. When i is still smaller than or equal to 10, we print it out. Then we consider the next integer of it and stop when we finish all the numbers smaller than or equal to 10.”</p>
+<p>As we can see, while loops are used to loop until a specific condition is met. To make use of while statement in R, we introduce the basic syntax of it as following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">while (some specified condition)
+{
+   statement to execute when the above condition is satisfied
+}</code></pre></div>
+<p>Here we evaluate the condition and if it is <code>TRUE</code>, then we execute the statement inside the chunk. Once we finish running the statement, we evaluate the condition again and exit the loops until the condition is evaluated as <code>FALSE</code>.</p>
+<p>In conclusion, we can visualize how the while statement works in R as following: MISSING FLOWCHART!!!</p>
 
 </div>
 </div>
@@ -504,7 +603,7 @@ if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> <
         </div>
       </div>
 <a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="placeholder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -544,17 +643,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
