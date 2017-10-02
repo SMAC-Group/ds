@@ -267,6 +267,7 @@ In conclusion, we can visualize the R switch statement as follows:
 
 
 #### `for` Loops
+
 Now let's consider the following situation.
 ```{r, eval = FALSE}
 print(1)
@@ -315,7 +316,39 @@ In conclusion, we can visualize the R for loops as follows:
 </center>
 
 
-Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter. We will see how these approaches can help accelerate our work later. (WILL WE???)
+Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter. 
+
+Apply methods are often used to make operations on some structured data. For example, let's simulate a matrix of some random samples. 
+
+```{r}
+(exp_mat = matrix(rnorm(60),ncol = 3))
+```
+
+To get the mean of each column, we can calculate each column mean separately or use a for loop. 
+
+```{r}
+# Observe what this does
+mean(exp_mat)
+
+# Calculate separately 
+mean(exp_mat[,1])
+mean(exp_mat[,2])
+mean(exp_mat[,3])
+
+# Using a for loop 
+for(i in 1:3){
+  print(mean(exp_mat[,i]))
+}
+```
+
+However, using `apply`, we can do this in a very simple manner.
+
+```{r}
+apply(exp_mat, 2, mean) 
+# The 2 indicates operations on columns and not rows 
+```
+
+We will see how these approaches can help accelerate our work later. 
 
 
 #### `while` Statements
