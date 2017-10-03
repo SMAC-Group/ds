@@ -6,17 +6,21 @@ When you're building a larger or more complex program than the examples we consi
 
 There exist essentially two kinds of control structures. 
 
-- The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be "**if** it's raining outside, **then** take an umbrella" (we will come back to this example later in this chapter). 
+- The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be "**if** it's raining outside, **then** take an umbrella" (we will come back to this example in the next section). 
 - The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.
 
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 
-
-## Selection Operators
+## Selection control statements {#selcontrostat}
 
 Suppose that we are interested in creating a simple code to check if it rained over the last hour and, if this is the case, lead us to decide whether we should take an umbrella today. To write such a code we essentially need three things:
 
-1) Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package `rwunderground` to access this information. Note that you will need to create an account and request an API key before being able to use it (see [package documentation](https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf) for more details). Then, the amount of precipitation (in inches) in the last hour can be retrieved using the code below: 
+1) Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package `rwunderground` to access this information. Note that you will need to create an account and request an API key before being able to use it (see [package documentation](https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf) for more details). Then, the amount of precipitation (in inches) in the last hour can be retrieved using the code below:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+library(rwunderground)
+set_api_key("8fc6fd48b2db3a55")
+```
 
 ```{r, warning=FALSE, message=FALSE}
 library(rwunderground)
@@ -341,6 +345,7 @@ for(i in 1:3){
 }
 ```
 
+<<<<<<< Updated upstream
 However, using `apply`, we can do this in a very simple manner.
 
 ```{r}
@@ -379,3 +384,40 @@ In conclusion, we can visualize how the while statement works in R as following:
 <center>
 ![](images/flowchart___while_statement.png)
 </center>
+
+
+### Iterative Control Statements {#iter_cont_stat}
+
+Iterative control statements are extremly usefull R’s  method  for  repeating  a  task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
+
+<center>
+![](images/maze.jpg)
+</center>
+
+It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:
+
+- if there is space in front of you, go forward 
+- else, if there is space on your right, turn right 
+- else, if there is space on your left, turn left
+- else, [all three sides (forward, left, right) are closed] turn around
+
+This strategy could easily be programmed using the methods discussed in Section \@ref(selcontrostat) but to actually program it you would need to repeat this strategy until you escaped the maze. Your strategy could for example be written as:
+
+```{r, eval = FALSE}
+repeat (until "you are free"){
+  if ("space in front of you"){
+    go forward
+  }else if ("space on your right"){
+    turn right 
+  }else if ("space on your left"){
+    turn left
+  }else{
+    turn around
+  }
+}
+```
+
+Try to apply algorithm to the maze presented above. Could you escape? Though it might take some time and probably is not the fastest strategy one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss how to actually program the "`repeat (until "you are free")`" part of our algorithm. 
+
+#### `for`
+
