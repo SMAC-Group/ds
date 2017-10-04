@@ -13,7 +13,7 @@
 	\node (enter) [chunk] at (12,4.5) {\texttt{enter while loop}};
 	\node (check) [chunk] at (12,2.5) {\texttt{check specified condition}};
 	\node (code) [chunk] at (12,0.5) {\texttt{code chunk of while statement}};
-	\node (exit) [chunk] at (15,-2) {\texttt{exit for loop}};
+	\node (exit) [chunk] at (15,-2) {\texttt{exit while loop}};
 	
 	\draw [arrow] (enter) -- (check);
 	\draw [arrow] (check) -| node[right] {FALSE} (exit);

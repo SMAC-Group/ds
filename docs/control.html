@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-10-02">
+<meta name="date" content="2017-10-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -199,9 +199,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2</b> Selection Operators</a><ul>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
-<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators-1"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
@@ -232,13 +233,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>When you’re building a larger or more complex program than the examples we considered previously, we need to use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is a “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making processes in computing.</p>
 <p>There exist essentially two kinds of control structures.</p>
 <ul>
-<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s raining outside, <strong>then</strong> take an umbrella” (we will come back to this example later in this chapter).</li>
+<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s raining outside, <strong>then</strong> take an umbrella” (we will come back to this example in the next section).</li>
 <li>The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.</li>
 </ul>
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 </div>
-<div id="selection-operators" class="section level2">
-<h2><span class="header-section-number">5.2</span> Selection Operators</h2>
+<div id="selcontrostat" class="section level2">
+<h2><span class="header-section-number">5.2</span> Selection control statements</h2>
 <p>Suppose that we are interested in creating a simple code to check if it rained over the last hour and, if this is the case, lead us to decide whether we should take an umbrella today. To write such a code we essentially need three things:</p>
 <ol style="list-style-type: decimal">
 <li>Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package <code>rwunderground</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf">package documentation</a> for more details). Then, the amount of precipitation (in inches) in the last hour can be retrieved using the code below:</li>
@@ -401,7 +402,7 @@ isTRUE(x>y)
 ```
 -->
 </div>
-<div id="selection-operators-1" class="section level3">
+<div id="selection-operators" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Selection Operators</h3>
 <p>Selection operators govern the flow of code. We can observe if/else statements everywhere, no matter what language.</p>
 <div id="if-statements" class="section level4">
@@ -573,7 +574,53 @@ In conclusion, we can visualize the R for loops as follows:
 <center>
 <img src="images/flowchart___for_loop.png" />
 </center>
-<p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter. We will see how these approaches can help accelerate our work later. (WILL WE???)</p>
+<p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter.</p>
+<p>Apply methods are often used to make operations on some structured data. For example, let’s simulate a matrix of some random samples.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</code></pre></div>
+<pre><code>##              [,1]        [,2]        [,3]
+##  [1,]  0.50674581 -0.82145941  0.81857841
+##  [2,] -2.16231406  0.33445132  1.53780069
+##  [3,] -1.38535605 -1.41653796  0.39514148
+##  [4,] -0.79520671 -0.04352432  0.02859844
+##  [5,]  0.74517553 -0.64172368  0.19991001
+##  [6,] -0.24271185  1.58691400 -0.68547649
+##  [7,] -0.79201879 -0.45511926  1.47307560
+##  [8,] -0.40639941 -0.41635995 -1.01914711
+##  [9,]  0.10364364  1.80132947 -1.28840678
+## [10,]  1.07829694 -1.46880702 -0.69738064
+## [11,]  0.51623362 -1.33123408 -0.87660626
+## [12,]  0.84720593  1.61116401 -0.57109845
+## [13,] -1.24413892 -0.67379274  0.56210416
+## [14,] -0.31501372  0.53842463  2.05451672
+## [15,] -0.47599519  0.99405908 -2.36904087
+## [16,]  0.84100428 -0.35173638 -1.70401065
+## [17,] -0.44565808  1.05358066 -1.32822464
+## [18,] -1.85394712  0.50586034 -1.53433216
+## [19,]  0.49410559  0.34141597  1.90242895
+## [20,]  0.08091881 -0.32868054 -0.07352967</code></pre>
+<p>To get the mean of each column, we can calculate each column mean separately or use a for loop.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Observe what this does</span>
+<span class="kw">mean</span>(exp_mat)</code></pre></div>
+<pre><code>## [1] -0.1210384</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate separately </span>
+<span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</code></pre></div>
+<pre><code>## [1] -0.2452715</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] 0.04091121</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</code></pre></div>
+<pre><code>## [1] -0.158755</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using a for loop </span>
+for(i in <span class="dv">1</span>:<span class="dv">3</span>){
+  <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))
+}</code></pre></div>
+<pre><code>## [1] -0.2452715
+## [1] 0.04091121
+## [1] -0.158755</code></pre>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream However, using <code>apply</code>, we can do this in a very simple manner.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </code></pre></div>
+<pre><code>## [1] -0.24527149  0.04091121 -0.15875496</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The 2 indicates operations on columns and not rows </span></code></pre></div>
+<p>We will see how these approaches can help accelerate our work later.</p>
 </div>
 <div id="while-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.6</span> <code>while</code> Statements</h4>
@@ -600,6 +647,36 @@ In conclusion, we can visualize how the while statement works in R as following:
 <center>
 <img src="images/flowchart___while_statement.png" />
 </center>
+</div>
+</div>
+<div id="iter_cont_stat" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Iterative Control Statements</h3>
+<p>Iterative control statements are extremly usefull R’s method for repeating a task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
+<center>
+<img src="images/maze.jpg" />
+</center>
+<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:</p>
+<ul>
+<li>if there is space in front of you, go forward</li>
+<li>else, if there is space on your right, turn right</li>
+<li>else, if there is space on your left, turn left</li>
+<li>else, [all three sides (forward, left, right) are closed] turn around</li>
+</ul>
+<p>This strategy could easily be programmed using the methods discussed in Section <a href="control.html#selcontrostat">5.2</a> but to actually program it you would need to repeat this strategy until you escaped the maze. Your strategy could for example be written as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">repeat (until <span class="st">&quot;you are free&quot;</span>){
+  if (<span class="st">&quot;space in front of you&quot;</span>){
+    go forward
+  }else if (<span class="st">&quot;space on your right&quot;</span>){
+    turn right 
+  }else if (<span class="st">&quot;space on your left&quot;</span>){
+    turn left
+  }else{
+    turn around
+  }
+}</code></pre></div>
+<p>Try to apply algorithm to the maze presented above. Could you escape? Though it might take some time and probably is not the fastest strategy one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss how to actually program the “<code>repeat (until &quot;you are free&quot;)</code>” part of our algorithm.</p>
+<div id="for" class="section level4">
+<h4><span class="header-section-number">5.2.3.1</span> <code>for</code></h4>
 
 </div>
 </div>
