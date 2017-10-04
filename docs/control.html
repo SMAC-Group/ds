@@ -489,6 +489,7 @@ In conclusion, we can visualize the R for loops as follows:
 <p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter.</p>
 <p>Apply methods are often used to make operations on some structured data. For example, let’s simulate a matrix of some random samples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</code></pre></div>
+<<<<<<< HEAD
 <pre><code>##             [,1]        [,2]       [,3]
 ##  [1,]  1.2390050  0.78187385  1.0308199
 ##  [2,] -0.2597285 -0.92456627 -0.0332635
@@ -521,16 +522,59 @@ In conclusion, we can visualize the R for loops as follows:
 <pre><code>## [1] 0.1176923</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</code></pre></div>
 <pre><code>## [1] -0.07632448</code></pre>
+=======
+<pre><code>##              [,1]        [,2]        [,3]
+##  [1,]  0.50674581 -0.82145941  0.81857841
+##  [2,] -2.16231406  0.33445132  1.53780069
+##  [3,] -1.38535605 -1.41653796  0.39514148
+##  [4,] -0.79520671 -0.04352432  0.02859844
+##  [5,]  0.74517553 -0.64172368  0.19991001
+##  [6,] -0.24271185  1.58691400 -0.68547649
+##  [7,] -0.79201879 -0.45511926  1.47307560
+##  [8,] -0.40639941 -0.41635995 -1.01914711
+##  [9,]  0.10364364  1.80132947 -1.28840678
+## [10,]  1.07829694 -1.46880702 -0.69738064
+## [11,]  0.51623362 -1.33123408 -0.87660626
+## [12,]  0.84720593  1.61116401 -0.57109845
+## [13,] -1.24413892 -0.67379274  0.56210416
+## [14,] -0.31501372  0.53842463  2.05451672
+## [15,] -0.47599519  0.99405908 -2.36904087
+## [16,]  0.84100428 -0.35173638 -1.70401065
+## [17,] -0.44565808  1.05358066 -1.32822464
+## [18,] -1.85394712  0.50586034 -1.53433216
+## [19,]  0.49410559  0.34141597  1.90242895
+## [20,]  0.08091881 -0.32868054 -0.07352967</code></pre>
+<p>To get the mean of each column, we can calculate each column mean separately or use a for loop.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Observe what this does</span>
+<span class="kw">mean</span>(exp_mat)</code></pre></div>
+<pre><code>## [1] -0.1210384</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate separately </span>
+<span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</code></pre></div>
+<pre><code>## [1] -0.2452715</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] 0.04091121</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</code></pre></div>
+<pre><code>## [1] -0.158755</code></pre>
+>>>>>>> origin/master
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using a for loop </span>
 for(i in <span class="dv">1</span>:<span class="dv">3</span>){
   <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))
 }</code></pre></div>
+<<<<<<< HEAD
 <pre><code>## [1] -0.1546748
 ## [1] 0.1176923
 ## [1] -0.07632448</code></pre>
 <p>However, using <code>apply</code>, we can do this in a very simple manner.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </code></pre></div>
 <pre><code>## [1] -0.15467483  0.11769233 -0.07632448</code></pre>
+=======
+<pre><code>## [1] -0.2452715
+## [1] 0.04091121
+## [1] -0.158755</code></pre>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream However, using <code>apply</code>, we can do this in a very simple manner.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </code></pre></div>
+<pre><code>## [1] -0.24527149  0.04091121 -0.15875496</code></pre>
+>>>>>>> origin/master
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The 2 indicates operations on columns and not rows </span></code></pre></div>
 <p>We will see how these approaches can help accelerate our work later.</p>
 </div>
