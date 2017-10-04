@@ -270,9 +270,44 @@ In conclusion, we can visualize the R switch statement as follows:
 </center>
 
 
+
+### Iterative Control Statements {#iter_cont_stat}
+
+Iterative control statements are extremly usefull R’s  method  for  repeating  a  task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
+
+<center>
+![](images/maze.jpg)
+</center>
+
+It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:
+
+- if there is space in front of you, go forward 
+- else, if there is space on your right, turn right 
+- else, if there is space on your left, turn left
+- else, [all three sides (forward, left, right) are closed] turn around
+
+This strategy could easily be programmed using the methods discussed in Section \@ref(selcontrostat) but to actually program it you would need to repeat this strategy until you escaped the maze. Your strategy could for example be written as:
+
+```{r, eval = FALSE}
+repeat (until "you are free"){
+  if ("space in front of you"){
+    go forward
+  }else if ("space on your right"){
+    turn right 
+  }else if ("space on your left"){
+    turn left
+  }else{
+    turn around
+  }
+}
+```
+
+Try to develop an algorithm to exit the maze presented above. Could you escape? Though it might take some time (and probably would not correspond to the fastest strategy) one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss the elements necessary to actually program the "`repeat (until "you are free")`" part of our algorithm. 
+
 #### `for` Loops
 
-Now let's consider the following situation.
+Let's consider the following situation:
+
 ```{r, eval = FALSE}
 print(1)
 print(2)
@@ -385,39 +420,78 @@ In conclusion, we can visualize how the while statement works in R as following:
 ![](images/flowchart___while_statement.png)
 </center>
 
+##### A Practical Example of the `for` loop: The Bootstrap
 
-### Iterative Control Statements {#iter_cont_stat}
+The (non-parametric) bootstrap was introduced by Efron (1979) (**ADD REF**) as a numerical method to provide a simple estimator of the distribution of an estimator. This method became rapidly very popular since it is completely automatic, requires no theoretical derivation and is (almost) always available no matter how complicated our estimator of interest is. Moreover, most statistical methods are based on various asymptotic approximations (often through the central limit theorem) that can however deliver poor results in finite sample settings. Bootstrap techniques generally enjoy better finite sample performance while paying a price in terms of computation burden. A formal discussion of the properties of (non-parametric) bootstrap techniques is far beyond the scope of this textbook but it's actually quite simple to understand its algorithm. To motivate this discussion, suppose that we ask 10 students how much time they work at home for their STAT 297 class. Say we obtain the following results (in hours):
 
-Iterative control statements are extremly usefull R’s  method  for  repeating  a  task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
-
-<center>
-![](images/maze.jpg)
-</center>
-
-It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:
-
-- if there is space in front of you, go forward 
-- else, if there is space on your right, turn right 
-- else, if there is space on your left, turn left
-- else, [all three sides (forward, left, right) are closed] turn around
-
-This strategy could easily be programmed using the methods discussed in Section \@ref(selcontrostat) but to actually program it you would need to repeat this strategy until you escaped the maze. Your strategy could for example be written as:
-
-```{r, eval = FALSE}
-repeat (until "you are free"){
-  if ("space in front of you"){
-    go forward
-  }else if ("space on your right"){
-    turn right 
-  }else if ("space on your left"){
-    turn left
-  }else{
-    turn around
-  }
-}
+```{r}
+student_work <- c(0, 0, 0, 0, 0, 0.25, 0.75, 0.75, 1, 1.25, 6)
 ```
 
-Try to apply algorithm to the maze presented above. Could you escape? Though it might take some time and probably is not the fastest strategy one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss how to actually program the "`repeat (until "you are free")`" part of our algorithm. 
+We can compute the mean time spent
 
-#### `for`
+```{r}
+mean_hour <- mean(student_work)
+```
+
+Moreover, we compute a simple confidence interval of the **average number** of hours spent by a student enrolled in STAT 297. Since we have no reason to believe that the number of hours spent working at home for this class is not Gaussian, we can construct an asymtotic confidence interval using:
+
+\[
+\bar{x} \pm z_{1-\alpha/2} \frac{\hat{\sigma}}{\sqrt{n}},
+\]
+
+where $\bar{x}$ is the sample mean, $\alpha$ is the significance level which delivers $z_{1-\alpha/2}$ quantile of standard Gaussian distribution and $\hat{\sigma}$ is the sample standard deviation (we assume that estimating the standard deviation has no impact on the distribution of $\bar{x}$). In R, this interval can therefore be computed as follows:
+
+
+```{r}
+alpha <- 0.05
+n <- length(student_work)
+sd_hour <- sd(student_work)
+z <- qnorm(1 - alpha/2)
+mean_hour + c(-1, 1)*z*sd_hour/sqrt(n)
+```
+
+Based on this confidence interval your instructor is very disappointed since the confidence interval includes 0, indicating that it is possible that the students study on average zero hours. But does this interval makes sense? The lower bound of the interval is negative implying that students can also have negative hours of study. This of course makes no sense indicating that with this sample size the asymptotic Gaussian approximation makes little sense.
+
+To solve this issue, the (non-parametric) bootstrap is convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right] denote the sample (in our case `student_work`), the way the bootstrap works is as follows:
+
+- **Step 1:** Let $i = 1$.
+- **Step 2:** Construct a new sample, say $\mathbf{X}^*$, by sampling **with replacement** $n$ observations from $\mathbf{X}$.
+- **Step 3:** Compute the average of $\mathbf{X}^*$ which we will denote as $\bar{X}_i$. Let $i = i + 1$ and if $i < B$ go to **Step 2** otherwise go to **Step 4**.
+- **Step 4**: Compute the empirical quantiles of $\bar{X}_i$.
+
+Here is a simple function to implement this approach:
+
+```{r}
+# Number of boostrap replications
+B <- 500
+
+# Compute the length of vector
+n <- length(student_work)
+
+# Confidence level
+alpha <- 0.05
+
+# Initialisation of 
+boot_mean <- rep(NA, B)
+
+# Step 1
+for (i in 1:B){
+  # Step 2
+  student_work_star <- student_work[sample(1:n, replace = TRUE)]
+  
+  # Step 3
+  boot_mean[i] <- mean(student_work_star)
+}
+
+# Step 4
+quantile(boot_mean, c(alpha/2, 1 - alpha/2))
+```
+
+Based on this result your instructor is relieved since they know that, at a level of confidence of 95\%, you are spending at least more than 10 minutes on your course work.
+
+```{block2, type='rmdnote'}
+How would you modify the above code to obtain the same output using the `while` control?
+```
+
 
