@@ -597,7 +597,7 @@ Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{
 
 ### Implementation
 
-The function `mc_int()`, which is available in the `support` package, implements the above method. This functions has four inputs:
+The function `mc_int()`, which is available in the `stat297` package, implements the above method. This functions has four inputs:
 
 - `x_range`: A vector containing the integration domain, i.e. $a$ and $b$,
 - `fun`: A string containing the function you wish to integrate where $x$ is used to indicate the variable of integration,
