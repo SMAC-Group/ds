@@ -503,8 +503,8 @@ if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> <
 </div>
 <div id="switch-statement" class="section level4">
 <h4><span class="header-section-number">5.2.2.4</span> <code>switch</code> Statement</h4>
-<p>Above we mentioned that if/elseif/else statement allowed us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options, we can simply use nested if else statement. What about when we have say 20 options to choose from? In this case, if we still sticks on using nested if else statement, the programming logic will be very difficult to understand. Switch statement option in R programming can help us handle this type of problems more effectively.</p>
-<p>Before we put switch statement into case study, let’s first start to understand the basic switch statement syntax in R.</p>
+<p>Earlier we mentioned that if/elseif/else statements allow us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options we can simply use nested if/else statements. What about when we have roughly 20 options to choose from? In this case, if we stick to using nested if/else statements, the programming logic will be very difficult to understand. The switch statement option in R programming can help us handle this type of problems more effectively.</p>
+<p>Before we put switch statements into the case study, let’s first start to understand the basic switch statement syntax in R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">switch (Expression,
         <span class="st">&quot;Option 1&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">1</span>,
         <span class="st">&quot;Option 2&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">2</span>,
@@ -516,10 +516,10 @@ if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> <
 )</code></pre></div>
 <ul>
 <li>The <code>expression</code> value is the condition which R will evaluate. This should be either integer or character.</li>
-<li>When the <code>expression</code> value matches more than one option, the first matching statemnet will be returned.</li>
+<li>When the <code>expression</code> value matches more than one option, the first matching statement will be returned.</li>
 <li>Besides the conditional statement, R also allows us to add the <code>default statement</code>, which will be returned when none of the listed options are matched.</li>
 </ul>
-<p>With the above syntax in mind, now let’s check out a simple case study with R switch statement.</p>
+<p>With the above syntax in mind, let’s now check a simple case study with R switch statements.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">number1 &lt;-<span class="st"> </span><span class="dv">20</span>
 number2 &lt;-<span class="st"> </span><span class="dv">5</span>
 operator =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt=</span><span class="st">&quot;Please enter any ARITHMETIC OPERATOR: &quot;</span>)
@@ -542,11 +542,11 @@ In conclusion, we can visualize the R switch statement as follows:
 </div>
 <div id="iter_cont_stat" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Iterative Control Statements</h3>
-<p>Iterative control statements are extremly usefull R’s method for repeating a task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
+<p>Iterative control statements are an extremly useful R method for repeating a task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
 <center>
 <img src="images/maze.jpg" />
 </center>
-<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:</p>
+<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have a strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:</p>
 <ul>
 <li>if there is space in front of you, go forward</li>
 <li>else, if there is space on your right, turn right</li>
@@ -702,7 +702,7 @@ z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1
 mean_hour +<span class="st"> </span><span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>)*z*sd_hour/<span class="kw">sqrt</span>(n)</code></pre></div>
 <pre><code>## [1] -0.1256494  1.9438313</code></pre>
 <p>Based on this confidence interval your instructor is very disappointed since the confidence interval includes 0, indicating that it is possible that the students study on average zero hours. But does this interval makes sense? The lower bound of the interval is negative implying that students can also have negative hours of study. This of course makes no sense indicating that with this sample size the asymptotic Gaussian approximation makes little sense.</p>
-<p>To solve this issue, the (non-parametric) bootstrap is convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $ = denote the sample (in our case <code>student_work</code>), the way the bootstrap works is as follows:</p>
+<p>To solve this issue, the (non-parametric) bootstrap is a convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $ = denote the sample (in our case <code>student_work</code>), the way the bootstrap works is as follows:</p>
 <ul>
 <li><strong>Step 1:</strong> Let <span class="math inline">\(i = 1\)</span>.</li>
 <li><strong>Step 2:</strong> Construct a new sample, say <span class="math inline">\(\mathbf{X}^*\)</span>, by sampling <strong>with replacement</strong> <span class="math inline">\(n\)</span> observations from <span class="math inline">\(\mathbf{X}\)</span>.</li>
@@ -743,18 +743,18 @@ How would you modify the above code to obtain the same output using the <code>wh
 <p></p>
 
 <div class="rmdnote">
-<p>A researcher developped a new drug to help patients recover after a surgery. To investigate if her drug is working as expected, she starts by creating simple test experiment on mice. In this experiment, the researcher records the survival times of 14 mice after a test surgery. Out of the 14 mice, 8 of them are given the new drug while the remaing ones are used as a control group (where no treatement is given). Her results (in days) are the following:</p>
+<p>A researcher developed a new drug to help patients recover after a surgery. To investigate if her drug is working as expected, she starts by creating a simple test experiment on mice. In this experiment, the researcher records the survival times of 14 mice after a test surgery. Out of the 14 mice, 8 of them are given the new drug while the remaining ones are used as a control group (where no treatement is given). Her results (in days) are the following:</p>
 <ul>
 <li><strong>Treatement</strong> group: 38, 76, 121, 86, 52, 69, 41 and 171;</li>
 <li><strong>Control</strong> group: 18, 12, 52, 82, 102 and 25.</li>
 </ul>
-She believe that the median survival time is a “good” way to measure effectiveness of her drug. Based on this experiment, she obtains that the median survival time for the control group is 38.5 days while it is 72.5 days for the treatement group. She wonders if you could help her to find an approriate (bootstrap) confidence interval for the difference of the medians. Using this result, do you believe that the drug increases the median survial time of mice after the test surgery?
+She believes that the median survival time is a “good” way to measure effectiveness of her drug. Based on this experiment, she obtains that the median survival time for the control group is 38.5 days while it is 72.5 days for the treatement group. She wonders if you could help her to find an approriate (bootstrap) confidence interval for the difference of the medians. Using this result, do you believe that the drug increases the median survial time of mice after the test surgery?
 </div>
 <p></p>
 </div>
 <div id="example-random-walk" class="section level2">
 <h2><span class="header-section-number">5.4</span> Example: Random Walk</h2>
-<p>The term <em>random walk</em> was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest form of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such random process:</p>
+<p>The term <em>random walk</em> was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest forms of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such a random process:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Control seed</span>
 <span class="kw">set.seed</span>(<span class="dv">1992</span>)
 
@@ -791,7 +791,7 @@ position =<span class="st"> </span><span class="kw">data.frame</span>(<span clas
   
 <span class="co"># Let&#39;s make a nice graph...</span>
 <span class="co"># Graph parameters</span>
-couleur =<span class="st"> &quot;blue4&quot;</span>
+color =<span class="st"> &quot;blue4&quot;</span>
 xlab =<span class="st"> &quot;X-position&quot;</span>
 ylab =<span class="st"> &quot;Y-position&quot;</span>
 pt_pch =<span class="st"> </span><span class="dv">16</span>
@@ -833,7 +833,7 @@ y_axis =<span class="st"> </span>y_axis[y_axis &lt;<span class="st"> </span>(win
 <span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">padj =</span> -<span class="fl">0.2</span>, <span class="dt">at =</span> y_axis)
 
 <span class="co"># Add trajectory</span>
-<span class="kw">lines</span>(position, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> couleur, <span class="dt">pch =</span> <span class="dv">16</span>)
+<span class="kw">lines</span>(position, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> color, <span class="dt">pch =</span> <span class="dv">16</span>)
   
 <span class="co"># Start and end points</span>
 <span class="kw">points</span>(<span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="dv">+1</span>,<span class="dv">1</span>]), <span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="dv">+1</span>,<span class="dv">2</span>]), <span class="dt">cex =</span> pt.cex, <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch)
@@ -853,20 +853,20 @@ leg_pos =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min
 <h2><span class="header-section-number">5.5</span> Example: Monte-Carlo Integration</h2>
 <div id="introduction-2" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Introduction</h3>
-<p>Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of “high-dimension”. A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to most basic form(s) of Monte Carlo Integration and briefly discuss the rational behind this method.</p>
-<p>Originally, such Monte Carlo methods were known under various names among which <em>statistical sampling</em> was probably the most commonly used. In fact, the name <em>Monte Carlo</em> was popularized by several physics researchers, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to this technique which he employed to study the properties newly-discovered neutron in the 1930s. Later, these methods played for example a central role in many of the simulations required for the Manhattan project.</p>
-<p>Suppose we are interested in computing the following integral:</p>
+<p>Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of “high-dimension”. A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to the most basic form(s) of Monte Carlo integration and briefly discuss the rational behind this method.</p>
+<p>Originally, such Monte Carlo methods were known under various names among which <em>statistical sampling</em> was probably the most commonly used. In fact, the name <em>Monte Carlo</em> was popularized by several researchers in Physics, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to use this technique which he employed to study the properties of a newly-discovered neutron in the 1930s. Later for example, these methods played a central role in many of the simulations required for the Manhattan project.</p>
+<p>With this in mind, let us give an idea of this approach by supposing we are interested in computing the following integral:</p>
 <p><span class="math display">\[I = \int_a^b f(x) dx.\]</span></p>
-<p>Of course, this integral can be approximated by a Riemann sum,</p>
+<p>Of course, this integral can be approximated by a Riemann sum:</p>
 <p><span class="math display">\[I \approx \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x),\]</span></p>
-<p>where <span class="math inline">\(\Delta x = \frac{b - a}{n}\;\)</span> and the idea behind this approximation is that as the number of partions <span class="math inline">\(n\)</span> increases the Riemann sum will become closer and closer to <span class="math inline">\(I\)</span>. Also (and under some technical conditions), we have that</p>
+<p>where <span class="math inline">\(\Delta x = \frac{b - a}{n}\;\)</span> and the idea behind this approximation is that as the number of partitions <span class="math inline">\(n\)</span> increases, the Riemann sum will become closer and closer to <span class="math inline">\(I\)</span>. Also (under some technical conditions), we have that</p>
 <p><span class="math display">\[I = \lim_{n \to \infty} \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x).\]</span></p>
-<p>In fact, the rational of a Monte Carlo Integral is quite close to the Riemann sum since, in its most basic form, we approximate <span class="math inline">\(I\)</span> by averaging samples of the function <span class="math inline">\(f(x)\)</span> at uniform random point within the interval <span class="math inline">\([a, b]\)</span>. Therefore, the Monte Carlo <em>estimator</em> of <span class="math inline">\(I\)</span> is given by</p>
+<p>In fact, the rational of a Monte Carlo integral is quite close to the Riemann sum since, in its most basic form, we approximate <span class="math inline">\(I\)</span> by averaging samples of the function <span class="math inline">\(f(x)\)</span> at uniform random points within the interval <span class="math inline">\([a, b]\)</span>. Therefore, the Monte Carlo <em>estimator</em> of <span class="math inline">\(I\)</span> is given by</p>
 <span class="math display" id="eq:binom">\[\begin{equation} 
 \hat{I} = \frac{b - a}{B} \sum_{i = 1}^B f(X_i), 
  \tag{5.1}
 \end{equation}\]</span>
-<p>where <span class="math inline">\(X_i = a + U_i (b - a)\)</span> and <span class="math inline">\(U_i \sim \mathcal{U}(0,1)\)</span>. In fact, <a href="control.html#eq:binom">(5.1)</a> is quite intuitive as <span class="math inline">\(\frac{1}{B} \sum_{i = 1}^B f(X_i)\)</span> represents an estimation of the average value of <span class="math inline">\(f(x)\)</span> in the interval <span class="math inline">\([a, b]\)</span> and thus <span class="math inline">\(\hat{I}\)</span> is simply the average value time the length of the interval, i.e. <span class="math inline">\((b-a)\)</span>. If you would like to learn more about the properties of Monte-Carlo integrals, click on the button below:</p>
+<p>where <span class="math inline">\(X_i = a + U_i (b - a)\)</span> and <span class="math inline">\(U_i \sim \mathcal{U}(0,1)\)</span>. In fact, <a href="control.html#eq:binom">(5.1)</a> is quite intuitive since <span class="math inline">\(\frac{1}{B} \sum_{i = 1}^B f(X_i)\)</span> represents an estimation of the average value of <span class="math inline">\(f(x)\)</span> in the interval <span class="math inline">\([a, b]\)</span> and thus <span class="math inline">\(\hat{I}\)</span> is simply the average value times the length of the interval, i.e. <span class="math inline">\((b-a)\)</span>. If you would like to learn more about the properties of Monte-Carlo integrals, click on the button below:</p>
 <button id="hidebutton1">
 Properties
 </button>
@@ -890,12 +890,12 @@ g(x) = \left\{
 <p><span class="math display">\[
 \mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \int_a^b \frac{f(x)}{b-a} dx = \int_a^b f(x) dx = I, 
 \]</span></p>
-<p>Since <span class="math inline">\(X_i\)</span> are iid, the same can be said about <span class="math inline">\(f(X_i)\)</span> and therefore by the <strong>Strong Law of Large Numbers</strong> we have that <span class="math inline">\(\hat{I}\)</span> converge <em>almost surely</em> to <span class="math inline">\(I\)</span>, which means that</p>
+<p>Since <span class="math inline">\(X_i\)</span> are iid, the same can be said about <span class="math inline">\(f(X_i)\)</span> and therefore by the <strong>Strong Law of Large Numbers</strong> we have that <span class="math inline">\(\hat{I}\)</span> converges <em>almost surely</em> to <span class="math inline">\(I\)</span>, which means that</p>
 <p><span class="math display">\[
 \mathbb{P}\left(\lim_{B \to \infty} \hat{I} = I    \right) = 1.
 \]</span></p>
 <p>This result implies that as the number of simulations <span class="math inline">\(B\)</span> goes to infinity we can guarantee that the solution will be exact.</p>
-<p>Unfortunately, this result does give us any information on how quickly this estimate converges to “sufficiently accurate” solution for the problem at hand. This can be done by studying the variance of <span class="math inline">\(\hat{I}\)</span> and its <em>rate of convergence</em>. Indeed, we have</p>
+<p>Unfortunately, this result doesn’t give us any information on how quickly this estimate converges to a “sufficiently accurate” solution for the problem at hand. This can be done by studying the variance of <span class="math inline">\(\hat{I}\)</span> and its <em>rate of convergence</em>. Indeed, we have</p>
 <p><span class="math display">\[
 \begin{aligned}
 \operatorname{var} \left( \hat{I} \right) &amp;= \left(\frac{b - a}{B}\right)^2  \sum_{i = 1}^B \left\{\mathbb{E}\left[f^2(X_i)\right] - \mathbb{E}^2\left[f(X_i)\right]\right\}\\
@@ -911,7 +911,7 @@ g(x) = \left\{
 <p><span class="math display">\[
 \widehat{\operatorname{var}} \left(\hat{I} \right) = \frac{(b-a) \hat{I}_2 - \hat{I}^2}{B} = \frac{b - a}{B^2} \sum_{i = 1}^B\left[ (b - a )f^2(X_i) - f(X_i)\right]
 \]</span></p>
-Thus, it is easy to see that the rate of convergence of <span class="math inline">\(\widehat{\operatorname{var}} \left(\hat{I} \right)\)</span> is <span class="math inline">\(B^{-1}\)</span> and we may write <span class="math inline">\({\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)\)</span>. This implies that if we wish to reduce the error (or standard deviation) by half we need to quadruple <span class="math inline">\(B\)</span>. Such phenomon is very common in many research such as Statistics is often called the <em>curse of dimensionality</em>.
+Thus, it is easy to see that the rate of convergence of <span class="math inline">\(\widehat{\operatorname{var}} \left(\hat{I} \right)\)</span> is <span class="math inline">\(B^{-1}\)</span> and we may write <span class="math inline">\({\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)\)</span>. This implies that if we wish to reduce the error (or standard deviation) by half, we need to quadruple <span class="math inline">\(B\)</span>. Such a phenomon is very common in many fields of research such as Statistics where this is often called the <em>curse of dimensionality</em>.
 </div>
 <p></p>
 </div>
@@ -924,7 +924,7 @@ Thus, it is easy to see that the rate of convergence of <span class="math inline
 <li><code>x_range</code>: A vector containing the integration domain, i.e. <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>,</li>
 <li><code>fun</code>: A string containing the function you wish to integrate where <span class="math inline">\(x\)</span> is used to indicate the variable of integration,</li>
 <li><code>B</code>: A numeric value to denote the number of Monte-Carlo replications,</li>
-<li><code>seed</code>: A numeric to control the seed of the random number generator.</li>
+<li><code>seed</code>: A numeric value to control the seed of the random number generator.</li>
 </ul>
 <p>For example, if you want to estimate</p>
 <p><span class="math display">\[
@@ -938,12 +938,12 @@ Thus, it is easy to see that the rate of convergence of <span class="math inline
 ## 
 ## $var
 ## [1] 1.401222e-05</code></pre>
-<p>At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function <code>mc_int()</code>. This should be rather easy to implement but one thing that may be a little delicate is how to pass as an input the function you wish to integrate. A possible way of doing this is to use a string for this purpose so that, for example, if we have to integrate the function <span class="math inline">\(\sin(x)\)</span> you could simply write <code>fun = sin(x)</code> when calling your function. This implies that we should be able to “transform” a string into a function that we can evaluate, which is something that we can achieve by combining the functions <code>eval</code> and <code>parse</code>. An example is provided below:</p>
+<p>At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function <code>mc_int()</code>. This should be rather easy to implement but one thing that may be a little delicate is how to pass the function you wish to integrate as an input. A possible way of doing this is to use a string so that, for example, if we have to integrate the function <span class="math inline">\(\sin(x)\)</span> you could simply write <code>fun = sin(x)</code> when calling your function. This implies that we should be able to “transform” a string into a function that we can evaluate, which is something that we can achieve by combining the functions <code>eval</code> and <code>parse</code>. An example is provided below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_fun =<span class="st"> &quot;x^2&quot;</span>
 x =<span class="st"> </span><span class="dv">0</span>:<span class="dv">3</span>
 <span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> my_fun))</code></pre></div>
 <pre><code>## [1] 0 1 4 9</code></pre>
-<p>If you having trouble to understand what these functions are doing have a look to their help files with write <code>?eval</code> and <code>?parse</code>.</p>
+<p>If you’re having trouble understanding what these functions are doing have a look at their help files by writing <code>?eval</code> and <code>?parse</code>.</p>
 </div>
 <div id="application-to-the-normal-distribution" class="section level3">
 <h3><span class="header-section-number">5.5.3</span> Application to the Normal Distribution</h3>
@@ -951,11 +951,11 @@ x =<span class="st"> </span><span class="dv">0</span>:<span class="dv">3</span>
 <p><span class="math display">\[
 f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2}{2 \sigma^2}\right).
 \]</span></p>
-<p>Therefore, the probability we are interested in can written as the following integral</p>
+<p>Therefore, the probability we are interested in can be written as the following integral</p>
 <p><span class="math display">\[
 \mathbb{P}\left(1 &lt; X &lt; 4.5 \right) = \int_1^{4.5} \frac{1}{\sqrt{3.125 \pi}} \exp \left(- \frac{\left(x - 4\right)^2}{3.125}\right).
 \]</span></p>
-<p>Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use Monte-Carlo integral to solve it. For example:</p>
+<p>Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use a Monte-Carlo integral to solve it. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_fun =<span class="st"> &quot;1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)&quot;</span>
 (<span class="dt">prob =</span> <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">4.5</span>), <span class="dt">fun =</span> my_fun, <span class="dt">B =</span> <span class="dv">10</span>^<span class="dv">7</span>))</code></pre></div>
 <pre><code>## $I
@@ -963,17 +963,17 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2
 ## 
 ## $var
 ## [1] 1.449985e-08</code></pre>
-<p>Based on this result, we can write <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) \approx 64.72 \%\)</span> with a standard error of about 0.01%. We can compare our results with what we would obtain with the function <code>pnorm</code> which provide a nearly exact result:</p>
+<p>Based on this result, we can write <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) \approx 64.72 \%\)</span> with a standard error of about 0.01%. We can compare our results with what we would obtain with the function <code>pnorm</code> which provides a nearly exact result:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="fl">4.5</span>, <span class="dv">4</span>, <span class="fl">1.25</span>) -<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">1.25</span>)</code></pre></div>
 <pre><code>## [1] 0.6472242</code></pre>
 <p>This shows that our estimation is within one standard error of a near perfect result.</p>
 </div>
 <div id="application-to-nonelementary-integrals" class="section level3">
 <h3><span class="header-section-number">5.5.4</span> Application to Nonelementary Integrals</h3>
-<p>Layman’s terms, a nonelementary integral of a given (elementary) function is an integral that is cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to proof the existing of such nonelementary integral. An well-known example of such integrals are the Fresnel integrals, which have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:</p>
+<p>In layman’s terms, a nonelementary integral of a given (elementary) function is an integral that cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to prove the existance of such a nonelementary integral. A well-known example of such integrals are the Fresnel integrals that have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:</p>
 <p><span class="math display">\[S(y) = \int_0^t \sin\left(x^2\right) dx \;\;\;\;\;\; \text{and}  \;\;\;\;\;\; 
 C(y) = \int_0^y \cos \left( x^2 \right) dx.\]</span></p>
-<p>In this example, we will only consider <span class="math inline">\(S(y)\)</span>. In general it is believed that the most convenient way of evaluating these functions to arbitrary precision is to use power series representation that converges for all <span class="math inline">\(y\)</span>:</p>
+<p>In this example, we will only consider <span class="math inline">\(S(y)\)</span>. In general it is believed that the most convenient way of evaluating these functions up to an arbitrary level of precision is to use a power series representation that converges for all <span class="math inline">\(y\)</span>:</p>
 <p><span class="math display">\[
 S(y) = \sum_{i = 1}^\infty \, \left(-1\right)^n \, \frac{y^{4i + 1}}{\left(2i + 1\right) \, !\left(4i + 3\right)}.
 \]</span></p>
