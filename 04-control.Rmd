@@ -223,9 +223,9 @@ We can also control the flow of statements with multiple if/else statements, dep
 
 #### `switch` Statement
 
-Above we mentioned that if/elseif/else statement allowed us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options, we can simply use nested if else statement. What about when we have say 20 options to choose from? In this case, if we still sticks on using nested if else statement, the programming logic will be very difficult to understand. Switch statement option in R programming can help us handle this type of problems more effectively.
+Earlier we mentioned that if/elseif/else statements allow us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options we can simply use nested if/else statements. What about when we have roughly 20 options to choose from? In this case, if we stick to using nested if/else statements, the programming logic will be very difficult to understand. The switch statement option in R programming can help us handle this type of problems more effectively.
 
-Before we put switch statement into case study, let's first start to understand the basic switch statement syntax in R. 
+Before we put switch statements into the case study, let's first start to understand the basic switch statement syntax in R. 
 
 ```{r, eval = FALSE}
 switch (Expression,
@@ -240,11 +240,11 @@ switch (Expression,
 ```
 
 - The `expression` value is the condition which R will evaluate. This should be either integer or character. 
-- When the `expression` value matches more than one option, the first matching statemnet will be returned.
+- When the `expression` value matches more than one option, the first matching statement will be returned.
 - Besides the conditional statement, R also allows us to add the `default statement`, which will be returned when none of the listed options are matched.
 
 
-With the above syntax in mind, now let's check out a simple case study with R switch statement.
+With the above syntax in mind, let's now check a simple case study with R switch statements.
 ```{r, eval = FALSE}
 number1 <- 20
 number2 <- 5
@@ -273,13 +273,13 @@ In conclusion, we can visualize the R switch statement as follows:
 
 ### Iterative Control Statements {#iter_cont_stat}
 
-Iterative control statements are extremly usefull R’s  method  for  repeating  a  task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
+Iterative control statements are an extremly useful R  method  for  repeating  a  task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below. 
 
 <center>
 ![](images/maze.jpg)
 </center>
 
-It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:
+It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have a strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:
 
 - if there is space in front of you, go forward 
 - else, if there is space on your right, turn right 
@@ -453,7 +453,7 @@ mean_hour + c(-1, 1)*z*sd_hour/sqrt(n)
 
 Based on this confidence interval your instructor is very disappointed since the confidence interval includes 0, indicating that it is possible that the students study on average zero hours. But does this interval makes sense? The lower bound of the interval is negative implying that students can also have negative hours of study. This of course makes no sense indicating that with this sample size the asymptotic Gaussian approximation makes little sense.
 
-To solve this issue, the (non-parametric) bootstrap is convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right] denote the sample (in our case `student_work`), the way the bootstrap works is as follows:
+To solve this issue, the (non-parametric) bootstrap is a convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right] denote the sample (in our case `student_work`), the way the bootstrap works is as follows:
 
 - **Step 1:** Let $i = 1$.
 - **Step 2:** Construct a new sample, say $\mathbf{X}^*$, by sampling **with replacement** $n$ observations from $\mathbf{X}$.
@@ -495,17 +495,17 @@ How would you modify the above code to obtain the same output using the `while` 
 ```
 
 ```{block2, type = 'rmdnote'}
-A researcher developped a new drug to help patients recover after a surgery. To investigate if her drug is working as expected, she starts by creating simple test experiment on mice. In this experiment, the researcher records the survival times of 14 mice after a test surgery. Out of the 14 mice, 8 of them are given the new drug while the remaing ones are used as a control group (where no treatement is given). Her results (in days) are the following:
+A researcher developed a new drug to help patients recover after a surgery. To investigate if her drug is working as expected, she starts by creating a simple test experiment on mice. In this experiment, the researcher records the survival times of 14 mice after a test surgery. Out of the 14 mice, 8 of them are given the new drug while the remaining ones are used as a control group (where no treatement is given). Her results (in days) are the following:
 
 - **Treatement** group: 38, 76, 121, 86, 52, 69, 41 and 171;
 - **Control** group: 18, 12, 52, 82, 102 and 25.
 
-She believe that the median survival time is a "good" way to measure effectiveness of her drug. Based on this experiment, she obtains that the median survival time for the control group is 38.5 days while it is 72.5 days for the treatement group. She wonders if you could help her to find an approriate (bootstrap) confidence interval for the difference of the medians. Using this result, do you believe that the drug increases the median survial time of mice after the test surgery?
+She believes that the median survival time is a "good" way to measure effectiveness of her drug. Based on this experiment, she obtains that the median survival time for the control group is 38.5 days while it is 72.5 days for the treatement group. She wonders if you could help her to find an approriate (bootstrap) confidence interval for the difference of the medians. Using this result, do you believe that the drug increases the median survial time of mice after the test surgery?
 ```
 
 ## Example: Random Walk
 
-The term *random walk* was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest form of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such random process:
+The term *random walk* was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest forms of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such a random process:
 
 ```{r RW2d, fig.height = 5, fig.width = 5.5, cache = TRUE, fig.align='center'}
 # Control seed
@@ -544,7 +544,7 @@ position = data.frame(x = cumsum(step_direction[, 1]),
   
 # Let's make a nice graph...
 # Graph parameters
-couleur = "blue4"
+color = "blue4"
 xlab = "X-position"
 ylab = "Y-position"
 pt_pch = 16
@@ -586,7 +586,7 @@ y_axis = y_axis[y_axis < (win_dim[4] - 0.09*(win_dim[4] - win_dim[3]))]
 axis(2, padj = -0.2, at = y_axis)
 
 # Add trajectory
-lines(position, type = "l", col = couleur, pch = 16)
+lines(position, type = "l", col = color, pch = 16)
   
 # Start and end points
 points(c(0,position[steps+1,1]), c(0,position[steps+1,2]), cex = pt.cex, col = pt_col, pch = pt_pch)
@@ -609,30 +609,30 @@ Empirical evidence of this phenomenon is not too hard to find on a Friday night.
 
 ### Introduction
 
-Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of "high-dimension". A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to most basic form(s) of Monte Carlo Integration and briefly discuss the rational behind this method.
+Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of "high-dimension". A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to the most basic form(s) of Monte Carlo integration and briefly discuss the rational behind this method.
 
-Originally, such Monte Carlo methods were known under various names among which *statistical sampling* was probably the most commonly used. In fact, the name *Monte Carlo* was popularized by several physics researchers, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to this technique which he employed to study the properties newly-discovered neutron in the 1930s. Later, these methods played for example a central role in many of the simulations required for the Manhattan project.
+Originally, such Monte Carlo methods were known under various names among which *statistical sampling* was probably the most commonly used. In fact, the name *Monte Carlo* was popularized by several researchers in Physics, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to use this technique which he employed to study the properties of a newly-discovered neutron in the 1930s. Later for example, these methods played a central role in many of the simulations required for the Manhattan project.
 
-Suppose we are interested in computing the following integral: 
+With this in mind, let us give an idea of this approach by supposing we are interested in computing the following integral: 
 
 \[I = \int_a^b f(x) dx.\]
 
-Of course, this integral can be approximated by a Riemann sum,
+Of course, this integral can be approximated by a Riemann sum:
 
 \[I \approx \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x),\]
 
-where $\Delta x = \frac{b - a}{n}\;$ and the idea behind this approximation is that as the number of partions $n$ increases the Riemann sum will become closer and closer to $I$. Also (and under some technical conditions), we have that
+where $\Delta x = \frac{b - a}{n}\;$ and the idea behind this approximation is that as the number of partitions $n$ increases, the Riemann sum will become closer and closer to $I$. Also (under some technical conditions), we have that
 
 \[I = \lim_{n \to \infty} \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x).\]
 
-In fact, the rational of a Monte Carlo Integral is quite close to the Riemann sum since, in its most basic form, we approximate $I$ by averaging samples of the function $f(x)$ at uniform random point within the interval $[a, b]$. Therefore, the Monte Carlo *estimator* of $I$ is given by
+In fact, the rational of a Monte Carlo integral is quite close to the Riemann sum since, in its most basic form, we approximate $I$ by averaging samples of the function $f(x)$ at uniform random points within the interval $[a, b]$. Therefore, the Monte Carlo *estimator* of $I$ is given by
 
 \begin{equation} 
 \hat{I} = \frac{b - a}{B} \sum_{i = 1}^B f(X_i), 
  (\#eq:binom)
 \end{equation}
 
-where $X_i = a + U_i (b - a)$ and $U_i \sim \mathcal{U}(0,1)$. In fact, \@ref(eq:binom) is quite intuitive as $\frac{1}{B} \sum_{i = 1}^B f(X_i)$ represents an estimation of the average value of $f(x)$ in the interval $[a, b]$ and thus $\hat{I}$ is simply the average value time the length of the interval, i.e. $(b-a)$. If you would like to learn more about the properties of Monte-Carlo integrals, click on the button below: 
+where $X_i = a + U_i (b - a)$ and $U_i \sim \mathcal{U}(0,1)$. In fact, \@ref(eq:binom) is quite intuitive since $\frac{1}{B} \sum_{i = 1}^B f(X_i)$ represents an estimation of the average value of $f(x)$ in the interval $[a, b]$ and thus $\hat{I}$ is simply the average value times the length of the interval, i.e. $(b-a)$. If you would like to learn more about the properties of Monte-Carlo integrals, click on the button below: 
 
 <button id="hidebutton1">Properties</button>
 <div id="hideclass1">
@@ -661,7 +661,7 @@ Therefore, we have
 \mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \int_a^b \frac{f(x)}{b-a} dx = \int_a^b f(x) dx = I, 
 \]
 
-Since $X_i$ are iid, the same can be said about $f(X_i)$ and therefore by the **Strong Law of Large Numbers** we have that $\hat{I}$ converge *almost surely* to $I$, which means that
+Since $X_i$ are iid, the same can be said about $f(X_i)$ and therefore by the **Strong Law of Large Numbers** we have that $\hat{I}$ converges *almost surely* to $I$, which means that
 
 \[
 \mathbb{P}\left(\lim_{B \to \infty} \hat{I} = I    \right) = 1.
@@ -669,7 +669,7 @@ Since $X_i$ are iid, the same can be said about $f(X_i)$ and therefore by the **
 
 This result implies that as the number of simulations $B$ goes to infinity we can guarantee that the solution will be exact. 
 
-Unfortunately, this result does give us any information on how quickly this estimate converges to "sufficiently accurate" solution for the problem at hand. This can be done by studying the variance of $\hat{I}$ and its *rate of convergence*. Indeed, we have
+Unfortunately, this result doesn't give us any information on how quickly this estimate converges to a "sufficiently accurate" solution for the problem at hand. This can be done by studying the variance of $\hat{I}$ and its *rate of convergence*. Indeed, we have
 
 \[
 \begin{aligned}
@@ -691,7 +691,7 @@ and therefore using $\hat{I}$ we obtain:
 \widehat{\operatorname{var}} \left(\hat{I} \right) = \frac{(b-a) \hat{I}_2 - \hat{I}^2}{B} = \frac{b - a}{B^2} \sum_{i = 1}^B\left[ (b - a )f^2(X_i) - f(X_i)\right]
 \]
 
-Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{var}} \left(\hat{I} \right)$ is $B^{-1}$ and we may write ${\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)$. This implies that if we wish to reduce the error (or standard deviation) by half we need to quadruple $B$. Such phenomon is very common in many research such as Statistics is often called the *curse of dimensionality*.
+Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{var}} \left(\hat{I} \right)$ is $B^{-1}$ and we may write ${\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)$. This implies that if we wish to reduce the error (or standard deviation) by half, we need to quadruple $B$. Such a phenomon is very common in many fields of research such as Statistics where this is often called the *curse of dimensionality*.
 ```
 </div>
 
@@ -704,7 +704,7 @@ The function `mc_int()`, which is available in the `stat297` package, implements
 - `x_range`: A vector containing the integration domain, i.e. $a$ and $b$,
 - `fun`: A string containing the function you wish to integrate where $x$ is used to indicate the variable of integration,
 - `B`: A numeric value to denote the number of Monte-Carlo replications,
-- `seed`: A numeric to control the seed of the random number generator.
+- `seed`: A numeric value to control the seed of the random number generator.
 
 For example, if you want to estimate 
 
@@ -719,7 +719,7 @@ library(stat297)
 mc_int(x_range = c(1,3), fun = "exp(sin(x))/x", B = 10^5)
 ```
 
-At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function `mc_int()`. This should be rather easy to implement but one thing that may be a little delicate is how to pass as an input the function you wish to integrate. A possible way of doing this is to use a string for this purpose so that, for example, if we have to integrate the function $\sin(x)$ you could simply write `fun = sin(x)` when calling your function. This implies that we should be able to "transform" a string into a function that we can evaluate, which is something that we can achieve by combining the functions `eval` and `parse`. An example is provided below:
+At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function `mc_int()`. This should be rather easy to implement but one thing that may be a little delicate is how to pass the function you wish to integrate as an input. A possible way of doing this is to use a string so that, for example, if we have to integrate the function $\sin(x)$ you could simply write `fun = sin(x)` when calling your function. This implies that we should be able to "transform" a string into a function that we can evaluate, which is something that we can achieve by combining the functions `eval` and `parse`. An example is provided below:
 
 ```{r exampleeval}
 my_fun = "x^2"
@@ -727,7 +727,7 @@ x = 0:3
 eval(parse(text = my_fun))
 ```
 
-If you having trouble to understand what these functions are doing have a look to their help files with write `?eval` and `?parse`.
+If you're having trouble understanding what these functions are doing have a look at their help files by writing `?eval` and `?parse`.
 
 ### Application to the Normal Distribution
 
@@ -737,13 +737,13 @@ Suppose that $X \sim \mathcal{N}(4, 1.25^2)$ and that we are interested in compu
 f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2}{2 \sigma^2}\right).
 \]
 
-Therefore, the probability we are interested in can written as the following integral
+Therefore, the probability we are interested in can be written as the following integral
 
 \[
 \mathbb{P}\left(1 < X < 4.5 \right) = \int_1^{4.5} \frac{1}{\sqrt{3.125 \pi}} \exp \left(- \frac{\left(x - 4\right)^2}{3.125}\right).
 \]
 
-Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use Monte-Carlo integral to solve it. For example:
+Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use a Monte-Carlo integral to solve it. For example:
 
 
 ```{r}
@@ -751,7 +751,7 @@ my_fun = "1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)"
 (prob = mc_int(x_range = c(1, 4.5), fun = my_fun, B = 10^7))
 ```
 
-Based on this result, we can write $\mathbb{P}\left(1 < X < 4.5 \right) \approx 64.72 \%$ with a standard error of about 0.01\%. We can compare our results with what we would obtain with the function `pnorm` which provide a nearly exact result:
+Based on this result, we can write $\mathbb{P}\left(1 < X < 4.5 \right) \approx 64.72 \%$ with a standard error of about 0.01\%. We can compare our results with what we would obtain with the function `pnorm` which provides a nearly exact result:
 
 ```{r}
 pnorm(4.5, 4, 1.25) - pnorm(1, 4, 1.25)
@@ -761,12 +761,12 @@ This shows that our estimation is within one standard error of a near perfect re
 
 ### Application to Nonelementary Integrals
 
-Layman's terms, a nonelementary integral of a given (elementary) function is an integral that is cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to proof the existing of such nonelementary integral. An well-known example of such integrals are the Fresnel integrals, which have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:
+In layman's terms, a nonelementary integral of a given (elementary) function is an integral that cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to prove the existance of such a nonelementary integral. A well-known example of such integrals are the Fresnel integrals that have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:
 
 \[S(y) = \int_0^t \sin\left(x^2\right) dx \;\;\;\;\;\; \text{and}  \;\;\;\;\;\; 
 C(y) = \int_0^y \cos \left( x^2 \right) dx.\]
 
-In this example, we will only consider $S(y)$. In general it is believed that the most convenient way of evaluating these functions to arbitrary precision is to use power series representation that converges for all $y$:
+In this example, we will only consider $S(y)$. In general it is believed that the most convenient way of evaluating these functions up to an arbitrary level of precision is to use a power series representation that converges for all $y$:
 
 \[
 S(y) = \sum_{i = 1}^\infty \, \left(-1\right)^n \, \frac{y^{4i + 1}}{\left(2i + 1\right) \, !\left(4i + 3\right)}.
