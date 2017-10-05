@@ -503,6 +503,108 @@ A researcher developped a new drug to help patients recover after a surgery. To 
 She believe that the median survival time is a "good" way to measure effectiveness of her drug. Based on this experiment, she obtains that the median survival time for the control group is 38.5 days while it is 72.5 days for the treatement group. She wonders if you could help her to find an approriate (bootstrap) confidence interval for the difference of the medians. Using this result, do you believe that the drug increases the median survial time of mice after the test surgery?
 ```
 
+## Example: Random Walk
+
+The term *random walk* was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest form of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such random process:
+
+```{r RW2d, fig.height = 5, fig.width = 5.5, cache = TRUE, fig.align='center'}
+# Control seed
+set.seed(1992)
+
+# Number of steps
+steps <- 10^5
+
+# Direction probability (i.e. all direction are equally likely)
+probs <- c(0.25, 0.5, 0.75)
+
+# Initial matrix
+step_direction <- matrix(0, steps+1, 2)
+
+# Start random walk
+for (i in seq(2, steps+1)){
+  # Draw a random number from U(0,1)
+  rn = runif(1)
+
+  # Go right if rn \in [0,prob[1])
+  if (rn < probs[1]) {step_direction[i,1] = 1}
+
+  # Go left if rn \in [probs[1], probs[2])
+  if (rn >= probs[1] && rn < probs[2]) {step_direction[i,1] = -1}
+
+  # Go forward if rn \in [probs[2], probs[3])
+  if (rn >= probs[2] && rn < probs[3]) {step_direction[i,2] = 1}
+
+  # Go backward if rn \in [probs[3],1]
+  if (rn >= probs[3]) {step_direction[i,2] = -1}
+}
+
+# Cumulative steps
+position = data.frame(x = cumsum(step_direction[, 1]), 
+                      y = cumsum(step_direction[, 2]))
+  
+# Let's make a nice graph...
+# Graph parameters
+couleur = "blue4"
+xlab = "X-position"
+ylab = "Y-position"
+pt_pch = 16
+pt.cex = 2
+main = paste("Simulated 2D RW with", steps, "steps", sep = " ")
+hues = seq(15, 375, length = 3)
+pt_col = hcl(h = hues, l = 65, c = 100)[1:2]
+par(mar = c(5.1, 5.1, 1, 2.1))
+
+# Main plot
+plot(NA,  xlim = range(position[,1]), 
+          ylim = range(range(position[,2])), 
+          xlab = xlab, ylab = ylab, xaxt = 'n', 
+          yaxt = 'n', bty = "n", ann = FALSE)
+win_dim = par("usr")
+
+par(new = TRUE)
+plot(NA, xlim = range(position[,1]), ylim = c(win_dim[3], win_dim[4] + 0.09*(win_dim[4] - win_dim[3])),
+       xlab = xlab, ylab = ylab, xaxt = 'n', yaxt = 'n', bty = "n")
+  win_dim = par("usr")
+
+# Add grid
+grid(NULL, NULL, lty = 1, col = "grey95")
+
+# Add title
+x_vec = c(win_dim[1], win_dim[2], win_dim[2], win_dim[1])
+y_vec = c(win_dim[4], win_dim[4],
+            win_dim[4] - 0.09*(win_dim[4] - win_dim[3]),
+            win_dim[4] - 0.09*(win_dim[4] - win_dim[3]))
+polygon(x_vec, y_vec, col = "grey95", border = NA)
+text(x = mean(c(win_dim[1], win_dim[2])), y = (win_dim[4] - 0.09/2*(win_dim[4] - win_dim[3])), main)
+
+# Add axes and box
+lines(x_vec[1:2], rep((win_dim[4] - 0.09*(win_dim[4] - win_dim[3])),2), col = 1)
+box()
+axis(1, padj = 0.3)
+y_axis = axis(2, labels = FALSE, tick = FALSE)
+y_axis = y_axis[y_axis < (win_dim[4] - 0.09*(win_dim[4] - win_dim[3]))]
+axis(2, padj = -0.2, at = y_axis)
+
+# Add trajectory
+lines(position, type = "l", col = couleur, pch = 16)
+  
+# Start and end points
+points(c(0,position[steps+1,1]), c(0,position[steps+1,2]), cex = pt.cex, col = pt_col, pch = pt_pch)
+  
+# Legend
+leg_pos = c(min(position[,1]), max(position[,2]))
+legend(leg_pos[1], leg_pos[2], c("Start","End"), 
+      col = pt_col, pch = pt_pch, pt.cex = pt.cex, bty = "n")
+```
+
+Such processes inspired Karl Pearson's famous quote that
+
+>
+> "*the most likely place to find a drunken walker is somewhere near his starting point.*"
+> 
+
+Empirical evidence of this phenomenon is not too hard to find on a Friday night. 
+
 ## Example: Monte-Carlo Integration
 
 ### Introduction
