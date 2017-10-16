@@ -6,9 +6,9 @@ knitr::opts_chunk$set(error = TRUE)
 
 This chapter aims at highlighting the main advantages, characteristics, arguments and structure of functions in R. As you already know, a function is a collection of logically connected commands and operations that allow the user to input some arguments and obtain a desired output (based on the given arguments) without having to rewrite the mentioned code each time that specific output is needed. Indeed, a common task in statistical research for example consists in running some simulation studies which give support (or not) to the use of a certain method of inference. In this case, it's not efficient to rewrite the code each time it is needed within a simulation study because it would lead to lengthy code and increased risk of miss-coding. 
 
-### Example: The Hubble Constant
+In the following paragraphs, we will describe an example for which we will build a function that allows to respond to the related research question. Following from the previous chapter where we discussed matrix algebra in R, at the end of this chapter we will therefore implement a function that allows us to perform least-squares regression and inference using these notions of matrix algebra. Indeed, it may be interesting to understand the behavior of this estimator in different simulation settings and it would not be practical to rewrite the series of commands to obtain the least-squares estimator in each setting. For this reason, a function that implements this estimator would be more appropriate and, in fact, this function already exists in the base R functions and is called `lm()`. However, we will learn how to build our own least-squares regression function and compare its results with those of `lm()` to check if they're the same. To do so, we will consider a dataset in which linear regression is used to study the age of the universe.
 
-Considering the above, in the previous chapter we discussed matrix algebra in R. Using these notions, at the end of this chapter we will implement a function that allows us to perform least-squares regression and inference. Indeed, it may be interesting to understand the behavior of this estimator in different simulation settings and it would not be practical to rewrite the series of commands to obtain the least-squares estimator in each setting. For this reason, a function that implements this estimator would be more appropriate and, in fact, this function already exists in the base R functions and is called `lm()`. However, we will learn how to build our own least-squares regression function and compare its results with those of `lm()` to check if they're the same. To do so, we will consider a dataset in which linear regression is used to study the age of the universe.
+**Example: The Hubble Constant**
 
 The example dataset we will study is taken from @wood2017generalized which discusses data collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the "Hubble constant" which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the "Big Bang" theory. The link is given by this simple linear relationship
 
@@ -33,10 +33,11 @@ By the end of this chapter we will therefore be able to build a function to obta
 
 ## R functions
 
-In order to build our own functions, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that takes two values and sums them:
+In order to build our own functions, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that takes two values and sums them [^1]:
 
-<!-- <center>![Function Structure](images/function_scheme.png)</center> -->
-<center>![Function Structure](function_scheme.png)</center> 
+<center>![Function Structure](images/function_scheme.png)</center>
+
+[^1]: This scheme is taken from the STAT385 class given by James J. Balamuta at the University of Illinois at Urbana-Champaign who we thank for making it available to us.
 
 As can be noticed, we first define the name we want to give to the function. 
 
@@ -46,13 +47,49 @@ It is important to make sure that the function name is specific and does not cor
 
 Once we have defined the name, we then attribute a function to this name by using the `function` syntax to which we assign some parameters (or attributes). The latter are the values or data that the user will input in order for the function to deliver the desired output. The latter is subsequently obtained through the code constituting the *body* of the function. Once the code has made the necessary computations, the function needs to know which results are to be given as an output. This can be done, for example, using the `return` syntax.
 
+A couple of simple examples can be functions that compute the sample mean:
+
+```{r}
+my_mean <- function (x) {
+  
+  average <- sum(x, na.rm = T)/sum(!is.na(x))
+  
+  return(average)
+  
+}
+```
+
+or multiplies two numbers:
+
+```{r}
+my_prod <- function (a, b) {
+  
+  prod <- a*b
+  
+  return(prod)
+  
+}
+```
+
+Using these functions, we can compute the sample mean of the annual precipitation in US cities (that can be found in the base R dataset `precip`):
+
+```{r}
+my_mean(precip)
+```
+
+or the product of 265 and 83:
+
+```{r}
+my_prod(265, 83)
+```
+
 Having described the general structure of an R function, let us go more into detail by analysing the three main components to R functions:
 
 - *body*: the code lines containing the commands and operations which deliver the desired output;
 - *arguments*: the inputs the user gives to the function which will determine the value or type of output of a function;
 - *environment*: every R function is built within an enviroment of reference from which to source possible input values and/or other functions necessary for it to work.
 
-While the first component is the collection of commands that we saw in the previous chapters, we will focus more on the last two components by building our own functions. 
+The next sections will therefore go more into detail regarding these components and describe how they contribute to the correct building of a function in R.
 
 ## Creating functions in R
 
@@ -66,7 +103,7 @@ gen_prod <- function (...) {
 }
 ```
 
-As you can see, we find a name for the function we want to build, which in this case is `gen_prod`, and specify that we are going to attribute a `function` to this name. Following this assignment, we find a set of curved brackets `(...)` followed by a set of curly brackets `{...}` which should include the *arguments* and *body* of the function respectively. While the *body* of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.
+As you can see, we find a name for the function we want to build, which in this case is `gen_prod`, and specify that we are going to attribute a `function` to this name. Following this assignment, we find a set of curved brackets `(...)` followed by a set of curly brackets `{...}` which should include the *arguments* and *body* of the function respectively. The next two sections will describe these two components and then discuss the third component which is the function *environment*.
 
 ### Function arguments
 
@@ -81,13 +118,13 @@ gen_prod <- function (first_arg, second_arg) {
 
 ```
 
-We will build this function such that the first argument has a higher (or equal) dimension than the second (e.g. the first is a vector while the second is another vector or a scalar). Let us suppose that `a = matrix(1:8, 4, 2)` is a 4 $\times$ 2 matrix and `b = matrix(8:1, 2, 4)` is a 2 $\times$ 4 matrix. Given that matrix multiplication, these arguments need to be entered in the correct order (such that the dimensions correspond):
+We will build this function such that the first argument has a higher (or equal) dimension than the second (e.g. the first is a vector while the second is another vector or a scalar). Let us suppose that `a = matrix(1:8, 4, 2)` is a 4 $\times$ 2 matrix and `b = matrix(8:1, 2, 4)` is a 2 $\times$ 4 matrix. Given that this is a matrix multiplication, these arguments need to be entered in the correct order (such that the dimensions correspond):
 
 ```{r, eval=FALSE}
 gen_prod(a, b)
 ```
 
-In the above syntax, we used so-called *positional matching* where arguments to the function must be entered in the same order as they are defined in the function itself. If these are entered in the wrong order the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of a function, but it is suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:
+In the above syntax, we used so-called *positional matching* where arguments to the function must be entered in the same order as they are defined in the function itself. If these are entered in the wrong order the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of a function, but it is generally suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:
 
 ```{r, eval=FALSE}
 gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
@@ -98,7 +135,7 @@ gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rn
 
 ```
 
-You can notice that we assigned the value `matrix(rnorm(9), 3, 3)` to both of these variables. This is their "default" value which, if not specified otherwise, is used as input for the function (which in this case would deliver a 3 $\times$ 3 matrix result of the product of the two default matrices generated randomly using standard normal realizations).
+You can notice that we assigned the value `matrix(rnorm(9), 3, 3)` to both of these variables. This is their "default" value which, if not specified otherwise, is used as input for the function (which in this case would deliver a 3 $\times$ 3 matrix result of the product of the two matrices whose elements are generated randomly from a standard normal distribution).
 
 Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through *perfect matching*, meaning that it searches for the arguments matching the exact name (in our case "first_arg" and "second_arg"). Failing to match the arguments by their exact name, R then searches for the arguments through *prefix matching*, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:
 
@@ -120,9 +157,38 @@ Finally, failing to match arguments in any of the above cases, R uses positional
 It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define the arguments as follows `a = matrix(rnorm(9), 3, 3), b = 2*a`. There are many other interesting ways of specifying argument values and they can be seen, for example, in @wickham2014advanced .
 ```
 
-A special framework in which argument can be assigned and automatically recognised is class object....
+A special framework in which to specify arguments for a general function is the case where the arguments are objects that belong to a specific class for which a base function can be used. A simple example is the "`ts`" class of objects in R for which a function exists such that the user simply needs to call the `plot()` function (without needing to know that the function behind is the `plot.ts()` function). Let us for example suppose that some function has created a matrix whose elements represent pixel intensities of an image and that this function has assigned a class to this matrix called `"pixel"`. In the following code we therefore simply assign this class to an object called `image`.
 
-Additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument `...` which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is given by the base `plot()` function in R where the predefined arguments are `x` and `y` (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the `...` argument (e.g. the user could specify the argument `type = "l"` even though this is not included among the specified arguments of the function `plot()`). This argument is particularly useful when you want to obtain values for other function arguments but don't want to specify their names in advance.
+```{r}
+image <- matrix(rgamma(100, shape = 2), 10, 10)
+class(image) = "pixel"
+```
+
+If we were to plot this, we would obtain the following plot:
+
+```{r}
+plot(image)
+```
+
+which simply plots the values for given coordinates. Given that this is not what we want, let us create a function that allows the user to simply use the `plot()` function which automatically recognises the object and plots a heatmap of the pixel intensity:
+
+```{r}
+plot.pixel <- function (mat) {
+  
+  suppressWarnings(heatmap(mat, Colv=NA, Rowv=NA, labRow=NA, labCol=NA, scale='none'))
+  
+}
+```
+
+If we use the `plot()` function now, we obtain the following:
+
+```{r}
+plot(image)
+```
+
+which produces the desired output simply using the general-purpose function `plot()`.
+
+To conclude, additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument `...` which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is again given by the base `plot()` function in R where the predefined arguments are `x` and `y` (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the `...` argument (e.g. the user could specify the argument `type = "l"` even though this is not included among the specified arguments of the function `plot()`). This argument is particularly useful when you want to obtain values for other function arguments but don't want to specify their names in advance.
 
 ### Function body
 
@@ -136,7 +202,7 @@ gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rn
 }
 ```
 
-If the user doesn't provide any arguments to the function, this will automatically return a 3 $\times$ 3 matrix (product of two 3 $\times$ 3 matrices built using randomly generated observations from a standard normal). Otherwise, the user can enter the elements of multiplication to obtain their output of interest. For this reason, it would be appropriate that the first and second argument given by the user had compatible dimensions. But what if the latter isn't the case? When building a function body it is important to consider the possible problems ("bugs") that could arise if the inputs the user have given cannot be managed by the lines of code you have written as body to your function. For example, let us suppose that the user provides two 3 $\times$ 2 matrices as the first argument and second arguments:
+If the user doesn't provide any arguments to the function, this will automatically return a 3 $\times$ 3 matrix (product of two 3 $\times$ 3 matrices built using randomly generated observations from a standard normal). Otherwise, the user can enter the elements of multiplication to obtain their output of interest. For this reason, it would be appropriate that the first and second argument given by the user had compatible dimensions. But what if the latter isn't the case? When building a function body it is important to consider the possible problems ("bugs") that could arise if the inputs the user has given cannot be managed by the body of code you have written. For example, let us suppose that the user provides two 3 $\times$ 2 matrices as the first and second arguments:
 
 ```{r}
 gen_prod(matrix(rnorm(6), 3, 2), matrix(rnorm(6), 3, 2))
@@ -290,11 +356,54 @@ gen_prod(matrix(rnorm(9),3,3), rnorm(1))
 Additional check procedures should be carried out in order to understand if the first object has equal or higher dimensions compared to the second (although the user should be made aware of this in the description of the function). However we leave this exercise to the reader since it would simply be redundant in the message conveyed on programming the body of a function. 
 ```
 
-As you can see, the body of a function can rapidly become lengthy and complex when adding control statements and procedures to it. This can become an issue if you program a complex function and then have to share it with a collaborator or modify it after some time you haven't used it. It is therefore good practice to comment your functions and make sure that the objects consisting in the output of your function are clear to someone who reads the function. In the latter case, the `return()` function
+As you can see, the body of a function can rapidly become lengthy and complex when adding control statements and computations to it. This can become an issue if you program a complex function and then have to share it with a collaborator or modify it after some time you haven't used it. It is therefore good practice to comment your functions and make sure that the objects consisting in the output of your function are clear to someone who reads the function. In the latter case, the `return()` function makes sure that only the objects that you're interested in are returned to the user (avoiding that eventual unassigned and unimportant values are returned).
+
+```{r, eval=FALSE}
+gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  # Make sure that all objects are considered as matrices
+  first_arg <- as.matrix(first_arg)
+  second_arg <- as.matrix(second_arg)
+  
+  # Check if second argument is a scalar and, if so, return product (prod)
+  if(dim(second_arg)[1]==1 & dim(second_arg)[2]==1) {
+    
+    prod <- first_arg*second_arg[1]
+    
+  } else {
+    
+    # Check if the objects have compatible dimensions and, if so, return product (prod)
+    if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+      prod <- first_arg%*%second_arg
+    
+    } else {
+  
+      # Check if other dimensions are compatible if the initial ones are not and, if so, transpose the second object and return product (prod) with warning for the user
+      if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+        warning("Second object has been transposed")
+        prod <- first_arg%*%t(second_arg)
+      
+      } else {
+      
+        # Output an error message if none of the dimensions are compatible
+        stop("Object dimensions are not compatible")
+      
+      }
+    
+    }
+    
+  }
+  
+  return(prod)
+  
+}
+```
 
 ## Function environment
 
-Generally speaking, an environment is a virtual space in which certain names are associated to specific objects and values. The main characterstics of an environment are the following (see Wickham [Environments](http://adv-r.had.co.nz/Environments.html)):
+Generally speaking, an environment is a virtual space in which certain names are associated to specific objects and values. The main characterstics of an environment are the following (see [Wickham: Environments](http://adv-r.had.co.nz/Environments.html)):
 
 * Every name in an environment is unique
 * Every environment has a parent
@@ -340,19 +449,18 @@ prod <- 1
 We know that our `gen_prod()` function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:
 
 ```{r}
-output <- gen_prod(rnorm(100, 10, 10), rnorm(100, 10, 10))
+output <- gen_prod(matrix(rnorm(100), 10, 10), matrix(rnorm(100), 10, 10))
 prod
 ```
 
-As can be seen, although our `gen_prod()` function defines , this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.
+As can be seen, although our `gen_prod()` function defines the object `prod`, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) and is removed once the function has completed execution.
 
 ## Example (continued): Least-squares function
 
-To implement our linear regression function we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. While the latter has already been investigated, click on the button below to review the algebra that underlies least squares regression.
+We now have all the elements and information we need to implement our linear regression function. To do so we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. While the latter has already been investigated, click on the button below to review the algebra that underlies least squares regression.
 
 <button id="hidebutton1">The Algebra behind Least-Squares Inference</button>
 <div id="hideclass1">
-
 Based on the linear algebra behind least-squares regression, let us implement a function that delivers inference on the parameter vector $\boldsymbol{\beta}$ and therefore define the skeleton of this R function:
 
 ```{r, eval=FALSE}
@@ -480,10 +588,10 @@ In general, the residual variance is unknown and needs to be estimated. A common
 <!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
 
 This chapter aims at implementing Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat). 
-
 </div>
 
-Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable $y$ and the distance as the explanatory variable $x$. Let us therefore start by implementing  Eq. \@ref(eq:lsformula) (see the "The Algebra behind Least-Squares Inference" button) within our function in order to get an estimate of $\beta$.
+
+Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to build a function to estimate the Hubble constant by using the velocity as the response variable $y$ and the distance as the explanatory variable $x$. Let us therefore start by implementing  Eq. \@ref(eq:lsformula) (see the "The Algebra behind Least-Squares Inference" button) within a function in order to get an estimate of $\beta$.
 
 ```{r, eval=FALSE}
 my_lm = function(response, covariates) {
@@ -502,11 +610,13 @@ my_lm = function(response, covariates) {
 }
 ```
 
+As you can see, we've called our function `my_lm()` and have given the arguments `response` (the response variable $y$) and `covariates` (the explanatory variables $x$) to it.
+
 ```{block2,  type='rmdimportant'}
-Before discussing the body and output of this function, we can first underline an important aspect of programming. Indeed, we defined the number of covariates (and length of the vector $\boldsymbol{\beta}$) as `p <- dim(covariates)[2]` where the function `dim()` presupposes that the object `covariates` is a matrix. Nevertheless, in our case the object `covariates` would correspond to `hubble$x` which is a vector and therefore this operation would return `NULL` as an output. When programming it is therefore important to think ahead and understand if there are any particular cases where parts of the body of your function may not work.
+Before discussing the body and output of this function, we can again underline an important aspect of programming. Indeed, we defined the number of covariates (and length of the vector $\boldsymbol{\beta}$) as `p <- dim(covariates)[2]` where the function `dim()` presupposes that the object `covariates` is a matrix. Nevertheless, in our case the object `covariates` would correspond to `hubble$x` which is a vector and therefore this operation would return `NULL` as an output. When programming it is therefore important to think ahead and understand if there are any particular cases where parts of the body of your function may not work.
 ```
 
-Taking into account the above note, it would be appropriate to make sure that the code in the body of the function works also in particular cases (e.g. the `covariates` object is a vector and not a matrix). In our case we therefore use the function `as.matrix()` which forces an object to be considered as a matrix in order for it to be used within matrix opeations.
+Taking into account the above note, it would be appropriate to make sure that the code in the body of the function works also in particular cases (e.g. the `covariates` object is a vector and not a matrix). In our case we therefore use the function `as.matrix()` (as seen in previous examples) which forces an object to be considered as a matrix in order for it to be used within matrix opeations.
  
 ```{r, eval=FALSE}
 my_lm = function(response, covariates) {
@@ -535,7 +645,7 @@ Other checks can be introduced at the beginning of the function to make sure tha
 
 As you may notice, using the matrix operators we obtain an object we decide to call `beta.hat` and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the `return()` function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using `return()` we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on). 
 
-With the `my_lm()` function we can now estimate the value for $\beta$ that we denote as $\hat{\beta}$. However, we don't have an estimate of its variance for which we would need to implement Equations \@ref(eq:lsvar) and \@ref(eq:lssig2hat). We can therefore add these equations to the body of our `my_lm()` function:
+With the `my_lm()` function we can now estimate the value for $\beta$ that we denote as $\hat{\beta}$. However, we don't have an estimate of its variance for which we would need to implement Equations \@ref(eq:lsvar) and \@ref(eq:lssig2hat) (see the "The Algebra behind Least-Squares Inference" button). We can therefore add these equations to the body of our `my_lm()` function:
 
 ```{r, eval=FALSE}
 my_lm = function(response, covariates) {
@@ -617,7 +727,7 @@ my_lm = function(response, covariates, alpha = 0.05) {
 }
 ```
 
-We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the `my_lm()` function performs compared to the base `lm()` function.
+We now have a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the `my_lm()` function performs compared to the base `lm()` function.
 
 ```{r}
 # Linear regression with lm() function
@@ -635,7 +745,7 @@ row.names(results) = c("Beta", "Sigma")
 results
 ```
 
-As one can notice, the two procedures give the same outputs indicating that our `my_lm()` function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of $s^{-1}$).
+As one can notice, the two procedures give the same outputs indicating that our `my_lm()` function well implements the least-squares regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of $s^{-1}$).
 
 ```{r, eval=FALSE}
 hubble.const <- fit_my_lm$beta/3.09e19 # Estimated Hubble's constant in inverse seconds
@@ -651,7 +761,7 @@ Now, let's suppose that we have a hypothesis on the age of the universe, for exa
   H_0 \, : \, \beta = 163 \times 10^6 ,
 \end{equation*}
 
-since this value of $\beta$ would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true $\beta$ is not equal to the above quantity (i.e. $H_A \, : \, \beta \neq 163 \times 10^6$). ... Let us therefore replace the values in Eq. \@ref(eq:cibeta):
+since this value of $\beta$ would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true $\beta$ is not equal to the above quantity (i.e. $H_A \, : \, \beta \neq 163 \times 10^6$). In order to test the null hypothesis, we need to check whether the postulated value of $\beta$ lies within the confidence interval that we can extract from our function output as follows:
 
 ```{r}
 # 95% confidence interval for the Hubble constant
@@ -659,3 +769,16 @@ fit_my_lm$ci
 ```
 
 The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95\% level. 
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
+    });
+</script>

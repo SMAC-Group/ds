@@ -286,9 +286,9 @@ It is possible to also specify arguments in terms of the default value of other 
 <p>which consequently gives us</p>
 <pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(3))</code></pre>
 <pre><code>##            [,1]
-## [1,] -0.6719792
-## [2,] -0.4178636
-## [3,]  0.3992196</code></pre>
+## [1,]  2.4005257
+## [2,] -0.4693399
+## [3,]  1.4959898</code></pre>
 <p>Finally, a last check that can be made is whether the second argument is a scalar. Indeed, if the first argument is not scalar, our function would not perform a multiplication:</p>
 <pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(1))</code></pre>
 <pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), rnorm(1)): Object dimensions are not compatible</code></pre>
@@ -328,10 +328,10 @@ It is possible to also specify arguments in terms of the default value of other 
 }</code></pre>
 <p>which allows us to have</p>
 <pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(1))</code></pre>
-<pre><code>##             [,1]         [,2]        [,3]
-## [1,] -0.02290019  0.001914984 -0.01474433
-## [2,] -0.07480229  0.129701170  0.01841426
-## [3,] -0.11700396 -0.025857447 -0.02778680</code></pre>
+<pre><code>##            [,1]        [,2]        [,3]
+## [1,] -0.6766887  0.09156818  0.03756608
+## [2,]  0.4287791  0.40929012 -0.33422768
+## [3,] -0.2075748 -0.86747905  0.24951492</code></pre>
 
 <div class="rmdimportant">
 Additional check procedures should be carried out in order to understand if the first object has equal or higher dimensions compared to the second (although the user should be made aware of this in the description of the function). However we leave this exercise to the reader since it would simply be redundant in the message conveyed on programming the body of a function.
@@ -368,14 +368,15 @@ x &lt;- c(2,4,5,3,7,9)
 var(x)</code></pre>
 <pre><code>## [1] 6.8</code></pre>
 <p>The result is always the same although the <code>var()</code> function would have halted execution if it had considered our own <code>missing()</code> function. This is possible thanks the to the package namespace which keeps packages independent through the separate use of enclosing and binding environments.</p>
-<p>Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our <code>my_lm</code> function but, before doing so, we define an object called <code>quant</code> and assign a value to it:</p>
-<pre class="r"><code>quant &lt;- 1</code></pre>
-<p>We know that our <code>my_lm()</code> function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:</p>
-<pre class="r"><code>fit &lt;- my_lm(rnorm(100), rnorm(100))</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;my_lm&quot;</code></pre>
-<pre class="r"><code>quant</code></pre>
+<p>Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our <code>gen_prod</code> function but, before doing so, we define an object called <code>prod</code> and assign a value to it:</p>
+<pre class="r"><code>prod &lt;- 1</code></pre>
+<p>We know that our <code>gen_prod()</code> function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:</p>
+<pre class="r"><code>output &lt;- gen_prod(rnorm(100, 10, 10), rnorm(100, 10, 10))</code></pre>
+<pre><code>## Warning in gen_prod(rnorm(100, 10, 10), rnorm(100, 10, 10)): Second object
+## has been transposed</code></pre>
+<pre class="r"><code>prod</code></pre>
 <pre><code>## [1] 1</code></pre>
-<p>As can be seen, although our <code>my_lm()</code> function defines <code>quant &lt;- 1 - alpha/2</code>, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.</p>
+<p>As can be seen, although our <code>gen_prod()</code> function defines , this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.</p>
 </div>
 <div id="example-continued-least-squares-function" class="section level2">
 <h2>Example (continued): Least-squares function</h2>
