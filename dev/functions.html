@@ -173,49 +173,308 @@ It is important to make sure that the function name is specific and does not cor
 <p>As you can see, we find a name for the function we want to build, which in this case is <code>gen_prod</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. While the <em>body</em> of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.</p>
 <div id="function-arguments" class="section level3">
 <h3>Function arguments</h3>
-<p>Before implementing a function, we first need to ask ourselves what is the basic information that we need in order to obtain the desired output. In the case of a general product, as mentioned above, the only information that is essential to perform the operation is the first element and the second element we wish to multiply. These will therefore have to be the elements we need to provide to our function in order for it to deliver the desired product and, in R, we can provide the names we want for them (say <code>x</code> and <code>y</code>):</p>
-<pre class="r"><code>gen_prod &lt;- function (x, y) {
+<p>Before implementing a function, we first need to ask ourselves what is the basic information that we need in order to obtain the desired output. In the case of a general product, as mentioned above, the only information that is essential to perform the operation is the first element and the second element we wish to multiply. These will therefore have to be the elements we need to provide to our function in order for it to deliver the desired product and, in R, we can provide the names we want for them (say <code>first_arg</code> and <code>second_arg</code>):</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg, second_arg) {
   
   ...
   
 }</code></pre>
-<p>In the above syntax, we used so-called <em>positional matching</em> where arguments to the function must be entered in the same order as they are defined in the function itself. Let us suppose that <code>a = matrix(1:8, 4, 2)</code> is a 4 <span class="math inline">\(\times\)</span> 2 matrix and <code>b = matrix(8:1, 2, 4)</code> is a 2 <span class="math inline">\(\times\)</span> 4 matrix. These arguments need to be entered in the correct order:</p>
-<pre class="r"><code>my_lm(a, b)</code></pre>
-<p>since otherwise the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of the function, but it is suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:</p>
-<pre class="r"><code>my_lm &lt;- function (y = NA, X = NA) {
+<p>We will build this function such that the first argument has a higher (or equal) dimension than the second (e.g. the first is a vector while the second is another vector or a scalar). Let us suppose that <code>a = matrix(1:8, 4, 2)</code> is a 4 <span class="math inline">\(\times\)</span> 2 matrix and <code>b = matrix(8:1, 2, 4)</code> is a 2 <span class="math inline">\(\times\)</span> 4 matrix. Given that matrix multiplication, these arguments need to be entered in the correct order (such that the dimensions correspond):</p>
+<pre class="r"><code>gen_prod(a, b)</code></pre>
+<p>In the above syntax, we used so-called <em>positional matching</em> where arguments to the function must be entered in the same order as they are defined in the function itself. If these are entered in the wrong order the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of a function, but it is suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
   
   ...
   
 }</code></pre>
-<p>You can notice that we assigned the value <code>NA</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would either give an error or output <code>NA</code>). For the purpose of illustration however, we will change the argument names as follows:</p>
-<pre class="r"><code>my_lm &lt;- function (response, covariates) {
-  
-  ...
-  
-}</code></pre>
-<p>where <code>response</code> and <code>covariates</code> become the names of the variables that will be used within the body of the function for which we don’t specify default values.</p>
-
-<div class="rmdnote">
-According to the type of function, it is possible to give other default values that would deliver an output (see for example the values of the arguments <code>mean</code> and <code>sd</code> in the base function <code>rnorm()</code>).
-</div>
-<p></p>
-<p>In this new setting, we would therefore use the function as follows:</p>
-<pre class="r"><code>my_lm(response = hubble$y, covariates = hubble$x)</code></pre>
-<p>Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through <em>perfect matching</em>, meaning that it searches for the arguments matching the exact name (in our case “response” and “covariates”). Failing to match the arguments by their exact name, R then searches for the arguments through <em>prefix matching</em>, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:</p>
-<pre class="r"><code>my_lm(r = hubble$y, cova = hubble$x)</code></pre>
+<p>You can notice that we assigned the value <code>matrix(rnorm(9), 3, 3)</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would deliver a 3 <span class="math inline">\(\times\)</span> 3 matrix result of the product of the two default matrices generated randomly using standard normal realizations).</p>
+<p>Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through <em>perfect matching</em>, meaning that it searches for the arguments matching the exact name (in our case “first_arg” and “second_arg”). Failing to match the arguments by their exact name, R then searches for the arguments through <em>prefix matching</em>, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:</p>
+<pre class="r"><code>gen_prod(second_arg = b, first_arg = a)</code></pre>
+<p>or even</p>
+<pre class="r"><code>gen_prod(fi = a, second = b)</code></pre>
 <p>So, as long we correctly specify the beginning of the argument’s name and as long as it’s not ambigiuous (meaning that its name cannot be confused with that of another argument), then it is possible to provide only part of the argument’s name and R will recognise and correctly associate the provided value with the corresponding variable.</p>
-<p>Finally, failing to match arguments in any of the above cases, R uses positional matching and therefore assigns values to the variables based on the order they have been entered when calling the function. We could therefore go back to using the function like we did at the start by specifying <code>my_lm(hubble$y, hubble$x)</code>.</p>
+<p>Finally, failing to match arguments in any of the above cases, R uses positional matching and therefore assigns values to the variables based on the order they have been entered when calling the function. We could therefore go back to using the function like we did at the start by specifying <code>gen_prod(a, b)</code>.</p>
 
 <div class="rmdnote">
-It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define a simple function <code>add(a, b)</code> (which produces the sum of the arguments <code>a</code> and <code>b</code>) and then specify the arguments as <code>a = 1, b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">@wickham2014advanced</span> .
+It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define the arguments as follows <code>a = matrix(rnorm(9), 3, 3), b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">@wickham2014advanced</span> .
 </div>
 <p></p>
+<p>A special framework in which argument can be assigned and automatically recognised is class object….</p>
 <p>Additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = &quot;l&quot;</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
 </div>
 <div id="function-body" class="section level3">
 <h3>Function body</h3>
-<p>The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat) and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R.</p>
-<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. @ref(eq:lsformula) within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
+<p>The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement a function that delivers multiplication of objects of different nature. Let us start by delivering the product of the objects <code>first_arg</code> and <code>second_arg</code>:</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  first_arg%*%second_arg
+  
+}</code></pre>
+<p>If the user doesn’t provide any arguments to the function, this will automatically return a 3 <span class="math inline">\(\times\)</span> 3 matrix (product of two 3 <span class="math inline">\(\times\)</span> 3 matrices built using randomly generated observations from a standard normal). Otherwise, the user can enter the elements of multiplication to obtain their output of interest. For this reason, it would be appropriate that the first and second argument given by the user had compatible dimensions. But what if the latter isn’t the case? When building a function body it is important to consider the possible problems (“bugs”) that could arise if the inputs the user have given cannot be managed by the lines of code you have written as body to your function. For example, let us suppose that the user provides two 3 <span class="math inline">\(\times\)</span> 2 matrices as the first argument and second arguments:</p>
+<pre class="r"><code>gen_prod(matrix(rnorm(6), 3, 2), matrix(rnorm(6), 3, 2))</code></pre>
+<pre><code>## Error in first_arg %*% second_arg: non-conformable arguments</code></pre>
+<p>In this case we see that the function outputs an error and it would be appropriate to insert a checking procedure at the start of our function in order to consider all possible objects that can be multiplied and issue explanations that are useful to the user in order for them to realise what the problem is. We could therefore add a check procedure before we perform the multiplication:</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+    first_arg%*%second_arg
+    
+  } else {
+    
+    stop(&quot;Object dimensions are not compatible&quot;)
+    
+  }
+  
+  
+}</code></pre>
+<p>As you can see in the example above, we have used a control statement in which we check whether the dimensions for matrix multiplication are respected. If they are, then the function returns the desired product while it returns an error message if this is not the case. The latter is done via the use of the <code>stop()</code> function which outputs the text <code>Error in ...: Object dimensions are not compatible</code> if the dimensions are not compatible:</p>
+<pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), matrix(rnorm(12),4,3))</code></pre>
+<pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), matrix(rnorm(12), 4, 3)): Object dimensions are not compatible</code></pre>
+<p>When a problem is detected in the body of a function, there may not necessarily be the need to interrupt the execution of the function with an error message. Indeed, in the above example, we could allow the function to check if the number of columns in the second object is compatible with that of the first and, if so, transpose the second matrix in order to obtain the correct multiplication with a warning message notifying the user that this has been done:</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+    first_arg%*%second_arg
+    
+  } else {
+  
+    if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+      warning(&quot;Second object has been transposed&quot;)
+      first_arg%*%t(second_arg)
+      
+    } else {
+      
+      stop(&quot;Object dimensions are not compatible&quot;)
+      
+    }
+    
+  }
+  
+}</code></pre>
+<p>The function <code>warning()</code> therefore allows to output a result even though there can be some errors in the inputs, notifying the user of the steps made to achieve this output (please type <code>?message</code> to understand what this function allows you to do to communicate with the user). However, let us suppose that the second object entered in this function is a vector. Given our current body in the function we would get the following output:</p>
+<pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(3))</code></pre>
+<pre><code>## Error in if (dim(first_arg)[2] == dim(second_arg)[1]) {: argument is of length zero</code></pre>
+<p>We obtain this error because the function <code>dim()</code> only works on matrices (not vectors or scalars), therefore we can anticipate this problem by making sure that all objects are considered as matrices:</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  first_arg &lt;- as.matrix(first_arg)
+  second_arg &lt;- as.matrix(second_arg)
+  
+  if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+    first_arg%*%second_arg
+    
+  } else {
+  
+    if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+      warning(&quot;Second object has been transposed&quot;)
+      first_arg%*%t(second_arg)
+      
+    } else {
+      
+      stop(&quot;Object dimensions are not compatible&quot;)
+      
+    }
+    
+  }
+  
+}</code></pre>
+<p>which consequently gives us</p>
+<pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(3))</code></pre>
+<pre><code>##            [,1]
+## [1,] -0.6719792
+## [2,] -0.4178636
+## [3,]  0.3992196</code></pre>
+<p>Finally, a last check that can be made is whether the second argument is a scalar. Indeed, if the first argument is not scalar, our function would not perform a multiplication:</p>
+<pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(1))</code></pre>
+<pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), rnorm(1)): Object dimensions are not compatible</code></pre>
+<p>although we can always multiply a scalar by a matrix or a vector. Therefore we can add one last control statement:</p>
+<pre class="r"><code>gen_prod &lt;- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  first_arg &lt;- as.matrix(first_arg)
+  second_arg &lt;- as.matrix(second_arg)
+  
+  if(dim(second_arg)[1]==1 &amp; dim(second_arg)[2]==1) {
+    
+    first_arg*second_arg[1]
+    
+  } else {
+    
+    if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+      first_arg%*%second_arg
+    
+    } else {
+  
+      if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+        warning(&quot;Second object has been transposed&quot;)
+        first_arg%*%t(second_arg)
+      
+      } else {
+      
+        stop(&quot;Object dimensions are not compatible&quot;)
+      
+      }
+    
+    }
+    
+  }
+  
+}</code></pre>
+<p>which allows us to have</p>
+<pre class="r"><code>gen_prod(matrix(rnorm(9),3,3), rnorm(1))</code></pre>
+<pre><code>##             [,1]         [,2]        [,3]
+## [1,] -0.02290019  0.001914984 -0.01474433
+## [2,] -0.07480229  0.129701170  0.01841426
+## [3,] -0.11700396 -0.025857447 -0.02778680</code></pre>
+
+<div class="rmdimportant">
+Additional check procedures should be carried out in order to understand if the first object has equal or higher dimensions compared to the second (although the user should be made aware of this in the description of the function). However we leave this exercise to the reader since it would simply be redundant in the message conveyed on programming the body of a function.
+</div>
+<p></p>
+<p>As you can see, the body of a function can rapidly become lengthy and complex when adding control statements and procedures to it. This can become an issue if you program a complex function and then have to share it with a collaborator or modify it after some time you haven’t used it. It is therefore good practice to comment your functions and make sure that the objects consisting in the output of your function are clear to someone who reads the function. In the latter case, the <code>return()</code> function</p>
+</div>
+</div>
+<div id="function-environment" class="section level2">
+<h2>Function environment</h2>
+<p>Generally speaking, an environment is a virtual space in which certain names are associated to specific objects and values. The main characterstics of an environment are the following (see Wickham <a href="http://adv-r.had.co.nz/Environments.html">Environments</a>):</p>
+<ul>
+<li>Every name in an environment is unique</li>
+<li>Every environment has a parent</li>
+</ul>
+<p>The second characteristic means that when working within a given environment, you’re also working in an environment (parent) which includes that environment. For example, in R the usual environment one works in is the “global environment” and its parent is the last package that has been loaded in the R session while the “base environment” is a special case of the global environment and is the environment of the base package (whose parent is the empty environment).</p>
+<p>Within this structure, also functions have their own types of environments. Based on this structure, functions will look for the names of objects (and associated values) through scoping methods that start within the function’s environment and then, if these are not found, proceed to looking for the names in the parent environments. The types of environments for R functions are the following:</p>
+<ul>
+<li>Enclosing: this is the environment in which the function was created (usually the global environment) and each function only has one enclosing environment</li>
+<li>Binding: this is the environment in which the function is associated to a given name (usually the enclosing and binding environment are the same)</li>
+<li>Execution: this environment is created each time a function is called and in which the objects created by this function during execution are stored</li>
+<li>Calling: this environment is associated with the execution environment and reports the environment in which a function was called</li>
+</ul>
+<p>First of all, the enclosing environment of a function can be found by using the <code>environment()</code> function:</p>
+<pre class="r"><code>environment(gen_prod)</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>With this function therefore informs the user on the enclosing environment and its main difference with the binding environment consists in the fact that the first determines how to find values (lexical scoping) while the second determines how to find the function. The reason for this separation (at least one of the main reasons) lies in the need to separate package namespaces. By the latter we mean, for example, the case where packages have the same names for different functions, allowing to preserve the name of the function in the enclosing environment unless otherwise specified. An example can be given with the <code>var()</code> function (to compute the variance) which uses the <code>missing()</code> function (in the base package) to check if a value is specified as an argument to a function (check with <code>?missing</code>). Let us suppose we compute the variance of a vector:</p>
+<pre class="r"><code>x &lt;- c(2,4,5,3,7,9)
+var(x)</code></pre>
+<pre><code>## [1] 6.8</code></pre>
+<p>Let us now create another function called <code>missing</code> in the global environment which takes <code>x</code> as an argument but only returns 100. After this, we execute the code above again:</p>
+<pre class="r"><code>missing = function (x) 100
+x &lt;- c(2,4,5,3,7,9)
+var(x)</code></pre>
+<pre><code>## [1] 6.8</code></pre>
+<p>The result is always the same although the <code>var()</code> function would have halted execution if it had considered our own <code>missing()</code> function. This is possible thanks the to the package namespace which keeps packages independent through the separate use of enclosing and binding environments.</p>
+<p>Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our <code>my_lm</code> function but, before doing so, we define an object called <code>quant</code> and assign a value to it:</p>
+<pre class="r"><code>quant &lt;- 1</code></pre>
+<p>We know that our <code>my_lm()</code> function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:</p>
+<pre class="r"><code>fit &lt;- my_lm(rnorm(100), rnorm(100))</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;my_lm&quot;</code></pre>
+<pre class="r"><code>quant</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>As can be seen, although our <code>my_lm()</code> function defines <code>quant &lt;- 1 - alpha/2</code>, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.</p>
+</div>
+<div id="example-continued-least-squares-function" class="section level2">
+<h2>Example (continued): Least-squares function</h2>
+<p>To implement our linear regression function we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. While the latter has already been investigated, click on the button below to review the algebra that underlies least squares regression.</p>
+<button id="hidebutton1">
+The Algebra behind Least-Squares Inference
+</button>
+<div id="hideclass1">
+
+<p>Based on the linear algebra behind least-squares regression, let us implement a function that delivers inference on the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and therefore define the skeleton of this R function:</p>
+<pre class="r"><code>my_lm &lt;- function (...) {
+  
+  ...
+  
+}</code></pre>
+<p>As you can see, we find a name for the function we want to build, which in this case is <code>my_lm</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. While the <em>body</em> of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.</p>
+<p>In the framework of linear regression the goal is to explain an <span class="math inline">\(n \times 1\)</span> vector of observations <span class="math inline">\(\mathbf{y}\)</span> (representing the response variable) through a linear combination of <span class="math inline">\(p\)</span> explanatory variables (or predictors or covariates) that are stored in an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{X}\)</span>. More specifically, the framework is the following: <span class="math display">\[\mathbf{y} = \mathbf{X}^T\boldsymbol{\beta} + \mathbf{\epsilon}\]</span>, where <span class="math inline">\(\boldsymbol{\beta}\)</span> is the <span class="math inline">\(p \times 1\)</span> parameter vector of interest that links the covariates with the response variable while <span class="math inline">\(\mathbf{\epsilon}\)</span> is the <span class="math inline">\(n \times 1\)</span> random error vector with null expectation and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>When we collect data for the purpose of linear regression, the unknown terms in the above setting are the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and the variance parameter <span class="math inline">\(\sigma^2\)</span>. In order to estimate <span class="math inline">\(\boldsymbol{\beta}\)</span>, assuming that the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, the least-squares estimator for it is given by:</p>
+<span class="math display">\[\begin{equation}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
+(\#eq:lsformula)
+\end{equation}\]</span>
+<p>In the comment box below, we derive Eq. @ref(eq:lsformula). If you’re not familiar with such calculations we suggest you read some introduction to linear regression (see for example <span class="citation">@seber2012linear</span>).</p>
+
+<div class="rmdtip">
+<p>The least-square estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
+<span class="math display">\[\begin{equation*}
+ \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
+\end{equation*}\]</span>
+<p>The first step of this derivation is to reexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
+<span class="math display">\[\begin{equation*}
+    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}\]</span>
+<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transposed without changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, our next step is to the following derivative</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
+\end{equation*}\]</span>
+<p>To do this we should keep in mind the following results</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
+   \boldsymbol{y}^T \mathbf{X},
+\end{equation*}\]</span>
+<p>and</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} =  2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X}.
+\end{equation*}\]</span>
+<p>The proof of these two results can for example be found in Propositions 7 and 9 of <a href="http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf">Prof. Barnes’ notes</a>. Using these two results we obtain</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
+\end{equation*}\]</span>
+<p>By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> through the follwing equation</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
+\end{equation*}\]</span>
+<p>which is equivalent to</p>
+<span class="math display">\[\begin{equation*}
+  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}\]</span>
+<p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
+\end{equation*}\]</span>
+which verifies Eq. @ref(eq:lsformula).
+</div>
+<p></p>
+<p>The variance of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
+<span class="math display">\[\begin{equation}
+\text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+(\#eq:lsvar)
+\end{equation}\]</span>
+<p>the derivation of this result is explained in the comment box below.</p>
+
+<div class="rmdtip">
+<p>If we let <span class="math inline">\(\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T\)</span>, then we have</p>
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+  \text{Var} \left(\hat{\boldsymbol{\beta}} \right) &amp;= \text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T \\
+  &amp; = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T  \mathbf{X} \left(\mathbf{X}^T \mathbf{X}\right)^{-1} = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+\end{aligned}
+\end{equation*}\]</span>
+<p>which verifies Eq. @ref(eq:lsvar). To understand the above derivation it may be useful to remind and point out a few things:</p>
+<ul>
+<li><span class="math inline">\(\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T\)</span> since <span class="math inline">\(\mathbf{A}\)</span> is not a random variable.</li>
+<li><span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span> since<span class="math inline">\(\text{Var} \left( \mathbf{y} \right) = \sigma^2 \mathbf{I}\)</span> and therefore we have <span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span>.</li>
+<li>The result <span class="math inline">\(\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}\)</span> is based on the fact that <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix <span class="math inline">\(\mathbf{B}\)</span> is such that the inverse and transpose operator commute, meaning that <span class="math inline">\(( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T\)</span>. Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)</span> is square and (by assumption) invertible we have <span class="math inline">\([(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}\)</span>.
+</div>
+</li>
+</ul>
+<p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
+<span class="math display">\[\begin{equation}
+  \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
+  (\#eq:lssig2hat)
+\end{equation}\]</span>
+<!-- DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW. -->
+<!-- ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta) -->
+<!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
+<p>This chapter aims at implementing Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat).</p>
+</div>
+<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. @ref(eq:lsformula) (see the “The Algebra behind Least-Squares Inference” button) within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
 <pre class="r"><code>my_lm = function(response, covariates) {
   
   # Define parameters
@@ -328,143 +587,7 @@ Other checks can be introduced at the beginning of the function to make sure tha
   return(list(beta = beta.hat, sigma2 = sigma2.hat, variance_beta = var.beta, ci = ci.beta))
   
 }</code></pre>
-<p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). We will proceed to comparing the outputs of our function with those of the <code>lm()</code> function in base R but, before doing so, the next section will briefly discuss the third component of an R function which is its environment.</p>
-</div>
-</div>
-<div id="function-environment" class="section level2">
-<h2>Function environment</h2>
-<p>Generally speaking, an environment is a virtual space in which certain names are associated to specific objects and values. The main characterstics of an environment are the following (see Wickham <a href="http://adv-r.had.co.nz/Environments.html">Environments</a>):</p>
-<ul>
-<li>Every name in an environment is unique</li>
-<li>Every environment has a parent</li>
-</ul>
-<p>The second characteristic means that when working within a given environment, you’re also working in an environment (parent) which includes that environment. For example, in R the usual environment one works in is the “global environment” and its parent is the last package that has been loaded in the R session while the “base environment” is a special case of the global environment and is the environment of the base package (whose parent is the empty environment).</p>
-<p>Within this structure, also functions have their own types of environments. Based on this structure, functions will look for the names of objects (and associated values) through scoping methods that start within the function’s environment and then, if these are not found, proceed to looking for the names in the parent environments. The types of environments for R functions are the following:</p>
-<ul>
-<li>Enclosing: this is the environment in which the function was created (usually the global environment) and each function only has one enclosing environment</li>
-<li>Binding: this is the environment in which the function is associated to a given name (usually the enclosing and binding environment are the same)</li>
-<li>Execution: this environment is created each time a function is called and in which the objects created by this function during execution are stored</li>
-<li>Calling: this environment is associated with the execution environment and reports the environment in which a function was called</li>
-</ul>
-<p>First of all, the enclosing environment of a function can be found by using the <code>environment()</code> function:</p>
-<pre class="r"><code>environment(my_lm)</code></pre>
-<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
-<p>With this function therefore informs the user on the enclosing environment and its main difference with the binding environment consists in the fact that the first determines how to find values (lexical scoping) while the second determines how to find the function. The reason for this separation (at least one of the main reasons) lies in the need to separate package namespaces. By the latter we mean, for example, the case where packages have the same names for different functions, allowing to preserve the name of the function in the enclosing environment unless otherwise specified. An example can be given with the <code>var()</code> function (to compute the variance) which uses the <code>missing()</code> function (in the base package) to check if a value is specified as an argument to a function (check with <code>?missing</code>). Let us suppose we compute the variance of a vector:</p>
-<pre class="r"><code>x &lt;- c(2,4,5,3,7,9)
-var(x)</code></pre>
-<pre><code>## [1] 6.8</code></pre>
-<p>Let us now create another function called <code>missing</code> in the global environment which takes <code>x</code> as an argument but only returns 100. After this, we execute the code above again:</p>
-<pre class="r"><code>missing = function (x) 100
-x &lt;- c(2,4,5,3,7,9)
-var(x)</code></pre>
-<pre><code>## [1] 6.8</code></pre>
-<p>The result is always the same although the <code>var()</code> function would have halted execution if it had considered our own <code>missing()</code> function. This is possible thanks the to the package namespace which keeps packages independent through the separate use of enclosing and binding environments.</p>
-<p>Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our <code>my_lm</code> function but, before doing so, we define an object called <code>quant</code> and assign a value to it:</p>
-<pre class="r"><code>quant &lt;- 1</code></pre>
-<p>We know that our <code>my_lm()</code> function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:</p>
-<pre class="r"><code>fit &lt;- my_lm(rnorm(100), rnorm(100))
-quant</code></pre>
-<pre><code>## [1] 1</code></pre>
-<p>As can be seen, although our <code>my_lm()</code> function defines <code>quant &lt;- 1 - alpha/2</code>, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.</p>
-</div>
-<div id="example-continued-least-squares-function" class="section level2">
-<h2>Example (continued): Least-squares function</h2>
-<p>To implement our linear regression function we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. While the latter has already been investigated, click on the button below to review the algebra that underlies least squares regression.</p>
-<button id="hidebutton1">
-The Algebra behind Least-Squares Inference
-</button>
-<div id="hideclass1">
-
-<p>Based on the linear algebra behind least-squares regression, let us implement a function that delivers inference on the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and therefore define the skeleton of this R function:</p>
-<pre class="r"><code>my_lm &lt;- function (...) {
-  
-  ...
-  
-}</code></pre>
-<p>As you can see, we find a name for the function we want to build, which in this case is <code>my_lm</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. While the <em>body</em> of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.</p>
-<p>In the framework of linear regression the goal is to explain an <span class="math inline">\(n \times 1\)</span> vector of observations <span class="math inline">\(\mathbf{y}\)</span> (representing the response variable) through a linear combination of <span class="math inline">\(p\)</span> explanatory variables (or predictors or covariates) that are stored in an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{X}\)</span>. More specifically, the framework is the following: <span class="math display">\[\mathbf{y} = \mathbf{X}^T\boldsymbol{\beta} + \mathbf{\epsilon}\]</span>, where <span class="math inline">\(\boldsymbol{\beta}\)</span> is the <span class="math inline">\(p \times 1\)</span> parameter vector of interest that links the covariates with the response variable while <span class="math inline">\(\mathbf{\epsilon}\)</span> is the <span class="math inline">\(n \times 1\)</span> random error vector with null expectation and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>When we collect data for the purpose of linear regression, the unknown terms in the above setting are the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and the variance parameter <span class="math inline">\(\sigma^2\)</span>. In order to estimate <span class="math inline">\(\boldsymbol{\beta}\)</span>, assuming that the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, the least-squares estimator for it is given by:</p>
-<span class="math display">\[\begin{equation}
-  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
-(\#eq:lsformula)
-\end{equation}\]</span>
-<p>In the comment box below, we derive Eq. @ref(eq:lsformula). If you’re not familiar with such calculations we suggest you read some introduction to linear regression (see for example <span class="citation">@seber2012linear</span>).</p>
-
-<div class="rmdtip">
-<p>The least-square estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
-<span class="math display">\[\begin{equation*}
- \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
-\end{equation*}\]</span>
-<p>The first step of this derivation is to reexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
-<span class="math display">\[\begin{equation*}
-    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
-\end{equation*}\]</span>
-<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transposed without changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, our next step is to the following derivative</p>
-<span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
-\end{equation*}\]</span>
-<p>To do this we should keep in mind the following results</p>
-<span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
-   \boldsymbol{y}^T \mathbf{X},
-\end{equation*}\]</span>
-<p>and</p>
-<span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} =  2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X}.
-\end{equation*}\]</span>
-<p>The proof of these two results can for example be found in Propositions 7 and 9 of <a href="http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf">Prof. Barnes’ notes</a>. Using these two results we obtain</p>
-<span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
-\end{equation*}\]</span>
-<p>By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> through the follwing equation</p>
-<span class="math display">\[\begin{equation*}
-  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
-\end{equation*}\]</span>
-<p>which is equivalent to</p>
-<span class="math display">\[\begin{equation*}
-  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
-\end{equation*}\]</span>
-<p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
-<span class="math display">\[\begin{equation*}
-  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
-\end{equation*}\]</span>
-which verifies Eq. @ref(eq:lsformula).
-</div>
-<p></p>
-<p>The variance of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
-<span class="math display">\[\begin{equation}
-\text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
-(\#eq:lsvar)
-\end{equation}\]</span>
-<p>the derivation of this result is explained in the comment box below.</p>
-
-<div class="rmdtip">
-<p>If we let <span class="math inline">\(\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T\)</span>, then we have</p>
-<span class="math display">\[\begin{equation*}
-\begin{aligned}
-  \text{Var} \left(\hat{\boldsymbol{\beta}} \right) &amp;= \text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T \\
-  &amp; = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T  \mathbf{X} \left(\mathbf{X}^T \mathbf{X}\right)^{-1} = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
-\end{aligned}
-\end{equation*}\]</span>
-<p>which verifies Eq. @ref(eq:lsvar). To understand the above derivation it may be useful to remind and point out a few things:</p>
-<ul>
-<li><span class="math inline">\(\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T\)</span> since <span class="math inline">\(\mathbf{A}\)</span> is not a random variable.</li>
-<li><span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span> since<span class="math inline">\(\text{Var} \left( \mathbf{y} \right) = \sigma^2 \mathbf{I}\)</span> and therefore we have <span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span>.</li>
-<li>The result <span class="math inline">\(\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}\)</span> is based on the fact that <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix <span class="math inline">\(\mathbf{B}\)</span> is such that the inverse and transpose operator commute, meaning that <span class="math inline">\(( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T\)</span>. Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)</span> is square and (by assumption) invertible we have <span class="math inline">\([(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}\)</span>.
-</div>
-</li>
-</ul>
-<p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
-<span class="math display">\[\begin{equation}
-  \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
-  (\#eq:lssig2hat)
-\end{equation}\]</span>
-<!-- DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW. -->
-<!-- ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta) -->
-<!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
-<p>Let’s implement Eq. @ref(eq:lsformula) to @ref(eq:lssig2hat) and, later, compare the outcome with the <code>lm()</code> function for linear regression implemented in base R.</p>
-</div>
-<p>Having given an overview of the main components to a function in R, let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
+<p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
 <pre class="r"><code># Linear regression with lm() function
 fit_lm = lm(hubble$y~hubble$x-1)
 

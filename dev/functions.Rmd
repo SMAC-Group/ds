@@ -1,3 +1,7 @@
+```{r setup, cache = F, echo=F}
+knitr::opts_chunk$set(error = TRUE)
+```
+
 # Functions
 
 This chapter aims at highlighting the main advantages, characteristics, arguments and structure of functions in R. As you already know, a function is a collection of logically connected commands and operations that allow the user to input some arguments and obtain a desired output (based on the given arguments) without having to rewrite the mentioned code each time that specific output is needed. Indeed, a common task in statistical research for example consists in running some simulation studies which give support (or not) to the use of a certain method of inference. In this case, it's not efficient to rewrite the code each time it is needed within a simulation study because it would lead to lengthy code and increased risk of miss-coding. 
@@ -116,13 +120,15 @@ Finally, failing to match arguments in any of the above cases, R uses positional
 It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define the arguments as follows `a = matrix(rnorm(9), 3, 3), b = 2*a`. There are many other interesting ways of specifying argument values and they can be seen, for example, in @wickham2014advanced .
 ```
 
+A special framework in which argument can be assigned and automatically recognised is class object....
+
 Additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument `...` which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is given by the base `plot()` function in R where the predefined arguments are `x` and `y` (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the `...` argument (e.g. the user could specify the argument `type = "l"` even though this is not included among the specified arguments of the function `plot()`). This argument is particularly useful when you want to obtain values for other function arguments but don't want to specify their names in advance.
 
 ### Function body
 
 The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement a function that delivers multiplication of objects of different nature. Let us start by delivering the product of the objects `first_arg` and `second_arg`: 
 
-```{r, eval=F}
+```{r}
 gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
   
   first_arg%*%second_arg
@@ -130,7 +136,161 @@ gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rn
 }
 ```
 
-If the user doesn't 
+If the user doesn't provide any arguments to the function, this will automatically return a 3 $\times$ 3 matrix (product of two 3 $\times$ 3 matrices built using randomly generated observations from a standard normal). Otherwise, the user can enter the elements of multiplication to obtain their output of interest. For this reason, it would be appropriate that the first and second argument given by the user had compatible dimensions. But what if the latter isn't the case? When building a function body it is important to consider the possible problems ("bugs") that could arise if the inputs the user have given cannot be managed by the lines of code you have written as body to your function. For example, let us suppose that the user provides two 3 $\times$ 2 matrices as the first argument and second arguments:
+
+```{r}
+gen_prod(matrix(rnorm(6), 3, 2), matrix(rnorm(6), 3, 2))
+```
+
+In this case we see that the function outputs an error and it would be appropriate to insert a checking procedure at the start of our function in order to consider all possible objects that can be multiplied and issue explanations that are useful to the user in order for them to realise what the problem is. We could therefore add a check procedure before we perform the multiplication:
+
+```{r}
+gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+    first_arg%*%second_arg
+    
+  } else {
+    
+    stop("Object dimensions are not compatible")
+    
+  }
+  
+  
+}
+```
+
+As you can see in the example above, we have used a control statement in which we check whether the dimensions for matrix multiplication are respected. If they are, then the function returns the desired product while it returns an error message if this is not the case. The latter is done via the use of the `stop()` function which outputs the text `Error in ...: Object dimensions are not compatible` if the dimensions are not compatible:
+
+```{r}
+gen_prod(matrix(rnorm(9),3,3), matrix(rnorm(12),4,3))
+```
+
+When a problem is detected in the body of a function, there may not necessarily be the need to interrupt the execution of the function with an error message. Indeed, in the above example, we could allow the function to check if the number of columns in the second object is compatible with that of the first and, if so, transpose the second matrix in order to obtain the correct multiplication with a warning message notifying the user that this has been done:
+
+```{r}
+gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+    first_arg%*%second_arg
+    
+  } else {
+  
+    if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+      warning("Second object has been transposed")
+      first_arg%*%t(second_arg)
+      
+    } else {
+      
+      stop("Object dimensions are not compatible")
+      
+    }
+    
+  }
+  
+}
+```
+
+The function `warning()` therefore allows to output a result even though there can be some errors in the inputs, notifying the user of the steps made to achieve this output (please type `?message` to understand what this function allows you to do to communicate with the user). However, let us suppose that the second object entered in this function is a vector. Given our current body in the function we would get the following output:
+
+```{r}
+gen_prod(matrix(rnorm(9),3,3), rnorm(3))
+```
+
+We obtain this error because the function `dim()` only works on matrices (not vectors or scalars), therefore we can anticipate this problem by making sure that all objects are considered as matrices:
+
+```{r}
+gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  first_arg <- as.matrix(first_arg)
+  second_arg <- as.matrix(second_arg)
+  
+  if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+    first_arg%*%second_arg
+    
+  } else {
+  
+    if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+      warning("Second object has been transposed")
+      first_arg%*%t(second_arg)
+      
+    } else {
+      
+      stop("Object dimensions are not compatible")
+      
+    }
+    
+  }
+  
+}
+```
+
+which consequently gives us
+
+```{r}
+gen_prod(matrix(rnorm(9),3,3), rnorm(3))
+```
+
+Finally, a last check that can be made is whether the second argument is a scalar. Indeed, if the first argument is not scalar, our function would not perform a multiplication:
+
+```{r}
+gen_prod(matrix(rnorm(9),3,3), rnorm(1))
+```
+
+although we can always multiply a scalar by a matrix or a vector. Therefore we can add one last control statement:
+
+```{r}
+gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
+  
+  first_arg <- as.matrix(first_arg)
+  second_arg <- as.matrix(second_arg)
+  
+  if(dim(second_arg)[1]==1 & dim(second_arg)[2]==1) {
+    
+    first_arg*second_arg[1]
+    
+  } else {
+    
+    if (dim(first_arg)[2] == dim(second_arg)[1]) {
+    
+      first_arg%*%second_arg
+    
+    } else {
+  
+      if (dim(first_arg)[2] == dim(second_arg)[2]) {
+      
+        warning("Second object has been transposed")
+        first_arg%*%t(second_arg)
+      
+      } else {
+      
+        stop("Object dimensions are not compatible")
+      
+      }
+    
+    }
+    
+  }
+  
+}
+```
+
+which allows us to have
+
+```{r}
+gen_prod(matrix(rnorm(9),3,3), rnorm(1))
+```
+
+```{block2,  type='rmdimportant'}
+Additional check procedures should be carried out in order to understand if the first object has equal or higher dimensions compared to the second (although the user should be made aware of this in the description of the function). However we leave this exercise to the reader since it would simply be redundant in the message conveyed on programming the body of a function. 
+```
+
+As you can see, the body of a function can rapidly become lengthy and complex when adding control statements and procedures to it. This can become an issue if you program a complex function and then have to share it with a collaborator or modify it after some time you haven't used it. It is therefore good practice to comment your functions and make sure that the objects consisting in the output of your function are clear to someone who reads the function. In the latter case, the `return()` function
 
 ## Function environment
 
@@ -171,20 +331,20 @@ var(x)
 
 The result is always the same although the `var()` function would have halted execution if it had considered our own `missing()` function. This is possible thanks the to the package namespace which keeps packages independent through the separate use of enclosing and binding environments.
 
-Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our `my_lm` function but, before doing so, we define an object called `quant` and assign a value to it:
+Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our `gen_prod` function but, before doing so, we define an object called `prod` and assign a value to it:
 
 ```{r}
-quant <- 1
+prod <- 1
 ```
 
-We know that our `my_lm()` function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:
+We know that our `gen_prod()` function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:
 
 ```{r}
-fit <- my_lm(rnorm(100), rnorm(100))
-quant
+output <- gen_prod(rnorm(100, 10, 10), rnorm(100, 10, 10))
+prod
 ```
 
-As can be seen, although our `my_lm()` function defines `quant <- 1 - alpha/2`, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.
+As can be seen, although our `gen_prod()` function defines , this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) since its parent is the enclosing environment and is removed once the function has completed execution.
 
 ## Example (continued): Least-squares function
 
