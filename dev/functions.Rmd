@@ -120,15 +120,17 @@ Additional arguments can be left to be specified by the user. This is the case, 
 
 ### Function body
 
-The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat) and, later, compare the outcome with the `lm()` function for linear regression implemented in base R. 
+The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement a function that delivers multiplication of objects of different nature. Let us start by delivering the product of the objects `first_arg` and `second_arg`: 
 
 ```{r, eval=F}
 gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3), second_arg = matrix(rnorm(9), 3, 3)) {
   
-  a%*%b
+  first_arg%*%second_arg
   
 }
 ```
+
+If the user doesn't 
 
 ## Function environment
 
