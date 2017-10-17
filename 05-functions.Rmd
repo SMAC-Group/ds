@@ -35,7 +35,7 @@ By the end of this chapter we will therefore be able to build a function to obta
 
 ## R functions
 
-In order to build our own functions, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that takes two values and sums them [^1]: 
+In order to build our own functions, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that draws a random number issued from the "spin" of an American roulette [^1]: 
 
 <center>![Function Structure](images/function.png){width=80%}</center>
 
@@ -107,7 +107,6 @@ Before implementing a function, we first need to ask ourselves what is the basic
 gen_prod <- function (first_arg, second_arg) {
   ...
 }
-
 ```
 
 We will build this function such that the first argument has a higher (or equal) dimension than the second (e.g. the first is a vector while the second is another vector or a scalar). Let us suppose that `a = matrix(1:8, 4, 2)` is a 4 $\times$ 2 matrix and `b = matrix(8:1, 2, 4)` is a 2 $\times$ 4 matrix. Given that this is a matrix multiplication, these arguments need to be entered in the correct order (such that the dimensions correspond):
@@ -341,6 +340,7 @@ gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3),
 ```
 
 
+<!--
 ### Defining your own operators using infix functions
 
 ```{r}
@@ -356,7 +356,7 @@ gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3),
 2 %^% -1
 ```
 
-
+-->
 ## Function environment
 
 Generally speaking, an environment is a virtual space in which certain names are associated to specific objects and values. The main characterstics of an environment are the following (see [Wickham: Environments](http://adv-r.had.co.nz/Environments.html)):
