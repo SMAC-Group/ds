@@ -79,6 +79,34 @@ or the product of 265 and 83:
 my_prod(265, 83)
 ```
 
+A particular case of function building are so-called "infix" functions that allow to create new operators that carry out specific types of computations. So, instead of defining the name of a function, you can define the symbol to be used in order to make use of that function. For example, to sum two numbers in R you can do as follows:
+
+```{r}
+1 + 2
+```
+
+which is simply a predefined infix function that can also be used as follows:
+
+```{r}
+`+`(1, 2)
+```
+
+Therefore the `+` operator is the result of a predefined infix function in R. However, all user-defined infix functions must start and end with the `%` symbol. For example, using an operator that we define as `%^%`, we can deliver the product of two numbers that is zero if the product is actually negative:
+
+```{r}
+`%^%` <- function(a, b) {
+  prod = a*b
+  (prod > 0)*prod
+}
+```
+
+This infix function can now be used through the operator as follows:
+
+```{r}
+2 %^% 2
+2 %^% -1
+```
+
 Having described the general structure of an R function, let us go more into detail by analysing the three main components to R functions:
 
 - **body**: the code lines containing the commands and operations which deliver the desired output;
@@ -340,23 +368,6 @@ gen_prod <- function (first_arg = matrix(rnorm(9), 3, 3),
 ```
 
 
-<!--
-### Defining your own operators using infix functions
-
-```{r}
-`%^%` <- function(a, b) {
-  prod = a*b
-  (prod > 0)*prod
-}
-```
-
-
-```{r}
-2 %^% 2
-2 %^% -1
-```
-
--->
 ## Function environment
 
 Generally speaking, an environment is a virtual space in which certain names are associated to specific objects and values. The main characterstics of an environment are the following (see [Wickham: Environments](http://adv-r.had.co.nz/Environments.html)):
