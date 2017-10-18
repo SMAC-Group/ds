@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-10-17">
+<meta name="date" content="2017-10-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -291,6 +291,22 @@ It is important to make sure that the function name is specific and does not cor
 <p>or the product of 265 and 83:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">my_prod</span>(<span class="dv">265</span>, <span class="dv">83</span>)</code></pre></div>
 <pre><code>## [1] 21995</code></pre>
+<p>A particular case of function building are so-called “infix” functions that allow to create new operators that carry out specific types of computations. So, instead of defining the name of a function, you can define the symbol to be used in order to make use of that function. For example, to sum two numbers in R you can do as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> +<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>which is simply a predefined infix function that can also be used as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">+</span><span class="st">`</span>(<span class="dv">1</span>, <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Therefore the <code>+</code> operator is the result of a predefined infix function in R. However, all user-defined infix functions must start and end with the <code>%</code> symbol. For example, using an operator that we define as <code>%^%</code>, we can deliver the product of two numbers that is zero if the product is actually negative:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">%^%</span><span class="st">`</span> &lt;-<span class="st"> </span>function(a, b) {
+  prod =<span class="st"> </span>a*b
+  (prod &gt;<span class="st"> </span><span class="dv">0</span>)*prod
+}</code></pre></div>
+<p>This infix function can now be used through the operator as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> %^%<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> %^%<span class="st"> </span>-<span class="dv">1</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
 <p>Having described the general structure of an R function, let us go more into detail by analysing the three main components to R functions:</p>
 <ul>
 <li><strong>body</strong>: the code lines containing the commands and operations which deliver the desired output;</li>
@@ -336,14 +352,14 @@ It is possible to also specify arguments in terms of the default value of other 
 <span class="kw">class</span>(image) =<span class="st"> &quot;pixel&quot;</span></code></pre></div>
 <p>If we were to plot this, we would obtain the following plot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(image)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-184-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
 <p>which simply plots the values for given coordinates. Given that this is not what we want, let us create a function that allows the user to simply use the <code>plot()</code> function which automatically recognises the object and plots a heatmap of the pixel intensity:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.pixel &lt;-<span class="st"> </span>function (mat) {
   <span class="kw">suppressWarnings</span>(<span class="kw">heatmap</span>(mat, <span class="dt">Colv=</span><span class="ot">NA</span>, <span class="dt">Rowv=</span><span class="ot">NA</span>, <span class="dt">labRow=</span><span class="ot">NA</span>, <span class="dt">labCol=</span><span class="ot">NA</span>, <span class="dt">scale=</span><span class="st">&#39;none&#39;</span>))
 }</code></pre></div>
 <p>If we use the <code>plot()</code> function now, we obtain the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(image)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
 <p>which produces the desired output simply using the general-purpose function <code>plot()</code>.</p>
 <p>To conclude, additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is again given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = &quot;l&quot;</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
 </div>
@@ -474,36 +490,6 @@ Additional check procedures should be carried out in order to understand if the 
   }
   <span class="kw">return</span>(prod)
 }</code></pre></div>
-<!--
-### Defining your own operators using infix functions
-
-
-```r
-`%^%` <- function(a, b) {
-  prod = a*b
-  (prod > 0)*prod
-}
-```
-
-
-
-```r
-2 %^% 2
-```
-
-```
-## [1] 4
-```
-
-```r
-2 %^% -1
-```
-
-```
-## [1] 0
-```
-
--->
 </div>
 </div>
 <div id="function-environment" class="section level2">
