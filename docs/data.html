@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-11-01">
+<meta name="date" content="2017-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -677,10 +677,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
 <p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2017-11-01&quot;</code></pre>
+<pre><code>## [1] &quot;2017-11-02&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2017-08-01&quot;</code></pre>
+<pre><code>## [1] &quot;2017-08-02&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)
@@ -700,9 +700,9 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</code></pre></div>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.001946961</code></pre>
+<pre><code>## [1] 0.001009934</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.00149136</code></pre>
+<pre><code>## [1] 0.0008183499</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
@@ -738,8 +738,8 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 <p>In R, this can simply be done as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">4</span>)/(<span class="kw">mean</span>((AAPL_returns -<span class="st"> </span>mu)^<span class="dv">2</span>))^<span class="dv">2</span> -<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 2.143352</code></pre>
-<p>Therefore, we observe an estimated Excess Kurtosis of 2.14 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
+<pre><code>## [1] 1.073636</code></pre>
+<p>Therefore, we observe an estimated Excess Kurtosis of 1.07 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
 </div>
 <div id="matrices" class="section level2">
@@ -1035,10 +1035,10 @@ s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="
 <span class="kw">row.names</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sample Mean&quot;</span>, <span class="st">&quot;Sample Variance&quot;</span>, <span class="st">&quot;Sample Covariance&quot;</span>)
 <span class="kw">colnames</span>(cp_matrix) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)
 cp_matrix</code></pre></div>
-<pre><code>##                       Scalar     Matrix
-## Sample Mean       0.35557010 0.35557010
-## Sample Variance   3.70789790 3.70789790
-## Sample Covariance 0.04831488 0.04831488</code></pre>
+<pre><code>##                      Scalar    Matrix
+## Sample Mean       0.3195439 0.3195439
+## Sample Variance   3.6375070 3.6375070
+## Sample Covariance 0.0789763 0.0789763</code></pre>
 <p>Therefore, using the previously obtained results we can construct the following <em>empirical</em> covariance matrix</p>
 <span class="math display">\[\begin{equation} 
   \widehat{\text{Cov}}(X, Y) =  \left[
@@ -1054,19 +1054,19 @@ s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span>/n*<span class="k
 
 <span class="co"># Covariance matrix</span>
 (V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</code></pre></div>
-<pre><code>##            [,1]       [,2]
-## [1,] 3.70789790 0.04831488
-## [2,] 0.04831488 1.01578369</code></pre>
+<pre><code>##           [,1]      [,2]
+## [1,] 3.6375070 0.0789763
+## [2,] 0.0789763 1.0274490</code></pre>
 <p>This result can now be compared to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##           x         y
-## x 3.7453514 0.0488029
-## y 0.0488029 1.0260441</code></pre>
+<pre><code>##            x          y
+## x 3.67424953 0.07977404
+## y 0.07977404 1.03782723</code></pre>
 <p>We can see that the results are slightly different from what we expected. This is because the calculation of <code>cov()</code> within the default R <code>stats</code> package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(n<span class="dv">-1</span>)/n*<span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</code></pre></div>
-<pre><code>##            x          y
-## x 3.70789790 0.04831488
-## y 0.04831488 1.01578369</code></pre>
+<pre><code>##           x         y
+## x 3.6375070 0.0789763
+## y 0.0789763 1.0274490</code></pre>
 </div>
 <div id="example-portfolio-optimization" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Example: Portfolio Optimization</h3>
@@ -1169,7 +1169,7 @@ omega_star =<span class="st"> </span>(Sigma[<span class="dv">2</span>, <span cla
 mu_investment =<span class="st"> </span>omega_star*mu[<span class="dv">1</span>] +<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>omega_star)*mu[<span class="dv">2</span>]
 var_investment =<span class="st"> </span>omega_star^<span class="dv">2</span>*Sigma[<span class="dv">1</span>,<span class="dv">1</span>] +<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>omega_star)^<span class="dv">2</span>*Sigma[<span class="dv">2</span>,<span class="dv">2</span>] +<span class="st"> </span>
 <span class="st">  </span><span class="dv">2</span>*omega_star*(<span class="dv">1</span> -<span class="st"> </span>omega_star)*Sigma[<span class="dv">1</span>,<span class="dv">2</span>]</code></pre></div>
-<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 81.56%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
+<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 81.6%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">investment_summary =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">1</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Expected value&quot;</span>, <span class="st">&quot;Variance&quot;</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)
@@ -1189,15 +1189,15 @@ knitr::<span class="kw">kable</span>(investment_summary)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td>Expected value</td>
-<td align="right">0.000666</td>
-<td align="right">0.0027265</td>
-<td align="right">0.0010459</td>
+<td align="right">0.0006822</td>
+<td align="right">0.0027409</td>
+<td align="right">0.0010611</td>
 </tr>
 <tr class="even">
 <td>Variance</td>
-<td align="right">0.000242</td>
-<td align="right">0.0009268</td>
-<td align="right">0.0002051</td>
+<td align="right">0.0002412</td>
+<td align="right">0.0009267</td>
+<td align="right">0.0002045</td>
 </tr>
 </tbody>
 </table>
