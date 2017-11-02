@@ -321,9 +321,9 @@ It is possible to also specify arguments in terms of the default value of other 
 <p>which consequently gives us</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">3</span>))</code></pre></div>
 <pre><code>##            [,1]
-## [1,] -0.8136892
-## [2,] -0.5139065
-## [3,] -0.1752732</code></pre>
+## [1,]  1.5688760
+## [2,]  0.9404283
+## [3,] -1.3263345</code></pre>
 <p>Finally, a last check that can be made is whether the second argument is a scalar. Indeed, if the first argument is not scalar, our function would not perform a multiplication:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</code></pre></div>
 <pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), rnorm(1)): Object dimensions are not compatible</code></pre>
@@ -350,10 +350,10 @@ It is possible to also specify arguments in terms of the default value of other 
 }</code></pre></div>
 <p>which allows us to have</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</code></pre></div>
-<pre><code>##             [,1]        [,2]       [,3]
-## [1,] -0.03273125 -0.07048059 -0.7538789
-## [2,] -0.66747613 -1.28307203  0.6699539
-## [3,]  1.09688747 -0.19179417 -0.5837188</code></pre>
+<pre><code>##            [,1]        [,2]         [,3]
+## [1,]  0.1109147  0.34554306  0.073493133
+## [2,]  0.3518729 -0.03639988 -0.133107114
+## [3,] -0.8289219  0.28413926 -0.001721236</code></pre>
 
 <div class="rmdimportant">
 Additional check procedures should be carried out in order to understand if the first object has equal or higher dimensions compared to the second (although the user should be made aware of this in the description of the function). However we leave this exercise to the reader since it would simply be redundant in the message conveyed on programming the body of a function.
@@ -446,7 +446,7 @@ prod</code></pre></div>
   \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
 \tag{6.1}
 \end{equation}\]</span>
-<p>If you are interested in understanding how Eq. <a href="functions.html#eq:lsformula">(6.1)</a> is derived, click on the buttom. If you’re not familiar with such calculations we suggest you read some introduction to linear regression <span class="citation">(see for example Seber and Lee <a href="#ref-seber2012linear">2012</a>)</span>.</p>
+<p>If you are interested in understanding how Eq. <a href="functions.html#eq:lsformula">(6.1)</a> is derived, click on the button. If you’re not familiar with such calculations we suggest you read some introduction to linear regression <span class="citation">(see for example Seber and Lee <a href="#ref-seber2012linear">2012</a>)</span>.</p>
 <button id="hidebutton1">
 Derivation of Least-Squares Estimator
 </button>
@@ -500,9 +500,9 @@ which verifies Eq. <a href="functions.html#eq:lsformula">(6.1)</a>.
 \text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
 \tag{6.2}
 \end{equation}\]</span>
-<p>and if you are interested, you can click on the buttom below to see how this formula was derived.</p>
+<p>and if you are interested, you can click on the button below to see how this formula was derived.</p>
 <button id="hidebutton2">
-The Algebra behind Least-Squares Inference
+Derivation - Variance of Least-Squares Estimator
 </button>
 <div id="hideclass2">
 
@@ -532,8 +532,8 @@ The Algebra behind Least-Squares Inference
 <!-- DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW. -->
 <!-- ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta) -->
 <!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
-<p>This chapter aims at implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> to <a href="functions.html#eq:lssig2hat">(6.3)</a>.</p>
-<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> (see the “The Algebra behind Least-Squares Inference” button) within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
+<p>The rest of this section aims at implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> to <a href="functions.html#eq:lssig2hat">(6.3)</a>.</p>
+<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
   
   <span class="co"># Define parameters</span>
@@ -541,7 +541,7 @@ The Algebra behind Least-Squares Inference
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
   df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
   
-  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  <span class="co"># Estimate beta through Eq. (6.1)</span>
   beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
   
   <span class="co"># Return the estimated value of beta</span>
@@ -564,12 +564,11 @@ Before discussing the body and output of this function, we can first underline a
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
   df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
   
-  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  <span class="co"># Estimate beta through Eq. (6.1)</span>
   beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
   
   <span class="co"># Return the estimated value of beta</span>
   beta.hat
-  
 }</code></pre></div>
 
 <div class="rmdtip">
@@ -589,11 +588,12 @@ Other checks can be introduced at the beginning of the function to make sure tha
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
   df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
   
-  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  <span class="co"># Estimate beta through Eq. (6.1)</span>
   beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
   
-  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (1.3)</span>
-  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat) <span class="co"># compute residuals</span>
+  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span>
+  <span class="co"># Compute residuals</span>
+  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat)
   sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
   
   <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
@@ -601,7 +601,6 @@ Other checks can be introduced at the beginning of the function to make sure tha
   
   <span class="co"># Return all estimated values</span>
   <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta))
-  
 }</code></pre></div>
 <p>There are a couple of things to underline in the above function. Firstly, when defining the <code>resid</code> object we also used <code>as.matrix()</code> for the object <code>beta.hat</code>: this is because it can happen (as in our example) that the dimension of <span class="math inline">\(\boldsymbol{\beta}\)</span> could be equal to one (i.e. a scalar) and the matrix multiplication would not work and output an error. By using the <code>as.matrix()</code> function, we ensure that this multiplication will work also when <span class="math inline">\(\boldsymbol{\beta}\)</span> is a scalar (i.e. when there is only one covariate). A second aspect to underline is the way in which we return multiple function outputs. Indeed, in our case we decide to return not only the estimate of <span class="math inline">\(\beta\)</span> but also the estimated residual variance as well as the variance of <span class="math inline">\(\hat{\beta}\)</span>. To do so, we use the <code>list()</code> function that allows to store objects of different nature (e.g. scalars, vectors, matrices) as elements of a single object while assigning names to them. For example, the estimated parameter <span class="math inline">\(\beta\)</span> will be accessible through the element name <code>beta</code> (we’ll see how this done further on).</p>
 <p>Nevertheless, in order to answer the question of our example on the Hubble constant, we would need to obtain a confidence interval for our estimated paramter <span class="math inline">\(\hat{\beta}\)</span>. Although the information needed for this purpose is available to the user through the current output, it may be useful to directly provide the confidence interval since it is a piece of information which is almost always required to deliver inference on the true parameter <span class="math inline">\(\beta\)</span>. Let us therefore build a confidence interval within our function for which we will assume that the estimated variance of <span class="math inline">\(\hat{\beta}\)</span> is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our course). Assuming therefore that</p>
@@ -626,14 +625,15 @@ Other checks can be introduced at the beginning of the function to make sure tha
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
   df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
   
-  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  <span class="co"># Estimate beta through Eq. (6.1)</span>
   beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
   
-  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (1.3)</span>
-  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat) <span class="co"># compute residuals</span>
+  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span>
+  <span class="co"># Compute residuals</span>
+  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat) 
   sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
   
-  <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
+  <span class="co"># Estimate of the variance of the estimated beta from Eq. (6.2)</span>
   var.beta &lt;-<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)
   
   <span class="co"># Estimate of the confidence interval based on alpha</span>
@@ -642,8 +642,8 @@ Other checks can be introduced at the beginning of the function to make sure tha
 <span class="st">                 </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)*<span class="kw">sqrt</span>(var.beta))
   
   <span class="co"># Return all estimated values</span>
-  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta, <span class="dt">ci =</span> ci.beta))
-  
+  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, 
+              <span class="dt">variance_beta =</span> var.beta, <span class="dt">ci =</span> ci.beta))
 }</code></pre></div>
 <p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
@@ -663,9 +663,15 @@ results</code></pre></div>
 ## Beta        76.58117     76.58117
 ## Sigma    67046.33165  67046.33165</code></pre>
 <p>As one can notice, the two procedures give the same outputs indicating that our <code>my_lm()</code> function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hubble.const &lt;-<span class="st"> </span>fit_my_lm$beta/<span class="fl">3.09e19</span> <span class="co"># Estimated Hubble&#39;s constant in inverse seconds</span>
-age.sec &lt;-<span class="st"> </span><span class="dv">1</span>/hubble.const <span class="co"># Age of the universe in seconds</span>
-age.sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">24</span>*<span class="dv">365</span>) <span class="co"># Age of the universe in years</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimated Hubble&#39;s constant</span>
+hubble_const &lt;-<span class="st"> </span>fit_my_lm$beta/<span class="fl">3.09e19</span> 
+<span class="co"># Note: The estimated Hubble&#39;s constant in inverse seconds, [s^(-1)]</span>
+
+<span class="co"># Age of the universe in seconds</span>
+age_sec &lt;-<span class="st"> </span><span class="dv">1</span>/hubble_const 
+
+<span class="co"># Age of the universe in years</span>
+age_sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">24</span>*<span class="dv">365</span>) </code></pre></div>
 <p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>.</p>
 <p>Now, let’s suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. For this purpose we can build a 95% confidence interval for the true Hubble constant <span class="math inline">\(\beta\)</span> and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows</p>
 <span class="math display">\[\begin{equation*}

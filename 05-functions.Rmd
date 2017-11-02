@@ -453,7 +453,7 @@ When we collect data for the purpose of linear regression, the unknown terms in 
 (\#eq:lsformula)
 \end{equation}
 
-If you are interested in understanding how Eq. \@ref(eq:lsformula) is derived, click on the buttom. If you're not familiar with such calculations we suggest you read some introduction to linear regression [see for example @seber2012linear].
+If you are interested in understanding how Eq. \@ref(eq:lsformula) is derived, click on the button. If you're not familiar with such calculations we suggest you read some introduction to linear regression [see for example @seber2012linear].
 
 <button id="hidebutton1">Derivation of Least-Squares Estimator</button>
 <div id="hideclass1">
@@ -525,7 +525,7 @@ The variance of $\hat{\boldsymbol{\beta}}$ is given by
 (\#eq:lsvar)
 \end{equation}
 
-and if you are interested, you can click on the buttom below to see how this formula was derived.
+and if you are interested, you can click on the button below to see how this formula was derived.
 
 <button id="hidebutton2">Derivation - Variance of Least-Squares Estimator</button>
 <div id="hideclass2">
@@ -563,11 +563,9 @@ In general, the residual variance is unknown and needs to be estimated. A common
 
 <!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
 
-This chapter aims at implementing Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat). 
+The rest of this section aims at implementing Eq. \@ref(eq:lsformula) to \@ref(eq:lssig2hat). 
 
-
-
-Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable $y$ and the distance as the explanatory variable $x$. Let us therefore start by implementing  Eq. \@ref(eq:lsformula) (see the "The Algebra behind Least-Squares Inference" button) within our function in order to get an estimate of $\beta$.
+Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable $y$ and the distance as the explanatory variable $x$. Let us therefore start by implementing  Eq. \@ref(eq:lsformula) within our function in order to get an estimate of $\beta$.
 
 ```{r, eval=FALSE}
 my_lm = function(response, covariates) {
@@ -577,7 +575,7 @@ my_lm = function(response, covariates) {
   p <- dim(covariates)[2]
   df <- n - p
   
-  # Estimate beta through Eq. (1.1)
+  # Estimate beta through Eq. (6.1)
   beta.hat <- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
   
   # Return the estimated value of beta
@@ -603,12 +601,11 @@ my_lm = function(response, covariates) {
   p <- dim(covariates)[2]
   df <- n - p
   
-  # Estimate beta through Eq. (1.1)
+  # Estimate beta through Eq. (6.1)
   beta.hat <- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
   
   # Return the estimated value of beta
   beta.hat
-  
 }
 ```
 
@@ -632,11 +629,12 @@ my_lm = function(response, covariates) {
   p <- dim(covariates)[2]
   df <- n - p
   
-  # Estimate beta through Eq. (1.1)
+  # Estimate beta through Eq. (6.1)
   beta.hat <- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
   
-  # Estimate of the residual variance (sigma2) from Eq. (1.3)
-  resid <- response - covariates%*%as.matrix(beta.hat) # compute residuals
+  # Estimate of the residual variance (sigma2) from Eq. (6.3)
+  # Compute residuals
+  resid <- response - covariates%*%as.matrix(beta.hat)
   sigma2.hat <- (1/df)*t(resid)%*%resid
   
   # Estimate of the variance of the estimated beta from Eq. (1.2)
@@ -644,7 +642,6 @@ my_lm = function(response, covariates) {
   
   # Return all estimated values
   return(list(beta = beta.hat, sigma2 = sigma2.hat, variance_beta = var.beta))
-  
 }
 ```
 
@@ -679,14 +676,15 @@ my_lm = function(response, covariates, alpha = 0.05) {
   p <- dim(covariates)[2]
   df <- n - p
   
-  # Estimate beta through Eq. (1.1)
+  # Estimate beta through Eq. (6.1)
   beta.hat <- solve(t(covariates)%*%covariates)%*%t(covariates)%*%response
   
-  # Estimate of the residual variance (sigma2) from Eq. (1.3)
-  resid <- response - covariates%*%as.matrix(beta.hat) # compute residuals
+  # Estimate of the residual variance (sigma2) from Eq. (6.3)
+  # Compute residuals
+  resid <- response - covariates%*%as.matrix(beta.hat) 
   sigma2.hat <- (1/df)*t(resid)%*%resid
   
-  # Estimate of the variance of the estimated beta from Eq. (1.2)
+  # Estimate of the variance of the estimated beta from Eq. (6.2)
   var.beta <- sigma2.hat*solve(t(covariates)%*%covariates)
   
   # Estimate of the confidence interval based on alpha
@@ -695,8 +693,8 @@ my_lm = function(response, covariates, alpha = 0.05) {
                  qnorm(p = quant)*sqrt(var.beta))
   
   # Return all estimated values
-  return(list(beta = beta.hat, sigma2 = sigma2.hat, variance_beta = var.beta, ci = ci.beta))
-  
+  return(list(beta = beta.hat, sigma2 = sigma2.hat, 
+              variance_beta = var.beta, ci = ci.beta))
 }
 ```
 
@@ -721,9 +719,15 @@ results
 As one can notice, the two procedures give the same outputs indicating that our `my_lm()` function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of $s^{-1}$).
 
 ```{r, eval=FALSE}
-hubble.const <- fit_my_lm$beta/3.09e19 # Estimated Hubble's constant in inverse seconds
-age.sec <- 1/hubble.const # Age of the universe in seconds
-age.sec/(60^2*24*365) # Age of the universe in years
+# Estimated Hubble's constant
+hubble_const <- fit_my_lm$beta/3.09e19 
+# Note: The estimated Hubble's constant in inverse seconds, [s^(-1)]
+
+# Age of the universe in seconds
+age_sec <- 1/hubble_const 
+
+# Age of the universe in years
+age_sec/(60^2*24*365) 
 ```
 
 Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that $\hat{\beta}$ is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton $\beta$ and variance $\sigma^2(X^TX)^{-1}$. 
