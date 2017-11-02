@@ -458,7 +458,6 @@ Assuming $X$ to be Gaussian, we have $X \sim \mathcal{N}(\mu, \sigma^2)$. Then, 
 This implies that the theoretical value of the excess Kurtosis for a normally distributed random variable is $0$. 
 ```
 </div>
-
 \newline
 
 
