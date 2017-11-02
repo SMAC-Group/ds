@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-10-18">
+<meta name="date" content="2017-11-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -219,6 +219,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.2.2" data-path="functions.html"><a href="functions.html#function-body"><i class="fa fa-check"></i><b>6.2.2</b> Function body</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 <li class="divider"></li>
@@ -527,6 +528,248 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</sp
 prod</code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>As can be seen, although our <code>gen_prod()</code> function defines the object <code>prod</code>, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) and is removed once the function has completed execution.</p>
+</div>
+<div id="example-continued-least-squares-function" class="section level2">
+<h2><span class="header-section-number">6.4</span> Example (continued): Least-squares function</h2>
+<p>To implement our linear regression function we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. While the latter has already been investigated, click on the button below to review the algebra that underlies least squares regression.</p>
+<button id="hidebutton1">
+The Algebra behind Least-Squares Inference
+</button>
+<div id="hideclass1">
+
+<p>Based on the linear algebra behind least-squares regression, let us implement a function that delivers inference on the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and therefore define the skeleton of this R function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm &lt;-<span class="st"> </span>function (...) {
+  
+  ...
+  
+}</code></pre></div>
+<p>As you can see, we find a name for the function we want to build, which in this case is <code>my_lm</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. While the <em>body</em> of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.</p>
+<p>In the framework of linear regression the goal is to explain an <span class="math inline">\(n \times 1\)</span> vector of observations <span class="math inline">\(\mathbf{y}\)</span> (representing the response variable) through a linear combination of <span class="math inline">\(p\)</span> explanatory variables (or predictors or covariates) that are stored in an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{X}\)</span>. More specifically, the framework is the following: <span class="math display">\[\mathbf{y} = \mathbf{X}^T\boldsymbol{\beta} + \mathbf{\epsilon}\]</span>, where <span class="math inline">\(\boldsymbol{\beta}\)</span> is the <span class="math inline">\(p \times 1\)</span> parameter vector of interest that links the covariates with the response variable while <span class="math inline">\(\mathbf{\epsilon}\)</span> is the <span class="math inline">\(n \times 1\)</span> random error vector with null expectation and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>When we collect data for the purpose of linear regression, the unknown terms in the above setting are the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and the variance parameter <span class="math inline">\(\sigma^2\)</span>. In order to estimate <span class="math inline">\(\boldsymbol{\beta}\)</span>, assuming that the matrix <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, the least-squares estimator for it is given by:</p>
+<span class="math display" id="eq:lsformula">\[\begin{equation}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
+\tag{6.1}
+\end{equation}\]</span>
+<p>In the comment box below, we derive Eq. <a href="functions.html#eq:lsformula">(6.1)</a>. If you’re not familiar with such calculations we suggest you read some introduction to linear regression (see for example <span class="citation">Seber and Lee (<a href="#ref-seber2012linear">2012</a>)</span>).</p>
+
+<div class="rmdtip">
+<p>The least-square estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
+<span class="math display">\[\begin{equation*}
+ \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) 
+\end{equation*}\]</span>
+<p>The first step of this derivation is to reexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
+<span class="math display">\[\begin{equation*}
+    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}\]</span>
+<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transposed without changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, our next step is to the following derivative</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
+\end{equation*}\]</span>
+<p>To do this we should keep in mind the following results</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
+   \boldsymbol{y}^T \mathbf{X},
+\end{equation*}\]</span>
+<p>and</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} =  2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X}.
+\end{equation*}\]</span>
+<p>The proof of these two results can for example be found in Propositions 7 and 9 of <a href="http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf">Prof. Barnes’ notes</a>. Using these two results we obtain</p>
+<span class="math display">\[\begin{equation*}
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
+\end{equation*}\]</span>
+<p>By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> through the follwing equation</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
+\end{equation*}\]</span>
+<p>which is equivalent to</p>
+<span class="math display">\[\begin{equation*}
+  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
+\end{equation*}\]</span>
+<p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y},
+\end{equation*}\]</span>
+which verifies Eq. <a href="functions.html#eq:lsformula">(6.1)</a>.
+</div>
+<p></p>
+<p>The variance of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
+<span class="math display" id="eq:lsvar">\[\begin{equation}
+\text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+\tag{6.2}
+\end{equation}\]</span>
+<p>the derivation of this result is explained in the comment box below.</p>
+
+<div class="rmdtip">
+<p>If we let <span class="math inline">\(\mathbf{A} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T\)</span>, then we have</p>
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+  \text{Var} \left(\hat{\boldsymbol{\beta}} \right) &amp;= \text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T \\
+  &amp; = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T  \mathbf{X} \left(\mathbf{X}^T \mathbf{X}\right)^{-1} = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
+\end{aligned}
+\end{equation*}\]</span>
+<p>which verifies Eq. <a href="functions.html#eq:lsvar">(6.2)</a>. To understand the above derivation it may be useful to remind and point out a few things:</p>
+<ul>
+<li><span class="math inline">\(\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T\)</span> since <span class="math inline">\(\mathbf{A}\)</span> is not a random variable.</li>
+<li><span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span> since<span class="math inline">\(\text{Var} \left( \mathbf{y} \right) = \sigma^2 \mathbf{I}\)</span> and therefore we have <span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span>.</li>
+<li>The result <span class="math inline">\(\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}\)</span> is based on the fact that <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix <span class="math inline">\(\mathbf{B}\)</span> is such that the inverse and transpose operator commute, meaning that <span class="math inline">\(( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T\)</span>. Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)</span> is square and (by assumption) invertible we have <span class="math inline">\([(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}\)</span>.
+</div>
+</li>
+</ul>
+<p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
+<span class="math display" id="eq:lssig2hat">\[\begin{equation}
+  \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
+  \tag{6.3}
+\end{equation}\]</span>
+<!-- DO YOU GUYS THINK WE SHOULD SHOW THE UNBIASEDNESS IN BOX HERE. THIS IS A LITTLE MORE ADVANCED AS WE NEED TO USE PROJECTION MATRICES AND THEIR PROPERTIES. LET ME KNOW. -->
+<!-- ROB COMMENT: Maybe I'd ask them to show the unbiasdness as homework either theoretically or giving numerical support to the claim (e.g. the mean of different beta hats is close to the true beta) -->
+<!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
+<p>This chapter aims at implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> to <a href="functions.html#eq:lssig2hat">(6.3)</a>.</p>
+</div>
+<p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> (see the “The Algebra behind Least-Squares Inference” button) within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
+  
+  <span class="co"># Define parameters</span>
+  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
+  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
+  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  
+  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  
+  <span class="co"># Return the estimated value of beta</span>
+  beta.hat
+  
+}</code></pre></div>
+
+<div class="rmdimportant">
+Before discussing the body and output of this function, we can first underline an important aspect of programming. Indeed, we defined the number of covariates (and length of the vector <span class="math inline">\(\boldsymbol{\beta}\)</span>) as <code>p &lt;- dim(covariates)[2]</code> where the function <code>dim()</code> presupposes that the object <code>covariates</code> is a matrix. Nevertheless, in our case the object <code>covariates</code> would correspond to <code>hubble$x</code> which is a vector and therefore this operation would return <code>NULL</code> as an output. When programming it is therefore important to think ahead and understand if there are any particular cases where parts of the body of your function may not work.
+</div>
+<p></p>
+<p>Taking into account the above note, it would be appropriate to make sure that the code in the body of the function works also in particular cases (e.g. the <code>covariates</code> object is a vector and not a matrix). In our case we therefore use the function <code>as.matrix()</code> which forces an object to be considered as a matrix in order for it to be used within matrix opeations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
+  
+  <span class="co"># Make sure data formats are appropriate</span>
+  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)
+  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)
+  
+  <span class="co"># Define parameters</span>
+  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
+  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
+  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  
+  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  
+  <span class="co"># Return the estimated value of beta</span>
+  beta.hat
+  
+}</code></pre></div>
+
+<div class="rmdtip">
+Other checks can be introduced at the beginning of the function to make sure that the function is used correctly and obtain an appropriate output. In our case, for example, we could even introduce a check to understand if <code>response</code> and <code>covariates</code> have the same number of rows and interrupt the function execution and output an error message if this is not the case, making the user aware of this probem.
+</div>
+<p></p>
+<p>As you may notice, using the matrix operators we obtain an object we decide to call <code>beta.hat</code> and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the <code>return()</code> function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using <code>return()</code> we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on).</p>
+<p>With the <code>my_lm()</code> function we can now estimate the value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. However, we don’t have an estimate of its variance for which we would need to implement Equations <a href="functions.html#eq:lsvar">(6.2)</a> and <a href="functions.html#eq:lssig2hat">(6.3)</a>. We can therefore add these equations to the body of our <code>my_lm()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
+  
+  <span class="co"># Make sure data formats are appropriate</span>
+  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)
+  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)
+  
+  <span class="co"># Define parameters</span>
+  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
+  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
+  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  
+  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  
+  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (1.3)</span>
+  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat) <span class="co"># compute residuals</span>
+  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
+  
+  <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
+  var.beta &lt;-<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)
+  
+  <span class="co"># Return all estimated values</span>
+  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta))
+  
+}</code></pre></div>
+<p>There are a couple of things to underline in the above function. Firstly, when defining the <code>resid</code> object we also used <code>as.matrix()</code> for the object <code>beta.hat</code>: this is because it can happen (as in our example) that the dimension of <span class="math inline">\(\boldsymbol{\beta}\)</span> could be equal to one (i.e. a scalar) and the matrix multiplication would not work and output an error. By using the <code>as.matrix()</code> function, we ensure that this multiplication will work also when <span class="math inline">\(\boldsymbol{\beta}\)</span> is a scalar (i.e. when there is only one covariate). A second aspect to underline is the way in which we return multiple function outputs. Indeed, in our case we decide to return not only the estimate of <span class="math inline">\(\beta\)</span> but also the estimated residual variance as well as the variance of <span class="math inline">\(\hat{\beta}\)</span>. To do so, we use the <code>list()</code> function that allows to store objects of different nature (e.g. scalars, vectors, matrices) as elements of a single object while assigning names to them. For example, the estimated parameter <span class="math inline">\(\beta\)</span> will be accessible through the element name <code>beta</code> (we’ll see how this done further on).</p>
+<p>Nevertheless, in order to answer the question of our example on the Hubble constant, we would need to obtain a confidence interval for our estimated paramter <span class="math inline">\(\hat{\beta}\)</span>. Although the information needed for this purpose is available to the user through the current output, it may be useful to directly provide the confidence interval since it is a piece of information which is almost always required to deliver inference on the true parameter <span class="math inline">\(\beta\)</span>. Let us therefore build a confidence interval within our function for which we will assume that the estimated variance of <span class="math inline">\(\hat{\beta}\)</span> is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our course). Assuming therefore that</p>
+<span class="math display">\[\begin{equation*}
+  \hat{\beta} \sim \mathcal{N}\left(\beta,\hat{\sigma}^2(X^TX)^{-1}\right) ,
+\end{equation*}\]</span>
+<p>we consequently have that the confidence interval is given by</p>
+<span class="math display" id="eq:cibeta">\[\begin{equation}
+  \left[\hat{\beta} - z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \, , \, \hat{\beta} + z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \right] ,
+  \tag{6.4}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1-\alpha/2)^{th}\)</span> quantile of the standard normal distribution.</p>
+<p>Let us therefore add this output to our function which would require an extra argument: the confidence level. The most common confidence level used is the 95% level which is obtained by defining the significance level <span class="math inline">\(\alpha = 0.05\)</span>. We could therefore add the latter argument to our function and set its default value to 0.05.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates, <span class="dt">alpha =</span> <span class="fl">0.05</span>) {
+  
+  <span class="co"># Make sure data formats are appropriate</span>
+  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)
+  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)
+  
+  <span class="co"># Define parameters</span>
+  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
+  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
+  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  
+  <span class="co"># Estimate beta through Eq. (1.1)</span>
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  
+  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (1.3)</span>
+  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat) <span class="co"># compute residuals</span>
+  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
+  
+  <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
+  var.beta &lt;-<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)
+  
+  <span class="co"># Estimate of the confidence interval based on alpha</span>
+  quant &lt;-<span class="st"> </span><span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>
+  ci.beta &lt;-<span class="st"> </span><span class="kw">c</span>(beta.hat -<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)*<span class="kw">sqrt</span>(var.beta), beta.hat +<span class="st"> </span>
+<span class="st">                 </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)*<span class="kw">sqrt</span>(var.beta))
+  
+  <span class="co"># Return all estimated values</span>
+  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta, <span class="dt">ci =</span> ci.beta))
+  
+}</code></pre></div>
+<p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble$y~hubble$x<span class="dv">-1</span>)
+
+<span class="co"># Linear regression with my_lm() function</span>
+fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble$y, hubble$x)
+
+<span class="co"># Compare outputs</span>
+manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm$beta, fit_my_lm$sigma2)
+base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm$coefficients, 
+                     (<span class="dv">1</span>/fit_lm$df.residual)*<span class="kw">t</span>(fit_lm$residuals)%*%fit_lm$residuals)
+results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)
+<span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)
+results</code></pre></div>
+<pre><code>##       manual_results base_results
+## Beta        76.58117     76.58117
+## Sigma    67046.33165  67046.33165</code></pre>
+<p>As one can notice, the two procedures give the same outputs indicating that our <code>my_lm()</code> function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hubble.const &lt;-<span class="st"> </span>fit_my_lm$beta/<span class="fl">3.09e19</span> <span class="co"># Estimated Hubble&#39;s constant in inverse seconds</span>
+age.sec &lt;-<span class="st"> </span><span class="dv">1</span>/hubble.const <span class="co"># Age of the universe in seconds</span>
+age.sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">24</span>*<span class="dv">365</span>) <span class="co"># Age of the universe in years</span></code></pre></div>
+<p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>.</p>
+<p>Now, let’s suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. For this purpose we can build a 95% confidence interval for the true Hubble constant <span class="math inline">\(\beta\)</span> and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows</p>
+<span class="math display">\[\begin{equation*}
+  H_0 \, : \, \beta = 163 \times 10^6 ,
+\end{equation*}\]</span>
+<p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). … Let us therefore replace the values in Eq. <a href="functions.html#eq:cibeta">(6.4)</a>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for the Hubble constant</span>
+fit_my_lm$ci</code></pre></div>
+<pre><code>## [1] 68.81032 84.35203</code></pre>
+<p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level.</p>
 
 </div>
 </div>
@@ -537,6 +780,9 @@ prod</code></pre></div>
 </div>
 <div id="ref-wickham2014advanced">
 <p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press. <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>.</p>
+</div>
+<div id="ref-seber2012linear">
+<p>Seber, George AF, and Alan J Lee. 2012. <em>Linear Regression Analysis</em>. Vol. 936. John Wiley &amp; Sons.</p>
 </div>
 </div>
 <div class="footnotes">
