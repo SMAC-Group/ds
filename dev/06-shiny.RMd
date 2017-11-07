@@ -1,0 +1,43 @@
+```{r setup, cache = F, echo=F}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# Shiny
+
+Shiny is an R package that makes it easy to build interactive web apps straight from R. 
+
+## Content Creation 
+
+| Function        | Description                              |
+|-----------------|------------------------------------------|
+| titlePanel()    | The title of the application             |
+| sidebarLayout() | Creates a sidebar layout for fluidPage() |
+| sidebarPanel()  | Makes a sidebar menu                     |
+| mainPanel()     | Main content area for different output   |
+
+## Input Controls
+
+| Function        | Description               |
+|-----------------|---------------------------|
+| numericInput()  | Number entry input        |
+| radioButtons()  | Radio button selection    |
+| selectInput()   | Dropdown menu             |
+| sliderInput()   | Range slider (1/2 values) |
+| submitButton()  | Submission button         |
+| textInput()     | Text input box            |
+| checkboxInput() | Single checkbox input     |
+| dateInput()     | Date Selection input      |
+| fileInput()     | Upload a file to Shiny    |
+| helpText()      | Describe input field      |
+
+## Output Render Controls 
+
+| Function             | Description             |
+|----------------------|-------------------------|
+| plotOutput()         | Display a rendered plot |
+| tableOutput()        | Display in Table        |
+| textOutput()         | Formatted Text Output   |
+| uiOutput()           | Dynamic UI Elements     |
+| verbatimTextOutput() | "as is"" Text Output"   |
+| imageOutput()        | Render an Image         |
+| htmlOutput()         | Render Pure HTML        |
