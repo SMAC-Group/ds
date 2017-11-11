@@ -6,6 +6,42 @@ knitr::opts_chunk$set(error = TRUE)
 
 Shiny is an R package that makes it easy to build interactive web apps straight from R. 
 
+## Introduction 
+
+Before building the application, we want to know to build our application, and think more like a software engineer. We want to take some input, such as parameters, and produce output. In this chapter we will build the shiny applicaion building procedure. 
+
+### Step 1. R Code / Server / Backend
+
+Before we start thinking of the web application, we want to focus on the R Code, or also commonly known as the "backend" of the application. For all the intended operations to work in the application we need to make sure that the R code that serves as the skeleton operates in the way the developer want it to be. 
+
+For example, perhaps we are trying to build an application that builds a histogram from the waiting time of the default R dataset, Old Faithful Geyser Dataset. We also want to add an option for controlling the number of bins. 
+
+For this to work, we want to build the histogram in R and test out to see if the output is what was desired initially. Below we create the default histogram. 
+
+```{r}
+x <- faithful[, 2] 
+hist(x)
+```
+
+Now we want to make sure to later add the option of creating more bins so the graph is customizable. In the `hist()` function, we see an option `breaks` that we can use to take in different inputs based on what the client wants. 
+
+```{r}
+par(mfrow = c(1,2))
+
+# Compare the differences! 
+bins <- seq(min(x), max(x), length.out = 10)
+hist(x, breaks = bins)
+
+bins <- seq(min(x), max(x), length.out = 20)
+hist(x, breaks = bins)
+```
+
+### Step 2: User Interface (UI) / Frontend 
+
+
+
+
+
 ## Content Creation 
 
 | Function        | Description                              |
