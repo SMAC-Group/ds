@@ -38,20 +38,20 @@ hist(x, breaks = bins)
 
 ### Step 2: User Interface (UI) / Frontend 
 
+The previous information goes into a part called the "server" in the shiny application. Now we want to focus on the frontend of the application, the things we "see" and options we can interact with when we open the app. 
 
+#### Content Creation 
 
-
-
-## Content Creation 
+We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know. 
 
 | Function        | Description                              |
 |-----------------|------------------------------------------|
 | titlePanel()    | The title of the application             |
 | sidebarLayout() | Creates a sidebar layout for fluidPage() |
-| sidebarPanel()  | Makes a sidebar menu                     |
-| mainPanel()     | Main content area for different output   |
 
-## Input Controls
+#### Input Controls
+
+We also want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.
 
 | Function        | Description               |
 |-----------------|---------------------------|
@@ -66,7 +66,13 @@ hist(x, breaks = bins)
 | fileInput()     | Upload a file to Shiny    |
 | helpText()      | Describe input field      |
 
-## Output Render Controls 
+
+| sidebarPanel()  | Makes a sidebar menu                     |
+| mainPanel()     | Main content area for different output   |
+
+#### Output Render Controls 
+
+The different type of output that is shown can be designed depending on what the developer intends it to be. Examples of these options are shown below. We advise you to follow the videos and research different options that fit the desired output. 
 
 | Function             | Description             |
 |----------------------|-------------------------|
@@ -77,3 +83,7 @@ hist(x, breaks = bins)
 | verbatimTextOutput() | "as is"" Text Output"   |
 | imageOutput()        | Render an Image         |
 | htmlOutput()         | Render Pure HTML        |
+
+### Step 3: Connecting frontend and backend 
+
+
