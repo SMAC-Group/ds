@@ -243,8 +243,12 @@ converge(B = 5*10^4, M = 4, seed = 10)
 ```
 
 
-What we want
+What we want:
+
+- inputs
+- 2 tabs
+- buttom to draw + update seed
 
 <center>
-![](images/buffon.pdf)
+![](images/buffon.png)
 </center>
