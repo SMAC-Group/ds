@@ -419,13 +419,13 @@ An additional input could be added consisting in the length of the needle. Howev
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] 0.5349688 0.2589680
+## [1]  0.2678054 -0.1563092
 ## 
 ## $end
-## [1]  0.6289615 -0.7366049
+## [1] -0.5438991 -0.7403776
 ## 
 ## $cross
-## [1] TRUE</code></pre>
+## [1] FALSE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -469,21 +469,21 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
-##             [,1]       [,2]
-## [1,] -0.90313454  0.5492533
-## [2,]  0.08409687  0.7726798
-## [3,] -0.99560562 -0.7756833
-## [4,] -0.71977694  0.5412708
+##             [,1]      [,2]
+## [1,] -0.09783078 0.6973035
+## [2,]  0.62677305 0.6768385
+## [3,] -0.45275041 0.7381813
+## [4,]  0.52752045 0.5281030
 ## 
 ## $end
-##             [,1]      [,2]
-## [1,] -1.62696667  1.239229
-## [2,]  0.00586104  1.769615
-## [3,] -0.82178805 -1.760461
-## [4,] -1.54529381  1.105648
+##            [,1]        [,2]
+## [1,] -1.0155256  1.09458948
+## [2,]  1.2364808 -0.11578783
+## [3,]  0.5427882  0.83253595
+## [4,]  1.3228035 -0.07813538
 ## 
 ## $cross
-## [1] TRUE TRUE TRUE TRUE
+## [1]  TRUE  TRUE FALSE  TRUE
 ## 
 ## $plane
 ## [1] 4
@@ -742,7 +742,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <center>
 <img src="images/shiny_server_part2.png" />
 </center>
-<p>Our next step to update the seed everything the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynmically</strong> update the input direct from the <code>server</code> function. This can be done as follows where everytime the user click on the “action” button a new seed is randomly generated:</p>
+<p>Our next step is now to update the seed every time the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynamically</strong> update the input directly from the <code>server</code> function. Therefore, in order to randomly generate a new seed each time the user clicks on the “action” button, we can do the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">observeEvent</span>(input$cast,{
     <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
                        <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
@@ -774,8 +774,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
     <span class="kw">conv</span>()
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; a878320e8e8c3d312930241b9a93d29e085f02f0 and you will now see that the seed is now updated every time the “action” button is clicked on. The final version of the app we have just made can be found <a href="http://shiny.science.psu.edu/szg279/buffon/">here</a>.</p>
+<p>With this change, you will now observe that the seed is updated each time the “action” button is clicked. The final version of the app we have just created can be found <a href="http://shiny.science.psu.edu/szg279/buffon/">here</a>.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();

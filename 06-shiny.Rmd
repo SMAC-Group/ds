@@ -640,11 +640,7 @@ server <- function(input, output, session) {
 }
 ```
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a878320e8e8c3d312930241b9a93d29e085f02f0
-and you will now see that the seed is now updated every time the "action" button is clicked on. The final version of the app we have just made can be found [here](http://shiny.science.psu.edu/szg279/buffon/).
+With this change, you will now observe that the seed is updated each time the "action" button is clicked. The final version of the app we have just created can be found [here](http://shiny.science.psu.edu/szg279/buffon/).
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
