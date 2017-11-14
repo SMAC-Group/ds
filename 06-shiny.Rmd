@@ -421,7 +421,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plane", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 10, 6, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -454,7 +454,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plane", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 10, 6, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
