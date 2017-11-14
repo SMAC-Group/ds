@@ -146,17 +146,32 @@ Thus, the estimator
 
 is a plausible estimator of $\pi$. The Continous Mapping Theorem [see e.g. Theorem 1.14 of @dasgupta2008asymptotic] can (among other) be used to show that $\hat{\pi}$ is a **consistent** estimator of $\pi$ (i.e. $\hat{\pi}$ converges in probability to $\pi$). In 1777, Georges-Louis Leclerc investigated this problem and computed $\hat{\pi}_B$ by flinging a needle 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.
 
+To illustarte the convergence of our estimator we could fling $B$ times a needle and compute the following estimators:
 
-EXPLAIN WHAT WE WANT TO DO HERE!
+\[
+\hat{\pi}_j = \frac{2j}{S_j}, \;\; j = k,\, ...., \,B
+\]
+
+where $k \ll B$. Then, we could create a graph with $j$ on horizontal axis and $\hat{\pi}_j$ on the horizontal axis. Since $\hat{\pi}_B$ is a consistent estimator we should see that $\hat{\pi}_j$ tends to get closer and closer to $\pi$ as $j$ increase. In this graph we could also superimpose several experiments (recasting the needle $B$ times several times) to reinforce our argument.
+
+The goal of this example is to create a shiny app to vizualize and illustarte Buffon's needle experiment. For this purpose, we will use the following steps:
+
+1) **Step 1: Backend**: Create all the functions needed for the backend of our app. A possible approach is to create the following functions:
+    a) `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
+    b) `buffon_experiment()` this function performs a Monte-Carlo experiment by flinging a large number of needles using the function `cast_needle()`.
+    c) `plot.buffon_experiment()` to vizualise the experiment (i.e. show all the needles randomly dropped) and compute the estimator $\hat{\pi}_B$ for the experiment at hand,
+    d) `converge()` to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous section.
+2) 
+
+<center>
+![](images/buffon.png)
+</center>
 
 ### Step 1: R Code / Server / Backend
 
 In this section, we will construct the following four functions:
 
-1. `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
-2. `buffon_experiment()` this function performs a Monte-Carlo experiment by flinging a large number of needles using the function `cast_needle()`.
-3. `plot.buffon_experiment()`....
-4. `converge()`
+
 
 Let us start with the function `cast_needle()`. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a `list` containing:
 
@@ -278,33 +293,33 @@ plot.buffon_experiment = function(obj){
 }
 ```
 
-Therefore, we could now run the same experiment as Georges-Louis Leclerc fliging a coin 2084 times:
+Therefore, we could now run the same experiment as Georges-Louis Leclerc fliging 2084 needles almost instanteously:
 
 ```{r, fig.align='center', fig.width=5, fig.height=5.2}
 experiment = buffon_experiment(B = 2084)
 plot(experiment)
 ```
 
-Finally, we can illustarte the converge in prob
+Finally, we can consider the function `converge()` 
 
 ```{r}
-converge = function(B = 2084, plan = 10, needle_length = 1, seed = 1777, M = 12){
+converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
   
   if (B < 10){
     warning("B was changed to 10")
     B = 10
   }
+  
   pi_hat = matrix(NA, B, M)
   trials = 1:B
-  cols = rev(hcl(h = seq(15, 375, length = (M+1)), l = 65, c = 100, alpha = 1)[1:M])
-  
+  cols = rev(hcl(h = seq(15, 375, length = (M+1)), 
+                 l = 65, c = 100, alpha = 1)[1:M])
   set.seed(seed)
   
   for (i in 1:M){
-    cross = buffon_needle(B = B, plan = plan, needle_length = needle_length)$cross
+    cross = buffon_experiment(B = B, plane_width = plane_width)$cross
     pi_hat[,i] = 2*trials/cumsum(cross)
   }
-  
   
   plot(NA, xlim = c(1,B), ylim = pi + c(-3/4, 3/4), type = "l", col = "darkblue",
        ylab = bquote(hat(pi)[i]),
@@ -331,9 +346,7 @@ What we want:
 - 2 tabs
 - buttom to draw + update seed
 
-<center>
-![](images/buffon.png)
-</center>
+
 
 
 

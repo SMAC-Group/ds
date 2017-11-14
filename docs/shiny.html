@@ -343,7 +343,25 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 \hat{\pi}_B = \frac{2B}{S_B},
 \]</span></p>
 <p>is a plausible estimator of <span class="math inline">\(\pi\)</span>. The Continous Mapping Theorem <span class="citation">(see e.g. Theorem 1.14 of DasGupta <a href="#ref-dasgupta2008asymptotic">2008</a>)</span> can (among other) be used to show that <span class="math inline">\(\hat{\pi}\)</span> is a <strong>consistent</strong> estimator of <span class="math inline">\(\pi\)</span> (i.e. <span class="math inline">\(\hat{\pi}\)</span> converges in probability to <span class="math inline">\(\pi\)</span>). In 1777, Georges-Louis Leclerc investigated this problem and computed <span class="math inline">\(\hat{\pi}_B\)</span> by flinging a needle 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.</p>
-<p>EXPLAIN WHAT WE WANT TO DO HERE!</p>
+<p>To illustarte the convergence of our estimator we could fling <span class="math inline">\(B\)</span> times a needle and compute the following estimators:</p>
+<p><span class="math display">\[
+\hat{\pi}_j = \frac{2j}{S_j}, \;\; j = k,\, ...., \,B
+\]</span></p>
+<p>where <span class="math inline">\(k \ll B\)</span>. Then, we could create a graph with <span class="math inline">\(j\)</span> on horizontal axis and <span class="math inline">\(\hat{\pi}_j\)</span> on the horizontal axis. Since <span class="math inline">\(\hat{\pi}_B\)</span> is a consistent estimator we should see that <span class="math inline">\(\hat{\pi}_j\)</span> tends to get closer and closer to <span class="math inline">\(\pi\)</span> as <span class="math inline">\(j\)</span> increase. In this graph we could also superimpose several experiments (recasting the needle <span class="math inline">\(B\)</span> times several times) to reinforce our argument.</p>
+<p>The goal of this example is to create a shiny app to vizualize and illustarte Buffon’s needle experiment. For this purpose, we will use the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Backend</strong>: Create all the functions needed for the backend of our app. A possible approach is to create the following functions:
+<ol style="list-style-type: lower-alpha">
+<li>a function to cast one needle,</li>
+<li>a function to cast <span class="math inline">\(B\)</span> needles,</li>
+<li>a function to vizualise the experiment (i.e. show the plane with the needles) and compute <span class="math inline">\(\hat{\pi}_B\)</span> for the experiment at end,</li>
+<li>a function to illustrate the convergence of the estimator.</li>
+</ol></li>
+<li></li>
+</ol>
+<center>
+<img src="images/buffon.png" />
+</center>
 <div id="step-1-r-code-server-backend" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Step 1: R Code / Server / Backend</h3>
 <p>In this section, we will construct the following four functions:</p>
@@ -374,13 +392,13 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1]  0.607032 -0.216190
+## [1]  0.7731200 -0.3701612
 ## 
 ## $end
-## [1] -0.1798051 -0.8333507
+## [1] 1.67615251 0.05941108
 ## 
 ## $cross
-## [1] FALSE</code></pre>
+## [1] TRUE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -424,21 +442,21 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
-##            [,1]        [,2]
-## [1,] -0.5542585 -0.61388642
-## [2,] -0.5835572 -0.32115158
-## [3,]  0.6681760  0.04569046
-## [4,]  0.7798805  0.28528146
+##            [,1]       [,2]
+## [1,] -0.3309261 -0.1229158
+## [2,]  0.3010591 -0.2870966
+## [3,]  0.9023766  0.1894991
+## [4,] -0.3495219 -0.7255560
 ## 
 ## $end
 ##            [,1]       [,2]
-## [1,] -1.1155762  0.2137140
-## [2,] -1.5255565 -0.6567667
-## [3,] -0.2822692 -0.2652016
-## [4,]  1.4839077  0.9954545
+## [1,] -0.2966345  0.8764961
+## [2,]  0.3405430  0.7121236
+## [3,]  1.3148555 -0.7214680
+## [4,] -1.1584575 -1.3134532
 ## 
 ## $cross
-## [1]  TRUE FALSE  TRUE FALSE
+## [1] TRUE TRUE TRUE TRUE
 ## 
 ## $plane
 ## [1] 4
@@ -477,28 +495,28 @@ for (i in <span class="dv">1</span>:<span class="dv">4</span>){
           <span class="dt">col =</span> cols[cross[i] +<span class="st"> </span><span class="dv">1</span>])
   }
 }</code></pre></div>
-<p>Therefore, we could now run the same experiment as Georges-Louis Leclerc fliging a coin 2084 times:</p>
+<p>Therefore, we could now run the same experiment as Georges-Louis Leclerc fliging 2084 needles almost instanteously:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)
 <span class="kw">plot</span>(experiment)</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Finally, we can illustarte the converge in prob</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge =<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plan =</span> <span class="dv">10</span>, <span class="dt">needle_length =</span> <span class="dv">1</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
+<p>Finally, we can consider the function <code>converge()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge =<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
   
   if (B &lt;<span class="st"> </span><span class="dv">10</span>){
     <span class="kw">warning</span>(<span class="st">&quot;B was changed to 10&quot;</span>)
     B =<span class="st"> </span><span class="dv">10</span>
   }
+  
   pi_hat =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, M)
   trials =<span class="st"> </span><span class="dv">1</span>:B
-  cols =<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="dv">+1</span>)), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span>:M])
-  
+  cols =<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="dv">+1</span>)), 
+                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span>:M])
   <span class="kw">set.seed</span>(seed)
   
   for (i in <span class="dv">1</span>:M){
-    cross =<span class="st"> </span><span class="kw">buffon_needle</span>(<span class="dt">B =</span> B, <span class="dt">plan =</span> plan, <span class="dt">needle_length =</span> needle_length)$cross
+    cross =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)$cross
     pi_hat[,i] =<span class="st"> </span><span class="dv">2</span>*trials/<span class="kw">cumsum</span>(cross)
   }
-  
   
   <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi +<span class="st"> </span><span class="kw">c</span>(-<span class="dv">3</span>/<span class="dv">4</span>, <span class="dv">3</span>/<span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,
        <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[i]),
@@ -512,16 +530,13 @@ for (i in <span class="dv">1</span>:<span class="dv">4</span>){
   <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
 }</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">5</span>*<span class="dv">10</span>^<span class="dv">4</span>, <span class="dt">M =</span> <span class="dv">4</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre></div>
-<pre><code>## Error in buffon_needle(B = B, plan = plan, needle_length = needle_length): could not find function &quot;buffon_needle&quot;</code></pre>
+<p><img src="ds_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>What we want:</p>
 <ul>
 <li>inputs</li>
 <li>2 tabs</li>
 <li>buttom to draw + update seed</li>
 </ul>
-<center>
-<img src="images/buffon.png" />
-</center>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
