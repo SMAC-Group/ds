@@ -492,7 +492,7 @@ If you re-run the app at the point our changes will have no visible effect. Next
 
 ```{r, eval = FALSE}
 cast = eventReactive(input$cast, {
-    buffon_experiment(B = 2084, plane_width = input$plane, 
+    buffon_experiment(B = input$B, plane_width = input$plane, 
                       seed = input$seed)
   })
 ```
@@ -520,7 +520,7 @@ server <- function(input, output) {
   
   # Fling some needles!
   cast = eventReactive(input$cast, {
-    buffon_experiment(B = 2084, plane_width = input$plane, 
+    buffon_experiment(B = input$B, plane_width = input$plane, 
                       seed = input$seed)
   })
   
@@ -572,12 +572,12 @@ server <- function(input, output) {
   
   # Fling some needles!
   cast = eventReactive(input$cast, {
-    buffon_experiment(B = 2084, plane_width = input$plane, 
+    buffon_experiment(B = input$B, plane_width = input$plane, 
                       seed = input$seed)
   })
   
   conv = eventReactive(input$cast, {
-    converge(B = input$B, plane_width = input$plan, 
+    converge(B = input$B, plane_width = input$plane, 
              seed = input$seed, M = input$M)
   })
   
@@ -593,6 +593,13 @@ server <- function(input, output) {
 
 NIAKETTE
 
+and when reloading the app you should now see on the second tab:
+
+<center>
+![](images/shiny_server_part2.png)
+</center>
+
+Our next step to update
 <center>
 ![](images/shiny_ui_part5.png)
 </center>
