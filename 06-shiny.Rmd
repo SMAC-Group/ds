@@ -88,7 +88,7 @@ The different type of output that is shown can be designed depending on what the
 
 
 
-
+## Example: Monte-Carlo Integration ???
 
 
 ## Example: Buffon's needle
@@ -147,14 +147,25 @@ Thus, the estimator
 is a plausible estimator of $\pi$. The Continous Mapping Theorem [see e.g. Theorem 1.14 of @dasgupta2008asymptotic] can (among other) be used to show that $\hat{\pi}$ is a **consistent** estimator of $\pi$ (i.e. $\hat{\pi}$ converges in probability to $\pi$). In 1777, Georges-Louis Leclerc investigated this problem and computed $\hat{\pi}$ by flipping a coin 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.
 
 
-INTRO HERE
+EXPLAIN WHAT WE WANT TO DO HERE!
 
+### Step 1: R Code / Server / Backend
 
-In the function below, we cast a needle:
+In this section, we will construct the following four functions:
+
+1. `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
+2. 
+
+Let us start witht he function `cast_needle()`. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a list containing:
+
+- `$start`: the coordinates of the one end of the needle,
+- `$end`: the coordinates of the other end of the needle,
+- `$cross`: a binary variable to indicate if the needle intercepts a line.
 
 ```{r}
-cast_needle = function(plan = 10, needle_length = 1){
-  available_range = plan - needle_length
+cast_needle = function(plane_width = 20){
+  needle_length = 1
+  available_range = plane_width/2 - needle_length
   x_start = runif(2, -available_range, available_range)
   angle = runif(1, 0, 2*pi)
   x_end = needle_length*c(cos(angle), sin(angle)) + x_start

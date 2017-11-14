@@ -117,7 +117,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.1.2" data-path="shiny.html"><a href="shiny.html#step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.1.2</b> Step 2: User Interface (UI) / Frontend</a></li>
 <li class="chapter" data-level="7.1.3" data-path="shiny.html"><a href="shiny.html#step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.1.3</b> Step 3: Connecting frontend and backend</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="shiny.html"><a href="shiny.html#example-buffons-needle"><i class="fa fa-check"></i><b>7.2</b> Example: Buffon’s needle</a></li>
+<li class="chapter" data-level="7.2" data-path="shiny.html"><a href="shiny.html#example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.2</b> Example: Monte-Carlo Integration ???</a></li>
+<li class="chapter" data-level="7.3" data-path="shiny.html"><a href="shiny.html#example-buffons-needle"><i class="fa fa-check"></i><b>7.3</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="shiny.html"><a href="shiny.html#step-1-r-code-server-backend"><i class="fa fa-check"></i><b>7.3.1</b> Step 1: R Code / Server / Backend</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>8</b> Placeholder</a></li>
 <li class="divider"></li>
@@ -293,8 +296,11 @@ mainPanel() | Main content area for different output |</p>
 <h3><span class="header-section-number">7.1.3</span> Step 3: Connecting frontend and backend</h3>
 </div>
 </div>
+<div id="example-monte-carlo-integration" class="section level2">
+<h2><span class="header-section-number">7.2</span> Example: Monte-Carlo Integration ???</h2>
+</div>
 <div id="example-buffons-needle" class="section level2">
-<h2><span class="header-section-number">7.2</span> Example: Buffon’s needle</h2>
+<h2><span class="header-section-number">7.3</span> Example: Buffon’s needle</h2>
 <p>In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon posed the following problem to the Royal Academy of Sciences in Paris <span class="citation">(Georges-Louis Leclerc <a href="#ref-buffon1777essai">1777</a>)</span>:</p>
 <blockquote>
 <p>Suppose that you drop a needle of unit length on a plane ruled by the lines <span class="math inline">\(y = m \; (m = 0, \pm 1, \pm 2, ...)\)</span> - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?</p>
@@ -337,10 +343,23 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 \hat{\pi} = \frac{2n}{S_n},
 \]</span></p>
 <p>is a plausible estimator of <span class="math inline">\(\pi\)</span>. The Continous Mapping Theorem <span class="citation">(see e.g. Theorem 1.14 of DasGupta <a href="#ref-dasgupta2008asymptotic">2008</a>)</span> can (among other) be used to show that <span class="math inline">\(\hat{\pi}\)</span> is a <strong>consistent</strong> estimator of <span class="math inline">\(\pi\)</span> (i.e. <span class="math inline">\(\hat{\pi}\)</span> converges in probability to <span class="math inline">\(\pi\)</span>). In 1777, Georges-Louis Leclerc investigated this problem and computed <span class="math inline">\(\hat{\pi}\)</span> by flipping a coin 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.</p>
-<p>INTRO HERE</p>
-<p>In the function below, we cast a needle:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast_needle =<span class="st"> </span>function(<span class="dt">plan =</span> <span class="dv">10</span>, <span class="dt">needle_length =</span> <span class="dv">1</span>){
-  available_range =<span class="st"> </span>plan -<span class="st"> </span>needle_length
+<p>EXPLAIN WHAT WE WANT TO DO HERE!</p>
+<div id="step-1-r-code-server-backend" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Step 1: R Code / Server / Backend</h3>
+<p>In this section, we will construct the following four functions:</p>
+<ol style="list-style-type: decimal">
+<li><code>cast_needle()</code> this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.</li>
+<li></li>
+</ol>
+<p>Let us start witht he function <code>cast_needle()</code>. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a list containing:</p>
+<ul>
+<li><code>$start</code>: the coordinates of the one end of the needle,</li>
+<li><code>$end</code>: the coordinates of the other end of the needle,</li>
+<li><code>$cross</code>: a binary variable to indicate if the needle intercepts a line.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast_needle =<span class="st"> </span>function(<span class="dt">plane_width =</span> <span class="dv">20</span>){
+  needle_length =<span class="st"> </span><span class="dv">1</span>
+  available_range =<span class="st"> </span>plane_width/<span class="dv">2</span> -<span class="st"> </span>needle_length
   x_start =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, -available_range, available_range)
   angle =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>*pi)
   x_end =<span class="st"> </span>needle_length*<span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) +<span class="st"> </span>x_start
@@ -392,9 +411,10 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
   }
 }</code></pre></div>
 <p>This looks like:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_needle</span>()
-<span class="kw">plot</span>(experiment)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_needle</span>()</code></pre></div>
+<pre><code>## Error in cast_needle(plan = plan, needle_length = needle_length): unused argument (needle_length = needle_length)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(experiment)</code></pre></div>
+<pre><code>## Error in plot(experiment): object &#39;experiment&#39; not found</code></pre>
 <p>Finally, we can illustarte the converge in prob</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge =<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plan =</span> <span class="dv">10</span>, <span class="dt">needle_length =</span> <span class="dv">1</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
   
@@ -426,7 +446,7 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
   <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
 }</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">5</span>*<span class="dv">10</span>^<span class="dv">4</span>, <span class="dt">M =</span> <span class="dv">4</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
+<pre><code>## Error in cast_needle(plan = plan, needle_length = needle_length): unused argument (needle_length = needle_length)</code></pre>
 <p>What we want:</p>
 <ul>
 <li>inputs</li>
@@ -448,6 +468,7 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
     });
 </script>
 
+</div>
 </div>
 </div>
 <h3> Placeholder</h3>
