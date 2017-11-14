@@ -1,3 +1,4 @@
+
 ```{r setup, cache = F, echo=F}
 knitr::opts_chunk$set(error = TRUE)
 ```
@@ -40,9 +41,25 @@ hist(x, breaks = bins)
 
 The previous information goes into a part called the "server" in the shiny application. Now we want to focus on the frontend of the application, the things we "see" and options we can interact with when we open the app. 
 
+
 ### Input Controls {-}
 
 We want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.
+
+### Content Creation {-}
+
+We want to design the application in the way that it is comprehensive and also easy to interpret. Below are some often-used options of content creation that will be beneficial to know.
+
+| Function        | Description                              |
+|-----------------|------------------------------------------|
+| titlePanel()    | The title of the application             |
+| sidebarLayout() | Creates a sidebar layout for fluidPage() |
+| sidebarPanel()  | Makes a sidebar menu                     |
+| mainPanel()     | Main content area for different outputs  |
+
+### Input Controls {-}
+
+We also want to provide spaces so that the client can change any desired parameter. For example, in the above example, this would be the number of bins. Below are some input controls the developer can use.
 
 | Function        | Description               |
 |-----------------|---------------------------|
@@ -160,24 +177,31 @@ To illustarte the convergence of our estimator we could fling $B$ times a needle
 
 where $k \ll B$. Then, we could create a graph with $j$ on horizontal axis and $\hat{\pi}_j$ on the horizontal axis. Since $\hat{\pi}_B$ is a consistent estimator we should see that $\hat{\pi}_j$ tends to get closer and closer to $\pi$ as $j$ increase. In this graph we could also superimpose several experiments (recasting the needle $B$ times several times) to reinforce our argument.
 
-The goal of this example is to create a shiny app to vizualize and illustarte Buffon's needle experiment. For this purpose, we will use the following steps:
+The goal of this example is to create a shiny app to visualize and illustarte Buffon's needle experiment. For this purpose, we will use the following steps:
 
 1) **Step 1: Backend**: Create all the functions needed for the backend of our app. A possible approach is to create the following functions:
     a) `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
     b) `buffon_experiment()` this function performs a Monte-Carlo experiment by flinging a large number of needles using the function `cast_needle()`.
-    c) `plot.buffon_experiment()` to vizualise the experiment (i.e. show all the needles randomly dropped) and compute the estimator $\hat{\pi}_B$ for the experiment at hand,
-    d) `converge()` to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous section.
-2) 
+    c) `plot.buffon_experiment()` to visualize the experiment (i.e. show all the needles randomly dropped) and compute the estimator $\hat{\pi}_B$ for the experiment at hand.
+d) `converge()` to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous paragraph.
+2)  **Step 2: Frontend**: Create widgets to collect all inputs needed by the backend:
+    a) dimension of the plane of which the needles are dropped,
+    b) the number of needles being used, i.e. $B$,
+    c) number of experiments, which is needed to illustrate the convergence of the estimator, 
+    d) the seed to allow "replicable" experiments.
+Then, we will need to create two output "tabs". In the first one, we "print" the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to "run" a new experiment.
+
+3) **Step 3: Connecting frontend and backend**: In this third step we will need to connect everything. Indeed, we will use the list `input` created by the widget define in the previous step to create the graphs to be displayed in the two output tabs. We will also need to "activate" (i.e. connect the execution of the approriated functions) the button to run a new experiment and update the "seed" after every new experiment.
+
+Eseentially, our approach show follow the chart presented below:
 
 <center>
 ![](images/buffon.png)
 </center>
 
-### Step 1: R Code / Server / Backend
+In the next sections, we will discuss in details how to program each step.
 
-In this section, we will construct the following four functions:
-
-
+### Step 1: Backend
 
 Let us start with the function `cast_needle()`. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a `list` containing:
 
@@ -215,7 +239,7 @@ abline(h = -2:2, lty = 3)
 lines(c(needle$start[1], needle$end[1]), c(needle$start[2], needle$end[2]))
 ```
 
-Next, we consider the function `buffon_experiment()`. This function is based on function the previous function and contains the following inputs:
+Next, we consider the function `buffon_experiment()`. This function is based on the previous function and contains the following inputs:
 
 - `B`: the number of needles being casted,
 - `plane_width`: the width of the (square) plane on which the needles are casted,
@@ -271,7 +295,7 @@ for (i in 1:4){
 }
 ```
 
-We can now write a custom `plot()` function for the output of the function `buffon_experiment()`. This function will provide a way to vizualize the experiment and will compute $\hat{\pi}_B$, which will be show in the title. A possible function is provided below:
+We can now write a custom `plot()` function for the output of the function `buffon_experiment()`. This function will provide a way to visualize the experiment and will compute $\hat{\pi}_B$, which will be shown in the title. A possible function is provided below:
 
 ```{r}
 plot.buffon_experiment = function(obj){
@@ -306,7 +330,14 @@ experiment = buffon_experiment(B = 2084)
 plot(experiment)
 ```
 
-Finally, we can consider the function `converge()` 
+Finally, we can consider the function `converge()`. Similarly to `buffon_experiment()`, the function `converge()` has the following inputs:
+
+- `B`: the number of needles being casted,
+- `plane_width`: the width of the (square) plane on which the needles are casted,
+- `seed`: the "seed" used by the random number generator (allows to replicate results),
+- `M`: the number of experiments.
+
+Then function returns the graph mentionned at the end of the previous section. A possible implementation of this function is provided below:
 
 ```{r}
 converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
@@ -328,8 +359,8 @@ converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
   }
   
   plot(NA, xlim = c(1,B), ylim = pi + c(-3/4, 3/4), type = "l", col = "darkblue",
-       ylab = bquote(hat(pi)[i]),
-       xlab = "i", main = "Buffon\'s needle experiment in time")
+       ylab = bquote(hat(pi)[j]),
+       xlab = "j", main = "Buffon\'s needle experiment")
   grid()
   
   for (i in 1:M){
@@ -340,12 +371,172 @@ converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
 }
 ```
 
+Therefore, if we were to repeat 20 times the original experience of Georges-Louis Leclerc and compute $\hat{\pi}_j$ for each of them we would obtain:
 
 ```{r, fig.align='center', fig.width=6, fig.height=5.2}
-converge(B = 5*10^4, M = 4, seed = 10)
+converge(B = 2084, M = 20, seed = 10)
+```
+
+which provides some illustrations of the convergence of the estimator.
+
+### Step 2: Frontend
+
+We start by construction an "empty" shiny app, i.e.
+
+```{r, eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      # Add inputs here!
+    ),
+    
+    mainPanel(
+      tabsetPanel(
+        # Add tabs here!
+      )
+    )
+  )
+)
+
+# Define server
+server <- function(input, output) {
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+If you run this empty app you should obtain the result below:
+
+<center>
+![](images/shiny_ui_part1.png)
+</center>
+
+We will start by adding the required input widgets by modifying the `ui` function as follows:
+
+```{r, eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("B", "Number of trials:", 100, 20, 10^6),
+      numericInput("M", "Number of experiments:", 1, 1, 100),
+      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
+      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up"))
+    ),
+    
+    mainPanel(
+      tabsetPanel(
+        # Add tabs here!
+      )
+    )
+  )
+)
+```
+
+By running the update you should now obtain:
+
+<center>
+![](images/shiny_ui_part2.png)
+</center>
+
+Next, we create two output tabs in which will contains to graphs previously mentioned. This can be done by modifying again the `ui`function as follows:
+
+```{r, eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("B", "Number of trials:", 100, 20, 10^6),
+      numericInput("M", "Number of experiments:", 1, 1, 100),
+      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
+      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up"))
+    ),
+    
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Experiment", plotOutput("exp")),
+        tabPanel("Convergence", plotOutput("conv"))
+      )
+    )
+  )
+)
+```
+
+The app should now look like:
+
+<center>
+![](images/shiny_ui_part3.png)
+</center>
+
+At this point, we are done with the `ui` function and will modify the `server` in the next section.
+
+### Step 3: Connecting frontend and backend
+
+In this section, we will focus on the `server` function to produce the desired output. Let us start 
+
+```{r, eval = FALSE}
+kh
 ```
 
 
+
+<center>
+![](images/shiny_ui_part5.png)
+</center>
+
+
+Create widgets to collect all inputs needed by the backend:
+    a) dimension of the plane of which the needles are dropped,
+    b) the number of needles being used, i.e. $B$,
+    c) number of experiments, which is needed to illustrate the convergence of the estimator, 
+    d) the seed to allow "replicable" experiments.
+Then, we will need to create two output "tabs". In the first one, we "print" the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to "run" a new experiment.
+```{r, eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      # Input panel
+      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("B", "Number of trials:", 100, 20, 10^6),
+      numericInput("M", "Number of experiments:", 1, 1, 100),
+      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
+      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up")
+      )
+    ),
+    
+    # Create two output tabs
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Experiment", plotOutput("exp")),
+        tabPanel("Convergence", plotOutput("conv"))
+      )
+    )
+  )
+)
+```
+=======
+>>>>>>> origin/master
 What we want:
 
 - inputs
