@@ -528,13 +528,13 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] -0.9320354  0.8524090
+## [1] -0.9876464 -0.3893083
 ## 
 ## $end
-## [1] -1.9308638  0.9008018
+## [1] -0.9538618  0.6101208
 ## 
 ## $cross
-## [1] FALSE</code></pre>
+## [1] TRUE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -578,21 +578,21 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
-##             [,1]       [,2]
-## [1,]  0.93835469 -0.1799648
-## [2,] -0.16813215  0.6051730
-## [3,] -0.26139125 -0.7295162
-## [4,] -0.04613503  0.9006232
+##            [,1]        [,2]
+## [1,]  0.5038446  0.59298951
+## [2,] -0.8838021 -0.30767028
+## [3,] -0.3528154  0.51092558
+## [4,] -0.1048255 -0.07195687
 ## 
 ## $end
-##             [,1]       [,2]
-## [1,]  0.35258481 -0.9904422
-## [2,]  0.13583122  1.5578567
-## [3,] -1.06721654 -1.3216695
-## [4,] -0.07520971  1.9002004
+##            [,1]       [,2]
+## [1,]  0.4402705  1.5909666
+## [2,] -1.8654583 -0.1170105
+## [3,] -1.1172840  1.1555866
+## [4,] -0.8461771  0.5991600
 ## 
 ## $cross
-## [1] FALSE  TRUE  TRUE  TRUE
+## [1]  TRUE FALSE  TRUE  TRUE
 ## 
 ## $plane
 ## [1] 4
