@@ -390,12 +390,99 @@ ui <- fluidPage(
   )
 )
 
-
-server <- function(input, output, session) {
+# Define server
+server <- function(input, output) {
 }
+
+# Run the application 
+shinyApp(ui = ui, server = server)
 ```
 
-If you run 
+If you run this empty app you should obtain the result below:
+
+<center>
+![](images/shiny_ui_part1.png)
+</center>
+
+We will start by adding the required input widgets by modifying the `ui` function as follows:
+
+```{r, eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("B", "Number of trials:", 100, 20, 10^6),
+      numericInput("M", "Number of experiments:", 1, 1, 100),
+      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
+      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up"))
+    ),
+    
+    mainPanel(
+      tabsetPanel(
+        # Add tabs here!
+      )
+    )
+  )
+)
+```
+
+By running the update you should now obtain:
+
+<center>
+![](images/shiny_ui_part2.png)
+</center>
+
+Next, we create two output tabs in which will contains to graphs previously mentioned. This can be done by modifying again the `ui`function as follows:
+
+```{r, eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("B", "Number of trials:", 100, 20, 10^6),
+      numericInput("M", "Number of experiments:", 1, 1, 100),
+      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
+      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up"))
+    ),
+    
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Experiment", plotOutput("exp")),
+        tabPanel("Convergence", plotOutput("conv"))
+      )
+    )
+  )
+)
+```
+
+The app should now look like:
+
+<center>
+![](images/shiny_ui_part3.png)
+</center>
+
+At this point, we are done with the `ui` function and will modify the `server` in the next section.
+
+### Step 3: Connecting frontend and backend
+
+In this section, we will focus on the `server` function to produce the desired output. Let us start 
+
+
+
+<center>
+![](images/shiny_ui_part5.png)
+</center>
+
 
 Create widgets to collect all inputs needed by the backend:
     a) dimension of the plane of which the needles are dropped,
