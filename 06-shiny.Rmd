@@ -639,7 +639,7 @@ server <- function(input, output, session) {
 }
 ```
 
-and you will now see that the seed is now updated every time the "action" button is clicked on.
+and you will now see that the seed is now updated every time the "action" button is clicked on. The final version of the app we have just made can be found [here](http://shiny.science.psu.edu/szg279/buffon/).
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
