@@ -168,18 +168,27 @@ The goal of this example is to create a shiny app to vizualize and illustarte Bu
     a) `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
     b) `buffon_experiment()` this function performs a Monte-Carlo experiment by flinging a large number of needles using the function `cast_needle()`.
     c) `plot.buffon_experiment()` to vizualise the experiment (i.e. show all the needles randomly dropped) and compute the estimator $\hat{\pi}_B$ for the experiment at hand,
-    d) `converge()` to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous section.
-2) 
+    d) `converge()` to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous paragraph.
+  
+2) **Step 2: Frontend**: Create widgets to collect all inputs needed by the backend:
+    a) dimension of the plane of which the needles are dropped,
+    b) the number of needles being used, i.e. $B$,
+    c) number of experiments, which is needed to illustrate the convergence of the estimator, 
+    d) the seed to allow "replicable" experiments.
+Then, we will need to create two output "tabs". In the first one, we "print" the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to "run" a new experiment.
+
+3) **Step 3: Connecting frontend and backend**: In this third step we will need to connect everything. Indeed, we will use the list `input` created by the widget define in the previous step to create the graphs to be displayed in the two output tabs. We will also need to "activate" (i.e. connect the execution of the approriated functions) the button to run a new experiment and update the "seed" after every new experiment.
+
+Eseentially, our approach show follow the chart presented below:
 
 <center>
 ![](images/buffon.png)
 </center>
 
-### Step 1: R Code / Server / Backend
-
-In this section, we will construct the following four functions:
+In the next sections, we will discuss in details how to program each step.
 
 
+### Step 1: Backend
 
 Let us start with the function `cast_needle()`. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a `list` containing:
 
@@ -308,7 +317,14 @@ experiment = buffon_experiment(B = 2084)
 plot(experiment)
 ```
 
-Finally, we can consider the function `converge()` 
+Finally, we can consider the function `converge()`. Similarly to `buffon_experiment()`, the function `converge()` has the following inputs:
+
+- `B`: the number of needles being casted,
+- `plane_width`: the width of the (square) plane on which the needles are casted,
+- `seed`: the "seed" used by the random number generator (allows to replicate results),
+- `M`: the number of experiments.
+
+Then function returns the graph mentionned at the end of the previous section. A possible implementation of this function is provided below:
 
 ```{r}
 converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
@@ -330,8 +346,8 @@ converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
   }
   
   plot(NA, xlim = c(1,B), ylim = pi + c(-3/4, 3/4), type = "l", col = "darkblue",
-       ylab = bquote(hat(pi)[i]),
-       xlab = "i", main = "Buffon\'s needle experiment in time")
+       ylab = bquote(hat(pi)[j]),
+       xlab = "j", main = "Buffon\'s needle experiment")
   grid()
   
   for (i in 1:M){
@@ -342,10 +358,15 @@ converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
 }
 ```
 
+Therefore, if we were to repeat 20 times the original experience of Georges-Louis Leclerc and compute $\hat{\pi}_j$ for each of them we would obtain:
 
 ```{r, fig.align='center', fig.width=6, fig.height=5.2}
-converge(B = 5*10^4, M = 4, seed = 10)
+converge(B = 2084, M = 20, seed = 10)
 ```
+
+which provides some illustrations of the convergence of the estimator.
+
+### Step 2: Frontend
 
 
 What we want:
