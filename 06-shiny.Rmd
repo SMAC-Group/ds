@@ -551,7 +551,7 @@ Similarly, we do the same thing for the second graph by adding the following lin
 
 ```{r, eval = FALSE}
 conv <- eventReactive(input$cast, {
-    converge(B = input$B, plane_width = input$plan, 
+    converge(B = input$B, plane_width = input$plane, 
              seed = input$seed, M = input$M)
 })
 ```
