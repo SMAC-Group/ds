@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-11-13">
+<meta name="date" content="2017-11-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -121,9 +121,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="shiny.html"><a href="shiny.html#step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.4</b> Step 3: Connecting frontend and backend</a></li>
 <li class="chapter" data-level="7.5" data-path="shiny.html"><a href="shiny.html#step-4"><i class="fa fa-check"></i><b>7.5</b> Step 4:</a></li>
-<li class="chapter" data-level="7.6" data-path="shiny.html"><a href="shiny.html#example-buffons-needle"><i class="fa fa-check"></i><b>7.6</b> Example: Buffon’s needle</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="shiny.html"><a href="shiny.html#step-1-r-code-server-backend"><i class="fa fa-check"></i><b>7.6.1</b> Step 1: R Code / Server / Backend</a></li>
-<li class="chapter" data-level="7.6.2" data-path="shiny.html"><a href="shiny.html#step-3-connecting-frontend-and-backend-1"><i class="fa fa-check"></i><b>7.6.2</b> Step 3: Connecting frontend and backend</a></li>
+<li class="chapter" data-level="7.6" data-path="shiny.html"><a href="shiny.html#example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.6</b> Example: Monte-Carlo Integration ???</a></li>
+<li class="chapter" data-level="7.7" data-path="shiny.html"><a href="shiny.html#example-buffons-needle"><i class="fa fa-check"></i><b>7.7</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="shiny.html"><a href="shiny.html#step-1-backend"><i class="fa fa-check"></i><b>7.7.1</b> Step 1: Backend</a></li>
+<li class="chapter" data-level="7.7.2" data-path="shiny.html"><a href="shiny.html#step-2-frontend"><i class="fa fa-check"></i><b>7.7.2</b> Step 2: Frontend</a></li>
+<li class="chapter" data-level="7.7.3" data-path="shiny.html"><a href="shiny.html#step-3-connecting-frontend-and-backend-1"><i class="fa fa-check"></i><b>7.7.3</b> Step 3: Connecting frontend and backend</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>8</b> Placeholder</a></li>
@@ -309,11 +311,12 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 </div>
 <div id="step-4" class="section level2">
 <h2><span class="header-section-number">7.5</span> Step 4:</h2>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ## Example: Monte Carlo</p>
-<p>======= ## Example: Monte-Carlo Integration ??? &gt;&gt;&gt;&gt;&gt;&gt;&gt; 9db250ad55d1687da1f549e5ad34455dabfef041</p>
+</div>
+<div id="example-monte-carlo-integration" class="section level2">
+<h2><span class="header-section-number">7.6</span> Example: Monte-Carlo Integration ???</h2>
 </div>
 <div id="example-buffons-needle" class="section level2">
-<h2><span class="header-section-number">7.6</span> Example: Buffon’s needle</h2>
+<h2><span class="header-section-number">7.7</span> Example: Buffon’s needle</h2>
 <p>In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon posed the following problem to the Royal Academy of Sciences in Paris <span class="citation">(Georges-Louis Leclerc <a href="#ref-buffon1777essai">1777</a>)</span>:</p>
 <blockquote>
 <p>Suppose that you drop a needle of unit length on a plane ruled by the lines <span class="math inline">\(y = m \; (m = 0, \pm 1, \pm 2, ...)\)</span> - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?</p>
@@ -368,16 +371,28 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <li><code>cast_needle()</code> this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.</li>
 <li><code>buffon_experiment()</code> this function performs a Monte-Carlo experiment by flinging a large number of needles using the function <code>cast_needle()</code>.</li>
 <li><code>plot.buffon_experiment()</code> to visualize the experiment (i.e. show all the needles randomly dropped) and compute the estimator <span class="math inline">\(\hat{\pi}_B\)</span> for the experiment at hand.</li>
-<li><code>converge()</code> to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous section.</li>
 </ol></li>
-<li></li>
 </ol>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>converge()</code> to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous paragraph.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Step 2: Frontend</strong>: Create widgets to collect all inputs needed by the backend:
+<ol style="list-style-type: lower-alpha">
+<li>dimension of the plane of which the needles are dropped,</li>
+<li>the number of needles being used, i.e. <span class="math inline">\(B\)</span>,</li>
+<li>number of experiments, which is needed to illustrate the convergence of the estimator,</li>
+<li>the seed to allow “replicable” experiments. Then, we will need to create two output “tabs”. In the first one, we “print” the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to “run” a new experiment.</li>
+</ol></li>
+<li><strong>Step 3: Connecting frontend and backend</strong>: In this third step we will need to connect everything. Indeed, we will use the list <code>input</code> created by the widget define in the previous step to create the graphs to be displayed in the two output tabs. We will also need to “activate” (i.e. connect the execution of the approriated functions) the button to run a new experiment and update the “seed” after every new experiment.</li>
+</ol>
+<p>Eseentially, our approach show follow the chart presented below:</p>
 <center>
 <img src="images/buffon.png" />
 </center>
-<div id="step-1-r-code-server-backend" class="section level3">
-<h3><span class="header-section-number">7.6.1</span> Step 1: R Code / Server / Backend</h3>
-<p>In this section, we will construct the following four functions:</p>
+<p>In the next sections, we will discuss in details how to program each step.</p>
+<div id="step-1-backend" class="section level3">
+<h3><span class="header-section-number">7.7.1</span> Step 1: Backend</h3>
 <p>Let us start with the function <code>cast_needle()</code>. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a <code>list</code> containing:</p>
 <ul>
 <li><code>$start</code>: the coordinates of the one end of the needle,</li>
@@ -399,10 +414,10 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] -0.1108691 -0.2712553
+## [1] -0.3559484 -0.4840613
 ## 
 ## $end
-## [1] 0.1255581 0.7003939
+## [1] -0.2554431 -1.4789978
 ## 
 ## $cross
 ## [1] TRUE</code></pre>
@@ -450,20 +465,20 @@ needle</code></pre></div>
 experiment</code></pre></div>
 <pre><code>## $start
 ##            [,1]       [,2]
-## [1,]  0.5859107  0.8778286
-## [2,] -0.6409464 -0.1698667
-## [3,] -0.9195015  0.6621215
-## [4,] -0.7714662  0.4946147
+## [1,] -0.8621622 -0.5866407
+## [2,] -0.4268451 -0.3309438
+## [3,]  0.1244547  0.8938517
+## [4,]  0.6511758  0.8026768
 ## 
 ## $end
-##             [,1]        [,2]
-## [1,]  0.88084781 -0.07768809
-## [2,]  0.02071309  0.57993785
-## [3,] -0.46617165  1.55346437
-## [4,]  0.16812457  0.15231475
+##            [,1]        [,2]
+## [1,] -1.7203497 -0.07330450
+## [2,] -1.1113678  0.39804772
+## [3,]  0.2378885 -0.09969387
+## [4,]  1.3595491  1.50851479
 ## 
 ## $cross
-## [1]  TRUE  TRUE  TRUE FALSE
+## [1] FALSE  TRUE  TRUE  TRUE
 ## 
 ## $plane
 ## [1] 4
@@ -506,7 +521,14 @@ for (i in <span class="dv">1</span>:<span class="dv">4</span>){
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)
 <span class="kw">plot</span>(experiment)</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Finally, we can consider the function <code>converge()</code></p>
+<p>Finally, we can consider the function <code>converge()</code>. Similarly to <code>buffon_experiment()</code>, the function <code>converge()</code> has the following inputs:</p>
+<ul>
+<li><code>B</code>: the number of needles being casted,</li>
+<li><code>plane_width</code>: the width of the (square) plane on which the needles are casted,</li>
+<li><code>seed</code>: the “seed” used by the random number generator (allows to replicate results),</li>
+<li><code>M</code>: the number of experiments.</li>
+</ul>
+<p>Then function returns the graph mentionned at the end of the previous section. A possible implementation of this function is provided below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge =<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
   
   if (B &lt;<span class="st"> </span><span class="dv">10</span>){
@@ -526,8 +548,8 @@ for (i in <span class="dv">1</span>:<span class="dv">4</span>){
   }
   
   <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi +<span class="st"> </span><span class="kw">c</span>(-<span class="dv">3</span>/<span class="dv">4</span>, <span class="dv">3</span>/<span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,
-       <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[i]),
-       <span class="dt">xlab =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment in time&quot;</span>)
+       <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[j]),
+       <span class="dt">xlab =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment&quot;</span>)
   <span class="kw">grid</span>()
   
   for (i in <span class="dv">1</span>:M){
@@ -536,9 +558,14 @@ for (i in <span class="dv">1</span>:<span class="dv">4</span>){
   
   <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
 }</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">5</span>*<span class="dv">10</span>^<span class="dv">4</span>, <span class="dt">M =</span> <span class="dv">4</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre></div>
+<p>Therefore, if we were to repeat 20 times the original experience of Georges-Louis Leclerc and compute <span class="math inline">\(\hat{\pi}_j\)</span> for each of them we would obtain:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD We start by construction an “empty” shiny app, i.e.</p>
+<p>which provides some illustrations of the convergence of the estimator.</p>
+</div>
+<div id="step-2-frontend" class="section level3">
+<h3><span class="header-section-number">7.7.2</span> Step 2: Frontend</h3>
+<p>We start by construction an “empty” shiny app, i.e.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application</span>
 ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
   
@@ -626,7 +653,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <p>At this point, we are done with the <code>ui</code> function and will modify the <code>server</code> in the next section.</p>
 </div>
 <div id="step-3-connecting-frontend-and-backend-1" class="section level3">
-<h3><span class="header-section-number">7.6.2</span> Step 3: Connecting frontend and backend</h3>
+<h3><span class="header-section-number">7.7.3</span> Step 3: Connecting frontend and backend</h3>
 <p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kh</code></pre></div>
 <center>

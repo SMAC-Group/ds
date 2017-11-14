@@ -428,7 +428,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 6, 10, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -461,7 +461,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 6, 10, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -488,12 +488,21 @@ At this point, we are done with the `ui` function and will modify the `server` i
 
 ### Step 3: Connecting frontend and backend
 
-In this section, we will focus on the `server` function to produce the desired output. Let us start 
+In this section, we will focus on the `server` function to produce the desired output. Let us start by "connecting" our output tabs defined in the `ui` function with the output in the server function. Since both output are graphs with will the use the function `renderPlot()` as follows:
 
 ```{r, eval = FALSE}
-kh
+server <- function(input, output) {
+  output$exp <- renderPlot({
+    # Add graph 1 here!
+  }, height = 620)
+  
+  output$conv <- renderPlot({
+    # Add graph 2 here!
+  }, height = 620)
+}
 ```
 
+If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions `buffon_experiment()` and `plot.buffon_experiment()`.  
 
 
 <center>
