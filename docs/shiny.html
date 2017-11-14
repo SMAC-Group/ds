@@ -226,15 +226,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.1" data-path="shiny.html"><a href="shiny.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="shiny.html"><a href="shiny.html#step-1.-r-code-server-backend"><i class="fa fa-check"></i><b>7.2</b> Step 1. R Code / Server / Backend</a></li>
 <li class="chapter" data-level="7.3" data-path="shiny.html"><a href="shiny.html#step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
-<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
-<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#input-controls-1"><i class="fa fa-check"></i>Input Controls</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#output-render-controls"><i class="fa fa-check"></i>Output Render Controls</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="shiny.html"><a href="shiny.html#step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.4</b> Step 3: Connecting frontend and backend</a></li>
-<li class="chapter" data-level="7.5" data-path="shiny.html"><a href="shiny.html#step-4-customize"><i class="fa fa-check"></i><b>7.5</b> Step 4: Customize</a><ul>
-<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#content-creation-1"><i class="fa fa-check"></i>Content Creation</a></li>
-</ul></li>
+<li class="chapter" data-level="7.5" data-path="shiny.html"><a href="shiny.html#step-4-customize"><i class="fa fa-check"></i><b>7.5</b> Step 4: Customize</a></li>
 <li class="chapter" data-level="7.6" data-path="shiny.html"><a href="shiny.html#example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.6</b> Example: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7.7" data-path="shiny.html"><a href="shiny.html#example-buffons-needle"><i class="fa fa-check"></i><b>7.7</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="7.7.1" data-path="shiny.html"><a href="shiny.html#step-1-backend"><i class="fa fa-check"></i><b>7.7.1</b> Step 1: Backend</a></li>
@@ -292,10 +289,6 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 <div id="step-2-user-interface-ui-frontend" class="section level2">
 <h2><span class="header-section-number">7.3</span> Step 2: User Interface (UI) / Frontend</h2>
 <p>The previous information goes into a part called the “server” in the shiny application. Now we want to focus on the frontend of the application, the things we “see” and options we can interact with when we open the app.</p>
-<div id="input-controls" class="section level3 unnumbered">
-<h3>Input Controls</h3>
-<p>We want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.</p>
-</div>
 <div id="content-creation" class="section level3 unnumbered">
 <h3>Content Creation</h3>
 <p>We want to design the application in the way that it is comprehensive and also easy to interpret. Below are some often-used options of content creation that will be beneficial to know.</p>
@@ -326,7 +319,7 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 </tbody>
 </table>
 </div>
-<div id="input-controls-1" class="section level3 unnumbered">
+<div id="input-controls" class="section level3 unnumbered">
 <h3>Input Controls</h3>
 <p>We also want to provide spaces so that the client can change any desired parameter. For example, in the above example, this would be the number of bins. Below are some input controls the developer can use.</p>
 <table>
@@ -432,36 +425,6 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 <p>We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements.</p>
 <p>One of such examples are a <code>submitButton(...)</code>, in which we can run responsive output from input data using a button to initiate. More can be read from <a href="https://shiny.rstudio.com/reference/shiny/1.0.4/submitButton.html">here</a>.</p>
 <p>Another of such example is controlling the content creation process other than the default.</p>
-<div id="content-creation-1" class="section level3 unnumbered">
-<h3>Content Creation</h3>
-<p>We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>titlePanel()</td>
-<td>The title of the application</td>
-</tr>
-<tr class="even">
-<td>sidebarLayout()</td>
-<td>Creates a sidebar layout for fluidPage()</td>
-</tr>
-<tr class="odd">
-<td>sidebarPanel()</td>
-<td>Makes a sidebar menu</td>
-</tr>
-<tr class="even">
-<td>mainPanel()</td>
-<td>Main content area for different output</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <div id="example-monte-carlo-integration-1" class="section level2">
 <h2><span class="header-section-number">7.6</span> Example: Monte-Carlo Integration</h2>
@@ -565,13 +528,13 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] -0.02874217 -0.11735038
+## [1] -0.9064273 -0.5932604
 ## 
 ## $end
-## [1] -0.05977446 -1.11686876
+## [1] -0.04497135 -0.08542816
 ## 
 ## $cross
-## [1] TRUE</code></pre>
+## [1] FALSE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -615,21 +578,21 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
-##            [,1]       [,2]
-## [1,]  0.1273323  0.7402651
-## [2,]  0.4661004 -0.8894372
-## [3,] -0.2338418 -0.9897231
-## [4,]  0.6112982  0.3076345
+##            [,1]      [,2]
+## [1,] -0.7452002 0.2084580
+## [2,]  0.9468393 0.3892104
+## [3,]  0.8808688 0.5490920
+## [4,] -0.7243719 0.6171022
 ## 
 ## $end
-##            [,1]       [,2]
-## [1,] -0.1979731 -0.2053439
-## [2,]  1.4339054 -1.1411383
-## [3,]  0.4418204 -1.7269345
-## [4,]  1.5966875  0.1373176
+##             [,1]       [,2]
+## [1,] -0.64089988 -0.7860879
+## [2,] -0.00170784  0.7058463
+## [3,]  1.62591678  1.2161029
+## [4,]  0.06118703  1.2358891
 ## 
 ## $cross
-## [1]  TRUE  TRUE  TRUE FALSE
+## [1]  TRUE FALSE  TRUE  TRUE
 ## 
 ## $plane
 ## [1] 4
@@ -815,7 +778,76 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
     <span class="co"># Add graph 2 here!</span>
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
-<p>If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>.</p>
+<p>If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user click on the “action” button. This can be done by the adding the following lines to the <code>server</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })</code></pre></div>
+<p>When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing this part of the <code>server</code> function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 1 here!</span>
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>by</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>Therefore, your <code>server</code> function should now be:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+  
+  <span class="co"># Fling some needles!</span>
+  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })
+  
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 2 here!</span>
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>and when reloading the app you should now see:</p>
+<center>
+<img src="images/shiny_server_part1.png" />
+</center>
+<p>Similarly, we do the same thing for the second graph by adding the following lines to our <code>server</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">conv =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plan, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
+})</code></pre></div>
+<p>and replacing</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 2 here!</span>
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>by</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">conv</span>()
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>After these changes your <code>server</code> function should now be:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+  
+  <span class="co"># Fling some needles!</span>
+  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })
+  
+  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plan, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
+  })
+  
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">conv</span>()
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>NIAKETTE</p>
 <center>
 <img src="images/shiny_ui_part5.png" />
 </center>

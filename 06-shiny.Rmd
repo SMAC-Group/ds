@@ -474,7 +474,7 @@ At this point, we are done with the `ui` function and will modify the `server` i
 
 ### Step 3: Connecting frontend and backend
 
-In this section, we will focus on the `server` function to produce the desired output. Let us start by "connecting" our output tabs defined in the `ui` function with the output in the server function. Since both output are graphs with will the use the function `renderPlot()` as follows:
+In this section, we will focus on the `server` function to produce the desired output. Let us start by "connecting" our output tabs defined in the `ui` function with the output in the server function. Since both outputs are graphs, we will use the function `renderPlot()` as follows:
 
 ```{r, eval = FALSE}
 server <- function(input, output) {
@@ -488,7 +488,7 @@ server <- function(input, output) {
 }
 ```
 
-If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions `buffon_experiment()` and `plot.buffon_experiment()`. The first thing we will need is to (re-)run the `buffon_experiment()` when the user click on the "action" button. This can be done by the adding the following lines to the `server` function:
+If you re-run the app at this point our changes will have no visible effect. Next, we will focus on the first graph based on the functions `buffon_experiment()` and `plot.buffon_experiment()`. The first thing we will need is to (re-)run the `buffon_experiment()` when the user click on the "action" button. This can be done by adding the following lines to the `server` function:
 
 ```{r, eval = FALSE}
 cast = eventReactive(input$cast, {
