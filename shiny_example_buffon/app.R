@@ -116,12 +116,21 @@ ui <- fluidPage(
 )
 
 
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  observeEvent(input$cast,{
+    updateNumericInput(session, "seed", value = round(runif(1, 1, 10^4)))
+  })
   
   # Fling some needles!
   cast = eventReactive(input$cast, {
-    buffon_experiment(B = 2084, plane_width = input$plane, 
+    buffon_experiment(B = input$B, plane_width = input$plane, 
                       seed = input$seed)
+  })
+  
+  conv = eventReactive(input$cast, {
+    converge(B = input$B, plane_width = input$plane, 
+             seed = input$seed, M = input$M)
   })
   
   output$exp <- renderPlot({
@@ -129,7 +138,7 @@ server <- function(input, output) {
   }, height = 620)
   
   output$conv <- renderPlot({
-    # Add graph 2 here!
+    conv()
   }, height = 620)
 }
 
