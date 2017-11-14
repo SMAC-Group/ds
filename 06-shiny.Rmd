@@ -10,7 +10,7 @@ Shiny is an R package that makes it easy to build interactive web apps straight 
 
 Before building the application, we want to know to build our application, and think more like a software engineer. We want to take some input, such as parameters, and produce output. In this chapter we will build the shiny applicaion building procedure. 
 
-### Step 1. R Code / Server / Backend
+## Step 1. R Code / Server / Backend
 
 Before we start thinking of the web application, we want to focus on the R Code, or also commonly known as the "backend" of the application. For all the intended operations to work in the application we need to make sure that the R code that serves as the skeleton operates in the way the developer want it to be. 
 
@@ -36,11 +36,11 @@ bins <- seq(min(x), max(x), length.out = 20)
 hist(x, breaks = bins)
 ```
 
-### Step 2: User Interface (UI) / Frontend 
+## Step 2: User Interface (UI) / Frontend 
 
 The previous information goes into a part called the "server" in the shiny application. Now we want to focus on the frontend of the application, the things we "see" and options we can interact with when we open the app. 
 
-#### Content Creation 
+### Content Creation {-}
 
 We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know. 
 
@@ -48,8 +48,10 @@ We want to design what the application so that it is comprehensive and easy to i
 |-----------------|------------------------------------------|
 | titlePanel()    | The title of the application             |
 | sidebarLayout() | Creates a sidebar layout for fluidPage() |
+| sidebarPanel()  | Makes a sidebar menu                     |
+| mainPanel()     | Main content area for different output   |
 
-#### Input Controls
+### Input Controls {-}
 
 We also want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.
 
@@ -66,11 +68,7 @@ We also want to provide space so the client can change any desired parameter. In
 | fileInput()     | Upload a file to Shiny    |
 | helpText()      | Describe input field      |
 
-
-| sidebarPanel()  | Makes a sidebar menu                     |
-| mainPanel()     | Main content area for different output   |
-
-#### Output Render Controls 
+### Output Render Controls {-}
 
 The different type of output that is shown can be designed depending on what the developer intends it to be. Examples of these options are shown below. We advise you to follow the videos and research different options that fit the desired output. 
 
@@ -84,10 +82,16 @@ The different type of output that is shown can be designed depending on what the
 | imageOutput()        | Render an Image         |
 | htmlOutput()         | Render Pure HTML        |
 
-### Step 3: Connecting frontend and backend 
+## Step 3: Connecting frontend and backend 
+
+Once we have the elements of user interface (UI) and server, we build the application so they come together. Look at the video for more details on this process. 
+
+## Step 4: 
 
 
 
+
+## Example: Monte Carlo 
 
 
 
