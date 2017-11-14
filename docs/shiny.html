@@ -288,7 +288,7 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 <p>The previous information goes into a part called the “server” in the shiny application. Now we want to focus on the frontend of the application, the things we “see” and options we can interact with when we open the app.</p>
 <div id="content-creation" class="section level3 unnumbered">
 <h3>Content Creation</h3>
-<p>We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know.</p>
+<p>We want to design the application in the way that it is comprehensive and also easy to interpret. Below are some often-used options of content creation that will be beneficial to know.</p>
 <table>
 <thead>
 <tr class="header">
@@ -311,14 +311,14 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 </tr>
 <tr class="even">
 <td>mainPanel()</td>
-<td>Main content area for different output</td>
+<td>Main content area for different outputs</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="input-controls" class="section level3 unnumbered">
 <h3>Input Controls</h3>
-<p>We also want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.</p>
+<p>We also want to provide spaces so that the client can change any desired parameter. For example, in the above example, this would be the number of bins. Below are some input controls the developer can use.</p>
 <table>
 <thead>
 <tr class="header">
@@ -509,10 +509,10 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] 0.04895361 0.44991308
+## [1] -0.6592887 -0.9223211
 ## 
 ## $end
-## [1] -0.3835591 -0.4517147
+## [1] -0.2519857 -1.8356142
 ## 
 ## $cross
 ## [1] TRUE</code></pre>
@@ -559,21 +559,21 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
-##            [,1]       [,2]
-## [1,]  0.9523454 -0.3847519
-## [2,]  0.7509369 -0.7900005
-## [3,]  0.3499901  0.8935501
-## [4,] -0.4467714 -0.0318750
+##             [,1]       [,2]
+## [1,]  0.09387663 -0.8266042
+## [2,] -0.21498650 -0.7706295
+## [3,]  0.59470055 -0.3642416
+## [4,] -0.95003140  0.7052191
 ## 
 ## $end
-##             [,1]       [,2]
-## [1,]  1.60910100  0.3693516
-## [2,] -0.09716456 -1.3198344
-## [3,] -0.28075076  1.6695436
-## [4,] -1.05086361  0.7650394
+##            [,1]        [,2]
+## [1,]  0.5483825  0.06413951
+## [2,] -0.2937213  0.22626608
+## [3,] -0.4050345 -0.38726027
+## [4,] -0.2858819  1.45281888
 ## 
 ## $cross
-## [1] TRUE TRUE TRUE TRUE
+## [1]  TRUE  TRUE FALSE  TRUE
 ## 
 ## $plane
 ## [1] 4

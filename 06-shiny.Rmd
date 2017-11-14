@@ -162,13 +162,14 @@ To illustarte the convergence of our estimator we could fling $B$ times a needle
 
 where $k \ll B$. Then, we could create a graph with $j$ on horizontal axis and $\hat{\pi}_j$ on the horizontal axis. Since $\hat{\pi}_B$ is a consistent estimator we should see that $\hat{\pi}_j$ tends to get closer and closer to $\pi$ as $j$ increase. In this graph we could also superimpose several experiments (recasting the needle $B$ times several times) to reinforce our argument.
 
-The goal of this example is to create a shiny app to vizualize and illustarte Buffon's needle experiment. For this purpose, we will use the following steps:
+The goal of this example is to create a shiny app to visualize and illustarte Buffon's needle experiment. For this purpose, we will use the following steps:
 
 1) **Step 1: Backend**: Create all the functions needed for the backend of our app. A possible approach is to create the following functions:
     a) `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
     b) `buffon_experiment()` this function performs a Monte-Carlo experiment by flinging a large number of needles using the function `cast_needle()`.
-    c) `plot.buffon_experiment()` to vizualise the experiment (i.e. show all the needles randomly dropped) and compute the estimator $\hat{\pi}_B$ for the experiment at hand,
+    c) `plot.buffon_experiment()` to visualize the experiment (i.e. show all the needles randomly dropped) and compute the estimator $\hat{\pi}_B$ for the experiment at hand.
     d) `converge()` to illustarte the convergence of the estimator by the construction the graph mentioned at the end of the previous section.
+
 2) 
 
 <center>
@@ -217,7 +218,7 @@ abline(h = -2:2, lty = 3)
 lines(c(needle$start[1], needle$end[1]), c(needle$start[2], needle$end[2]))
 ```
 
-Next, we consider the function `buffon_experiment()`. This function is based on function the previous function and contains the following inputs:
+Next, we consider the function `buffon_experiment()`. This function is based on the previous function and contains the following inputs:
 
 - `B`: the number of needles being casted,
 - `plane_width`: the width of the (square) plane on which the needles are casted,
@@ -273,7 +274,7 @@ for (i in 1:4){
 }
 ```
 
-We can now write a custom `plot()` function for the output of the function `buffon_experiment()`. This function will provide a way to vizualize the experiment and will compute $\hat{\pi}_B$, which will be show in the title. A possible function is provided below:
+We can now write a custom `plot()` function for the output of the function `buffon_experiment()`. This function will provide a way to visualize the experiment and will compute $\hat{\pi}_B$, which will be shown in the title. A possible function is provided below:
 
 ```{r}
 plot.buffon_experiment = function(obj){
