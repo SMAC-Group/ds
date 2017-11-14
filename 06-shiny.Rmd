@@ -9,7 +9,12 @@ Shiny is an R package that makes it easy to build interactive web apps straight 
 
 ## Introduction 
 
-Before building the application, we want to know to build our application, and think more like a software engineer. We want to take some input, such as parameters, and produce output. In this chapter we will build the shiny applicaion building procedure. 
+Before building the application, we want to know to build our application, and think more like a software engineer. We want to take some input, such as parameters, and produce output. In this chapter we will build the shiny applicaion building procedure. Below is a basic functioning example of a Shiny application. 
+
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/X5uQU5XX7iU")
+```
+
 
 ## Step 1. R Code / Server / Backend
 
@@ -113,6 +118,9 @@ We want to design what the application so that it is comprehensive and easy to i
 
 ## Example: Monte-Carlo Integration
 
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/0zlWcHDKCFw")
+```
 
 ## Example: Buffon's needle
 
