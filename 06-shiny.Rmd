@@ -41,6 +41,11 @@ hist(x, breaks = bins)
 
 The previous information goes into a part called the "server" in the shiny application. Now we want to focus on the frontend of the application, the things we "see" and options we can interact with when we open the app. 
 
+
+### Input Controls {-}
+
+We want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.
+
 ### Content Creation {-}
 
 We want to design the application in the way that it is comprehensive and also easy to interpret. Below are some often-used options of content creation that will be beneficial to know.
@@ -87,11 +92,26 @@ The different type of output that is shown can be designed depending on what the
 
 Once we have the elements of user interface (UI) and server, we build the application so they come together. Look at the video for more details on this process. 
 
-## Step 4: 
+## Step 4: Customize 
 
+We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements. 
 
-## Example: Monte-Carlo Integration ???
+One of such examples are a `submitButton(...)`, in which we can run responsive output from input data using a button to initiate. More can be read from [here](https://shiny.rstudio.com/reference/shiny/1.0.4/submitButton.html). 
 
+Another of such example is controlling the content creation process other than the default. 
+
+### Content Creation {-}
+
+We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know. 
+
+| Function        | Description                              |
+|-----------------|------------------------------------------|
+| titlePanel()    | The title of the application             |
+| sidebarLayout() | Creates a sidebar layout for fluidPage() |
+| sidebarPanel()  | Makes a sidebar menu                     |
+| mainPanel()     | Main content area for different output   |
+
+## Example: Monte-Carlo Integration
 
 
 ## Example: Buffon's needle
@@ -408,7 +428,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 6, 10, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -441,7 +461,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 6, 10, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -468,12 +488,21 @@ At this point, we are done with the `ui` function and will modify the `server` i
 
 ### Step 3: Connecting frontend and backend
 
-In this section, we will focus on the `server` function to produce the desired output. Let us start 
+In this section, we will focus on the `server` function to produce the desired output. Let us start by "connecting" our output tabs defined in the `ui` function with the output in the server function. Since both output are graphs with will the use the function `renderPlot()` as follows:
 
 ```{r, eval = FALSE}
-kh
+server <- function(input, output) {
+  output$exp <- renderPlot({
+    # Add graph 1 here!
+  }, height = 620)
+  
+  output$conv <- renderPlot({
+    # Add graph 2 here!
+  }, height = 620)
+}
 ```
 
+If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions `buffon_experiment()` and `plot.buffon_experiment()`.  
 
 
 <center>

@@ -232,7 +232,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="shiny.html"><a href="shiny.html#step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.4</b> Step 3: Connecting frontend and backend</a></li>
 <li class="chapter" data-level="7.5" data-path="shiny.html"><a href="shiny.html#step-4"><i class="fa fa-check"></i><b>7.5</b> Step 4:</a></li>
+<<<<<<< HEAD
 <li class="chapter" data-level="7.6" data-path="shiny.html"><a href="shiny.html#example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.6</b> Example: Monte-Carlo Integration ???</a></li>
+=======
+<li class="chapter" data-level="7.6" data-path="shiny.html"><a href="shiny.html#example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.6</b> Example: Monte-Carlo Integration ???</a></li>
+>>>>>>> 9c66bb3ef9441e5959129aea9a794a493dabfdeb
 <li class="chapter" data-level="7.7" data-path="shiny.html"><a href="shiny.html#example-buffons-needle"><i class="fa fa-check"></i><b>7.7</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="7.7.1" data-path="shiny.html"><a href="shiny.html#step-1-backend"><i class="fa fa-check"></i><b>7.7.1</b> Step 1: Backend</a></li>
 <li class="chapter" data-level="7.7.2" data-path="shiny.html"><a href="shiny.html#step-2-frontend"><i class="fa fa-check"></i><b>7.7.2</b> Step 2: Frontend</a></li>
@@ -423,7 +427,11 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 <div id="step-4" class="section level2">
 <h2><span class="header-section-number">7.5</span> Step 4:</h2>
 </div>
+<<<<<<< HEAD
 <div id="example-monte-carlo-integration-1" class="section level2">
+=======
+<div id="example-monte-carlo-integration" class="section level2">
+>>>>>>> 9c66bb3ef9441e5959129aea9a794a493dabfdeb
 <h2><span class="header-section-number">7.6</span> Example: Monte-Carlo Integration ???</h2>
 </div>
 <div id="example-buffons-needle" class="section level2">
@@ -525,10 +533,17 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
+<<<<<<< HEAD
 ## [1] 0.7719703 0.8083818
 ## 
 ## $end
 ## [1] 1.5520305 0.1826773
+=======
+## [1] -0.3559484 -0.4840613
+## 
+## $end
+## [1] -0.2554431 -1.4789978
+>>>>>>> 9c66bb3ef9441e5959129aea9a794a493dabfdeb
 ## 
 ## $cross
 ## [1] FALSE</code></pre>
@@ -576,6 +591,7 @@ needle</code></pre></div>
 experiment</code></pre></div>
 <pre><code>## $start
 ##            [,1]       [,2]
+<<<<<<< HEAD
 ## [1,] -0.7578939  0.2020554
 ## [2,]  0.3938939 -0.8522780
 ## [3,] -0.6121288 -0.8485765
@@ -590,6 +606,22 @@ experiment</code></pre></div>
 ## 
 ## $cross
 ## [1]  TRUE FALSE  TRUE FALSE
+=======
+## [1,] -0.8621622 -0.5866407
+## [2,] -0.4268451 -0.3309438
+## [3,]  0.1244547  0.8938517
+## [4,]  0.6511758  0.8026768
+## 
+## $end
+##            [,1]        [,2]
+## [1,] -1.7203497 -0.07330450
+## [2,] -1.1113678  0.39804772
+## [3,]  0.2378885 -0.09969387
+## [4,]  1.3595491  1.50851479
+## 
+## $cross
+## [1] FALSE  TRUE  TRUE  TRUE
+>>>>>>> 9c66bb3ef9441e5959129aea9a794a493dabfdeb
 ## 
 ## $plane
 ## [1] 4
