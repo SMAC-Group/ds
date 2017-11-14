@@ -599,58 +599,47 @@ and when reloading the app you should now see on the second tab:
 ![](images/shiny_server_part2.png)
 </center>
 
-Our next step to update
-<center>
-![](images/shiny_ui_part5.png)
-</center>
+Our next step to update the seed everything the "action" button is pushed. To do so, we will first need to add an additional input to the `server` function called `session` which will allow us to **dynmically** update the input direct from the `server` function. This can be done as follows where everytime the user click on the "action" button a new seed is randomly generated:
 
-
-Create widgets to collect all inputs needed by the backend:
-    a) dimension of the plane of which the needles are dropped,
-    b) the number of needles being used, i.e. $B$,
-    c) number of experiments, which is needed to illustrate the convergence of the estimator, 
-    d) the seed to allow "replicable" experiments.
-Then, we will need to create two output "tabs". In the first one, we "print" the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to "run" a new experiment.
 ```{r, eval = FALSE}
-# Define UI for application
-ui <- fluidPage(
-  
-  # Application title
-  titlePanel(h4("Buffon\'s needle experiment - Inputs:")),
-  
-  sidebarLayout(
-    sidebarPanel(
-      # Input panel
-      numericInput("plan", "Plane width:", 6, 10, 100),
-      numericInput("B", "Number of trials:", 100, 20, 10^6),
-      numericInput("M", "Number of experiments:", 1, 1, 100),
-      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
-      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up")
-      )
-    ),
-    
-    # Create two output tabs
-    mainPanel(
-      tabsetPanel(
-        tabPanel("Experiment", plotOutput("exp")),
-        tabPanel("Convergence", plotOutput("conv"))
-      )
-    )
-  )
-)
+observeEvent(input$cast,{
+    updateNumericInput(session, "seed", 
+                       value = round(runif(1, 1, 10^4)))
+})
 ```
-=======
->>>>>>> origin/master
-What we want:
 
-- inputs
-- 2 tabs
-- buttom to draw + update seed
+Therefore, your final `server` function is now:
 
+```{r, eval = FALSE}
+server <- function(input, output, session) {
+  
+  observeEvent(input$cast,{
+    updateNumericInput(session, "seed", 
+                       value = round(runif(1, 1, 10^4)))
+  })
+  
+  # Fling some needles!
+  cast = eventReactive(input$cast, {
+    buffon_experiment(B = input$B, plane_width = input$plane, 
+                      seed = input$seed)
+  })
+  
+  conv = eventReactive(input$cast, {
+    converge(B = input$B, plane_width = input$plane, 
+             seed = input$seed, M = input$M)
+  })
+  
+  output$exp <- renderPlot({
+    plot(cast())
+  }, height = 620)
+  
+  output$conv <- renderPlot({
+    conv()
+  }, height = 620)
+}
+```
 
-
-
-
+and you will now see that the seed is now updated every time the "action" button is clicked on.
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
