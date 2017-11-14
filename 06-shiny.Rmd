@@ -40,20 +40,9 @@ hist(x, breaks = bins)
 
 The previous information goes into a part called the "server" in the shiny application. Now we want to focus on the frontend of the application, the things we "see" and options we can interact with when we open the app. 
 
-### Content Creation {-}
-
-We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know. 
-
-| Function        | Description                              |
-|-----------------|------------------------------------------|
-| titlePanel()    | The title of the application             |
-| sidebarLayout() | Creates a sidebar layout for fluidPage() |
-| sidebarPanel()  | Makes a sidebar menu                     |
-| mainPanel()     | Main content area for different output   |
-
 ### Input Controls {-}
 
-We also want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.
+We want to provide space so the client can change any desired parameter. In the example explained above, this would be the number of bins. Below are some input controls the developer can use.
 
 | Function        | Description               |
 |-----------------|---------------------------|
@@ -86,17 +75,26 @@ The different type of output that is shown can be designed depending on what the
 
 Once we have the elements of user interface (UI) and server, we build the application so they come together. Look at the video for more details on this process. 
 
-## Step 4: 
+## Step 4: Customize 
 
+We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements. 
 
+One of such examples are a `submitButton(...)`, in which we can run responsive output from input data using a button to initiate. More can be read from [here](https://shiny.rstudio.com/reference/shiny/1.0.4/submitButton.html). 
 
+Another of such example is controlling the content creation process other than the default. 
 
-<<<<<<< HEAD
-## Example: Monte Carlo 
+### Content Creation {-}
 
-=======
-## Example: Monte-Carlo Integration ???
->>>>>>> 9db250ad55d1687da1f549e5ad34455dabfef041
+We want to design what the application so that it is comprehensive and easy to interpret. Below are some often used options of content creation that will be beneficial to know. 
+
+| Function        | Description                              |
+|-----------------|------------------------------------------|
+| titlePanel()    | The title of the application             |
+| sidebarLayout() | Creates a sidebar layout for fluidPage() |
+| sidebarPanel()  | Makes a sidebar menu                     |
+| mainPanel()     | Main content area for different output   |
+
+## Example: Monte-Carlo Integration
 
 
 ## Example: Buffon's needle
