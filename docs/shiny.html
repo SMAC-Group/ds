@@ -417,10 +417,24 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
+<<<<<<< HEAD
 ## [1]  0.07333621 -0.68180296
 ## 
 ## $end
 ## [1] -0.749528 -0.113565
+=======
+<<<<<<< HEAD
+## [1]  0.8581192 -0.3456789
+## 
+## $end
+## [1] 1.77379313 0.05624314
+=======
+## [1]  0.3123407 -0.9171992
+## 
+## $end
+## [1] -0.3690537 -1.6491156
+>>>>>>> 17550a9bb84200982e1861536ca8dcb1d61ecaea
+>>>>>>> origin/master
 ## 
 ## $cross
 ## [1] FALSE</code></pre>
@@ -467,6 +481,23 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
+<<<<<<< HEAD
+##             [,1]        [,2]
+## [1,]  0.24420233 -0.66477277
+## [2,]  0.05133351 -0.67714911
+## [3,] -0.98061368 -0.60056459
+## [4,]  0.78883009  0.09670951
+## 
+## $end
+##            [,1]        [,2]
+## [1,] -0.2445403  0.20765527
+## [2,]  0.7004306 -1.43785469
+## [3,] -1.8432177 -0.09468477
+## [4,] -0.1478481 -0.25348185
+## 
+## $cross
+## [1]  TRUE  TRUE FALSE  TRUE
+=======
 ##            [,1]       [,2]
 ## [1,] -0.6268914  0.6227091
 ## [2,] -0.6157104 -0.2643537
@@ -481,7 +512,12 @@ experiment</code></pre></div>
 ## [4,] -0.15005265  0.362281378
 ## 
 ## $cross
+<<<<<<< HEAD
 ## [1] TRUE TRUE TRUE TRUE
+=======
+## [1]  TRUE FALSE FALSE  TRUE
+>>>>>>> 17550a9bb84200982e1861536ca8dcb1d61ecaea
+>>>>>>> origin/master
 ## 
 ## $plane
 ## [1] 4
@@ -773,7 +809,11 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
     <span class="kw">conv</span>()
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
+<<<<<<< HEAD
+<p>and you will now see that the seed is now updated every time the “action” button is clicked on.</p>
+=======
 <p>and you will now see that the seed is now updated every time the “action” button is clicked on. The final version of the app we have just made can be found <a href="http://shiny.science.psu.edu/szg279/buffon/">here</a>.</p>
+>>>>>>> 17550a9bb84200982e1861536ca8dcb1d61ecaea
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
