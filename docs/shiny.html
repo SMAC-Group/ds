@@ -528,13 +528,34 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
+<<<<<<< HEAD
 ## [1] -0.9876464 -0.3893083
 ## 
 ## $end
 ## [1] -0.9538618  0.6101208
+=======
+<<<<<<< HEAD
+## [1]  0.07333621 -0.68180296
+## 
+## $end
+## [1] -0.749528 -0.113565
+=======
+<<<<<<< HEAD
+## [1]  0.8581192 -0.3456789
+## 
+## $end
+## [1] 1.77379313 0.05624314
+=======
+## [1]  0.3123407 -0.9171992
+## 
+## $end
+## [1] -0.3690537 -1.6491156
+>>>>>>> 17550a9bb84200982e1861536ca8dcb1d61ecaea
+>>>>>>> origin/master
+>>>>>>> a878320e8e8c3d312930241b9a93d29e085f02f0
 ## 
 ## $cross
-## [1] TRUE</code></pre>
+## [1] FALSE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -579,6 +600,7 @@ needle</code></pre></div>
 experiment</code></pre></div>
 <pre><code>## $start
 ##            [,1]        [,2]
+<<<<<<< HEAD
 ## [1,]  0.5038446  0.59298951
 ## [2,] -0.8838021 -0.30767028
 ## [3,] -0.3528154  0.51092558
@@ -593,6 +615,36 @@ experiment</code></pre></div>
 ## 
 ## $cross
 ## [1]  TRUE FALSE  TRUE  TRUE
+=======
+## [1,] -0.2445403  0.20765527
+## [2,]  0.7004306 -1.43785469
+## [3,] -1.8432177 -0.09468477
+## [4,] -0.1478481 -0.25348185
+## 
+## $cross
+## [1]  TRUE  TRUE FALSE  TRUE
+=======
+##            [,1]       [,2]
+## [1,] -0.6268914  0.6227091
+## [2,] -0.6157104 -0.2643537
+## [3,] -0.2532386 -0.2587090
+## [4,]  0.2074508 -0.5716305
+## 
+## $end
+##             [,1]         [,2]
+## [1,]  0.09718581 -0.067009783
+## [2,] -0.28599628  0.679727096
+## [3,]  0.71182230  0.003316638
+## [4,] -0.15005265  0.362281378
+## 
+## $cross
+<<<<<<< HEAD
+## [1] TRUE TRUE TRUE TRUE
+=======
+## [1]  TRUE FALSE FALSE  TRUE
+>>>>>>> 17550a9bb84200982e1861536ca8dcb1d61ecaea
+>>>>>>> origin/master
+>>>>>>> a878320e8e8c3d312930241b9a93d29e085f02f0
 ## 
 ## $plane
 ## [1] 4
