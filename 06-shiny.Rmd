@@ -132,19 +132,19 @@ which verifies Equation \@ref(eq:probbuffon) and concludes the proof.
 </div>
 \newline
 
-Georges-Louis Leclerc motivation behind this problem was to design an experiment to estimate the value of $\pi$. Indeed, if you fling a needle a large number $n$ times onto a ruled plane and count the number of times $S_n$ that the needle intersects a line we might be able to approximate $\mathbb{P}(\text{intersection})$ and therefore $\pi$. From Equation \@ref(eq:probbuffon), we know that the proportion $S_n/n$ will be "close" to the probability $\mathbb{P}(\text{intersection})$. In fact the (weak) law of large number garantees that $S_n/n$ converges (in probability) to $2/\pi$, i.e. for any given $\varepsilon > 0$,
+Georges-Louis Leclerc motivation behind this problem was to design an experiment to estimate the value of $\pi$. Indeed, if you fling a needle a large number $B$ times onto a ruled plane and count the number of times $S_B$ that the needle intersects a line we might be able to approximate $\mathbb{P}(\text{intersection})$ and therefore $\pi$. From Equation \@ref(eq:probbuffon), we know that the proportion $S_B/B$ will be "close" to the probability $\mathbb{P}(\text{intersection})$. In fact the (weak) law of large number garantees that $S_B/B$ converges (in probability) to $2/\pi$, i.e. for any given $\varepsilon > 0$,
 
 \[
-\lim_{n \rightarrow \infty} \; \mathbb{P}\left( \left| \frac{S_n}{n} - \frac{2}{\pi} \right|  > \varepsilon \right) = 0.
+\lim_{B \rightarrow \infty} \; \mathbb{P}\left( \left| \frac{S_B}{B} - \frac{2}{\pi} \right|  > \varepsilon \right) = 0.
 \]
 
 Thus, the estimator
 
 \[
-\hat{\pi} = \frac{2n}{S_n},
+\hat{\pi}_B = \frac{2B}{S_B},
 \]
 
-is a plausible estimator of $\pi$. The Continous Mapping Theorem [see e.g. Theorem 1.14 of @dasgupta2008asymptotic] can (among other) be used to show that $\hat{\pi}$ is a **consistent** estimator of $\pi$ (i.e. $\hat{\pi}$ converges in probability to $\pi$). In 1777, Georges-Louis Leclerc investigated this problem and computed $\hat{\pi}$ by flipping a coin 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.
+is a plausible estimator of $\pi$. The Continous Mapping Theorem [see e.g. Theorem 1.14 of @dasgupta2008asymptotic] can (among other) be used to show that $\hat{\pi}$ is a **consistent** estimator of $\pi$ (i.e. $\hat{\pi}$ converges in probability to $\pi$). In 1777, Georges-Louis Leclerc investigated this problem and computed $\hat{\pi}_B$ by flinging a needle 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.
 
 
 EXPLAIN WHAT WE WANT TO DO HERE!
@@ -154,13 +154,17 @@ EXPLAIN WHAT WE WANT TO DO HERE!
 In this section, we will construct the following four functions:
 
 1. `cast_needle()` this function randomly casts a needle on plane and returns its coordoniates as well as a binary variable to indicate if the needle crossed a line.
-2. 
+2. `buffon_experiment()` this function performs a Monte-Carlo experiment by flinging a large number of needles using the function `cast_needle()`.
+3. `plot.buffon_experiment()`....
+4. `converge()`
 
-Let us start witht he function `cast_needle()`. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a list containing:
+Let us start with the function `cast_needle()`. This function has a single input, i.e. the width of the (square) plane on which the needle is casted and returns a `list` containing:
 
 - `$start`: the coordinates of the one end of the needle,
 - `$end`: the coordinates of the other end of the needle,
 - `$cross`: a binary variable to indicate if the needle intercepts a line.
+
+A possible implementation of this function is given below:
 
 ```{r}
 cast_needle = function(plane_width = 20){
@@ -175,10 +179,38 @@ cast_needle = function(plane_width = 20){
 }
 ```
 
-Next, let's do many and compute $\hat{\pi}$:
+Here is an example of the output of function:
 
 ```{r}
-buffon_needle = function(B = 2084, plan = 10, needle_length = 1, seed = NULL){
+needle = cast_needle(plane_width = 4)
+needle
+```
+
+and we could now for example provide the following graphical representation of this random cast:
+
+```{r, fig.align='center', fig.width=5.5, fig.height=5.2}
+plot(NA, xlim = c(-2, 2), ylim = c(-2, 2), xlab = "x", ylab = "y")
+abline(h = -2:2, lty = 3)
+lines(c(needle$start[1], needle$end[1]), c(needle$start[2], needle$end[2]))
+```
+
+Next, we consider the function `buffon_experiment()`. This function is based on function the previous function and contains the following inputs:
+
+- `B`: the number of needles being casted,
+- `plane_width`: the width of the (square) plane on which the needles are casted,
+- `seed`: the "seed" used by the random number generator (allows to replicate results),
+
+and returns a `list` containing:
+
+- `$start`: a $B \times 2$ matrix containing the coordinates of the one end of the $B$ needles,
+- `$end`: a $B \times 2$ matrix containing the coordinates of the other end of the $B$ needles,
+- `$cross`: a vector of length $B$ containing boolean variables to indicate the crossing the each needle,
+- `$plane`: the width of the (square) plane.
+
+A possible implementation of this function is provided below:
+
+```{r}
+buffon_experiment = function(B = 2084, plane_width = 10, seed = NULL){
   
   if (!is.null(seed)){
     set.seed(seed)
@@ -186,22 +218,42 @@ buffon_needle = function(B = 2084, plan = 10, needle_length = 1, seed = NULL){
   
   X_start = X_end = matrix(NA, B, 2) 
   cross = rep(NA, B)
+  
   for (i in 1:B){
-    inter = cast_needle(plan = plan, needle_length = needle_length)
+    inter = cast_needle(plane_width = plane_width)
     X_start[i, ] = inter$start
     X_end[i, ] = inter$end
     cross[i] = inter$cross
   }
-  out = list(start = X_start, end = X_end, cross = cross, plan = plan)
-  class(out) = "buffon_needle"
+  
+  out = list(start = X_start, end = X_end, cross = cross, plane = plane_width)
+  class(out) = "buffon_experiment"
   out
 }
 ```
 
-Let's construct a plot function: 
+For example, if we consider an experiment where one cast four needles we could obtain:
 
 ```{r}
-plot.buffon_needle = function(obj){
+experiment = buffon_experiment(B = 4, plane_width = 4)
+experiment
+```
+
+which could be represented as
+
+```{r, fig.align='center', fig.width=5.5, fig.height=5.2}
+plot(NA, xlim = c(-2, 2), ylim = c(-2, 2), xlab = "x", ylab = "y")
+abline(h = -2:2, lty = 3)
+for (i in 1:4){
+  lines(c(experiment$start[i,1], experiment$end[i,1]), 
+        c(experiment$start[i,2], experiment$end[i,2]))
+}
+```
+
+We can now write a custom `plot()` function for the output of the function `buffon_experiment()`. This function will provide a way to vizualize the experiment and will compute $\hat{\pi}_B$, which will be show in the title. A possible function is provided below:
+
+```{r}
+plot.buffon_experiment = function(obj){
   cross = obj$cross
   X_start = obj$start
   X_end = obj$end
@@ -212,10 +264,10 @@ plot.buffon_needle = function(obj){
   titre_part2 = ' = '
   pi_hat = round(2/mean(obj$cross), 6)
   
-  titre = bquote(.(titre_part1) ~ hat(pi) ~ .(titre_part2) ~ .(pi_hat))
+  titre = bquote(.(titre_part1) ~ hat(pi)[B] ~ .(titre_part2) ~ .(pi_hat))
   
-  plot(NA, xlab = "x", ylab = "y", xlim = c(-obj$plan, obj$plan), 
-       ylim = c(-obj$plan, obj$plan), 
+  plot(NA, xlab = "x", ylab = "y", xlim = c(-obj$plane/2, obj$plane/2), 
+       ylim = c(-obj$plan/2, obj$plan/2), 
        main = titre)
   abline(h = (-obj$plan):obj$plan, lty = 3)
   
@@ -226,10 +278,10 @@ plot.buffon_needle = function(obj){
 }
 ```
 
-This looks like:
+Therefore, we could now run the same experiment as Georges-Louis Leclerc fliging a coin 2084 times:
 
 ```{r, fig.align='center', fig.width=5, fig.height=5.2}
-experiment = buffon_needle()
+experiment = buffon_experiment(B = 2084)
 plot(experiment)
 ```
 
