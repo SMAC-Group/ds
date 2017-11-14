@@ -528,13 +528,13 @@ which verifies Equation <a href="shiny.html#eq:probbuffon">(7.1)</a> and conclud
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle =<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] -0.9064273 -0.5932604
+## [1]  0.8581192 -0.3456789
 ## 
 ## $end
-## [1] -0.04497135 -0.08542816
+## [1] 1.77379313 0.05624314
 ## 
 ## $cross
-## [1] FALSE</code></pre>
+## [1] TRUE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -578,21 +578,21 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment =<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
 experiment</code></pre></div>
 <pre><code>## $start
-##            [,1]      [,2]
-## [1,] -0.7452002 0.2084580
-## [2,]  0.9468393 0.3892104
-## [3,]  0.8808688 0.5490920
-## [4,] -0.7243719 0.6171022
+##             [,1]        [,2]
+## [1,]  0.24420233 -0.66477277
+## [2,]  0.05133351 -0.67714911
+## [3,] -0.98061368 -0.60056459
+## [4,]  0.78883009  0.09670951
 ## 
 ## $end
-##             [,1]       [,2]
-## [1,] -0.64089988 -0.7860879
-## [2,] -0.00170784  0.7058463
-## [3,]  1.62591678  1.2161029
-## [4,]  0.06118703  1.2358891
+##            [,1]        [,2]
+## [1,] -0.2445403  0.20765527
+## [2,]  0.7004306 -1.43785469
+## [3,] -1.8432177 -0.09468477
+## [4,] -0.1478481 -0.25348185
 ## 
 ## $cross
-## [1]  TRUE FALSE  TRUE  TRUE
+## [1]  TRUE  TRUE FALSE  TRUE
 ## 
 ## $plane
 ## [1] 4
@@ -768,7 +768,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 </div>
 <div id="step-3-connecting-frontend-and-backend-1" class="section level3">
 <h3><span class="header-section-number">7.7.3</span> Step 3: Connecting frontend and backend</h3>
-<p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start by “connecting” our output tabs defined in the <code>ui</code> function with the output in the server function. Since both output are graphs with will the use the function <code>renderPlot()</code> as follows:</p>
+<p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start by “connecting” our output tabs defined in the <code>ui</code> function with the output in the server function. Since both outputs are graphs, we will use the function <code>renderPlot()</code> as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
   output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="co"># Add graph 1 here!</span>
@@ -778,9 +778,9 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
     <span class="co"># Add graph 2 here!</span>
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
-<p>If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user click on the “action” button. This can be done by the adding the following lines to the <code>server</code> function:</p>
+<p>If you re-run the app at this point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user click on the “action” button. This can be done by adding the following lines to the <code>server</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> input$plane, 
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
                       <span class="dt">seed =</span> input$seed)
   })</code></pre></div>
 <p>When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing this part of the <code>server</code> function</p>
@@ -796,7 +796,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
   
   <span class="co"># Fling some needles!</span>
   cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> input$plane, 
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
                       <span class="dt">seed =</span> input$seed)
   })
   
@@ -830,12 +830,12 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
   
   <span class="co"># Fling some needles!</span>
   cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> input$plane, 
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
                       <span class="dt">seed =</span> input$seed)
   })
   
   conv =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plan, 
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
              <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
   })
   
@@ -848,42 +848,43 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
 <p>NIAKETTE</p>
+<p>and when reloading the app you should now see on the second tab:</p>
 <center>
-<img src="images/shiny_ui_part5.png" />
+<img src="images/shiny_server_part2.png" />
 </center>
-<p>Create widgets to collect all inputs needed by the backend: a) dimension of the plane of which the needles are dropped, b) the number of needles being used, i.e. <span class="math inline">\(B\)</span>, c) number of experiments, which is needed to illustrate the convergence of the estimator, d) the seed to allow “replicable” experiments. Then, we will need to create two output “tabs”. In the first one, we “print” the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to “run” a new experiment.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application</span>
-ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+<p>Our next step to update the seed everything the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynmically</strong> update the input direct from the <code>server</code> function. This can be done as follows where everytime the user click on the “action” button a new seed is randomly generated:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">observeEvent</span>(input$cast,{
+    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
+                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
+})</code></pre></div>
+<p>Therefore, your final <code>server</code> function is now:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output, session) {
   
-  <span class="co"># Application title</span>
-  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
+  <span class="kw">observeEvent</span>(input$cast,{
+    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
+                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
+  })
   
-  <span class="kw">sidebarLayout</span>(
-    <span class="kw">sidebarPanel</span>(
-      <span class="co"># Input panel</span>
-      <span class="kw">numericInput</span>(<span class="st">&quot;plan&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span>^<span class="dv">6</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
-      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>)
-      )
-    ),
-    
-    <span class="co"># Create two output tabs</span>
-    <span class="kw">mainPanel</span>(
-      <span class="kw">tabsetPanel</span>(
-        <span class="kw">tabPanel</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;exp&quot;</span>)),
-        <span class="kw">tabPanel</span>(<span class="st">&quot;Convergence&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;conv&quot;</span>))
-      )
-    )
-  )
-)</code></pre></div>
-<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master What we want:</p>
-<ul>
-<li>inputs</li>
-<li>2 tabs</li>
-<li>buttom to draw + update seed</li>
-</ul>
+  <span class="co"># Fling some needles!</span>
+  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })
+  
+  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
+  })
+  
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">conv</span>()
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>and you will now see that the seed is now updated every time the “action” button is clicked on.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
