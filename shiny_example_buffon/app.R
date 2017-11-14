@@ -109,19 +109,31 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      # Add inputs here!
+      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("B", "Number of trials:", 100, 20, 10^6),
+      numericInput("M", "Number of experiments:", 1, 1, 100),
+      numericInput("seed", "Simulation seed", 1777, 1, 1000000),
+      actionButton("cast", "Let's cast some needles!", icon = icon("thumbs-up"))
     ),
     
     mainPanel(
       tabsetPanel(
-        # Add tabs here!
+        tabPanel("Experiment", plotOutput("exp")),
+        tabPanel("Convergence", plotOutput("conv"))
       )
     )
   )
 )
 
 
-server <- function(input, output, session) {
+server <- function(input, output) {
+  output$exp <- renderPlot({
+    # Add graph 1 here!
+  }, height = 620)
+  
+  output$conv <- renderPlot({
+    # Add graph 2 here!
+  }, height = 620)
 }
 
 # Run the application 
