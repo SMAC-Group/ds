@@ -317,7 +317,7 @@ Finally, we can consider the function `converge()`. Similarly to `buffon_experim
 - `seed`: the "seed" used by the random number generator (allows to replicate results),
 - `M`: the number of experiments.
 
-Then function returns the graph mentionned at the end of the previous section. A possible implementation of this function is provided below:
+The function returns the graph mentioned at the end of the previous section. A possible implementation of this function is provided below:
 
 ```{r}
 converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
@@ -351,7 +351,7 @@ converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
 }
 ```
 
-Therefore, if we were to repeat 20 times the original experience of Georges-Louis Leclerc and compute $\hat{\pi}_j$ for each of them we would obtain:
+Therefore, if we were to repeat 20 times the original experiment of Georges-Louis Leclerc and compute $\hat{\pi}_j$ for each of them we would obtain:
 
 ```{r, fig.align='center', fig.width=6, fig.height=5.2}
 converge(B = 2084, M = 20, seed = 10)
@@ -361,7 +361,7 @@ which provides some illustrations of the convergence of the estimator.
 
 ### Step 2: Frontend
 
-We start by construction an "empty" shiny app, i.e.
+We start by constructing an "empty" shiny app, i.e.
 
 ```{r, eval = FALSE}
 # Define UI for application
@@ -430,7 +430,7 @@ By running the update you should now obtain:
 ![](images/shiny_ui_part2.png)
 </center>
 
-Next, we create two output tabs in which will contains to graphs previously mentioned. This can be done by modifying again the `ui`function as follows:
+Next, we create two output tabs in which there will be the graphs previously mentioned. This can be done by modifying again the `ui`function as follows:
 
 ```{r, eval = FALSE}
 # Define UI for application
