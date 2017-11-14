@@ -93,43 +93,62 @@ The different type of output that is shown can be designed depending on what the
 
 ## Example: Buffon's needle
 
+In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon posed the following problem to the Royal Academy of Sciences in Paris [@buffon1777essai]:
 
-In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon posed the following problem to the Royal Academy of Sciences in Paris (ADD REF HERE):
+> Suppose that you drop a needle of unit length on a plane ruled by the lines $y = m \; (m = 0, \pm 1, \pm 2, ...)$ - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?
 
-> Suppose that you drop a short needle on a ruled paper - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?
+Compte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows:
 
-Compte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows (for $l \leq d$):
-
-\[
-\mathbb{P}(\text{intersection}) = \frac{2}{\pi} \times \frac{l}{d},
-\]
-
-where $l$ and $d$ denote, respectively, the length of the needle and the distance between the lines on the ruled paper. If you are curious about the derivation of this result, click on the button below.
-
-ADD PROOF HERE
-
-For simplicity, let us suppose that $l = d$, i.e. the length of the needle is the same as distance between the lines on the ruled paper. In this case, we obtain
-
-\[
+\begin{equation} 
 \mathbb{P}(\text{intersection}) = \frac{2}{\pi}.
+(\#eq:probbuffon)
+\end{equation} 
+
+If you are curious about the derivation of this result, click on the button below.
+
+<button id="hidebutton2">Derivation - Equation (7.1)</button>
+<div id="hideclass2">
+```{block2, type='rmdtip'}
+This proof is based on the solution of Example 4.5.8 of @grimmett2001probability. We start by letting the point $(X, Y)$ denote the coordinates of the center of the needle and let $\Theta$ be the angle, modulo $\pi$, made by the needle and the horizontal axis. Next, we define the distance from the needle's center to the nearest line beneath it by $Z = Y -  \lfloor Y \rfloor$, where $\lfloor Y \rfloor$ denotes the "floor" of $Y$, i.e. the greatest integer not greater than $Y$. Since the needle is randomly casted we have that the joint density of $(Z, \Theta)$ is given by:
+
+\[
+f_{Z, \Theta} (z, \theta) = f_{Z} (z) f_{\Theta} (\theta) = \frac{1}{\pi},
 \]
 
-SOMETHING ABOUT MC
+for $0 \leq z \leq 1$ and $0 \leq \theta \leq \pi$. By drawing a diagram one can see that an interception occurs if and only if $(Z, \Theta) \in \mathcal{B}$, where
+
+\[
+\mathcal{B} = \left\{(z, \theta)\,: \;\; z \leq \frac{1}{2} \sin (\theta)  \;\; \text{or} \;\; 1-z \leq \frac{1}{2} \sin(\theta)\right\}.
+\]
 
 Therefore, we obtain
 
-\[\hat{\pi} = \frac{2 n}{S_n}\]
-
-One can show that $\[\hat{\pi}$ converge in probability of $\pi$, i.e.
-for all $\varepsilon > 0$:
-
 \[
-\lim_{n \rightarrow \infty} \; \mathbb{P}\left( |\hat{\pi} - {\pi} | > \varepsilon \right) = 0.
+\mathbb{P}(\text{intersection}) = \iint_\mathcal{B} \; f_{Z, \Theta} (z, \theta)\, dz \, d\theta = \frac{1}{\pi} \int_0^\pi \left(\int_0^{\frac{1}{2}\sin(\theta)} dz + \int_{1 - \frac{1}{2}\sin(\theta)}^{1} dz \right) d\theta = \frac{2}{\pi},
 \]
 
-If you are curious click on the button below
+which verifies Equation \@ref(eq:probbuffon) and concludes the proof.
+```
+</div>
+\newline
 
-TO DO
+Georges-Louis Leclerc motivation behind this problem was to design an experiment to estimate the value of $\pi$. Indeed, if you fling a needle a large number $n$ times onto a ruled plane and count the number of times $S_n$ that the needle intersects a line we might be able to approximate $\mathbb{P}(\text{intersection})$ and therefore $\pi$. From Equation \@ref(eq:probbuffon), we know that the proportion $S_n/n$ will be "close" to the probability $\mathbb{P}(\text{intersection})$. In fact the (weak) law of large number garantees that $S_n/n$ converges (in probability) to $2/\pi$, i.e. for any given $\varepsilon > 0$,
+
+\[
+\lim_{n \rightarrow \infty} \; \mathbb{P}\left( \left| \frac{S_n}{n} - \frac{2}{\pi} \right|  > \varepsilon \right) = 0.
+\]
+
+Thus, the estimator
+
+\[
+\hat{\pi} = \frac{2n}{S_n},
+\]
+
+is a plausible estimator of $\pi$. The Continous Mapping Theorem [see e.g. Theorem 1.14 of @dasgupta2008asymptotic] can (among other) be used to show that $\hat{\pi}$ is a **consistent** estimator of $\pi$ (i.e. $\hat{\pi}$ converges in probability to $\pi$). In 1777, Georges-Louis Leclerc investigated this problem and computed $\hat{\pi}$ by flipping a coin 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.
+
+
+INTRO HERE
+
 
 In the function below, we cast a needle:
 
@@ -252,3 +271,18 @@ What we want:
 <center>
 ![](images/buffon.png)
 </center>
+
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
+    });
+</script>
