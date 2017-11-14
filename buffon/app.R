@@ -1,16 +1,9 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 
-cast_needle = function(plan = 10, needle_length = 1){
-  available_range = plan - needle_length
+cast_needle = function(plane_width = 20){
+  needle_length = 1
+  available_range = plane_width/2 - needle_length
   x_start = runif(2, -available_range, available_range)
   angle = runif(1, 0, 2*pi)
   x_end = needle_length*c(cos(angle), sin(angle)) + x_start
@@ -19,7 +12,7 @@ cast_needle = function(plan = 10, needle_length = 1){
   out
 }
 
-buffon_needle = function(B = 2084, plan = 10, needle_length = 1, seed = NULL){
+buffon_experiment = function(B = 2084, plane_width = 10, seed = NULL){
   
   if (!is.null(seed)){
     set.seed(seed)
@@ -27,18 +20,20 @@ buffon_needle = function(B = 2084, plan = 10, needle_length = 1, seed = NULL){
   
   X_start = X_end = matrix(NA, B, 2) 
   cross = rep(NA, B)
+  
   for (i in 1:B){
-    inter = cast_needle(plan = plan, needle_length = needle_length)
+    inter = cast_needle(plane_width = plane_width)
     X_start[i, ] = inter$start
     X_end[i, ] = inter$end
     cross[i] = inter$cross
   }
-  out = list(start = X_start, end = X_end, cross = cross, plan = plan)
-  class(out) = "buffon_needle"
+  
+  out = list(start = X_start, end = X_end, cross = cross, plane = plane_width)
+  class(out) = "buffon_experiment"
   out
 }
 
-plot.buffon_needle = function(obj){
+plot.buffon_experiment = function(obj){
   cross = obj$cross
   X_start = obj$start
   X_end = obj$end
@@ -49,10 +44,10 @@ plot.buffon_needle = function(obj){
   titre_part2 = ' = '
   pi_hat = round(2/mean(obj$cross), 6)
   
-  titre = bquote(.(titre_part1) ~ hat(pi) ~ .(titre_part2) ~ .(pi_hat))
+  titre = bquote(.(titre_part1) ~ hat(pi)[B] ~ .(titre_part2) ~ .(pi_hat))
   
-  plot(NA, xlab = "x", ylab = "y", xlim = c(-obj$plan, obj$plan), 
-       ylim = c(-obj$plan, obj$plan), 
+  plot(NA, xlab = "x", ylab = "y", xlim = c(-obj$plane/2, obj$plane/2), 
+       ylim = c(-obj$plan/2, obj$plan/2), 
        main = titre)
   abline(h = (-obj$plan):obj$plan, lty = 3)
   
@@ -62,28 +57,27 @@ plot.buffon_needle = function(obj){
   }
 }
 
-
-converge = function(B = 2084, plan = 10, needle_length = 1, seed = 1777, M = 12){
+converge = function(B = 2084, plane_width = 10, seed = 1777, M = 12){
   
   if (B < 10){
     warning("B was changed to 10")
     B = 10
   }
+  
   pi_hat = matrix(NA, B, M)
   trials = 1:B
-  cols = rev(hcl(h = seq(15, 375, length = (M+1)), l = 65, c = 100, alpha = 1)[1:M])
-  
+  cols = rev(hcl(h = seq(15, 375, length = (M+1)), 
+                 l = 65, c = 100, alpha = 1)[1:M])
   set.seed(seed)
   
   for (i in 1:M){
-    cross = buffon_needle(B = B, plan = plan, needle_length = needle_length)$cross
+    cross = buffon_experiment(B = B, plane_width = plane_width)$cross
     pi_hat[,i] = 2*trials/cumsum(cross)
   }
   
-  
   plot(NA, xlim = c(1,B), ylim = pi + c(-3/4, 3/4), type = "l", col = "darkblue",
-       ylab = bquote(hat(pi)[i]),
-       xlab = "i", main = "Buffon\'s needle experiment in time")
+       ylab = bquote(hat(pi)[j]),
+       xlab = "j", main = "Buffon\'s needle experiment")
   grid()
   
   for (i in 1:M){
@@ -97,10 +91,6 @@ converge = function(B = 2084, plan = 10, needle_length = 1, seed = 1777, M = 12)
 
 
 
-
-
-
-
 # Define UI for application
 ui <- fluidPage(
   
@@ -109,7 +99,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plan", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 6, 10, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -126,13 +116,29 @@ ui <- fluidPage(
 )
 
 
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  observeEvent(input$cast,{
+    updateNumericInput(session, "seed", value = round(runif(1, 1, 10^4)))
+  })
+  
+  # Fling some needles!
+  cast = eventReactive(input$cast, {
+    buffon_experiment(B = input$B, plane_width = input$plane, 
+                      seed = input$seed)
+  })
+  
+  conv = eventReactive(input$cast, {
+    converge(B = input$B, plane_width = input$plane, 
+             seed = input$seed, M = input$M)
+  })
+  
   output$exp <- renderPlot({
-    # Add graph 1 here!
+    plot(cast())
   }, height = 620)
   
   output$conv <- renderPlot({
-    # Add graph 2 here!
+    conv()
   }, height = 620)
 }
 
