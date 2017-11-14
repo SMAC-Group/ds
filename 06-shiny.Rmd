@@ -477,6 +477,10 @@ At this point, we are done with the `ui` function and will modify the `server` i
 
 In this section, we will focus on the `server` function to produce the desired output. Let us start 
 
+```{r, eval = FALSE}
+kh
+```
+
 
 
 <center>
