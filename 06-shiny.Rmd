@@ -488,8 +488,110 @@ server <- function(input, output) {
 }
 ```
 
-If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions `buffon_experiment()` and `plot.buffon_experiment()`.  
+If you re-run the app at the point our changes will have no visible effect. Next, we will focus on the first graph based on the functions `buffon_experiment()` and `plot.buffon_experiment()`. The first thing we will need is to (re-)run the `buffon_experiment()` when the user click on the "action" button. This can be done by the adding the following lines to the `server` function:
 
+```{r, eval = FALSE}
+cast = eventReactive(input$cast, {
+    buffon_experiment(B = 2084, plane_width = input$plane, 
+                      seed = input$seed)
+  })
+```
+
+When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing this part of the `server` function
+
+```{r, eval = FALSE}
+output$exp <- renderPlot({
+    # Add graph 1 here!
+}, height = 620)
+```
+
+by 
+
+```{r, eval = FALSE}
+output$exp <- renderPlot({
+    plot(cast())
+}, height = 620)
+```
+
+Therefore, your `server` function should now be:
+
+```{r, eval = FALSE}
+server <- function(input, output) {
+  
+  # Fling some needles!
+  cast = eventReactive(input$cast, {
+    buffon_experiment(B = 2084, plane_width = input$plane, 
+                      seed = input$seed)
+  })
+  
+  output$exp <- renderPlot({
+    plot(cast())
+  }, height = 620)
+  
+  output$conv <- renderPlot({
+    # Add graph 2 here!
+  }, height = 620)
+}
+```
+
+and when reloading the app you should now see:
+
+<center>
+![](images/shiny_server_part1.png)
+</center>
+
+Similarly, we do the same thing for the second graph by adding the following lines to our `server` function:
+
+```{r, eval = FALSE}
+conv = eventReactive(input$cast, {
+    converge(B = input$B, plane_width = input$plan, 
+             seed = input$seed, M = input$M)
+})
+```
+
+and replacing 
+
+```{r, eval = FALSE}
+output$conv <- renderPlot({
+    # Add graph 2 here!
+}, height = 620)
+```
+
+by 
+
+```{r, eval = FALSE}
+output$conv <- renderPlot({
+    conv()
+}, height = 620)
+```
+
+After these changes your `server` function should now be:
+
+```{r, eval = FALSE}
+server <- function(input, output) {
+  
+  # Fling some needles!
+  cast = eventReactive(input$cast, {
+    buffon_experiment(B = 2084, plane_width = input$plane, 
+                      seed = input$seed)
+  })
+  
+  conv = eventReactive(input$cast, {
+    converge(B = input$B, plane_width = input$plan, 
+             seed = input$seed, M = input$M)
+  })
+  
+  output$exp <- renderPlot({
+    plot(cast())
+  }, height = 620)
+  
+  output$conv <- renderPlot({
+    conv()
+  }, height = 620)
+}
+```
+
+NIAKETTE
 
 <center>
 ![](images/shiny_ui_part5.png)
