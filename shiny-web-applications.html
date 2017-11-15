@@ -108,7 +108,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Statistical Programming Methods</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path=""><a href="#shiny"><i class="fa fa-check"></i><b>1</b> Shiny</a><ul>
+<li class="chapter" data-level="1" data-path=""><a href="#shiny-web-applications"><i class="fa fa-check"></i><b>1</b> Shiny Web Applications</a><ul>
 <li class="chapter" data-level="1.1" data-path=""><a href="#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
 <li class="chapter" data-level="1.2" data-path=""><a href="#step-1.-r-code-server-backend"><i class="fa fa-check"></i><b>1.2</b> Step 1. R Code / Server / Backend</a></li>
 <li class="chapter" data-level="1.3" data-path=""><a href="#step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>1.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
@@ -118,7 +118,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="1.4" data-path=""><a href="#step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>1.4</b> Step 3: Implementing the backend (server)</a></li>
 <li class="chapter" data-level="1.5" data-path=""><a href="#step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>1.5</b> Step 4: Connecting frontend and backend</a></li>
-<li class="chapter" data-level="1.6" data-path=""><a href="#step-4-customize"><i class="fa fa-check"></i><b>1.6</b> Step 4: Customize</a></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#step-5-customize"><i class="fa fa-check"></i><b>1.6</b> Step 5: Customize</a></li>
 <li class="chapter" data-level="1.7" data-path=""><a href="#example-monte-carlo-integration"><i class="fa fa-check"></i><b>1.7</b> Example: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="1.8" data-path=""><a href="#example-buffons-needle"><i class="fa fa-check"></i><b>1.8</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="1.8.1" data-path=""><a href="#step-1-backend"><i class="fa fa-check"></i><b>1.8.1</b> Step 1: Backend</a></li>
@@ -148,8 +148,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <!--bookdown:title:end-->
 <!--bookdown:title:start-->
-<div id="shiny" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Shiny</h1>
+<div id="shiny-web-applications" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Shiny Web Applications</h1>
 <p>Shiny is an R package that makes it easy to build interactive web apps through R. It made avaialble directly through RStudio and can be employed loading the corresponding library (i.e. <code>library(shiny)</code>).</p>
 <div id="introduction" class="section level2">
 <h2><span class="header-section-number">1.1</span> Introduction</h2>
@@ -240,6 +240,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 </tr>
 </tbody>
 </table>
+<p>JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes.</p>
 </div>
 <div id="input-controls" class="section level3 unnumbered">
 <h3>Input Controls</h3>
@@ -294,6 +295,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 </tr>
 </tbody>
 </table>
+<p>JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes.</p>
 </div>
 <div id="output-render-controls" class="section level3 unnumbered">
 <h3>Output Render Controls</h3>
@@ -336,11 +338,12 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 </tr>
 </tbody>
 </table>
+<p>JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes.</p>
 </div>
 </div>
 <div id="step-3-implementing-the-backend-server" class="section level2">
 <h2><span class="header-section-number">1.4</span> Step 3: Implementing the backend (server)</h2>
-<p>This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure.</p>
+<p>This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure. This is done by creating a function which has an <code>input</code> and <code>output</code> argument that can be seen always using the example given in the tutorial.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
    
    output$distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
@@ -352,20 +355,25 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
       <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)
    })
 }</code></pre></div>
+<p>In this example, the function is called <code>server()</code> and contains only one object called <code>output</code> with a corresponding element called <code>distPlot</code> (<code>output$distPlot</code>). It must be underlined that the latter name must correspond to the name given for the output in the UI setup (i.e. the <code>distPlot</code> name inserted in <code>plotOutput(&quot;distPlot&quot;)</code>, see Step 2). The content of the output in this example is a plot and we therefore use the <code>renderPlot()</code> function in which we can include the code that we developed in Step 1 (with some added graphical parameters for the color of the bins and their borders). Of course, this output will depend on the input provided by the user which is used when defining the <code>bins</code> object (i.e. <code>bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)</code>). As for the <code>output</code> object, also in this case the <code>input</code> object has an element whose name must correspond to the name given for the input when building the UI (i.e. <code>sliderInput(&quot;bins&quot;,...)</code>).</p>
+<p>JUSTIN: Provide more details of the possible outputs that can be assigned to the output object aside from renderPlot().</p>
 </div>
 <div id="step-4-connecting-frontend-and-backend" class="section level2">
 <h2><span class="header-section-number">1.5</span> Step 4: Connecting frontend and backend</h2>
-<p>Once we have the elements of user interface (UI) and server, we build the application so they come together. Look at the video for more details on this process.</p>
+<p>Once we have developed the structure and defined the functions and objects for the UI (frontend) and backend environments, all that needs to be done is to ensure that they can communicate with each other. Using the Shiny environment, this can be quickly and easily done by using the <code>shinyApp()</code> function which takes the object defining the UI interface (<code>ui</code> in our example, see Step 2) and the function that takes the input and delivers the output (<code>server</code> in our example, see Step 3).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+<p>Therefore, having completed the UI and backend code, to launch the Shiny Web app you simply need to execute this code (or push the “Run App” button at the top of your Shiny app code).</p>
 </div>
-<div id="step-4-customize" class="section level2">
-<h2><span class="header-section-number">1.6</span> Step 4: Customize</h2>
+<div id="step-5-customize" class="section level2">
+<h2><span class="header-section-number">1.6</span> Step 5: Customize</h2>
+<p>JUSTIN: maybe discuss more in detail which aspects of the app can be customized and provide some R code examples using the faithful data (as done above).</p>
 <p>We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements.</p>
 <p>One of such examples are a <code>submitButton(...)</code>, in which we can run responsive output from input data using a button to initiate. More can be read from <a href="https://shiny.rstudio.com/reference/shiny/1.0.4/submitButton.html">here</a>.</p>
 <p>Another of such example is controlling the content creation process other than the default.</p>
 </div>
 <div id="example-monte-carlo-integration" class="section level2">
 <h2><span class="header-section-number">1.7</span> Example: Monte-Carlo Integration</h2>
+<p>STEF: To determine the structure and content of this section.</p>
 <iframe src="https://www.youtube.com/embed/0zlWcHDKCFw" width="672" height="400px">
 </iframe>
 </div>
@@ -472,13 +480,13 @@ An additional input could be added consisting in the length of the needle. Howev
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
 needle</code></pre></div>
 <pre><code>## $start
-## [1] 0.7056662 0.3742316
+## [1]  0.403114 -0.278390
 ## 
 ## $end
-## [1]  0.1601838 -0.4638907
+## [1]  1.3699060 -0.5339545
 ## 
 ## $cross
-## [1] TRUE</code></pre>
+## [1] FALSE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
@@ -523,20 +531,20 @@ needle</code></pre></div>
 experiment</code></pre></div>
 <pre><code>## $start
 ##            [,1]       [,2]
-## [1,] -0.5502939  0.4453488
-## [2,]  0.3638800 -0.7289400
-## [3,]  0.2294220  0.6691852
-## [4,] -0.1136741 -0.0861359
+## [1,]  0.4236021 -0.5702445
+## [2,]  0.1944458  0.2159328
+## [3,] -0.7513864 -0.7967082
+## [4,]  0.3305374 -0.8277633
 ## 
 ## $end
-##            [,1]       [,2]
-## [1,] -0.2843895 -0.5186506
-## [2,] -0.2500519 -1.5182990
-## [3,]  1.0622613  1.2227001
-## [4,] -0.5190646  0.8280077
+##             [,1]       [,2]
+## [1,]  1.41331839 -0.4272003
+## [2,] -0.42840890 -0.5664048
+## [3,]  0.09927712 -1.3224188
+## [4,]  0.94144606 -1.6194644
 ## 
 ## $cross
-## [1] TRUE TRUE TRUE TRUE
+## [1] FALSE  TRUE  TRUE  TRUE
 ## 
 ## $plane
 ## [1] 4
