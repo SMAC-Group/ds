@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+  
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#shiny-web-applications"><i class="fa fa-check"></i><b>1</b> Shiny Web Applications</a><ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#step-1.-r-code-server-backend"><i class="fa fa-check"></i><b>1.2</b> Step 1. R Code / Server / Backend</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>1.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
+<li class="chapter" data-level="" data-path=""><a href="#content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#output-render-controls"><i class="fa fa-check"></i>Output Render Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>1.4</b> Step 3: Implementing the backend (server)</a></li>
+<li class="chapter" data-level="1.5" data-path=""><a href="#step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>1.5</b> Step 4: Connecting frontend and backend</a></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#step-5-customize"><i class="fa fa-check"></i><b>1.6</b> Step 5: Customize</a></li>
+<li class="chapter" data-level="1.7" data-path=""><a href="#example-monte-carlo-integration"><i class="fa fa-check"></i><b>1.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="1.8" data-path=""><a href="#example-buffons-needle"><i class="fa fa-check"></i><b>1.8</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="1.8.1" data-path=""><a href="#step-1-backend"><i class="fa fa-check"></i><b>1.8.1</b> Step 1: Backend</a></li>
+<li class="chapter" data-level="1.8.2" data-path=""><a href="#step-2-frontend"><i class="fa fa-check"></i><b>1.8.2</b> Step 2: Frontend</a></li>
+<li class="chapter" data-level="1.8.3" data-path=""><a href="#step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>1.8.3</b> Step 3: Connecting frontend and backend</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="shiny-web-applications" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Shiny Web Applications</h1>
+<p>Shiny is an R package that makes it easy to build interactive web apps through R. It made avaialble directly through RStudio and can be employed loading the corresponding library (i.e. <code>library(shiny)</code>).</p>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">1.1</span> Introduction</h2>
+<p>In order to build an application, we first need to understand its structure as well as the elements it needs to work. The idea is to take some input (such as parameters) and produce an output based on some code that will not be visible to the user and will connect the input and output. In this chapter we will describe how to build a Shiny application for which a brief tutorial can be found below.</p>
+<iframe src="https://www.youtube.com/embed/X5uQU5XX7iU" width="672" height="400px">
+</iframe>
+<p>In the following paragraphs, we will provide more details on how a Shiny app can be built using the example illustrated in the tutorial.</p>
+</div>
+<div id="step-1.-r-code-server-backend" class="section level2">
+<h2><span class="header-section-number">1.2</span> Step 1. R Code / Server / Backend</h2>
+<p>Before we build the interface of the web application, we need to focus on the R code which, in the framework of Shiny app development, is also commonly known as the “backend” of the application. To make sure that all the intended operations work within the application, we need to make sure that the R code that serves as the skeleton of this app works smoothly.</p>
+<p>For instance, based on the tutorial example, we may intend to build an application that creates a histogram based on the waiting time between eruptions of the Old Faithful geyser in Yellowstone National Park (that can be found in the R dataset <code>faithful</code>), allowing the user to specify the number of bins. Using the second column in the dataset (representing the waiting times), if we were to use the default values for the histogram function in R we would obtain the following plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] 
+<span class="kw">hist</span>(x)</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>However, the representation and interpretation of the data can sometimes change considerably if using different visualization parameters. Indeed, among others, the <code>hist()</code> function includes an option called <code>breaks</code> that allows the user to specify a vector giving the number of breakpoints between histogram cells. An example of how this is used and changes the representation of the data can be found below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+
+<span class="co"># Histogram with 9 bins</span>
+bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">10</span>)
+<span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)
+
+<span class="co"># Histogram with 19 bins</span>
+bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">20</span>)
+<span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As you may notice, the number of bins created by using this option is always one unit less than the length of the specified vector (i.e. 9 and 19). Therefore, if we intend to deliver an app that allows the user to directly specify the number of bins, we should take this into account and add one unit to the input that the user has given within the <code>length.out</code> option. Ideally, we would be looking to implement a function which includes the following steps:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">input &lt;-<span class="st"> </span><span class="dv">10</span>
+
+<span class="co"># Histogram with input bins</span>
+bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input +<span class="st"> </span><span class="dv">1</span>)
+<span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>where the value given to the <code>input</code> object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.</p>
+</div>
+<div id="step-2-user-interface-ui-frontend" class="section level2">
+<h2><span class="header-section-number">1.3</span> Step 2: User Interface (UI) / Frontend</h2>
+<p>Once we have determined the structure of the code we can now start creating the Shiny app by firstly developing the UI (or frontend) with which the user will interact. To address this part, let us take the tutorial example as a guide and inspect the part of the code related to the UI.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application that draws a histogram</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+   
+   <span class="co"># Application title</span>
+   <span class="kw">titlePanel</span>(<span class="st">&quot;Old Faithful Geyser Data&quot;</span>),
+   
+   <span class="co"># Sidebar with a slider input for number of bins </span>
+   <span class="kw">sidebarLayout</span>(
+      <span class="kw">sidebarPanel</span>(
+         <span class="kw">sliderInput</span>(<span class="st">&quot;bins&quot;</span>,
+                     <span class="st">&quot;Number of bins:&quot;</span>,
+                     <span class="dt">min =</span> <span class="dv">1</span>,
+                     <span class="dt">max =</span> <span class="dv">50</span>,
+                     <span class="dt">value =</span> <span class="dv">30</span>)
+      ),
+      
+      <span class="co"># Show a plot of the generated distribution</span>
+      <span class="kw">mainPanel</span>(
+         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)
+      )
+   )
+)</code></pre></div>
+<p>As can be seen, all the code that will be dedicated to creating the UI is assigned to an object called <code>ui</code> through a function called <code>fluidPage()</code> (see <code>?fluidPage</code> for more information). The two main elements of this function are the panel dedicated to the title that will appear for the app (<code>titlePanel()</code>) and the layout to give to web page which in this example is a layout with a sidebar for the user to enter their inputs and a main panel in which the outputs will be visualized (<code>sidebarLayout()</code>). In the next paragraphs we will provide more details on the possible contents to be presented in the app interface, as well as the options that can be employed to allow the user to enter the needed inputs and the options for visualizing the outputs.</p>
+<div id="content-creation" class="section level3 unnumbered">
+<h3>Content Creation</h3>
+<p>We want to design the application in the way that it is comprehensive and also easy to interpret. Below are some often-used options of content creation that will be beneficial to know.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>titlePanel()</td>
+<td>The title of the application</td>
+</tr>
+<tr class="even">
+<td>sidebarLayout()</td>
+<td>Creates a sidebar layout for fluidPage()</td>
+</tr>
+<tr class="odd">
+<td>sidebarPanel()</td>
+<td>Makes a sidebar menu</td>
+</tr>
+<tr class="even">
+<td>mainPanel()</td>
+<td>Main content area for different outputs</td>
+</tr>
+</tbody>
+</table>
+<p>JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes.</p>
+</div>
+<div id="input-controls" class="section level3 unnumbered">
+<h3>Input Controls</h3>
+<p>We also want to provide spaces so that the client can change any desired parameter. For example, in the above example, this would be the number of bins. Below are some input controls the developer can use.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>numericInput()</td>
+<td>Number entry input</td>
+</tr>
+<tr class="even">
+<td>radioButtons()</td>
+<td>Radio button selection</td>
+</tr>
+<tr class="odd">
+<td>selectInput()</td>
+<td>Dropdown menu</td>
+</tr>
+<tr class="even">
+<td>sliderInput()</td>
+<td>Range slider (1/2 values)</td>
+</tr>
+<tr class="odd">
+<td>submitButton()</td>
+<td>Submission button</td>
+</tr>
+<tr class="even">
+<td>textInput()</td>
+<td>Text input box</td>
+</tr>
+<tr class="odd">
+<td>checkboxInput()</td>
+<td>Single checkbox input</td>
+</tr>
+<tr class="even">
+<td>dateInput()</td>
+<td>Date Selection input</td>
+</tr>
+<tr class="odd">
+<td>fileInput()</td>
+<td>Upload a file to Shiny</td>
+</tr>
+<tr class="even">
+<td>helpText()</td>
+<td>Describe input field</td>
+</tr>
+</tbody>
+</table>
+<p>JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes.</p>
+</div>
+<div id="output-render-controls" class="section level3 unnumbered">
+<h3>Output Render Controls</h3>
+<p>The different type of output that is shown can be designed depending on what the developer intends it to be. Examples of these options are shown below. We advise you to follow the videos and research different options that fit the desired output.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>plotOutput()</td>
+<td>Display a rendered plot</td>
+</tr>
+<tr class="even">
+<td>tableOutput()</td>
+<td>Display in Table</td>
+</tr>
+<tr class="odd">
+<td>textOutput()</td>
+<td>Formatted Text Output</td>
+</tr>
+<tr class="even">
+<td>uiOutput()</td>
+<td>Dynamic UI Elements</td>
+</tr>
+<tr class="odd">
+<td>verbatimTextOutput()</td>
+<td>“as is”&quot; Text Output“</td>
+</tr>
+<tr class="even">
+<td>imageOutput()</td>
+<td>Render an Image</td>
+</tr>
+<tr class="odd">
+<td>htmlOutput()</td>
+<td>Render Pure HTML</td>
+</tr>
+</tbody>
+</table>
+<p>JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes.</p>
+</div>
+</div>
+<div id="step-3-implementing-the-backend-server" class="section level2">
+<h2><span class="header-section-number">1.4</span> Step 3: Implementing the backend (server)</h2>
+<p>This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure. This is done by creating a function which has an <code>input</code> and <code>output</code> argument that can be seen always using the example given in the tutorial.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+   
+   output$distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+      <span class="co"># generate bins based on input$bins from ui.R</span>
+      x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] 
+      bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input$bins +<span class="st"> </span><span class="dv">1</span>)
+      
+      <span class="co"># draw the histogram with the specified number of bins</span>
+      <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)
+   })
+}</code></pre></div>
+<p>In this example, the function is called <code>server()</code> and contains only one object called <code>output</code> with a corresponding element called <code>distPlot</code> (<code>output$distPlot</code>). It must be underlined that the latter name must correspond to the name given for the output in the UI setup (i.e. the <code>distPlot</code> name inserted in <code>plotOutput(&quot;distPlot&quot;)</code>, see Step 2). The content of the output in this example is a plot and we therefore use the <code>renderPlot()</code> function in which we can include the code that we developed in Step 1 (with some added graphical parameters for the color of the bins and their borders). Of course, this output will depend on the input provided by the user which is used when defining the <code>bins</code> object (i.e. <code>bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)</code>). As for the <code>output</code> object, also in this case the <code>input</code> object has an element whose name must correspond to the name given for the input when building the UI (i.e. <code>sliderInput(&quot;bins&quot;,...)</code>).</p>
+<p>JUSTIN: Provide more details of the possible outputs that can be assigned to the output object aside from renderPlot().</p>
+</div>
+<div id="step-4-connecting-frontend-and-backend" class="section level2">
+<h2><span class="header-section-number">1.5</span> Step 4: Connecting frontend and backend</h2>
+<p>Once we have developed the structure and defined the functions and objects for the UI (frontend) and backend environments, all that needs to be done is to ensure that they can communicate with each other. Using the Shiny environment, this can be quickly and easily done by using the <code>shinyApp()</code> function which takes the object defining the UI interface (<code>ui</code> in our example, see Step 2) and the function that takes the input and delivers the output (<code>server</code> in our example, see Step 3).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+<p>Therefore, having completed the UI and backend code, to launch the Shiny Web app you simply need to execute this code (or push the “Run App” button at the top of your Shiny app code).</p>
+</div>
+<div id="step-5-customize" class="section level2">
+<h2><span class="header-section-number">1.6</span> Step 5: Customize</h2>
+<p>JUSTIN: maybe discuss more in detail which aspects of the app can be customized and provide some R code examples using the faithful data (as done above).</p>
+<p>We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements.</p>
+<p>One of such examples are a <code>submitButton(...)</code>, in which we can run responsive output from input data using a button to initiate. More can be read from <a href="https://shiny.rstudio.com/reference/shiny/1.0.4/submitButton.html">here</a>.</p>
+<p>Another of such example is controlling the content creation process other than the default.</p>
+</div>
+<div id="example-monte-carlo-integration" class="section level2">
+<h2><span class="header-section-number">1.7</span> Example: Monte-Carlo Integration</h2>
+<p>STEF: To determine the structure and content of this section.</p>
+<iframe src="https://www.youtube.com/embed/0zlWcHDKCFw" width="672" height="400px">
+</iframe>
+</div>
+<div id="example-buffons-needle" class="section level2">
+<h2><span class="header-section-number">1.8</span> Example: Buffon’s needle</h2>
+<p>In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon (Count of Buffon) posed the following problem to the Royal Academy of Sciences in Paris <span class="citation">[@buffon1777essai]</span>:</p>
+<blockquote>
+<p>Suppose that you drop a needle of unit length on a plane ruled by the lines <span class="math inline">\(y = m \; (m = 0, \pm 1, \pm 2, ...)\)</span> - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?</p>
+</blockquote>
+<p>Compte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows:</p>
+<span class="math display" id="eq:probbuffon">\[\begin{equation} 
+\mathbb{P}(\text{intersection}) = \frac{2}{\pi}.
+\tag{1.1}
+\end{equation}\]</span>
+<p>If you are curious about the derivation of this result, click on the button below.</p>
+<button id="hidebutton2">
+Derivation - Equation (7.1)
+</button>
+<div id="hideclass2">
+
+<div class="rmdtip">
+<p>This proof is based on the solution of Example 4.5.8 of <span class="citation">@grimmett2001probability</span>. We start by letting <span class="math inline">\((X, Y)\)</span> denote the coordinates of the point at the center of the needle and let <span class="math inline">\(\Theta\)</span> be the angle, modulo <span class="math inline">\(\pi\)</span>, that lies between the needle and the horizontal lines. Next, we define the distance from the needle’s center to the nearest line beneath it as <span class="math inline">\(Z = Y - \lfloor Y \rfloor\)</span>, where <span class="math inline">\(\lfloor Y \rfloor\)</span> denotes the “floor” of <span class="math inline">\(Y\)</span>, i.e. the greatest integer not greater than <span class="math inline">\(Y\)</span>. Since the needle is randomly casted, we have that the joint density of <span class="math inline">\((Z, \Theta)\)</span> is given by:</p>
+<p><span class="math display">\[
+f_{Z, \Theta} (z, \theta) = f_{Z} (z) f_{\Theta} (\theta) = \frac{1}{\pi},
+\]</span></p>
+<p>for <span class="math inline">\(0 \leq z \leq 1\)</span> and <span class="math inline">\(0 \leq \theta \leq \pi\)</span>. By drawing a diagram one can see that an interception occurs if and only if <span class="math inline">\((Z, \Theta) \in \mathcal{B}\)</span>, where</p>
+<p><span class="math display">\[
+\mathcal{B} = \left\{(z, \theta)\,: \;\; z \leq \frac{1}{2} \sin (\theta)  \;\; \text{or} \;\; 1-z \leq \frac{1}{2} \sin(\theta)\right\}.
+\]</span></p>
+<p>Therefore, we obtain</p>
+<p><span class="math display">\[
+\mathbb{P}(\text{intersection}) = \iint_\mathcal{B} \; f_{Z, \Theta} (z, \theta)\, dz \, d\theta = \frac{1}{\pi} \int_0^\pi \left(\int_0^{\frac{1}{2}\sin(\theta)} dz + \int_{1 - \frac{1}{2}\sin(\theta)}^{1} dz \right) d\theta = \frac{2}{\pi},
+\]</span></p>
+which verifies Equation <a href="#eq:probbuffon">(1.1)</a> and concludes the proof.
+</div>
+<p></p>
+</div>
+<p></p>
+<p>Georges-Louis Leclerc’s motivation behind this problem was to design an experiment to estimate the value of <span class="math inline">\(\pi\)</span>. Indeed, if you fling a needle a large number <span class="math inline">\(B\)</span> times onto a ruled plane and count the number of times <span class="math inline">\(S_B\)</span> that the needle intersects a line, we might be able to approximate <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span> and therefore <span class="math inline">\(\pi\)</span>. From Equation <a href="#eq:probbuffon">(1.1)</a>, we know that the proportion <span class="math inline">\(S_B/B\)</span> will be “close” to the probability <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span>. In fact the (weak) law of large number garantees that <span class="math inline">\(S_B/B\)</span> converges (in probability) to <span class="math inline">\(2/\pi\)</span>, i.e. for any given <span class="math inline">\(\varepsilon &gt; 0\)</span>,</p>
+<p><span class="math display">\[
+\lim_{B \rightarrow \infty} \; \mathbb{P}\left( \left| \frac{S_B}{B} - \frac{2}{\pi} \right|  &gt; \varepsilon \right) = 0.
+\]</span></p>
+<p>Thus, the estimator</p>
+<p><span class="math display">\[
+\hat{\pi}_B = \frac{2B}{S_B},
+\]</span></p>
+<p>is a plausible estimator of <span class="math inline">\(\pi\)</span>. The Continous Mapping Theorem <span class="citation">[see e.g. Theorem 1.14 of @dasgupta2008asymptotic]</span> can (among others) be used to show that <span class="math inline">\(\hat{\pi}\)</span> is a <strong>consistent</strong> estimator of <span class="math inline">\(\pi\)</span> (i.e. <span class="math inline">\(\hat{\pi}\)</span> converges in probability to <span class="math inline">\(\pi\)</span>). In 1777, Georges-Louis Leclerc investigated this problem and computed <span class="math inline">\(\hat{\pi}_B\)</span> by flinging a needle 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.</p>
+<p>To illustrate the convergence of our estimator we could fling a needle <span class="math inline">\(B\)</span> times and compute the following estimators:</p>
+<p><span class="math display">\[
+\hat{\pi}_j = \frac{2j}{S_j}, \;\; j = k,\, ...., \,B
+\]</span></p>
+<p>where <span class="math inline">\(k \ll B\)</span>. Once this is done, we could create a graph with <span class="math inline">\(j\)</span> on the horizontal axis and <span class="math inline">\(\hat{\pi}_j\)</span> on the vertical axis. Since <span class="math inline">\(\hat{\pi}_B\)</span> is a consistent estimator we should see that <span class="math inline">\(\hat{\pi}_j\)</span> tends to get closer and closer to <span class="math inline">\(\pi\)</span> as <span class="math inline">\(j\)</span> increases. In this graph we could also superimpose several experiments (recasting the needle <span class="math inline">\(B\)</span> times several times) to reinforce our argument.</p>
+<p>The goal of this example is to create a Shiny app to visualize and illustrate Buffon’s needle experiment. For this purpose, we will use the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Step 1: Backend</strong>: Create all the functions needed for the backend of our app. A possible approach is to create the following functions:
+<ol style="list-style-type: lower-alpha">
+<li><code>cast_needle()</code>: this function randomly casts a needle on plane and returns its coordinates as well as a binary variable to indicate if the needle crossed a line;</li>
+<li><code>buffon_experiment()</code>: this function performs a Monte-Carlo experiment by flinging a large number of needles using the function <code>cast_needle()</code>;</li>
+<li><code>plot.buffon_experiment()</code>: to visualize the experiment (i.e. show all the needles randomly dropped) and compute the estimator <span class="math inline">\(\hat{\pi}_B\)</span> for the experiment at hand;</li>
+</ol></li>
+</ol>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>converge()</code>: to illustrate the convergence of the estimator by creating the graph mentioned at the end of the previous paragraph.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Step 2: Frontend</strong>: Create widgets to collect all inputs needed by the backend:
+<ol style="list-style-type: lower-alpha">
+<li>dimension of the plane on which the needles are dropped;</li>
+<li>the number of needles being used, i.e. <span class="math inline">\(B\)</span>;</li>
+<li>number of experiments which is needed to illustrate the convergence of the estimator;</li>
+<li>the seed to allow “replicable” experiments. Aside from allowing the user to enter these variables, we will need to create two output “tabs”. In the first one, we will “print” the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to “run” a new experiment.</li>
+</ol></li>
+<li><strong>Step 3: Connecting frontend and backend</strong>: In this third step we will need to connect the inputs with the outputs. Indeed, we will use the <code>input</code> list created by the widget defined in the previous step (Step 2) to create the graphs to be displayed in the two output tabs. We will also need to “activate” the button (i.e. connect the inputs to the appropriate functions) in order to run a new experiment and update the “seed” after every new experiment.</li>
+</ol>
+<p>To summarize, our approach should follow the steps presented in the chart below:</p>
+<center>
+<img src="images/buffon.png" />
+</center>
+<p>In the next sections, we will discuss in detail how to program each step.</p>
+<div id="step-1-backend" class="section level3">
+<h3><span class="header-section-number">1.8.1</span> Step 1: Backend</h3>
+<p>Let us start with the function <code>cast_needle()</code>. This function has a single input, i.e. the width of the (square) plane on which the needle is cast and returns a <code>list</code> containing:</p>
+<ul>
+<li><code>$start</code>: the coordinates of one end of the needle;</li>
+<li><code>$end</code>: the coordinates of the other end of the needle;</li>
+<li><code>$cross</code>: a binary variable to indicate if the needle intercepts a line.</li>
+</ul>
+
+<div class="rmdnote">
+An additional input could be added consisting in the length of the needle. However, in this example we only consider needles of unit length.
+</div>
+<p></p>
+<p>A possible implementation of this function is given below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast_needle &lt;-<span class="st"> </span>function(<span class="dt">plane_width =</span> <span class="dv">20</span>){
+  available_range &lt;-<span class="st"> </span>plane_width/<span class="dv">2</span> -<span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span>
+  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, -available_range, available_range)
+  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>*pi)
+  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) +<span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span>
+  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) !=<span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])
+  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)
+  out
+}</code></pre></div>
+<p>Here is an example of the output of this function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">needle &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
+needle</code></pre></div>
+<pre><code>## $start
+## [1]  0.403114 -0.278390
+## 
+## $end
+## [1]  1.3699060 -0.5339545
+## 
+## $cross
+## [1] FALSE</code></pre>
+<p>and we could now for example provide the following graphical representation of this random cast:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
+<span class="kw">lines</span>(<span class="kw">c</span>(needle$start[<span class="dv">1</span>], needle$end[<span class="dv">1</span>]), <span class="kw">c</span>(needle$start[<span class="dv">2</span>], needle$end[<span class="dv">2</span>]))</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-13-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p>Next, we consider the function <code>buffon_experiment()</code>. This function is based on the previous function and contains the following inputs:</p>
+<ul>
+<li><code>B</code>: the number of needles being casted;</li>
+<li><code>plane_width</code>: the width of the (square) plane on which the needles are casted;</li>
+<li><code>seed</code>: the “seed” used by the random number generator (allows to replicate results);</li>
+</ul>
+<p>and returns a <code>list</code> containing:</p>
+<ul>
+<li><code>$start</code>: a <span class="math inline">\(B \times 2\)</span> matrix containing the coordinates of one end of the <span class="math inline">\(B\)</span> needles;</li>
+<li><code>$end</code>: a <span class="math inline">\(B \times 2\)</span> matrix containing the coordinates of the other end of the <span class="math inline">\(B\)</span> needles;</li>
+<li><code>$cross</code>: a vector of length <span class="math inline">\(B\)</span> containing boolean variables to indicate whether a needle crosses a line or not;</li>
+<li><code>$plane</code>: the width of the (square) plane.</li>
+</ul>
+<p>A possible implementation of this function is provided below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">buffon_experiment &lt;-<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){
+  
+  if (!<span class="kw">is.null</span>(seed)){
+    <span class="kw">set.seed</span>(seed)
+  }
+  
+  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) 
+  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
+  
+  for (i in <span class="dv">1</span>:B){
+    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)
+    X_start[i, ] &lt;-<span class="st"> </span>inter$start
+    X_end[i, ] &lt;-<span class="st"> </span>inter$end
+    cross[i] &lt;-<span class="st"> </span>inter$cross
+  }
+  
+  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)
+  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span>
+  out
+}</code></pre></div>
+<p>For example, if we consider an experiment where four needles are cast, we could obtain:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
+experiment</code></pre></div>
+<pre><code>## $start
+##            [,1]       [,2]
+## [1,]  0.4236021 -0.5702445
+## [2,]  0.1944458  0.2159328
+## [3,] -0.7513864 -0.7967082
+## [4,]  0.3305374 -0.8277633
+## 
+## $end
+##             [,1]       [,2]
+## [1,]  1.41331839 -0.4272003
+## [2,] -0.42840890 -0.5664048
+## [3,]  0.09927712 -1.3224188
+## [4,]  0.94144606 -1.6194644
+## 
+## $cross
+## [1] FALSE  TRUE  TRUE  TRUE
+## 
+## $plane
+## [1] 4
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;buffon_experiment&quot;</code></pre>
+<p>which could be represented as</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
+for (i in <span class="dv">1</span>:<span class="dv">4</span>){
+  <span class="kw">lines</span>(<span class="kw">c</span>(experiment$start[i,<span class="dv">1</span>], experiment$end[i,<span class="dv">1</span>]), 
+        <span class="kw">c</span>(experiment$start[i,<span class="dv">2</span>], experiment$end[i,<span class="dv">2</span>]))
+}</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-16-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p>We can now write a custom <code>plot()</code> function for the output of the function <code>buffon_experiment()</code>. This function will provide a way to visualize the experiment and will compute <span class="math inline">\(\hat{\pi}_B\)</span>, which will be shown in the title. A possible function is provided below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.buffon_experiment &lt;-<span class="st"> </span>function(obj){
+  cross &lt;-<span class="st"> </span>obj$cross
+  X_start &lt;-<span class="st"> </span>obj$start
+  X_end &lt;-<span class="st"> </span>obj$end
+  B &lt;-<span class="st"> </span><span class="kw">length</span>(cross)
+  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span>:<span class="dv">2</span>])
+  
+  title_part1 &lt;-<span class="st"> &#39;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment  -  &#39;</span>
+  title_part2 &lt;-<span class="st"> &#39; = &#39;</span>
+  pi_hat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span>/<span class="kw">mean</span>(obj$cross), <span class="dv">6</span>)
+  
+  title &lt;-<span class="st"> </span><span class="kw">bquote</span>(.(title_part1) ~<span class="st"> </span><span class="kw">hat</span>(pi)[B] ~<span class="st"> </span>.(title_part2) ~<span class="st"> </span>.(pi_hat))
+  
+  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-obj$plane/<span class="dv">2</span>, obj$plane/<span class="dv">2</span>), 
+       <span class="dt">ylim =</span> <span class="kw">c</span>(-obj$plan/<span class="dv">2</span>, obj$plan/<span class="dv">2</span>), 
+       <span class="dt">main =</span> title)
+  <span class="kw">abline</span>(<span class="dt">h =</span> (-obj$plan):obj$plan, <span class="dt">lty =</span> <span class="dv">3</span>)
+  
+  for (i in <span class="dv">1</span>:B){
+    <span class="kw">lines</span>(<span class="kw">c</span>(X_start[i,<span class="dv">1</span>], X_end[i,<span class="dv">1</span>]), <span class="kw">c</span>(X_start[i,<span class="dv">2</span>], X_end[i,<span class="dv">2</span>]), 
+          <span class="dt">col =</span> cols[cross[i] +<span class="st"> </span><span class="dv">1</span>])
+  }
+}</code></pre></div>
+<p>Therefore, we could now run the same experiment as Georges-Louis Leclerc by flinging 2084 needles almost instanteously (which is the default value in the <code>buffon_experiment()</code> function we created):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)
+<span class="kw">plot</span>(experiment)</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-18-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Finally, we can consider the function <code>converge()</code>. Similarly to <code>buffon_experiment()</code>, the function <code>converge()</code> has the following inputs:</p>
+<ul>
+<li><code>B</code>: the number of needles being cast;</li>
+<li><code>plane_width</code>: the width of the (square) plane on which the needles are cast;</li>
+<li><code>seed</code>: the “seed” used by the random number generator (allows to replicate results);</li>
+<li><code>M</code>: the number of experiments.</li>
+</ul>
+<p>The function returns the graph mentioned at the end of the previous section. A possible implementation of this function is provided below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge &lt;-<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
+  
+  if (B &lt;<span class="st"> </span><span class="dv">10</span>){
+    <span class="kw">warning</span>(<span class="st">&quot;B was changed to 10&quot;</span>)
+    B &lt;-<span class="st"> </span><span class="dv">10</span>
+  }
+  
+  pi_hat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, M)
+  trials &lt;-<span class="st"> </span><span class="dv">1</span>:B
+  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="dv">+1</span>)), 
+                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span>:M])
+  <span class="kw">set.seed</span>(seed)
+  
+  for (i in <span class="dv">1</span>:M){
+    cross &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)$cross
+    pi_hat[,i] &lt;-<span class="st"> </span><span class="dv">2</span>*trials/<span class="kw">cumsum</span>(cross)
+  }
+  
+  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi +<span class="st"> </span><span class="kw">c</span>(-<span class="dv">3</span>/<span class="dv">4</span>, <span class="dv">3</span>/<span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,
+       <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[j]),
+       <span class="dt">xlab =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment&quot;</span>)
+  <span class="kw">grid</span>()
+  
+  for (i in <span class="dv">1</span>:M){
+    <span class="kw">lines</span>(trials, pi_hat[,i], <span class="dt">col =</span> cols[i])
+  }
+  
+  <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+}</code></pre></div>
+<p>Therefore, if we were to repeat the original experiment of Georges-Louis Leclerc 20 times and compute <span class="math inline">\(\hat{\pi}_j\)</span> for each experiment we would obtain:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre></div>
+<p><img src="06-shiny_files/figure-html/unnamed-chunk-20-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>which provides some illustrations on the convergence of the estimator.</p>
+</div>
+<div id="step-2-frontend" class="section level3">
+<h3><span class="header-section-number">1.8.2</span> Step 2: Frontend</h3>
+<p>We start by constructing an “empty” Shiny app, i.e.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+  
+  <span class="co"># Application title</span>
+  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
+  
+  <span class="kw">sidebarLayout</span>(
+    <span class="kw">sidebarPanel</span>(
+      <span class="co"># Add inputs here!</span>
+    ),
+    
+    <span class="kw">mainPanel</span>(
+      <span class="kw">tabsetPanel</span>(
+        <span class="co"># Add tabs here!</span>
+      )
+    )
+  )
+)
+
+<span class="co"># Define server</span>
+server &lt;-<span class="st"> </span>function(input, output) {
+}
+
+<span class="co"># Run the application </span>
+<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+<p>If you run this empty app you should obtain the result below:</p>
+<center>
+<img src="images/shiny_ui_part1.png" />
+</center>
+<p>We will start by adding the required input widgets by modifying the <code>ui</code> function as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+  
+  <span class="co"># Application title</span>
+  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
+  
+  <span class="kw">sidebarLayout</span>(
+    <span class="kw">sidebarPanel</span>(
+      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span>^<span class="dv">6</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
+      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))
+    ),
+    
+    <span class="kw">mainPanel</span>(
+      <span class="kw">tabsetPanel</span>(
+        <span class="co"># Add tabs here!</span>
+      )
+    )
+  )
+)</code></pre></div>
+<p>By running this update you should now obtain:</p>
+<center>
+<img src="images/shiny_ui_part2.png" />
+</center>
+<p>Next, we create two output tabs in which we will find the previously mentioned graphs. This can be done by again modifying the <code>ui</code>function as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+  
+  <span class="co"># Application title</span>
+  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
+  
+  <span class="kw">sidebarLayout</span>(
+    <span class="kw">sidebarPanel</span>(
+      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span>^<span class="dv">6</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
+      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))
+    ),
+    
+    <span class="kw">mainPanel</span>(
+      <span class="kw">tabsetPanel</span>(
+        <span class="kw">tabPanel</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;exp&quot;</span>)),
+        <span class="kw">tabPanel</span>(<span class="st">&quot;Convergence&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;conv&quot;</span>))
+      )
+    )
+  )
+)</code></pre></div>
+<p>The app should now look like this:</p>
+<center>
+<img src="images/shiny_ui_part3.png" />
+</center>
+<p>At this point, we have completed the <code>ui</code> function and will modify the <code>server</code> in the next section.</p>
+</div>
+<div id="step-3-connecting-frontend-and-backend" class="section level3">
+<h3><span class="header-section-number">1.8.3</span> Step 3: Connecting frontend and backend</h3>
+<p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start by “connecting” our output tabs defined in the <code>ui</code> function with the output in the server function. Since both outputs are graphs, we will use the function <code>renderPlot()</code> as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 1 here!</span>
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 2 here!</span>
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>If you re-run the app at this point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user clicks on the “action” button. This can be done by adding the following lines to the <code>server</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })</code></pre></div>
+<p>When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing the following part of the <code>server</code> function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 1 here!</span>
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>with</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>Therefore, your <code>server</code> function should now be:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+  
+  <span class="co"># Fling some needles!</span>
+  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })
+  
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 2 here!</span>
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>and when reloading the app you should now see:</p>
+<center>
+<img src="images/shiny_server_part1.png" />
+</center>
+<p>Similarly, we do the same thing for the second graph by adding the following lines to our <code>server</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
+})</code></pre></div>
+<p>and replacing</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># Add graph 2 here!</span>
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>with</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">conv</span>()
+}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
+<p>After these changes, your <code>server</code> function should look like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+  
+  <span class="co"># Fling some needles!</span>
+  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })
+  
+  conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
+  })
+  
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">conv</span>()
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>and when reloading the app you should now see on the second tab:</p>
+<center>
+<img src="images/shiny_server_part2.png" />
+</center>
+<p>Our next step is now to update the seed every time the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynamically</strong> update the input directly from the <code>server</code> function. Therefore, in order to randomly generate a new seed each time the user clicks on the “action” button, we can do the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">observeEvent</span>(input$cast,{
+    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
+                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
+})</code></pre></div>
+<p>Therefore, your final <code>server</code> function is now:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output, session) {
+  
+  <span class="kw">observeEvent</span>(input$cast,{
+    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
+                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
+  })
+  
+  <span class="co"># Fling some needles!</span>
+  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
+  })
+  
+  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
+  })
+  
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">plot</span>(<span class="kw">cast</span>())
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+  
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="kw">conv</span>()
+  }, <span class="dt">height =</span> <span class="dv">620</span>)
+}</code></pre></div>
+<p>With this change, you will now observe that the seed is updated each time the “action” button is clicked. The final version of the app we have just created can be found <a href="http://shiny.science.psu.edu/szg279/buffon/">here</a>.</p>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
+    });
+</script>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

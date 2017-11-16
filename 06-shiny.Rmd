@@ -1,46 +1,84 @@
-# Shiny
+# Shiny Web Applications
 
-Shiny is an R package that makes it easy to build interactive web apps straight from R. 
+Shiny is an R package that makes it easy to build interactive web apps through R. It made avaialble directly through RStudio and can be employed loading the corresponding library (i.e. `library(shiny)`).
 
 ## Introduction 
 
-Before building the application, we want to know to build our application, and think more like a software engineer. We want to take some input, such as parameters, and produce output. In this chapter we will build the shiny applicaion building procedure. Below is a basic functioning example of a Shiny application. 
+In order to build an application, we first need to understand its structure as well as the elements it needs to work. The idea is to take some input (such as parameters) and produce an output based on some code that will not be visible to the user and will connect the input and output. In this chapter we will describe how to build a Shiny application for which a brief tutorial can be found below.
 
 ```{r, echo = FALSE}
 knitr::include_url("https://www.youtube.com/embed/X5uQU5XX7iU")
 ```
 
+In the following paragraphs, we will provide more details on how a Shiny app can be built using the example illustrated in the tutorial.
 
-## Step 1. R Code / Server / Backend
+## Step 1. Defining the R Code in the backend of the Shiny app
 
-Before we start thinking of the web application, we want to focus on the R Code, or also commonly known as the "backend" of the application. For all the intended operations to work in the application we need to make sure that the R code that serves as the skeleton operates in the way the developer want it to be. 
+Before we build the interface of the web application, we need to focus on the R code which, in the framework of Shiny app development, is also commonly known as the "backend" of the application. To make sure that all the intended operations work within the application, we need to make sure that the R code that serves as the skeleton of this app works smoothly. 
 
-For example, perhaps we are trying to build an application that builds a histogram from the waiting time of the default R dataset, Old Faithful Geyser Dataset. We also want to add an option for controlling the number of bins. 
-
-For this to work, we want to build the histogram in R and test out to see if the output is what was desired initially. Below we create the default histogram. 
+For instance, based on the tutorial example, we may intend to build an application that creates a histogram based on the waiting time between eruptions of the Old Faithful geyser in Yellowstone National Park (that can be found in the R dataset `faithful`), allowing the user to specify the number of bins. Using the second column in the dataset (representing the waiting times), if we were to use the default values for the histogram function in R we would obtain the following plot.
 
 ```{r}
 x <- faithful[, 2] 
 hist(x)
 ```
 
-Now we want to make sure to later add the option of creating more bins so the graph is customizable. In the `hist()` function, we see an option `breaks` that we can use to take in different inputs based on what the client wants. 
+However, the representation and interpretation of the data can sometimes change considerably if using different visualization parameters. Indeed, among others, the `hist()` function includes an option called `breaks` that allows the user to specify a vector giving the number of breakpoints between histogram cells. An example of how this is used and changes the representation of the data can be found below. 
 
 ```{r}
 par(mfrow = c(1,2))
 
-# Compare the differences! 
+# Histogram with 9 bins
 bins <- seq(min(x), max(x), length.out = 10)
 hist(x, breaks = bins)
 
+# Histogram with 19 bins
 bins <- seq(min(x), max(x), length.out = 20)
 hist(x, breaks = bins)
 ```
 
+As you may notice, the number of bins created by using this option is always one unit less than the length of the specified vector (i.e. 9 and 19). Therefore, if we intend to deliver an app that allows the user to directly specify the number of bins, we should take this into account and add one unit to the input that the user has given within the `length.out` option. Ideally, we would be looking to implement a function which includes the following steps:
+
+```{r}
+input <- 10
+
+# Histogram with input bins
+bins <- seq(min(x), max(x), length.out = input + 1)
+hist(x, breaks = bins)
+```
+
+where the value given to the `input` object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.
+
 ## Step 2: User Interface (UI) / Frontend 
 
-The previous information goes into a part called the "server" in the shiny application. Now we want to focus on the frontend of the application, the things we "see" and options we can interact with when we open the app. 
+Once we have determined the structure of the code we can now start creating the Shiny app by firstly developing the UI (or frontend) with which the user will interact. To address this part, let us take the tutorial example as a guide and inspect the part of the code related to the UI.
 
+```{r, eval=FALSE}
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+   
+   # Application title
+   titlePanel("Old Faithful Geyser Data"),
+   
+   # Sidebar with a slider input for number of bins 
+   sidebarLayout(
+      sidebarPanel(
+         sliderInput("bins",
+                     "Number of bins:",
+                     min = 1,
+                     max = 50,
+                     value = 30)
+      ),
+      
+      # Show a plot of the generated distribution
+      mainPanel(
+         plotOutput("distPlot")
+      )
+   )
+)
+```
+
+As can be seen, all the code that will be dedicated to creating the UI is assigned to an object called `ui` through a function called `fluidPage()` (see `?fluidPage` for more information). The two main elements of this function are the panel dedicated to the title that will appear for the app (`titlePanel()`) and the layout to give to web page which in this example is a layout with a sidebar for the user to enter their inputs and a main panel in which the outputs will be visualized (`sidebarLayout()`). In the next paragraphs we will provide more details on the possible contents to be presented in the app interface, as well as the options that can be employed to allow the user to enter the needed inputs and the options for visualizing the outputs.
 
 ### Content Creation {-}
 
@@ -52,6 +90,8 @@ We want to design the application in the way that it is comprehensive and also e
 | sidebarLayout() | Creates a sidebar layout for fluidPage() |
 | sidebarPanel()  | Makes a sidebar menu                     |
 | mainPanel()     | Main content area for different outputs  |
+
+<!-- JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes. -->
 
 ### Input Controls {-}
 
@@ -70,6 +110,8 @@ We also want to provide spaces so that the client can change any desired paramet
 | fileInput()     | Upload a file to Shiny    |
 | helpText()      | Describe input field      |
 
+<!-- JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes. -->
+
 ### Output Render Controls {-}
 
 The different type of output that is shown can be designed depending on what the developer intends it to be. Examples of these options are shown below. We advise you to follow the videos and research different options that fit the desired output. 
@@ -84,11 +126,44 @@ The different type of output that is shown can be designed depending on what the
 | imageOutput()        | Render an Image         |
 | htmlOutput()         | Render Pure HTML        |
 
-## Step 3: Connecting frontend and backend 
 
-Once we have the elements of user interface (UI) and server, we build the application so they come together. Look at the video for more details on this process. 
+<!-- JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes. -->
 
-## Step 4: Customize 
+## Step 3: Implementing the backend (server)
+
+This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure. This is done by creating a function which, as arguments, has an `input` and an `output` as can be seen below always using the example given in the tutorial.
+
+```{r, eval=FALSE}
+server <- function(input, output) {
+   
+   output$distPlot <- renderPlot({
+      # generate bins based on input$bins from ui.R
+      x    <- faithful[, 2] 
+      bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      
+      # draw the histogram with the specified number of bins
+      hist(x, breaks = bins, col = 'darkgray', border = 'white')
+   })
+}
+```
+
+In this example, the function is called `server()` and contains only one object called `output` with a corresponding element called `distPlot` (`output$distPlot`). It must be underlined that the latter name must correspond to the name given for the output in the UI setup (i.e. the `distPlot` name inserted in `plotOutput("distPlot")`, see Step 2). The content of the output in this example is a plot and we therefore use the `renderPlot()` function in which we can include the code that we developed in Step 1 (with some added graphical parameters for the color of the bins and their borders). Of course, this output will depend on the input provided by the user which is used when defining the `bins` object (i.e. `bins <- seq(min(x), max(x), length.out = input$bins + 1)`). Just like for the `output` object, also in this case the `input` object has an element whose name must correspond to the name given for the input when building the UI (i.e. `sliderInput("bins",...)`).
+
+<!-- JUSTIN: Provide more details of the possible outputs that can be assigned to the output object aside from renderPlot(). -->
+
+## Step 4: Connecting frontend and backend 
+
+Once we have developed the structure and defined the functions and objects for the UI (frontend) and backend environments, all that needs to be done is to ensure that they can communicate with each other. Using the Shiny environment, this can be quickly and easily done by using the `shinyApp()` function which takes the object defining the UI interface (`ui` in our example, see Step 2) and the function that takes the input and delivers the output (`server` in our example, see Step 3).
+
+```{r, eval=FALSE}
+shinyApp(ui = ui, server = server)
+```
+
+Therefore, having completed the UI and backend code, to launch the Shiny Web app you simply need to execute this code (or push the "Run App" button at the top of your Shiny app code).
+
+## Step 5: Customize 
+
+<!-- JUSTIN: maybe discuss more in detail which aspects of the app can be customized and provide some R code examples using the faithful data (as done above). -->
 
 We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements. 
 
@@ -98,6 +173,8 @@ Another of such example is controlling the content creation process other than t
 
 
 ## Example: Monte-Carlo Integration
+
+<!-- STEF: To determine the structure and content of this section. -->
 
 ```{r, echo = FALSE}
 knitr::include_url("https://www.youtube.com/embed/0zlWcHDKCFw")
@@ -421,7 +498,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plane", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 10, 6, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -454,7 +531,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      numericInput("plane", "Plane width:", 6, 10, 100),
+      numericInput("plane", "Plane width:", 10, 6, 100),
       numericInput("B", "Number of trials:", 100, 20, 10^6),
       numericInput("M", "Number of experiments:", 1, 1, 100),
       numericInput("seed", "Simulation seed", 1777, 1, 1000000),
@@ -551,7 +628,7 @@ Similarly, we do the same thing for the second graph by adding the following lin
 
 ```{r, eval = FALSE}
 conv <- eventReactive(input$cast, {
-    converge(B = input$B, plane_width = input$plan, 
+    converge(B = input$B, plane_width = input$plane, 
              seed = input$seed, M = input$M)
 })
 ```
