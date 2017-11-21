@@ -91,7 +91,8 @@ We want to design the application in the way that it is comprehensive and also e
 | sidebarPanel()  | Makes a sidebar menu                     |
 | mainPanel()     | Main content area for different outputs  |
 
-<!-- JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes. -->
+
+
 
 ### Input Controls {-}
 
@@ -110,7 +111,6 @@ We also want to provide spaces so that the client can change any desired paramet
 | fileInput()     | Upload a file to Shiny    |
 | helpText()      | Describe input field      |
 
-<!-- JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes. -->
 
 ### Output Render Controls {-}
 
@@ -126,8 +126,6 @@ The different type of output that is shown can be designed depending on what the
 | imageOutput()        | Render an Image         |
 | htmlOutput()         | Render Pure HTML        |
 
-
-<!-- JUSTIN: Provide more details on these options, maybe discussing a couple of them and modifying the tutorial example code to show how the interface changes. -->
 
 ## Step 3: Implementing the backend (server)
 
@@ -149,7 +147,6 @@ server <- function(input, output) {
 
 In this example, the function is called `server()` and contains only one object called `output` with a corresponding element called `distPlot` (`output$distPlot`). It must be underlined that the latter name must correspond to the name given for the output in the UI setup (i.e. the `distPlot` name inserted in `plotOutput("distPlot")`, see Step 2). The content of the output in this example is a plot and we therefore use the `renderPlot()` function in which we can include the code that we developed in Step 1 (with some added graphical parameters for the color of the bins and their borders). Of course, this output will depend on the input provided by the user which is used when defining the `bins` object (i.e. `bins <- seq(min(x), max(x), length.out = input$bins + 1)`). Just like for the `output` object, also in this case the `input` object has an element whose name must correspond to the name given for the input when building the UI (i.e. `sliderInput("bins",...)`).
 
-<!-- JUSTIN: Provide more details of the possible outputs that can be assigned to the output object aside from renderPlot(). -->
 
 ## Step 4: Connecting frontend and backend 
 
@@ -163,7 +160,6 @@ Therefore, having completed the UI and backend code, to launch the Shiny Web app
 
 ## Step 5: Customize 
 
-<!-- JUSTIN: maybe discuss more in detail which aspects of the app can be customized and provide some R code examples using the faithful data (as done above). -->
 
 We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements. 
 
