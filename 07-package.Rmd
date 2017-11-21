@@ -78,14 +78,34 @@ plot.MCI = function(x, ...){
 }
 ```
 
+## Basic steps
 
-## Step 1: Create an "empty" R package
+### Step 1: Create an "empty" R package
 
-add image part1-1 to part1-4
+<center>
+![](images/part1_1.png)
+</center>
 
-## Step 2: Remove "example" files
+<center>
+![](images/part1_2.png)
+</center>
+
+<center>
+![](images/part1_3.png)
+</center>
+
+<center>
+![](images/part1_4.png)
+</center>
+
+
+### Step 2: Remove "example" files
 
 add image part2-1
+
+<center>
+![](images/part2_1.png)
+</center>
 
 Remove the following files:
 
@@ -93,18 +113,19 @@ Remove the following files:
 - hello.Rmd (man)
 - hello.r (R)
 
-## Step 3: Edit description file
+### Step 3: Edit description file
 
 - Replace `Authors` by `Authors@R`
 - Explain roles
 - Add something on liscence
+- Imports + IMPORTANT EVERYTHING YOU ADD A FUNCTION FROM ANOTHER PACK.
 
-## Step 4: Move your script into R file in R folder
+### Step 4: Move your script into R file in R folder
 
 - Group functions together per theme in different files
 - Run each file seperately using `source('~/demo/R/<name of your file>.R')` and eventually debug if any error occurs.
 
-## Step 5: Documentation
+### Step 5: Documentation
 
 - All function you want to be able to use MUST have `#' @export`
 - Here is an example:
@@ -184,12 +205,100 @@ mc_int = function(x_range, fun, B, seed = 1291){
 
 - Build documentation : `devtools::document()`
 - If everyhting is OK you should have one Rd document for everything function: part5-1
+- Check by using `?yourfunction`
+
+<center>
+![](images/part5_1.png)
+</center>
+
+<center>
+![](images/part5_2.png)
+</center>
+
+### Step 6: Test your package
+
+- Build your package - part6-1
+- Test if it works - by creating a "test" file in main and run everything it you change something major to the package to see if the behavious remains unchanged. -> part6-2
+
+<center>
+![](images/part6_1.png)
+</center>
+
+<center>
+![](images/part6_2.png)
+</center>
+
+- Run check
+
+### Step 7: Add a "README.Rmd" file
+
+Showcase what your package is doing in this RMD file, you can add video, code example,....
 
 
-# Step 6: Test your package
+```{eval=FALSE}
+---
+output: github_document
+---
 
-- Build your package
-- Test if it works
+# Add a title
+  
+Explain what your package is doing here
+```
+
+Compile it with pkgdown (install: `devtools::install_github("hadley/pkgdown")`): `pkgdown::build_site()`
+
+Result should look like: part7 - 1
+
+<center>
+![](images/part7_1.png)
+</center>
+
+
+### Step 8: Create a github repo - possibly with the same name as package
+
+- Sync should look like:
+
+<center>
+![](images/part8_1.png)
+</center>
+
+Make website -> github page
+
+<center>
+![](images/part8_2.png)
+</center>
+
+Then your website is only... The address is `https://<your github id>.github.io/<your repo name>/`
+
+## Advanced
+
+### Adding a shiny app
+
+- make folder called `inst`
+- In `inst` put shiny app folder
+- Make r file call it, called it for example `run_shiny.r`, here is an example:
+
+```{r, eval = FALSE}
+#' @export
+MC_gui = function(){
+  appDir = system.file("MC_int", package = "demo")
+  shiny::runApp(appDir, display.mode = "normal")
+}
+```
+
+- Run: `devtools::document()` + rebuild
+- Test: `MC_gui()`
+
+<center>
+![](images/adv_1.png)
+</center>
+
+### Custom website
+
+Justin to do, theme , badge, tabs,....
+
+
+EXAMPLE: smac-group/demo
 
 
 

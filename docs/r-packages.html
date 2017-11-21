@@ -248,6 +248,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.3" data-path="r-packages.html"><a href="r-packages.html#step-3-edit-description-file"><i class="fa fa-check"></i><b>8.3</b> Step 3: Edit description file</a></li>
 <li class="chapter" data-level="8.4" data-path="r-packages.html"><a href="r-packages.html#step-4-move-your-script-into-r-file-in-r-folder"><i class="fa fa-check"></i><b>8.4</b> Step 4: Move your script into R file in R folder</a></li>
 <li class="chapter" data-level="8.5" data-path="r-packages.html"><a href="r-packages.html#step-5-documentation"><i class="fa fa-check"></i><b>8.5</b> Step 5: Documentation</a></li>
+<li class="chapter" data-level="8.6" data-path="r-packages.html"><a href="r-packages.html#step-6-test-your-package"><i class="fa fa-check"></i><b>8.6</b> Step 6: Test your package</a></li>
+<li class="chapter" data-level="8.7" data-path="r-packages.html"><a href="r-packages.html#step-7-add-a-readme.rmd-file"><i class="fa fa-check"></i><b>8.7</b> Step 7: Add a “README.Rmd” file</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>9</b> Placeholder</a></li>
 <li class="divider"></li>
@@ -321,9 +323,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   out
 }
 
-plot.MCI =<span class="st"> </span><span class="cf">function</span>(x){
-  x_range =<span class="st"> </span>x<span class="op">$</span>x_range
-  fun =<span class="st"> </span>x<span class="op">$</span>fun
+plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
+  obj =<span class="st"> </span>x
+  x_range =<span class="st"> </span>obj<span class="op">$</span>x_range
+  fun =<span class="st"> </span>obj<span class="op">$</span>fun
 
   Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)
   x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)
@@ -331,8 +334,8 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x){
   f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
   <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)
   <span class="kw">grid</span>()
-  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(x<span class="op">$</span>I,<span class="dv">4</span>),
-              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(x<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
+  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj<span class="op">$</span>I,<span class="dv">4</span>),
+              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
   <span class="kw">lines</span>(x, f_x)
   x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
   f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
@@ -344,11 +347,25 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x){
 }</code></pre></div>
 <div id="step-1-create-an-empty-r-package" class="section level2">
 <h2><span class="header-section-number">8.1</span> Step 1: Create an “empty” R package</h2>
-<p>add image part1-1 to part1-4</p>
+<center>
+<img src="images/part1_1.png" />
+</center>
+<center>
+<img src="images/part1_2.png" />
+</center>
+<center>
+<img src="images/part1_3.png" />
+</center>
+<center>
+<img src="images/part1_4.png" />
+</center>
 </div>
 <div id="step-2-remove-example-files" class="section level2">
 <h2><span class="header-section-number">8.2</span> Step 2: Remove “example” files</h2>
 <p>add image part2-1</p>
+<center>
+<img src="images/part2_1.png" />
+</center>
 <p>Remove the following files:</p>
 <ul>
 <li>NAMESPACE</li>
@@ -447,6 +464,46 @@ mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, 
   <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span>
   out
 }</code></pre></div>
+<ul>
+<li>Build documentation : <code>devtools::document()</code></li>
+<li>If everyhting is OK you should have one Rd document for everything function: part5-1</li>
+<li>Check by using <code>?yourfunction</code></li>
+</ul>
+<center>
+<img src="images/part5_1.png" />
+</center>
+<center>
+<img src="images/part5_2.png" />
+</center>
+</div>
+<div id="step-6-test-your-package" class="section level2">
+<h2><span class="header-section-number">8.6</span> Step 6: Test your package</h2>
+<ul>
+<li>Build your package - part6-1</li>
+<li>Test if it works - by creating a “test” file in main and run everything it you change something major to the package to see if the behavious remains unchanged. -&gt; part6-2</li>
+</ul>
+<center>
+<img src="images/part6_1.png" />
+</center>
+<center>
+<img src="images/part6_2.png" />
+</center>
+</div>
+<div id="step-7-add-a-readme.rmd-file" class="section level2">
+<h2><span class="header-section-number">8.7</span> Step 7: Add a “README.Rmd” file</h2>
+<p>Showcase what your package is doing in this RMD file, you can add video, code example,….</p>
+<pre class="eval"><code>---
+output: github_document
+---
+
+# Add a title
+  
+Explain what your package is doing here</code></pre>
+<p>Compile it with pkgdown (install: <code>devtools::install_github(&quot;hadley/pkgdown&quot;)</code>): <code>pkgdown::build_site()</code></p>
+<p>Result should look like: part7 - 1</p>
+<center>
+<img src="images/part7_1.png" />
+</center>
 
 </div>
 </div>

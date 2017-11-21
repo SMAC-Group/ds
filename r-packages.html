@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#r-packages"><i class="fa fa-check"></i><b>1</b> R Packages</a><ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#basic-steps"><i class="fa fa-check"></i><b>1.1</b> Basic steps</a><ul>
+<li class="chapter" data-level="1.1.1" data-path=""><a href="#step-1-create-an-empty-r-package"><i class="fa fa-check"></i><b>1.1.1</b> Step 1: Create an “empty” R package</a></li>
+<li class="chapter" data-level="1.1.2" data-path=""><a href="#step-2-remove-example-files"><i class="fa fa-check"></i><b>1.1.2</b> Step 2: Remove “example” files</a></li>
+<li class="chapter" data-level="1.1.3" data-path=""><a href="#step-3-edit-description-file"><i class="fa fa-check"></i><b>1.1.3</b> Step 3: Edit description file</a></li>
+<li class="chapter" data-level="1.1.4" data-path=""><a href="#step-4-move-your-script-into-r-file-in-r-folder"><i class="fa fa-check"></i><b>1.1.4</b> Step 4: Move your script into R file in R folder</a></li>
+<li class="chapter" data-level="1.1.5" data-path=""><a href="#step-5-documentation"><i class="fa fa-check"></i><b>1.1.5</b> Step 5: Documentation</a></li>
+<li class="chapter" data-level="1.1.6" data-path=""><a href="#step-6-test-your-package"><i class="fa fa-check"></i><b>1.1.6</b> Step 6: Test your package</a></li>
+<li class="chapter" data-level="1.1.7" data-path=""><a href="#step-7-add-a-readme.rmd-file"><i class="fa fa-check"></i><b>1.1.7</b> Step 7: Add a “README.Rmd” file</a></li>
+<li class="chapter" data-level="1.1.8" data-path=""><a href="#step-8-create-a-github-repo---possibly-with-the-same-name-as-package"><i class="fa fa-check"></i><b>1.1.8</b> Step 8: Create a github repo - possibly with the same name as package</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#advanced"><i class="fa fa-check"></i><b>1.2</b> Advanced</a><ul>
+<li class="chapter" data-level="1.2.1" data-path=""><a href="#adding-a-shiny-app"><i class="fa fa-check"></i><b>1.2.1</b> Adding a shiny app</a></li>
+<li class="chapter" data-level="1.2.2" data-path=""><a href="#custom-website"><i class="fa fa-check"></i><b>1.2.2</b> Custom website</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="r-packages" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> R Packages</h1>
+<p>Suppose we have the following two function and that we would like to construct a package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+  <span class="co"># A few checks</span>
+  <span class="co"># Check x_range</span>
+  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
+    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Check fun</span>
+  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)
+  }
+
+  x =<span class="st"> </span><span class="kw">mean</span>(x_range)
+  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)
+  }
+
+  <span class="co"># Check B</span>
+  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){
+    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Set seed</span>
+  <span class="kw">set.seed</span>(seed)
+
+  <span class="co"># Compute the length of the interval, i.e. (b-a)</span>
+  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)
+
+  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span>
+  Ui =<span class="st"> </span><span class="kw">runif</span>(B)
+  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length
+
+  <span class="co"># Compute \hat{I}</span>
+  x =<span class="st"> </span>Xi
+  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
+
+  <span class="co"># Compute \hat{I}_2</span>
+  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)
+  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B
+
+  <span class="co"># Output list</span>
+  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,
+             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)
+  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span>
+  out
+}
+
+plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
+  obj =<span class="st"> </span>x
+  x_range =<span class="st"> </span>obj<span class="op">$</span>x_range
+  fun =<span class="st"> </span>obj<span class="op">$</span>fun
+
+  Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)
+  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)
+  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
+  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)
+  <span class="kw">grid</span>()
+  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj<span class="op">$</span>I,<span class="dv">4</span>),
+              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
+  <span class="kw">lines</span>(x, f_x)
+  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
+  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
+  <span class="kw">polygon</span>(<span class="kw">c</span>(x, <span class="kw">rev</span>(x)), <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="kw">rev</span>(f_x)),
+          <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])
+  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
+  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
+}</code></pre></div>
+<div id="basic-steps" class="section level2">
+<h2><span class="header-section-number">1.1</span> Basic steps</h2>
+<div id="step-1-create-an-empty-r-package" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Step 1: Create an “empty” R package</h3>
+<center>
+<img src="images/part1_1.png" />
+</center>
+<center>
+<img src="images/part1_2.png" />
+</center>
+<center>
+<img src="images/part1_3.png" />
+</center>
+<center>
+<img src="images/part1_4.png" />
+</center>
+</div>
+<div id="step-2-remove-example-files" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Step 2: Remove “example” files</h3>
+<p>add image part2-1</p>
+<center>
+<img src="images/part2_1.png" />
+</center>
+<p>Remove the following files:</p>
+<ul>
+<li>NAMESPACE</li>
+<li>hello.Rmd (man)</li>
+<li>hello.r (R)</li>
+</ul>
+</div>
+<div id="step-3-edit-description-file" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Step 3: Edit description file</h3>
+<ul>
+<li>Replace <code>Authors</code> by <code>Authors@R</code></li>
+<li>Explain roles</li>
+<li>Add something on liscence</li>
+<li>Imports + IMPORTANT EVERYTHING YOU ADD A FUNCTION FROM ANOTHER PACK.</li>
+</ul>
+</div>
+<div id="step-4-move-your-script-into-r-file-in-r-folder" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Step 4: Move your script into R file in R folder</h3>
+<ul>
+<li>Group functions together per theme in different files</li>
+<li>Run each file seperately using <code>source('~/demo/R/&lt;name of your file&gt;.R')</code> and eventually debug if any error occurs.</li>
+</ul>
+</div>
+<div id="step-5-documentation" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> Step 5: Documentation</h3>
+<ul>
+<li>All function you want to be able to use MUST have <code>#' @export</code></li>
+<li>Here is an example:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @title Simple Monte-Carlo integration</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @description Compute an approximation of the integral of the function f(x)</span>
+<span class="co">#&#39; with respect to dx in the range [a, b] by Monte-Carlo integration using</span>
+<span class="co">#&#39; uniform sampling.</span>
+<span class="co">#&#39; @param x_range A \code{vector} of dimension 2 used to denote the integration</span>
+<span class="co">#&#39; region of interest, i.e. [a, b].</span>
+<span class="co">#&#39; @param fun A \code{string} containing the function to integrated. It</span>
+<span class="co">#&#39; is assumed that \code{x} is used as the variable of interest.</span>
+<span class="co">#&#39; @param B A \code{numeric} (integer) used to denote the number of simulation.</span>
+<span class="co">#&#39; @param seed A \code{numeric} used to control the seed of the random number</span>
+<span class="co">#&#39; generated by this function.</span>
+<span class="co">#&#39; @return A \code{list} containing the following attributes:</span>
+<span class="co">#&#39; \describe{</span>
+<span class="co">#&#39;      \item{I}{Estimated value of the integral}</span>
+<span class="co">#&#39;      \item{var}{Estimated variance of the estimator}</span>
+<span class="co">#&#39; }</span>
+<span class="co">#&#39; @author Stephane Guerrier</span>
+<span class="co">#&#39; @importFrom stats runif</span>
+<span class="co">#&#39; @export</span>
+<span class="co">#&#39; @examples</span>
+<span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2&quot;, B = 10^5)</span>
+<span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2*sin(x^2/pi)&quot;, B = 10^5)</span>
+mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+  <span class="co"># A few checks</span>
+  <span class="co"># Check x_range</span>
+  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
+    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Check fun</span>
+  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)
+  }
+
+  x =<span class="st"> </span><span class="kw">mean</span>(x_range)
+  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)
+  }
+
+  <span class="co"># Check B</span>
+  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){
+    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Set seed</span>
+  <span class="kw">set.seed</span>(seed)
+
+  <span class="co"># Compute the length of the interval, i.e. (b-a)</span>
+  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)
+
+  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span>
+  Ui =<span class="st"> </span><span class="kw">runif</span>(B)
+  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length
+
+  <span class="co"># Compute \hat{I}</span>
+  x =<span class="st"> </span>Xi
+  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
+
+  <span class="co"># Compute \hat{I}_2</span>
+  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)
+  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B
+
+  <span class="co"># Output list</span>
+  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,
+             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)
+  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span>
+  out
+}</code></pre></div>
+<ul>
+<li>Build documentation : <code>devtools::document()</code></li>
+<li>If everyhting is OK you should have one Rd document for everything function: part5-1</li>
+<li>Check by using <code>?yourfunction</code></li>
+</ul>
+<center>
+<img src="images/part5_1.png" />
+</center>
+<center>
+<img src="images/part5_2.png" />
+</center>
+</div>
+<div id="step-6-test-your-package" class="section level3">
+<h3><span class="header-section-number">1.1.6</span> Step 6: Test your package</h3>
+<ul>
+<li>Build your package - part6-1</li>
+<li>Test if it works - by creating a “test” file in main and run everything it you change something major to the package to see if the behavious remains unchanged. -&gt; part6-2</li>
+</ul>
+<center>
+<img src="images/part6_1.png" />
+</center>
+<center>
+<img src="images/part6_2.png" />
+</center>
+<ul>
+<li>Run check</li>
+</ul>
+</div>
+<div id="step-7-add-a-readme.rmd-file" class="section level3">
+<h3><span class="header-section-number">1.1.7</span> Step 7: Add a “README.Rmd” file</h3>
+<p>Showcase what your package is doing in this RMD file, you can add video, code example,….</p>
+<pre class="eval"><code>---
+output: github_document
+---
+
+# Add a title
+  
+Explain what your package is doing here</code></pre>
+<p>Compile it with pkgdown (install: <code>devtools::install_github(&quot;hadley/pkgdown&quot;)</code>): <code>pkgdown::build_site()</code></p>
+<p>Result should look like: part7 - 1</p>
+<center>
+<img src="images/part7_1.png" />
+</center>
+</div>
+<div id="step-8-create-a-github-repo---possibly-with-the-same-name-as-package" class="section level3">
+<h3><span class="header-section-number">1.1.8</span> Step 8: Create a github repo - possibly with the same name as package</h3>
+<ul>
+<li>Sync should look like:</li>
+</ul>
+<center>
+<img src="images/part8_1.png" />
+</center>
+<p>Make website -&gt; github page</p>
+<center>
+<img src="images/part8_2.png" />
+</center>
+<p>Then your website is only… The address is <code>https://&lt;your github id&gt;.github.io/&lt;your repo name&gt;/</code></p>
+</div>
+</div>
+<div id="advanced" class="section level2">
+<h2><span class="header-section-number">1.2</span> Advanced</h2>
+<div id="adding-a-shiny-app" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Adding a shiny app</h3>
+<ul>
+<li>make folder called <code>inst</code></li>
+<li>In <code>inst</code> put shiny app folder</li>
+<li>Make r file call it, called it for example <code>run_shiny.r</code>, here is an example:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @export</span>
+MC_gui =<span class="st"> </span><span class="cf">function</span>(){
+  appDir =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;MC_int&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;demo&quot;</span>)
+  shiny<span class="op">::</span><span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)
+}</code></pre></div>
+<ul>
+<li>Run: <code>devtools::document()</code> + rebuild</li>
+<li>Test: <code>MC_gui()</code></li>
+</ul>
+<center>
+<img src="images/adv_1.png" />
+</center>
+</div>
+<div id="custom-website" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Custom website</h3>
+<p>Justin to do, theme , badge, tabs,….</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>
