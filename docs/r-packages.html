@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="rmarkdown.html">
-<link rel="next" href="data.html">
+<link rel="prev" href="shiny-web-applications.html">
+<link rel="next" href="placeholder.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -192,9 +192,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
 <li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
 <li class="chapter" data-level="4.5" data-path="data.html"><a href="data.html#dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
-<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
-<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
+<li class="chapter" data-level="4.5.1" data-path="data.html"><a href="data.html#creation"><i class="fa fa-check"></i><b>4.5.1</b> Creation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data.html"><a href="data.html#combination"><i class="fa fa-check"></i><b>4.5.2</b> Combination</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data.html"><a href="data.html#subsetting-2"><i class="fa fa-check"></i><b>4.5.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data.html"><a href="data.html#example-maps"><i class="fa fa-check"></i><b>4.5.4</b> Example: Maps</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data.html"><a href="data.html#fix-this-too"><i class="fa fa-check"></i><b>4.5.5</b> FIX THIS TOO</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
@@ -240,8 +242,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.8.3" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html#step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.8.3</b> Step 3: Connecting frontend and backend</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="r-packages.html"><a href="r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a></li>
-<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="chapter" data-level="8" data-path="r-packages.html"><a href="r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="r-packages.html"><a href="r-packages.html#step-1-create-an-empty-r-package"><i class="fa fa-check"></i><b>8.1</b> Step 1: Create an “empty” R package</a></li>
+<li class="chapter" data-level="8.2" data-path="r-packages.html"><a href="r-packages.html#step-2-remove-example-files"><i class="fa fa-check"></i><b>8.2</b> Step 2: Remove “example” files</a></li>
+<li class="chapter" data-level="8.3" data-path="r-packages.html"><a href="r-packages.html#step-3-edit-description-file"><i class="fa fa-check"></i><b>8.3</b> Step 3: Edit description file</a></li>
+<li class="chapter" data-level="8.4" data-path="r-packages.html"><a href="r-packages.html#step-4-move-your-script-into-r-file-in-r-folder"><i class="fa fa-check"></i><b>8.4</b> Step 4: Move your script into R file in R folder</a></li>
+<li class="chapter" data-level="8.5" data-path="r-packages.html"><a href="r-packages.html#step-5-documentation"><i class="fa fa-check"></i><b>8.5</b> Step 5: Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>9</b> Placeholder</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -262,207 +270,193 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="github" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> GitHub</h1>
-<p>When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this at least once in your life:</p>
-<center>
-<img src="images/bad-version-control.png" />
-</center>
-<p>In these cases, after having modified and changed different parts of a report, you probably find yourself saving the same file over and over again while losing track of what changes you made. To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This software is generally called “version control” and this chapter discusses the features of this software as well as introducing a specific version control platform called “GitHub”. The latter includes a series of highly useful tools that can be extremely helpful, not only for the projects developed based on this book, but also for any personal or collaborative project you may undertake in the future.</p>
-<div id="version-control" class="section level2">
-<h2><span class="header-section-number">3.1</span> Version Control</h2>
-<p>As mentioned above, <em>version control</em> is a system that records changes to a file or a set of files in order to keep track and possibly revert to or modify those changes over time. More specifically, it allows you to:</p>
+<div id="r-packages" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> R Packages</h1>
+<p>Suppose we have the following two function and that we would like to construct a package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+  <span class="co"># A few checks</span>
+  <span class="co"># Check x_range</span>
+  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
+    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Check fun</span>
+  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)
+  }
+
+  x =<span class="st"> </span><span class="kw">mean</span>(x_range)
+  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)
+  }
+
+  <span class="co"># Check B</span>
+  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){
+    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Set seed</span>
+  <span class="kw">set.seed</span>(seed)
+
+  <span class="co"># Compute the length of the interval, i.e. (b-a)</span>
+  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)
+
+  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span>
+  Ui =<span class="st"> </span><span class="kw">runif</span>(B)
+  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length
+
+  <span class="co"># Compute \hat{I}</span>
+  x =<span class="st"> </span>Xi
+  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
+
+  <span class="co"># Compute \hat{I}_2</span>
+  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)
+  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B
+
+  <span class="co"># Output list</span>
+  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,
+             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)
+  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span>
+  out
+}
+
+plot.MCI =<span class="st"> </span><span class="cf">function</span>(x){
+  x_range =<span class="st"> </span>x<span class="op">$</span>x_range
+  fun =<span class="st"> </span>x<span class="op">$</span>fun
+
+  Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)
+  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)
+  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
+  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)
+  <span class="kw">grid</span>()
+  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(x<span class="op">$</span>I,<span class="dv">4</span>),
+              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(x<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
+  <span class="kw">lines</span>(x, f_x)
+  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
+  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
+  <span class="kw">polygon</span>(<span class="kw">c</span>(x, <span class="kw">rev</span>(x)), <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="kw">rev</span>(f_x)),
+          <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])
+  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
+  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
+}</code></pre></div>
+<div id="step-1-create-an-empty-r-package" class="section level2">
+<h2><span class="header-section-number">8.1</span> Step 1: Create an “empty” R package</h2>
+<p>add image part1-1 to part1-4</p>
+</div>
+<div id="step-2-remove-example-files" class="section level2">
+<h2><span class="header-section-number">8.2</span> Step 2: Remove “example” files</h2>
+<p>add image part2-1</p>
+<p>Remove the following files:</p>
 <ul>
-<li>record the entire history of a file;</li>
-<li>revert to a specific version of the file;</li>
-<li>collaborate on the same platform with other people;</li>
-<li>make changes without modifying the main file and add them once you feel comfortable with them.</li>
+<li>NAMESPACE</li>
+<li>hello.Rmd (man)</li>
+<li>hello.r (R)</li>
 </ul>
-<p>All these features are highly important when projects start becoming more complex and/or different collaborators contribute to it. In the next section we present a version control platform called “GitHub” that is commonly used among programmers and software developers thereby allowing them also to make their work visible and available to the general public.</p>
 </div>
-<div id="git-and-github" class="section level2">
-<h2><span class="header-section-number">3.2</span> Git and GitHub</h2>
-<p>Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible through GitHub which is a commercial website. The latter uses the Git platform and stores local files into a flexible folder called a “repository”. For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.</p>
-<p>Below is a video introducing GitHub.</p>
-<center>
-<iframe src="https://www.youtube.com/embed/SB5YkjB9FWc" width="672" height="400px">
-</iframe>
-</center>
-<div id="git-setup" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Git Setup</h3>
-<p>To install Git, go to the <a href="https://git-scm.com/downloads">website</a> and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Once you’ve downloaded and installed Git, the first thing you should do is to configure it by setting your username and email address. This is important because each time you interact with the platform and upload (commit) your changes to Git, this information is used to synchronize versions and keep track of project evolution.</p>
-<div id="tell-git-who-you-are" class="section level4">
-<h4><span class="header-section-number">3.2.1.1</span> Tell Git Who You Are</h4>
-<p>Once you have installed Git, run the <code>Git Bash</code> software and type the following code below.</p>
-<pre><code>$ git config --global user.name &quot;John Doe&quot;
-$ git config --global user.email johndoe@example.com</code></pre>
-<p>This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once when using the “–global” option because, in this case, Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the “–global” option while working on those projects.</p>
-</div>
-</div>
-<div id="github-setup" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> GitHub Setup</h3>
-<p>In order to set up GitHub, go to the <a href="https://github.com/">GitHub website</a> and, for the purposes of the course, the first step is to sign up with your University email address.</p>
-
-<div class="rmdnote">
-Your username and email can be changed at any time so, if you want to change it, you can easily do so once this course is over.
-</div>
-
-<center>
-<img src="images/github_page.png" />
-</center>
-<p>Once this is done, you reach <code>Step 2: Choose your plan</code> where you can choose the default plan (“Unlimited public repositories for free”) and click <code>Continue</code>. The last (optional) step is <code>Step 3: Tailor your experience</code> which allows you to submit your information but this can also be skipped.</p>
-
-<div class="rmdnote">
-Your GitHub profile can also serve as a <em>resume</em> of your data science skills that will be highlighted by possible future projects that you save and commit.
-</div>
-
-</div>
-<div id="student-developer-pack" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Student Developer Pack</h3>
-<p>As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this <a href="https://education.github.com/discount_requests/new">link</a> and follow the steps below to set up a “student developer pack” discount request to GitHub. Through this setup it will be possible for you not only to have free <em>public</em> repositories but also to make your own <em>private</em> repositories for free.</p>
-<center>
-<img src="images/developer_pack.png" />
-</center>
-</div>
-</div>
-<div id="github-workflow" class="section level2">
-<h2><span class="header-section-number">3.3</span> GitHub Workflow</h2>
-<p>Here is a video demonstrating the basic GitHub workflow in GitHub Desktop (initializing, committing, pushing and pulling) that we will follow for our assignments and projects.</p>
-<center>
-<iframe src="https://www.youtube.com/embed/-cLn7Uk-Zo0" width="672" height="400px">
-</iframe>
-</center>
-In addition, here is a video demonstrating the basic GitHub workflow within RStudio.
-<center>
-<iframe src="https://www.youtube.com/embed/VOIQgViCyTo" width="672" height="400px">
-</iframe>
-</center>
-<p>While the main features and actions to manage the workflow in GitHub are desribed in the above videos, the following paragraphs give some extra details that can be helpful to consider when working with this version-control platform.</p>
-<div id="branching" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Branching</h3>
-<p>In the previous section we discussed the workflow as a means of directly making changes in the so-called <em>master</em> branch which is where our original and up-to-date work is stored. However, when working with different collaborators for example, it may be appropriate to create separate branches that will avoid modifying the original one until you’re sure of the changes. In this perspective, <em>branching</em> is essentially creating an environment in which we can change anything without obstructing our original document. As mentioned, this idea is very useful for group-based activities where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main <code>master</code> branch. You can learn more about branching <a href="https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging">here</a> and <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">here</a>.</p>
-</div>
-<div id="pull" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Pull</h3>
-<p>Before starting (or continuing) to work on your project, make sure to always review changes that another collaborator has made. Once this is done you can make sure there are no merge conflicts and you can pull (or synchronize) your local branch with the most recent version of the repository. If merge conflicts were to happen, these can still be solved but it would be preferable to avoid them generating confusion.</p>
-</div>
-<div id="commits" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Commits</h3>
-<p>After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. Once these changes are made, you need to <code>commit</code> them with an informative message, explaining why a particular change is being made. These specific messages allow you to backtrack on these changes later if you decide to look at the history of any of these files and find a bug. This information is extremely important since otherwise there’s little point in using version control like GitHub.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
-<center>
-<img src="images/git_commit.png" />
-</center>
-<div id="pull-request" class="section level4">
-<h4><span class="header-section-number">3.3.3.1</span> Pull Request</h4>
-<p>If you are directly working on the master branch, please disregard this section. Else, a <code>pull request</code> may be made by the person working on the branch, so that other collaborators can discuss about the commits made in the branch. Also, there are options for conversation in which they can review and comment directly onto the code as well.</p>
-</div>
-</div>
-<div id="push-or-merge" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Push or Merge</h3>
-<p>Once you have either made the commits on your master branch or have the pull request confirmed by other collaborators, you can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow after which we can clear and repeat the above procedure.</p>
-</div>
-<div id="merge-conflicts" class="section level3">
-<h3><span class="header-section-number">3.3.5</span> Merge Conflicts</h3>
-<p>Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted (although these may not be the only situations). To resolve these conflicts, we must directly edit the documents making sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups.</p>
-</div>
-</div>
-<div id="github-workflow-on-command-line-git-bash" class="section level2">
-<h2><span class="header-section-number">3.4</span> GitHub Workflow on Command Line / Git Bash</h2>
-<p>Here are commands that we can use within <code>Git Bash</code> if we are more comfortable working on the command line.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>git init</td>
-<td>Create a <strong>local</strong> repository</td>
-</tr>
-<tr class="even">
-<td>git branch “newbranch”</td>
-<td>Create a new branch with given name</td>
-</tr>
-<tr class="odd">
-<td>git checkout “newbranch”</td>
-<td>Switch to specified branch</td>
-</tr>
-<tr class="even">
-<td>git status</td>
-<td>List all the files that you have modified</td>
-</tr>
-<tr class="odd">
-<td>git add -A</td>
-<td>Add <strong>all</strong> files to staging</td>
-</tr>
-<tr class="even">
-<td>git commit -m “commit message”</td>
-<td>Commit staged changes to <strong>local</strong> repository</td>
-</tr>
-<tr class="odd">
-<td>git push</td>
-<td>Commit saved changes to <strong>remote</strong> repository</td>
-</tr>
-<tr class="even">
-<td>git pull</td>
-<td>Update changes from the <strong>remote</strong> repository</td>
-</tr>
-</tbody>
-</table>
-<p>However, it is better for us to startby using more graphical user-interface options since they allow us to better understand what is going on. You <strong>do not</strong> want to follow this example<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>…</p>
-<center>
-<img src="images/git_misuse.png" />
-</center>
-<p>It is always important to know what is happening when we create, change, push, branch and pull from a repository.</p>
-</div>
-<div id="issues" class="section level2">
-<h2><span class="header-section-number">3.5</span> Issues</h2>
-<p><em>Issues</em> are a very good way to keep track of group tasks, bugs and announcements for your projects within GitHub. Below is a basic video introducing <code>issues</code> in GitHub.</p>
-<center>
-<iframe src="https://www.youtube.com/embed/HRikDvXEpVM" width="672" height="400px">
-</iframe>
-</center>
-</div>
-<div id="slack-integration" class="section level2">
-<h2><span class="header-section-number">3.6</span> Slack Integration</h2>
-<p>Slack is a platform created to communicate between group members, allowing for both direct individual messages as well as group messages. More information on how to use Slack can be found in this <a href="https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members">Slack Tutorial</a>.</p>
-<p>An added benefit of using Slack is that it can be integrated with GitHub in such a way that notifications will be posted to the group whenever someone pushes or makes a pull request. More information on GitHub integration with Slack can be found <a href="https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack">here</a>.</p>
-<p>A more detailed video providing a demonstration on the use of Slack in a real-life setting can be found below.</p>
-<center>
-<iframe src="https://www.youtube.com/embed/PpnFCp4Wr_g" width="672" height="400px">
-</iframe>
-</center>
-</div>
-<div id="additional-references-2" class="section level2">
-<h2><span class="header-section-number">3.7</span> Additional References</h2>
-<p>Below are some supplemental references that can support you in a better use of GitHub.</p>
+<div id="step-3-edit-description-file" class="section level2">
+<h2><span class="header-section-number">8.3</span> Step 3: Edit description file</h2>
 <ul>
-<li><a href="https://www.r-bloggers.com/rstudio-and-github/">GitHub Introduction with RStudio</a></li>
-<li><a href="https://guides.github.com/introduction/flow/">GitHub Workflow</a></li>
-<li><a href="https://www.youtube.com/watch?v=oFYyTZwMyAg">GitHub on Command Line (video)</a></li>
+<li>Replace <code>Authors</code> by <code>Authors@R</code></li>
+<li>Explain roles</li>
+<li>Add something on liscence</li>
 </ul>
+</div>
+<div id="step-4-move-your-script-into-r-file-in-r-folder" class="section level2">
+<h2><span class="header-section-number">8.4</span> Step 4: Move your script into R file in R folder</h2>
+<ul>
+<li>Group functions together per theme in different files</li>
+<li>Run each file seperately using <code>source('~/demo/R/&lt;name of your file&gt;.R')</code> and eventually debug if any error occurs.</li>
+</ul>
+</div>
+<div id="step-5-documentation" class="section level2">
+<h2><span class="header-section-number">8.5</span> Step 5: Documentation</h2>
+<ul>
+<li>All function you want to be able to use MUST have <code>#' @export</code></li>
+<li>Here is an example:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @title Simple Monte-Carlo integration</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @description Compute an approximation of the integral of the function f(x)</span>
+<span class="co">#&#39; with respect to dx in the range [a, b] by Monte-Carlo integration using</span>
+<span class="co">#&#39; uniform sampling.</span>
+<span class="co">#&#39; @param x_range A \code{vector} of dimension 2 used to denote the integration</span>
+<span class="co">#&#39; region of interest, i.e. [a, b].</span>
+<span class="co">#&#39; @param fun A \code{string} containing the function to integrated. It</span>
+<span class="co">#&#39; is assumed that \code{x} is used as the variable of interest.</span>
+<span class="co">#&#39; @param B A \code{numeric} (integer) used to denote the number of simulation.</span>
+<span class="co">#&#39; @param seed A \code{numeric} used to control the seed of the random number</span>
+<span class="co">#&#39; generated by this function.</span>
+<span class="co">#&#39; @return A \code{list} containing the following attributes:</span>
+<span class="co">#&#39; \describe{</span>
+<span class="co">#&#39;      \item{I}{Estimated value of the integral}</span>
+<span class="co">#&#39;      \item{var}{Estimated variance of the estimator}</span>
+<span class="co">#&#39; }</span>
+<span class="co">#&#39; @author Stephane Guerrier</span>
+<span class="co">#&#39; @importFrom stats runif</span>
+<span class="co">#&#39; @export</span>
+<span class="co">#&#39; @examples</span>
+<span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2&quot;, B = 10^5)</span>
+<span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2*sin(x^2/pi)&quot;, B = 10^5)</span>
+mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+  <span class="co"># A few checks</span>
+  <span class="co"># Check x_range</span>
+  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
+    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Check fun</span>
+  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)
+  }
+
+  x =<span class="st"> </span><span class="kw">mean</span>(x_range)
+  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)
+  }
+
+  <span class="co"># Check B</span>
+  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){
+    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)
+  }
+
+  <span class="co"># Set seed</span>
+  <span class="kw">set.seed</span>(seed)
+
+  <span class="co"># Compute the length of the interval, i.e. (b-a)</span>
+  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)
+
+  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span>
+  Ui =<span class="st"> </span><span class="kw">runif</span>(B)
+  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length
+
+  <span class="co"># Compute \hat{I}</span>
+  x =<span class="st"> </span>Xi
+  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
+
+  <span class="co"># Compute \hat{I}_2</span>
+  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)
+  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B
+
+  <span class="co"># Output list</span>
+  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,
+             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)
+  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span>
+  out
+}</code></pre></div>
 
 </div>
-</div>
-
-
-
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>This scheme is inspired from diagrams by Prof. Bob Rudis and James Balamuta.<a href="github.html#fnref1">↩</a></p></li>
-<li id="fn2"><p><a href="https://xkcd.com/1597/" class="uri">https://xkcd.com/1597/</a><a href="github.html#fnref2">↩</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="shiny-web-applications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="placeholder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -491,7 +485,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-github.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-package.Rmd",
 "text": "Edit"
 },
 "download": ["ds.pdf", "ds.epub"],
@@ -502,17 +496,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
