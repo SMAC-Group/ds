@@ -2,10 +2,9 @@
 
 
 
-Suppose we have the following two function and that we would like to construct a package:
+Suppose we have the following two function, and would like to construct a package containing these functions:
 
-
-```{r, eval = FALSE}
+```{r}
 mc_int = function(x_range, fun, B, seed = 1291){
   # A few checks
   # Check x_range
@@ -78,9 +77,23 @@ plot.MCI = function(x, ...){
 }
 ```
 
+The package will contain `mc_int()`, a function that computes an approximation of the integral of the function f(x) with respect to dx in the range [a, b] by Monte-Carlo integration using uniform sampling, and `plot.MCI()`, a class function that will plot the object that is created above. 
+
+An example of these functions in action would be
+
+```{r}
+obj = mc_int(x_range = c(0,1), fun = "x^2*sin(x^2/pi)", B = 10^3)
+plot(obj)
+```
+
+
 ## Basic steps
 
+Below will be the basic steps of creating a package. This process is not strict, since there are many different ways of structuring and building a from scratch. However, in this book, we will use this structure as the standard. 
+
 ### Step 1: Create an "empty" R package
+
+The first step of creating a package will be through RStudio. Follow the steps from the images below to create a basic package skeleton. 
 
 <center>
 ![](images/part1_1.png)
@@ -94,38 +107,60 @@ plot.MCI = function(x, ...){
 ![](images/part1_3.png)
 </center>
 
+Here we can name our package. Make sure it is relevant to our goals and objectives. In this example, we will call it `demo`. 
+
 <center>
 ![](images/part1_4.png)
 </center>
 
-
-### Step 2: Remove "example" files
-
-add image part2-1
+Once this procedure is complete, our window should look similar to this: 
 
 <center>
 ![](images/part2_1.png)
 </center>
 
-Remove the following files:
+Remove the following files before proceeding:
 
 - NAMESPACE
-- hello.Rmd (man)
-- hello.r (R)
+- man/hello.Rd
+- R/hello.R
 
-### Step 3: Edit description file
+These are default functions/documentation that exist to guide us, but will eventually hinder our future objectives. 
 
-- Replace `Authors` by `Authors@R`
-- Explain roles
-- Add something on liscence
-- Imports + IMPORTANT EVERYTHING YOU ADD A FUNCTION FROM ANOTHER PACK.
+### Step 2: Edit description file
 
-### Step 4: Move your script into R file in R folder
+Another essential part of the package is the DESCRIPTION file. This contains different parts that provides a description for the package, such as the package name, type, title, version, date, author information, explanation, dependencies, license, and imports. 
 
-- Group functions together per theme in different files
-- Run each file seperately using `source('~/demo/R/<name of your file>.R')` and eventually debug if any error occurs.
+#### Author Roles {-}
 
-### Step 5: Documentation
+Authors are usually written in this format:
+
+```{r, eval = FALSE}
+Authors@R: c(
+    person("Justin", "Lee", email = "justinlee@psu.edu", role = c("aut","cre")),
+    person("Stephane", "Guerrier", role = "aut"),
+    person("Roberto", "Molinari", role = "aut"),
+    person("Matthew", "Beckman", role = "aut")
+    )
+```
+
+Feel free to add or subtract any information above, as they will impact how it is displayed later in the rendered package website. The `aut` above represents *author* and the `cre` represents *creator*. 
+
+#### License {-}
+
+The most common license is the GNU General Public License, which is a widely used free software license that guarantees end users the freedom to run, study, share and modify the software. We can run through this [list](https://cran.r-project.org/web/licenses/) and choose the license that fits our needs. 
+
+#### Imports {-}
+
+Imports are also essential for building a package. For every function that we use from an external package, we either need to add a dependency or import, or our package will not know where to locate the function. Make sure to double check. 
+
+### Step 3: Move your script into R file in R folder
+
+Once we have the tasks completed above, we need to start writing the *meat* portion of our package: the functions. First, group functions together per theme in different files. In other words, if we have functions that perform different tasks, we should group them into different R files so that we can come back to them to fix any errors. Packages can still work under a single R file, but things will get messy once we add more and more functions. 
+
+We can test our `.R` files by running each file seperately using `source('~/demo/R/<name of your file>.R')` and eventually debug if any error occurs.
+
+### Step 4: Documentation
 
 - All function you want to be able to use MUST have `#' @export`
 - Here is an example:
@@ -215,7 +250,7 @@ mc_int = function(x_range, fun, B, seed = 1291){
 ![](images/part5_2.png)
 </center>
 
-### Step 6: Test your package
+### Step 5: Test your package
 
 - Build your package - part6-1
 - Test if it works - by creating a "test" file in main and run everything it you change something major to the package to see if the behavious remains unchanged. -> part6-2
@@ -230,7 +265,7 @@ mc_int = function(x_range, fun, B, seed = 1291){
 
 - Run check
 
-### Step 7: Add a "README.Rmd" file
+### Step 6: Add a "README.Rmd" file
 
 Showcase what your package is doing in this RMD file, you can add video, code example,....
 
@@ -254,7 +289,7 @@ Result should look like: part7 - 1
 </center>
 
 
-### Step 8: Create a github repo - possibly with the same name as package
+### Step 7: Create a github repo - possibly with the same name as package
 
 - Sync should look like:
 
