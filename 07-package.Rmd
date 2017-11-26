@@ -113,7 +113,7 @@ Here we can name our package. Make sure it is relevant to our goals and objectiv
 ![](images/part1_4.png)
 </center>
 
-Once this procedure is complete, our window should look similar to this: 
+Once this procedure is complete, our window should look similar to this
 
 <center>
 ![](images/part2_1.png)
@@ -162,8 +162,9 @@ We can test our `.R` files by running each file seperately using `source('~/demo
 
 ### Step 4: Documentation
 
-- All function you want to be able to use MUST have `#' @export`
-- Here is an example:
+The next essential factor of a package is its documentation, and is one of the most important aspects. Documentation enables users to know how to use our package. Essentially, when users use the `demo` package, they should know how to use its functions as well like `?mc_int`. The most common form of R package documentation is generating `.Rd` files by using `devtools::document()` or `roxygen2::roxygenize`.
+
+Here is an example of documentation for our `demo` funtions:
 
 ```{r, eval = FALSE}
 #' @title Simple Monte-Carlo integration
@@ -238,16 +239,16 @@ mc_int = function(x_range, fun, B, seed = 1291){
 }
 ```
 
-- Build documentation : `devtools::document()`
-- If everyhting is OK you should have one Rd document for everything function: part5-1
-- Check by using `?yourfunction`
+All functions you want to be able to use MUST have `#' @export`. This enables the users to call the function after building the package. Other parts of the documentation can be further seen from [here](http://r-pkgs.had.co.nz/man.html#man-functions). 
 
 <center>
-![](images/part5_1.png)
+![Example .Rd files created after documentation](images/part5_1.png)
 </center>
 
+After, build documentation by using `devtools::document()`. If everyhting is working properly, we should have one Rd document for everything function that is exported within the package. Check by using `?yourfunction`.
+
 <center>
-![](images/part5_2.png)
+![Output when running ?mc_int](images/part5_2.png)
 </center>
 
 ### Step 5: Test your package
