@@ -346,15 +346,60 @@ As you can see, the GitHub repository takes the content of the .Rmd file and pre
 ![](images/part8_2.png)
 </center>
 
-Once this is done, you can eventually personalize the web-page a little more by selecting a particular theme for it. Having done so, the page is already made available through the following address: `https://<your github id>.github.io/<your repo name>/`. For our example, this is available at [https://smac-group.github.io/demo/](https://smac-group.github.io/demo/). 
+Once this is done, you can eventually personalize the web-page a little more by selecting a particular theme for it (more details further on). Having done so, the page is already made available through the following address: `https://<your github id>.github.io/<your repo name>/`. For our example, this is available at [https://smac-group.github.io/demo/](https://smac-group.github.io/demo/). 
 
 ## Advanced
 
+Up to now we have described the basic steps that are necessary to build, share and describe an R package. However, it is always possible to add features to the package itself or to the documentation used to explain and promote it. In the following paragraphs we just describe a few of them to allow the reader to get a further idea of the extent to which one can develop packages.
+
 ### Adding a shiny app
 
-- make folder called `inst`
-- In `inst` put shiny app folder
-- Make r file call it, called it for example `run_shiny.r`, here is an example:
+A feature which can be useful to make your package accessible to the general user (as well as to promote it) can be the possibility of including a Shiny app as an interface to your package. To do so, you will have to include a new folder called "inst" within your package main folder and in which an additional folder is then included with a name of your choice (let us say "MC_int" for the example we have used throughout this chapter). Within the latter you can then include the R script(s) to run the Shiny app (say "app.R") which makes use of the functions made available within the package. An example of the content of such a script is the following:
+
+```{r, eval=FALSE}
+# Define UI for application that draws a plot of the approximate integral
+ui <- fluidPage(
+
+   # Application title
+   titlePanel("Monte-Carlo Integration"),
+
+   # Sidebar with text input for the function to integrate, numeric inputs for the range of integration and number of Monte-Carlo replications
+   sidebarLayout(
+      sidebarPanel(
+        textInput("fun", "Function to integrate:","sin(10*x)*exp(cos(x))"),
+        numericInput("low", "Integral lower bound:", 0, min = -100, max = 100),
+        numericInput("up", "Integral upper bound:", 1, min = -100, max = 100),
+        numericInput("B", "Number of Monte-Carlo replications:", 10^5,
+                     min = 100, max = 10^9),
+        actionButton("button", "Compute Integral")
+      ),
+
+      # Show a plot of the integrated area under the function
+      mainPanel(
+         plotOutput("distPlot")
+      )
+   )
+)
+
+# Define server logic required to draw the integration plot
+server <- function(input, output) {
+
+  a <- eventReactive(input$button, {
+    mc_int(x_range = c(input$low, input$up),
+          fun = input$fun, B = input$B)
+  })
+
+  output$distPlot <- renderPlot({
+      plot(a())
+  })
+
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```
+
+Once this is done, an additional R script needs to included within the "R" folder. This R script will contain a function that allows the user to generate a Shiny app (based on the contents of "app.R" for example) and consequently to use the app interface to make use of the package functions. Following from our example, suppose that the latter script, which we will call "run_shiny.r" for this example, contains the following function:
 
 ```{r, eval = FALSE}
 #' @export
@@ -364,12 +409,15 @@ MC_gui = function(){
 }
 ```
 
-- Run: `devtools::document()` + rebuild
-- Test: `MC_gui()`
+Given these steps, our main package folder should look like this:
 
 <center>
 ![](images/adv_1.png)
 </center>
+
+After having created the above mentioned folders and correctly written and placed the functions within these folders, all you need to do to make this feature available to the user is to execute the command `devtools::document()` and successively build the package again. Having done so, the only command that the user needs to use to access the Shiny app is to run the function `MC_gui()` in the console.
+
+INCLUDE SCREENSHOT OF APP
 
 ### Custom website
 
