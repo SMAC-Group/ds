@@ -1,8 +1,10 @@
 # R Packages
 
+In this chapter we introduce one of the most useful tools for R programming as well as for statistical programming in general. Indeed, one of the main goals for statistical programming is to then be able to share all the code and functions that have been implemented in order to respond to a specific task. The latter may often be quite *messy* to do given that different files and functions can be present in various directories or repositories and, for example, some codes may use functions from other codes but do not load the same libraries, thereby producing execution errors.
 
+In order to avoid the above complications (and to program in a healthy and organized manner), R allows you to create *packages* that are software platforms that collect functions as well as other files which, among others, describe these functions and provide users with documentation that allow them to understand and efficiently use these functions. Moreover, when sharing a package (or making it available within a repository) all the user needs to do is to install and load the package within an R session which then makes available the entire environment needed for all the functions included in the package to work. In a nutshell, whenever creating functions to answer a specific research interest or professional task, it is always good to do so by first creating a package within which these functions can be stored and documented.
 
-Suppose we have the following two function, and would like to construct a package containing these functions:
+In this chapter we will describe and explain the steps necessary to create an R package using RStudio. There are other ways and other procedures to produce an R package but in this chapter we will describe one possible way which is consistent with the approach to statistical programming that is presented in this book. As in the previous chapters, we will make use of an example to guide the reader through the different aspects of package building and, for this purpose, let us assume we want to build a package that allows a user to perform Monte-Carlo integration for any user-specificed function as well as produce plots that represent these functions as well as the integrated area. In this case, we have an extremely simple setting where, based on code used in the previous chapters, we only have the following two functions to be included in the package:
 
 ```{r}
 mc_int = function(x_range, fun, B, seed = 1291){
@@ -77,19 +79,23 @@ plot.MCI = function(x, ...){
 }
 ```
 
-The package will contain `mc_int()`, a function that computes an approximation of the integral of the function f(x) with respect to dx in the range [a, b] by Monte-Carlo integration using uniform sampling, and `plot.MCI()`, a class function that will plot the object that is created above. 
+Hence, the package will contain: 
 
-An example of these functions in action would be
+- the `mc_int()` function: that computes an approximation of the integral of the function `fun` with respect to `x` within the range `x_range` via Monte-Carlo integration using uniform sampling;
+- the `plot.MCI()` function: a class function that will plot the object that is created as an output of the `mc_int()` function. 
+
+An example of use of these functions and their output is the following:
 
 ```{r}
 obj = mc_int(x_range = c(0,1), fun = "x^2*sin(x^2/pi)", B = 10^3)
 plot(obj)
 ```
 
+Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.
 
 ## Basic steps
 
-Below will be the basic steps of creating a package. This process is not strict, since there are many different ways of structuring and building a from scratch. However, in this book, we will use this structure as the standard. 
+As mentioned earlier, the process to develop an R package that is described in this chapter is not strict or unique since there are many different ways of structuring and building them. However, in this book we will describe one way of building a package which is consistent with the approach to statistical programming that has been described thus far. Keeping this in mind, below the reader can find the basic steps to build an R package. 
 
 ### Step 1: Create an "empty" R package
 
