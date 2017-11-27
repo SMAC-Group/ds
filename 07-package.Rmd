@@ -99,43 +99,47 @@ As mentioned earlier, the process to develop an R package that is described in t
 
 ### Step 1: Create an "empty" R package
 
-The first step of creating a package will be through RStudio. Follow the steps from the images below to create a basic package skeleton. 
+The first step to create an R package using RStudio is to build the *skeleton* of the package which contains the basic folders and files that are needed. To do so, within RStudio you should select to create a "New Project..." from the File menu within RStudio as shown below. 
 
 <center>
 ![](images/part1_1.png)
 </center>
 
+Once this is done you will see a new window with different options (see image below) among which you select "New Directory" (unless you wish to create the package within an existing directory which is usually not convenient for purpose of organization).
+
 <center>
 ![](images/part1_2.png)
+
+Again, another window will appear in which RStudio asks you for the type of project you wish to create and, quite intuitively, you should select the "R Package" option as shown below.
 </center>
 
 <center>
 ![](images/part1_3.png)
 </center>
 
-Here we can name our package. Make sure it is relevant to our goals and objectives. In this example, we will call it `demo`. 
+By doing so you prompt a successive window in which it is possible to name our package which, in the example below, will be `demo`. In the context of this chapter we will not consider the other options that are made available to the user (for more details you can check [this link](http://r-pkgs.had.co.nz/)).
 
 <center>
 ![](images/part1_4.png)
 </center>
 
-Once this procedure is complete, our window should look similar to this
+Once the package has been named, you can select "Create Project" and another window will be prompted in which the basic files and folders needed for a package will be visualized within an overall repository with the same name as the package (i.e. "demo") as shown below.
 
 <center>
 ![](images/part2_1.png)
 </center>
 
-Remove the following files before proceeding:
+Within the logic of this chapter which provides one possible procedure (out of various) to build an R package, we will proceed to removing the following files from this folder:
 
 - NAMESPACE
 - man/hello.Rd
 - R/hello.R
 
-These are default functions/documentation that exist to guide us, but will eventually hinder our future objectives. 
+These files are default functions and documentation that are created to provide a basis for the user who can then modify them using their own descriptions and functions. However, for the procedure described in this chapter their presence is redundant (as seen further on) and consequently we invite the reader to remove them if they decide to follow the steps described in this chapter. 
 
 ### Step 2: Edit description file
 
-Another essential part of the package is the DESCRIPTION file. This contains different parts that provides a description for the package, such as the package name, type, title, version, date, author information, explanation, dependencies, license, and imports. 
+This first step hence creates the skeleton of the package and, in the following steps, we can focus on giving body to this skeleton, starting from the file which contains a summary description of the structure and contents of the package which is to be found in the "DESCRIPTION" file. Once this is opened the user will notice different parts to this file in which various information on the package is contained such as the package name, author information, license and imports. Although there are other pieces of information, we will quickly discuss the latter three in the following paragraphs. 
 
 #### Author Roles {-}
 
