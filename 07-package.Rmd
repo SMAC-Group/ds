@@ -109,9 +109,9 @@ Once this is done you will see a new window with different options (see image be
 
 <center>
 ![](images/part1_2.png)
+</center>
 
 Again, another window will appear in which RStudio asks you for the type of project you wish to create and, quite intuitively, you should select the "R Package" option as shown below.
-</center>
 
 <center>
 ![](images/part1_3.png)
@@ -139,11 +139,11 @@ These files are default functions and documentation that are created to provide 
 
 ### Step 2: Edit description file
 
-This first step hence creates the skeleton of the package and, in the following steps, we can focus on giving body to this skeleton, starting from the file which contains a summary description of the structure and contents of the package which is to be found in the "DESCRIPTION" file. Once this is opened the user will notice different parts to this file in which various information on the package is contained such as the package name, author information, license and imports. Although there are other pieces of information, we will quickly discuss the latter three in the following paragraphs. 
+This first step hence creates the skeleton of the package and, in the following steps, we can focus on giving body to this skeleton, starting from the file which contains a summary description of the structure and contents of the package which is to be found in the "DESCRIPTION" file. Once this is opened the user will notice different parts to this file in which various information on the package is contained such as the package name, author information, license and imports. Although there are other pieces of information (see [this link](http://r-pkgs.had.co.nz/description.html)), we will quickly discuss the latter three in the following paragraphs. 
 
 #### Author Roles {-}
 
-Authors are usually written in this format:
+One of the lines of information in the description file corresponds to the authors of the package. This therefore corresponds to the list of persons who have actively contributed to the development of code and functions that are included in the package. When there is more than author, the line corresponding to the author can be replaced by a format like the following:
 
 ```{r, eval = FALSE}
 Authors@R: c(
@@ -154,27 +154,41 @@ Authors@R: c(
     )
 ```
 
-Feel free to add or subtract any information above, as they will impact how it is displayed later in the rendered package website. The `aut` above represents *author* and the `cre` represents *creator*. 
+This information is important also because it will impact how it is displayed later in the rendered package website (see further on). As you can notice it possible to also specify the role that the author has in relation to the package using the option `role =`, followed by codes for the type of role. In the above examples we can see two types of role that correspond to `aut` which indicates an *author* of the package while `cre` stands for *creator* who is the person in charge of maintaining the package and receiving information as well as bug reports or suggestions. There are other two possible roles available which are `ctb` and `cph` that correspond to *contributor* and *copyright holder* respectively, where the contributor is a person who has provided some minor contributions to the package while the copyright holder is the person or company who holds the copyright of the package.
 
 #### License {-}
 
-The most common license is the GNU General Public License, which is a widely used free software license that guarantees end users the freedom to run, study, share and modify the software. We can run through this [list](https://cran.r-project.org/web/licenses/) and choose the license that fits our needs. 
+The package license determines to what extent and under what conditions the package (and its contents) can be shared and accessed by users. The most common license is the GNU General Public License which is a widely used free software license that guarantees end-users the possibility to run, study, share and modify the software. A complete list of all the possible licenses can be found at this [link](https://cran.r-project.org/web/licenses/) and you are free to choose the license that best fits your requirements. 
 
 #### Imports {-}
 
-Imports are also essential for building a package. For every function that we use from an external package, we either need to add a dependency or import, or our package will not know where to locate the function. Make sure to double check. 
+It is often the case that your code and functions will depend on functions that are made available from other packages in R. In order to make sure that these packages are available to the user when they install your package, it is important to specify on which external packages yours relies on. In this sense, the `Imports` line in the DESCRIPTION file allows you to do just this so it is important to remember to check whether external packages are correctly specified in this section of the file. 
 
-### Step 3: Move your script into R file in R folder
+Our example on Monte-Carlo integration only depends on the base functions in R and therefore there is no need to specify external packages for this case. Therefore, our "demo" package DESCRIPTION file ends up looking as follows:
 
-Once we have the tasks completed above, we need to start writing the *meat* portion of our package: the functions. First, group functions together per theme in different files. In other words, if we have functions that perform different tasks, we should group them into different R files so that we can come back to them to fix any errors. Packages can still work under a single R file, but things will get messy once we add more and more functions. 
+<center>
+![](images/description.png)
+</center>
 
-We can test our `.R` files by running each file seperately using `source('~/demo/R/<name of your file>.R')` and eventually debug if any error occurs.
+### Step 3: Move your R scripts into the R folder
+
+Having completed the description of the package we can now focus on adding the truly essential part of the package: the functions that deliver the outputs required by the user. In order for the functions to be considered as part of the package, the scripts containing these functions need to be moved into the R folder that is created as part of the package skeleton as seen earlier (therefore replacing the "hello.R" script that we chose to delete).
+
+The organization of the code that collects the functions is subjective and can be included all in one single R script or in various scripts. It is usually suggested to group these functions into separate scripts according to their relative themes or specific tasks they are created for, especially when there is a considerable number of functions in the package. This approach allows to more easily find and fix any errors that are present in the functions as opposed to going through thousands of lines of code to find the function you're interested in. 
+
+In our example we only have two functions so there is no need to separate them and, consequently, we include them in a single R script that we call "mc_integration.R" which is included in the R folder for our demo package.
+
+<center>
+![](images/r_code.png)
+</center>
+
+As you may notice, there is another file called "run_shiny.R" which, as we will see later, contains the code to create a Shiny app that is part of the package.
 
 ### Step 4: Documentation
 
-The next essential factor of a package is its documentation, and is one of the most important aspects. Documentation enables users to know how to use our package. Essentially, when users use the `demo` package, they should know how to use its functions as well like `?mc_int`. The most common form of R package documentation is generating `.Rd` files by using `devtools::document()` or `roxygen2::roxygenize`.
+The next essential component of a package is its documentation which enables users to know how to use it. Indeed, when users access the `demo` package, they should essentially know how to use its functions by gaining access to help files through the use of commands like `?mc_int` for example. A possible (and efficient) way of creating package documentation is by using a specific syntax before each function in your R scripts which will then be used to automatically generate the necessary `.Rd` files by using the commands `devtools::document()` or `roxygen2::roxygenize`.
 
-Here is an example of documentation for our `demo` funtions:
+We will use the `mc_int()` function from our demo package as an example to show the syntax that can be used before each function which is intended for the user:
 
 ```{r, eval = FALSE}
 #' @title Simple Monte-Carlo integration
@@ -184,11 +198,11 @@ Here is an example of documentation for our `demo` funtions:
 #' uniform sampling.
 #' @param x_range A \code{vector} of dimension 2 used to denote the integration
 #' region of interest, i.e. [a, b].
-#' @param fun A \code{string} containing the function to integrated. It
+#' @param fun A \code{string} containing the function to be integrated. It
 #' is assumed that \code{x} is used as the variable of interest.
-#' @param B A \code{numeric} (integer) used to denote the number of simulation.
+#' @param B A \code{numeric} (integer) used to denote the number of simulations.
 #' @param seed A \code{numeric} used to control the seed of the random number
-#' generated by this function.
+#' generator used by this function.
 #' @return A \code{list} containing the following attributes:
 #' \describe{
 #'      \item{I}{Estimated value of the integral}
@@ -249,37 +263,54 @@ mc_int = function(x_range, fun, B, seed = 1291){
 }
 ```
 
-All functions you want to be able to use MUST have `#' @export`. This enables the users to call the function after building the package. Other parts of the documentation can be further seen from [here](http://r-pkgs.had.co.nz/man.html#man-functions). 
+As can be seen, all the syntax which contributes to the documentation of the function is preceded by the syntax `#' ` and is immediately followed (with no spacing) by the code of the function itself. Focussing on the contents of this documentation, the `@title` and `@description` entries will constitute respectively the title describing the function in a succint manner and the text providing a more detailed description of what the function does. We then find the `@param` syntax that is repeated for each parameter considered by the function in which a brief description of what the parameter is and what type of input is needed for it from the user. Finally we find the `@return` section where there is a description of the outputs of the function and eventual indications as to how these should be interpreted. Additional information can be provided such as the author(s) who specifically contributed to creating the function (`@author`), the packages or functions needed for the function to be employed (`@importFrom`) and examples that can show the user how to use this function in practice (`@examples`).
+
+A final note should be given to the `@export` syntax which MUST absolutely be specified if you want the function you're documenting to be made available to the user. Indeed, there may be functions that are simply created to be used within other functions that are made available to the user and these therefore don't need to have this option specified. However, if the function needs to be made available to the user, then it is essential that this option is specified within the function documentation. Additional information on package documentation can be found [here](http://r-pkgs.had.co.nz/man.html#man-functions). 
+
+Once all the necessary functions have been documented, it is possible to compile this documentation by using the commands `devtools::document()` or `roxygen2::roxygenize` (as mentioned earlier) or by directly building the package. Having done so, an `.Rd` file for each function will appear in the "man" folder (from which we earlier deleted the `hello.Rd` file). Below is an example of the `.Rd` files created for the functions in our example (with an added documentation for a function called `MC_gui` which is related to the code created for the Shiny app).
 
 <center>
-![Example .Rd files created after documentation](images/part5_1.png)
+![Example .Rd files created after documentation](images/documentation.png)
 </center>
 
-After, build documentation by using `devtools::document()`. If everyhting is working properly, we should have one Rd document for everything function that is exported within the package. Check by using `?yourfunction`.
+It is possible to check whether the documentation has been correctly compiled by using the command `?yourfunction`. Indeed, if we compiled our example documentation properly, this is what we get by using `?mc_int`:
 
 <center>
 ![Output when running ?mc_int](images/part5_2.png)
 </center>
 
+
 ### Step 5: Test your package
 
-- Build your package - part6-1
-- Test if it works - by creating a "test" file in main and run everything it you change something major to the package to see if the behavious remains unchanged. -> part6-2
+The previous steps are all that is necessary to complete the main components that are essential for an R package. Once these have correctly been completed, it is possible to build your package, meaning that you can combine all functions and documentation into a single software platform which can then be made available to the user. This can be done directly through the RStudio IDE where the "Environment, History, ..." pane contains a label named "Build". When selecting this label different options will appear just beneath it, including one called "Build & Reload" which, if selected, will allow you to build the package and load it in your work session. If everything has worked smoothly, then the mentioned pane should report some logs that end with `* DONE (nameofpackage)` (see example below).
 
 <center>
-![](images/part6_1.png)
+![](images/build.png)
 </center>
+
+It is at this point that you can start testing whether the documentation and the functions work as they are supposed to. For this reason, it is always appropriate to create a test script to be placed in the main directory of the package folder that can be run to check if the functions behave the same and that no errors are output after some major changes are made to the package. 
 
 <center>
 ![](images/part6_2.png)
 </center>
 
-- Run check
+In our example, given that we can check both functions with one command, our test file can be as follows:
+
+<center>
+![](images/test.png)
+</center>
+
+After making possible changes to the functions, we can run the test script and always expect to obtain the following output:
+
+<center>
+![](images/check.png)
+</center>
+
+If this output is not the same or does not appear at all, then we need to go back to the functions to find where an error was made.
 
 ### Step 6: Add a "README.Rmd" file
 
-Showcase what your package is doing in this RMD file, you can add video, code example,....
-
+It is always helpful to create additional material to ensure that your package can be understood and used in the widest manner possible. For this purpose it is possible to create an additional "README.Rmd" file which, as an RMarkdown document, can be used to add descriptions, examples and videos that showcase the usage of your package through a web-page. An example of how to structure this file is given below:
 
 ```{eval=FALSE}
 ---
@@ -291,30 +322,31 @@ output: github_document
 Explain what your package is doing here
 ```
 
-Compile it with pkgdown (install: `devtools::install_github("hadley/pkgdown")`): `pkgdown::build_site()`
-
-Result should look like: part7 - 1
+Having saved this file within the main folder of your package, you can compile this document using the `pkgdown` package (this can be installed by executing the following command in your console: `devtools::install_github("hadley/pkgdown")`). When the latter package is installed and loaded, all you need to do is execute the command `pkgdown::build_site()` to obtain the following web-page:
 
 <center>
 ![](images/part7_1.png)
 </center>
 
+In order to publish this web-page, it is possible to do so by creating a GitHub repository dedicated to your package which constitutes the final basic step.
 
 ### Step 7: Create a github repo - possibly with the same name as package
 
-- Sync should look like:
+The basic idea of creating a package is to share a set of functions with collaborators and users. As we saw in Chapter 2, a convenient tool to share code and projects is GitHub and, in this case as well, you can create a repository dedicated to your package. In this case, it would be convenient to name the repository with the same name of your package so that users can more easily find and access the package that you make available through GitHub.
+
+Once you have created a repository and loaded your package on GitHub, for our example you should obtain something similar to the following case:
 
 <center>
 ![](images/part8_1.png)
 </center>
 
-Make website -> github page
+As you can see, the GitHub repository takes the content of the .Rmd file and presents its content just below the list of folders and files that compose the package. However, it is possible to also create a separate and dedicated web-page (using the contents of the .Rmd file) by using GitHub Pages. To do so, select the "Settings" label within your GitHub repository and scroll down to the GitHub Pages section where you can select the "master branch/docs folder" option under the "Source" area (as can be seen below).
 
 <center>
 ![](images/part8_2.png)
 </center>
 
-Then your website is only... The address is `https://<your github id>.github.io/<your repo name>/`
+Once this is done, you can eventually personalize the web-page a little more by selecting a particular theme for it. Having done so, the page is already made available through the following address: `https://<your github id>.github.io/<your repo name>/`. For our example, this is available at [https://smac-group.github.io/demo/](https://smac-group.github.io/demo/). 
 
 ## Advanced
 
