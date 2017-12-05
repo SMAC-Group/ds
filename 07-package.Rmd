@@ -417,11 +417,13 @@ Given these steps, our main package folder should look like this:
 
 After having created the above mentioned folders and correctly written and placed the functions within these folders, all you need to do to make this feature available to the user is to execute the command `devtools::document()` and successively build the package again. Having done so, the only command that the user needs to use to access the Shiny app is to run the function `MC_gui()` in the console.
 
-INCLUDE SCREENSHOT OF APP
-
 ### Custom website
 
-Justin to do, theme , badge, tabs,....
+Below is a video about customizing the website.
+
+```{r, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/HO54ZoGtzzQ")
+```
 
 
 EXAMPLE: smac-group/demo

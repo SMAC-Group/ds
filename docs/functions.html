@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-12-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -288,16 +288,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>where <span class="math inline">\(y\)</span> represents the velocity while <span class="math inline">\(x\)</span> is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. <span class="math inline">\(\beta^{-1}\)</span>) gives the age of the universe based on the big bang theory.</p>
 <p>Therefore we will use the abovementioned dataset to estimate Hubble’s constant to then get an estimate of the age of the universe. This dataset can be found in the <code>gamair</code> package under the name <code>hubble</code> and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load gamair library and retrieve Hubble dataset</span>
-<span class="kw">library</span>(gamair)</code></pre></div>
-<pre><code>## Error in library(gamair): there is no package called &#39;gamair&#39;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(hubble)</code></pre></div>
-<pre><code>## Warning in data(hubble): data set &#39;hubble&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot data</span>
+<span class="kw">library</span>(gamair)
+<span class="kw">data</span>(hubble)
+
+<span class="co"># Plot data</span>
 <span class="kw">plot</span>(<span class="dt">y =</span> hubble<span class="op">$</span>y, <span class="dt">x =</span> hubble<span class="op">$</span>x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, 
-     <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</code></pre></div>
-<pre><code>## Error in plot(y = hubble$y, x = hubble$x, col = &quot;darkblue&quot;, pch = 20, : object &#39;hubble&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grid</span>()</code></pre></div>
-<pre><code>## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet</code></pre>
+     <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)
+<span class="kw">grid</span>()</code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
 <p>By the end of this chapter we will therefore be able to build a function to obtain an estimate of <span class="math inline">\(\beta\)</span> and, consequently, an estimate of the age of the universe based on the big bang theory (as well as a means of testing whether a Creationist hypothesis on the age of the universe is reasonable based on the latter theory).</p>
 <div id="r-functions" class="section level2">
 <h2><span class="header-section-number">6.1</span> R functions</h2>
@@ -785,33 +783,21 @@ Other checks can be introduced at the beginning of the function to make sure tha
 }</code></pre></div>
 <p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
-fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="op">-</span><span class="dv">1</span>)</code></pre></div>
-<pre><code>## Error in eval(predvars, data, env): object &#39;hubble&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with my_lm() function</span>
-fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)</code></pre></div>
-<pre><code>## Error in as.vector(response): object &#39;hubble&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare outputs</span>
-manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)</code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;fit_my_lm&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, 
-                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)</code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;fit_lm&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)</code></pre></div>
-<pre><code>## Error in cbind(manual_results, base_results): object &#39;manual_results&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)</code></pre></div>
-<pre><code>## Error in dimnames(x) &lt;- dn: length of &#39;dimnames&#39; [1] not equal to array extent</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">results</code></pre></div>
-<pre><code>##            [,1]         [,2]
-##  [1,] 0.8105226 0.0566300803
-##  [2,] 0.7651385 0.0277477369
-##  [3,] 0.8105282 0.0138480308
-##  [4,] 0.8149777 0.0068724579
-##  [5,] 0.8059558 0.0034679716
-##  [6,] 0.8045768 0.0017326560
-##  [7,] 0.8037060 0.0008662489
-##  [8,] 0.8045763 0.0004326877
-##  [9,] 0.8049000 0.0002163939
-## [10,] 0.8049516 0.0001081914</code></pre>
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="op">-</span><span class="dv">1</span>)
+
+<span class="co"># Linear regression with my_lm() function</span>
+fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)
+
+<span class="co"># Compare outputs</span>
+manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)
+base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, 
+                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)
+results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)
+<span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)
+results</code></pre></div>
+<pre><code>##       manual_results base_results
+## Beta        76.58117     76.58117
+## Sigma    67046.33165  67046.33165</code></pre>
 <p>As one can notice, the two procedures give the same outputs indicating that our <code>my_lm()</code> function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimated Hubble&#39;s constant</span>
 hubble_const &lt;-<span class="st"> </span>fit_my_lm<span class="op">$</span>beta<span class="op">/</span><span class="fl">3.09e19</span> 
@@ -830,7 +816,7 @@ age_sec<span class="op">/</span>(<span class="dv">60</span><span class="op">^</s
 <p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). … Let us therefore replace the values in Eq. <a href="functions.html#eq:cibeta">(6.4)</a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for the Hubble constant</span>
 fit_my_lm<span class="op">$</span>ci</code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;fit_my_lm&#39; not found</code></pre>
+<pre><code>## [1] 68.81032 84.35203</code></pre>
 <p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
