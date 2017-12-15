@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-12-05">
+<meta name="date" content="2017-12-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -299,10 +299,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>or simply run it within the <code>stat297</code> package by using either</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># RMarkdown Web</span>
-stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd&#39;</span>)
+stat297::<span class="kw">runShiny</span>(<span class="st">&#39;rmd&#39;</span>)
 
 <span class="co"># RMarkdown Mobile</span>
-stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd_mini&#39;</span>)</code></pre></div>
+stat297::<span class="kw">runShiny</span>(<span class="st">&#39;rmd_mini&#39;</span>)</code></pre></div>
 </div>
 <div id="create-an-r-markdown-file-in-rstudio" class="section level2">
 <h2><span class="header-section-number">2.1</span> Create an R Markdown file in RStudio</h2>
@@ -462,12 +462,12 @@ stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="s
 <div class="rmdnote">
 The user can also change the name that is used to call the desired reference as long as the same name is used to cite it in the RMarkdown document and that this name is not the same as another reference.
 </div>
-
+<p></p>
 
 <div class="rmdcaution">
 The references in the “.bib” file will not appear in the references that are output from the RMarkdown compiling procedure unless they are specifically used within the RMarkdown document.
 </div>
-
+<p></p>
 <p>Additional information on BibTeX and reference in RMarkdown can be found in the links below:</p>
 <ul>
 <li><a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">Introduction to bibtex</a></li>
@@ -588,14 +588,14 @@ The references in the “.bib” file will not appear in the references that are
 <span class="st">```</span></code></pre></div>
 <p>You will notice that we called this chunk of embedded R code <code>computeA</code> and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been “cached”, then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.</p>
 <p>This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your “cached” R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your “cached” R code. As an example, suppose we have another chunk of R code that we can “cache” and that takes the value of <code>a</code> from the previous chunk:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span><span class="op">*</span>a)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span>*a)</code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>which would be written in RMarkdown as:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE}</span>
 <span class="dt">(d = 2*a)</span>
 <span class="st">```</span></code></pre></div>
 <p>In this case, the output of this chunk will be <code>## 4</code> since <code>a = 2</code> (from the previous chunk). What happens however if we modify the value of <code>a</code> in the previous chunk? In this case, the previous chunk will be recomputed but the value of <code>d</code> (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the “cached” code depends on. This is why we initially gave a name to the first chunk of code (“computeA”) so as to refer to it in following chunks of “cached” code that depend on it. To refer to this code you need to use the option <code>dependson</code> as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span><span class="op">*</span>a)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">d =</span> <span class="dv">2</span>*a)</code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>which we would write as:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span>
@@ -647,7 +647,7 @@ The references in the “.bib” file will not appear in the references that are
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,

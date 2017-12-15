@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-12-05">
+<meta name="date" content="2017-12-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -308,7 +308,7 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">input &lt;-<span class="st"> </span><span class="dv">10</span>
 
 <span class="co"># Histogram with input bins</span>
-bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)
+bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input +<span class="st"> </span><span class="dv">1</span>)
 <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 <p>where the value given to the <code>input</code> object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.</p>
@@ -469,12 +469,12 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <div id="step-3-implementing-the-backend-server" class="section level2">
 <h2><span class="header-section-number">7.4</span> Step 3: Implementing the backend (server)</h2>
 <p>This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure. This is done by creating a function which, as arguments, has an <code>input</code> and an <code>output</code> as can be seen below always using the example given in the tutorial.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
    
-   output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+   output$distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
       <span class="co"># generate bins based on input$bins from ui.R</span>
       x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] 
-      bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input<span class="op">$</span>bins <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)
+      bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input$bins +<span class="st"> </span><span class="dv">1</span>)
       
       <span class="co"># draw the histogram with the specified number of bins</span>
       <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)
@@ -532,9 +532,9 @@ f_{Z, \Theta} (z, \theta) = f_{Z} (z) f_{\Theta} (\theta) = \frac{1}{\pi},
 \]</span></p>
 which verifies Equation <a href="shiny-web-applications.html#eq:probbuffon">(7.1)</a> and concludes the proof.
 </div>
-
+<p></p>
 </div>
-
+<p></p>
 <p>Georges-Louis Leclerc’s motivation behind this problem was to design an experiment to estimate the value of <span class="math inline">\(\pi\)</span>. Indeed, if you fling a needle a large number <span class="math inline">\(B\)</span> times onto a ruled plane and count the number of times <span class="math inline">\(S_B\)</span> that the needle intersects a line, we might be able to approximate <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span> and therefore <span class="math inline">\(\pi\)</span>. From Equation <a href="shiny-web-applications.html#eq:probbuffon">(7.1)</a>, we know that the proportion <span class="math inline">\(S_B/B\)</span> will be “close” to the probability <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span>. In fact the (weak) law of large number garantees that <span class="math inline">\(S_B/B\)</span> converges (in probability) to <span class="math inline">\(2/\pi\)</span>, i.e. for any given <span class="math inline">\(\varepsilon &gt; 0\)</span>,</p>
 <p><span class="math display">\[
 \lim_{B \rightarrow \infty} \; \mathbb{P}\left( \left| \frac{S_B}{B} - \frac{2}{\pi} \right|  &gt; \varepsilon \right) = 0.
@@ -588,14 +588,14 @@ which verifies Equation <a href="shiny-web-applications.html#eq:probbuffon">(7.1
 <div class="rmdnote">
 An additional input could be added consisting in the length of the needle. However, in this example we only consider needles of unit length.
 </div>
-
+<p></p>
 <p>A possible implementation of this function is given below:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){
-  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span>
-  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)
-  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)
-  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span>
-  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast_needle &lt;-<span class="st"> </span>function(<span class="dt">plane_width =</span> <span class="dv">20</span>){
+  available_range &lt;-<span class="st"> </span>plane_width/<span class="dv">2</span> -<span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span>
+  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, -available_range, available_range)
+  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>*pi)
+  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) +<span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span>
+  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) !=<span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])
   out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)
   out
 }</code></pre></div>
@@ -611,9 +611,9 @@ needle</code></pre></div>
 ## $cross
 ## [1] TRUE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="op">-</span><span class="dv">2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
-<span class="kw">lines</span>(<span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">1</span>], needle<span class="op">$</span>end[<span class="dv">1</span>]), <span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">2</span>], needle<span class="op">$</span>end[<span class="dv">2</span>]))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
+<span class="kw">lines</span>(<span class="kw">c</span>(needle$start[<span class="dv">1</span>], needle$end[<span class="dv">1</span>]), <span class="kw">c</span>(needle$start[<span class="dv">2</span>], needle$end[<span class="dv">2</span>]))</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-233-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Next, we consider the function <code>buffon_experiment()</code>. This function is based on the previous function and contains the following inputs:</p>
 <ul>
@@ -629,20 +629,20 @@ needle</code></pre></div>
 <li><code>$plane</code>: the width of the (square) plane.</li>
 </ul>
 <p>A possible implementation of this function is provided below:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">buffon_experiment &lt;-<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){
   
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){
+  if (!<span class="kw">is.null</span>(seed)){
     <span class="kw">set.seed</span>(seed)
   }
   
   X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) 
   cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
   
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){
+  for (i in <span class="dv">1</span>:B){
     inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)
-    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start
-    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end
-    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross
+    X_start[i, ] &lt;-<span class="st"> </span>inter$start
+    X_end[i, ] &lt;-<span class="st"> </span>inter$end
+    cross[i] &lt;-<span class="st"> </span>inter$cross
   }
   
   out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)
@@ -675,35 +675,35 @@ experiment</code></pre></div>
 ## attr(,&quot;class&quot;)
 ## [1] &quot;buffon_experiment&quot;</code></pre>
 <p>which could be represented as</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="op">-</span><span class="dv">2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){
-  <span class="kw">lines</span>(<span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">1</span>], experiment<span class="op">$</span>end[i,<span class="dv">1</span>]), 
-        <span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">2</span>], experiment<span class="op">$</span>end[i,<span class="dv">2</span>]))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> -<span class="dv">2</span>:<span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
+for (i in <span class="dv">1</span>:<span class="dv">4</span>){
+  <span class="kw">lines</span>(<span class="kw">c</span>(experiment$start[i,<span class="dv">1</span>], experiment$end[i,<span class="dv">1</span>]), 
+        <span class="kw">c</span>(experiment$start[i,<span class="dv">2</span>], experiment$end[i,<span class="dv">2</span>]))
 }</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-236-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>We can now write a custom <code>plot()</code> function for the output of the function <code>buffon_experiment()</code>. This function will provide a way to visualize the experiment and will compute <span class="math inline">\(\hat{\pi}_B\)</span>, which will be shown in the title. A possible function is provided below:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(obj){
-  cross &lt;-<span class="st"> </span>obj<span class="op">$</span>cross
-  X_start &lt;-<span class="st"> </span>obj<span class="op">$</span>start
-  X_end &lt;-<span class="st"> </span>obj<span class="op">$</span>end
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.buffon_experiment &lt;-<span class="st"> </span>function(obj){
+  cross &lt;-<span class="st"> </span>obj$cross
+  X_start &lt;-<span class="st"> </span>obj$start
+  X_end &lt;-<span class="st"> </span>obj$end
   B &lt;-<span class="st"> </span><span class="kw">length</span>(cross)
-  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])
+  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span>:<span class="dv">2</span>])
   
   title_part1 &lt;-<span class="st"> &#39;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment  -  &#39;</span>
   title_part2 &lt;-<span class="st"> &#39; = &#39;</span>
-  pi_hat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">mean</span>(obj<span class="op">$</span>cross), <span class="dv">6</span>)
+  pi_hat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span>/<span class="kw">mean</span>(obj$cross), <span class="dv">6</span>)
   
-  title &lt;-<span class="st"> </span><span class="kw">bquote</span>(.(title_part1) <span class="op">~</span><span class="st"> </span><span class="kw">hat</span>(pi)[B] <span class="op">~</span><span class="st"> </span>.(title_part2) <span class="op">~</span><span class="st"> </span>.(pi_hat))
+  title &lt;-<span class="st"> </span><span class="kw">bquote</span>(.(title_part1) ~<span class="st"> </span><span class="kw">hat</span>(pi)[B] ~<span class="st"> </span>.(title_part2) ~<span class="st"> </span>.(pi_hat))
   
-  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>), 
-       <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>), 
+  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-obj$plane/<span class="dv">2</span>, obj$plane/<span class="dv">2</span>), 
+       <span class="dt">ylim =</span> <span class="kw">c</span>(-obj$plan/<span class="dv">2</span>, obj$plan/<span class="dv">2</span>), 
        <span class="dt">main =</span> title)
-  <span class="kw">abline</span>(<span class="dt">h =</span> (<span class="op">-</span>obj<span class="op">$</span>plan)<span class="op">:</span>obj<span class="op">$</span>plan, <span class="dt">lty =</span> <span class="dv">3</span>)
+  <span class="kw">abline</span>(<span class="dt">h =</span> (-obj$plan):obj$plan, <span class="dt">lty =</span> <span class="dv">3</span>)
   
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){
+  for (i in <span class="dv">1</span>:B){
     <span class="kw">lines</span>(<span class="kw">c</span>(X_start[i,<span class="dv">1</span>], X_end[i,<span class="dv">1</span>]), <span class="kw">c</span>(X_start[i,<span class="dv">2</span>], X_end[i,<span class="dv">2</span>]), 
-          <span class="dt">col =</span> cols[cross[i] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])
+          <span class="dt">col =</span> cols[cross[i] +<span class="st"> </span><span class="dv">1</span>])
   }
 }</code></pre></div>
 <p>Therefore, we could now run the same experiment as Georges-Louis Leclerc by flinging 2084 needles almost instanteously (which is the default value in the <code>buffon_experiment()</code> function we created):</p>
@@ -718,30 +718,30 @@ experiment</code></pre></div>
 <li><code>M</code>: the number of experiments.</li>
 </ul>
 <p>The function returns the graph mentioned at the end of the previous section. A possible implementation of this function is provided below:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">converge &lt;-<span class="st"> </span>function(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
   
-  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){
+  if (B &lt;<span class="st"> </span><span class="dv">10</span>){
     <span class="kw">warning</span>(<span class="st">&quot;B was changed to 10&quot;</span>)
     B &lt;-<span class="st"> </span><span class="dv">10</span>
   }
   
   pi_hat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, M)
-  trials &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>B
-  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="op">+</span><span class="dv">1</span>)), 
-                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="op">:</span>M])
+  trials &lt;-<span class="st"> </span><span class="dv">1</span>:B
+  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="dv">+1</span>)), 
+                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span>:M])
   <span class="kw">set.seed</span>(seed)
   
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){
-    cross &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)<span class="op">$</span>cross
-    pi_hat[,i] &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>trials<span class="op">/</span><span class="kw">cumsum</span>(cross)
+  for (i in <span class="dv">1</span>:M){
+    cross &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)$cross
+    pi_hat[,i] &lt;-<span class="st"> </span><span class="dv">2</span>*trials/<span class="kw">cumsum</span>(cross)
   }
   
-  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">4</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,
+  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi +<span class="st"> </span><span class="kw">c</span>(-<span class="dv">3</span>/<span class="dv">4</span>, <span class="dv">3</span>/<span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,
        <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[j]),
        <span class="dt">xlab =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment&quot;</span>)
   <span class="kw">grid</span>()
   
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){
+  for (i in <span class="dv">1</span>:M){
     <span class="kw">lines</span>(trials, pi_hat[,i], <span class="dt">col =</span> cols[i])
   }
   
@@ -775,7 +775,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 )
 
 <span class="co"># Define server</span>
-server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+server &lt;-<span class="st"> </span>function(input, output) {
 }
 
 <span class="co"># Run the application </span>
@@ -794,7 +794,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
   <span class="kw">sidebarLayout</span>(
     <span class="kw">sidebarPanel</span>(
       <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span>^<span class="dv">6</span>),
       <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
       <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
       <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))
@@ -821,7 +821,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
   <span class="kw">sidebarLayout</span>(
     <span class="kw">sidebarPanel</span>(
       <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),
+      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span>^<span class="dv">6</span>),
       <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
       <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
       <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))
@@ -844,42 +844,42 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <div id="step-3-connecting-frontend-and-backend" class="section level3">
 <h3><span class="header-section-number">7.8.3</span> Step 3: Connecting frontend and backend</h3>
 <p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start by “connecting” our output tabs defined in the <code>ui</code> function with the output in the server function. Since both outputs are graphs, we will use the function <code>renderPlot()</code> as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="co"># Add graph 1 here!</span>
   }, <span class="dt">height =</span> <span class="dv">620</span>)
   
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="co"># Add graph 2 here!</span>
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
 <p>If you re-run the app at this point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user clicks on the “action” button. This can be done by adding the following lines to the <code>server</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
   })</code></pre></div>
 <p>When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing the following part of the <code>server</code> function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="co"># Add graph 1 here!</span>
 }, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
 <p>with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">plot</span>(<span class="kw">cast</span>())
 }, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
 <p>Therefore, your <code>server</code> function should now be:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
   
   <span class="co"># Fling some needles!</span>
-  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
+  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
   })
   
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">plot</span>(<span class="kw">cast</span>())
   }, <span class="dt">height =</span> <span class="dv">620</span>)
   
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="co"># Add graph 2 here!</span>
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
@@ -888,37 +888,37 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <img src="images/shiny_server_part1.png" />
 </center>
 <p>Similarly, we do the same thing for the second graph by adding the following lines to our <code>server</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
 })</code></pre></div>
 <p>and replacing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="co"># Add graph 2 here!</span>
 }, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
 <p>with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">conv</span>()
 }, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre></div>
 <p>After these changes, your <code>server</code> function should look like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output) {
   
   <span class="co"># Fling some needles!</span>
-  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
+  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
   })
   
-  conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)
+  conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
   })
   
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">plot</span>(<span class="kw">cast</span>())
   }, <span class="dt">height =</span> <span class="dv">620</span>)
   
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">conv</span>()
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
@@ -927,34 +927,34 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <img src="images/shiny_server_part2.png" />
 </center>
 <p>Our next step is now to update the seed every time the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynamically</strong> update the input directly from the <code>server</code> function. Therefore, in order to randomly generate a new seed each time the user clicks on the “action” button, we can do the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">observeEvent</span>(input$cast,{
     <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
-                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))
+                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
 })</code></pre></div>
 <p>Therefore, your final <code>server</code> function is now:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span>function(input, output, session) {
   
-  <span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{
+  <span class="kw">observeEvent</span>(input$cast,{
     <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
-                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))
+                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>^<span class="dv">4</span>)))
   })
   
   <span class="co"># Fling some needles!</span>
-  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
+  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+                      <span class="dt">seed =</span> input$seed)
   })
   
-  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)
+  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input$cast, {
+    <span class="kw">converge</span>(<span class="dt">B =</span> input$B, <span class="dt">plane_width =</span> input$plane, 
+             <span class="dt">seed =</span> input$seed, <span class="dt">M =</span> input$M)
   })
   
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">plot</span>(<span class="kw">cast</span>())
   }, <span class="dt">height =</span> <span class="dv">620</span>)
   
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
     <span class="kw">conv</span>()
   }, <span class="dt">height =</span> <span class="dv">620</span>)
 }</code></pre></div>
@@ -1003,7 +1003,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,

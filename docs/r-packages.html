@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-12-05">
+<meta name="date" content="2017-12-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -281,26 +281,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In this chapter we introduce one of the most useful tools for R programming as well as for statistical programming in general. Indeed, one of the main goals for statistical programming is to then be able to share all the code and functions that have been implemented in order to respond to a specific task. The latter may often be quite <em>messy</em> to do given that different files and functions can be present in various directories or repositories and, for example, some codes may use functions from other codes but do not load the same libraries, thereby producing execution errors.</p>
 <p>In order to avoid the above complications (and to program in a healthy and organized manner), R allows you to create <em>packages</em> that are software platforms that collect functions as well as other files which, among others, describe these functions and provide users with documentation that allow them to understand and efficiently use these functions. Moreover, when sharing a package (or making it available within a repository) all the user needs to do is to install and load the package within an R session which then makes available the entire environment needed for all the functions included in the package to work. In a nutshell, whenever creating functions to answer a specific research interest or professional task, it is always good to do so by first creating a package within which these functions can be stored and documented.</p>
 <p>In this chapter we will describe and explain the steps necessary to create an R package using RStudio. There are other ways and other procedures to produce an R package but in this chapter we will describe one possible way which is consistent with the approach to statistical programming that is presented in this book. As in the previous chapters, we will make use of an example to guide the reader through the different aspects of package building and, for this purpose, let us assume we want to build a package that allows a user to perform Monte-Carlo integration for any user-specificed function as well as produce plots that represent these functions as well as the integrated area. In this case, we have an extremely simple setting where, based on code used in the previous chapters, we only have the following two functions to be included in the package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc_int =<span class="st"> </span>function(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
   <span class="co"># A few checks</span>
   <span class="co"># Check x_range</span>
-  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
+  if (<span class="kw">length</span>(x_range) !=<span class="st"> </span><span class="dv">2</span> ||<span class="st"> </span>x_range[<span class="dv">1</span>] &gt;=<span class="st"> </span>x_range[<span class="dv">2</span>]){
     <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)
   }
 
   <span class="co"># Check fun</span>
-  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){
+  if (<span class="kw">class</span>(fun) !=<span class="st"> &quot;character&quot;</span>){
     <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)
   }
 
   x =<span class="st"> </span><span class="kw">mean</span>(x_range)
   test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
-  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){
+  if (<span class="kw">class</span>(test_fun) ==<span class="st"> &quot;try-error&quot;</span>){
     <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)
   }
 
   <span class="co"># Check B</span>
-  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){
+  if (B &lt;<span class="st"> </span><span class="dv">1</span>){
     <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)
   }
 
@@ -312,15 +312,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
   <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span>
   Ui =<span class="st"> </span><span class="kw">runif</span>(B)
-  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length
+  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] +<span class="st"> </span>Ui*interval_length
 
   <span class="co"># Compute \hat{I}</span>
   x =<span class="st"> </span>Xi
-  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
+  I_hat =<span class="st"> </span>interval_length*<span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
 
   <span class="co"># Compute \hat{I}_2</span>
-  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)
-  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B
+  I2_hat =<span class="st"> </span>interval_length*<span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))^<span class="dv">2</span>)
+  var_I_hat =<span class="st"> </span>(interval_length*I2_hat -<span class="st"> </span>I_hat^<span class="dv">2</span>)/B
 
   <span class="co"># Output list</span>
   out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,
@@ -329,23 +329,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   out
 }
 
-plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
+plot.MCI =<span class="st"> </span>function(x, ...){
   obj =<span class="st"> </span>x
-  x_range =<span class="st"> </span>obj<span class="op">$</span>x_range
-  fun =<span class="st"> </span>obj<span class="op">$</span>fun
+  x_range =<span class="st"> </span>obj$x_range
+  fun =<span class="st"> </span>obj$fun
 
   Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)
-  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)
-  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] -<span class="st"> </span><span class="fl">1.15</span>*Delta, x_range[<span class="dv">1</span>] +<span class="st"> </span><span class="fl">1.15</span>*Delta)
+  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span>^<span class="dv">3</span>)
   f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
   <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)
   <span class="kw">grid</span>()
-  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj<span class="op">$</span>I,<span class="dv">4</span>),
-              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
+  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj$I,<span class="dv">4</span>),
+              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj$var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
   <span class="kw">lines</span>(x, f_x)
-  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span>^<span class="dv">3</span>)
   f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))
-  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
+  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span>:<span class="dv">3</span>]
   <span class="kw">polygon</span>(<span class="kw">c</span>(x, <span class="kw">rev</span>(x)), <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="kw">rev</span>(f_x)),
           <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])
   <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
@@ -357,7 +357,7 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <li>the <code>plot.MCI()</code> function: a class function that will plot the object that is created as an output of the <code>mc_int()</code> function.</li>
 </ul>
 <p>An example of use of these functions and their output is the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span>^<span class="dv">3</span>)
 <span class="kw">plot</span>(obj)</code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
 <p>Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.</p>
@@ -400,7 +400,7 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <div id="author-roles" class="section level4 unnumbered">
 <h4>Author Roles</h4>
 <p>One of the lines of information in the description file corresponds to the authors of the package. This therefore corresponds to the list of persons who have actively contributed to the development of code and functions that are included in the package. When there is more than author, the line corresponding to the author can be replaced by a format like the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Authors<span class="op">@</span>R<span class="op">:</span><span class="st"> </span><span class="kw">c</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Authors@R:<span class="st"> </span><span class="kw">c</span>(
     <span class="kw">person</span>(<span class="st">&quot;Justin&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="dt">email =</span> <span class="st">&quot;justinlee@psu.edu&quot;</span>, <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>,<span class="st">&quot;cre&quot;</span>)),
     <span class="kw">person</span>(<span class="st">&quot;Stephane&quot;</span>, <span class="st">&quot;Guerrier&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),
     <span class="kw">person</span>(<span class="st">&quot;Roberto&quot;</span>, <span class="st">&quot;Molinari&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),
@@ -458,26 +458,26 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <span class="co">#&#39; @examples</span>
 <span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2&quot;, B = 10^5)</span>
 <span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2*sin(x^2/pi)&quot;, B = 10^5)</span>
-mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+mc_int =<span class="st"> </span>function(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
   <span class="co"># A few checks</span>
   <span class="co"># Check x_range</span>
-  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
+  if (<span class="kw">length</span>(x_range) !=<span class="st"> </span><span class="dv">2</span> ||<span class="st"> </span>x_range[<span class="dv">1</span>] &gt;=<span class="st"> </span>x_range[<span class="dv">2</span>]){
     <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)
   }
 
   <span class="co"># Check fun</span>
-  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){
+  if (<span class="kw">class</span>(fun) !=<span class="st"> &quot;character&quot;</span>){
     <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)
   }
 
   x =<span class="st"> </span><span class="kw">mean</span>(x_range)
   test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
-  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){
+  if (<span class="kw">class</span>(test_fun) ==<span class="st"> &quot;try-error&quot;</span>){
     <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)
   }
 
   <span class="co"># Check B</span>
-  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){
+  if (B &lt;<span class="st"> </span><span class="dv">1</span>){
     <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)
   }
 
@@ -489,15 +489,15 @@ mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, 
 
   <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span>
   Ui =<span class="st"> </span><span class="kw">runif</span>(B)
-  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length
+  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] +<span class="st"> </span>Ui*interval_length
 
   <span class="co"># Compute \hat{I}</span>
   x =<span class="st"> </span>Xi
-  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
+  I_hat =<span class="st"> </span>interval_length*<span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))
 
   <span class="co"># Compute \hat{I}_2</span>
-  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)
-  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B
+  I2_hat =<span class="st"> </span>interval_length*<span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))^<span class="dv">2</span>)
+  var_I_hat =<span class="st"> </span>(interval_length*I2_hat -<span class="st"> </span>I_hat^<span class="dv">2</span>)/B
 
   <span class="co"># Output list</span>
   out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,
@@ -582,10 +582,10 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
    <span class="kw">sidebarLayout</span>(
       <span class="kw">sidebarPanel</span>(
         <span class="kw">textInput</span>(<span class="st">&quot;fun&quot;</span>, <span class="st">&quot;Function to integrate:&quot;</span>,<span class="st">&quot;sin(10*x)*exp(cos(x))&quot;</span>),
-        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> <span class="op">-</span><span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
-        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> <span class="op">-</span><span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
-        <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of Monte-Carlo replications:&quot;</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>,
-                     <span class="dt">min =</span> <span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">9</span>),
+        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> -<span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
+        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> -<span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
+        <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of Monte-Carlo replications:&quot;</span>, <span class="dv">10</span>^<span class="dv">5</span>,
+                     <span class="dt">min =</span> <span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">10</span>^<span class="dv">9</span>),
         <span class="kw">actionButton</span>(<span class="st">&quot;button&quot;</span>, <span class="st">&quot;Compute Integral&quot;</span>)
       ),
 
@@ -597,14 +597,14 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 )
 
 <span class="co"># Define server logic required to draw the integration plot</span>
-server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+server &lt;-<span class="st"> </span>function(input, output) {
 
-  a &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>button, {
-    <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(input<span class="op">$</span>low, input<span class="op">$</span>up),
-          <span class="dt">fun =</span> input<span class="op">$</span>fun, <span class="dt">B =</span> input<span class="op">$</span>B)
+  a &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input$button, {
+    <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(input$low, input$up),
+          <span class="dt">fun =</span> input$fun, <span class="dt">B =</span> input$B)
   })
 
-  output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+  output$distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
       <span class="kw">plot</span>(<span class="kw">a</span>())
   })
 
@@ -614,9 +614,9 @@ server &lt;-<span class="st"> </span><span class="cf">function</span>(input, out
 <span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
 <p>Once this is done, an additional R script needs to included within the “R” folder. This R script will contain a function that allows the user to generate a Shiny app (based on the contents of “app.R” for example) and consequently to use the app interface to make use of the package functions. Following from our example, suppose that the latter script, which we will call “run_shiny.r” for this example, contains the following function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @export</span>
-MC_gui =<span class="st"> </span><span class="cf">function</span>(){
+MC_gui =<span class="st"> </span>function(){
   appDir =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;MC_int&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;demo&quot;</span>)
-  shiny<span class="op">::</span><span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)
+  shiny::<span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)
 }</code></pre></div>
 <p>Given these steps, our main package folder should look like this:</p>
 <center>
@@ -651,7 +651,7 @@ MC_gui =<span class="st"> </span><span class="cf">function</span>(){
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,

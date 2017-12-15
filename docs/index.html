@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-12-05">
+<meta name="date" content="2017-12-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -279,7 +279,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
 <h4 class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari</em></h4>
-<h4 class="date"><em>2017-12-05</em></h4>
+<h4 class="date"><em>2017-12-15</em></h4>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -296,7 +296,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="rmdimportant">
 This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you’re not familiar with these tools, they will be explained later on in the book itself.
 </div>
-
+<p></p>
 <center>
 <img src="images/diagram.png" alt="Note that this diagram is a adapted version of Figure 1 of http://r4ds.had.co.nz/explore-intro.html" />
 </center>
@@ -326,7 +326,7 @@ This document is <strong>under development</strong> and it is therefore preferab
 <div class="rmdimportant">
 You cannot use <code>RStudio</code> without having installed <code>R</code> on your computer.
 </div>
-
+<p></p>
 </div>
 <div id="about-rstudio" class="section level3">
 <h3><span class="header-section-number">1.1.3</span> About RStudio</h3>
@@ -341,7 +341,7 @@ You cannot use <code>RStudio</code> without having installed <code>R</code> on y
 <p>Throughout this book, <code>R</code> code will be typeset using a <code>monospace</code> font which is syntax highlighted. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span>pi
 b =<span class="st"> </span><span class="fl">0.5</span>
-<span class="kw">sin</span>(a<span class="op">*</span>b)</code></pre></div>
+<span class="kw">sin</span>(a*b)</code></pre></div>
 <p>Similarly, <code>R</code> output lines (that usally appear in your Console) will begin with <code>##</code> and will not be syntax highlighted. The output of the above example is the following:</p>
 <pre><code>## [1] 1</code></pre>
 <p>Aside from <code>R</code> code and its outputs, this book will also insert some boxes that will draw the reader’s attention to important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the “under construction” nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:</p>
@@ -349,27 +349,27 @@ b =<span class="st"> </span><span class="fl">0.5</span>
 <div class="rmdimportant">
 This is an important piece of information.
 </div>
-
+<p></p>
 
 <div class="rmdnote">
 This is some additional information that could be useful to the reader.
 </div>
-
+<p></p>
 
 <div class="rmdcaution">
 This is something that the reader should pay caution to but should not create major problems if not considered.
 </div>
-
+<p></p>
 
 <div class="rmdwarning">
 This is a warning which should be heeded by the reader to avoid problems of different nature.
 </div>
-
+<p></p>
 
 <div class="rmdtip">
 This is a tip for the reader when following or developing something based on this book.
 </div>
-
+<p></p>
 </div>
 <div id="simple-calculations" class="section level3">
 <h3><span class="header-section-number">1.1.5</span> Simple calculations</h3>
@@ -445,7 +445,7 @@ This is a tip for the reader when following or developing something based on thi
 <div class="rmdtip">
 You can often use the error message to search for answers about a problem you may have with a function.
 </div>
-
+<p></p>
 </div>
 <div id="installing-packages" class="section level3">
 <h3><span class="header-section-number">1.1.7</span> Installing packages</h3>
@@ -460,7 +460,7 @@ You can often use the error message to search for answers about a problem you ma
 <div class="rmdnote">
 Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
 </div>
-
+<p></p>
 <p>One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_github</span>(<span class="st">&quot;SMAC-Group/stat297&quot;</span>)</code></pre></div>
 </div>
@@ -598,7 +598,7 @@ Please notice that although packages need to be loaded at each session if you wa
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
