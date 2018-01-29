@@ -20,58 +20,52 @@ This book is an early version of an ongoing project to equip students with the b
 
 The statistical software `R` has come into prominence due to its flexibility as an efficient language that builds a bridge between software development and data analysis. For example, one strength of `R` is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions. This book intends to present an approachable framework to statistical programming and software development using the wide variety of tools made available through `R`, from method-specific packages to version control programs. The general goals of the book are therefore the following:
 
-[**introductory, intermediate, and advanced goals?**]
 * introduce tools and workflow for reproducible research (R/RStudio, Git/GitHub, etc.); 
 * introduce principles of tidy data and tools for data wrangling; 
-* introduce ... data viz
-* understand data structures in order to appropriately manage data, computer memory and computations;
-* manipulate data structures through controls, instructions, and tailored functions in order to achieve a desired output;
-* create new software tools (packages and web applications) that accommodate a previously unmet need;
-* learn how to manage software development via version control tools (e.g., GitHub) and create documentation for this software (with embedded code) to allow others to make use of the software.
+* exploit data structures to appropriately manage data, computer memory and computations;
+* data manipulation through controls, instructions, and tailored functions;
+* develop new software tools including functions, Shiny applications, and packages;
+* manage software development process including version control, documentation (with embedded code), and dissemination for other users.
 
-All these goals are common to any basic programming course, however all these will be heavily focused on the use and development of statistical tools. In fact, as highlighted earlier, it has become increasingly important to include statistical methodologies within the programming framework thereby allowing software to not only manage data efficiently but also to extract and analyse data in an appropriate manner while doing so. The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.
+The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.
 
 ```{block2,  type='rmdimportant'}
-This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here https://github.com/SMAC-Group/ds/issues) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you're not familiar with these tools, they will be explained later on in the book itself.
+This document is **under development** and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (accessed here https://github.com/SMAC-Group/ds/issues) and we will make the changes as soon as possible. In addition, once you have learned RMarkdown and GitHub, feel free to make a pull request to offer bug fixes or corrections!
 ```
 
 <center>![Note that this diagram is a adapted version of Figure 1 of http://r4ds.had.co.nz/explore-intro.html](images/diagram.png)</center>
 
-To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. Most cases, there is input that an audience provides, in which we then process and manipulate in R. Exploratory data analysis is performed using R, R Markdown, and Shiny applications as we preprocess, visualize, and model our data/input. We then communicate our results through websites, rapports, slides, we can use a narrative report using R Markdown with R as the backend. To communicate through a website, we can output interactive Shiny applications that take in multiple parameters and options. We can even use both. Some cases, after we communicate, we may find something new, and move back to the exploring stage. 
+To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. In many cases, an input (e.g. data source) is provided, and then we process, explore, and/or manipulate the data with R. We then may communicate our findings through websites, reports, slides, etc. using some combination of RMarkdown, R, and/or Shiny. This process is not always sequential as we often have new ideas or observations at any stage and begin exploring again. 
 
 ## `R` and `RStudio`
 
-The statistical computing language `R` has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important programming languages, communication, and version-control features. The latter is also possible thanks to the development of the `RStudio` interface which provides a pleasant and functional user-interface for `R` as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are available to the user.  In order to illustrate the relationship between R & RStudio in statistical programming, one might think of a car analogy in which R would be like the engine and RStudio might be like leather seats.  R is doing the work (for the most part), and RStudio generally is making you more comfortable while you use R.
-
-### Why `R`?
-
-There are many reasons to use `R`. Two compelling reasons are that R is both free as in "free pizza", and free as in "free speech").  Free--like "free pizza"--means that there is never a need to pay for any part of the R software, or contributed packages (i.e. add-on modules).  Free--like "free speech"--means that there are very few restrictions on how R can be used or barriers to those who would like to contribute packages (i.e. add-on modules).
-
-The fact that is a free and open-source software which *per se* does not necessarily imply that it is a good software (although it is also that). The reason why this is an important feature consists in the fact that the results of any code or program developed in the `R` environment can easily be replicated therefore ensuring accessibility and transparency for the general user. More importantly however, this replicability of results is also accompanied by a wide variety of packages that are made available through the `R` environment in which users can find a diversity of codes, functions and features that are designed to tackle a large amount of programming and analytical tasks. Moreover, these packages are relatively simple to create and are extremely useful for code-sharing purposes since they enclose the codes, functions and external dependencies that allow anyone to install any of these features all at once in easy and efficient manner.
-
-In addition to its accessibility and code-sharing features, `R` has acquired visibility and importance mainly due to the cutting-edge tools that it makes available to the general user. Indeed, a growing area of research both in academia and in industry is Statistics and Machine Learning through which it is possible to find, extract and make an efficient use of the increasing amount of data and information being collected. All the latest methods and approaches going from data-mining techniques to predictive analysis are available in `R` and, due to its nature, all future methods and approaches will be made available to all users through `R`. For this reason, any individual, company or organization has a keen interest in acquiring and developing expertise in `R` since it makes available the most appropriate tools for any data-based analysis and decision-making process.
-
-Like any other software, there are of course some drawbacks with using `R`. First, the presence of an extended amount of user-contributed packages can make its usage and bug-reporting problematic. Although this does not represent a major problem since many forums exist and solutions are usually quickly fixed, there can be many issues concerning package updates or deletions that can create problems for other existing packages that depend on them. This is fairly rare, but there can consequently be problems in the use of packages that become obsolete and need to be fixed due to dependency issues. Another drawback consists in the extensive use of computer memory that `R` entails through its commands which generally give little relevance to this issue. However, many different solutions are being developed which deal with this problem along with the increased memory made available by current operating systems.
-
-In the perspective of improving the usage of computer memory, `R` has been developing efficient and "seemless" connections with high-performance languages which allow functions and packages to make use of them thereby greatly lightening and accelerating computations made through `R`. An important example of this is given by the connections made available to the `C++` language. In this book we will discuss the connections with this language that are particularly well implemented, but other high-performance languages can be used such as `C` and `FORTRAN`.
+The statistical computing language [`R`](https://cran.r-project.org/) has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important tools. The latter is amplified thanks to the development of the [RStudio](https://www.rstudio.com/) interface which provides a pleasant and functional user-interface for `R` as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are readily available to the user.  In order to illustrate the relationship between R & RStudio in statistical programming, one might think of a car analogy in which R would be the drivetrain and chassis while RStudio adds comfortable seats and air conditioning.  R is doing most of the work, and the user can basically get where they want to go using R without RStudio.  RStudio is generally is making you more comfortable while you use R, but you won't get very far using RStudio without R.  
 
 ### Getting started with `R`
 
-As mentioned earlier, `R` can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:
+Since `R` is a free and open-source software, you may simply download it from the following link:
 
-- [`R`](https://cran.r-project.org/)
+- [`R`: https://cran.r-project.org/](https://cran.r-project.org/)
 
-Once you've downloaded and installed `R` on your computer you will be able to start using the programming language and packages that the `R` environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called `RStudio` which can be downloaded from the following link:
+While `R` certainly can be used "as is" for many purposes, we strongly recommend using an IDE called RStudio.  There are several versions of RStudio for different users (RStudio Desktop, Commercial, Server, etc.).  The free RStudio Desktop version is sufficient for our purposes.  RStudio can downloaded from the following link:
 
-- [RStudio](https://www.rstudio.com/)
+- [RStudio: https://www.rstudio.com/](https://www.rstudio.com/)
 
 ```{block2,  type='rmdimportant'}
 You cannot use `RStudio` without having installed `R` on your computer.
 ```
 
+
+### Why `R`?
+
+There are many reasons to use `R`. Two compelling reasons are that R is both free as in "free pizza", and free as in "free speech".  Free--like "free pizza"--means that there is never a need to pay for any part of the R software, or contributed packages (i.e. add-on modules).  Free--like "free speech"--means that there are very few restrictions on how R can be used or barriers to those who would like to contribute packages (i.e. add-on modules).
+
+The fact that is a free and open-source software does not necessarily imply that it is a good software (although it is also that). The reason why this is an important feature consists in the fact that the results of any code or program developed in the `R` environment can easily be replicated therefore ensuring accessibility and transparency for the general user. More importantly however, this replicability of results is also accompanied by a wide variety of packages that are made available through the `R` environment in which users can find a diversity of codes, functions, and features that are designed to tackle a large amount of programming and analytical tasks. Moreover, new packages are relatively simple to create and are extremely useful for code-sharing purposes since they enclose the codes, functions, and external dependencies that allow anyone to  easily and efficiently install these features.  Additionally, these accessibility and code-sharing features have established `R` as a platform for development and dissemination of cutting-edge tools directly from the developer to the end-user. 
+
+
 ### About RStudio
 
-`RStudio` is a customizable IDE for the `R` enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with `R`. For the most part, `RStudio` provides everything the `R` user will need in a self-contained, and well-organized environment.  Moreover, it is possible to create "projects" in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.
+`RStudio` is a customizable IDE for the `R` enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with `R`. For the most part, `RStudio` provides nearly everything the `R` user will need in a self-contained, and well-organized environment.  Moreover, it is possible to create "projects" in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.
 
 Below is short video demonstrating a basic introduction of RStudio and some of its elements. 
 
@@ -86,8 +80,8 @@ In addition, `RStudio` provides embedded functionality to utilize collaborative 
 Throughout this book, `R` code will be typeset using a `monospace` font which is syntax highlighted. For example:
 
 ```{r, eval = FALSE}
-a = pi
-b = 0.5
+a <- pi
+b <- 0.5
 sin(a*b)
 ```
 
@@ -95,48 +89,32 @@ sin(a*b)
 Similarly, `R` output lines (that usally appear in your Console) will begin with `##` and will not be syntax highlighted. The output of the above example is the following:
 
 ```{r, echo = FALSE}
-a = pi
-b = 0.5
+a <- pi
+b <- 0.5
 sin(a*b)
 ```
 
-Aside from `R` code and its outputs, this book will also insert some boxes that will draw the reader's attention to  important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the "under construction" nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:
-
-```{block2,  type='rmdimportant'}
-This is an important piece of information.
-```
+Aside from `R` code and output, this book will also insert boxes in order to draw the reader's attention to important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the "under construction" nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:
 
 ```{block2, type='rmdnote'}
-This is some additional information that could be useful to the reader.
-```
-
-```{block2, type='rmdcaution'}
-This is something that the reader should pay caution to but should not create major problems if not considered. 
-```
-
-```{block2, type='rmdwarning'}
-This is a warning which should be heeded by the reader to avoid problems of different nature.
+This is a **note** that could be interesting or useful to the reader.
 ```
 
 ```{block2, type='rmdtip'}
-This is a tip for the reader when following or developing something based on this book.
+This is a **tip** for implementing content from this book.
 ```
 
-### Simple calculations
+```{block2,  type='rmdimportant'}
+This highlights **important information**.
+```
 
-A basic aspect to underline about the `R` environment is that it serves as an advanced calculator which therefore allows also for simple calculations. In the table below we show a few examples of such calculations where the first column gives a mathematical expression (calculation), the second gives the equivalent of this expression in `R` and finally in the third column we can find the result that is output from `R`.
+```{block2, type='rmdcaution'}
+This is a **caution** to help the reader avoid minor problems. 
+```
 
-| Math.              |R                   | Result      |
-|:-------------------|:-------------------|:------------|
-| 2+2                | `2+2`              | `4`         |
-| $\frac{4}{2}$      | `4/2`              | `2`         |
-| $3 \cdot 2^{-0.8}$ | `3*2^(-0.8)`       | `1.723048`  |
-| $\sqrt{2}$         | `sqrt(2)`          | `1.414214`  |
-| $\pi$              | `pi`               | `3.141593`  |
-| $\ln(2)$           | `log(2)`           | `0.6931472` |
-| $\log_{3}(9)$      | `log(9, base = 3)` | `2`         |
-| $e^{1.1}$          | `exp(1.1)`         | `3.004166`  |
-| $\cos(\sqrt{0.9})$ | `cos(sqrt(0.9))`   | `0.5827536` |
+```{block2, type='rmdwarning'}
+This is a **warning** to help the reader avoid significant problems.
+```
 
 
 ### Getting help
@@ -181,10 +159,15 @@ Once this is done, all the functions and documentation of this package are avail
 Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
 ```
 
-One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub. 
+One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this book. Run the following code to install the package directly from GitHub. 
 
 ```{r, eval = FALSE}
 install_github("SMAC-Group/stat297")
+```
+
+
+```{block2, type='rmdwarning'}
+The STAT 297 package is required for use of many features in this book.  
 ```
 
 
@@ -192,11 +175,31 @@ install_github("SMAC-Group/stat297")
 
 There are many more elements in RStudio, and we encourage you to use the [RStudio Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf) as a reference. 
 
+
 ## Basic Probability and Statistics with `R`
 
 The `R` environment provides an up-to-date and efficient programming language to develop different tools and applications. Nevertheless, its main functionality lies in the core statistical framework and tools that consistute the basis of this language. Indeed, this book aims at introducing and describing the methods and approaches of statistical programming which therefore require a basic knowledge of Probability and Statistics in order to grasp the logic and usefulness of the features presented in this book.
 
 For this reason, we will briefly take the reader through some of the basic functions that are available within `R` to obtain probabilities based on parametric distributions, compute summary statistics and understand basic data structures. The latter is just an introduction and a more in-depth description of different data structures will be given in a future chapter.
+
+
+### Simple calculations
+
+Since the `R` environment can serve as an advanced calculator, it is worth noting this also allows for simple calculations. In the table below we show a few examples of such calculations where the first column gives a mathematical expression (calculation), the second gives the equivalent of this expression in `R` and finally in the third column we can find the result that is output from `R`.
+
+| Math.              |R                   | Result      |
+|:-------------------|:-------------------|:------------|
+| 2+2                | `2+2`              | `4`         |
+| $\frac{4}{2}$      | `4/2`              | `2`         |
+| $3 \cdot 2^{-0.8}$ | `3*2^(-0.8)`       | `1.723048`  |
+| $\sqrt{2}$         | `sqrt(2)`          | `1.414214`  |
+| $\pi$              | `pi`               | `3.141593`  |
+| $\ln(2)$           | `log(2)`           | `0.6931472` |
+| $\log_{3}(9)$      | `log(9, base = 3)` | `2`         |
+| $e^{1.1}$          | `exp(1.1)`         | `3.004166`  |
+| $\cos(\sqrt{0.9})$ | `cos(sqrt(0.9))`   | `0.5827536` |
+
+
 
 ### Probability Distributions 
 
