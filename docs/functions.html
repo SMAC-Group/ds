@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-12-15">
+<meta name="date" content="2018-01-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -105,18 +105,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.1</b> Why <code>R</code>?</a></li>
-<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.2</b> Why <code>R</code>?</a></li>
 <li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
 <li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
-<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.1.5</b> Simple calculations</a></li>
-<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.6</b> Getting help</a></li>
-<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.7</b> Installing packages</a></li>
-<li class="chapter" data-level="1.1.8" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.8</b> Additional References</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.5</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.6</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.7</b> Additional References</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
-<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.1</b> Probability Distributions</a></li>
-<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Summary Statistics</a></li>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.2.1</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.2</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.3</b> Summary Statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
@@ -292,10 +292,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">data</span>(hubble)
 
 <span class="co"># Plot data</span>
-<span class="kw">plot</span>(<span class="dt">y =</span> hubble$y, <span class="dt">x =</span> hubble$x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, 
+<span class="kw">plot</span>(<span class="dt">y =</span> hubble<span class="op">$</span>y, <span class="dt">x =</span> hubble<span class="op">$</span>x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, 
      <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)
 <span class="kw">grid</span>()</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 <p>By the end of this chapter we will therefore be able to build a function to obtain an estimate of <span class="math inline">\(\beta\)</span> and, consequently, an estimate of the age of the universe based on the big bang theory (as well as a means of testing whether a Creationist hypothesis on the age of the universe is reasonable based on the latter theory).</p>
 <div id="r-functions" class="section level2">
 <h2><span class="header-section-number">6.1</span> R functions</h2>
@@ -308,16 +308,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="rmdwarning">
 It is important to make sure that the function name is specific and does not correspond to other functions that may need to be used within your work session. If two functions have the same name, just as with other R objects, the function that will be used is the last one that has been defined within the R working session.
 </div>
-<p></p>
+
 <p>Once we have defined the name, we then attribute a function to this name by using the <code>function</code> syntax to which we assign some parameters (or attributes). The latter are the values or data that the user will input in order for the function to deliver the desired output. The latter is subsequently obtained through the code constituting the <em>body</em> of the function. Once the code has made the necessary computations, the function needs to know which results are to be given as an output. This can be done, for example, using the <code>return</code> syntax.</p>
 <p>A couple of simple examples can be functions that compute the sample mean:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_mean &lt;-<span class="st"> </span>function (x) {
-  average &lt;-<span class="st"> </span><span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)/<span class="kw">sum</span>(!<span class="kw">is.na</span>(x))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_mean &lt;-<span class="st"> </span><span class="cf">function</span> (x) {
+  average &lt;-<span class="st"> </span><span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(x))
   <span class="kw">return</span>(average)
 }</code></pre></div>
 <p>or multiplies two numbers:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_prod &lt;-<span class="st"> </span>function (a, b) {
-  prod &lt;-<span class="st"> </span>a*b
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_prod &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {
+  prod &lt;-<span class="st"> </span>a<span class="op">*</span>b
   <span class="kw">return</span>(prod)
 }</code></pre></div>
 <p>Using these functions, we can compute the sample mean of the annual precipitation in US cities (that can be found in the base R dataset <code>precip</code>):</p>
@@ -327,20 +327,20 @@ It is important to make sure that the function name is specific and does not cor
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">my_prod</span>(<span class="dv">265</span>, <span class="dv">83</span>)</code></pre></div>
 <pre><code>## [1] 21995</code></pre>
 <p>A particular case of function building are so-called “infix” functions that allow to create new operators that carry out specific types of computations. So, instead of defining the name of a function, you can define the symbol to be used in order to make use of that function. For example, to sum two numbers in R you can do as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> +<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>which is simply a predefined infix function that can also be used as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">+</span><span class="st">`</span>(<span class="dv">1</span>, <span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Therefore the <code>+</code> operator is the result of a predefined infix function in R. However, all user-defined infix functions must start and end with the <code>%</code> symbol. For example, using an operator that we define as <code>%^%</code>, we can deliver the product of two numbers that is zero if the product is actually negative:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">%^%</span><span class="st">`</span> &lt;-<span class="st"> </span>function(a, b) {
-  prod =<span class="st"> </span>a*b
-  (prod &gt;<span class="st"> </span><span class="dv">0</span>)*prod
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">%^%</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {
+  prod =<span class="st"> </span>a<span class="op">*</span>b
+  (prod <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)<span class="op">*</span>prod
 }</code></pre></div>
 <p>This infix function can now be used through the operator as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> %^%<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">%^%</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> %^%<span class="st"> </span>-<span class="dv">1</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">%^%</span><span class="st"> </span><span class="op">-</span><span class="dv">1</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>Having described the general structure of an R function, let us go more into detail by analysing the three main components to R functions:</p>
 <ul>
@@ -353,20 +353,20 @@ It is important to make sure that the function name is specific and does not cor
 <div id="creating-functions-in-r" class="section level2">
 <h2><span class="header-section-number">6.2</span> Creating functions in R</h2>
 <p>As an example for the following sections, let us implement a function that takes two arguments and multiplies them according to the type of object they are (i.e. scalar, vector or matrix). To do so, we will first build a skeleton for this function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (...) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (...) {
   ...
 }</code></pre></div>
 <p>As you can see, we find a name for the function we want to build, which in this case is <code>gen_prod</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. The next two sections will describe these two components and then discuss the third component which is the function <em>environment</em>.</p>
 <div id="function-arguments" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Function arguments</h3>
 <p>Before implementing a function, we first need to ask ourselves what is the basic information that we need in order to obtain the desired output. In the case of a general product, as mentioned above, the only information that is essential to perform the operation is the first element and the second element we wish to multiply. These will therefore have to be the elements we need to provide to our function in order for it to deliver the desired product and, in R, we can provide the names we want for them (say <code>first_arg</code> and <code>second_arg</code>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (first_arg, second_arg) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (first_arg, second_arg) {
   ...
 }</code></pre></div>
 <p>We will build this function such that the first argument has a higher (or equal) dimension than the second (e.g. the first is a vector while the second is another vector or a scalar). Let us suppose that <code>a = matrix(1:8, 4, 2)</code> is a 4 <span class="math inline">\(\times\)</span> 2 matrix and <code>b = matrix(8:1, 2, 4)</code> is a 2 <span class="math inline">\(\times\)</span> 4 matrix. Given that this is a matrix multiplication, these arguments need to be entered in the correct order (such that the dimensions correspond):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(a, b)</code></pre></div>
 <p>In the above syntax, we used so-called <em>positional matching</em> where arguments to the function must be entered in the same order as they are defined in the function itself. If these are entered in the wrong order the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of a function, but it is generally suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
   ...
 }</code></pre></div>
@@ -381,39 +381,39 @@ It is important to make sure that the function name is specific and does not cor
 <div class="rmdnote">
 It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define the arguments as follows <code>a = matrix(rnorm(9), 3, 3), b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">Wickham (<a href="#ref-wickham2014advanced">2014</a>)</span> .
 </div>
-<p></p>
+
 <p>A special framework in which to specify arguments for a general function is the case where the arguments are objects that belong to a specific class for which a base function can be used. A simple example is the “<code>ts</code>” class of objects in R for which a function exists such that the user simply needs to call the <code>plot()</code> function (without needing to know that the function behind is the <code>plot.ts()</code> function). Let us for example suppose that some function has created a matrix whose elements represent pixel intensities of an image and that this function has assigned a class to this matrix called <code>&quot;pixel&quot;</code>. In the following code we therefore simply assign this class to an object called <code>image</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">image &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rgamma</span>(<span class="dv">100</span>, <span class="dt">shape =</span> <span class="dv">2</span>), <span class="dv">10</span>, <span class="dv">10</span>)
 <span class="kw">class</span>(image) =<span class="st"> &quot;pixel&quot;</span></code></pre></div>
 <p>If we were to plot this, we would obtain the following plot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(image)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
 <p>which simply plots the values for given coordinates. Given that this is not what we want, let us create a function that allows the user to simply use the <code>plot()</code> function which automatically recognises the object and plots a heatmap of the pixel intensity:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.pixel &lt;-<span class="st"> </span>function (mat) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.pixel &lt;-<span class="st"> </span><span class="cf">function</span> (mat) {
   <span class="kw">suppressWarnings</span>(<span class="kw">heatmap</span>(mat, <span class="dt">Colv=</span><span class="ot">NA</span>, <span class="dt">Rowv=</span><span class="ot">NA</span>, <span class="dt">labRow=</span><span class="ot">NA</span>, <span class="dt">labCol=</span><span class="ot">NA</span>, <span class="dt">scale=</span><span class="st">&#39;none&#39;</span>))
 }</code></pre></div>
 <p>If we use the <code>plot()</code> function now, we obtain the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(image)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-191-1.png" width="672" /></p>
 <p>which produces the desired output simply using the general-purpose function <code>plot()</code>.</p>
 <p>To conclude, additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is again given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = &quot;l&quot;</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
 </div>
 <div id="function-body" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Function body</h3>
 <p>The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement a function that delivers multiplication of objects of different nature. Let us start by delivering the product of the objects <code>first_arg</code> and <code>second_arg</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
-  first_arg%*%second_arg
+  first_arg<span class="op">%*%</span>second_arg
 }</code></pre></div>
 <p>If the user doesn’t provide any arguments to the function, this will automatically return a 3 <span class="math inline">\(\times\)</span> 3 matrix (product of two 3 <span class="math inline">\(\times\)</span> 3 matrices built using randomly generated observations from a standard normal). Otherwise, the user can enter the elements of multiplication to obtain their output of interest. For this reason, it would be appropriate that the first and second argument given by the user had compatible dimensions. But what if the latter isn’t the case? When building a function body it is important to consider the possible problems (“bugs”) that could arise if the inputs the user has given cannot be managed by the body of code you have written. For example, let us suppose that the user provides two 3 <span class="math inline">\(\times\)</span> 2 matrices as the first and second arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>))</code></pre></div>
 <pre><code>## Error in first_arg %*% second_arg: non-conformable arguments</code></pre>
 <p>In this case we see that the function outputs an error and it would be appropriate to insert a checking procedure at the start of our function in order to consider all possible objects that can be multiplied and issue explanations that are useful to the user in order for them to realise what the problem is. We could therefore add a check procedure before we perform the multiplication:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
-  if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
-    first_arg%*%second_arg
-  } else {
+  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
+    first_arg<span class="op">%*%</span>second_arg
+  } <span class="cf">else</span> {
     <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)
   }
 }</code></pre></div>
@@ -421,15 +421,15 @@ It is possible to also specify arguments in terms of the default value of other 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">12</span>),<span class="dv">4</span>,<span class="dv">3</span>))</code></pre></div>
 <pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), matrix(rnorm(12), 4, 3)): Object dimensions are not compatible</code></pre>
 <p>When a problem is detected in the body of a function, there may not necessarily be the need to interrupt the execution of the function with an error message. Indeed, in the above example, we could allow the function to check if the number of columns in the second object is compatible with that of the first and, if so, transpose the second matrix in order to obtain the correct multiplication with a warning message notifying the user that this has been done:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
-  if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
-    first_arg%*%second_arg
-  } else {
-    if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
+  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
+    first_arg<span class="op">%*%</span>second_arg
+  } <span class="cf">else</span> {
+    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
       <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)
-      first_arg%*%<span class="kw">t</span>(second_arg)
-    } else {
+      first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)
+    } <span class="cf">else</span> {
       <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)
     }
   }
@@ -438,18 +438,18 @@ It is possible to also specify arguments in terms of the default value of other 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">3</span>))</code></pre></div>
 <pre><code>## Error in if (dim(first_arg)[2] == dim(second_arg)[1]) {: argument is of length zero</code></pre>
 <p>We obtain this error because the function <code>dim()</code> only works on matrices (not vectors or scalars), therefore we can anticipate this problem by making sure that all objects are considered as matrices:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
   first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)
   second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)
   
-  if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
-    first_arg%*%second_arg
-  } else {
-    if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
+  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
+    first_arg<span class="op">%*%</span>second_arg
+  } <span class="cf">else</span> {
+    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
       <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)
-      first_arg%*%<span class="kw">t</span>(second_arg)
-    } else {
+      first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)
+    } <span class="cf">else</span> {
       <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)
     }
   }
@@ -464,21 +464,21 @@ It is possible to also specify arguments in terms of the default value of other 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</code></pre></div>
 <pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), rnorm(1)): Object dimensions are not compatible</code></pre>
 <p>although we can always multiply a scalar by a matrix or a vector. Therefore we can add one last control statement:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
   first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)
   second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)
 
-  if(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]==<span class="dv">1</span> &amp;<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]==<span class="dv">1</span>) {
-    first_arg*second_arg[<span class="dv">1</span>]
-  } else {
-    if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
-      first_arg%*%second_arg
-    } else {
-      if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
+  <span class="cf">if</span>(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]<span class="op">==</span><span class="dv">1</span>) {
+    first_arg<span class="op">*</span>second_arg[<span class="dv">1</span>]
+  } <span class="cf">else</span> {
+    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
+      first_arg<span class="op">%*%</span>second_arg
+    } <span class="cf">else</span> {
+      <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
         <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)
-        first_arg%*%<span class="kw">t</span>(second_arg)
-      } else {
+        first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)
+      } <span class="cf">else</span> {
         <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)
       }
     }
@@ -494,9 +494,9 @@ It is possible to also specify arguments in terms of the default value of other 
 <div class="rmdimportant">
 Additional check procedures should be carried out in order to understand if the first object has equal or higher dimensions compared to the second (although the user should be made aware of this in the description of the function). However we leave this exercise to the reader since it would simply be redundant in the message conveyed on programming the body of a function.
 </div>
-<p></p>
+
 <p>As you can see, the body of a function can rapidly become lengthy and complex when adding control statements and computations to it. This can become an issue if you program a complex function and then have to share it with a collaborator or modify it after some time you haven’t used it. It is therefore good practice to comment your functions and make sure that the objects consisting in the output of your function are clear to someone who reads the function. In the latter case, the <code>return()</code> function makes sure that only the objects that you’re interested in are returned to the user (avoiding that eventual unassigned and unimportant values are returned).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span>function (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), 
                       <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {
   
   <span class="co"># Make sure that all objects are considered as matrices</span>
@@ -504,20 +504,20 @@ Additional check procedures should be carried out in order to understand if the 
   second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)
   
   <span class="co"># Check if second argument is a scalar and, if so, return product (prod)</span>
-  if(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]==<span class="dv">1</span> &amp;<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]==<span class="dv">1</span>) {
-    prod &lt;-<span class="st"> </span>first_arg*second_arg[<span class="dv">1</span>]
-  }else{
+  <span class="cf">if</span>(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]<span class="op">==</span><span class="dv">1</span>) {
+    prod &lt;-<span class="st"> </span>first_arg<span class="op">*</span>second_arg[<span class="dv">1</span>]
+  }<span class="cf">else</span>{
     <span class="co"># Check if the objects have compatible dimensions and, if so, return product (prod)</span>
-    if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
-      prod &lt;-<span class="st"> </span>first_arg%*%second_arg
-    }else{
+    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {
+      prod &lt;-<span class="st"> </span>first_arg<span class="op">%*%</span>second_arg
+    }<span class="cf">else</span>{
       <span class="co"># Check if other dimensions are compatible if the initial</span>
       <span class="co"># ones are not and, if so, transpose the second object and return </span>
       <span class="co"># product (prod) with warning for the user</span>
-      if (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] ==<span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
+      <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {
         <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)
-        prod &lt;-<span class="st"> </span>first_arg%*%<span class="kw">t</span>(second_arg)
-      } else {
+        prod &lt;-<span class="st"> </span>first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)
+      } <span class="cf">else</span> {
         <span class="co"># Output an error message if none of the dimensions are compatible</span>
         <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)
       }
@@ -550,7 +550,7 @@ Additional check procedures should be carried out in order to understand if the 
 <span class="kw">var</span>(x)</code></pre></div>
 <pre><code>## [1] 6.8</code></pre>
 <p>Let us now create another function called <code>missing</code> in the global environment which takes <code>x</code> as an argument but only returns 100. After this, we execute the code above again:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">missing =<span class="st"> </span>function (x) <span class="dv">100</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">missing =<span class="st"> </span><span class="cf">function</span> (x) <span class="dv">100</span>
 x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>)
 <span class="kw">var</span>(x)</code></pre></div>
 <pre><code>## [1] 6.8</code></pre>
@@ -566,7 +566,7 @@ prod</code></pre></div>
 <div id="example-continued-least-squares-function" class="section level2">
 <h2><span class="header-section-number">6.4</span> Example (continued): Least-squares function</h2>
 <p>To implement our linear regression function we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. Based on the linear algebra behind least-squares regression, let us implement a function that delivers inference on the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and therefore define the skeleton of this R function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm &lt;-<span class="st"> </span>function (...) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm &lt;-<span class="st"> </span><span class="cf">function</span> (...) {
   
   ...
   
@@ -628,9 +628,9 @@ Derivation of Least-Squares Estimator
 \end{equation*}\]</span>
 which verifies Eq. <a href="functions.html#eq:lsformula">(6.1)</a>.
 </div>
-<p></p>
+
 </div>
-<p></p>
+
 <p>The variance of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is given by</p>
 <span class="math display" id="eq:lsvar">\[\begin{equation}
 \text{Var} \left(\hat{\boldsymbol{\beta}} \right) = \sigma^2 \left(\mathbf{X}^T \mathbf{X}\right)^{-1},
@@ -659,7 +659,7 @@ Derivation - Variance of Least-Squares Estimator
 </li>
 </ul>
 </div>
-<p></p>
+
 <p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
 <span class="math display" id="eq:lssig2hat">\[\begin{equation}
   \hat{\sigma}^2 = \frac{1}{n - p}  \left( \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}} \right)^T \left( \mathbf{y} - \mathbf{X} \hat{\boldsymbol{\beta}}\right) 
@@ -670,15 +670,15 @@ Derivation - Variance of Least-Squares Estimator
 <!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
 <p>The rest of this section aims at implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> to <a href="functions.html#eq:lssig2hat">(6.3)</a>.</p>
 <p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="functions.html#eq:lsformula">(6.1)</a> within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {
   
   <span class="co"># Define parameters</span>
   n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
-  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p
   
   <span class="co"># Estimate beta through Eq. (6.1)</span>
-  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response
   
   <span class="co"># Return the estimated value of beta</span>
   beta.hat
@@ -687,9 +687,9 @@ Derivation - Variance of Least-Squares Estimator
 <div class="rmdimportant">
 Before discussing the body and output of this function, we can first underline an important aspect of programming. Indeed, we defined the number of covariates (and length of the vector <span class="math inline">\(\boldsymbol{\beta}\)</span>) as <code>p &lt;- dim(covariates)[2]</code> where the function <code>dim()</code> presupposes that the object <code>covariates</code> is a matrix. Nevertheless, in our case the object <code>covariates</code> would correspond to <code>hubble$x</code> which is a vector and therefore this operation would return <code>NULL</code> as an output. When programming it is therefore important to think ahead and understand if there are any particular cases where parts of the body of your function may not work.
 </div>
-<p></p>
+
 <p>Taking into account the above note, it would be appropriate to make sure that the code in the body of the function works also in particular cases (e.g. the <code>covariates</code> object is a vector and not a matrix). In our case we therefore use the function <code>as.matrix()</code> which forces an object to be considered as a matrix in order for it to be used within matrix opeations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {
   
   <span class="co"># Make sure data formats are appropriate</span>
   response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)
@@ -698,10 +698,10 @@ Before discussing the body and output of this function, we can first underline a
   <span class="co"># Define parameters</span>
   n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
-  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p
   
   <span class="co"># Estimate beta through Eq. (6.1)</span>
-  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response
   
   <span class="co"># Return the estimated value of beta</span>
   beta.hat
@@ -710,10 +710,10 @@ Before discussing the body and output of this function, we can first underline a
 <div class="rmdtip">
 Other checks can be introduced at the beginning of the function to make sure that the function is used correctly and obtain an appropriate output. In our case, for example, we could even introduce a check to understand if <code>response</code> and <code>covariates</code> have the same number of rows and interrupt the function execution and output an error message if this is not the case, making the user aware of this probem.
 </div>
-<p></p>
+
 <p>As you may notice, using the matrix operators we obtain an object we decide to call <code>beta.hat</code> and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the <code>return()</code> function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using <code>return()</code> we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on).</p>
 <p>With the <code>my_lm()</code> function we can now estimate the value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. However, we don’t have an estimate of its variance for which we would need to implement Equations <a href="functions.html#eq:lsvar">(6.2)</a> and <a href="functions.html#eq:lssig2hat">(6.3)</a>. We can therefore add these equations to the body of our <code>my_lm()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {
   
   <span class="co"># Make sure data formats are appropriate</span>
   response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)
@@ -722,18 +722,18 @@ Other checks can be introduced at the beginning of the function to make sure tha
   <span class="co"># Define parameters</span>
   n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
-  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p
   
   <span class="co"># Estimate beta through Eq. (6.1)</span>
-  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response
   
   <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span>
   <span class="co"># Compute residuals</span>
-  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat)
-  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
+  resid &lt;-<span class="st"> </span>response <span class="op">-</span><span class="st"> </span>covariates<span class="op">%*%</span><span class="kw">as.matrix</span>(beta.hat)
+  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>df)<span class="op">*</span><span class="kw">t</span>(resid)<span class="op">%*%</span>resid
   
   <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span>
-  var.beta &lt;-<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)
+  var.beta &lt;-<span class="st"> </span>sigma2.hat<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)
   
   <span class="co"># Return all estimated values</span>
   <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta))
@@ -750,7 +750,7 @@ Other checks can be introduced at the beginning of the function to make sure tha
 \end{equation}\]</span>
 <p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1-\alpha/2)^{th}\)</span> quantile of the standard normal distribution.</p>
 <p>Let us therefore add this output to our function which would require an extra argument: the confidence level. The most common confidence level used is the 95% level which is obtained by defining the significance level <span class="math inline">\(\alpha = 0.05\)</span>. We could therefore add the latter argument to our function and set its default value to 0.05.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span>function(response, covariates, <span class="dt">alpha =</span> <span class="fl">0.05</span>) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates, <span class="dt">alpha =</span> <span class="fl">0.05</span>) {
   
   <span class="co"># Make sure data formats are appropriate</span>
   response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)
@@ -759,23 +759,23 @@ Other checks can be introduced at the beginning of the function to make sure tha
   <span class="co"># Define parameters</span>
   n &lt;-<span class="st"> </span><span class="kw">length</span>(response)
   p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]
-  df &lt;-<span class="st"> </span>n -<span class="st"> </span>p
+  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p
   
   <span class="co"># Estimate beta through Eq. (6.1)</span>
-  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)%*%<span class="kw">t</span>(covariates)%*%response
+  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response
   
   <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span>
   <span class="co"># Compute residuals</span>
-  resid &lt;-<span class="st"> </span>response -<span class="st"> </span>covariates%*%<span class="kw">as.matrix</span>(beta.hat) 
-  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span>/df)*<span class="kw">t</span>(resid)%*%resid
+  resid &lt;-<span class="st"> </span>response <span class="op">-</span><span class="st"> </span>covariates<span class="op">%*%</span><span class="kw">as.matrix</span>(beta.hat) 
+  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>df)<span class="op">*</span><span class="kw">t</span>(resid)<span class="op">%*%</span>resid
   
   <span class="co"># Estimate of the variance of the estimated beta from Eq. (6.2)</span>
-  var.beta &lt;-<span class="st"> </span>sigma2.hat*<span class="kw">solve</span>(<span class="kw">t</span>(covariates)%*%covariates)
+  var.beta &lt;-<span class="st"> </span>sigma2.hat<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)
   
   <span class="co"># Estimate of the confidence interval based on alpha</span>
-  quant &lt;-<span class="st"> </span><span class="dv">1</span> -<span class="st"> </span>alpha/<span class="dv">2</span>
-  ci.beta &lt;-<span class="st"> </span><span class="kw">c</span>(beta.hat -<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)*<span class="kw">sqrt</span>(var.beta), beta.hat +<span class="st"> </span>
-<span class="st">                 </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)*<span class="kw">sqrt</span>(var.beta))
+  quant &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>
+  ci.beta &lt;-<span class="st"> </span><span class="kw">c</span>(beta.hat <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)<span class="op">*</span><span class="kw">sqrt</span>(var.beta), beta.hat <span class="op">+</span><span class="st"> </span>
+<span class="st">                 </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)<span class="op">*</span><span class="kw">sqrt</span>(var.beta))
   
   <span class="co"># Return all estimated values</span>
   <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, 
@@ -783,15 +783,15 @@ Other checks can be introduced at the beginning of the function to make sure tha
 }</code></pre></div>
 <p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
-fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble$y~hubble$x<span class="dv">-1</span>)
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="op">-</span><span class="dv">1</span>)
 
 <span class="co"># Linear regression with my_lm() function</span>
-fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble$y, hubble$x)
+fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)
 
 <span class="co"># Compare outputs</span>
-manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm$beta, fit_my_lm$sigma2)
-base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm$coefficients, 
-                     (<span class="dv">1</span>/fit_lm$df.residual)*<span class="kw">t</span>(fit_lm$residuals)%*%fit_lm$residuals)
+manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)
+base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, 
+                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)
 results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)
 <span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)
 results</code></pre></div>
@@ -800,14 +800,14 @@ results</code></pre></div>
 ## Sigma    67046.33165  67046.33165</code></pre>
 <p>As one can notice, the two procedures give the same outputs indicating that our <code>my_lm()</code> function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimated Hubble&#39;s constant</span>
-hubble_const &lt;-<span class="st"> </span>fit_my_lm$beta/<span class="fl">3.09e19</span> 
+hubble_const &lt;-<span class="st"> </span>fit_my_lm<span class="op">$</span>beta<span class="op">/</span><span class="fl">3.09e19</span> 
 <span class="co"># Note: The estimated Hubble&#39;s constant in inverse seconds, [s^(-1)]</span>
 
 <span class="co"># Age of the universe in seconds</span>
-age_sec &lt;-<span class="st"> </span><span class="dv">1</span>/hubble_const 
+age_sec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>hubble_const 
 
 <span class="co"># Age of the universe in years</span>
-age_sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">24</span>*<span class="dv">365</span>) </code></pre></div>
+age_sec<span class="op">/</span>(<span class="dv">60</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="dv">24</span><span class="op">*</span><span class="dv">365</span>) </code></pre></div>
 <p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>.</p>
 <p>Now, let’s suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. For this purpose we can build a 95% confidence interval for the true Hubble constant <span class="math inline">\(\beta\)</span> and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows</p>
 <span class="math display">\[\begin{equation*}
@@ -815,7 +815,7 @@ age_sec/(<span class="dv">60</span>^<span class="dv">2</span>*<span class="dv">2
 \end{equation*}\]</span>
 <p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). … Let us therefore replace the values in Eq. <a href="functions.html#eq:cibeta">(6.4)</a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for the Hubble constant</span>
-fit_my_lm$ci</code></pre></div>
+fit_my_lm<span class="op">$</span>ci</code></pre></div>
 <pre><code>## [1] 68.81032 84.35203</code></pre>
 <p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -867,7 +867,7 @@ fit_my_lm$ci</code></pre></div>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
 
 
-<meta name="date" content="2017-12-15">
+<meta name="date" content="2018-01-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -105,18 +105,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.1</b> Why <code>R</code>?</a></li>
-<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1.2</b> Why <code>R</code>?</a></li>
 <li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
 <li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
-<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.1.5</b> Simple calculations</a></li>
-<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.6</b> Getting help</a></li>
-<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.7</b> Installing packages</a></li>
-<li class="chapter" data-level="1.1.8" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.8</b> Additional References</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.1.5</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.1.6</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1.7</b> Additional References</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
-<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.1</b> Probability Distributions</a></li>
-<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Summary Statistics</a></li>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#simple-calculations"><i class="fa fa-check"></i><b>1.2.1</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#probability-distributions"><i class="fa fa-check"></i><b>1.2.2</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#summary-statistics"><i class="fa fa-check"></i><b>1.2.3</b> Summary Statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
@@ -279,58 +279,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
 <h4 class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari</em></h4>
-<h4 class="date"><em>2017-12-15</em></h4>
+<h4 class="date"><em>2018-01-29</em></h4>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>This book is currently under development and has been designed as a support for students who are following (or are interested in) courses that provide the basic knowledge to master “statistical programming” with R. By the latter we mean that area of computer programming which focuses on the implementation of methods that not only manage data but also extract meaningful information from it. The importance of this area of research comes from the increased collection of data from different sources such as academic research, public institutions and private companies that has required a corresponding increase in data management and analysis tools. Consequently, the need to develop applications and methods that are able to deliver these tools has led to a surge in the demand for expertise not only in computer programming but also in statistical and numerical analysis. Indeed, while it is essential to master the basics of programming to build the necessary software, it is now also paramount to understand the programming tools that can effectively respond to the need of finding, extracting, and analyzing the information to achieve the required goals.</p>
-<p>Within the above framework, the statistical software <code>R</code> has seen a rise in use due to its flexibility as an efficient language that builds a bridge between software development and data analysis. There are of course many other programming languages that have different advantages over <code>R</code> but, as you will see, one strength of <code>R</code> is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions (as well as other interesting features described below). This book intends to present the basic tools to statistical programming and software development using the wide variety of tools made available through <code>R</code>, from method-specific packages to version control programs. The general goals of the book are therefore the following:</p>
+<p>This book is an early version of an ongoing project to equip students with the basic knowledge to master “statistical programming” with R.</p>
+<p>The statistical software <code>R</code> has come into prominence due to its flexibility as an efficient language that builds a bridge between software development and data analysis. For example, one strength of <code>R</code> is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions. This book intends to present an approachable framework to statistical programming and software development using the wide variety of tools made available through <code>R</code>, from method-specific packages to version control programs. The general goals of the book are therefore the following:</p>
 <ul>
-<li>understand data structures in order to appropriately manage data, computer memory and computations;</li>
-<li>manipulate data structures through controls, instructions, and tailored functions in order to achieve a desired output;</li>
-<li>create new software tools (packages and web applications) that accommodate a previously unmet need;</li>
-<li>learn how to manage software development via version control tools (e.g., GitHub) and create documentation for this software (with embedded code) to allow others to make use of the software.</li>
+<li>introduce tools and workflow for reproducible research (R/RStudio, Git/GitHub, etc.);</li>
+<li>introduce principles of tidy data and tools for data wrangling;</li>
+<li>exploit data structures to appropriately manage data, computer memory and computations;</li>
+<li>data manipulation through controls, instructions, and tailored functions;</li>
+<li>develop new software tools including functions, Shiny applications, and packages;</li>
+<li>manage software development process including version control, documentation (with embedded code), and dissemination for other users.</li>
 </ul>
-<p>All these goals are common to any basic programming course, however all these will be heavily focused on the use and development of statistical tools. In fact, as highlighted earlier, it has become increasingly important to include statistical methodologies within the programming framework thereby allowing software to not only manage data efficiently but also to extract and analyse data in an appropriate manner while doing so. The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.</p>
+<p>The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.</p>
 
 <div class="rmdimportant">
-This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (which can be accessed here <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, if you know RMarkdown and are familiar with GitHub, make a pull request and fix an issue yourself, otherwise, if you’re not familiar with these tools, they will be explained later on in the book itself.
+This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (accessed here <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, once you have learned RMarkdown and GitHub, feel free to make a pull request to offer bug fixes or corrections!
 </div>
-<p></p>
+
 <center>
 <img src="images/diagram.png" alt="Note that this diagram is a adapted version of Figure 1 of http://r4ds.had.co.nz/explore-intro.html" />
 </center>
-<p>To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. Most cases, there is input that an audience provides, in which we then process and manipulate in R. Exploratory data analysis is performed using R, R Markdown, and Shiny applications as we preprocess, visualize, and model our data/input. We then communicate our results through websites, rapports, slides, we can use a narrative report using R Markdown with R as the backend. To communicate through a website, we can output interactive Shiny applications that take in multiple parameters and options. We can even use both. Some cases, after we communicate, we may find something new, and move back to the exploring stage.</p>
+<p>To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. In many cases, an input (e.g. data source) is provided, and then we process, explore, and/or manipulate the data with R. We then may communicate our findings through websites, reports, slides, etc. using some combination of RMarkdown, R, and/or Shiny. This process is not always sequential as we often have new ideas or observations at any stage and begin exploring again.</p>
 <div id="r-and-rstudio" class="section level2">
 <h2><span class="header-section-number">1.1</span> <code>R</code> and <code>RStudio</code></h2>
-<p>The statistical computing language <code>R</code> has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important programming languages, communication, and version-control features. The latter is also possible thanks to the development of the <code>RStudio</code> interface which provides a pleasant and functional user-interface for <code>R</code> as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are available to the user. In order to illustrate the relationship between R &amp; RStudio in statistical programming, one might think of a car analogy in which R would be like the engine and RStudio might be like leather seats. R is doing the work (for the most part), and RStudio generally is making you more comfortable while you use R.</p>
-<div id="why-r" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Why <code>R</code>?</h3>
-<p>There are many reasons to use <code>R</code>. Two compelling reasons are that R is both free as in “free pizza”, and free as in “free speech”). Free–like “free pizza”–means that there is never a need to pay for any part of the R software, or contributed packages (i.e. add-on modules). Free–like “free speech”–means that there are very few restrictions on how R can be used or barriers to those who would like to contribute packages (i.e. add-on modules).</p>
-<p>The fact that is a free and open-source software which <em>per se</em> does not necessarily imply that it is a good software (although it is also that). The reason why this is an important feature consists in the fact that the results of any code or program developed in the <code>R</code> environment can easily be replicated therefore ensuring accessibility and transparency for the general user. More importantly however, this replicability of results is also accompanied by a wide variety of packages that are made available through the <code>R</code> environment in which users can find a diversity of codes, functions and features that are designed to tackle a large amount of programming and analytical tasks. Moreover, these packages are relatively simple to create and are extremely useful for code-sharing purposes since they enclose the codes, functions and external dependencies that allow anyone to install any of these features all at once in easy and efficient manner.</p>
-<p>In addition to its accessibility and code-sharing features, <code>R</code> has acquired visibility and importance mainly due to the cutting-edge tools that it makes available to the general user. Indeed, a growing area of research both in academia and in industry is Statistics and Machine Learning through which it is possible to find, extract and make an efficient use of the increasing amount of data and information being collected. All the latest methods and approaches going from data-mining techniques to predictive analysis are available in <code>R</code> and, due to its nature, all future methods and approaches will be made available to all users through <code>R</code>. For this reason, any individual, company or organization has a keen interest in acquiring and developing expertise in <code>R</code> since it makes available the most appropriate tools for any data-based analysis and decision-making process.</p>
-<p>Like any other software, there are of course some drawbacks with using <code>R</code>. First, the presence of an extended amount of user-contributed packages can make its usage and bug-reporting problematic. Although this does not represent a major problem since many forums exist and solutions are usually quickly fixed, there can be many issues concerning package updates or deletions that can create problems for other existing packages that depend on them. This is fairly rare, but there can consequently be problems in the use of packages that become obsolete and need to be fixed due to dependency issues. Another drawback consists in the extensive use of computer memory that <code>R</code> entails through its commands which generally give little relevance to this issue. However, many different solutions are being developed which deal with this problem along with the increased memory made available by current operating systems.</p>
-<p>In the perspective of improving the usage of computer memory, <code>R</code> has been developing efficient and “seemless” connections with high-performance languages which allow functions and packages to make use of them thereby greatly lightening and accelerating computations made through <code>R</code>. An important example of this is given by the connections made available to the <code>C++</code> language. In this book we will discuss the connections with this language that are particularly well implemented, but other high-performance languages can be used such as <code>C</code> and <code>FORTRAN</code>.</p>
-</div>
+<p>The statistical computing language <a href="https://cran.r-project.org/"><code>R</code></a> has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important tools. The latter is amplified thanks to the development of the <a href="https://www.rstudio.com/">RStudio</a> interface which provides a pleasant and functional user-interface for <code>R</code> as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are readily available to the user. In order to illustrate the relationship between R &amp; RStudio in statistical programming, one might think of a car analogy in which R would be the drivetrain and chassis while RStudio adds comfortable seats and air conditioning. R is doing most of the work, and the user can basically get where they want to go using R without RStudio. RStudio is generally is making you more comfortable while you use R, but you won’t get very far using RStudio without R.</p>
 <div id="getting-started-with-r" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Getting started with <code>R</code></h3>
-<p>As mentioned earlier, <code>R</code> can be thought of as a programming language as well as a software environment for statistical programming. Since it is a free and open-source software, all you will need to do is to download it from the following link:</p>
+<h3><span class="header-section-number">1.1.1</span> Getting started with <code>R</code></h3>
+<p>Since <code>R</code> is a free and open-source software, you may simply download it from the following link:</p>
 <ul>
-<li><a href="https://cran.r-project.org/"><code>R</code></a></li>
+<li><a href="https://cran.r-project.org/"><code>R</code>: https://cran.r-project.org/</a></li>
 </ul>
-<p>Once you’ve downloaded and installed <code>R</code> on your computer you will be able to start using the programming language and packages that the <code>R</code> environment provides. Nevertheless, to make full use of the latest developments and features of this software, in this book we recommend using the IDE called <code>RStudio</code> which can be downloaded from the following link:</p>
+<p>While <code>R</code> certainly can be used “as is” for many purposes, we strongly recommend using an IDE called RStudio. There are several versions of RStudio for different users (RStudio Desktop, Commercial, Server, etc.). The free RStudio Desktop version is sufficient for our purposes. RStudio can downloaded from the following link:</p>
 <ul>
-<li><a href="https://www.rstudio.com/">RStudio</a></li>
+<li><a href="https://www.rstudio.com/">RStudio: https://www.rstudio.com/</a></li>
 </ul>
 
 <div class="rmdimportant">
 You cannot use <code>RStudio</code> without having installed <code>R</code> on your computer.
 </div>
-<p></p>
+
+</div>
+<div id="why-r" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Why <code>R</code>?</h3>
+<p>There are many reasons to use <code>R</code>. Two compelling reasons are that R is both free as in “free pizza”, and free as in “free speech”. Free–like “free pizza”–means that there is never a need to pay for any part of the R software, or contributed packages (i.e. add-on modules). Free–like “free speech”–means that there are very few restrictions on how R can be used or barriers to those who would like to contribute packages (i.e. add-on modules).</p>
+<p>The fact that is a free and open-source software does not necessarily imply that it is a good software (although it is also that). The reason why this is an important feature consists in the fact that the results of any code or program developed in the <code>R</code> environment can easily be replicated therefore ensuring accessibility and transparency for the general user. More importantly however, this replicability of results is also accompanied by a wide variety of packages that are made available through the <code>R</code> environment in which users can find a diversity of codes, functions, and features that are designed to tackle a large amount of programming and analytical tasks. Moreover, new packages are relatively simple to create and are extremely useful for code-sharing purposes since they enclose the codes, functions, and external dependencies that allow anyone to easily and efficiently install these features. Additionally, these accessibility and code-sharing features have established <code>R</code> as a platform for development and dissemination of cutting-edge tools directly from the developer to the end-user.</p>
 </div>
 <div id="about-rstudio" class="section level3">
 <h3><span class="header-section-number">1.1.3</span> About RStudio</h3>
-<p><code>RStudio</code> is a customizable IDE for the <code>R</code> enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with <code>R</code>. For the most part, <code>RStudio</code> provides everything the <code>R</code> user will need in a self-contained, and well-organized environment. Moreover, it is possible to create “projects” in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.</p>
+<p><code>RStudio</code> is a customizable IDE for the <code>R</code> enviornment where the user can have easy access to plots, data, help, files, objects and many other features that are useful to work efficiently with <code>R</code>. For the most part, <code>RStudio</code> provides nearly everything the <code>R</code> user will need in a self-contained, and well-organized environment. Moreover, it is possible to create “projects” in which it is possible to create a dedicated environment space for sets of specific functions and files aimed to deal with various tasks.</p>
 <p>Below is short video demonstrating a basic introduction of RStudio and some of its elements.</p>
 <iframe src="https://www.youtube.com/embed/mU9KSgiom5g" width="672" height="400px">
 </iframe>
@@ -339,41 +338,88 @@ You cannot use <code>RStudio</code> without having installed <code>R</code> on y
 <div id="conventions" class="section level3">
 <h3><span class="header-section-number">1.1.4</span> Conventions</h3>
 <p>Throughout this book, <code>R</code> code will be typeset using a <code>monospace</code> font which is syntax highlighted. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span>pi
-b =<span class="st"> </span><span class="fl">0.5</span>
-<span class="kw">sin</span>(a*b)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span>pi
+b &lt;-<span class="st"> </span><span class="fl">0.5</span>
+<span class="kw">sin</span>(a<span class="op">*</span>b)</code></pre></div>
 <p>Similarly, <code>R</code> output lines (that usally appear in your Console) will begin with <code>##</code> and will not be syntax highlighted. The output of the above example is the following:</p>
 <pre><code>## [1] 1</code></pre>
-<p>Aside from <code>R</code> code and its outputs, this book will also insert some boxes that will draw the reader’s attention to important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the “under construction” nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:</p>
-
-<div class="rmdimportant">
-This is an important piece of information.
-</div>
-<p></p>
+<p>Aside from <code>R</code> code and output, this book will also insert boxes in order to draw the reader’s attention to important, curious, or otherwise informative details. An example of these boxes was seen at the beginning of this introduction where an important aspect was pointed out to the reader regarding the “under construction” nature of this book. Therefore the following boxes and symbols can be used to represent information of different nature:</p>
 
 <div class="rmdnote">
-This is some additional information that could be useful to the reader.
+This is a <strong>note</strong> that could be interesting or useful to the reader.
 </div>
-<p></p>
 
-<div class="rmdcaution">
-This is something that the reader should pay caution to but should not create major problems if not considered.
-</div>
-<p></p>
-
-<div class="rmdwarning">
-This is a warning which should be heeded by the reader to avoid problems of different nature.
-</div>
-<p></p>
 
 <div class="rmdtip">
-This is a tip for the reader when following or developing something based on this book.
+This is a <strong>tip</strong> for implementing content from this book.
 </div>
-<p></p>
+
+
+<div class="rmdimportant">
+This highlights <strong>important information</strong>.
 </div>
+
+
+<div class="rmdcaution">
+This is a <strong>caution</strong> to help the reader avoid minor problems.
+</div>
+
+
+<div class="rmdwarning">
+This is a <strong>warning</strong> to help the reader avoid significant problems.
+</div>
+
+</div>
+<div id="getting-help" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> Getting help</h3>
+<p>In the previous section we presented some examples on how <code>R</code> can be used as a calculator and we have already seen several functions such as <code>sqrt()</code> or <code>log()</code>. To obtain documentation about a function in <code>R</code>, simply put a question mark in front of the function name (or just type <code>help()</code> around the function name), or use the search bar on the “Help” tab in your RStudio window, and its documentation will be displayed. For example, if you are interested in learning about the function <code>log()</code> you could simply type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?log</code></pre></div>
+<p>which will display something similar to:</p>
+<div class="figure">
+<img src="images/example-log-help.png" />
+
+</div>
+<p>The <code>R</code> documentation is written by the author of the package. For mainstream packages in widespread use, the documentation is almost always quite good, but in some cases it can be quite technical, difficult to interpret, and possibly incomplete. In these cases, the best solution to understand a function is to search for help on any search engine. Often a simple search like “side by side boxplots in R” or “side by side boxplots in ggplot2” will produce many useful results. The search results often include user forums such as “CrossValidated” or “StackExchange” in which the questions you have about a function have probably already been asked and answered by many other users.</p>
+
+<div class="rmdtip">
+You can often use the error message to search for answers about a problem you may have with a function.
+</div>
+
+</div>
+<div id="installing-packages" class="section level3">
+<h3><span class="header-section-number">1.1.6</span> Installing packages</h3>
+<p><code>R</code> comes with a number of built-in functions but one of its main strengths is that there is a large number of packages on an ever-increasing range of subjects available for you to install. These packages provide additional functions, features and data to the R environement. If you want to do something in <code>R</code> that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in <code>R</code> is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for <code>R</code> (see CRAN website). Another general approach to find a package in <code>R</code> is simply to use a search engine in which to type the keywords of the tools you are looking for followed by “R package”.</p>
+<p><code>R</code> packages can be installed in various ways but the most widely used approach is through the <code>install.packages()</code> function. Another way is to use the “Tools -&gt; Install Packages…” path from the dropdown menus in <code>RStudio</code> or clicking on the “install” button in the “Packages” pane in the RStudio environment. The <code>install.packages()</code> function is very straight-forward and transcends any platform for the <code>R</code> environment. It is noteworthy that this approach assumes that the desired package(s) are available within the CRAN repository. This is very often the case, but there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter 02 will show other ways of installing packages from a commonly used repository called “GitHub”.</p>
+<p>Sticking momentarily to the packages available in the CRAN repository, the use of the <code>install.packages()</code> is quite simple. For example, if you want to install the package <code>devtools</code> you can simply write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</code></pre></div>
+<p>Once a package is installed it is not directly usable within your <code>R</code> session. To do so you will have to “load” the package into your current <code>R</code> session which is generally done through the function <code>library()</code>. For example, after having installed the <code>devtools</code> package, in order to use it within your session you would write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)</code></pre></div>
+<p>Once this is done, all the functions and documentation of this package are available and can be used within your current session. However, once you close your <code>R</code> session, all loaded packages will be closed and you will have to load them again if you want to use them in a new <code>R</code> session.</p>
+
+<div class="rmdnote">
+Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
+</div>
+
+<p>One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this book. Run the following code to install the package directly from GitHub.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_github</span>(<span class="st">&quot;SMAC-Group/stat297&quot;</span>)</code></pre></div>
+
+<div class="rmdwarning">
+The STAT 297 package is required for use of many features in this book.
+</div>
+
+</div>
+<div id="additional-references" class="section level3">
+<h3><span class="header-section-number">1.1.7</span> Additional References</h3>
+<p>There are many more elements in RStudio, and we encourage you to use the <a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">RStudio Cheatsheet</a> as a reference.</p>
+</div>
+</div>
+<div id="basic-probability-and-statistics-with-r" class="section level2">
+<h2><span class="header-section-number">1.2</span> Basic Probability and Statistics with <code>R</code></h2>
+<p>The <code>R</code> environment provides an up-to-date and efficient programming language to develop different tools and applications. Nevertheless, its main functionality lies in the core statistical framework and tools that consistute the basis of this language. Indeed, this book aims at introducing and describing the methods and approaches of statistical programming which therefore require a basic knowledge of Probability and Statistics in order to grasp the logic and usefulness of the features presented in this book.</p>
+<p>For this reason, we will briefly take the reader through some of the basic functions that are available within <code>R</code> to obtain probabilities based on parametric distributions, compute summary statistics and understand basic data structures. The latter is just an introduction and a more in-depth description of different data structures will be given in a future chapter.</p>
 <div id="simple-calculations" class="section level3">
-<h3><span class="header-section-number">1.1.5</span> Simple calculations</h3>
-<p>A basic aspect to underline about the <code>R</code> environment is that it serves as an advanced calculator which therefore allows also for simple calculations. In the table below we show a few examples of such calculations where the first column gives a mathematical expression (calculation), the second gives the equivalent of this expression in <code>R</code> and finally in the third column we can find the result that is output from <code>R</code>.</p>
+<h3><span class="header-section-number">1.2.1</span> Simple calculations</h3>
+<p>Since the <code>R</code> environment can serve as an advanced calculator, it is worth noting this also allows for simple calculations. In the table below we show a few examples of such calculations where the first column gives a mathematical expression (calculation), the second gives the equivalent of this expression in <code>R</code> and finally in the third column we can find the result that is output from <code>R</code>.</p>
 <table>
 <thead>
 <tr class="header">
@@ -431,50 +477,8 @@ This is a tip for the reader when following or developing something based on thi
 </tbody>
 </table>
 </div>
-<div id="getting-help" class="section level3">
-<h3><span class="header-section-number">1.1.6</span> Getting help</h3>
-<p>In the previous section we presented some examples on how <code>R</code> can be used as a calculator and we have already seen several functions such as <code>sqrt()</code> or <code>log()</code>. To obtain documentation about a function in <code>R</code>, simply put a question mark in front of the function name (or just type <code>help()</code> around the function name), or use the search bar on the “Help” tab in your RStudio window, and its documentation will be displayed. For example, if you are interested in learning about the function <code>log()</code> you could simply type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?log</code></pre></div>
-<p>which will display something similar to:</p>
-<div class="figure">
-<img src="images/example-log-help.png" />
-
-</div>
-<p>The <code>R</code> documentation is written by the author of the package. For mainstream packages in widespread use, the documentation is almost always quite good, but in some cases it can be quite technical, difficult to interpret, and possibly incomplete. In these cases, the best solution to understand a function is to search for help on any search engine. Often a simple search like “side by side boxplots in R” or “side by side boxplots in ggplot2” will produce many useful results. The search results often include user forums such as “CrossValidated” or “StackExchange” in which the questions you have about a function have probably already been asked and answered by many other users.</p>
-
-<div class="rmdtip">
-You can often use the error message to search for answers about a problem you may have with a function.
-</div>
-<p></p>
-</div>
-<div id="installing-packages" class="section level3">
-<h3><span class="header-section-number">1.1.7</span> Installing packages</h3>
-<p><code>R</code> comes with a number of built-in functions but one of its main strengths is that there is a large number of packages on an ever-increasing range of subjects available for you to install. These packages provide additional functions, features and data to the R environement. If you want to do something in <code>R</code> that is not available by default, there is a good chance that there are packages that will respond to your needs. In this case, an appropriate way to find a package in <code>R</code> is to use the search option in the CRAN repository which is the official network of file-transfer protocols and web-servers that store updated versions of code and documentation for <code>R</code> (see CRAN website). Another general approach to find a package in <code>R</code> is simply to use a search engine in which to type the keywords of the tools you are looking for followed by “R package”.</p>
-<p><code>R</code> packages can be installed in various ways but the most widely used approach is through the <code>install.packages()</code> function. Another way is to use the “Tools -&gt; Install Packages…” path from the dropdown menus in <code>RStudio</code> or clicking on the “install” button in the “Packages” pane in the RStudio environment. The <code>install.packages()</code> function is very straight-forward and transcends any platform for the <code>R</code> environment. It is noteworthy that this approach assumes that the desired package(s) are available within the CRAN repository. This is very often the case, but there is a growing number of packages that are under-development or completed and are made available through other repositories. In the latter setting, Chapter 02 will show other ways of installing packages from a commonly used repository called “GitHub”.</p>
-<p>Sticking momentarily to the packages available in the CRAN repository, the use of the <code>install.packages()</code> is quite simple. For example, if you want to install the package <code>devtools</code> you can simply write:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</code></pre></div>
-<p>Once a package is installed it is not directly usable within your <code>R</code> session. To do so you will have to “load” the package into your current <code>R</code> session which is generally done through the function <code>library()</code>. For example, after having installed the <code>devtools</code> package, in order to use it within your session you would write:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)</code></pre></div>
-<p>Once this is done, all the functions and documentation of this package are available and can be used within your current session. However, once you close your <code>R</code> session, all loaded packages will be closed and you will have to load them again if you want to use them in a new <code>R</code> session.</p>
-
-<div class="rmdnote">
-Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
-</div>
-<p></p>
-<p>One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this course. Run the following code to install the package directly from GitHub.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_github</span>(<span class="st">&quot;SMAC-Group/stat297&quot;</span>)</code></pre></div>
-</div>
-<div id="additional-references" class="section level3">
-<h3><span class="header-section-number">1.1.8</span> Additional References</h3>
-<p>There are many more elements in RStudio, and we encourage you to use the <a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">RStudio Cheatsheet</a> as a reference.</p>
-</div>
-</div>
-<div id="basic-probability-and-statistics-with-r" class="section level2">
-<h2><span class="header-section-number">1.2</span> Basic Probability and Statistics with <code>R</code></h2>
-<p>The <code>R</code> environment provides an up-to-date and efficient programming language to develop different tools and applications. Nevertheless, its main functionality lies in the core statistical framework and tools that consistute the basis of this language. Indeed, this book aims at introducing and describing the methods and approaches of statistical programming which therefore require a basic knowledge of Probability and Statistics in order to grasp the logic and usefulness of the features presented in this book.</p>
-<p>For this reason, we will briefly take the reader through some of the basic functions that are available within <code>R</code> to obtain probabilities based on parametric distributions, compute summary statistics and understand basic data structures. The latter is just an introduction and a more in-depth description of different data structures will be given in a future chapter.</p>
 <div id="probability-distributions" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Probability Distributions</h3>
+<h3><span class="header-section-number">1.2.2</span> Probability Distributions</h3>
 <p>Probability distributions can be uniquely characterized by different functions such as, for example, their density or distribution functions. Based on these it is possible to compute theoretical quantiles and also randomly sample observations from them. Replacing the <code>R</code> syntax for a given probability distribution with the general syntax <code>name</code>, all these functions and calculations are made available in <code>R</code> through the built-in functions:</p>
 <ul>
 <li><code>dname</code> calculates the value of the density function (pdf);</li>
@@ -484,7 +488,7 @@ Please notice that although packages need to be loaded at each session if you wa
 </ul>
 <p>Note that, when using these functions in practice, <code>name</code> is replaced with the syntax used in <code>R</code> to denote a specific probability distribution. For example, if we wish to deal with a Uniform probability distribution, then the syntax <code>name</code> is replaced by <code>unif</code> and, furthering the example, to randomly generate observations from a uniform distribution the function to use will be therefore <code>runif</code>. <code>R</code> allows to make use of these functions for a wide variety of probability distributions that include, but are not limited to: Gaussian (or Normal), Binomial, Chi-square, Exponential, F-distribution, Geometric, Poisson, Student-t and Uniform. In order to get an idea of how these functions can be used, below is an example of a problem that can be solved using them.</p>
 <div id="example-normal-test-scores-of-college-entrance-exam" class="section level4">
-<h4><span class="header-section-number">1.2.1.1</span> Example: Normal Test Scores of College Entrance Exam</h4>
+<h4><span class="header-section-number">1.2.2.1</span> Example: Normal Test Scores of College Entrance Exam</h4>
 <p>Assume that the test scores of a college entrance exam follows a Normal distribution. Furthermore, suppose that the mean test score is 70 and that the standard deviation is 15. How would we find the percentage of students scoring 90 or more in this exam?</p>
 <p>In this case, we consider a random variable <span class="math inline">\(X\)</span> that is normally distributed as follows: <span class="math inline">\(X \sim N(\mu=70, \sigma^2=225)\)</span> where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> represent the mean and variance of the distribution respectively. Since we are looking for the probability of students scoring higher than 90, we are interested in finding <span class="math inline">\(\mathbb{P}(X &gt; x=90)\)</span> and therefore we look at the upper tail of the Normal distribution. To find this probability we need the distribution function (<code>pname</code>) for which we therefore replace <code>name</code> with the <code>R</code> syntax for the Normal distribution: <code>norm</code>. The distribution function in <code>R</code> has various parameters to be specified in order to compute a probability which, at least for the Normal distribution, can be found by typing <code>?pnorm</code> in the Console and are:</p>
 <ul>
@@ -500,11 +504,11 @@ Please notice that although packages need to be loaded at each session if you wa
 </div>
 </div>
 <div id="summary-statistics" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Summary Statistics</h3>
+<h3><span class="header-section-number">1.2.3</span> Summary Statistics</h3>
 <p>While the previous functions deal with theoretical distributions, it is also necessary to deal with real data from which we would like to extract information. Supposing–as is often the case in applied statistics–we don’t know from which distribution it is generated, we would be interested in understanding the behavior of the data in order to eventually identify a distribution and estimate its parameters.</p>
 <p>The use of certain functions varies according to the nature of the inputs since these can be, for example, numerical or factors.</p>
 <div id="numerical-input" class="section level4">
-<h4><span class="header-section-number">1.2.2.1</span> Numerical Input</h4>
+<h4><span class="header-section-number">1.2.3.1</span> Numerical Input</h4>
 <p>A first step in analysing numerical inputs is given by computing summary statistics of the data which, in this section, we can generally denote as <code>x</code> (we will discuss the structure of this data more in detail in the following chapters). For central tendency or spread statistics of a numerical input, we can use the following <code>R</code> built-in functions:</p>
 <ul>
 <li><code>mean</code> calculates the mean of an input <code>x</code>;</li>
@@ -519,7 +523,7 @@ Please notice that although packages need to be loaded at each session if you wa
 </ul>
 </div>
 <div id="factor-input" class="section level4">
-<h4><span class="header-section-number">1.2.2.2</span> Factor Input</h4>
+<h4><span class="header-section-number">1.2.3.2</span> Factor Input</h4>
 <p>If the data of interest is a factor with different categories or levels, then different summaries are more appropriate. For example, for a factor input we can extract counts and percentages to summarize the variable by using <code>table</code>. Using functions and data structures that will be described in the following chapters, below we create an example dataset with 90 observations of three different colors: 20 being <code>Yellow</code>, 10 being <code>Green</code> and 50 being <code>Blue</code>. We then apply the <code>table</code> function to it:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(<span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Yellow&quot;</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="st">&quot;Green&quot;</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="st">&quot;Blue&quot;</span>, <span class="dv">50</span>))))</code></pre></div>
 <pre><code>## 
@@ -528,7 +532,7 @@ Please notice that although packages need to be loaded at each session if you wa
 <p>By doing so we obtain a frequency (count) table of the colors.</p>
 </div>
 <div id="dataset-inputs" class="section level4">
-<h4><span class="header-section-number">1.2.2.3</span> Dataset Inputs</h4>
+<h4><span class="header-section-number">1.2.3.3</span> Dataset Inputs</h4>
 <p>In many cases, when dealing with data we are actually dealing with datasets (see Chapter 03) where variables of different nature are aligned together (usually in columns). For datasets there is another convenient way to get simple summary statistics which consists in applying the function <code>summary</code> to the dataset itself (instead of simply a numerical input as seen earlier).</p>
 <p>As an example, let us explore the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris</a> flower dataset contained in the <code>R</code> built-in <code>datasets</code> package. The data set consists of 50 samples from each of three species of Iris (Setosa, Virginica and Versicolor). Four features were measured from each sample consisting in the length and the width (in centimeters) of the both sepals and petals. This dataset is widely used as an example since it was used by Fisher to develop a linear discriminant model based on which he intended to distinguish the three species from each other using combinations of these four features.</p>
 <p>Using this dataset, let us use the <code>summary</code> function on it to output the minimum, first quartile and thrid quartile, median, mean and maximum statistics (for the numerical variables in the dataset) and frequency counts (for factor inputs).</p>
@@ -598,7 +602,7 @@ Please notice that although packages need to be loaded at each session if you wa
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
