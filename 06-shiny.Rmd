@@ -1,3 +1,5 @@
+# (PART) Extending {-}
+
 # Shiny Web Applications
 
 Shiny is an R package that makes it easy to build interactive web apps through R. It made avaialble directly through RStudio and can be employed loading the corresponding library (i.e. `library(shiny)`).

@@ -10,15 +10,15 @@ Literate programming is the notion for programmers of adding narrative context w
 
 ### What is **reproducible** research? {-}
 
-Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors' findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
+Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis and producing output, can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors' findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
-Below is a short video showing a basic overview of R Markdown.  
+Below is a short video showing a basic overview of RMarkdown.  
 
 ```{r, echo = FALSE}
 knitr::include_url("https://www.youtube.com/embed/Fti30-mZkC0")
 ```
 
-Below, we have created a framework application that you can use to test out different R Markdown functions. Experiment with different R Markdown elements and utilize it to practice building and knitting HTML output. 
+Below, we have created a framework application that you can use to test out different RMarkdown functions. Experiment with different R Markdown elements and utilize it to practice building and knitting HTML output. 
 
 ```{r, echo=FALSE}
 knitr::include_app("http://shiny.science.psu.edu/szg279/rmd_mini/", height = "650px")
