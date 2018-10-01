@@ -467,20 +467,20 @@ The least-square estimator $\hat{\boldsymbol{\beta}}$ is given by
 The first step of this derivation is to reexpress the term $\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)$ as follows:
 
 \begin{equation*}
-    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
+    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T\mathbf{y}.
 \end{equation*}
 
-In case you were suprizied by the term $2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}$ remeber that a scalar can always be transposed without changing its value and therefore we have that $ \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =  \boldsymbol{y}^T \mathbf{X}  \boldsymbol{\beta}$. Now, our next step is to the following derivative 
+In case you were surprised by the term $2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{y}$ remember that a scalar can always be transposed without changing its value and therefore we have that $\boldsymbol{\beta}^T \mathbf{X}^T \mathbf{y} =  \mathbf{y}^T \mathbf{X}  \boldsymbol{\beta}$. Now, our next step is to the following derivative 
 
 \begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
+  \frac{\partial}{\partial \; \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
 \end{equation*}
 
 To do this we should keep in mind the following results
 
 \begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
-   \boldsymbol{y}^T \mathbf{X},
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T\mathbf{y} =   
+  \mathbf{y}^T \mathbf{X},
 \end{equation*}
 
 and
@@ -492,19 +492,19 @@ and
 The proof of these two results can for example be found in Propositions 7 and 9 of [Prof. Barnes' notes](http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf). Using these two results we obtain
 
 \begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2\mathbf{y}^T \mathbf{X}.
 \end{equation*}
 
 By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine $\hat{\boldsymbol{\beta}}$ through the follwing equation
 
 \begin{equation*}
-  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
+  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} = \mathbf{y}^T \mathbf{X},
 \end{equation*}
 
 which is equivalent to
 
 \begin{equation*}
-  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
+  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T\mathbf{y}.
 \end{equation*}
 
 If $\left(\mathbf{X}^T \mathbf{X}\right)^{-1}$ exists, $\hat{\boldsymbol{\beta}}$ is therefore given by
@@ -545,7 +545,8 @@ which verifies Eq. \@ref(eq:lsvar). To understand the above derivation it may be
 - $\mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T$ since$\text{Var} \left(  \mathbf{y} \right) = \sigma^2 \mathbf{I}$ and therefore we have $\mathbf{A} \text{Var} \left(  \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T$.
 - The result $\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}$ is based on the fact that $(\mathbf{X}^T \mathbf{X})^{-1}$ is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix $\mathbf{B}$ is such that the inverse and transpose operator commute, meaning that $( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T$.
 Therefore since the matrix $\mathbf{X}^T \mathbf{X}$ is square and (by assumption) invertible we have 
-$[(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}$.
+$[(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}$.   
+
 ```
 </div>
 \newline

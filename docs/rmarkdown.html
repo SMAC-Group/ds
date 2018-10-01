@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://smac-group.github.io/ds/" />
   
   <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   <meta name="github-repo" content="smac-group/ds" />
@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-01-31">
+<meta name="date" content="2018-10-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -222,6 +222,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
 <li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
 </ul></li>
+<li class="part"><span><b>III Extending</b></span></li>
 <li class="chapter" data-level="7" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
 <li class="chapter" data-level="7.1" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html#step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
@@ -255,7 +256,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="r-packages.html"><a href="r-packages.html#custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="chapter" data-level="9" data-path="high-performance-computing.html"><a href="high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a></li>
+<li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
 <li class="divider"></li>
@@ -287,11 +290,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="what-is-reproducible-research" class="section level3 unnumbered">
 <h3>What is <strong>reproducible</strong> research?</h3>
-<p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis and producing output can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors’ findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
-<p>Below is a short video showing a basic overview of R Markdown.</p>
+<p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis and producing output, can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors’ findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
+<p>Below is a short video showing a basic overview of RMarkdown.</p>
 <iframe src="https://www.youtube.com/embed/Fti30-mZkC0" width="672" height="400px">
 </iframe>
-<p>Below, we have created a framework application that you can use to test out different R Markdown functions. Experiment with different R Markdown elements and utilize it to practice building and knitting HTML output.</p>
+<p>Below, we have created a framework application that you can use to test out different RMarkdown functions. Experiment with different R Markdown elements and utilize it to practice building and knitting HTML output.</p>
 <iframe src="http://shiny.science.psu.edu/szg279/rmd_mini/?showcase=0" width="672" height="650px">
 </iframe>
 <p>You can access the online versions here:</p>
@@ -671,9 +674,9 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-rmd.Rmd",
 "text": "Edit"
 },
-"download": ["ds.pdf", "ds.epub"],
+"download": ["ds.dvi", "ds.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

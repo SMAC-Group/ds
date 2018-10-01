@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://smac-group.github.io/ds/" />
   
   <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   <meta name="github-repo" content="smac-group/ds" />
@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee &amp; Roberto Molinari">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-01-31">
+<meta name="date" content="2018-10-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -222,6 +222,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
 <li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
 </ul></li>
+<li class="part"><span><b>III Extending</b></span></li>
 <li class="chapter" data-level="7" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
 <li class="chapter" data-level="7.1" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="shiny-web-applications.html"><a href="shiny-web-applications.html#step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
@@ -255,7 +256,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="r-packages.html"><a href="r-packages.html#custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="chapter" data-level="9" data-path="high-performance-computing.html"><a href="high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a></li>
+<li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
 <li class="divider"></li>
@@ -290,14 +293,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>where <span class="math inline">\(y\)</span> represents the velocity while <span class="math inline">\(x\)</span> is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. <span class="math inline">\(\beta^{-1}\)</span>) gives the age of the universe based on the big bang theory.</p>
 <p>Therefore we will use the abovementioned dataset to estimate Hubble’s constant to then get an estimate of the age of the universe. This dataset can be found in the <code>gamair</code> package under the name <code>hubble</code> and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load gamair library and retrieve Hubble dataset</span>
-<span class="kw">library</span>(gamair)
-<span class="kw">data</span>(hubble)
-
-<span class="co"># Plot data</span>
+<span class="kw">library</span>(gamair)</code></pre></div>
+<pre><code>## Error in library(gamair): there is no package called &#39;gamair&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(hubble)</code></pre></div>
+<pre><code>## Warning in data(hubble): data set &#39;hubble&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot data</span>
 <span class="kw">plot</span>(<span class="dt">y =</span> hubble<span class="op">$</span>y, <span class="dt">x =</span> hubble<span class="op">$</span>x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, 
-     <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)
-<span class="kw">grid</span>()</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
+     <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</code></pre></div>
+<pre><code>## Error in plot(y = hubble$y, x = hubble$x, col = &quot;darkblue&quot;, pch = 20, : object &#39;hubble&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grid</span>()</code></pre></div>
+<pre><code>## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet</code></pre>
 <p>By the end of this chapter we will therefore be able to build a function to obtain an estimate of <span class="math inline">\(\beta\)</span> and, consequently, an estimate of the age of the universe based on the big bang theory (as well as a means of testing whether a Creationist hypothesis on the age of the universe is reasonable based on the latter theory).</p>
 <div id="r-functions" class="section level2">
 <h2><span class="header-section-number">6.1</span> R functions</h2>
@@ -597,16 +602,16 @@ Derivation of Least-Squares Estimator
 \end{equation*}\]</span>
 <p>The first step of this derivation is to reexpress the term <span class="math inline">\(\left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right)\)</span> as follows:</p>
 <span class="math display">\[\begin{equation*}
-    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}.
+    \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) =  \mathbf{y}^T\mathbf{y} +  \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} - 2 \boldsymbol{\beta}^T \mathbf{X}^T\mathbf{y}.
 \end{equation*}\]</span>
-<p>In case you were suprizied by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y}\)</span> remeber that a scalar can always be transposed without changing its value and therefore we have that $ ^T ^T  = ^T  $. Now, our next step is to the following derivative</p>
+<p>In case you were surprised by the term <span class="math inline">\(2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{y}\)</span> remember that a scalar can always be transposed without changing its value and therefore we have that <span class="math inline">\(\boldsymbol{\beta}^T \mathbf{X}^T \mathbf{y} = \mathbf{y}^T \mathbf{X} \boldsymbol{\beta}\)</span>. Now, our next step is to the following derivative</p>
 <span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
+  \frac{\partial}{\partial \; \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right).
 \end{equation*}\]</span>
 <p>To do this we should keep in mind the following results</p>
 <span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{y} =   
-   \boldsymbol{y}^T \mathbf{X},
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \boldsymbol{\beta}^T \mathbf{X}^T\mathbf{y} =   
+  \mathbf{y}^T \mathbf{X},
 \end{equation*}\]</span>
 <p>and</p>
 <span class="math display">\[\begin{equation*}
@@ -614,15 +619,15 @@ Derivation of Least-Squares Estimator
 \end{equation*}\]</span>
 <p>The proof of these two results can for example be found in Propositions 7 and 9 of <a href="http://www.atmos.washington.edu/~dennis/MatrixCalculus.pdf">Prof. Barnes’ notes</a>. Using these two results we obtain</p>
 <span class="math display">\[\begin{equation*}
-  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2 \boldsymbol{y}^T \mathbf{X}.
+  \frac{\partial}{\partial \, \boldsymbol{\beta}} \; \left( \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right)^T \left( \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \right) = 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} - 2\mathbf{y}^T \mathbf{X}.
 \end{equation*}\]</span>
 <p>By solving for the first order condition (and under some technical assumptions not discussed here) we can redefine <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> through the follwing equation</p>
 <span class="math display">\[\begin{equation*}
-  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} =  \boldsymbol{y}^T \mathbf{X},
+  \hat{\boldsymbol{\beta}}^T \mathbf{X}^T \mathbf{X} = \mathbf{y}^T \mathbf{X},
 \end{equation*}\]</span>
 <p>which is equivalent to</p>
 <span class="math display">\[\begin{equation*}
-  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T \boldsymbol{y}.
+  \mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} =   \mathbf{X}^T\mathbf{y}.
 \end{equation*}\]</span>
 <p>If <span class="math inline">\(\left(\mathbf{X}^T \mathbf{X}\right)^{-1}\)</span> exists, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is therefore given by</p>
 <span class="math display">\[\begin{equation*}
@@ -656,10 +661,11 @@ Derivation - Variance of Least-Squares Estimator
 <ul>
 <li><span class="math inline">\(\text{Var} \left( \mathbf{A} \mathbf{y} \right) = \mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T\)</span> since <span class="math inline">\(\mathbf{A}\)</span> is not a random variable.</li>
 <li><span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span> since<span class="math inline">\(\text{Var} \left( \mathbf{y} \right) = \sigma^2 \mathbf{I}\)</span> and therefore we have <span class="math inline">\(\mathbf{A} \text{Var} \left( \mathbf{y} \right) \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{I} \mathbf{A}^T = \sigma^2 \mathbf{A} \mathbf{A}^T\)</span>.</li>
-<li>The result <span class="math inline">\(\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}\)</span> is based on the fact that <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix <span class="math inline">\(\mathbf{B}\)</span> is such that the inverse and transpose operator commute, meaning that <span class="math inline">\(( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T\)</span>. Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)</span> is square and (by assumption) invertible we have <span class="math inline">\([(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}\)</span>.
-</div>
+<li>The result <span class="math inline">\(\mathbf{A} \mathbf{A}^T = (\mathbf{X}^T \mathbf{X})^{-1}\)</span> is based on the fact that <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> is symmetric but this is not necessarily intuitive. Indeed, this follows from the fact that any square and invertible matrix <span class="math inline">\(\mathbf{B}\)</span> is such that the inverse and transpose operator commute, meaning that <span class="math inline">\(( \mathbf{B}^T )^{-1} = ( \mathbf{B}^{-1} )^T\)</span>. Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)</span> is square and (by assumption) invertible we have <span class="math inline">\([(\mathbf{X}^T \mathbf{X})^{-1}]^T = [(\mathbf{X}^T \mathbf{X})^{T}]^{-1} = ( \mathbf{X}^T \mathbf{X})^{-1}\)</span>.<br />
 </li>
 </ul>
+</div>
+
 </div>
 
 <p>In general, the residual variance is unknown and needs to be estimated. A common and unbiased estimator of <span class="math inline">\(\sigma^2\)</span> is given by</p>
@@ -785,21 +791,33 @@ Other checks can be introduced at the beginning of the function to make sure tha
 }</code></pre></div>
 <p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with lm() function</span>
-fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="op">-</span><span class="dv">1</span>)
-
-<span class="co"># Linear regression with my_lm() function</span>
-fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)
-
-<span class="co"># Compare outputs</span>
-manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)
-base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, 
-                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)
-results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)
-<span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)
-results</code></pre></div>
-<pre><code>##       manual_results base_results
-## Beta        76.58117     76.58117
-## Sigma    67046.33165  67046.33165</code></pre>
+fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="op">-</span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## Error in eval(predvars, data, env): object &#39;hubble&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Linear regression with my_lm() function</span>
+fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)</code></pre></div>
+<pre><code>## Error in as.vector(response): object &#39;hubble&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare outputs</span>
+manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;fit_my_lm&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, 
+                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;fit_lm&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)</code></pre></div>
+<pre><code>## Error in cbind(manual_results, base_results): object &#39;manual_results&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)</code></pre></div>
+<pre><code>## Error in dimnames(x) &lt;- dn: length of &#39;dimnames&#39; [1] not equal to array extent</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">results</code></pre></div>
+<pre><code>##            [,1]         [,2]
+##  [1,] 0.8105226 0.0566300803
+##  [2,] 0.7651385 0.0277477369
+##  [3,] 0.8105282 0.0138480308
+##  [4,] 0.8149777 0.0068724579
+##  [5,] 0.8059558 0.0034679716
+##  [6,] 0.8045768 0.0017326560
+##  [7,] 0.8037060 0.0008662489
+##  [8,] 0.8045763 0.0004326877
+##  [9,] 0.8049000 0.0002163939
+## [10,] 0.8049516 0.0001081914</code></pre>
 <p>As one can notice, the two procedures give the same outputs indicating that our <code>my_lm()</code> function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimated Hubble&#39;s constant</span>
 hubble_const &lt;-<span class="st"> </span>fit_my_lm<span class="op">$</span>beta<span class="op">/</span><span class="fl">3.09e19</span> 
@@ -818,7 +836,7 @@ age_sec<span class="op">/</span>(<span class="dv">60</span><span class="op">^</s
 <p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). … Let us therefore replace the values in Eq. <a href="functions.html#eq:cibeta">(6.4)</a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for the Hubble constant</span>
 fit_my_lm<span class="op">$</span>ci</code></pre></div>
-<pre><code>## [1] 68.81032 84.35203</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;fit_my_lm&#39; not found</code></pre>
 <p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -834,6 +852,9 @@ fit_my_lm<span class="op">$</span>ci</code></pre></div>
 
 </div>
 </div>
+
+
+
 <h3><span class="header-section-number">A</span> Basic Probability and Statistics with <code>R</code></h3>
 <div id="refs" class="references">
 <div id="ref-wood2017generalized">
@@ -891,9 +912,9 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/05-functions.Rmd",
 "text": "Edit"
 },
-"download": ["ds.pdf", "ds.epub"],
+"download": ["ds.dvi", "ds.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

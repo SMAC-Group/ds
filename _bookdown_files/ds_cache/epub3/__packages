@@ -1,0 +1,13 @@
+base
+zoo
+xts
+TTR
+quantmod
+rwunderground
+shiny
+devtools
+knitr
+rmarkdown
+stat297
+ggplot2
+ggmap

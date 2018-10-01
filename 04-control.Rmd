@@ -304,7 +304,7 @@ repeat (until "you are free"){
 
 Try to develop an algorithm to exit the maze presented above. Could you escape? Though it might take some time (and probably would not correspond to the fastest strategy) one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss the elements necessary to actually program the "`repeat (until "you are free")`" part of our algorithm. 
 
-#### `for` Loops
+#### `for` Loops {#forloop}
 
 Let's consider the following situation:
 
@@ -406,7 +406,7 @@ The above code can be interprented in plain English as: "Let's start with number
 
 As we can see, while statement is used to iterate until a specific condition is met. To make use of while statement in R, we introduce the basic syntax of it as following: 
 
-```{r eval = FALSE}
+```{r, eval = FALSE}
 while (some specified condition)
 {
    statement to execute when the above condition is satisfied
@@ -453,7 +453,7 @@ mean_hour + c(-1, 1)*z*sd_hour/sqrt(n)
 
 Based on this confidence interval your instructor is very disappointed since the confidence interval includes 0, indicating that it is possible that the students study on average zero hours. But does this interval makes sense? The lower bound of the interval is negative implying that students can also have negative hours of study. This of course makes no sense indicating that with this sample size the asymptotic Gaussian approximation makes little sense.
 
-To solve this issue, the (non-parametric) bootstrap is a convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right] denote the sample (in our case `student_work`), the way the bootstrap works is as follows:
+To solve this issue, the (non-parametric) bootstrap is a convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting $\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right]$ denote the sample (in our case `student_work`), the way the bootstrap works is as follows:
 
 - **Step 1:** Let $i = 1$.
 - **Step 2:** Construct a new sample, say $\mathbf{X}^*$, by sampling **with replacement** $n$ observations from $\mathbf{X}$.
