@@ -363,7 +363,7 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <p>An example of use of these functions and their output is the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
 <span class="kw">plot</span>(obj)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 <p>Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.</p>
 <div id="basic-steps" class="section level2">
 <h2><span class="header-section-number">8.1</span> Basic steps</h2>

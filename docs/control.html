@@ -658,48 +658,48 @@ In conclusion, we can visualize the R for loops as follows:
 <p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter.</p>
 <p>Apply methods are often used to make operations on some structured data. For example, let’s simulate a matrix of some random samples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</code></pre></div>
-<pre><code>##             [,1]         [,2]       [,3]
-##  [1,]  0.8154798 -1.469165235  0.2925043
-##  [2,] -0.9560495 -1.334936168  0.1530257
-##  [3,]  1.2641127 -1.455629201  1.1872566
-##  [4,]  0.7605783 -0.003717245  0.6223954
-##  [5,]  0.8986743  0.201608421 -0.6346740
-##  [6,] -0.2599687 -1.717030566  0.1381157
-##  [7,] -1.2732897 -0.553815979 -1.6875753
-##  [8,]  1.4665207  1.797689516 -1.6934204
-##  [9,] -0.1886869 -0.487240060  2.0063284
-## [10,] -0.8078425 -0.067124376  0.2837004
-## [11,]  0.2201780  0.476543256 -1.6377431
-## [12,] -0.2420270  1.102555363  0.8513089
-## [13,]  0.1616306  1.413921582  1.5755026
-## [14,] -1.5155518 -1.683922909  0.1648327
-## [15,] -0.5130531 -0.213472626  0.1585879
-## [16,] -1.7673859 -0.173933741 -1.6512247
-## [17,] -1.2921990  0.791080267 -0.2146887
-## [18,] -0.5180424  0.505944277 -0.5577340
-## [19,]  0.8689581  0.814993972 -0.2216262
-## [20,] -1.6382529 -0.546740017 -0.7235114</code></pre>
+<pre><code>##             [,1]         [,2]        [,3]
+##  [1,]  1.2641127 -1.455629201  1.18725660
+##  [2,]  0.7605783 -0.003717245  0.62239538
+##  [3,]  0.8986743  0.201608421 -0.63467405
+##  [4,] -0.2599687 -1.717030566  0.13811572
+##  [5,] -1.2732897 -0.553815979 -1.68757532
+##  [6,]  1.4665207  1.797689516 -1.69342039
+##  [7,] -0.1886869 -0.487240060  2.00632838
+##  [8,] -0.8078425 -0.067124376  0.28370037
+##  [9,]  0.2201780  0.476543256 -1.63774310
+## [10,] -0.2420270  1.102555363  0.85130893
+## [11,]  0.1616306  1.413921582  1.57550258
+## [12,] -1.5155518 -1.683922909  0.16483272
+## [13,] -0.5130531 -0.213472626  0.15858790
+## [14,] -1.7673859 -0.173933741 -1.65122474
+## [15,] -1.2921990  0.791080267 -0.21468870
+## [16,] -0.5180424  0.505944277 -0.55773403
+## [17,]  0.8689581  0.814993972 -0.22162617
+## [18,] -1.6382529 -0.546740017 -0.72351140
+## [19,] -1.4691652  0.292504331 -0.09889761
+## [20,] -1.3349362  0.153025747  1.28550326</code></pre>
 <p>To get the mean of each column, we can calculate each column mean separately or use a for loop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Observe what this does</span>
 <span class="kw">mean</span>(exp_mat)</code></pre></div>
-<pre><code>## [1] -0.1451208</code></pre>
+<pre><code>## [1] -0.1230012</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate separately </span>
 <span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</code></pre></div>
-<pre><code>## [1] -0.2258108</code></pre>
+<pre><code>## [1] -0.3589874</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] -0.1301196</code></pre>
+<pre><code>## [1] 0.032362</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</code></pre></div>
-<pre><code>## [1] -0.07943196</code></pre>
+<pre><code>## [1] -0.04237818</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using a for loop </span>
 <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){
   <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))
 }</code></pre></div>
-<pre><code>## [1] -0.2258108
-## [1] -0.1301196
-## [1] -0.07943196</code></pre>
+<pre><code>## [1] -0.3589874
+## [1] 0.032362
+## [1] -0.04237818</code></pre>
 <p>However, using <code>apply</code>, we can do this in a very simple manner.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </code></pre></div>
-<pre><code>## [1] -0.22581085 -0.13011957 -0.07943196</code></pre>
+<pre><code>## [1] -0.35898743  0.03236200 -0.04237818</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The 2 indicates operations on columns and not rows </span></code></pre></div>
 <p>We will see how these approaches can help accelerate our work later.</p>
 </div>
@@ -781,7 +781,7 @@ boot_mean &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class=
 <span class="co"># Step 4</span>
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha<span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>))</code></pre></div>
 <pre><code>##      2.5%     97.5% 
-## 0.2045455 1.9772727</code></pre>
+## 0.1818182 2.0000000</code></pre>
 <p>Based on this result your instructor is relieved since they know that, at a level of confidence of 95%, you are spending at least more than 10 minutes on your course work.</p>
 
 <div class="rmdnote">
@@ -1070,7 +1070,7 @@ trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimated value&quot;</span>, <span class="st">&quot;Standard error interval&quot;</span>, <span class="st">&quot;Good approximation (MatLab)&quot;</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
        <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="ot">NA</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>), 
        <span class="dt">pt.cex =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue4&quot;</span>, trans_blue, <span class="st">&quot;red4&quot;</span>))</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-171-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-170-1.png" width="576" style="display: block; margin: auto;" /></p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
