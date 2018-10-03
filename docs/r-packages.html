@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-10-01">
+<meta name="date" content="2018-10-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -123,8 +123,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>I Foundation</b></span></li>
 <li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
-<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming?</a></li>
-<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research?</a></li>
+<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
 <li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
 <li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
@@ -187,7 +187,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
 <li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
 <li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
-<li class="chapter" data-level="4.2.5" data-path="data.html"><a href="data.html#need-to-fix-this"><i class="fa fa-check"></i><b>4.2.5</b> NEED TO FIX THIS</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
 <li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
@@ -364,7 +363,7 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <p>An example of use of these functions and their output is the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
 <span class="kw">plot</span>(obj)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
 <p>Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.</p>
 <div id="basic-steps" class="section level2">
 <h2><span class="header-section-number">8.1</span> Basic steps</h2>
@@ -678,7 +677,7 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-package.Rmd",
 "text": "Edit"
 },
-"download": ["ds.dvi", "ds.epub"],
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
 "collapse": "section"
 }

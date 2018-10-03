@@ -4,11 +4,11 @@
 
 RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name "markdown" is an intentional contrast to other "markup" languages--e.g., hypertext markup language (HTML)--which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. "RMarkdown" is an implementation of the "markdown" language designed to accommodate embedded `R` code.
 
-### What is **literate** programming? {-} 
+### What is **literate** programming ? {-} 
 
 Literate programming is the notion for programmers of adding narrative context with code to produce documentation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated. 
 
-### What is **reproducible** research? {-}
+### What is **reproducible** research ? {-}
 
 Reproducible research or reproducible analysis is the notion that an experiment's whole process, including collecting data, performing analysis and producing output, can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors' findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue. 
 
@@ -145,7 +145,7 @@ To add a picture with captions, follow the syntax below:
 
 which will produce:
 
-<center>![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)</center>
+<center>![Eberly College of Science Banner](images/psu_eberly_blue.png)</center>
 
 Otherwise, to add a picture without any captions, follow the syntax below:
 
@@ -155,7 +155,7 @@ Otherwise, to add a picture without any captions, follow the syntax below:
 
 which delivers:
 
-<center>![](http://www.alumni.psu.edu/s/1218/16/images/logo.png){ width=50%}</center>
+<center>![](images/logo.png){ width=50%}</center>
 
 
 ### LaTeX 

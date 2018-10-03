@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-10-01">
+<meta name="date" content="2018-10-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -123,8 +123,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>I Foundation</b></span></li>
 <li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
-<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming?</a></li>
-<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research?</a></li>
+<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
 <li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
 <li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
@@ -187,7 +187,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
 <li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
 <li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
-<li class="chapter" data-level="4.2.5" data-path="data.html"><a href="data.html#need-to-fix-this"><i class="fa fa-check"></i><b>4.2.5</b> NEED TO FIX THIS</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
 <li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
@@ -285,11 +284,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 2</span> RMarkdown</h1>
 <p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name “markdown” is an intentional contrast to other “markup” languages–e.g., hypertext markup language (HTML)–which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. “RMarkdown” is an implementation of the “markdown” language designed to accommodate embedded <code>R</code> code.</p>
 <div id="what-is-literate-programming" class="section level3 unnumbered">
-<h3>What is <strong>literate</strong> programming?</h3>
+<h3>What is <strong>literate</strong> programming ?</h3>
 <p>Literate programming is the notion for programmers of adding narrative context with code to produce documentation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated.</p>
 </div>
 <div id="what-is-reproducible-research" class="section level3 unnumbered">
-<h3>What is <strong>reproducible</strong> research?</h3>
+<h3>What is <strong>reproducible</strong> research ?</h3>
 <p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis and producing output, can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors’ findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
 <p>Below is a short video showing a basic overview of RMarkdown.</p>
 <iframe src="https://www.youtube.com/embed/Fti30-mZkC0" width="672" height="400px">
@@ -402,13 +401,13 @@ stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="s
 <pre class="text"><code>![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)</code></pre>
 <p>which will produce:</p>
 <center>
-<img src="http://science.psu.edu/psu_eberly_blue.png" alt="Eberly College of Science Banner" />
+<img src="images/psu_eberly_blue.png" alt="Eberly College of Science Banner" />
 </center>
 <p>Otherwise, to add a picture without any captions, follow the syntax below:</p>
 <pre class="text"><code>![](http://www.alumni.psu.edu/s/1218/16/images/logo.png)</code></pre>
 <p>which delivers:</p>
 <center>
-<img src="http://www.alumni.psu.edu/s/1218/16/images/logo.png" style="width:50.0%" />
+<img src="images/logo.png" style="width:50.0%" />
 </center>
 </div>
 <div id="latex" class="section level3">
@@ -674,7 +673,7 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-rmd.Rmd",
 "text": "Edit"
 },
-"download": ["ds.dvi", "ds.epub"],
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
 "collapse": "section"
 }

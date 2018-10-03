@@ -2,10 +2,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {0.4}{\ignorespaces Five most common types of data structures used in R \citep {wickham2014advanced}.\relax }}{lxi}{table.0.4}
-\contentsline {table}{\numberline {0.5}{\ignorespaces Five best male single tennis players as ranked by ATP (07-15-2017).\relax }}{lxii}{table.0.5}
-\contentsline {table}{\numberline {0.6}{\ignorespaces Common date formatting elements for use with \texttt {as.Date()} reproduced from. \relax }}{lxx}{table.0.6}
-\contentsline {table}{\numberline {0.7}{\ignorespaces Expected value and variance of stocks and our investment\relax }}{xcvi}{table.caption.12}
+\contentsline {table}{\numberline {0.4}{\ignorespaces Five most common types of data structures used in R \citep {wickham2014advanced}.\relax }}{lxv}{table.0.4}
+\contentsline {table}{\numberline {0.5}{\ignorespaces Five best male single tennis players as ranked by ATP (07-15-2017).\relax }}{lxvi}{table.0.5}
+\contentsline {table}{\numberline {0.6}{\ignorespaces Common date formatting elements for use with \texttt {as.Date()} reproduced from statmethods.net.\relax }}{lxxiv}{table.0.6}
+\contentsline {table}{\numberline {0.7}{\ignorespaces Expected value and variance of stocks and our investment\relax }}{c}{table.caption.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -4,7 +4,7 @@ An Introduction to Statistical Programming Methods with R
 =========================================================
 
 <center>
-Matthew Beckman, Stéphane Guerrier, Justin Lee & Roberto Molinari
+Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari & Samuel Orso
 </center>
 <br>
 

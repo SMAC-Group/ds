@@ -245,7 +245,7 @@ Considering the dates of birth presented in Table \@ref(tab:tennis) we can save 
 
 Note the syntax of `format = "%d %b %Y"`.  The following table shows common format elements for use with the `as.Date()` function: 
 
-Table: (\#tab:dateFormats) Common date formatting elements for use with `as.Date()` reproduced from [http://www.statmethods.net/](http://www.statmethods.net/input/dates.html).
+Table: (\#tab:dateFormats) Common date formatting elements for use with `as.Date()` reproduced from statmethods.net.
 
 Symbol   Meaning                    Example 
 ------- -------------------------- -------------
@@ -1009,15 +1009,15 @@ knitr::kable(investment_summary, caption = "Expected value and variance of stock
 In Table \@ref(tab:tableprtexample) and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, meaning that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below. 
 
 
-### NEED TO FIX THIS 
+<!-- ### NEED TO FIX THIS  -->
 
-```{r, eval = FALSE, echo = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE, results = 'hide', fig.cap = "Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets."}
+```{r, eval = TRUE, echo = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE, fig.cap = "Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets."}
 plot(sqrt(investment_summary[2, ]), investment_summary[1, ], ylab = "Daily Expected Value of Investement", xlab = "Daily Investement Standard Deviation", pch = 19, cex = 1, lty = "solid", lwd = 2, xlim = c(min(sqrt(investment_summary[2, ])), max(sqrt(investment_summary[2, ])+3e-03)), col = c(4,2,3))
 grid()
 text(sqrt(investment_summary[2, ]), investment_summary[1, ], labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
 ```
 
-In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem.
+<!-- In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem. -->
 
 ## Array {#array}
 
@@ -1253,7 +1253,7 @@ Dataframe objects can be optimized for different applications, as many packages 
 library(ggmap)
 birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland",
                 "Belgrade, Serbia", "Basel, Switzerland")
-birth_coord <- geocode(birth_place)
+birth_coord <- geocode(birth_place, source = "dsk")
 ```
 
 Furthermore, we can create new columns of dataframes using vectors that we created before. 
@@ -1266,9 +1266,13 @@ is.data.frame(birth_coord)
 ```
 
 Let's represent this information graphically. We haven't seen how to make graph yet so don't worry too much about the details of how this graph is made. 
-### FIX THIS TOO
 
-```{r, eval = FALSE, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
+```{r, echo=FALSE, eval=FALSE}
+register_google(key = "AIzaSyAfi4nb5nainDHwjr-eSqJPP0xG7JTpwOY")
+```
+
+
+```{r, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
 library(mapproj)
 map <- get_map(location = 'Switzerland', zoom = 4)
 ggmap(map) + geom_point(data = birth_coord, 

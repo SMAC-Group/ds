@@ -220,7 +220,7 @@
 \title{An Introduction to Statistical Programming Methods with R}
 \author{Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari \&
 Samuel Orso}
-\date{2018-10-01}
+\date{2018-10-03}
 
 \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
@@ -230,9 +230,9 @@ Samuel Orso}
 %\cleardoublepage\newpage\thispagestyle{empty}\null
 %\cleardoublepage\newpage
 \thispagestyle{empty}
-\begin{center}
-\includegraphics{images/dedication.pdf}
-\end{center}
+% \begin{center}
+% \includegraphics{images/dedication.pdf}
+% \end{center}
 
 \setlength{\abovedisplayskip}{-5pt}
 \setlength{\abovedisplayshortskip}{-5pt}
@@ -907,8 +907,10 @@ the uninitiated. One aim of the markdown paradigm is a syntax that is as
 human-readable as possible. ``RMarkdown'' is an implementation of the
 ``markdown'' language designed to accommodate embedded \texttt{R} code.
 
-\subsection*{\texorpdfstring{What is \textbf{literate}
-programming?}{What is literate programming?}}\label{what-is-literate-programming}
+\subsection*{\texorpdfstring{What is \textbf{literate} programming
+?}{What is literate programming ?}}\label{what-is-literate-programming}
+\addcontentsline{toc}{subsection}{What is \textbf{literate} programming
+?}
 
 Literate programming is the notion for programmers of adding narrative
 context with code to produce documentation for the program
@@ -919,9 +921,10 @@ reports or presentation slides in a reproducible manner with collateral
 advantages such as avoiding repetitive tasks by, for example, changing
 all figures when data are updated.
 
-\subsection*{\texorpdfstring{What is \textbf{reproducible}
-research?}{What is reproducible research?}}\label{what-is-reproducible-research}
-
+\subsection*{\texorpdfstring{What is \textbf{reproducible} research
+?}{What is reproducible research ?}}\label{what-is-reproducible-research}
+\addcontentsline{toc}{subsection}{What is \textbf{reproducible} research
+?}
 
 Reproducible research or reproducible analysis is the notion that an
 experiment's whole process, including collecting data, performing
@@ -1131,7 +1134,7 @@ To add a picture with captions, follow the syntax below:
 
 which will produce:
 
-\includegraphics{http://science.psu.edu/psu_eberly_blue.png}
+\includegraphics{images/psu_eberly_blue.png}
 
 Otherwise, to add a picture without any captions, follow the syntax
 below:
@@ -1142,7 +1145,7 @@ below:
 
 which delivers:
 
-\includegraphics[width=0.50000\textwidth]{http://www.alumni.psu.edu/s/1218/16/images/logo.png}
+\includegraphics[width=0.50000\textwidth]{images/logo.png}
 
 \subsection{LaTeX}\label{latex}
 
@@ -2524,8 +2527,7 @@ function:
 
 \begin{longtable}[]{@{}lcc@{}}
 \caption{\label{tab:dateFormats} Common date formatting elements for use
-with \texttt{as.Date()} reproduced from.
-}\tabularnewline
+with \texttt{as.Date()} reproduced from statmethods.net.}\tabularnewline
 \toprule
 Symbol & Meaning & Example\tabularnewline
 \midrule
@@ -2785,7 +2787,7 @@ to create such sequences:
   \texttt{1:n} and \texttt{seq\_len(n)} are equivalent with the notable
   exceptions where \texttt{n\ =\ 0} and \texttt{n\ \textless{}\ 0}. The
   reason for these exceptions will become clear in Section
-  . Let's see a few examples:
+  \ref{forloop}. Let's see a few examples:
 \end{itemize}
 
 \begin{Shaded}
@@ -2962,7 +2964,7 @@ this can be obtained as follows
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2018-10-01"
+## [1] "2018-10-03"
 \end{verbatim}
 
 Once this is done, we can obtain the date which is exactly three months
@@ -2975,7 +2977,7 @@ ago by using
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2018-07-01"
+## [1] "2018-07-03"
 \end{verbatim}
 
 With this information, we can now download Apple's stock price and
@@ -3034,7 +3036,7 @@ period.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.003111851
+## [1] 0.003586873
 \end{verbatim}
 
 \begin{Shaded}
@@ -3044,7 +3046,7 @@ period.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.00258233
+## [1] 0.002893129
 \end{verbatim}
 
 However, a statistic that is of particular interest to financial
@@ -3113,10 +3115,10 @@ In R, this can simply be done as follows:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.665572
+## [1] 4.014467
 \end{verbatim}
 
-Therefore, we observe an estimated Excess Kurtosis of 3.67 which is
+Therefore, we observe an estimated Excess Kurtosis of 4.01 which is
 quite high and tends to indicate that the returns have heavier tails
 than the normal distribution. In Chapter @ref(\#control), we will
 revisit this example and investigate if there is \textbf{enough
@@ -3959,7 +3961,7 @@ historical data for the two stocks considered. For simplicity we set
 \end{Highlighting}
 \end{Shaded}
 
-From this code, we obtain \(\omega^* \approx\) 85.63\%. In the table
+From this code, we obtain \(\omega^* \approx\) 85.59\%. In the table
 below we compare the empirical expected values and variances of the
 stocks as well as those of our investment:
 
@@ -3982,9 +3984,9 @@ stocks as well as those of our investment:
 \hline
   & Apple & Netflix & Investment\\
 \hline
-Expected value & 0.0010348 & 0.0020067 & 0.0011745\\
+Expected value & 0.0010546 & 0.0020199 & 0.0011937\\
 \hline
-Variance & 0.0002010 & 0.0006991 & 0.0001865\\
+Variance & 0.0002009 & 0.0006986 & 0.0001864\\
 \hline
 \end{tabular}
 \end{table}
@@ -3997,11 +3999,14 @@ that it has low risk and a return that is between the two stocks
 mentioned above. Finally, we provide a graphical representation of the
 obtained results in the figure below.
 
-\subsection{NEED TO FIX THIS}\label{need-to-fix-this}
+\begin{figure}
 
-In the next chapter we will revisit this example where we will use new
-programming tools to consider a more flexible solution to this
-investment problem.
+{\centering \includegraphics{ds_files/figure-latex/unnamed-chunk-112-1} 
+
+}
+
+\caption{Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets.}\label{fig:unnamed-chunk-112}
+\end{figure}
 
 \section{Array}\label{array}
 
@@ -4699,34 +4704,9 @@ players using \texttt{geocode} within \texttt{ggmap}.
 \KeywordTok{library}\NormalTok{(ggmap)}
 \NormalTok{birth_place <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Glasgow, Scotland"}\NormalTok{, }\StringTok{"Manacor, Spain"}\NormalTok{, }\StringTok{"Lausanne, Switzerland"}\NormalTok{,}
                 \StringTok{"Belgrade, Serbia"}\NormalTok{, }\StringTok{"Basel, Switzerland"}\NormalTok{)}
-\NormalTok{birth_coord <-}\StringTok{ }\KeywordTok{geocode}\NormalTok{(birth_place)}
+\NormalTok{birth_coord <-}\StringTok{ }\KeywordTok{geocode}\NormalTok{(birth_place, }\DataTypeTok{source =} \StringTok{"dsk"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: geocode failed with status OVER_QUERY_LIMIT, location = "Glasgow,
-## Scotland"
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: geocode failed with status OVER_QUERY_LIMIT, location = "Manacor,
-## Spain"
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: geocode failed with status OVER_QUERY_LIMIT, location = "Lausanne,
-## Switzerland"
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: geocode failed with status OVER_QUERY_LIMIT, location = "Belgrade,
-## Serbia"
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: geocode failed with status OVER_QUERY_LIMIT, location = "Basel,
-## Switzerland"
-\end{verbatim}
 
 Furthermore, we can create new columns of dataframes using vectors that
 we created before.
@@ -4740,12 +4720,12 @@ we created before.
 \end{Shaded}
 
 \begin{verbatim}
-##   lon lat        Players GS
-## 1  NA  NA    Andy Murray  9
-## 2  NA  NA   Rafael Nadal 15
-## 3  NA  NA  Stan Wawrinka  5
-## 4  NA  NA Novak Djokovic 12
-## 5  NA  NA  Roger Federer 18
+##         lon      lat        Players GS
+## 1 -4.249989 55.86115    Andy Murray  9
+## 2  3.209550 39.56964   Rafael Nadal 15
+## 3  6.632820 46.51600  Stan Wawrinka  5
+## 4 20.465130 44.80401 Novak Djokovic 12
+## 5  7.573270 47.55840  Roger Federer 18
 \end{verbatim}
 
 \begin{Shaded}
@@ -4760,7 +4740,7 @@ we created before.
 
 Let's represent this information graphically. We haven't seen how to
 make graph yet so don't worry too much about the details of how this
-graph is made. \#\#\# FIX THIS TOO
+graph is made.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4772,6 +4752,8 @@ graph is made. \#\#\# FIX THIS TOO
 \StringTok{             }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Longitude"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Latitude"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-130-1} \end{center}
 
 As we see, we can produce various output using dataframe objects.
 
@@ -6205,7 +6187,7 @@ the \emph{precision} of this estimation.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-170-1} \end{center}
+\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-171-1} \end{center}
 
 \chapter{Functions}\label{functions}
 
@@ -6269,44 +6251,16 @@ the two variables.
 \begin{Highlighting}[]
 \CommentTok{# Load gamair library and retrieve Hubble dataset}
 \KeywordTok{library}\NormalTok{(gamair)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in library(gamair): there is no package called 'gamair'
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{data}\NormalTok{(hubble)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Warning in data(hubble): data set 'hubble' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{# Plot data}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ hubble}\OperatorTok{$}\NormalTok{y, }\DataTypeTok{x =}\NormalTok{ hubble}\OperatorTok{$}\NormalTok{x, }\DataTypeTok{col=}\StringTok{"darkblue"}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{20}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Distance vs. Velocity"}\NormalTok{, }
      \DataTypeTok{ylab =} \StringTok{"Velocity (in km/s)"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"Distance (in Megaparsecs)"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in plot(y = hubble$y, x = hubble$x, col = "darkblue", pch = 20, : object 'hubble' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{grid}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-\end{verbatim}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-172-1.pdf}
 
 By the end of this chapter we will therefore be able to build a function
 to obtain an estimate of \(\beta\) and, consequently, an estimate of the
@@ -6636,7 +6590,7 @@ If we were to plot this, we would obtain the following plot:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ds_files/figure-latex/unnamed-chunk-189-1.pdf}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-190-1.pdf}
 
 which simply plots the values for given coordinates. Given that this is
 not what we want, let us create a function that allows the user to
@@ -6659,7 +6613,7 @@ If we use the \texttt{plot()} function now, we obtain the following:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ds_files/figure-latex/unnamed-chunk-191-1.pdf}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-192-1.pdf}
 
 which produces the desired output simply using the general-purpose
 function \texttt{plot()}.
@@ -7524,84 +7478,24 @@ function.
 \begin{Highlighting}[]
 \CommentTok{# Linear regression with lm() function}
 \NormalTok{fit_lm =}\StringTok{ }\KeywordTok{lm}\NormalTok{(hubble}\OperatorTok{$}\NormalTok{y}\OperatorTok{~}\NormalTok{hubble}\OperatorTok{$}\NormalTok{x}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Error in eval(predvars, data, env): object 'hubble' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{# Linear regression with my_lm() function}
 \NormalTok{fit_my_lm =}\StringTok{ }\KeywordTok{my_lm}\NormalTok{(hubble}\OperatorTok{$}\NormalTok{y, hubble}\OperatorTok{$}\NormalTok{x)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Error in as.vector(response): object 'hubble' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{# Compare outputs}
 \NormalTok{manual_results =}\StringTok{ }\KeywordTok{c}\NormalTok{(fit_my_lm}\OperatorTok{$}\NormalTok{beta, fit_my_lm}\OperatorTok{$}\NormalTok{sigma2)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in eval(expr, envir, enclos): object 'fit_my_lm' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{base_results =}\StringTok{ }\KeywordTok{c}\NormalTok{(fit_lm}\OperatorTok{$}\NormalTok{coefficients, }
 \NormalTok{                     (}\DecValTok{1}\OperatorTok{/}\NormalTok{fit_lm}\OperatorTok{$}\NormalTok{df.residual)}\OperatorTok{*}\KeywordTok{t}\NormalTok{(fit_lm}\OperatorTok{$}\NormalTok{residuals)}\OperatorTok{%*%}\NormalTok{fit_lm}\OperatorTok{$}\NormalTok{residuals)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in eval(expr, envir, enclos): object 'fit_lm' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{results =}\StringTok{ }\KeywordTok{cbind}\NormalTok{(manual_results, base_results)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in cbind(manual_results, base_results): object 'manual_results' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{row.names}\NormalTok{(results) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Beta"}\NormalTok{, }\StringTok{"Sigma"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in dimnames(x) <- dn: length of 'dimnames' [1] not equal to array extent
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{results}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]         [,2]
-##  [1,] 0.8105226 0.0566300803
-##  [2,] 0.7651385 0.0277477369
-##  [3,] 0.8105282 0.0138480308
-##  [4,] 0.8149777 0.0068724579
-##  [5,] 0.8059558 0.0034679716
-##  [6,] 0.8045768 0.0017326560
-##  [7,] 0.8037060 0.0008662489
-##  [8,] 0.8045763 0.0004326877
-##  [9,] 0.8049000 0.0002163939
-## [10,] 0.8049516 0.0001081914
+##       manual_results base_results
+## Beta        76.58117     76.58117
+## Sigma    67046.33165  67046.33165
 \end{verbatim}
 
 As one can notice, the two procedures give the same outputs indicating
@@ -7662,7 +7556,7 @@ replace the values in Eq. \eqref{eq:cibeta}:
 \end{Shaded}
 
 \begin{verbatim}
-## Error in eval(expr, envir, enclos): object 'fit_my_lm' not found
+## [1] 68.81032 84.35203
 \end{verbatim}
 
 The confidence interval lies between 68 and 84 which clearly does not
@@ -7716,7 +7610,7 @@ for the histogram function in R we would obtain the following plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ds_files/figure-latex/unnamed-chunk-223-1.pdf}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-224-1.pdf}
 
 However, the representation and interpretation of the data can sometimes
 change considerably if using different visualization parameters. Indeed,
@@ -7739,7 +7633,7 @@ used and changes the representation of the data can be found below.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ds_files/figure-latex/unnamed-chunk-224-1.pdf}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-225-1.pdf}
 
 As you may notice, the number of bins created by using this option is
 always one unit less than the length of the specified vector (i.e.~9 and
@@ -7759,7 +7653,7 @@ function which includes the following steps:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ds_files/figure-latex/unnamed-chunk-225-1.pdf}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-226-1.pdf}
 
 where the value given to the \texttt{input} object (which is 10 in the
 above example) is the only value required and can be assigned by the
@@ -8224,7 +8118,7 @@ representation of this random cast:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-234-1} \end{center}
+\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-235-1} \end{center}
 
 Next, we consider the function \texttt{buffon\_experiment()}. This
 function is based on the previous function and contains the following
@@ -8334,7 +8228,7 @@ which could be represented as
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-237-1} \end{center}
+\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-238-1} \end{center}
 
 We can now write a custom \texttt{plot()} function for the output of the
 function \texttt{buffon\_experiment()}. This function will provide a way
@@ -8380,7 +8274,7 @@ value in the \texttt{buffon\_experiment()} function we created):
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-239-1} \end{center}
+\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-240-1} \end{center}
 
 Finally, we can consider the function \texttt{converge()}. Similarly to
 \texttt{buffon\_experiment()}, the function \texttt{converge()} has the
@@ -8447,7 +8341,7 @@ would obtain:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-241-1} \end{center}
+\begin{center}\includegraphics{ds_files/figure-latex/unnamed-chunk-242-1} \end{center}
 
 which provides some illustrations on the convergence of the estimator.
 
@@ -8910,7 +8804,7 @@ An example of use of these functions and their output is the following:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ds_files/figure-latex/unnamed-chunk-257-1.pdf}
+\includegraphics{ds_files/figure-latex/unnamed-chunk-258-1.pdf}
 
 Now let us suppose that we want to make these functions available to the
 general user who may be looking for tools that allow them to perform

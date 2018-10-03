@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-10-01">
+<meta name="date" content="2018-10-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -123,8 +123,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>I Foundation</b></span></li>
 <li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
-<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming?</a></li>
-<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research?</a></li>
+<li><a href="rmarkdown.html#what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="rmarkdown.html#what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
 <li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
 <li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
@@ -187,7 +187,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.2" data-path="data.html"><a href="data.html#matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
 <li class="chapter" data-level="4.2.3" data-path="data.html"><a href="data.html#example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
 <li class="chapter" data-level="4.2.4" data-path="data.html"><a href="data.html#example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
-<li class="chapter" data-level="4.2.5" data-path="data.html"><a href="data.html#need-to-fix-this"><i class="fa fa-check"></i><b>4.2.5</b> NEED TO FIX THIS</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
 <li class="chapter" data-level="4.4" data-path="data.html"><a href="data.html#list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
@@ -550,7 +549,7 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <pre><code>## [1] &quot;1987-05-15&quot; &quot;1986-06-03&quot; &quot;1985-03-28&quot; &quot;1987-05-22&quot; &quot;1981-08-08&quot;</code></pre>
 <p>Note the syntax of <code>format = &quot;%d %b %Y&quot;</code>. The following table shows common format elements for use with the <code>as.Date()</code> function:</p>
 <table>
-<caption><span id="tab:dateFormats">Table 4.3: </span> Common date formatting elements for use with <code>as.Date()</code> reproduced from <a href="http://www.statmethods.net/input/dates.html">http://www.statmethods.net/</a>.</caption>
+<caption><span id="tab:dateFormats">Table 4.3: </span> Common date formatting elements for use with <code>as.Date()</code> reproduced from statmethods.net.</caption>
 <thead>
 <tr class="header">
 <th align="left">Symbol</th>
@@ -717,10 +716,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
 <p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2018-10-01&quot;</code></pre>
+<pre><code>## [1] &quot;2018-10-03&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2018-07-01&quot;</code></pre>
+<pre><code>## [1] &quot;2018-07-03&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)
@@ -740,9 +739,9 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</code></pre></div>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.003111851</code></pre>
+<pre><code>## [1] 0.003586873</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(AAPL_returns)</code></pre></div>
-<pre><code>## [1] 0.00258233</code></pre>
+<pre><code>## [1] 0.002893129</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <span class="math display">\[\begin{equation}
   \text{Kurt} = \frac{{\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^4\right]}{\left({\mathbb{E}}\left[\left(X - \mathbb{E}[X]\right)^2\right]\right)^2} - 3.
@@ -778,8 +777,8 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 <p>In R, this can simply be done as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)
 (k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns <span class="op">-</span><span class="st"> </span>mu)<span class="op">^</span><span class="dv">4</span>)<span class="op">/</span>(<span class="kw">mean</span>((AAPL_returns <span class="op">-</span><span class="st"> </span>mu)<span class="op">^</span><span class="dv">2</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 3.665572</code></pre>
-<p>Therefore, we observe an estimated Excess Kurtosis of 3.67 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
+<pre><code>## [1] 4.014467</code></pre>
+<p>Therefore, we observe an estimated Excess Kurtosis of 4.01 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter @ref(#control), we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
 </div>
 <div id="matrices" class="section level2">
@@ -1209,7 +1208,7 @@ omega_star &lt;-<span class="st"> </span>(Sigma[<span class="dv">2</span>, <span
 mu_investment &lt;-<span class="st"> </span>omega_star<span class="op">*</span>mu[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">*</span>mu[<span class="dv">2</span>]
 var_investment &lt;-<span class="st"> </span>omega_star<span class="op">^</span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="dv">2</span><span class="op">*</span>omega_star<span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">*</span>Sigma[<span class="dv">1</span>,<span class="dv">2</span>]</code></pre></div>
-<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 85.63%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
+<p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 85.59%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">investment_summary &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Expected value&quot;</span>, <span class="st">&quot;Variance&quot;</span>)
 <span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)
@@ -1229,23 +1228,27 @@ knitr<span class="op">::</span><span class="kw">kable</span>(investment_summary)
 <tbody>
 <tr class="odd">
 <td>Expected value</td>
-<td align="right">0.0010348</td>
-<td align="right">0.0020067</td>
-<td align="right">0.0011745</td>
+<td align="right">0.0010546</td>
+<td align="right">0.0020199</td>
+<td align="right">0.0011937</td>
 </tr>
 <tr class="even">
 <td>Variance</td>
-<td align="right">0.0002010</td>
-<td align="right">0.0006991</td>
-<td align="right">0.0001865</td>
+<td align="right">0.0002009</td>
+<td align="right">0.0006986</td>
+<td align="right">0.0001864</td>
 </tr>
 </tbody>
 </table>
 <p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, meaning that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below.</p>
+<!-- ### NEED TO FIX THIS  -->
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-112"></span>
+<img src="ds_files/figure-html/unnamed-chunk-112-1.png" alt="Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
+<p class="caption">
+Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets.
+</p>
 </div>
-<div id="need-to-fix-this" class="section level3">
-<h3><span class="header-section-number">4.2.5</span> NEED TO FIX THIS</h3>
-<p>In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem.</p>
+<!-- In the next chapter we will revisit this example where we will use new programming tools to consider a more flexible solution to this investment problem. -->
 </div>
 </div>
 <div id="array" class="section level2">
@@ -1577,32 +1580,28 @@ tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_w
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
 birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
                 <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)
-birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place)</code></pre></div>
-<pre><code>## Warning: geocode failed with status OVER_QUERY_LIMIT, location = &quot;Glasgow,
-## Scotland&quot;</code></pre>
-<pre><code>## Warning: geocode failed with status OVER_QUERY_LIMIT, location = &quot;Lausanne,
-## Switzerland&quot;</code></pre>
-<pre><code>## Warning: geocode failed with status OVER_QUERY_LIMIT, location = &quot;Basel,
-## Switzerland&quot;</code></pre>
+birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place, <span class="dt">source =</span> <span class="st">&quot;dsk&quot;</span>)</code></pre></div>
 <p>Furthermore, we can create new columns of dataframes using vectors that we created before.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord<span class="op">$</span>Players &lt;-<span class="st"> </span>players
 birth_coord<span class="op">$</span>GS &lt;-<span class="st"> </span>grand_slam_win
 birth_coord</code></pre></div>
 <pre><code>##         lon      lat        Players GS
-## 1        NA       NA    Andy Murray  9
-## 2  3.209532 39.56972   Rafael Nadal 15
-## 3        NA       NA  Stan Wawrinka  5
-## 4 20.448922 44.78657 Novak Djokovic 12
-## 5        NA       NA  Roger Federer 18</code></pre>
+## 1 -4.249989 55.86115    Andy Murray  9
+## 2  3.209550 39.56964   Rafael Nadal 15
+## 3  6.632820 46.51600  Stan Wawrinka  5
+## 4 20.465130 44.80401 Novak Djokovic 12
+## 5  7.573270 47.55840  Roger Federer 18</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.data.frame</span>(birth_coord)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made. ### FIX THIS TOO</p>
+<p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mapproj)
 map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)
 <span class="kw">ggmap</span>(map) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, 
              <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> GS)) <span class="op">+</span><span class="st"> </span>
 <span class="st">             </span><span class="kw">scale_size</span>(<span class="dt">name=</span><span class="st">&quot;Grand Slam Wins&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</code></pre></div>
+<pre><code>## Warning: restarting interrupted promise evaluation</code></pre>
+<p><img src="ds_files/figure-html/unnamed-chunk-130-1.png" width="720" style="display: block; margin: auto;" /></p>
 <p>As we see, we can produce various output using dataframe objects.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -1664,7 +1663,7 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/03-data.Rmd",
 "text": "Edit"
 },
-"download": ["ds.dvi", "ds.epub"],
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
 "collapse": "section"
 }

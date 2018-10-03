@@ -1,142 +1,143 @@
 \contentsline {fm}{List of Tables}{vii}{chapter*.1}
 \contentsline {fm}{List of Figures}{ix}{chapter*.2}
 \contentsline {chapter}{Introduction}{xi}{chapter*.3}
-\contentsline {section}{\numberline {0.1}\texttt {R} and \texttt {RStudio}}{xii}{section.0.1}
-\contentsline {subsection}{\numberline {0.1.1}Getting started with \texttt {R}}{xiii}{subsection.0.1.1}
+\contentsline {section}{\numberline {0.1}\texttt {R} and \texttt {RStudio}}{xiii}{section.0.1}
+\contentsline {subsection}{\numberline {0.1.1}Getting started with \texttt {R}}{xiv}{subsection.0.1.1}
 \contentsline {subsection}{\numberline {0.1.2}Why \texttt {R}?}{xiv}{subsection.0.1.2}
-\contentsline {subsection}{\numberline {0.1.3}About RStudio}{xiv}{subsection.0.1.3}
-\contentsline {subsection}{\numberline {0.1.4}Conventions}{xv}{subsection.0.1.4}
-\contentsline {subsection}{\numberline {0.1.5}Getting help}{xvi}{subsection.0.1.5}
-\contentsline {subsection}{\numberline {0.1.6}Installing packages}{xvii}{subsection.0.1.6}
-\contentsline {subsection}{\numberline {0.1.7}Additional References}{xix}{subsection.0.1.7}
+\contentsline {subsection}{\numberline {0.1.3}About RStudio}{xv}{subsection.0.1.3}
+\contentsline {subsection}{\numberline {0.1.4}Conventions}{xvi}{subsection.0.1.4}
+\contentsline {subsection}{\numberline {0.1.5}Getting help}{xvii}{subsection.0.1.5}
+\contentsline {subsection}{\numberline {0.1.6}Installing packages}{xviii}{subsection.0.1.6}
+\contentsline {subsection}{\numberline {0.1.7}Additional References}{xx}{subsection.0.1.7}
 \contentsline {section}{\numberline {0.2}Basic Probability and Statistics with \texttt {R}}{xx}{section.0.2}
-\contentsline {subsection}{\numberline {0.2.1}Simple calculations}{xx}{subsection.0.2.1}
+\contentsline {subsection}{\numberline {0.2.1}Simple calculations}{xxi}{subsection.0.2.1}
 \contentsline {subsection}{\numberline {0.2.2}Probability Distributions}{xxi}{subsection.0.2.2}
 \contentsline {subsubsection}{\numberline {0.2.2.1}Example: Normal Test Scores of College Entrance Exam}{xxii}{subsubsection.0.2.2.1}
 \contentsline {subsection}{\numberline {0.2.3}Summary Statistics}{xxiii}{subsection.0.2.3}
 \contentsline {subsubsection}{\numberline {0.2.3.1}Numerical Input}{xxiii}{subsubsection.0.2.3.1}
 \contentsline {subsubsection}{\numberline {0.2.3.2}Factor Input}{xxiv}{subsubsection.0.2.3.2}
 \contentsline {subsubsection}{\numberline {0.2.3.3}Dataset Inputs}{xxiv}{subsubsection.0.2.3.3}
-\contentsline {section}{\numberline {0.3}Main References}{xxv}{section.0.3}
+\contentsline {section}{\numberline {0.3}Main References}{xxvi}{section.0.3}
 \contentsline {section}{\numberline {0.4}License}{xxvi}{section.0.4}
 \contentsline {part}{I\hspace {1em}Foundation}{xxvii}{part.1}
 \contentsline {chapter}{RMarkdown}{xxix}{chapter*.5}
+\contentsline {subsection}{What is \textbf {literate} programming ?}{xxix}{section*.6}
+\contentsline {subsection}{What is \textbf {reproducible} research ?}{xxix}{section*.7}
 \contentsline {section}{\numberline {0.5}Create an R Markdown file in RStudio}{xxx}{section.0.5}
 \contentsline {section}{\numberline {0.6}YAML Metadata}{xxxi}{section.0.6}
-\contentsline {subsection}{\numberline {0.6.1}Subsections}{xxxii}{subsection.0.6.1}
-\contentsline {section}{\numberline {0.7}Text}{xxxii}{section.0.7}
-\contentsline {subsection}{\numberline {0.7.1}Headers}{xxxiii}{subsection.0.7.1}
-\contentsline {subsection}{\numberline {0.7.2}Lists}{xxxiii}{subsection.0.7.2}
-\contentsline {subsection}{\numberline {0.7.3}Hyperlinks}{xxxiv}{subsection.0.7.3}
-\contentsline {subsection}{\numberline {0.7.4}Blockquotes}{xxxiv}{subsection.0.7.4}
-\contentsline {subsection}{\numberline {0.7.5}Pictures}{xxxiv}{subsection.0.7.5}
-\contentsline {subsection}{\numberline {0.7.6}LaTeX}{xxxv}{subsection.0.7.6}
-\contentsline {subsubsection}{\numberline {0.7.6.1}LaTeX in RMarkdown}{xxxv}{subsubsection.0.7.6.1}
-\contentsline {subsection}{\numberline {0.7.7}Cross-referencing Sections}{xxxvi}{subsection.0.7.7}
-\contentsline {subsection}{\numberline {0.7.8}Citations and Bibliography}{xxxvii}{subsection.0.7.8}
-\contentsline {subsection}{\numberline {0.7.9}Tables}{xl}{subsection.0.7.9}
-\contentsline {subsection}{\numberline {0.7.10}Additional References}{xli}{subsection.0.7.10}
-\contentsline {section}{\numberline {0.8}Code Chunks}{xli}{section.0.8}
-\contentsline {subsection}{\numberline {0.8.1}Code Chunk Options}{xlii}{subsection.0.8.1}
-\contentsline {subsection}{\numberline {0.8.2}Comments}{xliii}{subsection.0.8.2}
-\contentsline {subsection}{\numberline {0.8.3}In-line R}{xliii}{subsection.0.8.3}
-\contentsline {subsection}{\numberline {0.8.4}Cache}{xliv}{subsection.0.8.4}
-\contentsline {section}{\numberline {0.9}Render Output}{xlvi}{section.0.9}
-\contentsline {section}{\numberline {0.10}Addition Information}{xlvii}{section.0.10}
-\contentsline {chapter}{GitHub}{xlix}{chapter*.9}
-\contentsline {section}{\numberline {0.11}Version Control}{l}{section.0.11}
-\contentsline {section}{\numberline {0.12}Git and GitHub}{l}{section.0.12}
-\contentsline {subsection}{\numberline {0.12.1}Git Setup}{li}{subsection.0.12.1}
-\contentsline {subsubsection}{\numberline {0.12.1.1}Tell Git Who You Are}{li}{subsubsection.0.12.1.1}
-\contentsline {subsection}{\numberline {0.12.2}GitHub Setup}{li}{subsection.0.12.2}
-\contentsline {subsection}{\numberline {0.12.3}Student Developer Pack}{lii}{subsection.0.12.3}
-\contentsline {section}{\numberline {0.13}GitHub Workflow}{liii}{section.0.13}
-\contentsline {subsection}{\numberline {0.13.1}Branching}{liii}{subsection.0.13.1}
-\contentsline {subsection}{\numberline {0.13.2}Pull}{liv}{subsection.0.13.2}
-\contentsline {subsection}{\numberline {0.13.3}Commits}{liv}{subsection.0.13.3}
-\contentsline {subsubsection}{\numberline {0.13.3.1}Pull Request}{liv}{subsubsection.0.13.3.1}
-\contentsline {subsection}{\numberline {0.13.4}Push or Merge}{lv}{subsection.0.13.4}
-\contentsline {subsection}{\numberline {0.13.5}Merge Conflicts}{lv}{subsection.0.13.5}
-\contentsline {section}{\numberline {0.14}GitHub Workflow on Command Line / Git Bash}{lv}{section.0.14}
-\contentsline {section}{\numberline {0.15}Issues}{lvi}{section.0.15}
-\contentsline {section}{\numberline {0.16}Slack Integration}{lvi}{section.0.16}
-\contentsline {section}{\numberline {0.17}Additional References}{lvii}{section.0.17}
-\contentsline {part}{II\hspace {1em}Introduction to R}{lix}{part.2}
-\contentsline {chapter}{Data Structures}{lxi}{chapter*.10}
-\contentsline {section}{\numberline {0.18}Vectors}{lxii}{section.0.18}
-\contentsline {subsection}{\numberline {0.18.1}Type}{lxiv}{subsection.0.18.1}
-\contentsline {subsection}{\numberline {0.18.2}Coercion}{lxv}{subsection.0.18.2}
-\contentsline {subsection}{\numberline {0.18.3}Subsetting}{lxvi}{subsection.0.18.3}
-\contentsline {subsection}{\numberline {0.18.4}Attributes}{lxvii}{subsection.0.18.4}
-\contentsline {subsection}{\numberline {0.18.5}Adding Labels}{lxviii}{subsection.0.18.5}
-\contentsline {subsection}{\numberline {0.18.6}Working with Dates}{lxix}{subsection.0.18.6}
-\contentsline {subsection}{\numberline {0.18.7}Useful Functions with Vectors}{lxxi}{subsection.0.18.7}
-\contentsline {subsection}{\numberline {0.18.8}Creating sequences}{lxxiv}{subsection.0.18.8}
-\contentsline {subsection}{\numberline {0.18.9}Example: Apple Stock Price}{lxxvii}{subsection.0.18.9}
-\contentsline {section}{\numberline {0.19}Matrices}{lxxx}{section.0.19}
-\contentsline {subsection}{\numberline {0.19.1}Subsetting}{lxxxii}{subsection.0.19.1}
-\contentsline {subsection}{\numberline {0.19.2}Matrix Operators in R}{lxxxiv}{subsection.0.19.2}
-\contentsline {subsection}{\numberline {0.19.3}Example: Summary Statistics with Matrix Notation}{lxxxviii}{subsection.0.19.3}
-\contentsline {subsection}{\numberline {0.19.4}Example: Portfolio Optimization}{xcii}{subsection.0.19.4}
-\contentsline {subsection}{\numberline {0.19.5}NEED TO FIX THIS}{xcvi}{subsection.0.19.5}
-\contentsline {section}{\numberline {0.20}Array}{xcvii}{section.0.20}
-\contentsline {section}{\numberline {0.21}List}{c}{section.0.21}
-\contentsline {section}{\numberline {0.22}Dataframe}{civ}{section.0.22}
-\contentsline {subsection}{\numberline {0.22.1}Combination}{cvi}{subsection.0.22.1}
-\contentsline {subsection}{\numberline {0.22.2}Subsetting}{cvi}{subsection.0.22.2}
-\contentsline {subsection}{\numberline {0.22.3}Example: Maps}{cx}{subsection.0.22.3}
-\contentsline {chapter}{Control Structures}{cxiii}{chapter*.13}
-\contentsline {section}{\numberline {0.23}Introduction}{cxiii}{section.0.23}
-\contentsline {section}{\numberline {0.24}Selection control statements}{cxiv}{section.0.24}
-\contentsline {subsection}{\numberline {0.24.1}Logical Operators}{cxv}{subsection.0.24.1}
-\contentsline {subsection}{\numberline {0.24.2}Selection Operators}{cxvii}{subsection.0.24.2}
-\contentsline {subsubsection}{\numberline {0.24.2.1}\texttt {if} Statements}{cxvii}{subsubsection.0.24.2.1}
-\contentsline {subsubsection}{\numberline {0.24.2.2}\texttt {if/else} Statements}{cxix}{subsubsection.0.24.2.2}
-\contentsline {subsubsection}{\numberline {0.24.2.3}\texttt {if/elseif/else} Statements}{cxxi}{subsubsection.0.24.2.3}
-\contentsline {subsubsection}{\numberline {0.24.2.4}\texttt {switch} Statement}{cxxi}{subsubsection.0.24.2.4}
-\contentsline {subsection}{\numberline {0.24.3}Iterative Control Statements}{cxxiii}{subsection.0.24.3}
-\contentsline {subsubsection}{\numberline {0.24.3.1}\texttt {for} Loops}{cxxiv}{subsubsection.0.24.3.1}
-\contentsline {subsubsection}{\numberline {0.24.3.2}\texttt {while} Statements}{cxxix}{subsubsection.0.24.3.2}
-\contentsline {section}{\numberline {0.25}Example: The Bootstrap}{cxxx}{section.0.25}
-\contentsline {section}{\numberline {0.26}Example: Random Walk}{cxxxiii}{section.0.26}
-\contentsline {section}{\numberline {0.27}Example: Monte-Carlo Integration}{cxxxvii}{section.0.27}
-\contentsline {subsection}{\numberline {0.27.1}Introduction}{cxxxvii}{subsection.0.27.1}
-\contentsline {subsection}{\numberline {0.27.2}Implementation}{cxl}{subsection.0.27.2}
-\contentsline {subsection}{\numberline {0.27.3}Application to the Normal Distribution}{cxlii}{subsection.0.27.3}
-\contentsline {subsection}{\numberline {0.27.4}Application to Nonelementary Integrals}{cxliii}{subsection.0.27.4}
-\contentsline {chapter}{Functions}{cxlv}{chapter*.14}
-\contentsline {section}{\numberline {0.28}R functions}{cxlvii}{section.0.28}
-\contentsline {section}{\numberline {0.29}Creating functions in R}{cl}{section.0.29}
-\contentsline {subsection}{\numberline {0.29.1}Function arguments}{cli}{subsection.0.29.1}
-\contentsline {subsection}{\numberline {0.29.2}Function body}{clv}{subsection.0.29.2}
-\contentsline {section}{\numberline {0.30}Function environment}{clxi}{section.0.30}
-\contentsline {section}{\numberline {0.31}Example (continued): Least-squares function}{clxiv}{section.0.31}
-\contentsline {part}{III\hspace {1em}Extending}{clxxvii}{part.3}
-\contentsline {chapter}{Shiny Web Applications}{clxxix}{chapter*.15}
-\contentsline {section}{\numberline {0.32}Introduction}{clxxix}{section.0.32}
-\contentsline {section}{\numberline {0.33}Step 1. Defining the R Code in the backend of the Shiny app}{clxxix}{section.0.33}
-\contentsline {section}{\numberline {0.34}Step 2: User Interface (UI) / Frontend}{clxxxii}{section.0.34}
-\contentsline {section}{\numberline {0.35}Step 3: Implementing the backend (server)}{clxxxiv}{section.0.35}
-\contentsline {section}{\numberline {0.36}Step 4: Connecting frontend and backend}{clxxxv}{section.0.36}
-\contentsline {section}{\numberline {0.37}Step 5: Customize}{clxxxvi}{section.0.37}
-\contentsline {section}{\numberline {0.38}Example: Monte-Carlo Integration}{clxxxvii}{section.0.38}
-\contentsline {section}{\numberline {0.39}Example: Buffon's needle}{clxxxvii}{section.0.39}
-\contentsline {subsection}{\numberline {0.39.1}Step 1: Backend}{cxci}{subsection.0.39.1}
-\contentsline {subsection}{\numberline {0.39.2}Step 2: Frontend}{cxcvii}{subsection.0.39.2}
-\contentsline {subsection}{\numberline {0.39.3}Step 3: Connecting frontend and backend}{cc}{subsection.0.39.3}
-\contentsline {chapter}{R Packages}{ccvii}{chapter*.19}
-\contentsline {section}{\numberline {0.40}Basic steps}{ccxi}{section.0.40}
-\contentsline {subsection}{\numberline {0.40.1}Step 1: Create an ``empty'' R package}{ccxi}{subsection.0.40.1}
-\contentsline {subsection}{\numberline {0.40.2}Step 2: Edit description file}{ccxiii}{subsection.0.40.2}
-\contentsline {subsection}{\numberline {0.40.3}Step 3: Move your R scripts into the R folder}{ccxv}{subsection.0.40.3}
-\contentsline {subsection}{\numberline {0.40.4}Step 4: Documentation}{ccxvi}{subsection.0.40.4}
-\contentsline {subsection}{\numberline {0.40.5}Step 5: Test your package}{ccxx}{subsection.0.40.5}
-\contentsline {subsection}{\numberline {0.40.6}Step 6: Add a ``README.Rmd'' file}{ccxxi}{subsection.0.40.6}
-\contentsline {subsection}{\numberline {0.40.7}Step 7: Create a github repo - possibly with the same name as package}{ccxxii}{subsection.0.40.7}
-\contentsline {section}{\numberline {0.41}Advanced}{ccxxiii}{section.0.41}
-\contentsline {subsection}{\numberline {0.41.1}Adding a shiny app}{ccxxiv}{subsection.0.41.1}
-\contentsline {subsection}{\numberline {0.41.2}Custom website}{ccxxvi}{subsection.0.41.2}
-\contentsline {chapter}{High performance computing}{ccxxvii}{chapter*.23}
-\contentsline {chapter}{Website creation}{ccxxix}{chapter*.24}
-\contentsline {chapter}{Appendix}{ccxxix}{chapter*.24}
-\contentsline {chapter}{Basic Probability and Statistics with \texttt {R}}{ccxxxi}{appendix*.25}
+\contentsline {subsection}{\numberline {0.6.1}Subsections}{xxxiii}{subsection.0.6.1}
+\contentsline {section}{\numberline {0.7}Text}{xxxiv}{section.0.7}
+\contentsline {subsection}{\numberline {0.7.1}Headers}{xxxv}{subsection.0.7.1}
+\contentsline {subsection}{\numberline {0.7.2}Lists}{xxxv}{subsection.0.7.2}
+\contentsline {subsection}{\numberline {0.7.3}Hyperlinks}{xxxvi}{subsection.0.7.3}
+\contentsline {subsection}{\numberline {0.7.4}Blockquotes}{xxxvi}{subsection.0.7.4}
+\contentsline {subsection}{\numberline {0.7.5}Pictures}{xxxvi}{subsection.0.7.5}
+\contentsline {subsection}{\numberline {0.7.6}LaTeX}{xxxvii}{subsection.0.7.6}
+\contentsline {subsubsection}{\numberline {0.7.6.1}LaTeX in RMarkdown}{xxxvii}{subsubsection.0.7.6.1}
+\contentsline {subsection}{\numberline {0.7.7}Cross-referencing Sections}{xxxviii}{subsection.0.7.7}
+\contentsline {subsection}{\numberline {0.7.8}Citations and Bibliography}{xxxviii}{subsection.0.7.8}
+\contentsline {subsection}{\numberline {0.7.9}Tables}{xlii}{subsection.0.7.9}
+\contentsline {subsection}{\numberline {0.7.10}Additional References}{xliii}{subsection.0.7.10}
+\contentsline {section}{\numberline {0.8}Code Chunks}{xliii}{section.0.8}
+\contentsline {subsection}{\numberline {0.8.1}Code Chunk Options}{xliv}{subsection.0.8.1}
+\contentsline {subsection}{\numberline {0.8.2}Comments}{xlv}{subsection.0.8.2}
+\contentsline {subsection}{\numberline {0.8.3}In-line R}{xlvi}{subsection.0.8.3}
+\contentsline {subsection}{\numberline {0.8.4}Cache}{xlvii}{subsection.0.8.4}
+\contentsline {section}{\numberline {0.9}Render Output}{xlix}{section.0.9}
+\contentsline {section}{\numberline {0.10}Addition Information}{l}{section.0.10}
+\contentsline {chapter}{GitHub}{li}{chapter*.9}
+\contentsline {section}{\numberline {0.11}Version Control}{lii}{section.0.11}
+\contentsline {section}{\numberline {0.12}Git and GitHub}{lii}{section.0.12}
+\contentsline {subsection}{\numberline {0.12.1}Git Setup}{liii}{subsection.0.12.1}
+\contentsline {subsubsection}{\numberline {0.12.1.1}Tell Git Who You Are}{liii}{subsubsection.0.12.1.1}
+\contentsline {subsection}{\numberline {0.12.2}GitHub Setup}{liii}{subsection.0.12.2}
+\contentsline {subsection}{\numberline {0.12.3}Student Developer Pack}{liv}{subsection.0.12.3}
+\contentsline {section}{\numberline {0.13}GitHub Workflow}{lv}{section.0.13}
+\contentsline {subsection}{\numberline {0.13.1}Branching}{lvi}{subsection.0.13.1}
+\contentsline {subsection}{\numberline {0.13.2}Pull}{lvi}{subsection.0.13.2}
+\contentsline {subsection}{\numberline {0.13.3}Commits}{lvii}{subsection.0.13.3}
+\contentsline {subsubsection}{\numberline {0.13.3.1}Pull Request}{lvii}{subsubsection.0.13.3.1}
+\contentsline {subsection}{\numberline {0.13.4}Push or Merge}{lviii}{subsection.0.13.4}
+\contentsline {subsection}{\numberline {0.13.5}Merge Conflicts}{lviii}{subsection.0.13.5}
+\contentsline {section}{\numberline {0.14}GitHub Workflow on Command Line / Git Bash}{lviii}{section.0.14}
+\contentsline {section}{\numberline {0.15}Issues}{lxi}{section.0.15}
+\contentsline {section}{\numberline {0.16}Slack Integration}{lxi}{section.0.16}
+\contentsline {section}{\numberline {0.17}Additional References}{lxi}{section.0.17}
+\contentsline {part}{II\hspace {1em}Introduction to R}{lxiii}{part.2}
+\contentsline {chapter}{Data Structures}{lxv}{chapter*.10}
+\contentsline {section}{\numberline {0.18}Vectors}{lxvi}{section.0.18}
+\contentsline {subsection}{\numberline {0.18.1}Type}{lxviii}{subsection.0.18.1}
+\contentsline {subsection}{\numberline {0.18.2}Coercion}{lxix}{subsection.0.18.2}
+\contentsline {subsection}{\numberline {0.18.3}Subsetting}{lxx}{subsection.0.18.3}
+\contentsline {subsection}{\numberline {0.18.4}Attributes}{lxxi}{subsection.0.18.4}
+\contentsline {subsection}{\numberline {0.18.5}Adding Labels}{lxxii}{subsection.0.18.5}
+\contentsline {subsection}{\numberline {0.18.6}Working with Dates}{lxxiii}{subsection.0.18.6}
+\contentsline {subsection}{\numberline {0.18.7}Useful Functions with Vectors}{lxxv}{subsection.0.18.7}
+\contentsline {subsection}{\numberline {0.18.8}Creating sequences}{lxxviii}{subsection.0.18.8}
+\contentsline {subsection}{\numberline {0.18.9}Example: Apple Stock Price}{lxxxi}{subsection.0.18.9}
+\contentsline {section}{\numberline {0.19}Matrices}{lxxxiv}{section.0.19}
+\contentsline {subsection}{\numberline {0.19.1}Subsetting}{lxxxvi}{subsection.0.19.1}
+\contentsline {subsection}{\numberline {0.19.2}Matrix Operators in R}{lxxxviii}{subsection.0.19.2}
+\contentsline {subsection}{\numberline {0.19.3}Example: Summary Statistics with Matrix Notation}{xcii}{subsection.0.19.3}
+\contentsline {subsection}{\numberline {0.19.4}Example: Portfolio Optimization}{xcvi}{subsection.0.19.4}
+\contentsline {section}{\numberline {0.20}Array}{c}{section.0.20}
+\contentsline {section}{\numberline {0.21}List}{civ}{section.0.21}
+\contentsline {section}{\numberline {0.22}Dataframe}{cviii}{section.0.22}
+\contentsline {subsection}{\numberline {0.22.1}Combination}{cix}{subsection.0.22.1}
+\contentsline {subsection}{\numberline {0.22.2}Subsetting}{cx}{subsection.0.22.2}
+\contentsline {subsection}{\numberline {0.22.3}Example: Maps}{cxiv}{subsection.0.22.3}
+\contentsline {chapter}{Control Structures}{cxvii}{chapter*.14}
+\contentsline {section}{\numberline {0.23}Introduction}{cxvii}{section.0.23}
+\contentsline {section}{\numberline {0.24}Selection control statements}{cxviii}{section.0.24}
+\contentsline {subsection}{\numberline {0.24.1}Logical Operators}{cxix}{subsection.0.24.1}
+\contentsline {subsection}{\numberline {0.24.2}Selection Operators}{cxxi}{subsection.0.24.2}
+\contentsline {subsubsection}{\numberline {0.24.2.1}\texttt {if} Statements}{cxxi}{subsubsection.0.24.2.1}
+\contentsline {subsubsection}{\numberline {0.24.2.2}\texttt {if/else} Statements}{cxxiii}{subsubsection.0.24.2.2}
+\contentsline {subsubsection}{\numberline {0.24.2.3}\texttt {if/elseif/else} Statements}{cxxv}{subsubsection.0.24.2.3}
+\contentsline {subsubsection}{\numberline {0.24.2.4}\texttt {switch} Statement}{cxxvi}{subsubsection.0.24.2.4}
+\contentsline {subsection}{\numberline {0.24.3}Iterative Control Statements}{cxxviii}{subsection.0.24.3}
+\contentsline {subsubsection}{\numberline {0.24.3.1}\texttt {for} Loops}{cxxix}{subsubsection.0.24.3.1}
+\contentsline {subsubsection}{\numberline {0.24.3.2}\texttt {while} Statements}{cxxxiv}{subsubsection.0.24.3.2}
+\contentsline {section}{\numberline {0.25}Example: The Bootstrap}{cxxxvi}{section.0.25}
+\contentsline {section}{\numberline {0.26}Example: Random Walk}{cxl}{section.0.26}
+\contentsline {section}{\numberline {0.27}Example: Monte-Carlo Integration}{cxliii}{section.0.27}
+\contentsline {subsection}{\numberline {0.27.1}Introduction}{cxliii}{subsection.0.27.1}
+\contentsline {subsection}{\numberline {0.27.2}Implementation}{cxlvi}{subsection.0.27.2}
+\contentsline {subsection}{\numberline {0.27.3}Application to the Normal Distribution}{cxlviii}{subsection.0.27.3}
+\contentsline {subsection}{\numberline {0.27.4}Application to Nonelementary Integrals}{cxlix}{subsection.0.27.4}
+\contentsline {chapter}{Functions}{cli}{chapter*.15}
+\contentsline {section}{\numberline {0.28}R functions}{cliii}{section.0.28}
+\contentsline {section}{\numberline {0.29}Creating functions in R}{clvi}{section.0.29}
+\contentsline {subsection}{\numberline {0.29.1}Function arguments}{clvii}{subsection.0.29.1}
+\contentsline {subsection}{\numberline {0.29.2}Function body}{clxi}{subsection.0.29.2}
+\contentsline {section}{\numberline {0.30}Function environment}{clxvii}{section.0.30}
+\contentsline {section}{\numberline {0.31}Example (continued): Least-squares function}{clxx}{section.0.31}
+\contentsline {part}{III\hspace {1em}Extending}{clxxxiii}{part.3}
+\contentsline {chapter}{Shiny Web Applications}{clxxxv}{chapter*.16}
+\contentsline {section}{\numberline {0.32}Introduction}{clxxxv}{section.0.32}
+\contentsline {section}{\numberline {0.33}Step 1. Defining the R Code in the backend of the Shiny app}{clxxxv}{section.0.33}
+\contentsline {section}{\numberline {0.34}Step 2: User Interface (UI) / Frontend}{clxxxviii}{section.0.34}
+\contentsline {section}{\numberline {0.35}Step 3: Implementing the backend (server)}{cxc}{section.0.35}
+\contentsline {section}{\numberline {0.36}Step 4: Connecting frontend and backend}{cxci}{section.0.36}
+\contentsline {section}{\numberline {0.37}Step 5: Customize}{cxcii}{section.0.37}
+\contentsline {section}{\numberline {0.38}Example: Monte-Carlo Integration}{cxciii}{section.0.38}
+\contentsline {section}{\numberline {0.39}Example: Buffon's needle}{cxciii}{section.0.39}
+\contentsline {subsection}{\numberline {0.39.1}Step 1: Backend}{cxcvii}{subsection.0.39.1}
+\contentsline {subsection}{\numberline {0.39.2}Step 2: Frontend}{cciii}{subsection.0.39.2}
+\contentsline {subsection}{\numberline {0.39.3}Step 3: Connecting frontend and backend}{ccviii}{subsection.0.39.3}
+\contentsline {chapter}{R Packages}{ccxv}{chapter*.20}
+\contentsline {section}{\numberline {0.40}Basic steps}{ccxix}{section.0.40}
+\contentsline {subsection}{\numberline {0.40.1}Step 1: Create an ``empty'' R package}{ccxix}{subsection.0.40.1}
+\contentsline {subsection}{\numberline {0.40.2}Step 2: Edit description file}{ccxxiii}{subsection.0.40.2}
+\contentsline {subsection}{\numberline {0.40.3}Step 3: Move your R scripts into the R folder}{ccxxv}{subsection.0.40.3}
+\contentsline {subsection}{\numberline {0.40.4}Step 4: Documentation}{ccxxvi}{subsection.0.40.4}
+\contentsline {subsection}{\numberline {0.40.5}Step 5: Test your package}{ccxxxi}{subsection.0.40.5}
+\contentsline {subsection}{\numberline {0.40.6}Step 6: Add a ``README.Rmd'' file}{ccxxxiii}{subsection.0.40.6}
+\contentsline {subsection}{\numberline {0.40.7}Step 7: Create a github repo - possibly with the same name as package}{ccxxxiv}{subsection.0.40.7}
+\contentsline {section}{\numberline {0.41}Advanced}{ccxxxvii}{section.0.41}
+\contentsline {subsection}{\numberline {0.41.1}Adding a shiny app}{ccxxxvii}{subsection.0.41.1}
+\contentsline {subsection}{\numberline {0.41.2}Custom website}{ccxl}{subsection.0.41.2}
+\contentsline {chapter}{High performance computing}{ccxli}{chapter*.24}
+\contentsline {chapter}{Website creation}{ccxliii}{chapter*.25}
+\contentsline {chapter}{Appendix}{ccxliii}{chapter*.25}
+\contentsline {chapter}{Basic Probability and Statistics with \texttt {R}}{ccxlv}{appendix*.26}
