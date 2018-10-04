@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-10-03">
+<meta name="date" content="2018-10-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -299,7 +299,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">plot</span>(<span class="dt">y =</span> hubble<span class="op">$</span>y, <span class="dt">x =</span> hubble<span class="op">$</span>x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, 
      <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)
 <span class="kw">grid</span>()</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
 <p>By the end of this chapter we will therefore be able to build a function to obtain an estimate of <span class="math inline">\(\beta\)</span> and, consequently, an estimate of the age of the universe based on the big bang theory (as well as a means of testing whether a Creationist hypothesis on the age of the universe is reasonable based on the latter theory).</p>
 <div id="r-functions" class="section level2">
 <h2><span class="header-section-number">6.1</span> R functions</h2>
@@ -391,14 +391,14 @@ It is possible to also specify arguments in terms of the default value of other 
 <span class="kw">class</span>(image) =<span class="st"> &quot;pixel&quot;</span></code></pre></div>
 <p>If we were to plot this, we would obtain the following plot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(image)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
 <p>which simply plots the values for given coordinates. Given that this is not what we want, let us create a function that allows the user to simply use the <code>plot()</code> function which automatically recognises the object and plots a heatmap of the pixel intensity:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.pixel &lt;-<span class="st"> </span><span class="cf">function</span> (mat) {
   <span class="kw">suppressWarnings</span>(<span class="kw">heatmap</span>(mat, <span class="dt">Colv=</span><span class="ot">NA</span>, <span class="dt">Rowv=</span><span class="ot">NA</span>, <span class="dt">labRow=</span><span class="ot">NA</span>, <span class="dt">labCol=</span><span class="ot">NA</span>, <span class="dt">scale=</span><span class="st">&#39;none&#39;</span>))
 }</code></pre></div>
 <p>If we use the <code>plot()</code> function now, we obtain the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(image)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-191-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
 <p>which produces the desired output simply using the general-purpose function <code>plot()</code>.</p>
 <p>To conclude, additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is again given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = &quot;l&quot;</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
 </div>

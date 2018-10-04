@@ -1277,6 +1277,8 @@ ggmap(map) + geom_point(data = birth_coord,
              xlab("Longitude") + ylab("Latitude")
 ```
 
+<center>![](images/ggmap_tennis.png){width=80%}</center>
+
 As we see, we can produce various output using dataframe objects. 
 
 
