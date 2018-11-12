@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-10-04">
+<meta name="date" content="2018-11-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="r-packages.html"><a href="r-packages.html#custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="high-performance-computing.html"><a href="high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a></li>
+<li class="chapter" data-level="9" data-path="high-performance-computing.html"><a href="high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a><ul>
+<li class="chapter" data-level="9.1" data-path="high-performance-computing.html"><a href="high-performance-computing.html#rcpp-using-c-within-r"><i class="fa fa-check"></i><b>9.1</b> Rcpp: using C++ within R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="high-performance-computing.html"><a href="high-performance-computing.html#installation"><i class="fa fa-check"></i><b>9.1.1</b> Installation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="high-performance-computing.html"><a href="high-performance-computing.html#a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
+<li class="chapter" data-level="9.1.3" data-path="high-performance-computing.html"><a href="high-performance-computing.html#data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="9.1.4" data-path="high-performance-computing.html"><a href="high-performance-computing.html#control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
+<li class="chapter" data-level="9.1.5" data-path="high-performance-computing.html"><a href="high-performance-computing.html#functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.6" data-path="high-performance-computing.html"><a href="high-performance-computing.html#comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="high-performance-computing.html"><a href="high-performance-computing.html#example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
 <li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -296,7 +306,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>For instance, based on the tutorial example, we may intend to build an application that creates a histogram based on the waiting time between eruptions of the Old Faithful geyser in Yellowstone National Park (that can be found in the R dataset <code>faithful</code>), allowing the user to specify the number of bins. Using the second column in the dataset (representing the waiting times), if we were to use the default values for the histogram function in R we would obtain the following plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] 
 <span class="kw">hist</span>(x)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p>However, the representation and interpretation of the data can sometimes change considerably if using different visualization parameters. Indeed, among others, the <code>hist()</code> function includes an option called <code>breaks</code> that allows the user to specify a vector giving the number of breakpoints between histogram cells. An example of how this is used and changes the representation of the data can be found below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 
@@ -307,14 +317,14 @@ bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">
 <span class="co"># Histogram with 19 bins</span>
 bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">20</span>)
 <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 <p>As you may notice, the number of bins created by using this option is always one unit less than the length of the specified vector (i.e. 9 and 19). Therefore, if we intend to deliver an app that allows the user to directly specify the number of bins, we should take this into account and add one unit to the input that the user has given within the <code>length.out</code> option. Ideally, we would be looking to implement a function which includes the following steps:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">input &lt;-<span class="st"> </span><span class="dv">10</span>
 
 <span class="co"># Histogram with input bins</span>
 bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)
 <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
 <p>where the value given to the <code>input</code> object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.</p>
 </div>
 <div id="step-2-user-interface-ui-frontend" class="section level2">
@@ -618,7 +628,7 @@ needle</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="op">-</span><span class="dv">2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
 <span class="kw">lines</span>(<span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">1</span>], needle<span class="op">$</span>end[<span class="dv">1</span>]), <span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">2</span>], needle<span class="op">$</span>end[<span class="dv">2</span>]))</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-257-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-234-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Next, we consider the function <code>buffon_experiment()</code>. This function is based on the previous function and contains the following inputs:</p>
 <ul>
 <li><code>B</code>: the number of needles being casted;</li>
@@ -685,7 +695,7 @@ experiment</code></pre></div>
   <span class="kw">lines</span>(<span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">1</span>], experiment<span class="op">$</span>end[i,<span class="dv">1</span>]), 
         <span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">2</span>], experiment<span class="op">$</span>end[i,<span class="dv">2</span>]))
 }</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-260-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-237-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>We can now write a custom <code>plot()</code> function for the output of the function <code>buffon_experiment()</code>. This function will provide a way to visualize the experiment and will compute <span class="math inline">\(\hat{\pi}_B\)</span>, which will be shown in the title. A possible function is provided below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(obj){
   cross &lt;-<span class="st"> </span>obj<span class="op">$</span>cross
@@ -713,7 +723,7 @@ experiment</code></pre></div>
 <p>Therefore, we could now run the same experiment as Georges-Louis Leclerc by flinging 2084 needles almost instanteously (which is the default value in the <code>buffon_experiment()</code> function we created):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)
 <span class="kw">plot</span>(experiment)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-262-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-239-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Finally, we can consider the function <code>converge()</code>. Similarly to <code>buffon_experiment()</code>, the function <code>converge()</code> has the following inputs:</p>
 <ul>
 <li><code>B</code>: the number of needles being cast;</li>
@@ -753,7 +763,7 @@ experiment</code></pre></div>
 }</code></pre></div>
 <p>Therefore, if we were to repeat the original experiment of Georges-Louis Leclerc 20 times and compute <span class="math inline">\(\hat{\pi}_j\)</span> for each experiment we would obtain:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-264-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-241-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>which provides some illustrations on the convergence of the estimator.</p>
 </div>
 <div id="step-2-frontend" class="section level3">

@@ -396,19 +396,19 @@ seq(players_dob[2], players_dob[1], by = "1 month")
 
 Suppose that someone is interested in analyzing the behavior of Apple's stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today's date. In R, this can be obtained as follows
 
-```{r}
+```{r, cache = TRUE}
 (today <- Sys.Date())
 ```
 
 Once this is done, we can obtain the date which is exactly three months ago by using
 
-```{r}
+```{r, cache = TRUE}
 (three_months_ago <- seq(today, length = 2, by = "-3 months")[2])
 ```
 
 With this information, we can now download Apple's stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.
 
-```{r candleAAPL, message = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE, results = 'hide', fig.cap = "Candlestick chart for Apple's stock price for the last three months."}
+```{r candleAAPL, message = FALSE, fig.height = 5, fig.width = 6, fig.align = "center", warning = FALSE, results = 'hide', fig.cap = "Candlestick chart for Apple's stock price for the last three months.", cache=TRUE}
 library(quantmod)
 getSymbols("AAPL", from = three_months_ago, to = today)
 candleChart(AAPL, theme = 'white', type = 'candles')
@@ -423,13 +423,13 @@ Using the price contained in the object we downloaded (i.e. `AAPL`), we can comp
 
 where $R_t$ are the returns at time *t* and $S_t$ is the stock price. This is implemented in the function `ClCl()` within the `quantmod` package. For example, we can create a vector of returns as follows 
 
-```{r}
+```{r, cache=TRUE}
 AAPL_returns <- na.omit(ClCl(AAPL))
 ```
 
 where `na.omit()` is used to remove missing values in the stock prices vector since, if we have $n+1$ stock prices, we will only have $n$ returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.
 
-```{r}
+```{r, cache=TRUE}
 mean(AAPL_returns)
 median(AAPL_returns)
 ```
@@ -476,12 +476,12 @@ where $\bar{R}$ denotes the sample average of the returns, i.e.
 
 In R, this can simply be done as follows:
 
-```{r}
+```{r, cache=TRUE}
 mu <- mean(AAPL_returns)
 (k <- mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)
 ```
  
-Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter \@ref(#control), we will revisit this example and investigate if there is **enough evidence** to conclude that Apple's stock has Excess Kurtosis larger than zero.
+Therefore, we observe an estimated Excess Kurtosis of `r round(k,2)` which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter \@ref(control), we will revisit this example and investigate if there is **enough evidence** to conclude that Apple's stock has Excess Kurtosis larger than zero.
 
 
 ## Matrices
@@ -959,7 +959,7 @@ Using \@ref(eq:omega), we obtain that the expected value and variance of our inv
 
 In practice, the vector $\boldsymbol{\mu}$ and the matrix $\boldsymbol{\Sigma}$ are unknown and must be estimated using historical data. In the code below, we compute the optimal value of $\omega$ based on \@ref(eq:omega) by using the last five years of historical data for the two stocks considered. For simplicity we set $W$ to one but note that $W$ plays no role in determining $\omega^*$.
   
-```{r downloadaaplandamaz, message = FALSE, warning = FALSE, results = 'hide'}
+```{r downloadaaplandamaz, message = FALSE, warning = FALSE, results = 'hide', cache = TRUE}
 # Load quantmod
 library(quantmod)
 
@@ -1153,7 +1153,7 @@ players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka",
 grand_slam_win <- c(9, 15, 5, 12, 18)
 
 date_of_birth <- c("15 May 1987", "3 June 1986", "28 March 1985", 
-                  "22 May 1981", "8 August 1981")
+                  "22 May 1987", "8 August 1981")
 
 country <- c("Great Britain", "Spain", "Switzerland", 
             "Serbia", "Switzerland")

@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-10-04">
+<meta name="date" content="2018-11-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="r-packages.html"><a href="r-packages.html#custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="high-performance-computing.html"><a href="high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a></li>
+<li class="chapter" data-level="9" data-path="high-performance-computing.html"><a href="high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a><ul>
+<li class="chapter" data-level="9.1" data-path="high-performance-computing.html"><a href="high-performance-computing.html#rcpp-using-c-within-r"><i class="fa fa-check"></i><b>9.1</b> Rcpp: using C++ within R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="high-performance-computing.html"><a href="high-performance-computing.html#installation"><i class="fa fa-check"></i><b>9.1.1</b> Installation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="high-performance-computing.html"><a href="high-performance-computing.html#a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
+<li class="chapter" data-level="9.1.3" data-path="high-performance-computing.html"><a href="high-performance-computing.html#data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="9.1.4" data-path="high-performance-computing.html"><a href="high-performance-computing.html#control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
+<li class="chapter" data-level="9.1.5" data-path="high-performance-computing.html"><a href="high-performance-computing.html#functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.6" data-path="high-performance-computing.html"><a href="high-performance-computing.html#comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="high-performance-computing.html"><a href="high-performance-computing.html#example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
 <li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -282,8 +292,476 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="high-performance-computing" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> High performance computing</h1>
-<p>(coming soon)</p>
+<div id="rcpp-using-c-within-r" class="section level2">
+<h2><span class="header-section-number">9.1</span> Rcpp: using C++ within R</h2>
+<p>Whereas R is a relatively new language targetting essentially statistician and data analyst, C++ is a well-established general-purpose programming language. This chapter does not aim at covering programmation in C++ per se, but rather to address specific problems related to R. The point of view taken here is that of the R programmer having no notions of C++ or similar language. We do not describe accurately notions of C++ but rather give some necessary concepts for starting programming.</p>
+<p>R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a> which makes it particularly slow for repeating operations such as for and while loops, or recursive calling of functions. On the other hand, C++ is a <a href="https://en.wikipedia.org/wiki/Compiled_language">compiled language</a>, it means that before being able to use your code, it is translated (compiled) to lower-level machine language which makes the code running very fast.</p>
+<p>Note that here we jump straight to the C++ solution, but there are many ways to enhance your R code such as <a href="http://www.dartistics.com/fast-r-code.html">vectorization</a> and <a href="http://adv-r.had.co.nz/memory.html">memory management</a>. <a href="http://adv-r.had.co.nz/Profiling.html">Profiling</a> also helps to identify which parts of the code is the slowest.</p>
+<p>Note eventually that C++ compiles <em>ahead of time</em> (before using the code), but other approaches exist such as the <a href="https://julialang.org/">Julia language</a> that compiles <em>just in time</em> (at runtime).</p>
+<div id="installation" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Installation</h3>
+<p>Working with C++ in R does not come “out of the box”, but do not worry, it is now a well handled procedure. You need essentially two elements: a C++ compiler and a program that permits to connect R and C++. For the latter, you need to install the <code>Rcpp</code> package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For CRAN official release</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;Rcpp&quot;</span>)
 
+<span class="co"># For development version</span>
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;RcppCore/Rcpp&quot;</span>)</code></pre></div>
+<p>For the former, it depends on your OS:<br />
+1. On Windows, install <code>RTools</code>.<br />
+2. On Mac, install <code>Xcode</code> from the App Store.<br />
+3. On Linux, you need to install <code>r-bas-dev</code> (or similar) from your package manager.</p>
+<p>Verify that your installation works by running:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(Rcpp)
+<span class="kw">cppFunction</span>(<span class="st">&quot;double sumC(double x, double y){</span>
+<span class="st">  double s;</span>
+<span class="st">  s = x + y;</span>
+<span class="st">  return s;</span>
+<span class="st">} &quot;</span>)
+<span class="kw">sumC</span>(<span class="fl">3.5</span>, <span class="fl">6.5</span>)</code></pre></div>
+
+<div class="rmdcaution">
+In C++, a line of code must end with a semicolumn <code>;</code>. Otherwise, compiler returns an error.
+</div>
+
+<p>The function <code>sumC(x,y)</code> takes two doubles (numeric) values, <code>x</code> and <code>y</code>, and it returns a double, the sum of the two values. Can you predict what happens if you run the following lines? Can you explain why?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sumC</span>(3L, 6L)
+<span class="kw">sumC</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)
+<span class="kw">sumC</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>))</code></pre></div>
+</div>
+<div id="a-first-program" class="section level3">
+<h3><span class="header-section-number">9.1.2</span> A first program</h3>
+<p>The above <code>cppFunction()</code> creates an <em>inline</em> C++ function (within your R code). However, it is better practice to create a separate file dedicated to C++ functions. It is possible then to compile your C++ functions and call them within R.</p>
+<p>In RStudio, you can create a C++ file by clicking on <em>File</em> &gt; <em>New File</em> &gt; <em>C++ File</em>. RStudio provides you with an example. At the top of C++ file, you should see:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</code></pre></div>
+<p>The first line tells your program that you can access functionalities from the <code>Rcpp</code> library. The second line tells your program that you can access those functionalities without specifying the <code>Rcpp</code> library. For example, suppose there is function <code>mean()</code> in <code>Rcpp</code>. With the first line, you could use this function only by typing <code>Rcpp::mean()</code>. Adding the second line allow you to write directly <code>mean()</code> in your program. This is somehow equivalent as using <code>library(Rcpp)</code> in your R code.</p>
+<p>Once the C++ code is written, it should be saved with the appropriate extension, use <code>*.cc</code> or <code>*.cpp</code>. Now you can compile your first C++ program. Type in your R file:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sourceCpp</span>(<span class="st">&quot;file_name.cpp&quot;</span>)</code></pre></div>
+<p>Try to write the <code>sumC()</code> function within a separate C++ file and compile it in R.</p>
+<p>By default, C++ functions are not accessible within your R program. One key element is to use the attribute <code>[[Rcpp::export]]</code> in comment <strong>just before the function definition</strong>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> Rcpp;
+
+<span class="co">// [[Rcpp::export]]</span>
+<span class="dt">double</span> sumC(
+    <span class="dt">double</span> x,
+    <span class="dt">double</span> y
+) {
+  <span class="dt">double</span> s;
+  s = x + y;
+  <span class="cf">return</span> s;
+}</code></pre></div>
+
+<div class="rmdnote">
+In C++, the symbol <code>//</code> is used for single line comment. The symbol <code>/*</code> starts a comment on possibly multiple lines and <code>*/</code> ends the comment.
+</div>
+
+</div>
+<div id="data-structures" class="section level3">
+<h3><span class="header-section-number">9.1.3</span> Data structures</h3>
+<p>One difference you can immediately notice while working with C++ is that you need to tell the program what type of data structure you intend to use, before using it. This makes the code safer, the programmer needs to think more deeply on the implementation details and it prevents from using the code in a way it was not intended. On the other hand, the programmer will spend (at least at the beginning) more time conceiving the code.</p>
+<p>Here is a list of primitive data types with their keywords:<br />
+- <code>int</code> (4) : integer,<br />
+- <code>float</code> (4) : single precision floating number (numeric),<br />
+- <code>double</code> (8) : double precision floating number (numeric),<br />
+- <code>bool</code> : logical (true or false),<br />
+- <code>char</code> : character,<br />
+- <code>void</code> : without any value.</p>
+<p>The numbers in parenthesis represents typical memory in bytes required to store the variable. Single and double precision floating number represents how the computer stores real numbers in the memory. <code>float</code> requires less memory than <code>double</code> but is less precise. As a general rule, we use only <code>double</code> as it is already the case in R:</p>
+<blockquote>
+<p>R has no single precision data type. All real numbers are stored in double precision format.</p>
+<p><code>help(double)</code> in R</p>
+</blockquote>
+<p>These data types can be modified by using one (or more) of the following keywords:<br />
+- <code>long</code> : allocate more space in memory,<br />
+- <code>short</code> : allocate less space in memory,<br />
+- <code>unsigned</code> : numbers take only positive value.</p>
+<p>For more complex data structures such as vectors and matrices, the story is slightly more complicated. Hopefully for R programmers, <code>Rcpp</code> provides a lot of predefined structures which makes the transition to C++ easier. Here is a non-exhaustive list:</p>
+<p>Table : Common data structure in R with Rcpp equivalent.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Rcpp</th>
+<th>R</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NumericVector</code></td>
+<td><code>c(...)</code> or <code>vector(mode = &quot;double&quot;, ...)</code></td>
+<td>A vector of double</td>
+</tr>
+<tr class="even">
+<td><code>IntegerVector</code></td>
+<td><code>c(...)</code> or <code>vector(mode = &quot;integer&quot;, ...)</code></td>
+<td>A vector of integer</td>
+</tr>
+<tr class="odd">
+<td><code>LogicalVector</code></td>
+<td><code>c(...)</code> or <code>vector(mode = &quot;bool&quot;, ...)</code></td>
+<td>A vector of boolean</td>
+</tr>
+<tr class="even">
+<td><code>NumericMatrix</code></td>
+<td><code>matrix()</code></td>
+<td>A matrix of double</td>
+</tr>
+<tr class="odd">
+<td><code>IntegerMatrix</code></td>
+<td><code>matrix()</code></td>
+<td>A matrix of integer</td>
+</tr>
+<tr class="even">
+<td><code>LogicalMatrix</code></td>
+<td><code>matrix()</code></td>
+<td>A matrix of boolean</td>
+</tr>
+<tr class="odd">
+<td><code>List</code></td>
+<td><code>list</code></td>
+<td>A list</td>
+</tr>
+<tr class="even">
+<td><code>DataFrame</code></td>
+<td><code>data.frame()</code></td>
+<td>A data frame</td>
+</tr>
+</tbody>
+</table>
+<div id="vectors-1" class="section level4">
+<h4><span class="header-section-number">9.1.3.1</span> Vectors</h4>
+<p>Before using a vector in C++, you need to create one. For example,</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">NumericVector v(<span class="dv">10</span>);</code></pre></div>
+<p>creates an empty vector of double of length 10.</p>
+<p>To access elements of a vector, the syntax is the same as in R with one notable exception: <strong>accessor starts at 0</strong>! So if you want to access the first element of a vector <code>v</code>, you should write <code>v[0]</code>, the ith element, <code>v[i-1]</code>. Note that you can equivalently write <code>v(0)</code> and <code>v(i-1)</code>.</p>
+<p>Eventually, the length of the vector <code>v</code> can be obtained as follows</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> n = v.length();</code></pre></div>
+<p>Here the length of the vector is saved into an integer <code>n</code>.</p>
+<p>Note that <code>length()</code> is a <em>method</em> for the <em>class</em> <code>NumericVector</code> and uses the syntax ‘’dot-function’’. Theses concepts are beyond the scope of this introduction, the only to remark is that the above notation gives the same result as if you wrote <code>length(v)</code> in R.</p>
+</div>
+<div id="matrices-1" class="section level4">
+<h4><span class="header-section-number">9.1.3.2</span> Matrices</h4>
+<p>Creating a matrix is similar to vector.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">NumericMatrix m(<span class="dv">3</span>,<span class="dv">4</span>);</code></pre></div>
+<p>creates an empty matrix with 3 rows and 4 columns. This is equivalent as writing in R</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nr=</span><span class="dv">3</span>,<span class="dt">nc=</span><span class="dv">4</span>)</code></pre></div>
+<p>The syntax for accessing matrix elements is slightly different. For example, accessing a column or a row can be done as follows</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Copy first column into a vector</span>
+NumericVector v = m( _ , <span class="dv">0</span>);
+
+<span class="co">// Copy first row into a vector</span>
+NumericVector v = m(<span class="dv">0</span>, _);
+
+<span class="co">// Access the ith row, jth column</span>
+<span class="dt">double</span> x = m(i<span class="dv">-1</span>, j<span class="dv">-1</span>); <span class="co">// i and j are positive integers already defined</span></code></pre></div>
+<p>The number of column/row of a matrix can be retrieved using</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// number of rows</span>
+<span class="dt">int</span> nr = m.nrow();
+
+<span class="co">// number of columns</span>
+<span class="dt">int</span> nc = m.ncol();</code></pre></div>
+</div>
+<div id="list-1" class="section level4">
+<h4><span class="header-section-number">9.1.3.3</span> List</h4>
+<p>List creation can be accomplished as follows:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Create a list from elements e1 and e2</span>
+List L = List::create(e1, e2);
+
+<span class="co">// Create a list from elements e1 and e2 with names</span>
+List L = List::create(Named(<span class="st">&quot;name1&quot;</span>) e1, Named(<span class="st">&quot;name2&quot;</span>) e2);</code></pre></div>
+</div>
+</div>
+<div id="control-structures" class="section level3">
+<h3><span class="header-section-number">9.1.4</span> Control structures</h3>
+<p>Logical operators in R and C++ are similar. Here is a list where <code>x</code> and <code>y</code> are scalar (not vectors!).</p>
+<table>
+<caption>Common logical operators for C++.</caption>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x &gt; y</code></td>
+<td><code>x</code> greater than <code>y</code></td>
+</tr>
+<tr class="even">
+<td><code>x &gt;= y</code></td>
+<td><code>x</code> greater than or equals to <code>y</code></td>
+</tr>
+<tr class="odd">
+<td><code>x &lt; y</code></td>
+<td><code>x</code> less than <code>y</code></td>
+</tr>
+<tr class="even">
+<td><code>x &lt;= y</code></td>
+<td><code>x</code> less than or equals to <code>y</code></td>
+</tr>
+<tr class="odd">
+<td><code>x == y</code></td>
+<td><code>x</code> equals to <code>y</code></td>
+</tr>
+<tr class="even">
+<td><code>x != y</code></td>
+<td><code>x</code> not equal to <code>y</code></td>
+</tr>
+<tr class="odd">
+<td><code>x &amp;&amp; y</code></td>
+<td><code>x</code> and <code>y</code></td>
+</tr>
+<tr class="even">
+<td><code>x || y</code></td>
+<td><code>x</code> or <code>y</code></td>
+</tr>
+<tr class="odd">
+<td><code>!x</code></td>
+<td>not <code>x</code></td>
+</tr>
+</tbody>
+</table>
+<div id="ifelseelseif-statements" class="section level4">
+<h4><span class="header-section-number">9.1.4.1</span> if/else/elseif statements</h4>
+<p>R and C++ share the same syntax for <code>if</code>/<code>else</code>/<code>elseif</code> statements at the exception that <code>else if</code> has a space. For example, the following expression is both valid within R and C++:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (condition){
+  plan A;
+}<span class="cf">else</span>{
+  plan B;
+}</code></pre></div>
+</div>
+<div id="loops" class="section level4">
+<h4><span class="header-section-number">9.1.4.2</span> loops</h4>
+<p>For loops are much faster in C++ than R. The syntax is slightly different. For example, the following R for loop</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
+  <span class="kw">print</span>(<span class="st">&quot;The value is: &quot;</span>, i)
+}</code></pre></div>
+<p>can be written in C++ with the following code</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">1</span>); i&lt;=<span class="dv">10</span>; i++){
+  Rcpp::Rcout &lt;&lt; <span class="st">&quot;The value is: &quot;</span> &lt;&lt; i &lt;&lt; <span class="bu">std::</span>endl;
+}</code></pre></div>
+<p>Three elements need to be defined:<br />
+1. The initialization statement: an iterator (<code>i</code> here), generally of type integer, needs to be initialized (here <code>i</code> is initialized to 1).<br />
+2. The test expression: the expression is evaluated and should return a boolean. If <code>false</code> the loop stops and if <code>true</code>, the body of the for loop is evaluated.<br />
+3. The update statement: it defines the increment of the iterator, usually set to <code>i++</code>.</p>
+<p>Note that there exists also the decrement operator <code>i--</code>.</p>
+<p>C++ also offers variants of assignment operator.</p>
+<table style="width:100%;">
+<caption>Assignment operator in C++. <code>x</code> and <code>y</code> are already defined.</caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Equivalence</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x = y;</code></td>
+<td></td>
+<td>Assign the value of <code>y</code> into <code>x</code></td>
+</tr>
+<tr class="even">
+<td><code>x += y;</code></td>
+<td><code>x = x + y;</code></td>
+<td>Take the value of <code>x</code> and adds <code>y</code>, then assign to <code>x</code></td>
+</tr>
+<tr class="odd">
+<td><code>x -= y;</code></td>
+<td><code>x = x - y;</code></td>
+<td>Take the value of <code>x</code> and substracts <code>y</code>, then assign to <code>x</code></td>
+</tr>
+<tr class="even">
+<td><code>x *= y;</code></td>
+<td><code>x = x * y;</code></td>
+<td>Take the value of <code>x</code> and multiplies by <code>y</code>, then assign to <code>x</code></td>
+</tr>
+<tr class="odd">
+<td><code>x /= y;</code></td>
+<td><code>x = x / y;</code></td>
+<td>Take the value of <code>x</code> and divides by <code>y</code>, then assign to <code>x</code></td>
+</tr>
+</tbody>
+</table>
+<p>Therefore, <code>i++</code> is equivalent to <code>i+=1</code>.</p>
+<p>Write a loop that takes an increment of 2, 3, …</p>
+<p>C++ while loop has the same syntax as R. The following expression</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">while</span>( condition ) {
+  body;
+}</code></pre></div>
+<p>is licit in both languages.</p>
+<p>Note that C++ is also equiped with a <code>do ... while</code> loop. This maybe useful for example in the situation where you need a first run of the body prior to checking the condition.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="cf">do</span>{
+  body;
+}
+<span class="cf">while</span>(condition);</code></pre></div>
+</div>
+</div>
+<div id="functions-1" class="section level3">
+<h3><span class="header-section-number">9.1.5</span> Functions</h3>
+<p>Creating functions in C++ is fundamentally not much different than R. Neverthelss, C++ requires an additional layer of precision. A function can follow this pattern:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">type function_name(type arg1, ..., type argn){
+  body of the function;
+  
+  <span class="cf">return</span> obj;
+}</code></pre></div>
+<p>First, the type of return of the function should be specified. The <code>obj</code> that is returned should be of the same type as the one specified at the function declaration. Each argument should have a type. Otherwise, as in R, the body of the function contains statements that defines what the function does.</p>
+<p>As already said, by default C++ function cannot be used with R. One key element is to use the attribute <code>[[Rcpp::export]]</code> in comment <strong>just before the function definition</strong>. For example</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// [[Rcpp::export]]</span>
+type function_name(type arg1, ..., type argn){
+  body of the function;
+  
+  <span class="cf">return</span> obj;
+}</code></pre></div>
+<p>will make <code>function_name</code> available within R.</p>
+</div>
+<div id="comparing-with-r" class="section level3">
+<h3><span class="header-section-number">9.1.6</span> Comparing with R</h3>
+<p>Puting efforts in writing C++ code instead of R should be rewarding. One way to measure this reward is by comparing the computational efficiency of C++ function in comparison to the equivalent R function. This can be achieved for example using the <code>microbenchmark</code> package.</p>
+<p>For example, suppose you create a function that computes the factorial number of an input positive integer. In R, you can write</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_factorialR &lt;-<span class="st"> </span><span class="cf">function</span>(n){
+  factorial &lt;-<span class="st"> </span><span class="dv">1</span>
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>n){
+    factorial &lt;-<span class="st"> </span>factorial <span class="op">*</span><span class="st"> </span>i
+  }
+  <span class="kw">return</span>(factorial)
+}</code></pre></div>
+<p>An equivalent C++ function could be</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> my_factorialC(<span class="dt">int</span> n){
+  <span class="dt">int</span> factorial = <span class="dv">1</span>;
+  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">2</span>); i&lt;=n; ++i){
+    factorial *= i;
+  }
+  <span class="cf">return</span> factorial;
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(microbenchmark)
+<span class="kw">microbenchmark</span>(<span class="kw">my_factorial</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</code></pre></div>
+<pre><code>## Unit: microseconds
+##                expr    min      lq     mean  median     uq    max neval
+##   my_factorial(500) 43.644 43.7395 44.18116 43.9105 44.015 48.123   100
+##  my_factorialC(500)  2.521  2.5705  3.56807  2.6340  2.684 85.821   100
+##  cld
+##    b
+##   a</code></pre>
+</div>
+<div id="example-buffons-needle-cont" class="section level3">
+<h3><span class="header-section-number">9.1.7</span> Example: Buffon’s needle (con’t)</h3>
+<p>Let’s reconsider Buffon’s needle problem. We propose to recode the R functions <code>cast_needle()</code> and <code>buffon_experiment()</code> into C++.</p>
+<p>For this purpose, first create a C++ file with header</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</code></pre></div>
+<p>The <code>cast_needle()</code> function was defined as</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){
+  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span>
+  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)
+  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)
+  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span>
+  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])
+  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)
+  out
+}</code></pre></div>
+<p>A possible C++ implementation is</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// [[Rcpp::export]]</span>
+List cast_needle(
+  <span class="dt">unsigned</span> <span class="dt">int</span> plane_width = <span class="dv">20</span>
+){
+  <span class="co">// Variable declaration</span>
+  <span class="dt">int</span> available_range;
+  <span class="dt">double</span> angle,my_pi;
+  NumericVector x_start(<span class="dv">2</span>), x_end(<span class="dv">2</span>), tmp_angle(<span class="dv">1</span>);
+  <span class="dt">bool</span> cross;
+  
+  <span class="co">// Computation</span>
+  my_pi = atan(<span class="dv">1</span>) * <span class="dv">4</span>; <span class="co">// defines pi (for simplicity)</span>
+  available_range = plane_width / <span class="dv">2</span> - <span class="dv">1</span>;
+  x_start = runif(<span class="dv">2</span>, -available_range, available_range);
+  tmp_angle = runif(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span> * my_pi);
+  angle = tmp_angle[<span class="dv">0</span>];
+  x_end[<span class="dv">0</span>] = cos(angle) + x_start[<span class="dv">0</span>];
+  x_end[<span class="dv">1</span>] = sin(angle) + x_start[<span class="dv">1</span>];
+  cross = floor(x_start[<span class="dv">2</span>]) != floor(x_end[<span class="dv">2</span>]);
+  
+  <span class="cf">return</span> List::create(
+    Named(<span class="st">&quot;start&quot;</span>) = x_start,
+    Named(<span class="st">&quot;end&quot;</span>) = x_end,
+    Named(<span class="st">&quot;cross&quot;</span>) = cross
+  );
+}</code></pre></div>
+<p>We have few remarks:</p>
+<ul>
+<li>For better readibility, it is better practice to separate variable declaration and computation.<br />
+</li>
+<li>The value of <span class="math inline">\(\pi\)</span> is not accessible by default, here we simply approximate it but better solutions exist.<br />
+</li>
+<li>Basic functions such as <code>atan()</code>, <code>runif()</code>, <code>floor()</code>, <code>cos()</code>, <code>sin()</code> are made available by <code>Rcpp</code> (check for <strong>Rcpp sugar</strong>).<br />
+</li>
+<li>To avoid an error we have first to save the result of <code>runif()</code> as <code>NumericVector</code>, its default result’s type.</li>
+</ul>
+<p>The <code>buffon_needle()</code> function was declared in R as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){
+  
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){
+    <span class="kw">set.seed</span>(seed)
+  }
+  
+  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) 
+  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
+  
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){
+    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)
+    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start
+    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end
+    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross
+  }
+  
+  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)
+  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span>
+  out
+}</code></pre></div>
+<p>The C++ alternative we propose is the following</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// [[Rcpp::export]]</span>
+List buffon_experiment(
+  <span class="dt">int</span> B = <span class="dv">2084</span>,
+  <span class="dt">int</span> plane_width = <span class="dv">10</span>
+){
+  <span class="co">// Variable declaration</span>
+  NumericMatrix X_start(B,<span class="dv">2</span>), X_end(B,<span class="dv">2</span>);
+  LogicalVector cross(B);
+  List L;
+  NumericVector tmp(<span class="dv">2</span>);
+  
+  <span class="co">// Computation</span>
+  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">0</span>); i&lt;B; ++i){
+    L = cast_needle(plane_width);
+    tmp = L[<span class="st">&quot;start&quot;</span>];
+    X_start(i,_) = tmp; 
+    tmp = L[<span class="st">&quot;end&quot;</span>];
+    X_end(i,_) = tmp;
+    cross(i) = L[<span class="st">&quot;cross&quot;</span>];
+  }
+  
+  <span class="cf">return</span> List::create(
+    Named(<span class="st">&quot;start&quot;</span>) = X_start,
+    Named(<span class="st">&quot;end&quot;</span>) = X_end,
+    Named(<span class="st">&quot;cross&quot;</span>) = cross,
+    Named(<span class="st">&quot;plane&quot;</span>) = plane_width
+  );
+}</code></pre></div>
+<p>We have few remarks:</p>
+<ul>
+<li>C++ does not know the content of <code>L[&quot;start&quot;]</code> in advanced, so it is saved first into a vector <code>tmp</code> of the right dimension. Same for <code>L[&quot;end&quot;]</code>.<br />
+</li>
+<li>To avoid complexity, the list returned by the C++ implementation has not the class <em>buffon_experiment</em>. This should be added within R.</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
