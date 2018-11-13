@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
 
 
-<meta name="date" content="2018-11-12">
+<meta name="date" content="2018-11-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -264,6 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.5" data-path="high-performance-computing.html"><a href="high-performance-computing.html#functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="high-performance-computing.html"><a href="high-performance-computing.html#comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="high-performance-computing.html"><a href="high-performance-computing.html#example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+<li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-a-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in a R package</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
@@ -640,12 +641,13 @@ type function_name(type arg1, ..., type argn){
   }
   <span class="cf">return</span> factorial;
 }</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(microbenchmark)
-<span class="kw">microbenchmark</span>(<span class="kw">my_factorial</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(microbenchmark)</code></pre></div>
+<pre><code>## Loading required package: microbenchmark</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</code></pre></div>
 <pre><code>## Unit: microseconds
-##                expr    min      lq     mean  median     uq    max neval
-##   my_factorial(500) 43.644 43.7395 44.18116 43.9105 44.015 48.123   100
-##  my_factorialC(500)  2.521  2.5705  3.56807  2.6340  2.684 85.821   100
+##                expr    min      lq     mean  median      uq    max neval
+##  my_factorialR(500) 22.880 46.4835 44.67396 46.7825 47.3825 71.353   100
+##  my_factorialC(500)  2.732  2.9005  3.65073  3.2040  3.8225 20.179   100
 ##  cld
 ##    b
 ##   a</code></pre>
@@ -759,6 +761,21 @@ List buffon_experiment(
 </li>
 <li>To avoid complexity, the list returned by the C++ implementation has not the class <em>buffon_experiment</em>. This should be added within R.</li>
 </ul>
+</div>
+<div id="c-in-a-r-package" class="section level3">
+<h3><span class="header-section-number">9.1.8</span> C++ in a R package</h3>
+<p>Writing a R package with C++ code follows essentially the same steps as a regular R package. Here we notify the main differences:</p>
+<ol style="list-style-type: decimal">
+<li>Create an “empty” R package: the option <em>R package using Rcpp</em> should be selected as Project Type.<br />
+</li>
+<li>Edit description file: <code>Rcpp</code> has automatically been added in <code>Imports</code> and <code>LinkingTo</code> fields.<br />
+</li>
+<li>Move your R scripts into the R folder. Here in addition, <strong>move the C++ files into the <code>src</code> folder</strong>; <code>src</code> stands for <em>source</em>.The C++ function must have the attribute <code>// [[Rcpp::export]]</code> prior to function definition in order to make it available within R.<br />
+</li>
+<li>Documentation: follow the exact same step for R files. For C++ files, documentation uses the same syntax except that <code>#</code> should be replaced by <code>//</code> (comments in C++).<br />
+</li>
+<li>The next steps are identical.</li>
+</ol>
 
 </div>
 </div>

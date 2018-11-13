@@ -400,12 +400,12 @@ Rcpp::cppFunction(
   }
   return factorial;
 }")
-microbenchmark::microbenchmark(my_factorial(500), my_factorialC(500))
+microbenchmark::microbenchmark(my_factorialR(500), my_factorialC(500))
 ```
 
 ```{r, cache = FALSE, eval=TRUE}
 require(microbenchmark)
-microbenchmark(my_factorial(500), my_factorialC(500))
+microbenchmark(my_factorialR(500), my_factorialC(500))
 ```
 
 
@@ -535,3 +535,17 @@ We have few remarks:
 it is saved first into a vector `tmp` of the right dimension. Same for `L["end"]`.   
 - To avoid complexity, the list returned by the C++ implementation has
 not the class *buffon_experiment*. This should be added within R.   
+
+### C++ in a R package
+Writing a R package with C++ code follows essentially the same steps
+as a regular R package. Here we notify the main differences:
+
+1.  Create an "empty" R package: the option *R package using Rcpp* should be selected as 
+Project Type.    
+2. Edit description file: `Rcpp` has automatically been added in `Imports` and `LinkingTo` fields.   
+3. Move your R scripts into the R folder. Here in addition, **move the C++ files into the `src` folder**; 
+`src` stands for *source*.The C++ function must have the attribute
+`// [[Rcpp::export]]` prior to function definition in order to make it available within R.   
+4. Documentation: follow the exact same step for R files. For C++ files, documentation
+uses the same syntax except that `#` should be replaced by `//` (comments in C++).  
+5. The next steps are identical.   
