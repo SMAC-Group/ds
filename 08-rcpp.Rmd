@@ -1,29 +1,28 @@
 # High performance computing
 
 ## Rcpp: using C++ within R
-Whereas R is a relatively new language targetting essentially statistician and data
-analyst, C++ is a well-established general-purpose programming language.
-This chapter does not aim at covering programmation in C++ per se, but rather
+While R is a relatively new language essentially tailored for statisticians and data
+analysts, C++ is a well-established general-purpose programming language.
+This chapter does not aim at providing an overview of programming in C++ but rather how it can be used
 to address specific problems related to R.
-The point of view taken here is that of the R programmer having no notions of C++
-or similar language. We do not describe accurately notions of C++ but rather give
-some necessary concepts for starting programming.
+The point of view taken here is that of an R programmer with no notions of C++
+or similar languages. Therefore we will not go into details concerning fundamental notions of C++ but rather provide
+some necessary concepts in order to start programming with this language and use it within R.
 
-R is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language)
-which makes it particularly slow for repeating operations such as for and while loops,
+Having said this, R is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language)
+which makes it particularly inefficient when performing tasks that require a repetition of operations such as `for` and `while` loops,
 or recursive calling of functions. On the other hand, C++ is a 
-[compiled language](https://en.wikipedia.org/wiki/Compiled_language), it means that
+[compiled language](https://en.wikipedia.org/wiki/Compiled_language) which means that,
 before being able to use your code, it is translated (compiled) to lower-level
-machine language which makes the code running very fast.
+machine language which allows to considerably accelerate the code running time.
 
-Note that here we jump straight to the C++ solution, but there are many ways to enhance 
-your R code such as [vectorization](http://www.dartistics.com/fast-r-code.html) and
+Note that C++ is just one of many solutions that can make the execution of R code more efficient such as [vectorization](http://www.dartistics.com/fast-r-code.html) and
 [memory management](http://adv-r.had.co.nz/memory.html). [Profiling](http://adv-r.had.co.nz/Profiling.html)
-also helps to identify which parts of the code is the slowest.
+also helps to identify which parts of the code are the slowest to execute and therefore provides useful information
+to understand where to improve code efficiency.
 
-Note eventually that C++ compiles *ahead of time* (before using the code), but other
-approaches exist such as the [Julia language](https://julialang.org/) that compiles 
-*just in time* (at runtime).
+Another note that is of interest is that C++ compiles *ahead of time* (before using the code), but there are other
+approaches that compile *just in time* (at runtime) such as the [Julia language](https://julialang.org/).
 
 ### Installation
 Working with C++ in R does not come "out of the box", but do not worry, it is 
