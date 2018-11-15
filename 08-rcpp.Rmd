@@ -25,8 +25,7 @@ Another note that is of interest is that C++ compiles *ahead of time* (before us
 approaches that compile *just in time* (at runtime) such as the [Julia language](https://julialang.org/).
 
 ### Installation
-Working with C++ in R does not come "out of the box", but do not worry, it is 
-now a well handled procedure. You need essentially two elements: a C++ compiler and a
+Working with C++ in R does not come "out of the box", but it is nevertheless a well handled procedure due to the latest contributions to R. In order to make use of these tools, you basically need two elements: a C++ compiler and a
 program that permits to connect R and C++. For the latter, you need to install 
 the `Rcpp` package:
 
@@ -56,12 +55,11 @@ sumC(3.5, 6.5)
 ```
 
 ```{block2, type="rmdcaution"}
-In C++, a line of code must end with a semicolumn `;`. Otherwise, compiler returns an error.
+In C++, a line of code must end with a semicolon `;` ottherwise the compiler will return an error.
 ```
 
-The function `sumC(x,y)` takes two doubles (numeric) values, `x` and `y`,
-and it returns a double, the sum of the two values. Can you predict what happens if you run
-the following lines? Can you explain why?
+The function `sumC(x,y)` takes two doubles (numeric) values (`x` and `y`)
+and returns a double (the sum of the two values). Can you predict what happens if you run the following lines? Can you explain why?
 
 ```{r, eval = FALSE}
 sumC(3L, 6L)
@@ -71,7 +69,7 @@ sumC(c(3,4), c(5,6))
 
 ### A first program
 The above `cppFunction()` creates an *inline* C++ function (within your R code).
-However, it is better practice to create a separate file dedicated to C++ functions.
+However, it is a better practice to create a separate file dedicated to C++ functions.
 It is possible then to compile your C++ functions and call them within R.
 
 In RStudio, you can create a C++ file by clicking on *File* > *New File* > *C++ File*.
@@ -83,22 +81,22 @@ using namespace Rcpp;
 ```
 
 The first line tells your program that you can access functionalities from the `Rcpp` library.
-The second line tells your program that you can access those functionalities without specifying 
+The second line tells your program that you can access those functionalities without specifying/loading 
 the `Rcpp` library. For example, suppose there is function `mean()` in `Rcpp`.
 With the first line, you could use this function only by typing `Rcpp::mean()`.
-Adding the second line allow you to write directly `mean()` in your program.
-This is somehow equivalent as using `library(Rcpp)` in your R code.
+Adding the second line allows you to directly write `mean()` in your program.
+This is somehow equivalent to using `library(Rcpp)` in your R code.
 
-Once the C++ code is written, it should be saved with the appropriate extension, use
-`*.cc` or `*.cpp`. Now you can compile your first C++ program. Type in your R file:
+Once the C++ code is written, it should be saved with the appropriate extension which is either
+`*.cc` or `*.cpp`. Now you can compile your first C++ program and for this type the following command in your R file:
 ```{r, eval=FALSE}
 sourceCpp("file_name.cpp")
 ```
-Try to write the `sumC()` function within a separate C++ file and compile it in R.
+To test this, try to write the `sumC()` function within a separate C++ file and compile it in R.
 
 By default, C++ functions are not accessible within your R program.
 One key element is to use the attribute `[[Rcpp::export]]` in comment
-**just before the function definition**. For example:
+**just before the function definition**. For example, the separate C++ file could look something like this:
 
 ```{Rcpp, eval=FALSE}
 #include <Rcpp.h>
@@ -117,17 +115,17 @@ double sumC(
 
 ```{block2, type="rmdnote"}
 In C++, the symbol `//` is used for single line comment. The symbol `/*` starts a comment
-on possibly multiple lines and `*/` ends the comment.
+which can possibly cover multiple lines and `*/` ends the comment.
 ```
 
 
 ### Data structures
 One difference you can immediately notice while working with C++ is 
 that you need to tell the program what type of data structure you
-intend to use, before using it. This makes the code safer, 
-the programmer needs to think more deeply on the implementation details 
-and it prevents from using the code in a way it was not intended. 
-On the other hand, the programmer will spend (at least at the beginning)
+intend to use before using it. This makes the writing (and execution) of the code "safer" since 
+the programmer pay more attention to the implementation details 
+thereby preventing the code from being used in a way for which it was not intended. 
+On the other hand, a drawback of this characteristic is that the programmer will have to spend (at least at the beginning)
 more time conceiving the code.
 
 Here is a list of primitive data types with their keywords:   
@@ -138,11 +136,10 @@ Here is a list of primitive data types with their keywords:
 - `char` : character,   
 - `void` : without any value.  
 
-The numbers in parenthesis represents typical memory in bytes required to store the variable. 
-Single and double precision floating number represents how the computer
+The numbers in parenthesis represents typical memory (in bytes) required to store the variable. 
+Single and double precision floating numbers represent how the computer
 stores real numbers in the memory. `float` requires less memory than `double`
-but is less precise. As a general rule, we use only `double` as it is already the case 
-in R:   
+but is less precise. As a general rule, we only use type `double` since this is the default type in R: 
 
 > R has no single precision data type. All real numbers are stored in double precision format.
 >
@@ -154,7 +151,7 @@ These data types can be modified by using one (or more) of the following keyword
 - `unsigned` : numbers take only positive value.  
 
 For more complex data structures such as vectors and matrices, the story is slightly more complicated.
-Hopefully for R programmers, `Rcpp` provides a lot of predefined structures which makes
+Luckily for R programmers, `Rcpp` provides many predefined structures that make
 the transition to C++ easier. Here is a non-exhaustive list:
 
 Table : Common data structure in R with Rcpp equivalent.   
@@ -184,7 +181,7 @@ To access elements of a vector, the syntax is the same as in R with one notable 
 you should write `v[0]`, the ith element, `v[i-1]`. Note that you can equivalently
 write `v(0)` and `v(i-1)`.
 
-Eventually, the length of the vector `v` can be obtained as follows
+The length of the vector `v` can be obtained as follows
 ```{Rcpp, eval=FALSE}
 int n = v.length();
 ```
@@ -192,17 +189,17 @@ Here the length of the vector is saved into an integer `n`.
 
 Note that `length()` is a *method* for the *class* `NumericVector`
 and uses the syntax ''dot-function''. Theses concepts are beyond
-the scope of this introduction, the only to remark is that the above
+the scope of this introduction and the only aspect to underline is that the above
 notation gives the same result as if you wrote `length(v)` in R.
 
 #### Matrices
 
-Creating a matrix is similar to vector.
+Creating a matrix is similar to creating a vector. The command
 ```{Rcpp, eval=FALSE}
 NumericMatrix m(3,4);
 ```
 creates an empty matrix with 3 rows and 4 columns.
-This is equivalent as writing in R
+This is equivalent to writing the following in R
 ```{r, eval=FALSE}
 m <- matrix(nr=3,nc=4)
 ```
@@ -220,7 +217,7 @@ NumericVector v = m(0, _);
 double x = m(i-1, j-1); // i and j are positive integers already defined
 ```
 
-The number of column/row of a matrix can be retrieved using
+The number of columns/rows of a matrix can be retrieved using
 ```{Rcpp, eval=FALSE}
 // number of rows
 int nr = m.nrow();
@@ -232,13 +229,14 @@ int nc = m.ncol();
 #### List
 List creation can be accomplished as follows:
 ```{Rcpp, eval=FALSE}
-// Create a list from elements e1 and e2
+// Create a list with elements e1 and e2
 List L = List::create(e1, e2);
 
-// Create a list from elements e1 and e2 with names
+// Create a list with elements e1 and e2 with names
 List L = List::create(Named("name1") e1, Named("name2") e2);
 ```
 
+The elements `e1` and `e2` can be of any type (e.g. vector, matrix, etc.)
 
 ### Control structures
 
@@ -250,9 +248,9 @@ Table: Common logical operators for C++.
 Operator | Description      
 --- | ---   
 `x > y` | `x` greater than `y`  
-`x >= y` | `x` greater than or equals to `y`  
+`x >= y` | `x` greater than or equal to `y`  
 `x < y` | `x` less than `y`   
-`x <= y` | `x` less than or equals to `y`   
+`x <= y` | `x` less than or equal to `y`   
 `x == y` | `x` equals to `y`   
 `x != y` | `x` not equal to `y`   
 `x && y` | `x` and `y`   
@@ -261,9 +259,9 @@ Operator | Description
 
 
 #### if/else/elseif statements
-R and C++ share the same syntax for `if`/`else`/`elseif` statements
-at the exception that `else if` has a space. For example,
-the following expression is both valid within R and C++:
+R and C++ share the same syntax also for `if`/`else`/`elseif` statements
+with the exception that `else if` has a space in C++ syntax. For example,
+the following expression is valid within both R and C++:
 ```{r,eval=FALSE}
 if (condition){
   plan A;
@@ -273,9 +271,8 @@ if (condition){
 ```
 
 #### loops
-For loops are much faster in C++ than R. 
-The syntax is slightly different. 
-For example, the following R for loop
+Loops are much faster in C++ than in R and the syntax is slightly different. 
+For example, the following R `for` loop
 ```{r, eval=FALSE}
 for(i in 1:10){
   print("The value is: ", i)
@@ -295,34 +292,32 @@ Three elements need to be defined:
 if `true`, the body of the for loop is evaluated.   
 3. The update statement: it defines the increment of the iterator, usually set to `i++`.
 
-Note that there exists also the decrement operator `i--`.
+Note that we can also allow the iterators to decrease via the decrement operator `i--`.
 
-C++ also offers variants of assignment operator.
+C++ also offers variants of assignment operators.
 
 Table: Assignment operator in C++. `x` and `y` are already defined.   
 
 | Operator     | Equivalence  | Description                                                     |
 | ------------ | ------------ | --------------------------------------------------------------- |   
-| `x = y;`     |              | Assign the value of `y` into `x`                                |
-| `x += y;`    | `x = x + y;` | Take the value of `x` and adds `y`, then assign to `x`          |
-| `x -= y;`    | `x = x - y;` | Take the value of `x` and substracts `y`, then assign to `x`    |      
-| `x *= y;`    | `x = x * y;` | Take the value of `x` and multiplies by `y`, then assign to `x` |           
-| `x /= y;`    | `x = x / y;` | Take the value of `x` and divides by `y`, then assign to `x`    |     
+| `x = y;`     |              | Assign the value of `y` to `x`                                |
+| `x += y;`    | `x = x + y;` | Take the value of `x` and add `y`, then assign to `x`          |
+| `x -= y;`    | `x = x - y;` | Take the value of `x` and substract `y`, then assign to `x`    |      
+| `x *= y;`    | `x = x * y;` | Take the value of `x` and multiply by `y`, then assign to `x` |           
+| `x /= y;`    | `x = x / y;` | Take the value of `x` and divide by `y`, then assign to `x`    |     
 
-Therefore, `i++` is equivalent to `i+=1`.
+Therefore, `i++` is equivalent to `i+=1`. If one therefore wanted to increment by 2 at each loop, one would use `i+=2`.
 
-Write a loop that takes an increment of 2, 3, ...
-
-C++ while loop has the same syntax as R. The following expression
+The C++ `while` loop has the same syntax as R. The following expression
 ```{Rcpp,eval=FALSE}
 while( condition ) {
   body;
 }
 ```
-is licit in both languages.
+is the same in both languages.
 
-Note that C++ is also equiped with a `do ... while` loop.
-This maybe useful for example in the situation where
+Note that C++ is also equipped with a `do ... while` loop.
+This may be useful, for example, in the situation where
 you need a first run of the body prior to checking the condition.
 ```{Rcpp, eval=FALSE}
 do{
@@ -332,7 +327,7 @@ while(condition);
 ```
 
 ### Functions
-Creating functions in C++ is fundamentally not much different than R.
+Creating functions in C++ is fundamentally not much different from writing them in R.
 Neverthelss, C++ requires an additional layer of precision.
 A function can follow this pattern:
 ```{Rcpp, eval=FALSE}
@@ -344,12 +339,11 @@ type function_name(type arg1, ..., type argn){
 ```
 First, the type of return of the function should be specified.
 The `obj` that is returned should be of the same type as the one specified
-at the function declaration. Each argument should have a type.
-Otherwise, as in R, the body of the function contains statements that defines what the function does.
+at the start of the function declaration and each argument should have a type.
+Otherwise, as in R, the body of the function contains statements that define what the function does.
 
-As already said, by default C++ function cannot be used with R.
-One key element is to use the attribute `[[Rcpp::export]]` in comment
-**just before the function definition**. For example
+As mentioned earlier, by default a C++ function cannot be used within R and the attribute `[[Rcpp::export]]` in comment
+**just before the function definition** needs to be specified. For example
 ```{Rcpp, eval=FALSE}
 // [[Rcpp::export]]
 type function_name(type arg1, ..., type argn){
@@ -361,13 +355,13 @@ type function_name(type arg1, ..., type argn){
 will make `function_name` available within R.
 
 ### Comparing with R
-Puting efforts in writing C++ code instead of R should be rewarding.
-One way to measure this reward is by comparing the computational efficiency
-of C++ function in comparison to the equivalent R function.
-This can be achieved for example using the `microbenchmark` package.
+Making an effort of writing C++ code instead of R code should deliver advantages.
+One way to measure these advantages is by comparing the computational efficiency
+of a C++ function with the equivalent R function.
+This can be achieved, for example, using the `microbenchmark` package.
 
 For example, suppose you create a function that computes the factorial number of
-an input positive integer.
+a positive integer input.
 In R, you can write
 ```{r}
 my_factorialR <- function(n){
@@ -407,6 +401,7 @@ require(microbenchmark)
 microbenchmark(my_factorialR(500), my_factorialC(500))
 ```
 
+It is clear that the computational performance is considerably different.
 
 ### Example: Buffon's needle (con't)
 Let's reconsider Buffon's needle problem.
@@ -462,14 +457,13 @@ List cast_needle(
 }
 ```
 
-We have few remarks:   
+Based on the above function, we can make a few remarks:   
 
-- For better readibility, it is better practice to separate variable declaration and computation.  
-- The value of $\pi$ is not accessible by default, here we simply approximate it but better solutions exist.   
+- For better readibility, it is good practice to separate variable declaration and computation.  
+- The value of $\pi$ is not accessible by default so in this case we simply approximate it (but better solutions exist).   
 - Basic functions such as `atan()`, `runif()`, `floor()`, `cos()`, `sin()` are made available
 by `Rcpp` (check for **Rcpp sugar**).   
-- To avoid an error we have first to save the result of `runif()` as `NumericVector`, 
-its default result's type.   
+- To avoid an error we have first to save the result of `runif()` as `NumericVector` (its default result type).   
 
 
 The `buffon_needle()` function was declared in R as follows:
@@ -528,23 +522,23 @@ List buffon_experiment(
 }
 ```
 
-We have few remarks:   
+Also in this case we have few remarks:   
 
-- C++ does not know the content of `L["start"]` in advanced, so 
-it is saved first into a vector `tmp` of the right dimension. Same for `L["end"]`.   
-- To avoid complexity, the list returned by the C++ implementation has
-not the class *buffon_experiment*. This should be added within R.   
+- C++ does not know the content of `L["start"]` in advance, so for this reason 
+it is first saved into a vector `tmp` of the correct dimension (the same for `L["end"]`).   
+- To avoid complexity, the list returned by the C++ implementationis not of
+the class *buffon_experiment*. This should be added within R.   
 
-### C++ in a R package
-Writing a R package with C++ code follows essentially the same steps
-as a regular R package. Here we notify the main differences:
+### C++ in an R package
+Writing an R package with C++ code follows essentially the same steps
+as a regular R package. Here we underline the main differences:
 
 1.  Create an "empty" R package: the option *R package using Rcpp* should be selected as 
 Project Type.    
 2. Edit description file: `Rcpp` has automatically been added in `Imports` and `LinkingTo` fields.   
-3. Move your R scripts into the R folder. Here in addition, **move the C++ files into the `src` folder**; 
+3. Move your R scripts into the R folder. In addition, **move the C++ files into the `src` folder**; 
 `src` stands for *source*.The C++ function must have the attribute
 `// [[Rcpp::export]]` prior to function definition in order to make it available within R.   
-4. Documentation: follow the exact same step for R files. For C++ files, documentation
+4. Documentation: follow the exact same steps as for R files. For C++ files, documentation
 uses the same syntax except that `#` should be replaced by `//` (comments in C++).  
-5. The next steps are identical.   
+5. The steps that follow are identical.   
