@@ -1,6 +1,6 @@
 --- 
 title: "An Introduction to Statistical Programming Methods with R"
-author: "Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari & Samuel Orso"
+author: "Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso & Iegor Rudnytskyi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 knit: "bookdown::render_book"

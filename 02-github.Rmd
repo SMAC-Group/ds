@@ -1,5 +1,8 @@
 # GitHub 
 
+> git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.
+> <cite> Isaac Wolkerstorfer </cite>
+
 When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have experienced a moment like this at least once in your life:
 
 <center>

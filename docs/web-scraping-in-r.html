@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="references-1.html">
-
+<link rel="prev" href="high-performance-computing.html">
+<link rel="next" href="references-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -298,57 +298,124 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-probability-and-statistics-with-r-1" class="section level1">
-<h1><span class="header-section-number">A</span> Basic Probability and Statistics with <code>R</code></h1>
+<div id="web-scraping-in-r" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Web scraping in R</h1>
+<p><em>Disclaimer</em>: the course staff takes no responsibility of misuse of this tutorial. The technique below should be used with a care and NOT FOR EVIL PURPOSES :smiling_imp:</p>
+<p>Imagine: you are invited to your significant one’s parents’ place for a dinner. You know that her father is a big fan of Swiss wine. Obviously (or maybe not), you want to impress her father. You are not an expert of wine, but you can “show off” with your data science skills and build a story around Chasselas grapes. After an intense googling you realize that the desired dataset simply does not exist, and therefore, you have to collect it by yourself. You find a nice app Vivino, which is a great representative of the recent trends in wine. But how to get the data? Manually copy&amp;pasting the content? And here you remember a nice tutorial you took in your Master…</p>
+<p>Very often (if not always) well-structured data you need for analysis does not exist and you need to collect it somehow by yourself. Nowadays, a vast majority of data are user-generated content, presented in unstructured HTML format. But it is not the worst part – the data are typically dynamic and vary over the time (e.g., the rating of a particular wine or your Facebook friend list). The good thing is that all information is located on the Internet in human-readable format, that is you have an accesses to these data. Therefore, the problem is not in accessing the data, but how to convert this information into the structured (think of tabular or spreadsheet-like) format.</p>
+<p>In this tutorial, you will learn what is the web scraping, how to scrape using R, and when it is legal.</p>
+<div id="web-scraping-overview" class="section level2">
+<h2><span class="header-section-number">10.1</span> Web scraping overview</h2>
+<p>Web scraping is the process of collecting the data from the World Wide Web and transforming it into a structured format. Typically web scraping is referred to an automated procedure, even though formally it includes a manual human scraping. We distinguish several techniques of web scraping:</p>
+<ul>
+<li><p>Human manual copy-and-paste</p>
+<p>The name is self-explanatory, that is when humans copy the content of the page and paste into a well-formatted data structure. This method is very slow but sometimes is unavoidable, as the only solution due to legal issues. For instance, one can copy all prices and names from the Vivino list directly into a data frame.</p></li>
+<li><p>Text pattern matching</p>
+<p>This approach is the next step in web scraping. After fetching the page, regular expressions (regex) are used to match the pattern in the text. For example, you can get each character that starts with “Price:” and ends with “CHF”.</p></li>
+<li><p>Using API/SDK (socket programming)</p>
+<p>Web APIs are interfaces, introduced by large websites, to allow getting the content of the web-pages (think of databases) directly by posing HTTP requests. For example, Twitter has its API to search tweets, account activity, etc., so that anyone can get these data by sending an HTTP request. R, however, has a package called <a href="http://geoffjentry.hexdump.org/twitteR.pdf">twitteR</a>, that generates those requests for you (i.e., it can be considered as Software Development Kit, SDK for short).</p></li>
+<li><p>HTML parsing</p>
+<p>Most of web pages are generated dynamically from databases using similar templates and css selectors. Identifying such css selectors allows mimicking the structure of databases’ tables.</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>The focus of this tutorial is on the HTML parsing, and at the end of it you should be able to scrape data using R. But there is one more thing.</p>
+</div>
+<div id="denial-of-service-dos-crawl-rate-and-robots.txt" class="section level2">
+<h2><span class="header-section-number">10.2</span> Denial-of-service (DoS), crawl rate, and robots.txt</h2>
+<p>Web pages are stored on servers, so that if there will be too many requests per a unit of time, they can become unavailable (i.e., shut down). When the server is not accessible by intended users, it is called denial-of-service (DoS). Often, this property is exploited for DoS attacks, that is when websites are flooded with traffic (buffer overflow attacks) and stop responding. However, it could happen unintentionally (e.g., an introduction of a new exciting website, which was developed to handle only a limited number of users).</p>
+<p>Another concept we need to introduce is a <em>web crawling</em>, which has been used extensively by the search engines (such as Google, Bing, etc.) for web indexing. This process is similar to web scraping, but after fetching the content of the web page, crawler extracts only hyperlinks. It means that web crawling also accesses the web page by sending requests. The number of such requests per unit of time is called a crawl rate. Each web crawling requests is the same as a request of a user. Therefore, if your crawler sends too many requests (crawl rate is too high), the server can experience the DoS.</p>
+<p>That is exactly what happens to Martijn Koster’s server when Charles Stross’s web crawler caused DoS (if rumors are trusted). It triggered Martijn Koster to propose a new standard, a file <code>robots.txt</code> that stores a set of rules defining bots and crawlers should interact with a website, that is which parts should not be accessed, the allowed crawl rate, etc.</p>
+<p>The same applies to web scraping: the number of requests should not be too high, and you should access only parts not listed in <em>robots.txt</em>.</p>
+</div>
+<div id="why-web-scraping-could-be-bad" class="section level2">
+<h2><span class="header-section-number">10.3</span> Why web scraping could be bad?</h2>
+<p>Over the years the reputation of the web scraping is decreasing. There are more and more people who ignore and violate not only <em>robots.txt</em>, but also Terms of Service (ToS) of websites.</p>
+<p>Remember the film “The Social Network”? At the beginning of the movie, the main character scrapes pictures of female students and then creates a service to measure their attractiveness. This is an example of an unethical use of web scraping. The topic is very subjective and controversial, therefore, you are at your own responsibility to define what is ethical and what is not (there is no <code>robots.txt</code> to define ethics).</p>
+</div>
+<div id="how-to-avoid-troubles" class="section level2">
+<h2><span class="header-section-number">10.4</span> How to avoid troubles?</h2>
+<p>Rules are simple:</p>
+<ol style="list-style-type: decimal">
+<li><p>Read carefully the Terms of Service.</p></li>
+<li><p>Inspect <code>robots.txt</code> to identify which parts can be accessed.</p></li>
+<li><p>Do not be too aggressive with too frequent requests. If the crawl rate is not mentioned in <code>robot.txt</code> (section <code>crawl-delay:</code>), then use something reasonable, e.g. one request per 10 seconds.</p></li>
+</ol>
+</div>
+<div id="workflow" class="section level2">
+<h2><span class="header-section-number">10.5</span> Workflow</h2>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Make sure that scraping is legal and ethical for a given web-page. You can inspect a particular subdomain (path) using <code>path_allower</code> from <code>robotstxt</code>:</p>
+<pre class="toml"><code>library(&quot;robotstxt&quot;)
 
-<div id="refs" class="references">
-<div>
-<p>DasGupta, Anirban. 2008. <em>Asymptotic Theory of Statistics and Probability</em>. Springer Science &amp; Business Media.</p>
-</div>
-<div>
-<p>Efron, B. 1979. “Bootstrap Methods: Another Look at the Jackknife.” <em>The Annals of Statistics</em> 7 (1). Institute of Mathematical Statistics: 1–26.</p>
-</div>
-<div>
-<p>Georges-Louis Leclerc, Compte de Buffon. 1777. <em>Essai d’arithmétique Morale</em>. Histoire naturelle, générale, et particulière (supplément).</p>
-</div>
-<div>
-<p>Grimmett, Geoffrey, and David Stirzaker. 2001. <em>Probability and Random Processes</em>. Oxford university press.</p>
-</div>
-<div>
-<p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central: 21.</p>
-</div>
-<div>
-<p>Seber, George AF, and Alan J Lee. 2012. <em>Linear Regression Analysis</em>. Vol. 936. John Wiley &amp; Sons.</p>
-</div>
-<div>
-<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press. <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>.</p>
-</div>
-<div>
-<p>———. 2015. <em>R Packages</em>. O’Reilly. <a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a>.</p>
-</div>
-<div>
-<p>Wood, Simon N. 2017. <em>Generalized Additive Models: An Introduction with R</em>. CRC press.</p>
-</div>
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
-</div>
-</div>
-</div>
+paths_allowed(
+    path = &quot;/en/real-estate/rent/city-basel&quot;,
+    domain = &quot;https://www.immoscout24.ch/&quot;
+)</code></pre>
+<p>or manually go through <code>robots.txt</code> of the domain (a function <code>get_robotstxt()</code>):</p>
+<pre class="toml"><code>get_robotstxt(domain = &quot;https://www.immoscout24.ch/&quot;)</code></pre>
+<p>Sometimes R could fail to load this file, and it is a good idea to double check yourself by opening the link to <code>robots.txt</code> at your browser (e.g., <a href="https://www.comparis.ch/robots.txt" class="uri">https://www.comparis.ch/robots.txt</a>).</p></li>
+<li><p>Load (fetch) and parse the HTML file by using function <code>read_html()</code> from <code>xml2</code> package:</p>
+<pre class="toml"><code>library(&quot;xml2&quot;)
 
+real_estate &lt;- read_html(
+    &quot;https://www.immoscout24.ch/en/real-estate/rent/city-basel&quot;
+)</code></pre></li>
+<li><p>Using <a href="https://selectorgadget.com">selectorgadget</a> define a css element of interest.</p>
+<p>Selectorgadget is a tool in your browser (JavaScript bookmarklet) that uses the idea of back engeneering to determine which css object contains the data you want to extract. Selectorgadget is like a kind librarian who tells you in which section to look for a particular book.</p>
+<p>First off, we need to install it. Depending on your browser you can install a Google Chrome <a href="https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb">extenssion</a> or drag the link from <a href="https://selectorgadget.com">https://selectorgadget.com page</a> to Bookmarks (shown in the picture below).</p>
+<p><img src="/images/sg_install.png" alt="map" width="400px"/></p>
+<p>Once it has been installed, it is time to use it:</p>
+<ul>
+<li><p>Open the web page you want to scrap in your browser (e.g. <a href="https://www.immoscout24.ch/en/real-estate/rent/city-basel" class="uri">https://www.immoscout24.ch/en/real-estate/rent/city-basel</a>)</p></li>
+<li><p>Run the selectorgadget. If you use Safari (or similar browsers), click on it in your Bookmarks:</p></li>
+</ul>
+<p><img src="/images/sg_safari.png" alt="map" width="400px"/></p>
+<p>Or click on the icon of the selectorgadget extenssion in Chrome:</p>
+<p><img src="/images/sg_chrome.png" alt="map" width="400px"/></p>
+<ul>
+<li>Click on the element you want to select. The element you have selected will be highlighted in green, and all other elements with the same css selector will be higlighted in yellow. If there are redundant elements higlighted in yellow, simply click on them, and they will turn red.</li>
+</ul>
+<p><img src="/images/sg_select.png" alt="map" width="400px"/></p>
+<ul>
+<li>Copy the css selector from the text box to R.</li>
+</ul>
+<p><img src="/images/sg_textbox.png" alt="map" width="400px"/></p>
+<p>This routine was taken from <a href="https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html"><code>vignette(&quot;selectorgadget&quot;)</code></a> with slight modification. You can also have a look at the video at this <a href="https://selectorgadget.com">page</a>).</p></li>
+<li><p>Extract data from from the web-page by using <code>html_nodes()</code> and <code>html_text()</code> from <code>rvest</code>:</p>
+<pre class="toml"><code>library(&quot;rvest&quot;)
+library(&quot;magrittr&quot;)
+real_estate %&gt;% 
+    html_nodes(&quot;.gnBqtl&quot;) %&gt;%
+    html_text()</code></pre></li>
+</ol>
+<p>As the conclusion, the web scraping is a very powerful tool for extracting data. However, it comes with a certain responsibility.</p>
+</div>
+<div id="references" class="section level2">
+<h2><span class="header-section-number">10.6</span> References:</h2>
+<ul>
+<li><a href="https://benbernardblog.com/web-scraping-and-crawling-are-perfectly-legal-right/">Web Scraping and Crawling Are Perfectly Legal, Right?</a></li>
+<li><a href="http://www.prowebscraper.com/blog/six-compelling-facts-about-legality-of-web-scraping/">Six Compelling Facts about Legality of Web Scraping</a></li>
+<li><a href="https://www.r-bloggers.com/scraping-responsibly-with-r/">Scraping Responsibly with R</a></li>
+<li><a href="https://selectorgadget.com">SelectorGadget</a> -<a href="https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html">Selectorgadget tutorial by Hadley Wickham</a></li>
+<li><a href="https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/">rvest: easy web scraping with R</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/">Beginner’s Guide on Web Scraping in R (using rvest) with hands-on example</a></li>
+<li><a href="http://categitau.com/using-rvest-to-scrape-data-from-wikipedia/">Using rvest to scrape data from Wikipedia</a></li>
+<li><a href="https://www.scrapehero.com/how-to-prevent-getting-blacklisted-while-scraping/">How to prevent getting blacklisted while scraping</a></li>
+<li><a href="https://www.datacamp.com/community/tutorials/r-web-scraping-rvest">Web Scraping in R: rvest Tutorial</a></li>
+<li><a href="https://towardsdatascience.com/web-scraping-tutorial-in-r-5e71fd107f32">Web scraping tutorial in R</a></li>
+<li><a href="https://towardsdatascience.com/learn-to-create-your-own-datasets-web-scraping-in-r-f934a31748a5">Learn To Create Your Own Datasets — Web Scraping in R</a></li>
+<li><a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-denial-of-service-attack-dos">What is a denial-of-serive attack (DoS)?</a></li>
+</ul>
 
-
-
-
-
-
-
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="references-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="high-performance-computing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -378,7 +445,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/101-App-prob.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09-scraping.Rmd",
 "text": "Edit"
 },
 "download": ["ds.pdf", "ds.dvi", "ds.epub"],

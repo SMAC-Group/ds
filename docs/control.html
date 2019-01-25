@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2018-11-13">
+<meta name="date" content="2019-01-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -264,11 +264,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.5" data-path="high-performance-computing.html"><a href="high-performance-computing.html#functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="high-performance-computing.html"><a href="high-performance-computing.html#comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="high-performance-computing.html"><a href="high-performance-computing.html#example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
-<li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-a-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in a R package</a></li>
+<li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
-<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in R</a><ul>
+<li class="chapter" data-level="10.1" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+<li class="chapter" data-level="10.6" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#references"><i class="fa fa-check"></i><b>10.6</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
 <li class="divider"></li>
@@ -311,12 +318,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rwunderground)
 (rain &lt;-<span class="st"> </span><span class="kw">conditions</span>(<span class="kw">set_location</span>(<span class="dt">zip_code =</span> <span class="st">&quot;16802&quot;</span>), <span class="dt">message =</span> <span class="ot">FALSE</span>)<span class="op">$</span>precip_1hr)</code></pre></div>
-<pre><code>## [1] 0.02</code></pre>
+<pre><code>## [1] 0</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Construct a logical (or Boolean) variable created from the variable <code>rain</code> to assess whether or not an umbrella is needed. For example, we can say that if we see signs of rain in the last hour, then we should take an umbrella. This can be done using the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more detail.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(umbrella &lt;-<span class="st"> </span>rain <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably take an umbrella</em>” if the logical variable <code>umbrella</code> is <code>TRUE</code> and print “<em>An umbrella is probably not necessary</em>”, otherwise.</li>
 </ol>
@@ -325,7 +332,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }<span class="cf">else</span>{
   <span class="kw">print</span>(<span class="st">&quot;An umbrella is probably not necessary&quot;</span>)
 }</code></pre></div>
-<pre><code>## [1] &quot;You should probably take an umbrella&quot;</code></pre>
+<pre><code>## [1] &quot;An umbrella is probably not necessary&quot;</code></pre>
 <div id="sec_logical" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
 <p>Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table below summarizes the commonly used logical operators:</p>
