@@ -29,12 +29,25 @@ As mentioned above, *version control* is a system that records changes to a file
 - collaborate on the same platform with other people;
 - make changes without modifying the main file and add them once you feel comfortable with them. 
 
-All these features are highly important when projects start becoming more complex and/or include multiple contributors. There are several mature software tools designed for version control including, but not limited to, Git, Subversion, Mercurial, and more. Furthermore, there are several web-based version control repository hosting services such as GitLab, GitHub, Bitbucket, and more that accomplish the same goals. In the next section, we introduce use of Git and GitHub as tools for version control and collaboration.
+All these features are highly important when projects start becoming more complex and/or include multiple contributors. There are several mature software tools designed for version control including, but not limited to, Git, Subversion, Mercurial, and more. Furthermore, there are several web-based version control repository hosting services such as GitLab, GitHub, Bitbucket, and more that accomplish the same goals. In the next section, we introduce use of Git and GitHub as tools for version control and collaboration.  
+
+Rather than save many independent copies of each file--as shown earlier when the user saved many versions of a "final" document--version control software tools simply track incremental changes to the files under version control. Storing a complete record of just the bits that *change* from one version to the next is far more efficient than saving many copies of whole documents for which a majority of the content may be unchanged from one iteration to the next.  Moreover, with a complete record of every incremental change, it's just as easy for Git(Hub) to piece together the current state of a document or to rebuild a previous the state of a document at an earlier point recorded in it's development lifecycle.  In other words, it's like version control software effectively offers access to free a document editing *time machine*!
 
 
 ## Git and GitHub
 
-Among the different version control platforms, Git is a commonly used and powerful tool that is made more accessible through GitHub which is a commercial website. The latter uses the Git platform and stores local files into a flexible folder called a "repository". For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.
+Importantly, adding Git(Hub) to your workflow doesn't *necessarily* change that much of your workflow.  In fact, for many RStudio users who have properly configured RStudio and Git, the vast majority of your version control workflow can happen entirely within a convenient the RStudio interface.  We'll discuss specific details, but it's sufficient to note the "Git" tab shown in the upper right pane of the RStudio window shown.
+
+<center>
+![Git functionality shown within the RStudio environment (top right)](images/RStudio-Git.png)
+</center>
+
+
+The latter uses the Git platform and stores local files into a flexible folder called a "repository".
+
+Git(Hub) uses *repositories* to organize your work, which you can think of as establishing a link between a file directory location on your computer and 
+
+For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.
 
 Below is a video introducing GitHub. 
 
