@@ -45,11 +45,11 @@ Importantly, adding Git(Hub) to your workflow doesn't *necessarily* change that 
 
 The latter uses the Git platform and stores local files into a flexible folder called a "repository".
 
-Git(Hub) uses *repositories* to organize your work, which you can think of as establishing a link between a file directory location on your computer and 
+Git(Hub) uses *repositories* to organize your work.  If you like, you can store a bunch of files in a repository (or Repo) on the GitHub remote servers and delete them from your computer entirely.  You can replace the files with new versions or even edit some specific types of files right from the GitHub webpage.  When you are ready to get them back, you could simply locate the files through your GitHub account and retrieve them.  
 
-For the purposes of this course, we will be using this platform and in the following sections we will briefly describe how to install and get started with this version control platform.
+More commonly, users establish a link between a file directory on their (local) computer and a Repo stored on the GitHub remote.  You edit files on your computer and save your progress as you normally would, except now that you have established a link with Git(Hub) you can periodically update the Repo on the GitHub remote with the latest progress. 
 
-Below is a video introducing GitHub. 
+Below is a video introducing the basic look and feel of GitHub. 
 
 <center>
 ```{r, echo=FALSE}
@@ -57,30 +57,57 @@ knitr::include_url("https://www.youtube.com/embed/SB5YkjB9FWc")
 ```
 </center>
 
-### Git Setup 
+### Git & RStudio Configuration
 
-To install Git, go to the [website](https://git-scm.com/downloads) and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Once you've downloaded and installed Git, the first thing you should do is to configure it by setting your username and email address. This is important because each time you interact with the platform and upload (commit) your changes to Git, this information is used to synchronize versions and keep track of project evolution. 
+
+
+As mentioned previously, with proper configuration a large majority of your use of Git can happen entirely within the RStudio environment.  In this section, we step through a basic configuration.  If necessary, a more comprehensive guide to configuring Git(Hub) and R/RStudio is available at <https://happygitwithr.com/> from which a substantial portion of this congifiguration guidance was originally adapted.
+
+
+#### Install Git
+
+Before begining, make sure you have installed both R and RStudio.  Some systems will already have Git installed, or will install Git automatically when prompted.  In either case, open a terminal in RStudio (RStudio >> Tools >> Terminal >> New Terminal) and then enter the following commands--one at a time--after the dollar sign prompt ($) as shown below.
+
+```
+which git
+git --version
+```
+
+![Terminal Window in RStudio](images/Terminal.png)
+
+If git is installed, the result will indicate a where the software is located and the version you have available.  If Git has not yet been installed, go to the [website](https://git-scm.com/downloads) and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Again, for additional support corresponding to various operating systems see <https://happygitwithr.com/install-git.html>. 
+
 
 
 #### Tell Git Who You Are
 
-Once you have installed Git, run the `Git Bash` software and type the following code below. 
+Once Git is installed, the first thing you should do is set your name and the email address associated with your GitHub profile. This is information is used to synchronize the work on your computer with your Repo on the GitHub remote server.
+
+Again, you will need a Terminal window in RStudio (RStudio >> Tools >> Terminal >> New Terminal) and then enter the following commands--one at a time--after the dollar sign prompt ($) as shown below.
 
 ```
-$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
+git config --global user.name 'Aaron Carlson'
+git config --global user.email 'abc1234@psu.edu'
+git config --global --list
 ```
 
-This is the initial configuration of your author name and email address for your commits. You may need to do this before you begin pushing and pulling with your current account information. This operation only needs to be done once when using the "--global" option because, in this case, Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
+Note: the last command `git config --global --list` should verify that Git now knows you! ...or at least acknowledges your name and email address.  This operation only needs to be done once when using the "--global" option because, in this case, Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the "--global" option while working on those projects.
+
+
+
+
+
 
 
 ### GitHub Setup 
 
 In order to set up GitHub, go to the [GitHub website](https://github.com/) and, for the purposes of the course, the first step is to sign up with your University email address.
 
+
 ```{block2, type='rmdnote'}
-Your username and email can be changed at any time so, if you want to change it, you can easily do so once this course is over.
+Your username and email can be changed at any time so, if you want to change it, you can easily do so in the future.
 ```
+
 
 <center>
 ![](images/github_page.png)
