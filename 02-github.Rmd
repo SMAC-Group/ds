@@ -17,7 +17,7 @@ This behavior is basically a defensive strategy attempting to remedy one or more
 Unforutunately, this type of strategy can easily lead to frustration as users lose track of which documents have the most up-to-date content for different portions of the document.  This is effectively a problem of "version control" (sometimes called "source control"). 
 
 
-To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This chapter discusses the features of this software as well as introducing a specific version control tools: *Git* and *GitHub*. People often use the two somewhat interchangeably in casual discussion--or use GitHub as a surrogate for the combination.  In fact, Git is the name of the version control software, and everything that Git can accomplish is possible to do without using Git**Hub** at all. GitHub is simply a web-based host for version control implementation with Git.  
+To respond to this problem, software has been developed to keep track of your changes by informing you on the saves you made and allowing you to go back to previous versions in order to revert those changes. This chapter discusses the features of this software as well as introducing a specific version control tools: *Git* and *GitHub*. People often use the two somewhat interchangeably in casual discussion--or use GitHub as a surrogate for the combination.  In fact, Git is the name of the version control software, and everything that Git can accomplish is possible to do without using Git**Hub** at all. GitHub is a commercial web-based version control repository hosting service which includes some additional features to make Git more user-friendly.   
 
 
 ## Version Control 
@@ -29,7 +29,7 @@ As mentioned above, *version control* is a system that records changes to a file
 - collaborate on the same platform with other people;
 - make changes without modifying the main file and add them once you feel comfortable with them. 
 
-All these features are highly important when projects start becoming more complex and/or different collaborators contribute to it. In the next section we present a version control platform called "GitHub" that is commonly used among programmers and software developers thereby allowing them also to make their work visible and available to the general public. 
+All these features are highly important when projects start becoming more complex and/or include multiple contributors. There are several mature software tools designed for version control including, but not limited to, Git, Subversion, Mercurial, and more. Furthermore, there are several web-based version control repository hosting services such as GitLab, GitHub, Bitbucket, and more that accomplish the same goals. In the next section, we introduce use of Git and GitHub as tools for version control and collaboration.
 
 
 ## Git and GitHub
