@@ -31,7 +31,7 @@ As mentioned above, *version control* is a system that records changes to a file
 
 All these features are highly important when projects start becoming more complex and/or include multiple contributors. There are several mature software tools designed for version control including, but not limited to, Git, Subversion, Mercurial, and more. Furthermore, there are several web-based version control repository hosting services such as GitLab, GitHub, Bitbucket, and more that accomplish the same goals. In the next section, we introduce use of Git and GitHub as tools for version control and collaboration.  
 
-Rather than save many independent copies of each file--as shown earlier when the user saved many versions of a "final" document--version control software tools simply track incremental changes to the files under version control. Storing a complete record of just the bits that *change* from one version to the next is far more efficient than saving many copies of whole documents for which a majority of the content may be unchanged from one iteration to the next.  Moreover, with a complete record of every incremental change, it's just as easy for Git(Hub) to piece together the current state of a document or to rebuild a previous the state of a document at an earlier point recorded in it's development lifecycle.  In other words, it's like version control software effectively offers access to free a document editing *time machine*!
+Rather than save many independent copies of each file--as shown earlier when the user saved many versions of a "final" document--most version control software tools simply track incremental changes to the files under version control. Storing a complete record of just the bits that *change* from one version to the next is far more efficient than saving many copies of whole documents for which a majority of the content may be unchanged from one iteration to the next.  Moreover, with a complete record of every incremental change, it's just as easy to piece together the current state of a document or to rebuild a previous the state of a document at an earlier point recorded in it's development lifecycle.  In other words, it's like version control software effectively offers access to free a document editing *time machine*!
 
 
 ## Git and GitHub
@@ -120,19 +120,112 @@ Once you have a GitHub profile, log in and create a Repo for your project (or na
 
 ### Connecting to RStudio 
 
-With the URL of your GitHub Repo still copied to your clipboard, go to RStudio and initate a new "Project."  You can either navigate the menus in RStudio (RStudio >> File >> New Project) or use the "Project" navigation feature in the upper right of the RStudio window.
+With the URL of your GitHub Repo still copied to your clipboard, go to RStudio and initate a new "Project."  You can either navigate the menus in RStudio (RStudio >> File >> New Project) or use the "Project" navigation feature in the upper right of the RStudio window a shown.
 
 
 <center>
-![RStudio Project Navigation Feature](images/RStudio Projects.png)
+![RStudio >> "New Project"](images/RStudio Projects.png)
+</center>
+
+Next, RStudio will prompt you with a dialogue box to configure the new project. Select "Version Control" and then "Git" on the following screen as shown.
+
+<center>
+![RStudio >> New Project >> "Version Control"](images/VC.png)
+</center>
+
+<center>
+![Fig. New Project >> Version Control >> "Git"](images/Git.png)
 </center>
 
 
+Remember when you copied the URL for your Repo from GitHub?  If not, go copy it again and we'll paste it into the line "Repository URL" in order to "Clone" the Git Repository to a file directory (i.e. folder) on your computer as shown.
+
+- "Repository URL": Paste the URL that you previously copied from GitHub
+- "Project Directory Name": This will be the name of a new folder (i.e. directory) on **your computer**. Use the same name as your GitHub Repo (e.g. mine was "Informative-Repo-Name" here). 
+- "Create Project as a Subdirectory Of": This is the location on **your computer** for the new folder. For example, you may want to make a folder on your computer for each class and then put this Repo (and others for the class) together in that directory location.
+
+<center>
+![Clone Repository to Local directory](images/Dir.png)
+</center>
 
 
-### Student Developer Pack
+</br>
 
-As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this [link](https://education.github.com/discount_requests/new) and follow the steps below to set up a "student developer pack" discount request to GitHub. Through this setup it will be possible for you not only to have free *public* repositories but also to make your own *private* repositories for free. 
+You're *in*! (hopefully)... 
+
+The "Project" menu shown in the upper right corner of the RStudio Server Window now shows the name of your Repo/Project (e.g. mine was "Informative-Repo-Name" in this demonstration).  Also, a new "Git" tab appears and has started tracking file changes in my Repo. A few initial files will appear (e.g., ".gitignore" and something ending in ".RProj").  These basically help Git & RStudio handle logistics, just "commit" and "push" them.  
+
+
+### The basic workflow
+
+Git Basics: <https://git-scm.com/book/en/v2/Getting-Started-Git-Basics>
+
+<center>
+![](images/rstudio-git-tab.png)
+</center>
+
+From now on, nearly everything (~90-95%) of your interactions with Git can happen in RStudio... at least in this class.  The remaining bits consist of things like initializing or cloning Repos from the GitHub website.  If you do internet searches for Git help, you'll see lots of command line terminal stuff, but you won't likely need to execute commands in the terminal for our purposes.
+
+The basic workflow is as follows...
+
+1. Open the RStudio Project connected to your Git(Hub) Repo
+2. Work on your computer just like always
+3. **Save** your work often just like always
+4. When you want to preserve a **snapshot** of your project, you make a "commit"
+5. When you have a few commits and want to archive them, you "push" them to the GitHub remote server
+6. If you decide to work from a different computer, or want to pick up where a collaborator left off, you can "pull" the most up-to-date version of the files from the GitHub remote to your local computer and go back to step 2.
+
+Let's unpack the workflow slightly...
+
+1. *Open the RStudio Project connected to your Git(Hub) Repo.*  We'll come back to this when we discuss common mistakes.
+
+2. *Work on the files just like you always do.*  Seriously.  
+
+This certainly includes technical tasks like writing code in R, but it also includes standard operations like dragging and dropping things into the directory folder linked to your Repo.  For example, if you want to have access to a picture or a file with a data set in it, you could copy it to the directory folder for your project just like you normally would.  
+
+When you add a new file, you may simply notice the name of that file will appear on a list in the "Git" tab in your RStudio window.  Git is basically just alerting you that it has noticed something changed in the repo, that's all.
+
+3. * **Save** your work often just like always.*  You should save your work as you make progress just like you always would, even if Git weren't involved.  
+
+When you save changes to an existing file, the name of that file will appear on a list in the "Git" tab in your RStudio window again.  Once again, Git is just alerting you that it has noticed something changed.  Git is *very* observant that way.
+
+4. *When you want to preserve a **snapshot** of your project, you make a "commit."*  This is the first new bit.
+
+A commit is quite literally a snapshot of the state of your whole project (e.g., file directory), like a photograph.  One you take a photograph, you have an exact picture of precisely how things looked at that moment in time.  You should make commits frequently as you make progress with your work.  
+When you want to make a commit using the RStudio interface, you simply select a small checkbox next to the files that you want to include in the snapshot.  This is called "staging" files for the commit.  Then, when you click the "commit button, a new window will open that will attempt to summarize all the differences between the new file and the previous version.  This is called the "diff."
+
+In order to complete each commit, you must include a commit message. It's a good idea to write informative commit messages, and Git will even force you to write *something* before executing the commit.  Remember when we described version control as a sort of time machine?  You will probably be the one reading through many dozens of commit messages to figure out where to send the time machine... They are also tremendously helpful if you have collaborators on a Repo so you can all keep up with what is changing throughout the project.[^1]  
+
+
+<center>
+![](images/git_commit.png)
+</center>
+
+
+5. *When you have a few commits and want to archive them, you "push" them to the GitHub remote server.*
+
+This is the first step in the workflow that is **not** simply happening on your local computer.  When you "push" one or more commits to the GitHub remote server it is like archiving all of those snapshots/photographs in a permanent file cabinet.
+
+
+6. *If you decide to work from a different computer, or want to pick up where a collaborator left off, you can "pull" the most up-to-date version of the files from the GitHub remote to your local computer and go back to step 2.*
+
+Again, nearly everything you are doing with Git is happening locally *on your computer*.  If a collaborator made changes on a different computer, or if **you** made changes from a different computer somewhere, you will need to "pull" them from the GitHub remote into your local working directory. 
+
+Actually, if you are working from several computers or with other collaborators, it's a good habit to **"pull" before you "push"** in order to make sure that you don't end up with two different versions of the same thing that are in direct conflict with one another.  This results in a "merge conflict" and can become a bit of a headache to untangle.
+
+
+#### Common mistakes in the Git/RStudio Workflow
+
+**Commits in the wrong Repo**.  It's a common mistake to forget to change from one RStudio Project to the next.  If you forget, it may look like your changes aren't tracked by Git.  In reality, Git will still monitor changes... but it is monitoring them in the correct Repo linked to the file, so you won't be able to make commits on those files until you change to the correct RStudio Project.
+
+**Large files**.  GitHub is generously storing all sorts of things for us and (as academic users) doing so free of charge.  Having said that, storage presumably costs *them* money, so they don't like to store large files.  You'll be warned if you try and commit any single file that is more than 10 MB.  There are sensible ways to work around this, but a common strategy is to tell Git to simply "ignore" the large file... that is, don't include it in my snapshots and don't archive it on the GitHub remote.  
+
+
+
+### Note about GitHub Student Developer Pack
+
+As a student, it is possible to benefit from specific advantages when using GitHub. Indeed, once you have set up your profile you can go to this [link](https://education.github.com/discount_requests/new) and follow the steps below to set up a "student developer pack" discount request to GitHub. Through this setup it will be possible for you not only to have unlimited free *public* repositories.  In the past, students could access free unlimited *private* repositories only after some vetting by GitHub. This changed in 2019 shortly after GitHub was acquired by Microsoft.  At the time of this writing, free unlimited private repositories were made available to all users, and restrictions were instead based on limiting the number of **collaborators** for private Repos.  Students should still get the student developer pack, but it may not be as critical as it once was for most student users.
+
 
 <center>
 ![](images/developer_pack.png)
@@ -141,76 +234,76 @@ As a student, it is possible to benefit from specific advantages when using GitH
 
 
 
-## GitHub Workflow 
+<!-- ## GitHub Workflow  -->
 
-Here is a video demonstrating the basic GitHub workflow in GitHub Desktop (initializing, committing, pushing and pulling) that we will follow for our assignments and projects. 
+<!-- Here is a video demonstrating the basic GitHub workflow in GitHub Desktop (initializing, committing, pushing and pulling) that we will follow for our assignments and projects.  -->
 
-<center>
-```{r, echo = FALSE}
-knitr::include_url("https://www.youtube.com/embed/-cLn7Uk-Zo0")
-```
-</center>
+<!-- <center> -->
+<!-- ```{r, echo = FALSE} -->
+<!-- knitr::include_url("https://www.youtube.com/embed/-cLn7Uk-Zo0") -->
+<!-- ``` -->
+<!-- </center> -->
 
-In addition, here is a video demonstrating the basic GitHub workflow within RStudio. 
-<center>
-```{r, echo = FALSE}
-knitr::include_url("https://www.youtube.com/embed/VOIQgViCyTo")
-```
-</center>
+<!-- In addition, here is a video demonstrating the basic GitHub workflow within RStudio.  -->
+<!-- <center> -->
+<!-- ```{r, echo = FALSE} -->
+<!-- knitr::include_url("https://www.youtube.com/embed/VOIQgViCyTo") -->
+<!-- ``` -->
+<!-- </center> -->
 
-While the main features and actions to manage the workflow in GitHub are desribed in the above videos, the following paragraphs give some extra details that can be helpful to consider when working with this version-control platform.
+<!-- While the main features and actions to manage the workflow in GitHub are desribed in the above videos, the following paragraphs give some extra details that can be helpful to consider when working with this version-control platform. -->
 
-### Branching 
+<!-- ### Branching  -->
 
-In the previous section we discussed the workflow as a means of directly making changes in the so-called *master* branch which is where our original and up-to-date work is stored. However, when working with different collaborators for example, it may be appropriate to create separate branches that will avoid modifying the original one until you're sure of the changes. In this perspective, *branching* is essentially creating an environment in which we can change anything without obstructing our original document. As mentioned, this idea is very useful for group-based activities where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main `master` branch. You can learn more about branching [here](https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging) and [here](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a). 
-
-
-### Pull 
-
-Before starting (or continuing) to work on your project, make sure to always review changes that another collaborator has made. Once this is done you can make sure there are no merge conflicts and you can pull (or synchronize) your local branch with the most recent version of the repository. If merge conflicts were to happen, these can still be solved but it would be preferable to avoid them generating confusion. 
+<!-- In the previous section we discussed the workflow as a means of directly making changes in the so-called *master* branch which is where our original and up-to-date work is stored. However, when working with different collaborators for example, it may be appropriate to create separate branches that will avoid modifying the original one until you're sure of the changes. In this perspective, *branching* is essentially creating an environment in which we can change anything without obstructing our original document. As mentioned, this idea is very useful for group-based activities where different people are working on the same files. Once we have made all our changes and are sure of the changes, we can merge the changes to the main `master` branch. You can learn more about branching [here](https://git-scm.com/book/en/v1/Git-Branching-Basic-Branching-and-Merging) and [here](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a).  -->
 
 
-### Commits 
+<!-- ### Pull  -->
 
-After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. Once these changes are made, you need to `commit` them with an informative message, explaining why a particular change is being made. These specific messages allow you to backtrack on these changes later if you decide to look at the history of any of these files and find a bug. This information is extremely important since otherwise there's little point in using version control like GitHub. [^1]
-
-<center>![](images/git_commit.png)</center>
+<!-- Before starting (or continuing) to work on your project, make sure to always review changes that another collaborator has made. Once this is done you can make sure there are no merge conflicts and you can pull (or synchronize) your local branch with the most recent version of the repository. If merge conflicts were to happen, these can still be solved but it would be preferable to avoid them generating confusion.  -->
 
 
-#### Pull Request 
+<!-- ### Commits  -->
 
-If you are directly working on the master branch, please disregard this section. Else, a `pull request` may be made by the person working on the branch, so that other collaborators can discuss about the commits made in the branch. Also, there are options for conversation in which they can review and comment directly onto the code as well. 
+<!-- After we have created the branch, we can start modifying the documents (add, edit, or delete) within the repository. Once these changes are made, you need to `commit` them with an informative message, explaining why a particular change is being made. These specific messages allow you to backtrack on these changes later if you decide to look at the history of any of these files and find a bug. This information is extremely important since otherwise there's little point in using version control like GitHub. [^1] -->
 
-
-### Push or Merge 
-
-Once you have either made the commits on your master branch or have the pull request confirmed by other collaborators, you can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow after which we can clear and repeat the above procedure.  
-
-### Merge Conflicts 
-
-Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted (although these may not be the only situations). To resolve these conflicts, we must directly edit the documents making sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups. 
+<!-- <center>![](images/git_commit.png)</center> -->
 
 
-## GitHub Workflow on Command Line / Git Bash 
+<!-- #### Pull Request  -->
 
-Here are commands that we can use within `Git Bash` if we are more comfortable working on the command line. 
+<!-- If you are directly working on the master branch, please disregard this section. Else, a `pull request` may be made by the person working on the branch, so that other collaborators can discuss about the commits made in the branch. Also, there are options for conversation in which they can review and comment directly onto the code as well.  -->
 
-| Command                        | Function                                      |
-|--------------------------------|-----------------------------------------------|
-| git init                       | Create a **local** repository                 |
-| git branch "newbranch"         | Create a new branch with given name           |
-| git checkout "newbranch"       | Switch to specified branch                    |
-| git status                     | List all the files that you have modified     |
-| git add -A                     | Add **all** files to staging                  |
-| git commit -m "commit message" | Commit staged changes to **local** repository |
-| git push                       | Commit saved changes to **remote** repository |
-| git pull                       | Update changes from the **remote** repository |
 
-However, it is better for us to startby using more graphical user-interface options since they allow us to better understand what is going on. You **do not** want to follow this example[^2]...
+<!-- ### Push or Merge  -->
 
-<center>![](images/git_misuse.png)</center>
+<!-- Once you have either made the commits on your master branch or have the pull request confirmed by other collaborators, you can merge or push the changes into the remote master branch. This means that the version of the repository online will have your updated code and documents. This will be the final step to the cycle of the workflow after which we can clear and repeat the above procedure.   -->
 
-It is always important to know what is happening when we create, change, push, branch and pull from a repository.
+<!-- ### Merge Conflicts  -->
+
+<!-- Merge conflicts often occur when two different collaborators make different changes to the same line of a file, and also can happen when a file that is meant to be modified is deleted (although these may not be the only situations). To resolve these conflicts, we must directly edit the documents making sure potential conflicts are discussed before merging or pushing to the master branch, since merge conflicts often occur from miscommunication within groups.  -->
+
+
+<!-- ## GitHub Workflow on Command Line / Git Bash  -->
+
+<!-- Here are commands that we can use within `Git Bash` if we are more comfortable working on the command line.  -->
+
+<!-- | Command                        | Function                                      | -->
+<!-- |--------------------------------|-----------------------------------------------| -->
+<!-- | git init                       | Create a **local** repository                 | -->
+<!-- | git branch "newbranch"         | Create a new branch with given name           | -->
+<!-- | git checkout "newbranch"       | Switch to specified branch                    | -->
+<!-- | git status                     | List all the files that you have modified     | -->
+<!-- | git add -A                     | Add **all** files to staging                  | -->
+<!-- | git commit -m "commit message" | Commit staged changes to **local** repository | -->
+<!-- | git push                       | Commit saved changes to **remote** repository | -->
+<!-- | git pull                       | Update changes from the **remote** repository | -->
+
+<!-- However, it is better for us to startby using more graphical user-interface options since they allow us to better understand what is going on. You **do not** want to follow this example[^2]... -->
+
+<!-- <center>![](images/git_misuse.png)</center> -->
+
+<!-- It is always important to know what is happening when we create, change, push, branch and pull from a repository. -->
 
 
 ## Issues 
@@ -243,9 +336,11 @@ knitr::include_url("https://www.youtube.com/embed/PpnFCp4Wr_g")
 
 Below are some supplemental references that can support you in a better use of GitHub.
 
-- [GitHub Introduction with RStudio](https://www.r-bloggers.com/rstudio-and-github/)
-- [GitHub Workflow](https://guides.github.com/introduction/flow/)
-- [GitHub on Command Line (video)](https://www.youtube.com/watch?v=oFYyTZwMyAg)
+- <http://happygitwithr.com/>
+
+<!-- - [GitHub Introduction with RStudio](https://www.r-bloggers.com/rstudio-and-github/) -->
+<!-- - [GitHub Workflow](https://guides.github.com/introduction/flow/) -->
+<!-- - [GitHub on Command Line (video)](https://www.youtube.com/watch?v=oFYyTZwMyAg) -->
 
 [^1]: https://xkcd.com/1296/
 [^2]: https://xkcd.com/1597/
