@@ -1249,11 +1249,15 @@ tennis[order(tennis[,"grand_slam_win"], decreasing = TRUE),]
 
 Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
 
+```{r, eval = TRUE, echo = FALSE}
+library(ggmap)
+register_google(key = "AIzaSyC94oaWm17jLECQfbcCCVylkIZ1m1WveU4") # private!
+```
+
 ```{r, message = FALSE, cache = TRUE}
 library(ggmap)
-birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland",
-                "Belgrade, Serbia", "Basel, Switzerland")
-birth_coord <- geocode(birth_place, source = "dsk")
+birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland", "Belgrade, Serbia", "Basel, Switzerland")
+birth_coord <- geocode(birth_place, source = "google")
 ```
 
 Furthermore, we can create new columns of dataframes using vectors that we created before. 

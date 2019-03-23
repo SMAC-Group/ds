@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>An Introduction to Statistical Programming Methods with R</title>
+  <title>Chapter 4 Data Structures | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:title" content="Chapter 4 Data Structures | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://smac-group.github.io/ds/" />
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="smac-group/ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta name="twitter:title" content="Chapter 4 Data Structures | An Introduction to Statistical Programming Methods with R" />
   
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2019-01-25">
+<meta name="date" content="2019-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="control.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -153,21 +154,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.2.1</b> Git Setup</a></li>
+<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
 <li class="chapter" data-level="3.2.2" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
-<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.2.3</b> Student Developer Pack</a></li>
+<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="github.html"><a href="github.html#the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="github.html"><a href="github.html#note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#github-workflow"><i class="fa fa-check"></i><b>3.3</b> GitHub Workflow</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="github.html"><a href="github.html#branching"><i class="fa fa-check"></i><b>3.3.1</b> Branching</a></li>
-<li class="chapter" data-level="3.3.2" data-path="github.html"><a href="github.html#pull"><i class="fa fa-check"></i><b>3.3.2</b> Pull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.3.3</b> Commits</a></li>
-<li class="chapter" data-level="3.3.4" data-path="github.html"><a href="github.html#push-or-merge"><i class="fa fa-check"></i><b>3.3.4</b> Push or Merge</a></li>
-<li class="chapter" data-level="3.3.5" data-path="github.html"><a href="github.html#merge-conflicts"><i class="fa fa-check"></i><b>3.3.5</b> Merge Conflicts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#github-workflow-on-command-line-git-bash"><i class="fa fa-check"></i><b>3.4</b> GitHub Workflow on Command Line / Git Bash</a></li>
-<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.5</b> Issues</a></li>
-<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.6</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.7</b> Additional References</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -734,10 +729,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
 <p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</code></pre></div>
-<pre><code>## [1] &quot;2018-11-09&quot;</code></pre>
+<pre><code>## [1] &quot;2019-03-23&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] &quot;2018-08-09&quot;</code></pre>
+<pre><code>## [1] &quot;2018-12-23&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
 <span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)
@@ -1260,8 +1255,8 @@ knitr<span class="op">::</span><span class="kw">kable</span>(investment_summary)
 </table>
 <p>In Table <a href="data.html#tab:tableprtexample">4.4</a> and the plot below we can observe that Netflix has high risk and high return. Apple seems like a safer investment in terms of risk but lower in expected return. Our portfolio optimization investment, however, seems to be in a good area, meaning that it has low risk and a return that is between the two stocks mentioned above. Finally, we provide a graphical representation of the obtained results in the figure below.</p>
 <!-- ### NEED TO FIX THIS  -->
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-112"></span>
-<img src="ds_files/figure-html/unnamed-chunk-112-1.png" alt="Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
+<img src="ds_files/figure-html/unnamed-chunk-68-1.png" alt="Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets." width="576" />
 <p class="caption">
 Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfolio based on these two assets.
 </p>
@@ -1595,20 +1590,24 @@ tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_w
 <div id="example-maps" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Example: Maps</h3>
 <p>Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, <code>ggmap</code> to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using <code>geocode</code> within <code>ggmap</code>.</p>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## Google&#39;s Terms of Service: https://cloud.google.com/maps-platform/terms/.</code></pre>
+<pre><code>## Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
-birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>,
-                <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)
-birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place, <span class="dt">source =</span> <span class="st">&quot;dsk&quot;</span>)</code></pre></div>
+birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Glasgow, Scotland&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Lausanne, Switzerland&quot;</span>, <span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>)
+birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place, <span class="dt">source =</span> <span class="st">&quot;google&quot;</span>)</code></pre></div>
 <p>Furthermore, we can create new columns of dataframes using vectors that we created before.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">birth_coord<span class="op">$</span>Players &lt;-<span class="st"> </span>players
 birth_coord<span class="op">$</span>GS &lt;-<span class="st"> </span>grand_slam_win
 birth_coord</code></pre></div>
-<pre><code>##         lon      lat        Players GS
-## 1 -4.249989 55.86115    Andy Murray  9
-## 2  3.209550 39.56964   Rafael Nadal 15
-## 3  6.632820 46.51600  Stan Wawrinka  5
-## 4 20.465130 44.80401 Novak Djokovic 12
-## 5  7.573270 47.55840  Roger Federer 18</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##      lon   lat Players           GS
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+## 1  -4.25  55.9 Andy Murray        9
+## 2   3.21  39.6 Rafael Nadal      15
+## 3   6.63  46.5 Stan Wawrinka      5
+## 4  20.4   44.8 Novak Djokovic    12
+## 5   7.59  47.6 Roger Federer     18</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.data.frame</span>(birth_coord)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made.</p>
@@ -1669,7 +1668,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1681,6 +1680,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/03-data.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
@@ -1696,7 +1699,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
