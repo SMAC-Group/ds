@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>An Introduction to Statistical Programming Methods with R</title>
+  <title>Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:title" content="Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://smac-group.github.io/ds/" />
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="smac-group/ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta name="twitter:title" content="Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R" />
   
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2019-01-25">
+<meta name="date" content="2019-03-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="functions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -153,21 +154,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.2.1</b> Git Setup</a></li>
+<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
 <li class="chapter" data-level="3.2.2" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
-<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.2.3</b> Student Developer Pack</a></li>
+<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="github.html"><a href="github.html#the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="github.html"><a href="github.html#note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#github-workflow"><i class="fa fa-check"></i><b>3.3</b> GitHub Workflow</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="github.html"><a href="github.html#branching"><i class="fa fa-check"></i><b>3.3.1</b> Branching</a></li>
-<li class="chapter" data-level="3.3.2" data-path="github.html"><a href="github.html#pull"><i class="fa fa-check"></i><b>3.3.2</b> Pull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.3.3</b> Commits</a></li>
-<li class="chapter" data-level="3.3.4" data-path="github.html"><a href="github.html#push-or-merge"><i class="fa fa-check"></i><b>3.3.4</b> Push or Merge</a></li>
-<li class="chapter" data-level="3.3.5" data-path="github.html"><a href="github.html#merge-conflicts"><i class="fa fa-check"></i><b>3.3.5</b> Merge Conflicts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#github-workflow-on-command-line-git-bash"><i class="fa fa-check"></i><b>3.4</b> GitHub Workflow on Command Line / Git Bash</a></li>
-<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.5</b> Issues</a></li>
-<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.6</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.7</b> Additional References</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -199,7 +194,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 <li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
 </ul></li>
@@ -305,35 +300,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>When you’re building a larger or more complex program than the examples we considered previously, we need to use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is a “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making processes in computing.</p>
 <p>There exist essentially two kinds of control structures.</p>
 <ul>
-<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s raining outside, <strong>then</strong> take an umbrella” (we will come back to this example in the next section).</li>
+<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s cold outside, <strong>then</strong> take a big jacket” (we will come back to this example in the next section).</li>
 <li>The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.</li>
 </ul>
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 </div>
 <div id="selcontrostat" class="section level2">
 <h2><span class="header-section-number">5.2</span> Selection control statements</h2>
-<p>Suppose that we are interested in creating a simple code to check if it rained over the last hour and, if this is the case, lead us to decide whether we should take an umbrella today. To write such a code we essentially need three things:</p>
+<p>Suppose that we are interested in creating a simple code to check if it can possibly get very cold and, if this is the case, lead us to decide whether we should take a big jacket today. To write such a code we essentially need three things:</p>
 <ol style="list-style-type: decimal">
-<li>Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package <code>rwunderground</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf">package documentation</a> for more details). Then, the amount of precipitation (in inches) in the last hour can be retrieved using the code below:</li>
+<li>Find out how cold it can possibly get today at our location, i.e. the minimum temperature. Such information is now easily accessible through various websites and we can for example use the R package <code>ROpenWeatherMap</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://github.com/mukul13/ROpenWeatherMap">package documentation</a> for more details). Then, the minimum temperature of the day at our location can be retrieved using the code below:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rwunderground)
-(rain &lt;-<span class="st"> </span><span class="kw">conditions</span>(<span class="kw">set_location</span>(<span class="dt">zip_code =</span> <span class="st">&quot;16802&quot;</span>), <span class="dt">message =</span> <span class="ot">FALSE</span>)<span class="op">$</span>precip_1hr)</code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ROpenWeatherMap)
+data =<span class="st"> </span><span class="kw">get_current_weather</span>(mykey, <span class="dt">city=</span><span class="st">&quot;geneva&quot;</span>)
+min_temp =<span class="st"> </span>data<span class="op">$</span>main<span class="op">$</span>temp_min <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span>  <span class="co"># kelvin to celsius</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
-<li>Construct a logical (or Boolean) variable created from the variable <code>rain</code> to assess whether or not an umbrella is needed. For example, we can say that if we see signs of rain in the last hour, then we should take an umbrella. This can be done using the code below and in Section @ref(logical_operators) we will discuss how to construct logical variables in more detail.</li>
+<li>Construct a logical (or Boolean) variable created from the variable <code>min_temp</code> to assess whether or not a big jacket is needed. For example, we can say that if the temperature can possibly drop below 5 celsius today, then we should bring a big jacket with us. This can be done using the code below and in Section <a href="control.html#logoperators">5.2.1</a> we will discuss how to construct logical variables in more details.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(umbrella &lt;-<span class="st"> </span>rain <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">jacket =</span> min_temp <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably take an umbrella</em>” if the logical variable <code>umbrella</code> is <code>TRUE</code> and print “<em>An umbrella is probably not necessary</em>”, otherwise.</li>
+<li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably bring a big jacket</em>” if the logical variable <code>jacket</code> is <code>TRUE</code> and print “<em>A big jacket is probably not necessary</em>”, otherwise.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (umbrella){
-  <span class="kw">print</span>(<span class="st">&quot;You should probably take an umbrella&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (jacket){
+  <span class="kw">print</span>(<span class="st">&quot;You should probably bring a big jacket&quot;</span>)
 }<span class="cf">else</span>{
-  <span class="kw">print</span>(<span class="st">&quot;An umbrella is probably not necessary&quot;</span>)
+  <span class="kw">print</span>(<span class="st">&quot;A big jacket is probably not necessary&quot;</span>)
 }</code></pre></div>
-<pre><code>## [1] &quot;An umbrella is probably not necessary&quot;</code></pre>
-<div id="sec_logical" class="section level3">
+<pre><code>## [1] &quot;You should probably bring a big jacket&quot;</code></pre>
+<div id="logoperators" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
 <p>Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table below summarizes the commonly used logical operators:</p>
 <table>
@@ -479,13 +474,13 @@ isTRUE(x>y)
 <p>Selection operators govern the flow of code. We can observe if/else statements everywhere, no matter what language.</p>
 <div id="if-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
-<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it rains take an umbrella”. In R, you would say:</p>
+<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it can possibly get too cold, bring a big jacket”. In R, you would say:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>this is <span class="ot">TRUE</span><span class="op">&gt;</span>){
   <span class="op">&lt;</span>do that<span class="op">&gt;</span>
 }</code></pre></div>
 <p>or</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>it rains<span class="op">&gt;</span>){
-  <span class="op">&lt;</span>take an umbrella<span class="op">&gt;</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>it can get very cold<span class="op">&gt;</span>){
+  <span class="op">&lt;</span>bring a big jacket<span class="op">&gt;</span>
 }</code></pre></div>
 <p>In general, we can represent an <code>if</code> statement using the following diagram:</p>
 <center>
@@ -676,48 +671,48 @@ In conclusion, we can visualize the R for loops as follows:
 <p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter.</p>
 <p>Apply methods are often used to make operations on some structured data. For example, let’s simulate a matrix of some random samples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</code></pre></div>
-<pre><code>##             [,1]         [,2]        [,3]
-##  [1,]  1.2641127 -1.455629201  1.18725660
-##  [2,]  0.7605783 -0.003717245  0.62239538
-##  [3,]  0.8986743  0.201608421 -0.63467405
-##  [4,] -0.2599687 -1.717030566  0.13811572
-##  [5,] -1.2732897 -0.553815979 -1.68757532
-##  [6,]  1.4665207  1.797689516 -1.69342039
-##  [7,] -0.1886869 -0.487240060  2.00632838
-##  [8,] -0.8078425 -0.067124376  0.28370037
-##  [9,]  0.2201780  0.476543256 -1.63774310
-## [10,] -0.2420270  1.102555363  0.85130893
-## [11,]  0.1616306  1.413921582  1.57550258
-## [12,] -1.5155518 -1.683922909  0.16483272
-## [13,] -0.5130531 -0.213472626  0.15858790
-## [14,] -1.7673859 -0.173933741 -1.65122474
-## [15,] -1.2921990  0.791080267 -0.21468870
-## [16,] -0.5180424  0.505944277 -0.55773403
-## [17,]  0.8689581  0.814993972 -0.22162617
-## [18,] -1.6382529 -0.546740017 -0.72351140
-## [19,] -1.4691652  0.292504331 -0.09889761
-## [20,] -1.3349362  0.153025747  1.28550326</code></pre>
+<pre><code>##               [,1]        [,2]       [,3]
+##  [1,] -1.160971680  0.99322394 -0.9337711
+##  [2,]  0.596706455  0.76511367  0.3441562
+##  [3,]  0.123923167  0.95642308  0.3571737
+##  [4,] -0.396895678 -1.55482308  0.4126917
+##  [5,] -0.839015991  2.10010199  0.1982616
+##  [6,] -1.032069227  0.40301505 -0.8822667
+##  [7,] -0.882732442 -1.06322532  0.3989547
+##  [8,]  0.005101091 -0.27213611 -0.5320904
+##  [9,] -0.608124482 -0.57568348  0.9054991
+## [10,] -0.807986000 -0.46415320 -0.7138311
+## [11,]  0.434295680 -1.41983961 -0.3962978
+## [12,]  1.095839172 -1.62713446 -0.2398597
+## [13,]  0.508861528  1.20756397  0.3256975
+## [14,] -0.410914532  0.66227588  0.5031890
+## [15,] -0.174020875  1.08144964 -0.5499130
+## [16,] -0.009890136 -0.09858615  1.1585590
+## [17,]  1.621858924 -0.12301022  1.2681471
+## [18,]  0.989450976  0.32528578  0.1543420
+## [19,]  0.472444361 -1.97417486  0.2329759
+## [20,] -0.614485456  0.64712845 -0.3872114</code></pre>
 <p>To get the mean of each column, we can calculate each column mean separately or use a for loop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Observe what this does</span>
 <span class="kw">mean</span>(exp_mat)</code></pre></div>
-<pre><code>## [1] -0.1230012</code></pre>
+<pre><code>## [1] 0.008409935</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate separately </span>
 <span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</code></pre></div>
-<pre><code>## [1] -0.3589874</code></pre>
+<pre><code>## [1] -0.05443126</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</code></pre></div>
-<pre><code>## [1] 0.032362</code></pre>
+<pre><code>## [1] -0.001559251</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</code></pre></div>
-<pre><code>## [1] -0.04237818</code></pre>
+<pre><code>## [1] 0.08122031</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using a for loop </span>
 <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){
   <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))
 }</code></pre></div>
-<pre><code>## [1] -0.3589874
-## [1] 0.032362
-## [1] -0.04237818</code></pre>
+<pre><code>## [1] -0.05443126
+## [1] -0.001559251
+## [1] 0.08122031</code></pre>
 <p>However, using <code>apply</code>, we can do this in a very simple manner.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </code></pre></div>
-<pre><code>## [1] -0.35898743  0.03236200 -0.04237818</code></pre>
+<pre><code>## [1] -0.054431257 -0.001559251  0.081220312</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The 2 indicates operations on columns and not rows </span></code></pre></div>
 <p>We will see how these approaches can help accelerate our work later.</p>
 </div>
@@ -799,7 +794,7 @@ boot_mean &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class=
 <span class="co"># Step 4</span>
 <span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha<span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>))</code></pre></div>
 <pre><code>##      2.5%     97.5% 
-## 0.1818182 2.0000000</code></pre>
+## 0.2272727 2.1147727</code></pre>
 <p>Based on this result your instructor is relieved since they know that, at a level of confidence of 95%, you are spending at least more than 10 minutes on your course work.</p>
 
 <div class="rmdnote">
@@ -996,8 +991,12 @@ Thus, it is easy to see that the rate of convergence of <span class="math inline
 \int_1^3 \frac{\exp\left(\sin(x)\right)}{x} dx,
 \]</span></p>
 <p>using <span class="math inline">\(10^4\)</span> Monte-Carlo replications, you can use the following command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stat297)
-<span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">fun =</span> <span class="st">&quot;exp(sin(x))/x&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stat297)</code></pre></div>
+<pre><code>## Loading required package: shiny</code></pre>
+<pre><code>## Loading required package: devtools</code></pre>
+<pre><code>## Loading required package: knitr</code></pre>
+<pre><code>## Loading required package: rmarkdown</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">fun =</span> <span class="st">&quot;exp(sin(x))/x&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)</code></pre></div>
 <pre><code>## $I
 ## [1] 2.558104
 ## 
@@ -1088,7 +1087,7 @@ trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimated value&quot;</span>, <span class="st">&quot;Standard error interval&quot;</span>, <span class="st">&quot;Good approximation (MatLab)&quot;</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
        <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="ot">NA</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>), 
        <span class="dt">pt.cex =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue4&quot;</span>, trans_blue, <span class="st">&quot;red4&quot;</span>))</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-170-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-41-1.png" width="576" style="display: block; margin: auto;" /></p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
     $("#hideclass1").hide();
@@ -1136,7 +1135,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1148,6 +1147,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/04-control.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
@@ -1163,7 +1166,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

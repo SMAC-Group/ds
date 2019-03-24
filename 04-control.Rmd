@@ -6,45 +6,45 @@ When you're building a larger or more complex program than the examples we consi
 
 There exist essentially two kinds of control structures. 
 
-- The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be "**if** it's raining outside, **then** take an umbrella" (we will come back to this example in the next section). 
+- The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be "**if** it's cold outside, **then** take a big jacket" (we will come back to this example in the next section). 
 - The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.
 
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 
 ## Selection control statements {#selcontrostat}
 
-Suppose that we are interested in creating a simple code to check if it rained over the last hour and, if this is the case, lead us to decide whether we should take an umbrella today. To write such a code we essentially need three things:
+Suppose that we are interested in creating a simple code to check if it can possibly get very cold and, if this is the case, lead us to decide whether we should take a big jacket today. To write such a code we essentially need three things:
 
-1) Find out how much it rained in the last hour at our location. Such information is now easily accessible through various websites and we can for example used the R package `rwunderground` to access this information. Note that you will need to create an account and request an API key before being able to use it (see [package documentation](https://cran.r-project.org/web/packages/rwunderground/rwunderground.pdf) for more details). Then, the amount of precipitation (in inches) in the last hour can be retrieved using the code below:
+1) Find out how cold it can possibly get today at our location, i.e. the minimum temperature. Such information is now easily accessible through various websites and we can for example use the R package `ROpenWeatherMap` to access this information. Note that you will need to create an account and request an API key before being able to use it (see [package documentation](https://github.com/mukul13/ROpenWeatherMap) for more details). Then, the minimum temperature of the day at our location can be retrieved using the code below:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-library(rwunderground)
-set_api_key("8fc6fd48b2db3a55")
+mykey = "607bc69cf2c29223a06b22580582a124"
 ```
 
-```{r, warning=FALSE, message=FALSE}
-library(rwunderground)
-(rain <- conditions(set_location(zip_code = "16802"), message = FALSE)$precip_1hr)
+```{r, warning=FALSE, message=FALSE, cache=TRUE}
+library(ROpenWeatherMap)
+data = get_current_weather(mykey, city="geneva")
+min_temp = data$main$temp_min - 273.15  # kelvin to celsius
 ```
 
-2) Construct a logical (or Boolean) variable created from the variable `rain` to assess whether or not an umbrella is needed. For example, we can say that if we see signs of rain in the last hour, then we should take an umbrella. This can be done using the code below and in Section \@ref(logical_operators) we will discuss how to construct logical variables in more detail.
+2) Construct a logical (or Boolean) variable created from the variable `min_temp` to assess whether or not a big jacket is needed. For example, we can say that if the temperature can possibly drop below 5 celsius today, then we should bring a big jacket with us. This can be done using the code below and in Section \@ref(logoperators) we will discuss how to construct logical variables in more details.
 
 ```{r}
-(umbrella <- rain > 0)
+(jacket = min_temp < 5)
 ```
 
-3) Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the `if/else` statement presented below. This simple code will print "*You should probably take an umbrella*" if the logical variable `umbrella` is `TRUE` and print "*An umbrella is probably not necessary*", otherwise.
+3) Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the `if/else` statement presented below. This simple code will print "*You should probably bring a big jacket*" if the logical variable `jacket` is `TRUE` and print "*A big jacket is probably not necessary*", otherwise.
 
 ```{r}
-if (umbrella){
-  print("You should probably take an umbrella")
+if (jacket){
+  print("You should probably bring a big jacket")
 }else{
-  print("An umbrella is probably not necessary")
+  print("A big jacket is probably not necessary")
 }
 ```
 
 
-### Logical Operators {#sec_logical}
+### Logical Operators {#logoperators}
 
 Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table below summarizes the commonly used logical operators:
 
@@ -96,7 +96,7 @@ Selection operators govern the flow of code. We can observe if/else statements e
 
 #### `if` Statements
 
-The most basic selection operator is called an `if` statement. Essentially, an `if` statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, "If this is true, do that" or as in our motivating example "If it rains take an umbrella". In R, you would say:
+The most basic selection operator is called an `if` statement. Essentially, an `if` statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, "If this is true, do that" or as in our motivating example "If it can possibly get too cold, bring a big jacket". In R, you would say:
 
 ```{r, eval = FALSE}
 if (<this is TRUE>){
@@ -107,8 +107,8 @@ if (<this is TRUE>){
 or
 
 ```{r, eval = FALSE}
-if (<it rains>){
-  <take an umbrella>
+if (<it can get very cold>){
+  <bring a big jacket>
 }
 ```
 
