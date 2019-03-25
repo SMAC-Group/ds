@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2019-03-24">
+<meta name="date" content="2019-03-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -300,14 +300,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>When you’re building a larger or more complex program than the examples we considered previously, we need to use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is a “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making processes in computing.</p>
 <p>There exist essentially two kinds of control structures.</p>
 <ul>
-<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s cold outside, <strong>then</strong> take a big jacket” (we will come back to this example in the next section).</li>
+<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s cold outside, <strong>then</strong> take a jacket” (we will come back to this example in the next section).</li>
 <li>The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.</li>
 </ul>
 <!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
 </div>
 <div id="selcontrostat" class="section level2">
 <h2><span class="header-section-number">5.2</span> Selection control statements</h2>
-<p>Suppose that we are interested in creating a simple code to check if it can possibly get very cold and, if this is the case, lead us to decide whether we should take a big jacket today. To write such a code we essentially need three things:</p>
+<p>Suppose that we are interested in creating a simple code to check if it can possibly get very cold and, if this is the case, lead us to decide whether we should take a jacket today. To write such a code we essentially need three things:</p>
 <ol style="list-style-type: decimal">
 <li>Find out how cold it can possibly get today at our location, i.e. the minimum temperature. Such information is now easily accessible through various websites and we can for example use the R package <code>ROpenWeatherMap</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://github.com/mukul13/ROpenWeatherMap">package documentation</a> for more details). Then, the minimum temperature of the day at our location can be retrieved using the code below:</li>
 </ol>
@@ -315,19 +315,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 data =<span class="st"> </span><span class="kw">get_current_weather</span>(mykey, <span class="dt">city=</span><span class="st">&quot;geneva&quot;</span>)
 min_temp =<span class="st"> </span>data<span class="op">$</span>main<span class="op">$</span>temp_min <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span>  <span class="co"># kelvin to celsius</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
-<li>Construct a logical (or Boolean) variable created from the variable <code>min_temp</code> to assess whether or not a big jacket is needed. For example, we can say that if the temperature can possibly drop below 5 celsius today, then we should bring a big jacket with us. This can be done using the code below and in Section <a href="control.html#logoperators">5.2.1</a> we will discuss how to construct logical variables in more details.</li>
+<li>Construct a logical (or Boolean) variable created from the variable <code>min_temp</code> to assess whether or not a jacket is needed. For example, we can say that if the temperature can possibly drop below 5 celsius today, then we should bring a jacket with us. This can be done using the code below and in Section <a href="control.html#logoperators">5.2.1</a> we will discuss how to construct logical variables in more details.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">jacket =</span> min_temp <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably bring a big jacket</em>” if the logical variable <code>jacket</code> is <code>TRUE</code> and print “<em>A big jacket is probably not necessary</em>”, otherwise.</li>
+<li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably bring a jacket</em>” if the logical variable <code>jacket</code> is <code>TRUE</code> and print “<em>A jacket is probably not necessary</em>”, otherwise.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (jacket){
-  <span class="kw">print</span>(<span class="st">&quot;You should probably bring a big jacket&quot;</span>)
+  <span class="kw">print</span>(<span class="st">&quot;You should probably bring a jacket&quot;</span>)
 }<span class="cf">else</span>{
-  <span class="kw">print</span>(<span class="st">&quot;A big jacket is probably not necessary&quot;</span>)
+  <span class="kw">print</span>(<span class="st">&quot;A jacket is probably not necessary&quot;</span>)
 }</code></pre></div>
-<pre><code>## [1] &quot;You should probably bring a big jacket&quot;</code></pre>
+<pre><code>## [1] &quot;You should probably bring a jacket&quot;</code></pre>
 <div id="logoperators" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
 <p>Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table below summarizes the commonly used logical operators:</p>
@@ -474,13 +474,13 @@ isTRUE(x>y)
 <p>Selection operators govern the flow of code. We can observe if/else statements everywhere, no matter what language.</p>
 <div id="if-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
-<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it can possibly get too cold, bring a big jacket”. In R, you would say:</p>
+<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it can possibly get too cold, bring a jacket”. In R, you would say:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>this is <span class="ot">TRUE</span><span class="op">&gt;</span>){
   <span class="op">&lt;</span>do that<span class="op">&gt;</span>
 }</code></pre></div>
 <p>or</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>it can get very cold<span class="op">&gt;</span>){
-  <span class="op">&lt;</span>bring a big jacket<span class="op">&gt;</span>
+  <span class="op">&lt;</span>bring a jacket<span class="op">&gt;</span>
 }</code></pre></div>
 <p>In general, we can represent an <code>if</code> statement using the following diagram:</p>
 <center>
