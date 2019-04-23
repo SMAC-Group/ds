@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>An Introduction to Statistical Programming Methods with R</title>
+  <title>Chapter 8 R Packages | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:title" content="Chapter 8 R Packages | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://smac-group.github.io/ds/" />
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="smac-group/ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta name="twitter:title" content="Chapter 8 R Packages | An Introduction to Statistical Programming Methods with R" />
   
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2019-01-25">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="high-performance-computing.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,41 +51,59 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -153,21 +172,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.2.1</b> Git Setup</a></li>
+<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
 <li class="chapter" data-level="3.2.2" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
-<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.2.3</b> Student Developer Pack</a></li>
+<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="github.html"><a href="github.html#the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="github.html"><a href="github.html#note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#github-workflow"><i class="fa fa-check"></i><b>3.3</b> GitHub Workflow</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="github.html"><a href="github.html#branching"><i class="fa fa-check"></i><b>3.3.1</b> Branching</a></li>
-<li class="chapter" data-level="3.3.2" data-path="github.html"><a href="github.html#pull"><i class="fa fa-check"></i><b>3.3.2</b> Pull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.3.3</b> Commits</a></li>
-<li class="chapter" data-level="3.3.4" data-path="github.html"><a href="github.html#push-or-merge"><i class="fa fa-check"></i><b>3.3.4</b> Push or Merge</a></li>
-<li class="chapter" data-level="3.3.5" data-path="github.html"><a href="github.html#merge-conflicts"><i class="fa fa-check"></i><b>3.3.5</b> Merge Conflicts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#github-workflow-on-command-line-git-bash"><i class="fa fa-check"></i><b>3.4</b> GitHub Workflow on Command Line / Git Bash</a></li>
-<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.5</b> Issues</a></li>
-<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.6</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.7</b> Additional References</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -199,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 <li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
 </ul></li>
@@ -267,15 +280,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in R</a><ul>
+<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
 <li class="chapter" data-level="10.1" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
 <li class="chapter" data-level="10.2" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
 <li class="chapter" data-level="10.3" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
 <li class="chapter" data-level="10.4" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
 <li class="chapter" data-level="10.5" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
-<li class="chapter" data-level="10.6" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#references"><i class="fa fa-check"></i><b>10.6</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
 <li class="divider"></li>
@@ -303,7 +315,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In this chapter we introduce one of the most useful tools for R programming as well as for statistical programming in general. Indeed, one of the main goals for statistical programming is to then be able to share all the code and functions that have been implemented in order to respond to a specific task. The latter may often be quite <em>messy</em> to do given that different files and functions can be present in various directories or repositories and, for example, some codes may use functions from other codes but do not load the same libraries, thereby producing execution errors.</p>
 <p>In order to avoid the above complications (and to program in a healthy and organized manner), R allows you to create <em>packages</em> that are software platforms that collect functions as well as other files which, among others, describe these functions and provide users with documentation that allow them to understand and efficiently use these functions. Moreover, when sharing a package (or making it available within a repository) all the user needs to do is to install and load the package within an R session which then makes available the entire environment needed for all the functions included in the package to work. In a nutshell, whenever creating functions to answer a specific research interest or professional task, it is always good to do so by first creating a package within which these functions can be stored and documented.</p>
 <p>In this chapter we will describe and explain the steps necessary to create an R package using RStudio. There are other ways and other procedures to produce an R package but in this chapter we will describe one possible way which is consistent with the approach to statistical programming that is presented in this book. As in the previous chapters, we will make use of an example to guide the reader through the different aspects of package building and, for this purpose, let us assume we want to build a package that allows a user to perform Monte-Carlo integration for any user-specificed function as well as produce plots that represent these functions as well as the integrated area. In this case, we have an extremely simple setting where, based on code used in the previous chapters, we only have the following two functions to be included in the package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
+<pre class="sourceCode r" id="cb450"><code class="sourceCode r">mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){
   <span class="co"># A few checks</span>
   <span class="co"># Check x_range</span>
   <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){
@@ -372,16 +384,16 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
           <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])
   <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
   <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
-}</code></pre></div>
+}</code></pre>
 <p>Hence, the package will contain:</p>
 <ul>
 <li>the <code>mc_int()</code> function: that computes an approximation of the integral of the function <code>fun</code> with respect to <code>x</code> within the range <code>x_range</code> via Monte-Carlo integration using uniform sampling;</li>
 <li>the <code>plot.MCI()</code> function: a class function that will plot the object that is created as an output of the <code>mc_int()</code> function.</li>
 </ul>
 <p>An example of use of these functions and their output is the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
-<span class="kw">plot</span>(obj)</code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
+<pre class="sourceCode r" id="cb451"><code class="sourceCode r">obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)
+<span class="kw">plot</span>(obj)</code></pre>
+<p><img src="ds_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
 <p>Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.</p>
 <div id="basic-steps" class="section level2">
 <h2><span class="header-section-number">8.1</span> Basic steps</h2>
@@ -422,12 +434,12 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <div id="author-roles" class="section level4 unnumbered">
 <h4>Author Roles</h4>
 <p>One of the lines of information in the description file corresponds to the authors of the package. This therefore corresponds to the list of persons who have actively contributed to the development of code and functions that are included in the package. When there is more than author, the line corresponding to the author can be replaced by a format like the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Authors<span class="op">@</span>R<span class="op">:</span><span class="st"> </span><span class="kw">c</span>(
+<pre class="sourceCode r" id="cb452"><code class="sourceCode r">Authors<span class="op">@</span>R<span class="op">:</span><span class="st"> </span><span class="kw">c</span>(
     <span class="kw">person</span>(<span class="st">&quot;Justin&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="dt">email =</span> <span class="st">&quot;justinlee@psu.edu&quot;</span>, <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>,<span class="st">&quot;cre&quot;</span>)),
     <span class="kw">person</span>(<span class="st">&quot;Stephane&quot;</span>, <span class="st">&quot;Guerrier&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),
     <span class="kw">person</span>(<span class="st">&quot;Roberto&quot;</span>, <span class="st">&quot;Molinari&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),
     <span class="kw">person</span>(<span class="st">&quot;Matthew&quot;</span>, <span class="st">&quot;Beckman&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>)
-    )</code></pre></div>
+    )</code></pre>
 <p>This information is important also because it will impact how it is displayed later in the rendered package website (see further on). As you can notice it possible to also specify the role that the author has in relation to the package using the option <code>role =</code>, followed by codes for the type of role. In the above examples we can see two types of role that correspond to <code>aut</code> which indicates an <em>author</em> of the package while <code>cre</code> stands for <em>creator</em> who is the person in charge of maintaining the package and receiving information as well as bug reports or suggestions. There are other two possible roles available which are <code>ctb</code> and <code>cph</code> that correspond to <em>contributor</em> and <em>copyright holder</em> respectively, where the contributor is a person who has provided some minor contributions to the package while the copyright holder is the person or company who holds the copyright of the package.</p>
 </div>
 <div id="license-1" class="section level4 unnumbered">
@@ -457,7 +469,7 @@ plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){
 <h3><span class="header-section-number">8.1.4</span> Step 4: Documentation</h3>
 <p>The next essential component of a package is its documentation which enables users to know how to use it. Indeed, when users access the <code>demo</code> package, they should essentially know how to use its functions by gaining access to help files through the use of commands like <code>?mc_int</code> for example. A possible (and efficient) way of creating package documentation is by using a specific syntax before each function in your R scripts which will then be used to automatically generate the necessary <code>.Rd</code> files by using the commands <code>devtools::document()</code> or <code>roxygen2::roxygenize</code>.</p>
 <p>We will use the <code>mc_int()</code> function from our demo package as an example to show the syntax that can be used before each function which is intended for the user:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @title Simple Monte-Carlo integration</span>
+<pre class="sourceCode r" id="cb453"><code class="sourceCode r"><span class="co">#&#39; @title Simple Monte-Carlo integration</span>
 <span class="co">#&#39;</span>
 <span class="co">#&#39; @description Compute an approximation of the integral of the function f(x)</span>
 <span class="co">#&#39; with respect to dx in the range [a, b] by Monte-Carlo integration using</span>
@@ -526,7 +538,7 @@ mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, 
              <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)
   <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span>
   out
-}</code></pre></div>
+}</code></pre>
 <p>As can be seen, all the syntax which contributes to the documentation of the function is preceded by the syntax <code>#'</code> and is immediately followed (with no spacing) by the code of the function itself. Focussing on the contents of this documentation, the <code>@title</code> and <code>@description</code> entries will constitute respectively the title describing the function in a succint manner and the text providing a more detailed description of what the function does. We then find the <code>@param</code> syntax that is repeated for each parameter considered by the function in which a brief description of what the parameter is and what type of input is needed for it from the user. Finally we find the <code>@return</code> section where there is a description of the outputs of the function and eventual indications as to how these should be interpreted. Additional information can be provided such as the author(s) who specifically contributed to creating the function (<code>@author</code>), the packages or functions needed for the function to be employed (<code>@importFrom</code>) and examples that can show the user how to use this function in practice (<code>@examples</code>).</p>
 <p>A final note should be given to the <code>@export</code> syntax which MUST absolutely be specified if you want the function you’re documenting to be made available to the user. Indeed, there may be functions that are simply created to be used within other functions that are made available to the user and these therefore don’t need to have this option specified. However, if the function needs to be made available to the user, then it is essential that this option is specified within the function documentation. Additional information on package documentation can be found <a href="http://r-pkgs.had.co.nz/man.html#man-functions">here</a>.</p>
 <p>Once all the necessary functions have been documented, it is possible to compile this documentation by using the commands <code>devtools::document()</code> or <code>roxygen2::roxygenize</code> (as mentioned earlier) or by directly building the package. Having done so, an <code>.Rd</code> file for each function will appear in the “man” folder (from which we earlier deleted the <code>hello.Rd</code> file). Below is an example of the <code>.Rd</code> files created for the functions in our example (with an added documentation for a function called <code>MC_gui</code> which is related to the code created for the Shiny app).</p>
@@ -594,7 +606,7 @@ Explain what your package is doing here</code></pre>
 <div id="adding-a-shiny-app" class="section level3">
 <h3><span class="header-section-number">8.2.1</span> Adding a shiny app</h3>
 <p>A feature which can be useful to make your package accessible to the general user (as well as to promote it) can be the possibility of including a Shiny app as an interface to your package. To do so, you will have to include a new folder called “inst” within your package main folder and in which an additional folder is then included with a name of your choice (let us say “MC_int” for the example we have used throughout this chapter). Within the latter you can then include the R script(s) to run the Shiny app (say “app.R”) which makes use of the functions made available within the package. An example of the content of such a script is the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define UI for application that draws a plot of the approximate integral</span>
+<pre class="sourceCode r" id="cb455"><code class="sourceCode r"><span class="co"># Define UI for application that draws a plot of the approximate integral</span>
 ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 
    <span class="co"># Application title</span>
@@ -604,8 +616,8 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
    <span class="kw">sidebarLayout</span>(
       <span class="kw">sidebarPanel</span>(
         <span class="kw">textInput</span>(<span class="st">&quot;fun&quot;</span>, <span class="st">&quot;Function to integrate:&quot;</span>,<span class="st">&quot;sin(10*x)*exp(cos(x))&quot;</span>),
-        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> <span class="op">-</span><span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
-        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> <span class="op">-</span><span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
+        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
+        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),
         <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of Monte-Carlo replications:&quot;</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>,
                      <span class="dt">min =</span> <span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">9</span>),
         <span class="kw">actionButton</span>(<span class="st">&quot;button&quot;</span>, <span class="st">&quot;Compute Integral&quot;</span>)
@@ -633,13 +645,13 @@ server &lt;-<span class="st"> </span><span class="cf">function</span>(input, out
 }
 
 <span class="co"># Run the application</span>
-<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre>
 <p>Once this is done, an additional R script needs to included within the “R” folder. This R script will contain a function that allows the user to generate a Shiny app (based on the contents of “app.R” for example) and consequently to use the app interface to make use of the package functions. Following from our example, suppose that the latter script, which we will call “run_shiny.r” for this example, contains the following function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @export</span>
+<pre class="sourceCode r" id="cb456"><code class="sourceCode r"><span class="co">#&#39; @export</span>
 MC_gui =<span class="st"> </span><span class="cf">function</span>(){
   appDir =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;MC_int&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;demo&quot;</span>)
   shiny<span class="op">::</span><span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)
-}</code></pre></div>
+}</code></pre>
 <p>Given these steps, our main package folder should look like this:</p>
 <center>
 <img src="images/adv_1.png" />
@@ -649,8 +661,6 @@ MC_gui =<span class="st"> </span><span class="cf">function</span>(){
 <div id="custom-website" class="section level3">
 <h3><span class="header-section-number">8.2.2</span> Custom website</h3>
 <p>Below is a video about customizing the website.</p>
-<iframe src="https://www.youtube.com/embed/HO54ZoGtzzQ" width="672" height="400px">
-</iframe>
 <p>EXAMPLE: smac-group/demo</p>
 
 </div>
@@ -682,7 +692,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -694,6 +704,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-package.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
@@ -708,8 +722,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

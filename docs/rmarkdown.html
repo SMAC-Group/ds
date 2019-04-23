@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2019-02-22">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -51,41 +51,59 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -194,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 <li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
 </ul></li>
@@ -262,15 +280,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in R</a><ul>
+<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
 <li class="chapter" data-level="10.1" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
 <li class="chapter" data-level="10.2" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
 <li class="chapter" data-level="10.3" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
 <li class="chapter" data-level="10.4" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
 <li class="chapter" data-level="10.5" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
-<li class="chapter" data-level="10.6" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#references"><i class="fa fa-check"></i><b>10.6</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
 <li class="divider"></li>
@@ -304,14 +321,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>What is <strong>reproducible</strong> research ?</h3>
 <p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis and producing output, can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors’ findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
 <p>Below is a short video showing a basic overview of RMarkdown.</p>
-<iframe src="https://www.youtube.com/embed/Fti30-mZkC0" width="672" height="400px">
-</iframe>
 <p>We have created a framework application that you can use to test out different RMarkdown functions. Simply run the following code within the <code>stat297</code> package by using either</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># RMarkdown Web</span>
+<pre class="sourceCode r" id="cb13"><code class="sourceCode r"><span class="co"># RMarkdown Web</span>
 stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd&#39;</span>)
 
 <span class="co"># RMarkdown Mobile</span>
-stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd_mini&#39;</span>)</code></pre></div>
+stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd_mini&#39;</span>)</code></pre>
 <p>Then a shiny app window will pop out for you to access the application like the following:</p>
 <center>
 <img src="images/rmd_shiny_mainpage.png" alt="Screenshot of RMarkdown Shiny App Main Page" />
@@ -337,7 +352,8 @@ stat297<span class="op">::</span><span class="kw">runShiny</span>(<span class="s
 </div>
 <div id="create-an-r-markdown-file-in-rstudio" class="section level2">
 <h2><span class="header-section-number">2.1</span> Create an R Markdown file in RStudio</h2>
-<p>Within RStudio, click <code>File</code> → <code>New File</code> → <code>R Markdown</code>. Give the file a title and the author (your name) and select the default output, HTML. We can change this later so don’t worry about it for the moment.</p>
+<p>Within RStudio, click <code>File</code> → <code>New File</code> → <code>R Markdown</code>. Give the file a title and the author
+(your name) and select the default output, HTML. We can change this later so don’t worry about it for the moment.</p>
 <center>
 <img src="images/rmd_new.png" alt="Screenshot of RMarkdown Creation" />
 </center>
@@ -533,16 +549,16 @@ The references in the “.bib” file will not appear in the references that are
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><em>Bananas</em></p></td>
-<td><p>$1.34</p></td>
+<td><em>Bananas</em></td>
+<td>$1.34</td>
 <td><ul>
 <li>built-in wrapper</li>
 <li>bright color</li>
 </ul></td>
 </tr>
 <tr class="even">
-<td><p>Oranges</p></td>
-<td><p>$2.10</p></td>
+<td>Oranges</td>
+<td>$2.10</td>
 <td><ul>
 <li>cures scurvy</li>
 <li><strong>tasty</strong></li>
@@ -591,15 +607,16 @@ The references in the “.bib” file will not appear in the references that are
 <h3><span class="header-section-number">2.4.2</span> Comments</h3>
 <p>Adding comments to describe the code is extremely useful (if not essential) during every coding and programming process. It helps <strong>you</strong> take notes and remember what is going on and why you made use of these functions, as well as helping others understand your code. Forgetting to comment or document your code often becomes a larger problem in the future when, among numerous lines of code, you have forgotten the reason for using certain functions or algorithms.</p>
 <blockquote>
-<p>“Don’t document bad code – rewrite it.” The Elements of Programming Style, Kernighan &amp; Plauger</p>
+<p>“Don’t document bad code – rewrite it.”
+The Elements of Programming Style, Kernighan &amp; Plauger</p>
 </blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comment your code by preceding text with a # </span>
-<span class="co"># Keep it brief but comprehensible, so you can return to it </span></code></pre></div>
+<pre class="sourceCode r" id="cb23"><code class="sourceCode r"><span class="co"># Comment your code by preceding text with a # </span>
+<span class="co"># Keep it brief but comprehensible, so you can return to it </span></code></pre>
 </div>
 <div id="in-line-r" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> In-line R</h3>
 <p>The variables we store in an RMarkdown document will stay within the environment they were created in. This means that we can call and manipulate them anywhere within the document. For example, supposing we have a variable called <code>x</code> to which we assign a specific value, then in RMarkdown we can reference this variable by using <code>r x</code>: this will affix the value of the variable directly in a sentence. Here is a practical example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre class="sourceCode r" id="cb24"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">2</span></code></pre>
 <p>where we have stored the value 2 in a variable called <code>a</code>. We can use the value of <code>a</code> as follows:</p>
 <pre class="text"><code>The value of $a$ is `r a`. </code></pre>
 <p>This translates in R Markdown to “The value of <span class="math inline">\(a\)</span> is 2.”</p>
@@ -608,40 +625,35 @@ The references in the “.bib” file will not appear in the references that are
 <h3><span class="header-section-number">2.4.4</span> Cache</h3>
 <p>Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the <code>cache</code> argument. By default this argument is assigned the value <code>FALSE</code> and therefore the R code is run every time your document is compiled. However, if you specify this argument as <code>cache = TRUE</code>, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.</p>
 <p>Below is a short video introducing caching in R Markdown.</p>
-<iframe src="https://www.youtube.com/embed/9q1eJyOQQsE" width="672" height="400px">
-</iframe>
 <p>The RMarkdown file used for this particular example can be found here: <a href="code_examples/caching.Rmd">caching.Rmd</a>.</p>
 <p>Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call <code>a</code> (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the <code>cache</code> argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre class="sourceCode r" id="cb26"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">2</span></code></pre>
 <p>which would be written in RMarkdown as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r computeA, cache = TRUE}</span>
+<pre class="sourceCode r" id="cb27"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r computeA, cache = TRUE}</span>
 <span class="dt">a &lt;- 2</span>
-<span class="st">```</span></code></pre></div>
+<span class="st">```</span></code></pre>
 <p>You will notice that we called this chunk of embedded R code <code>computeA</code> and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been “cached”, then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.</p>
 <p>This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your “cached” R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your “cached” R code. As an example, suppose we have another chunk of R code that we can “cache” and that takes the value of <code>a</code> from the previous chunk:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</code></pre></div>
+<pre class="sourceCode r" id="cb28"><code class="sourceCode r">(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</code></pre>
 <pre><code>## [1] 4</code></pre>
 <p>which would be written in RMarkdown as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE}</span>
+<pre class="sourceCode r" id="cb30"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE}</span>
 <span class="dt">(d &lt;- 2*a)</span>
-<span class="st">```</span></code></pre></div>
+<span class="st">```</span></code></pre>
 <p>In this case, the output of this chunk will be <code>## 4</code> since <code>a &lt;- 2</code> (from the previous chunk). What happens however if we modify the value of <code>a</code> in the previous chunk? In this case, the previous chunk will be recomputed but the value of <code>d</code> (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the “cached” code depends on. This is why we initially gave a name to the first chunk of code (“computeA”) so as to refer to it in following chunks of “cached” code that depend on it. To refer to this code you need to use the option <code>dependson</code> as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</code></pre></div>
+<pre class="sourceCode r" id="cb31"><code class="sourceCode r">(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</code></pre>
 <pre><code>## [1] 4</code></pre>
 <p>which we would write as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span>
+<pre class="sourceCode r" id="cb33"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span>
 <span class="dt">(d &lt;- 2*a)</span>
-<span class="st">```</span></code></pre></div>
+<span class="st">```</span></code></pre>
 <p>In this manner, if the value of <code>a</code> changes in the first chunk, the value of <code>d</code> will also change but will be stored until either the <code>computeA</code> chunk or the latter chunk is modified.</p>
 </div>
 </div>
 <div id="render-output" class="section level2">
 <h2><span class="header-section-number">2.5</span> Render Output</h2>
 <p>After you are done, run <code>RMarkdown::render()</code> or click the <code>Knit</code> button at the top of the RStudio scripts pane to save the output in your working directory.</p>
-<div class="figure">
-<img src="images/rmd_knit.png" />
-
-</div>
+<p><img src="images/rmd_knit.png" /></p>
 <p>The use of RMarkdown makes it possible to generate any file format such as HTML, pdf and Word processor formats using <code>pandoc</code>. Pandoc is a free software that understands and converts useful markdown syntax, such as the code mentioned above, into a readable and clean format.</p>
 </div>
 <div id="addition-information" class="section level2">
@@ -658,7 +670,7 @@ The references in the “.bib” file will not appear in the references that are
 <h3><span class="header-section-number">A</span> Basic Probability and Statistics with <code>R</code></h3>
 <div id="refs" class="references">
 <div id="ref-harrar2013taste">
-<p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central: 21.</p>
+<p>Harrar, Vanessa, and Charles Spence. 2013. “The Taste of Cutlery: How the Taste of Food Is Affected by the Weight, Size, Shape, and Colour of the Cutlery Used to Eat It.” <em>Flavour</em> 2 (1). BioMed Central:21.</p>
 </div>
 </div>
             </section>
@@ -717,7 +729,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

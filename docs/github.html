@@ -25,7 +25,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2019-02-13">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,6 +50,61 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -157,7 +212,7 @@
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 <li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
 </ul></li>
@@ -225,15 +280,14 @@
 <li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in R</a><ul>
+<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
 <li class="chapter" data-level="10.1" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
 <li class="chapter" data-level="10.2" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
 <li class="chapter" data-level="10.3" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
 <li class="chapter" data-level="10.4" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
 <li class="chapter" data-level="10.5" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
-<li class="chapter" data-level="10.6" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#references"><i class="fa fa-check"></i><b>10.6</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
 <li class="divider"></li>
@@ -259,7 +313,8 @@
 <div id="github" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> GitHub</h1>
 <blockquote>
-<p>git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space. <cite> Isaac Wolkerstorfer </cite></p>
+<p>git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.
+<cite> Isaac Wolkerstorfer </cite></p>
 </blockquote>
 <p>When working on a report or a project, it is often the case that you keep separate versions either to keep track of the changes (in case you want to go back to a previous version) or to have a version for each person working on different parts of the project. As a result of this approach, you may have created or encountered a file directory attempting to preserve multiple copies or iterations of the same files:</p>
 <center>
@@ -295,8 +350,6 @@
 <p>More commonly, users establish a link between a file directory on their (local) computer and a Repo stored on the GitHub remote. You edit files on your computer and save your progress as you normally would, except now that you have established a link with Git(Hub) you can periodically update the Repo on the GitHub remote with the latest progress.</p>
 <p>Below is a video introducing the basic look and feel of GitHub.</p>
 <center>
-<iframe src="https://www.youtube.com/embed/SB5YkjB9FWc" width="672" height="400px">
-</iframe>
 </center>
 <div id="git-rstudio-configuration" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Git &amp; RStudio Configuration</h3>
@@ -340,14 +393,14 @@ Since your profile will be public, it’s a good idea to choose a username that 
 <h3><span class="header-section-number">3.2.3</span> Connecting to RStudio</h3>
 <p>With the URL of your GitHub Repo still copied to your clipboard, go to RStudio and initate a new “Project.” You can either navigate the menus in RStudio (RStudio &gt;&gt; File &gt;&gt; New Project) or use the “Project” navigation feature in the upper right of the RStudio window a shown.</p>
 <center>
-<img src="images/RStudio%20Projects.png" alt="RStudio &gt;&gt; New Project" />
+<img src="images/RStudio%20Projects.png" alt="RStudio &gt;&gt; “New Project”" />
 </center>
 <p>Next, RStudio will prompt you with a dialogue box to configure the new project. Select “Version Control” and then “Git” on the following screen as shown.</p>
 <center>
-<img src="images/VC.png" alt="RStudio &gt;&gt; New Project &gt;&gt; Version Control" />
+<img src="images/VC.png" alt="RStudio &gt;&gt; New Project &gt;&gt; “Version Control”" />
 </center>
 <center>
-<img src="images/Git.png" alt="Fig. New Project &gt;&gt; Version Control &gt;&gt; Git" />
+<img src="images/Git.png" alt="Fig. New Project &gt;&gt; Version Control &gt;&gt; “Git”" />
 </center>
 <p>Remember when you copied the URL for your Repo from GitHub? If not, go copy it again and we’ll paste it into the line “Repository URL” in order to “Clone” the Git Repository to a file directory (i.e. folder) on your computer as shown.</p>
 <ul>
@@ -396,7 +449,7 @@ Since your profile will be public, it’s a good idea to choose a username that 
 </ol>
 <p>A commit is quite literally a snapshot of the state of your whole project (e.g., file directory), like a photograph. One you take a photograph, you have an exact picture of precisely how things looked at that moment in time. You should make commits frequently as you make progress with your work.<br />
 When you want to make a commit using the RStudio interface, you simply select a small checkbox next to the files that you want to include in the snapshot. This is called “staging” files for the commit. Then, when you click the “commit button, a new window will open that will attempt to summarize all the differences between the new file and the previous version. This is called the”diff.&quot;</p>
-<p>In order to complete each commit, you must include a commit message. It’s a good idea to write informative commit messages, and Git will even force you to write <em>something</em> before executing the commit. Remember when we described version control as a sort of time machine? You will probably be the one reading through many dozens of commit messages to figure out where to send the time machine… They are also tremendously helpful if you have collaborators on a Repo so you can all keep up with what is changing throughout the project.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>In order to complete each commit, you must include a commit message. It’s a good idea to write informative commit messages, and Git will even force you to write <em>something</em> before executing the commit. Remember when we described version control as a sort of time machine? You will probably be the one reading through many dozens of commit messages to figure out where to send the time machine… They are also tremendously helpful if you have collaborators on a Repo so you can all keep up with what is changing throughout the project.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <center>
 <img src="images/git_commit.png" />
 </center>
@@ -469,8 +522,6 @@ When you want to make a commit using the RStudio interface, you simply select a 
 <h2><span class="header-section-number">3.3</span> Issues</h2>
 <p><em>Issues</em> are a very good way to keep track of group tasks, bugs and announcements for your projects within GitHub. Below is a basic video introducing <code>issues</code> in GitHub.</p>
 <center>
-<iframe src="https://www.youtube.com/embed/HRikDvXEpVM" width="672" height="400px">
-</iframe>
 </center>
 </div>
 <div id="slack-integration" class="section level2">
@@ -479,8 +530,6 @@ When you want to make a commit using the RStudio interface, you simply select a 
 <p>An added benefit of using Slack is that it can be integrated with GitHub in such a way that notifications will be posted to the group whenever someone pushes or makes a pull request. More information on GitHub integration with Slack can be found <a href="https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack">here</a>.</p>
 <p>A more detailed video providing a demonstration on the use of Slack in a real-life setting can be found below.</p>
 <center>
-<iframe src="https://www.youtube.com/embed/PpnFCp4Wr_g" width="672" height="400px">
-</iframe>
 </center>
 </div>
 <div id="additional-references-2" class="section level2">
@@ -501,7 +550,7 @@ When you want to make a commit using the RStudio interface, you simply select a 
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p><a href="https://xkcd.com/1296/" class="uri">https://xkcd.com/1296/</a><a href="github.html#fnref1">↩</a></p></li>
+<li id="fn1"><p>This scheme is inspired from diagrams by Prof. Bob Rudis and James Balamuta.<a href="github.html#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -555,6 +604,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

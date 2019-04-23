@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>An Introduction to Statistical Programming Methods with R</title>
+  <title>Chapter 11 References | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:title" content="Chapter 11 References | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://smac-group.github.io/ds/" />
   
@@ -17,25 +17,26 @@
   <meta name="github-repo" content="smac-group/ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="An Introduction to Statistical Programming Methods with R" />
+  <meta name="twitter:title" content="Chapter 11 References | An Introduction to Statistical Programming Methods with R" />
   
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari &amp; Samuel Orso">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
 
 
-<meta name="date" content="2018-11-13">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="website-creation.html">
+<link rel="prev" href="web-scraping-in-r.html">
 <link rel="next" href="basic-probability-and-statistics-with-r-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,41 +51,59 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -153,21 +172,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-setup"><i class="fa fa-check"></i><b>3.2.1</b> Git Setup</a></li>
+<li class="chapter" data-level="3.2.1" data-path="github.html"><a href="github.html#git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
 <li class="chapter" data-level="3.2.2" data-path="github.html"><a href="github.html#github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
-<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#student-developer-pack"><i class="fa fa-check"></i><b>3.2.3</b> Student Developer Pack</a></li>
+<li class="chapter" data-level="3.2.3" data-path="github.html"><a href="github.html#connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="github.html"><a href="github.html#the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="github.html"><a href="github.html#note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#github-workflow"><i class="fa fa-check"></i><b>3.3</b> GitHub Workflow</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="github.html"><a href="github.html#branching"><i class="fa fa-check"></i><b>3.3.1</b> Branching</a></li>
-<li class="chapter" data-level="3.3.2" data-path="github.html"><a href="github.html#pull"><i class="fa fa-check"></i><b>3.3.2</b> Pull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.3.3</b> Commits</a></li>
-<li class="chapter" data-level="3.3.4" data-path="github.html"><a href="github.html#push-or-merge"><i class="fa fa-check"></i><b>3.3.4</b> Push or Merge</a></li>
-<li class="chapter" data-level="3.3.5" data-path="github.html"><a href="github.html#merge-conflicts"><i class="fa fa-check"></i><b>3.3.5</b> Merge Conflicts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#github-workflow-on-command-line-git-bash"><i class="fa fa-check"></i><b>3.4</b> GitHub Workflow on Command Line / Git Bash</a></li>
-<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.5</b> Issues</a></li>
-<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.6</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.7</b> Additional References</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -199,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
 <li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#sec_logical"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
 <li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
 </ul></li>
@@ -264,10 +277,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.5" data-path="high-performance-computing.html"><a href="high-performance-computing.html#functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="high-performance-computing.html"><a href="high-performance-computing.html#comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="high-performance-computing.html"><a href="high-performance-computing.html#example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
-<li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-a-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in a R package</a></li>
+<li class="chapter" data-level="9.1.8" data-path="high-performance-computing.html"><a href="high-performance-computing.html#c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="website-creation.html"><a href="website-creation.html"><i class="fa fa-check"></i><b>10</b> Website creation</a></li>
+<li class="chapter" data-level="10" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="web-scraping-in-r.html"><a href="web-scraping-in-r.html#workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="basic-probability-and-statistics-with-r-1.html"><a href="basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
@@ -303,7 +322,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="website-creation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="web-scraping-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="basic-probability-and-statistics-with-r-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -324,7 +343,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -336,6 +355,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/10-references.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["ds.pdf", "ds.dvi", "ds.epub"],
 "toc": {
@@ -350,8 +373,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
