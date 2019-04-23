@@ -139,13 +139,15 @@ This workflow is based on two famous works by @scrap and @sg with a couple of tw
     
 6. (Optional) Clean and tidy the extracted data. For instance, we use regex to get the number of rooms and the prices in the following code chunk:
 
-  ```{r, eval = FALSE}
-  flats_df <- data.frame(
-    rooms = gsub(pattern = " room.*", "", flats) %>% as.numeric(),
-    price = gsub(".*CHF |.—.*", "", flats) %>%
-      gsub(pattern = ",", replacement = "") %>%
-      as.numeric()
-  )
-  ```
+  
+    ```{r, eval = FALSE}
+    flats_df <- data.frame(
+      rooms = gsub(pattern = " room.*", "", flats) %>%
+        as.numeric(),
+      price = gsub(".*CHF |.—.*", "", flats) %>%
+        gsub(pattern = ",", replacement = "") %>%
+        as.numeric()
+    )
+    ```
 
 As the conclusion, the web scraping is a very powerful tool for extracting data. However, it comes with a certain responsibility.
