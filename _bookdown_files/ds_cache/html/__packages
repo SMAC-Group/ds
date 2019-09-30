@@ -19,3 +19,5 @@ bindrcpp
 microbenchmark
 usethis
 ROpenWeatherMap
+tmap
+png

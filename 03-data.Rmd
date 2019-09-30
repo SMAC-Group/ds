@@ -26,6 +26,7 @@ Consider a simple data set of the top five male single tennis players presented 
 
 
 Table: (\#tab:tennis) Five best male single tennis players as ranked by ATP  (09-30-2019).
+
 | Name | Date of Birth | Place of Birth | Place of Residence | ATP Ranking | Prize Money | Win Percentage | Grand Slam Wins | Pro Since |
 |---|---|---|---|---|---|---|---|---|
 | Novak Djokovic | 22 May 1987 | Belgrade, Serbia | Monte Carlo, Monaco | 1 | 135,259,120 | 82.7 | 16 | 2003 |
@@ -1247,7 +1248,7 @@ tennis[order(tennis[,"grand_slam_win"], decreasing = TRUE),]
 
 Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
 
-```{r, eval = TRUE, echo = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 library(ggmap)
 register_google(key = "AIzaSyC94oaWm17jLECQfbcCCVylkIZ1m1WveU4") # private!
 ```
@@ -1255,7 +1256,7 @@ register_google(key = "AIzaSyC94oaWm17jLECQfbcCCVylkIZ1m1WveU4") # private!
 ```{r, message = FALSE, cache = TRUE}
 library(ggmap)
 birth_place <- c("Belgrade, Serbia", "Manacor, Spain", "Basel, Switzerland", "Moscow, Russia", "Wiener Neustadt, Austria")
-birth_coord <- geocode(birth_place, source = "google")
+birth_coord <- geocode(birth_place, source = "dsk")
 ```
 
 Furthermore, we can create new columns of dataframes using vectors that we created before. 
