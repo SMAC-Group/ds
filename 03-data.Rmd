@@ -27,13 +27,13 @@ Consider a simple data set of the top five male single tennis players presented 
 
 Table: (\#tab:tennis) Five best male single tennis players as ranked by ATP  (09-30-2019).
 
-| Name | Date of Birth | Place of Birth | Place of Residence | ATP Ranking | Prize Money | Win Percentage | Grand Slam Wins | Pro Since |
-|---|---|---|---|---|---|---|---|---|
-| Novak Djokovic | 22 May 1987 | Belgrade, Serbia | Monte Carlo, Monaco | 1 | 135,259,120 | 82.7 | 16 | 2003 |
-| Rafael Nadal | 3 June 1986 | Manacor, Spain | Manacor, Spain | 2 | 115,178,858 | 83.1 | 19 | 2001 |
-| Roger Federer | 8 August 1981 | Basel, Switzerland | Wollerau, Switzerland | 3 | 126,840,700 | 82.2 | 20 | 1998 |
-| Daniil Medvedev | 11 February 1996 | Moscow, Russia | Monte Carlo, Monaco | 4 | | 8,171,483 | 63.6 | 0 | 2014 |
-| Dominic Thiem | 3 September 1993 | Wiener Neustadt, Austria | Lichtenwörth, Austria | 18,588,662 | 64.3 | 0 | 2011 |
+| Name | Date of Birth | Place of Birth | Place of Residence | ATP Ranking | Prize Money | Win Percentage | Grand Slam Wins | Pro Since |   
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |   
+| Novak Djokovic | 22 May 1987 | Belgrade, Serbia | Monte Carlo, Monaco | 1 | 135,259,120 | 82.7 | 16 | 2003 |   
+| Rafael Nadal | 3 June 1986 | Manacor, Spain | Manacor, Spain | 2 | 115,178,858 | 83.1 | 19 | 2001 |   
+| Roger Federer | 8 August 1981 | Basel, Switzerland | Wollerau, Switzerland | 3 | 126,840,700 | 82.2 | 20 | 1998 |   
+| Daniil Medvedev | 11 February 1996 | Moscow, Russia | Monte Carlo, Monaco | 4 | 8,171,483 | 63.6 | 0 | 2014 |   
+| Dominic Thiem | 3 September 1993 | Wiener Neustadt, Austria | Lichtenwörth, Austria | 5 | 18,588,662 | 64.3 | 0 | 2011 |   
 
 Notice that this data set contains a variety of data types; in the next sections we will use this data to illustrate how to work with five common data structures.
 
@@ -1253,7 +1253,7 @@ library(ggmap)
 register_google(key = "AIzaSyC94oaWm17jLECQfbcCCVylkIZ1m1WveU4") # private!
 ```
 
-```{r, message = FALSE, cache = TRUE}
+```{r, message = FALSE, cache = TRUE, eval=FALSE}
 library(ggmap)
 birth_place <- c("Belgrade, Serbia", "Manacor, Spain", "Basel, Switzerland", "Moscow, Russia", "Wiener Neustadt, Austria")
 birth_coord <- geocode(birth_place, source = "dsk")

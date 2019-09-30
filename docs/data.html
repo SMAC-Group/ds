@@ -354,14 +354,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Consider a simple data set of the top five male single tennis players presented below:</p>
-<p>Table: (#tab:tennis) Five best male single tennis players as ranked by ATP (09-30-2019).
-| Name | Date of Birth | Place of Birth | Place of Residence | ATP Ranking | Prize Money | Win Percentage | Grand Slam Wins | Pro Since |
-|—|—|—|—|—|—|—|—|—|
-| Novak Djokovic | 22 May 1987 | Belgrade, Serbia | Monte Carlo, Monaco | 1 | 135,259,120 | 82.7 | 16 | 2003 |
-| Rafael Nadal | 3 June 1986 | Manacor, Spain | Manacor, Spain | 2 | 115,178,858 | 83.1 | 19 | 2001 |
-| Roger Federer | 8 August 1981 | Basel, Switzerland | Wollerau, Switzerland | 3 | 126,840,700 | 82.2 | 20 | 1998 |
-| Daniil Medvedev | 11 February 1996 | Moscow, Russia | Monte Carlo, Monaco | 4 | | 8,171,483 | 63.6 | 0 | 2014 |
-| Dominic Thiem | 3 September 1993 | Wiener Neustadt, Austria | Lichtenwörth, Austria | 18,588,662 | 64.3 | 0 | 2011 |</p>
+<table style="width:100%;">
+<caption><span id="tab:tennis">Table 4.2: </span> Five best male single tennis players as ranked by ATP (09-30-2019).</caption>
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Date of Birth</th>
+<th>Place of Birth</th>
+<th>Place of Residence</th>
+<th>ATP Ranking</th>
+<th>Prize Money</th>
+<th>Win Percentage</th>
+<th>Grand Slam Wins</th>
+<th>Pro Since</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Novak Djokovic</td>
+<td>22 May 1987</td>
+<td>Belgrade, Serbia</td>
+<td>Monte Carlo, Monaco</td>
+<td>1</td>
+<td>135,259,120</td>
+<td>82.7</td>
+<td>16</td>
+<td>2003</td>
+</tr>
+<tr class="even">
+<td>Rafael Nadal</td>
+<td>3 June 1986</td>
+<td>Manacor, Spain</td>
+<td>Manacor, Spain</td>
+<td>2</td>
+<td>115,178,858</td>
+<td>83.1</td>
+<td>19</td>
+<td>2001</td>
+</tr>
+<tr class="odd">
+<td>Roger Federer</td>
+<td>8 August 1981</td>
+<td>Basel, Switzerland</td>
+<td>Wollerau, Switzerland</td>
+<td>3</td>
+<td>126,840,700</td>
+<td>82.2</td>
+<td>20</td>
+<td>1998</td>
+</tr>
+<tr class="even">
+<td>Daniil Medvedev</td>
+<td>11 February 1996</td>
+<td>Moscow, Russia</td>
+<td>Monte Carlo, Monaco</td>
+<td>4</td>
+<td>8,171,483</td>
+<td>63.6</td>
+<td>0</td>
+<td>2014</td>
+</tr>
+<tr class="odd">
+<td>Dominic Thiem</td>
+<td>3 September 1993</td>
+<td>Wiener Neustadt, Austria</td>
+<td>Lichtenwörth, Austria</td>
+<td>5</td>
+<td>18,588,662</td>
+<td>64.3</td>
+<td>0</td>
+<td>2011</td>
+</tr>
+</tbody>
+</table>
 <p>Notice that this data set contains a variety of data types; in the next sections we will use this data to illustrate how to work with five common data structures.</p>
 <div id="vectors" class="section level2">
 <h2><span class="header-section-number">4.1</span> Vectors</h2>
@@ -376,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 
-<p><code>c()</code> is a generic function that combines arguments to form a vector. All arguments are coerced to a common type (which is the type of the returned value) and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table <a href="#tab:tennis">4.2</a>:</p>
+<p><code>c()</code> is a generic function that combines arguments to form a vector. All arguments are coerced to a common type (which is the type of the returned value) and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table <a href="data.html#tab:tennis">4.2</a>:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</a></code></pre></div>
 <p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">grand_slam_win</a></code></pre></div>
@@ -521,7 +597,7 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <p>Converting the character strings to “yyyy-mm-dd” would solve our sorting problem, but perhaps we also want to calculate the number of days between two events that are several months or years apart.</p>
 <p>The <code>as.Date()</code> function is one straight-forward method for converting character strings into dates that can be used as such. The typical syntax is of the form:</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">as.Dates</span>(<span class="op">&lt;</span>vector of dates<span class="op">&gt;</span>, <span class="dt">format =</span> <span class="op">&lt;</span>your format<span class="op">&gt;</span>)</a></code></pre></div>
-<p>Considering the dates of birth presented in Table <a href="#tab:tennis">4.2</a> we can save them in an appropriate format using:</p>
+<p>Considering the dates of birth presented in Table <a href="data.html#tab:tennis">4.2</a> we can save them in an appropriate format using:</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">(players_dob &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;3 Jun 1986&quot;</span>, <span class="st">&quot;8 Aug 1981&quot;</span>, </a>
 <a class="sourceLine" id="cb95-2" data-line-number="2">                         <span class="st">&quot;11 Feb 1996&quot;</span>, <span class="st">&quot;3 Sep 1993&quot;</span>), </a>
 <a class="sourceLine" id="cb95-3" data-line-number="3">                       <span class="dt">format =</span> <span class="st">&quot;%d %b %Y&quot;</span>))</a></code></pre></div>
@@ -1234,7 +1310,7 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 </div>
 <div id="array" class="section level2">
 <h2><span class="header-section-number">4.3</span> Array</h2>
-<p>Arrays allow to construct <strong>multidimensional</strong> objects. Indeed, vectors and matrices are respectively objects in one and two dimensions while arrays can in be in an arbitrary <span class="math inline">\(n\)</span> dimension. Essentially, matrices are a special case of arrays which is only in two dimensions. Matrices are commonly used in Statistics while arrays are much rarer but nevertheless worth being aware of. To consider a simple using arrays we will revisit an example presented in the previous section where we constructed a matrix containing the number of Grand Slam won and the win rate of the five players considered in Table <a href="#tab:tennis">4.2</a>. This matrix was constructed as follows:</p>
+<p>Arrays allow to construct <strong>multidimensional</strong> objects. Indeed, vectors and matrices are respectively objects in one and two dimensions while arrays can in be in an arbitrary <span class="math inline">\(n\)</span> dimension. Essentially, matrices are a special case of arrays which is only in two dimensions. Matrices are commonly used in Statistics while arrays are much rarer but nevertheless worth being aware of. To consider a simple using arrays we will revisit an example presented in the previous section where we constructed a matrix containing the number of Grand Slam won and the win rate of the five players considered in Table <a href="data.html#tab:tennis">4.2</a>. This matrix was constructed as follows:</p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>, </a>
 <a class="sourceLine" id="cb214-2" data-line-number="2">             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</a>
 <a class="sourceLine" id="cb214-3" data-line-number="3">grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</a>
@@ -1560,7 +1636,7 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <p>Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, <code>ggmap</code> to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using <code>geocode</code> within <code>ggmap</code>.</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">library</span>(ggmap)</a>
 <a class="sourceLine" id="cb286-2" data-line-number="2">birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>, <span class="st">&quot;Moscow, Russia&quot;</span>, <span class="st">&quot;Wiener Neustadt, Austria&quot;</span>)</a>
-<a class="sourceLine" id="cb286-3" data-line-number="3">birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place, <span class="dt">source =</span> <span class="st">&quot;google&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb286-3" data-line-number="3">birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place, <span class="dt">source =</span> <span class="st">&quot;dsk&quot;</span>)</a></code></pre></div>
 <p>Furthermore, we can create new columns of dataframes using vectors that we created before.</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">birth_coord<span class="op">$</span>Players &lt;-<span class="st"> </span>players</a>
 <a class="sourceLine" id="cb287-2" data-line-number="2">birth_coord<span class="op">$</span>WP &lt;-<span class="st"> </span>win_percentage</a>
@@ -1568,11 +1644,11 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <pre><code>## # A tibble: 5 x 4
 ##     lon   lat Players            WP
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
-## 1 20.4   44.8 Novak Djokovic   82.7
-## 2  3.21  39.6 Rafael Nadal     83.1
-## 3  7.59  47.6 Roger Federer    82.2
-## 4 37.6   55.8 Daniil Medvedev  63.6
-## 5 16.2   47.8 Dominic Thiem    64.3</code></pre>
+## 1    NA    NA Novak Djokovic   82.7
+## 2    NA    NA Rafael Nadal     83.1
+## 3    NA    NA Roger Federer    82.2
+## 4    NA    NA Daniil Medvedev  63.6
+## 5    NA    NA Dominic Thiem    64.3</code></pre>
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="kw">is.data.frame</span>(birth_coord)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made.</p>

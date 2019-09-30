@@ -734,9 +734,9 @@ In R, you can write</p>
 <div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1"><span class="kw">require</span>(microbenchmark)</a>
 <a class="sourceLine" id="cb479-2" data-line-number="2"><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##                expr    min     lq     mean median     uq    max neval
-##  my_factorialR(500) 11.369 11.418 11.67238 11.454 11.644 15.343   100
-##  my_factorialC(500)  1.477  1.570  1.84331  1.642  1.701 16.834   100</code></pre>
+##                expr    min      lq     mean  median      uq    max neval
+##  my_factorialR(500) 11.878 11.9290 12.04107 11.9460 11.9815 14.850   100
+##  my_factorialC(500)  1.434  1.4875  1.63473  1.5195  1.5800  9.109   100</code></pre>
 <p>It is clear that the computational performance is considerably different.</p>
 </div>
 <div id="example-buffons-needle-cont" class="section level3">
