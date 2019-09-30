@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 GitHub | An Introduction to Statistical Programming Methods with R</title>
-  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 GitHub | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-09-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rmarkdown.html">
-<link rel="next" href="data.html">
+<link rel="prev" href="rmarkdown.html"/>
+<link rel="next" href="data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,20 +50,25 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
 @media print {
 code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -72,38 +76,40 @@ pre.numberSource a.sourceLine::before
     color: #aaaaaa;
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
 @media screen {
-a.sourceLine::before { text-decoration: underline; color: initial; }
+a.sourceLine::before { text-decoration: underline; }
 }
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
 code span.dt { color: #902000; } /* DataType */
 code span.dv { color: #40a070; } /* DecVal */
-code span.bn { color: #40a070; } /* BaseN */
-code span.fl { color: #40a070; } /* Float */
-code span.ch { color: #4070a0; } /* Char */
-code span.st { color: #4070a0; } /* String */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.ot { color: #007020; } /* Other */
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.fu { color: #06287e; } /* Function */
 code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code span.cn { color: #880000; } /* Constant */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.im { } /* Import */
-code span.va { color: #19177c; } /* Variable */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.op { color: #666666; } /* Operator */
-code span.bu { } /* BuiltIn */
 code span.ex { } /* Extension */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.at { color: #7d9029; } /* Attribute */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -350,6 +356,8 @@ code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Infor
 <p>More commonly, users establish a link between a file directory on their (local) computer and a Repo stored on the GitHub remote. You edit files on your computer and save your progress as you normally would, except now that you have established a link with Git(Hub) you can periodically update the Repo on the GitHub remote with the latest progress.</p>
 <p>Below is a video introducing the basic look and feel of GitHub.</p>
 <center>
+<iframe src="https://www.youtube.com/embed/SB5YkjB9FWc" width="672" height="400px">
+</iframe>
 </center>
 <div id="git-rstudio-configuration" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Git &amp; RStudio Configuration</h3>
@@ -522,6 +530,8 @@ When you want to make a commit using the RStudio interface, you simply select a 
 <h2><span class="header-section-number">3.3</span> Issues</h2>
 <p><em>Issues</em> are a very good way to keep track of group tasks, bugs and announcements for your projects within GitHub. Below is a basic video introducing <code>issues</code> in GitHub.</p>
 <center>
+<iframe src="https://www.youtube.com/embed/HRikDvXEpVM" width="672" height="400px">
+</iframe>
 </center>
 </div>
 <div id="slack-integration" class="section level2">
@@ -530,6 +540,8 @@ When you want to make a commit using the RStudio interface, you simply select a 
 <p>An added benefit of using Slack is that it can be integrated with GitHub in such a way that notifications will be posted to the group whenever someone pushes or makes a pull request. More information on GitHub integration with Slack can be found <a href="https://get.slack.help/hc/en-us/articles/232289568-Use-GitHub-with-Slack">here</a>.</p>
 <p>A more detailed video providing a demonstration on the use of Slack in a real-life setting can be found below.</p>
 <center>
+<iframe src="https://www.youtube.com/embed/PpnFCp4Wr_g" width="672" height="400px">
+</iframe>
 </center>
 </div>
 <div id="additional-references-2" class="section level2">
@@ -611,8 +623,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

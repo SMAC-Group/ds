@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R</title>
-  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-09-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data.html">
-<link rel="next" href="functions.html">
+<link rel="prev" href="data.html"/>
+<link rel="next" href="functions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,20 +50,25 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
 @media print {
 code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -72,38 +76,40 @@ pre.numberSource a.sourceLine::before
     color: #aaaaaa;
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
 @media screen {
-a.sourceLine::before { text-decoration: underline; color: initial; }
+a.sourceLine::before { text-decoration: underline; }
 }
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
 code span.dt { color: #902000; } /* DataType */
 code span.dv { color: #40a070; } /* DecVal */
-code span.bn { color: #40a070; } /* BaseN */
-code span.fl { color: #40a070; } /* Float */
-code span.ch { color: #4070a0; } /* Char */
-code span.st { color: #4070a0; } /* String */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.ot { color: #007020; } /* Other */
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.fu { color: #06287e; } /* Function */
 code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code span.cn { color: #880000; } /* Constant */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.im { } /* Import */
-code span.va { color: #19177c; } /* Variable */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.op { color: #666666; } /* Operator */
-code span.bu { } /* BuiltIn */
 code span.ex { } /* Extension */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.at { color: #7d9029; } /* Attribute */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -328,22 +334,22 @@ code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Infor
 <ol style="list-style-type: decimal">
 <li>Find out how cold it can possibly get today at our location, i.e. the minimum temperature. Such information is now easily accessible through various websites and we can for example use the R package <code>ROpenWeatherMap</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://github.com/mukul13/ROpenWeatherMap">package documentation</a> for more details). Then, the minimum temperature of the day at our location can be retrieved using the code below:</li>
 </ol>
-<pre class="sourceCode r" id="cb292"><code class="sourceCode r"><span class="kw">library</span>(ROpenWeatherMap)
-data =<span class="st"> </span><span class="kw">get_current_weather</span>(mykey, <span class="dt">city=</span><span class="st">&quot;geneva&quot;</span>)
-min_temp =<span class="st"> </span>data<span class="op">$</span>main<span class="op">$</span>temp_min <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span>  <span class="co"># kelvin to celsius</span></code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1"><span class="kw">library</span>(ROpenWeatherMap)</a>
+<a class="sourceLine" id="cb292-2" data-line-number="2">data =<span class="st"> </span><span class="kw">get_current_weather</span>(mykey, <span class="dt">city=</span><span class="st">&quot;geneva&quot;</span>)</a>
+<a class="sourceLine" id="cb292-3" data-line-number="3">min_temp =<span class="st"> </span>data<span class="op">$</span>main<span class="op">$</span>temp_min <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span>  <span class="co"># kelvin to celsius</span></a></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Construct a logical (or Boolean) variable created from the variable <code>min_temp</code> to assess whether or not a jacket is needed. For example, we can say that if the temperature can possibly drop below 5 celsius today, then we should bring a jacket with us. This can be done using the code below and in Section <a href="control.html#logoperators">5.2.1</a> we will discuss how to construct logical variables in more details.</li>
 </ol>
-<pre class="sourceCode r" id="cb293"><code class="sourceCode r">(<span class="dt">jacket =</span> min_temp <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1">(<span class="dt">jacket =</span> min_temp <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably bring a jacket</em>” if the logical variable <code>jacket</code> is <code>TRUE</code> and print “<em>A jacket is probably not necessary</em>”, otherwise.</li>
 </ol>
-<pre class="sourceCode r" id="cb295"><code class="sourceCode r"><span class="cf">if</span> (jacket){
-  <span class="kw">print</span>(<span class="st">&quot;You should probably bring a jacket&quot;</span>)
-}<span class="cf">else</span>{
-  <span class="kw">print</span>(<span class="st">&quot;A jacket is probably not necessary&quot;</span>)
-}</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="cf">if</span> (jacket){</a>
+<a class="sourceLine" id="cb295-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;You should probably bring a jacket&quot;</span>)</a>
+<a class="sourceLine" id="cb295-3" data-line-number="3">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb295-4" data-line-number="4">  <span class="kw">print</span>(<span class="st">&quot;A jacket is probably not necessary&quot;</span>)</a>
+<a class="sourceLine" id="cb295-5" data-line-number="5">}</a></code></pre></div>
 <pre><code>## [1] &quot;A jacket is probably not necessary&quot;</code></pre>
 <div id="logoperators" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
@@ -492,83 +498,83 @@ isTRUE(x>y)
 <div id="if-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
 <p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it can possibly get too cold, bring a jacket”. In R, you would say:</p>
-<pre class="sourceCode r" id="cb297"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>this is <span class="ot">TRUE</span><span class="op">&gt;</span>){
-  <span class="op">&lt;</span>do that<span class="op">&gt;</span>
-}</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="cf">if</span> (<span class="op">&lt;</span>this is <span class="ot">TRUE</span><span class="op">&gt;</span>){</a>
+<a class="sourceLine" id="cb297-2" data-line-number="2">  <span class="op">&lt;</span>do that<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb297-3" data-line-number="3">}</a></code></pre></div>
 <p>or</p>
-<pre class="sourceCode r" id="cb298"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">&lt;</span>it can get very cold<span class="op">&gt;</span>){
-  <span class="op">&lt;</span>bring a jacket<span class="op">&gt;</span>
-}</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1"><span class="cf">if</span> (<span class="op">&lt;</span>it can get very cold<span class="op">&gt;</span>){</a>
+<a class="sourceLine" id="cb298-2" data-line-number="2">  <span class="op">&lt;</span>bring a jacket<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb298-3" data-line-number="3">}</a></code></pre></div>
 <p>In general, we can represent an <code>if</code> statement using the following diagram:</p>
 <center>
 <img src="images/if.png" />
 </center>
 <p>The <code>&lt;conditon&gt;</code> denotes a <strong>logical</strong> variable that is used determine if the code inside of <code>{ }</code> will be evaluated. For example, if <code>&lt;condition&gt;</code> is <code>FALSE</code> then our program will run <code>Code block A</code> and then <code>Code block C</code>. On the other hand, if <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block C</code>.</p>
 <p>Below we present two examples where two <code>if</code> statements are used. In the first example, we use an <code>if</code> statement to compute the absolute value of a variable called <code>x</code>:</p>
-<pre class="sourceCode r" id="cb299"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span>
-
-<span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>){
-  x &lt;-<span class="st"> </span><span class="op">-</span>x
-}
-
-x</code></pre>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb299-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb299-3" data-line-number="3"><span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb299-4" data-line-number="4">  x &lt;-<span class="st"> </span><span class="op">-</span>x</a>
+<a class="sourceLine" id="cb299-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb299-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb299-7" data-line-number="7">x</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Now we change <code>x</code> to a negative value:</p>
-<pre class="sourceCode r" id="cb301"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">-4</span>
-
-<span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>){
-  x &lt;-<span class="st"> </span><span class="op">-</span>x
-}
-
-x</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">-4</span></a>
+<a class="sourceLine" id="cb301-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb301-3" data-line-number="3"><span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb301-4" data-line-number="4">  x &lt;-<span class="st"> </span><span class="op">-</span>x</a>
+<a class="sourceLine" id="cb301-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb301-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb301-7" data-line-number="7">x</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>In the second example, we use an <code>if</code> statement to assess if <code>x</code> is an even number and, if this is the case, we print a simple message.</p>
-<pre class="sourceCode r" id="cb303"><code class="sourceCode r"><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){
-  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
-}</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1"><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb303-2" data-line-number="2">  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</a>
+<a class="sourceLine" id="cb303-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] &quot;4 is an even number&quot;</code></pre>
-<pre class="sourceCode r" id="cb305"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>
-
-<span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){
-  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
-}</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb305-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb305-3" data-line-number="3"><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb305-4" data-line-number="4">  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</a>
+<a class="sourceLine" id="cb305-5" data-line-number="5">}</a></code></pre></div>
 </div>
 <div id="ifelse-statements" class="section level4">
 <h4><span class="header-section-number">5.2.2.2</span> <code>if/else</code> Statements</h4>
 <p>Often when we write a program we want to tell R what to do when our condition is <code>TRUE</code> and also what to do when it is <code>FALSE</code>. Of course, we could do something like:</p>
-<pre class="sourceCode r" id="cb306"><code class="sourceCode r"><span class="cf">if</span> (condition){
-  plan A
-}
-
-<span class="cf">if</span> (<span class="op">!</span>condition){
-  plan B
-}</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1"><span class="cf">if</span> (condition){</a>
+<a class="sourceLine" id="cb306-2" data-line-number="2">  plan A</a>
+<a class="sourceLine" id="cb306-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb306-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb306-5" data-line-number="5"><span class="cf">if</span> (<span class="op">!</span>condition){</a>
+<a class="sourceLine" id="cb306-6" data-line-number="6">  plan B</a>
+<a class="sourceLine" id="cb306-7" data-line-number="7">}</a></code></pre></div>
 <p>However, the above syntax is somewhat clumsy and one generally would prefer to use an <code>if/else</code> statement. In plain English it would correspond to something like, “If this is true, then do plan A otherwise do plan B”. In R we would write:</p>
-<pre class="sourceCode r" id="cb307"><code class="sourceCode r"><span class="cf">if</span> (condition){
-  plan A
-}<span class="cf">else</span>{
-  plan B
-}</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1"><span class="cf">if</span> (condition){</a>
+<a class="sourceLine" id="cb307-2" data-line-number="2">  plan A</a>
+<a class="sourceLine" id="cb307-3" data-line-number="3">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb307-4" data-line-number="4">  plan B</a>
+<a class="sourceLine" id="cb307-5" data-line-number="5">}</a></code></pre></div>
 <p>Similarly to an <code>if</code> statement, we can represent an <code>if/else</code> statement using the diagram below:</p>
 <center>
 <img src="images/ifelse.png" />
 </center>
 <p>Therefore, when <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and then <code>Code block D</code> while when <code>&lt;condition&gt;</code> is <code>FALSE</code> it will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block D</code>. Using this new tool we can revisit our previous example on even numbers to include a custom message in the case of an odd number. This can be done as follows:</p>
-<pre class="sourceCode r" id="cb308"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">2</span>
-
-<span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){
-  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
-}<span class="cf">else</span>{
-  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))
-}</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb308-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb308-3" data-line-number="3"><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb308-4" data-line-number="4">  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</a>
+<a class="sourceLine" id="cb308-5" data-line-number="5">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb308-6" data-line-number="6">  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))</a>
+<a class="sourceLine" id="cb308-7" data-line-number="7">}</a></code></pre></div>
 <pre><code>## [1] &quot;2 is an even number&quot;</code></pre>
-<pre class="sourceCode r" id="cb310"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>
-
-<span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){
-  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))
-}<span class="cf">else</span>{
-  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))
-}</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb310-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb310-3" data-line-number="3"><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb310-4" data-line-number="4">  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</a>
+<a class="sourceLine" id="cb310-5" data-line-number="5">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb310-6" data-line-number="6">  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))</a>
+<a class="sourceLine" id="cb310-7" data-line-number="7">}</a></code></pre></div>
 <pre><code>## [1] &quot;3 is an odd number&quot;</code></pre>
 </div>
 <div id="ifelseifelse-statements" class="section level4">
@@ -582,31 +588,31 @@ x</code></pre>
 <h4><span class="header-section-number">5.2.2.4</span> <code>switch</code> Statement</h4>
 <p>Earlier we mentioned that if/elseif/else statements allow us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options we can simply use nested if/else statements. What about when we have roughly 20 options to choose from? In this case, if we stick to using nested if/else statements, the programming logic will be very difficult to understand. The switch statement option in R programming can help us handle this type of problems more effectively.</p>
 <p>Before we put switch statements into the case study, let’s first start to understand the basic switch statement syntax in R.</p>
-<pre class="sourceCode r" id="cb312"><code class="sourceCode r"><span class="cf">switch</span> (Expression,
-        <span class="st">&quot;Option 1&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">1</span>,
-        <span class="st">&quot;Option 2&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">2</span>,
-        <span class="st">&quot;Option 3&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">3</span>,
-        ....
-        ....
-        <span class="st">&quot;Option N&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option N,
-        Default Statements
-)</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="cf">switch</span> (Expression,</a>
+<a class="sourceLine" id="cb312-2" data-line-number="2">        <span class="st">&quot;Option 1&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb312-3" data-line-number="3">        <span class="st">&quot;Option 2&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb312-4" data-line-number="4">        <span class="st">&quot;Option 3&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb312-5" data-line-number="5">        ....</a>
+<a class="sourceLine" id="cb312-6" data-line-number="6">        ....</a>
+<a class="sourceLine" id="cb312-7" data-line-number="7">        <span class="st">&quot;Option N&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option N,</a>
+<a class="sourceLine" id="cb312-8" data-line-number="8">        Default Statements</a>
+<a class="sourceLine" id="cb312-9" data-line-number="9">)</a></code></pre></div>
 <ul>
 <li>The <code>expression</code> value is the condition which R will evaluate. This should be either integer or character.</li>
 <li>When the <code>expression</code> value matches more than one option, the first matching statement will be returned.</li>
 <li>Besides the conditional statement, R also allows us to add the <code>default statement</code>, which will be returned when none of the listed options are matched.</li>
 </ul>
 <p>With the above syntax in mind, let’s now check a simple case study with R switch statements.</p>
-<pre class="sourceCode r" id="cb313"><code class="sourceCode r">number1 &lt;-<span class="st"> </span><span class="dv">20</span>
-number2 &lt;-<span class="st"> </span><span class="dv">5</span>
-operator =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt=</span><span class="st">&quot;Please enter any ARITHMETIC OPERATOR: &quot;</span>)
-
-<span class="cf">switch</span>(operator,
-       <span class="st">&quot;+&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Addition of two numbers is: &quot;</span>, number1 <span class="op">+</span><span class="st"> </span>number2)),
-       <span class="st">&quot;-&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Subtraction of two numbers is: &quot;</span>, number1 <span class="op">-</span><span class="st"> </span>number2)),
-       <span class="st">&quot;*&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Multiplication of two numbers is: &quot;</span>, number1 <span class="op">*</span><span class="st"> </span>number2)),
-       <span class="st">&quot;/&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Division of two numbers is: &quot;</span>, number1 <span class="op">/</span><span class="st"> </span>number2))
-)</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1">number1 &lt;-<span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb313-2" data-line-number="2">number2 &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb313-3" data-line-number="3">operator =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt=</span><span class="st">&quot;Please enter any ARITHMETIC OPERATOR: &quot;</span>)</a>
+<a class="sourceLine" id="cb313-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb313-5" data-line-number="5"><span class="cf">switch</span>(operator,</a>
+<a class="sourceLine" id="cb313-6" data-line-number="6">       <span class="st">&quot;+&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Addition of two numbers is: &quot;</span>, number1 <span class="op">+</span><span class="st"> </span>number2)),</a>
+<a class="sourceLine" id="cb313-7" data-line-number="7">       <span class="st">&quot;-&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Subtraction of two numbers is: &quot;</span>, number1 <span class="op">-</span><span class="st"> </span>number2)),</a>
+<a class="sourceLine" id="cb313-8" data-line-number="8">       <span class="st">&quot;*&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Multiplication of two numbers is: &quot;</span>, number1 <span class="op">*</span><span class="st"> </span>number2)),</a>
+<a class="sourceLine" id="cb313-9" data-line-number="9">       <span class="st">&quot;/&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Division of two numbers is: &quot;</span>, number1 <span class="op">/</span><span class="st"> </span>number2))</a>
+<a class="sourceLine" id="cb313-10" data-line-number="10">)</a></code></pre></div>
 When running the above code in R, we can expect results like:
 <center>
 <img src="images/switch_example.png" />
@@ -631,32 +637,32 @@ In conclusion, we can visualize the R switch statement as follows:
 <li>else, [all three sides (forward, left, right) are closed] turn around</li>
 </ul>
 <p>This strategy could easily be programmed using the methods discussed in Section <a href="control.html#selcontrostat">5.2</a> but to actually program it you would need to repeat this strategy until you escaped the maze. Your strategy could for example be written as:</p>
-<pre class="sourceCode r" id="cb314"><code class="sourceCode r"><span class="cf">repeat</span> (until <span class="st">&quot;you are free&quot;</span>){
-  <span class="cf">if</span> (<span class="st">&quot;space in front of you&quot;</span>){
-    go forward
-  }<span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;space on your right&quot;</span>){
-    turn right 
-  }<span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;space on your left&quot;</span>){
-    turn left
-  }<span class="cf">else</span>{
-    turn around
-  }
-}</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1"><span class="cf">repeat</span> (until <span class="st">&quot;you are free&quot;</span>){</a>
+<a class="sourceLine" id="cb314-2" data-line-number="2">  <span class="cf">if</span> (<span class="st">&quot;space in front of you&quot;</span>){</a>
+<a class="sourceLine" id="cb314-3" data-line-number="3">    go forward</a>
+<a class="sourceLine" id="cb314-4" data-line-number="4">  }<span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;space on your right&quot;</span>){</a>
+<a class="sourceLine" id="cb314-5" data-line-number="5">    turn right </a>
+<a class="sourceLine" id="cb314-6" data-line-number="6">  }<span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;space on your left&quot;</span>){</a>
+<a class="sourceLine" id="cb314-7" data-line-number="7">    turn left</a>
+<a class="sourceLine" id="cb314-8" data-line-number="8">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb314-9" data-line-number="9">    turn around</a>
+<a class="sourceLine" id="cb314-10" data-line-number="10">  }</a>
+<a class="sourceLine" id="cb314-11" data-line-number="11">}</a></code></pre></div>
 <p>Try to develop an algorithm to exit the maze presented above. Could you escape? Though it might take some time (and probably would not correspond to the fastest strategy) one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss the elements necessary to actually program the “<code>repeat (until &quot;you are free&quot;)</code>” part of our algorithm.</p>
 <div id="forloop" class="section level4">
 <h4><span class="header-section-number">5.2.3.1</span> <code>for</code> Loops</h4>
 <p>Let’s consider the following situation:</p>
-<pre class="sourceCode r" id="cb315"><code class="sourceCode r"><span class="kw">print</span>(<span class="dv">1</span>)
-<span class="kw">print</span>(<span class="dv">2</span>)
-<span class="kw">print</span>(<span class="dv">3</span>)
-<span class="kw">print</span>(<span class="dv">4</span>)
-<span class="kw">print</span>(<span class="dv">5</span>)
-<span class="kw">print</span>(<span class="dv">6</span>)</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="kw">print</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="kw">print</span>(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="kw">print</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb315-4" data-line-number="4"><span class="kw">print</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb315-5" data-line-number="5"><span class="kw">print</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb315-6" data-line-number="6"><span class="kw">print</span>(<span class="dv">6</span>)</a></code></pre></div>
 <p>This seems feasible when we only need to print out the numbers from 1 to 6. What if we want to print out the numbers from 1 to 100? It is such a clumsy and tedious approach if we keep repeating <code>print()</code> line by line to do so.</p>
 <p>For loops in R help us solve this type of problems much more effectively in only a couple lines of codes. It allows us to repeat the same part of code, or say a sequence of same instructions, under certain conditions without explicitly writing out the code everytime. For example, to do exactly the same as the above example with for loops, all we need is:</p>
-<pre class="sourceCode r" id="cb316"><code class="sourceCode r"><span class="cf">for</span> (number <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>){
-  <span class="kw">print</span>(number)
-}</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1"><span class="cf">for</span> (number <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>){</a>
+<a class="sourceLine" id="cb316-2" data-line-number="2">  <span class="kw">print</span>(number)</a>
+<a class="sourceLine" id="cb316-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -665,16 +671,16 @@ In conclusion, we can visualize the R switch statement as follows:
 ## [1] 6</code></pre>
 <p>To interpret the above for loops in plain English, we can read it as “When the number is in the sequence {1,2,3,4,5,6}, we will print this number until we exhaust all numbers in the sequence”. As we can see obviously, this approach simplifies our code so much more as we only need to write the code chunk (<code>print()</code> in this case) once, not six times, not to mention when we want to print out all the numbers from 1 to 100 compared to repeating <code>print()</code> line by line for 100 times.</p>
 <p>The basic syntax of for loops in R is as follows:</p>
-<pre class="sourceCode r" id="cb318"><code class="sourceCode r"><span class="cf">for</span> (some specified sequence to loop over){
-  execute this statement when we still haven not reached the last item <span class="cf">in</span> the sequence
-}</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="cf">for</span> (some specified sequence to loop over){</a>
+<a class="sourceLine" id="cb318-2" data-line-number="2">  execute this statement when we still haven not reached the last item <span class="cf">in</span> the sequence</a>
+<a class="sourceLine" id="cb318-3" data-line-number="3">}</a></code></pre></div>
 <p><code>Next</code> also helps when you want to skip for some cases in which you don’t want the statement to be executed. To see how <code>next</code> works together with for loops in R, let’s consider the following more mathematical example when you want to print out all the odd numbers between 1 to 10.</p>
-<pre class="sourceCode r" id="cb319"><code class="sourceCode r"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {
-  <span class="cf">if</span> (<span class="op">!</span>i <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>){
-    <span class="cf">next</span>
-  }
-  <span class="kw">print</span>(i)
-}</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb319-2" data-line-number="2">  <span class="cf">if</span> (<span class="op">!</span>i <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>){</a>
+<a class="sourceLine" id="cb319-3" data-line-number="3">    <span class="cf">next</span></a>
+<a class="sourceLine" id="cb319-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb319-5" data-line-number="5">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb319-6" data-line-number="6">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 3
 ## [1] 5
@@ -687,7 +693,7 @@ In conclusion, we can visualize the R for loops as follows:
 </center>
 <p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter.</p>
 <p>Apply methods are often used to make operations on some structured data. For example, let’s simulate a matrix of some random samples.</p>
-<pre class="sourceCode r" id="cb321"><code class="sourceCode r">(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</code></pre>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1">(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</a></code></pre></div>
 <pre><code>##             [,1]         [,2]        [,3]
 ##  [1,]  1.2641127 -1.455629201  1.18725660
 ##  [2,]  0.7605783 -0.003717245  0.62239538
@@ -710,37 +716,37 @@ In conclusion, we can visualize the R for loops as follows:
 ## [19,] -1.4691652  0.292504331 -0.09889761
 ## [20,] -1.3349362  0.153025747  1.28550326</code></pre>
 <p>To get the mean of each column, we can calculate each column mean separately or use a for loop.</p>
-<pre class="sourceCode r" id="cb323"><code class="sourceCode r"><span class="co"># Observe what this does</span>
-<span class="kw">mean</span>(exp_mat)</code></pre>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="co"># Observe what this does</span></a>
+<a class="sourceLine" id="cb323-2" data-line-number="2"><span class="kw">mean</span>(exp_mat)</a></code></pre></div>
 <pre><code>## [1] -0.1230012</code></pre>
-<pre class="sourceCode r" id="cb325"><code class="sourceCode r"><span class="co"># Calculate separately </span>
-<span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</code></pre>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1"><span class="co"># Calculate separately </span></a>
+<a class="sourceLine" id="cb325-2" data-line-number="2"><span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] -0.3589874</code></pre>
-<pre class="sourceCode r" id="cb327"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</code></pre>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## [1] 0.032362</code></pre>
-<pre class="sourceCode r" id="cb329"><code class="sourceCode r"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1"><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</a></code></pre></div>
 <pre><code>## [1] -0.04237818</code></pre>
-<pre class="sourceCode r" id="cb331"><code class="sourceCode r"><span class="co"># Using a for loop </span>
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){
-  <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))
-}</code></pre>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="co"># Using a for loop </span></a>
+<a class="sourceLine" id="cb331-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb331-3" data-line-number="3">  <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))</a>
+<a class="sourceLine" id="cb331-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] -0.3589874
 ## [1] 0.032362
 ## [1] -0.04237818</code></pre>
 <p>However, using <code>apply</code>, we can do this in a very simple manner.</p>
-<pre class="sourceCode r" id="cb333"><code class="sourceCode r"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </a></code></pre></div>
 <pre><code>## [1] -0.35898743  0.03236200 -0.04237818</code></pre>
-<pre class="sourceCode r" id="cb335"><code class="sourceCode r"><span class="co"># The 2 indicates operations on columns and not rows </span></code></pre>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1"><span class="co"># The 2 indicates operations on columns and not rows </span></a></code></pre></div>
 <p>We will see how these approaches can help accelerate our work later.</p>
 </div>
 <div id="while-statements" class="section level4">
 <h4><span class="header-section-number">5.2.3.2</span> <code>while</code> Statements</h4>
 <p>As an alternative of for loops, while statement in R is another approach that can help us repeat the code chunk only when specific conditions are satisfied. For example, we can use while statement to do exactly the same as above to print out all numbers from 1 to 6 as followings:</p>
-<pre class="sourceCode r" id="cb336"><code class="sourceCode r">i =<span class="st"> </span><span class="dv">1</span>
-<span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">6</span>){
-  <span class="kw">print</span>(i)
-  i =<span class="st"> </span>i<span class="op">+</span><span class="dv">1</span>
-}</code></pre>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">i =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">6</span>){</a>
+<a class="sourceLine" id="cb336-3" data-line-number="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb336-4" data-line-number="4">  i =<span class="st"> </span>i<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb336-5" data-line-number="5">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -749,10 +755,10 @@ In conclusion, we can visualize the R for loops as follows:
 ## [1] 6</code></pre>
 <p>The above code can be interprented in plain English as: “Let’s start with number 1. When the number i is still smaller than or equal to 6, we print it out. Then we consider the next integer of it and stop when we finish all the numbers smaller than or equal to 6.”</p>
 <p>As we can see, while statement is used to iterate until a specific condition is met. To make use of while statement in R, we introduce the basic syntax of it as following:</p>
-<pre class="sourceCode r" id="cb338"><code class="sourceCode r"><span class="cf">while</span> (some specified condition)
-{
-   statement to execute when the above condition is satisfied
-}</code></pre>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1"><span class="cf">while</span> (some specified condition)</a>
+<a class="sourceLine" id="cb338-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb338-3" data-line-number="3">   statement to execute when the above condition is satisfied</a>
+<a class="sourceLine" id="cb338-4" data-line-number="4">}</a></code></pre></div>
 <p>Here we evaluate the condition and if it is <code>TRUE</code>, then we execute the statement inside the code chunk. Once we finish running the statement, we evaluate the condition again and exit the loops when the condition is evaluated as <code>FALSE</code>.</p>
 In conclusion, we can visualize how the while statement works in R as following:
 <center>
@@ -764,19 +770,19 @@ In conclusion, we can visualize how the while statement works in R as following:
 <div id="example-the-bootstrap" class="section level2">
 <h2><span class="header-section-number">5.3</span> Example: The Bootstrap</h2>
 <p>The (non-parametric) bootstrap was introduced by <span class="citation">Efron (<a href="#ref-efron1979bootstrap">1979</a>)</span> as a numerical method to provide a simple estimator of the distribution of an estimator. This method became rapidly very popular since it is completely automatic, requires no theoretical derivation and is (almost) always available no matter how complicated our estimator of interest is. Moreover, most statistical methods are based on various asymptotic approximations (often through the central limit theorem) that can however deliver poor results in finite sample settings. Bootstrap techniques generally enjoy better finite sample performance while paying a price in terms of computation burden. A formal discussion of the properties of (non-parametric) bootstrap techniques is far beyond the scope of this textbook but it’s actually quite simple to understand its algorithm. To motivate this discussion, suppose that we ask 10 students how much time they work at home for their STAT 297 class. Say we obtain the following results (in hours):</p>
-<pre class="sourceCode r" id="cb339"><code class="sourceCode r">student_work &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">6</span>)</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">student_work &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">6</span>)</a></code></pre></div>
 <p>We can compute the mean time spent</p>
-<pre class="sourceCode r" id="cb340"><code class="sourceCode r">mean_hour &lt;-<span class="st"> </span><span class="kw">mean</span>(student_work)</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">mean_hour &lt;-<span class="st"> </span><span class="kw">mean</span>(student_work)</a></code></pre></div>
 <p>Moreover, we compute a simple confidence interval of the <strong>average number</strong> of hours spent by a student enrolled in STAT 297. Since we have no reason to believe that the number of hours spent working at home for this class is not Gaussian, we can construct an asymtotic confidence interval using:</p>
 <p><span class="math display">\[
 \bar{x} \pm z_{1-\alpha/2} \frac{\hat{\sigma}}{\sqrt{n}},
 \]</span></p>
 <p>where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\alpha\)</span> is the significance level which delivers <span class="math inline">\(z_{1-\alpha/2}\)</span> quantile of standard Gaussian distribution and <span class="math inline">\(\hat{\sigma}\)</span> is the sample standard deviation (we assume that estimating the standard deviation has no impact on the distribution of <span class="math inline">\(\bar{x}\)</span>). In R, this interval can therefore be computed as follows:</p>
-<pre class="sourceCode r" id="cb341"><code class="sourceCode r">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>
-n &lt;-<span class="st"> </span><span class="kw">length</span>(student_work)
-sd_hour &lt;-<span class="st"> </span><span class="kw">sd</span>(student_work)
-z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>)
-mean_hour <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="op">*</span>z<span class="op">*</span>sd_hour<span class="op">/</span><span class="kw">sqrt</span>(n)</code></pre>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb341-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="kw">length</span>(student_work)</a>
+<a class="sourceLine" id="cb341-3" data-line-number="3">sd_hour &lt;-<span class="st"> </span><span class="kw">sd</span>(student_work)</a>
+<a class="sourceLine" id="cb341-4" data-line-number="4">z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb341-5" data-line-number="5">mean_hour <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="op">*</span>z<span class="op">*</span>sd_hour<span class="op">/</span><span class="kw">sqrt</span>(n)</a></code></pre></div>
 <pre><code>## [1] -0.1256494  1.9438313</code></pre>
 <p>Based on this confidence interval your instructor is very disappointed since the confidence interval includes 0, indicating that it is possible that the students study on average zero hours. But does this interval makes sense? The lower bound of the interval is negative implying that students can also have negative hours of study. This of course makes no sense indicating that with this sample size the asymptotic Gaussian approximation makes little sense.</p>
 <p>To solve this issue, the (non-parametric) bootstrap is a convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting <span class="math inline">\(\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right]\)</span> denote the sample (in our case <code>student_work</code>), the way the bootstrap works is as follows:</p>
@@ -787,29 +793,29 @@ mean_hour <span class="op">+</span><span class="st"> </span><span class="kw">c</
 <li><strong>Step 4</strong>: Compute the empirical quantiles of <span class="math inline">\(\bar{X}_i\)</span>.</li>
 </ul>
 <p>Here is a simple function to implement this approach:</p>
-<pre class="sourceCode r" id="cb343"><code class="sourceCode r"><span class="co"># Number of boostrap replications</span>
-B &lt;-<span class="st"> </span><span class="dv">500</span>
-
-<span class="co"># Compute the length of vector</span>
-n &lt;-<span class="st"> </span><span class="kw">length</span>(student_work)
-
-<span class="co"># Confidence level</span>
-alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>
-
-<span class="co"># Initialisation of </span>
-boot_mean &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
-
-<span class="co"># Step 1</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){
-  <span class="co"># Step 2</span>
-  student_work_star &lt;-<span class="st"> </span>student_work[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)]
-  
-  <span class="co"># Step 3</span>
-  boot_mean[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(student_work_star)
-}
-
-<span class="co"># Step 4</span>
-<span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha<span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>))</code></pre>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="co"># Number of boostrap replications</span></a>
+<a class="sourceLine" id="cb343-2" data-line-number="2">B &lt;-<span class="st"> </span><span class="dv">500</span></a>
+<a class="sourceLine" id="cb343-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb343-4" data-line-number="4"><span class="co"># Compute the length of vector</span></a>
+<a class="sourceLine" id="cb343-5" data-line-number="5">n &lt;-<span class="st"> </span><span class="kw">length</span>(student_work)</a>
+<a class="sourceLine" id="cb343-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb343-7" data-line-number="7"><span class="co"># Confidence level</span></a>
+<a class="sourceLine" id="cb343-8" data-line-number="8">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb343-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb343-10" data-line-number="10"><span class="co"># Initialisation of </span></a>
+<a class="sourceLine" id="cb343-11" data-line-number="11">boot_mean &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</a>
+<a class="sourceLine" id="cb343-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb343-13" data-line-number="13"><span class="co"># Step 1</span></a>
+<a class="sourceLine" id="cb343-14" data-line-number="14"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</a>
+<a class="sourceLine" id="cb343-15" data-line-number="15">  <span class="co"># Step 2</span></a>
+<a class="sourceLine" id="cb343-16" data-line-number="16">  student_work_star &lt;-<span class="st"> </span>student_work[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)]</a>
+<a class="sourceLine" id="cb343-17" data-line-number="17">  </a>
+<a class="sourceLine" id="cb343-18" data-line-number="18">  <span class="co"># Step 3</span></a>
+<a class="sourceLine" id="cb343-19" data-line-number="19">  boot_mean[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(student_work_star)</a>
+<a class="sourceLine" id="cb343-20" data-line-number="20">}</a>
+<a class="sourceLine" id="cb343-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb343-22" data-line-number="22"><span class="co"># Step 4</span></a>
+<a class="sourceLine" id="cb343-23" data-line-number="23"><span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha<span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>))</a></code></pre></div>
 <pre><code>##      2.5%     97.5% 
 ## 0.1818182 2.0000000</code></pre>
 <p>Based on this result your instructor is relieved since they know that, at a level of confidence of 95%, you are spending at least more than 10 minutes on your course work.</p>
@@ -832,93 +838,93 @@ She believes that the median survival time is a “good” way to measure effect
 <div id="example-random-walk" class="section level2">
 <h2><span class="header-section-number">5.4</span> Example: Random Walk</h2>
 <p>The term <em>random walk</em> was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest forms of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such a random process:</p>
-<pre class="sourceCode r" id="cb345"><code class="sourceCode r"><span class="co"># Control seed</span>
-<span class="kw">set.seed</span>(<span class="dv">1992</span>)
-
-<span class="co"># Number of steps</span>
-steps &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">5</span>
-
-<span class="co"># Direction probability (i.e. all direction are equally likely)</span>
-probs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)
-
-<span class="co"># Initial matrix</span>
-step_direction &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, steps<span class="op">+</span><span class="dv">1</span>, <span class="dv">2</span>)
-
-<span class="co"># Start random walk</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>, steps<span class="op">+</span><span class="dv">1</span>)){
-  <span class="co"># Draw a random number from U(0,1)</span>
-  rn =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
-
-  <span class="co"># Go right if rn \in [0,prob[1])</span>
-  <span class="cf">if</span> (rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">1</span>]) {step_direction[i,<span class="dv">1</span>] =<span class="st"> </span><span class="dv">1</span>}
-
-  <span class="co"># Go left if rn \in [probs[1], probs[2])</span>
-  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">1</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">2</span>]) {step_direction[i,<span class="dv">1</span>] =<span class="st"> </span><span class="dv">-1</span>}
-
-  <span class="co"># Go forward if rn \in [probs[2], probs[3])</span>
-  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">2</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">3</span>]) {step_direction[i,<span class="dv">2</span>] =<span class="st"> </span><span class="dv">1</span>}
-
-  <span class="co"># Go backward if rn \in [probs[3],1]</span>
-  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">3</span>]) {step_direction[i,<span class="dv">2</span>] =<span class="st"> </span><span class="dv">-1</span>}
-}
-
-<span class="co"># Cumulative steps</span>
-position =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">cumsum</span>(step_direction[, <span class="dv">1</span>]), 
-                      <span class="dt">y =</span> <span class="kw">cumsum</span>(step_direction[, <span class="dv">2</span>]))
-  
-<span class="co"># Let&#39;s make a nice graph...</span>
-<span class="co"># Graph parameters</span>
-color =<span class="st"> &quot;blue4&quot;</span>
-xlab =<span class="st"> &quot;X-position&quot;</span>
-ylab =<span class="st"> &quot;Y-position&quot;</span>
-pt_pch =<span class="st"> </span><span class="dv">16</span>
-pt.cex =<span class="st"> </span><span class="dv">2</span>
-main =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;Simulated 2D RW with&quot;</span>, steps, <span class="st">&quot;steps&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)
-hues =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>)
-pt_col =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> hues, <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">5.1</span>, <span class="fl">5.1</span>, <span class="dv">1</span>, <span class="fl">2.1</span>))
-
-<span class="co"># Main plot</span>
-<span class="kw">plot</span>(<span class="ot">NA</span>,  <span class="dt">xlim =</span> <span class="kw">range</span>(position[,<span class="dv">1</span>]), 
-          <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">range</span>(position[,<span class="dv">2</span>])), 
-          <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, 
-          <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)
-win_dim =<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)
-
-<span class="kw">par</span>(<span class="dt">new =</span> <span class="ot">TRUE</span>)
-<span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(position[,<span class="dv">1</span>]), <span class="dt">ylim =</span> <span class="kw">c</span>(win_dim[<span class="dv">3</span>], win_dim[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])),
-       <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)
-  win_dim =<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)
-
-<span class="co"># Add grid</span>
-<span class="kw">grid</span>(<span class="ot">NULL</span>, <span class="ot">NULL</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;grey95&quot;</span>)
-
-<span class="co"># Add title</span>
-x_vec =<span class="st"> </span><span class="kw">c</span>(win_dim[<span class="dv">1</span>], win_dim[<span class="dv">2</span>], win_dim[<span class="dv">2</span>], win_dim[<span class="dv">1</span>])
-y_vec =<span class="st"> </span><span class="kw">c</span>(win_dim[<span class="dv">4</span>], win_dim[<span class="dv">4</span>],
-            win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]),
-            win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]))
-<span class="kw">polygon</span>(x_vec, y_vec, <span class="dt">col =</span> <span class="st">&quot;grey95&quot;</span>, <span class="dt">border =</span> <span class="ot">NA</span>)
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="kw">mean</span>(<span class="kw">c</span>(win_dim[<span class="dv">1</span>], win_dim[<span class="dv">2</span>])), <span class="dt">y =</span> (win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])), main)
-
-<span class="co"># Add axes and box</span>
-<span class="kw">lines</span>(x_vec[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="kw">rep</span>((win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])),<span class="dv">2</span>), <span class="dt">col =</span> <span class="dv">1</span>)
-<span class="kw">box</span>()
-<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">padj =</span> <span class="fl">0.3</span>)
-y_axis =<span class="st"> </span><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">labels =</span> <span class="ot">FALSE</span>, <span class="dt">tick =</span> <span class="ot">FALSE</span>)
-y_axis =<span class="st"> </span>y_axis[y_axis <span class="op">&lt;</span><span class="st"> </span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]))]
-<span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">padj =</span> <span class="fl">-0.2</span>, <span class="dt">at =</span> y_axis)
-
-<span class="co"># Add trajectory</span>
-<span class="kw">lines</span>(position, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> color, <span class="dt">pch =</span> <span class="dv">16</span>)
-  
-<span class="co"># Start and end points</span>
-<span class="kw">points</span>(<span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>]), <span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>]), <span class="dt">cex =</span> pt.cex, <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch)
-  
-<span class="co"># Legend</span>
-leg_pos =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(position[,<span class="dv">1</span>]), <span class="kw">max</span>(position[,<span class="dv">2</span>]))
-<span class="kw">legend</span>(leg_pos[<span class="dv">1</span>], leg_pos[<span class="dv">2</span>], <span class="kw">c</span>(<span class="st">&quot;Start&quot;</span>,<span class="st">&quot;End&quot;</span>), 
-      <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch, <span class="dt">pt.cex =</span> pt.cex, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1"><span class="co"># Control seed</span></a>
+<a class="sourceLine" id="cb345-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1992</span>)</a>
+<a class="sourceLine" id="cb345-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb345-4" data-line-number="4"><span class="co"># Number of steps</span></a>
+<a class="sourceLine" id="cb345-5" data-line-number="5">steps &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb345-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb345-7" data-line-number="7"><span class="co"># Direction probability (i.e. all direction are equally likely)</span></a>
+<a class="sourceLine" id="cb345-8" data-line-number="8">probs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb345-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb345-10" data-line-number="10"><span class="co"># Initial matrix</span></a>
+<a class="sourceLine" id="cb345-11" data-line-number="11">step_direction &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, steps<span class="op">+</span><span class="dv">1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb345-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb345-13" data-line-number="13"><span class="co"># Start random walk</span></a>
+<a class="sourceLine" id="cb345-14" data-line-number="14"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>, steps<span class="op">+</span><span class="dv">1</span>)){</a>
+<a class="sourceLine" id="cb345-15" data-line-number="15">  <span class="co"># Draw a random number from U(0,1)</span></a>
+<a class="sourceLine" id="cb345-16" data-line-number="16">  rn =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb345-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb345-18" data-line-number="18">  <span class="co"># Go right if rn \in [0,prob[1])</span></a>
+<a class="sourceLine" id="cb345-19" data-line-number="19">  <span class="cf">if</span> (rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">1</span>]) {step_direction[i,<span class="dv">1</span>] =<span class="st"> </span><span class="dv">1</span>}</a>
+<a class="sourceLine" id="cb345-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb345-21" data-line-number="21">  <span class="co"># Go left if rn \in [probs[1], probs[2])</span></a>
+<a class="sourceLine" id="cb345-22" data-line-number="22">  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">1</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">2</span>]) {step_direction[i,<span class="dv">1</span>] =<span class="st"> </span><span class="dv">-1</span>}</a>
+<a class="sourceLine" id="cb345-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb345-24" data-line-number="24">  <span class="co"># Go forward if rn \in [probs[2], probs[3])</span></a>
+<a class="sourceLine" id="cb345-25" data-line-number="25">  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">2</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">3</span>]) {step_direction[i,<span class="dv">2</span>] =<span class="st"> </span><span class="dv">1</span>}</a>
+<a class="sourceLine" id="cb345-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb345-27" data-line-number="27">  <span class="co"># Go backward if rn \in [probs[3],1]</span></a>
+<a class="sourceLine" id="cb345-28" data-line-number="28">  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">3</span>]) {step_direction[i,<span class="dv">2</span>] =<span class="st"> </span><span class="dv">-1</span>}</a>
+<a class="sourceLine" id="cb345-29" data-line-number="29">}</a>
+<a class="sourceLine" id="cb345-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb345-31" data-line-number="31"><span class="co"># Cumulative steps</span></a>
+<a class="sourceLine" id="cb345-32" data-line-number="32">position =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">cumsum</span>(step_direction[, <span class="dv">1</span>]), </a>
+<a class="sourceLine" id="cb345-33" data-line-number="33">                      <span class="dt">y =</span> <span class="kw">cumsum</span>(step_direction[, <span class="dv">2</span>]))</a>
+<a class="sourceLine" id="cb345-34" data-line-number="34">  </a>
+<a class="sourceLine" id="cb345-35" data-line-number="35"><span class="co"># Let&#39;s make a nice graph...</span></a>
+<a class="sourceLine" id="cb345-36" data-line-number="36"><span class="co"># Graph parameters</span></a>
+<a class="sourceLine" id="cb345-37" data-line-number="37">color =<span class="st"> &quot;blue4&quot;</span></a>
+<a class="sourceLine" id="cb345-38" data-line-number="38">xlab =<span class="st"> &quot;X-position&quot;</span></a>
+<a class="sourceLine" id="cb345-39" data-line-number="39">ylab =<span class="st"> &quot;Y-position&quot;</span></a>
+<a class="sourceLine" id="cb345-40" data-line-number="40">pt_pch =<span class="st"> </span><span class="dv">16</span></a>
+<a class="sourceLine" id="cb345-41" data-line-number="41">pt.cex =<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb345-42" data-line-number="42">main =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;Simulated 2D RW with&quot;</span>, steps, <span class="st">&quot;steps&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb345-43" data-line-number="43">hues =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb345-44" data-line-number="44">pt_col =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> hues, <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb345-45" data-line-number="45"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">5.1</span>, <span class="fl">5.1</span>, <span class="dv">1</span>, <span class="fl">2.1</span>))</a>
+<a class="sourceLine" id="cb345-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb345-47" data-line-number="47"><span class="co"># Main plot</span></a>
+<a class="sourceLine" id="cb345-48" data-line-number="48"><span class="kw">plot</span>(<span class="ot">NA</span>,  <span class="dt">xlim =</span> <span class="kw">range</span>(position[,<span class="dv">1</span>]), </a>
+<a class="sourceLine" id="cb345-49" data-line-number="49">          <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">range</span>(position[,<span class="dv">2</span>])), </a>
+<a class="sourceLine" id="cb345-50" data-line-number="50">          <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, </a>
+<a class="sourceLine" id="cb345-51" data-line-number="51">          <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb345-52" data-line-number="52">win_dim =<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)</a>
+<a class="sourceLine" id="cb345-53" data-line-number="53"></a>
+<a class="sourceLine" id="cb345-54" data-line-number="54"><span class="kw">par</span>(<span class="dt">new =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb345-55" data-line-number="55"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(position[,<span class="dv">1</span>]), <span class="dt">ylim =</span> <span class="kw">c</span>(win_dim[<span class="dv">3</span>], win_dim[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])),</a>
+<a class="sourceLine" id="cb345-56" data-line-number="56">       <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</a>
+<a class="sourceLine" id="cb345-57" data-line-number="57">  win_dim =<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)</a>
+<a class="sourceLine" id="cb345-58" data-line-number="58"></a>
+<a class="sourceLine" id="cb345-59" data-line-number="59"><span class="co"># Add grid</span></a>
+<a class="sourceLine" id="cb345-60" data-line-number="60"><span class="kw">grid</span>(<span class="ot">NULL</span>, <span class="ot">NULL</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;grey95&quot;</span>)</a>
+<a class="sourceLine" id="cb345-61" data-line-number="61"></a>
+<a class="sourceLine" id="cb345-62" data-line-number="62"><span class="co"># Add title</span></a>
+<a class="sourceLine" id="cb345-63" data-line-number="63">x_vec =<span class="st"> </span><span class="kw">c</span>(win_dim[<span class="dv">1</span>], win_dim[<span class="dv">2</span>], win_dim[<span class="dv">2</span>], win_dim[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb345-64" data-line-number="64">y_vec =<span class="st"> </span><span class="kw">c</span>(win_dim[<span class="dv">4</span>], win_dim[<span class="dv">4</span>],</a>
+<a class="sourceLine" id="cb345-65" data-line-number="65">            win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]),</a>
+<a class="sourceLine" id="cb345-66" data-line-number="66">            win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]))</a>
+<a class="sourceLine" id="cb345-67" data-line-number="67"><span class="kw">polygon</span>(x_vec, y_vec, <span class="dt">col =</span> <span class="st">&quot;grey95&quot;</span>, <span class="dt">border =</span> <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb345-68" data-line-number="68"><span class="kw">text</span>(<span class="dt">x =</span> <span class="kw">mean</span>(<span class="kw">c</span>(win_dim[<span class="dv">1</span>], win_dim[<span class="dv">2</span>])), <span class="dt">y =</span> (win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])), main)</a>
+<a class="sourceLine" id="cb345-69" data-line-number="69"></a>
+<a class="sourceLine" id="cb345-70" data-line-number="70"><span class="co"># Add axes and box</span></a>
+<a class="sourceLine" id="cb345-71" data-line-number="71"><span class="kw">lines</span>(x_vec[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="kw">rep</span>((win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])),<span class="dv">2</span>), <span class="dt">col =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb345-72" data-line-number="72"><span class="kw">box</span>()</a>
+<a class="sourceLine" id="cb345-73" data-line-number="73"><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">padj =</span> <span class="fl">0.3</span>)</a>
+<a class="sourceLine" id="cb345-74" data-line-number="74">y_axis =<span class="st"> </span><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">labels =</span> <span class="ot">FALSE</span>, <span class="dt">tick =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb345-75" data-line-number="75">y_axis =<span class="st"> </span>y_axis[y_axis <span class="op">&lt;</span><span class="st"> </span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]))]</a>
+<a class="sourceLine" id="cb345-76" data-line-number="76"><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">padj =</span> <span class="fl">-0.2</span>, <span class="dt">at =</span> y_axis)</a>
+<a class="sourceLine" id="cb345-77" data-line-number="77"></a>
+<a class="sourceLine" id="cb345-78" data-line-number="78"><span class="co"># Add trajectory</span></a>
+<a class="sourceLine" id="cb345-79" data-line-number="79"><span class="kw">lines</span>(position, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> color, <span class="dt">pch =</span> <span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb345-80" data-line-number="80">  </a>
+<a class="sourceLine" id="cb345-81" data-line-number="81"><span class="co"># Start and end points</span></a>
+<a class="sourceLine" id="cb345-82" data-line-number="82"><span class="kw">points</span>(<span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>]), <span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>]), <span class="dt">cex =</span> pt.cex, <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch)</a>
+<a class="sourceLine" id="cb345-83" data-line-number="83">  </a>
+<a class="sourceLine" id="cb345-84" data-line-number="84"><span class="co"># Legend</span></a>
+<a class="sourceLine" id="cb345-85" data-line-number="85">leg_pos =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(position[,<span class="dv">1</span>]), <span class="kw">max</span>(position[,<span class="dv">2</span>]))</a>
+<a class="sourceLine" id="cb345-86" data-line-number="86"><span class="kw">legend</span>(leg_pos[<span class="dv">1</span>], leg_pos[<span class="dv">2</span>], <span class="kw">c</span>(<span class="st">&quot;Start&quot;</span>,<span class="st">&quot;End&quot;</span>), </a>
+<a class="sourceLine" id="cb345-87" data-line-number="87">      <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch, <span class="dt">pt.cex =</span> pt.cex, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</a></code></pre></div>
 <p><img src="ds_files/figure-html/RW2d-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Such processes inspired Karl Pearson’s famous quote that</p>
 <blockquote>
@@ -939,10 +945,10 @@ leg_pos =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min
 <p>where <span class="math inline">\(\Delta x = \frac{b - a}{n}\;\)</span> and the idea behind this approximation is that as the number of partitions <span class="math inline">\(n\)</span> increases, the Riemann sum will become closer and closer to <span class="math inline">\(I\)</span>. Also (under some technical conditions), we have that</p>
 <p><span class="math display">\[I = \lim_{n \to \infty} \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x).\]</span></p>
 <p>In fact, the rational of a Monte Carlo integral is quite close to the Riemann sum since, in its most basic form, we approximate <span class="math inline">\(I\)</span> by averaging samples of the function <span class="math inline">\(f(x)\)</span> at uniform random points within the interval <span class="math inline">\([a, b]\)</span>. Therefore, the Monte Carlo <em>estimator</em> of <span class="math inline">\(I\)</span> is given by</p>
-<span class="math display" id="eq:binom">\[\begin{equation} 
+<p><span class="math display" id="eq:binom">\[\begin{equation} 
 \hat{I} = \frac{b - a}{B} \sum_{i = 1}^B f(X_i), 
  \tag{5.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(X_i = a + U_i (b - a)\)</span> and <span class="math inline">\(U_i \sim \mathcal{U}(0,1)\)</span>. In fact, <a href="control.html#eq:binom">(5.1)</a> is quite intuitive since <span class="math inline">\(\frac{1}{B} \sum_{i = 1}^B f(X_i)\)</span> represents an estimation of the average value of <span class="math inline">\(f(x)\)</span> in the interval <span class="math inline">\([a, b]\)</span> and thus <span class="math inline">\(\hat{I}\)</span> is simply the average value times the length of the interval, i.e. <span class="math inline">\((b-a)\)</span>. If you would like to learn more about the properties of Monte-Carlo integrals, click on the button below:</p>
 <button id="hidebutton1">
 Properties
@@ -991,7 +997,6 @@ g(x) = \left\{
 \]</span></p>
 Thus, it is easy to see that the rate of convergence of <span class="math inline">\(\widehat{\operatorname{var}} \left(\hat{I} \right)\)</span> is <span class="math inline">\(B^{-1}\)</span> and we may write <span class="math inline">\({\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)\)</span>. This implies that if we wish to reduce the error (or standard deviation) by half, we need to quadruple <span class="math inline">\(B\)</span>. Such a phenomon is very common in many fields of research such as Statistics where this is often called the <em>curse of dimensionality</em>.
 </div>
-
 </div>
 
 </div>
@@ -1009,8 +1014,8 @@ Thus, it is easy to see that the rate of convergence of <span class="math inline
 \int_1^3 \frac{\exp\left(\sin(x)\right)}{x} dx,
 \]</span></p>
 <p>using <span class="math inline">\(10^4\)</span> Monte-Carlo replications, you can use the following command:</p>
-<pre class="sourceCode r" id="cb346"><code class="sourceCode r"><span class="kw">library</span>(stat297)
-<span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">fun =</span> <span class="st">&quot;exp(sin(x))/x&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="kw">library</span>(stat297)</a>
+<a class="sourceLine" id="cb346-2" data-line-number="2"><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">fun =</span> <span class="st">&quot;exp(sin(x))/x&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## $I
 ## [1] 2.558104
 ## 
@@ -1029,9 +1034,9 @@ Thus, it is easy to see that the rate of convergence of <span class="math inline
 ## attr(,&quot;class&quot;)
 ## [1] &quot;MCI&quot;</code></pre>
 <p>At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function <code>mc_int()</code>. This should be rather easy to implement but one thing that may be a little delicate is how to pass the function you wish to integrate as an input. A possible way of doing this is to use a string so that, for example, if we have to integrate the function <span class="math inline">\(\sin(x)\)</span> you could simply write <code>fun = sin(x)</code> when calling your function. This implies that we should be able to “transform” a string into a function that we can evaluate, which is something that we can achieve by combining the functions <code>eval</code> and <code>parse</code>. An example is provided below:</p>
-<pre class="sourceCode r" id="cb348"><code class="sourceCode r">my_fun =<span class="st"> &quot;x^2&quot;</span>
-x =<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">3</span>
-<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> my_fun))</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">my_fun =<span class="st"> &quot;x^2&quot;</span></a>
+<a class="sourceLine" id="cb348-2" data-line-number="2">x =<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb348-3" data-line-number="3"><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> my_fun))</a></code></pre></div>
 <pre><code>## [1] 0 1 4 9</code></pre>
 <p>If you’re having trouble understanding what these functions are doing have a look at their help files by writing <code>?eval</code> and <code>?parse</code>.</p>
 </div>
@@ -1046,8 +1051,8 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2
 \mathbb{P}\left(1 &lt; X &lt; 4.5 \right) = \int_1^{4.5} \frac{1}{\sqrt{3.125 \pi}} \exp \left(- \frac{\left(x - 4\right)^2}{3.125}\right).
 \]</span></p>
 <p>Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use a Monte-Carlo integral to solve it. For example:</p>
-<pre class="sourceCode r" id="cb350"><code class="sourceCode r">my_fun =<span class="st"> &quot;1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)&quot;</span>
-(<span class="dt">prob =</span> <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">4.5</span>), <span class="dt">fun =</span> my_fun, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">7</span>))</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1">my_fun =<span class="st"> &quot;1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)&quot;</span></a>
+<a class="sourceLine" id="cb350-2" data-line-number="2">(<span class="dt">prob =</span> <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">4.5</span>), <span class="dt">fun =</span> my_fun, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">7</span>))</a></code></pre></div>
 <pre><code>## $I
 ## [1] 0.6471691
 ## 
@@ -1066,7 +1071,7 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2
 ## attr(,&quot;class&quot;)
 ## [1] &quot;MCI&quot;</code></pre>
 <p>Based on this result, we can write <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) \approx 64.72 \%\)</span> with a standard error of about 0.01%. We can compare our results with what we would obtain with the function <code>pnorm</code> which provides a nearly exact result:</p>
-<pre class="sourceCode r" id="cb352"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="fl">4.5</span>, <span class="dv">4</span>, <span class="fl">1.25</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">1.25</span>)</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1"><span class="kw">pnorm</span>(<span class="fl">4.5</span>, <span class="dv">4</span>, <span class="fl">1.25</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">1.25</span>)</a></code></pre></div>
 <pre><code>## [1] 0.6472242</code></pre>
 <p>This shows that our estimation is within one standard error of a near perfect result.</p>
 </div>
@@ -1080,27 +1085,27 @@ C(y) = \int_0^y \cos \left( x^2 \right) dx.\]</span></p>
 S(y) = \sum_{i = 1}^\infty \, \left(-1\right)^n \, \frac{y^{4i + 1}}{\left(2i + 1\right) \, !\left(4i + 3\right)}.
 \]</span></p>
 <p>In this example, we will study the estimation of <span class="math inline">\(S(\pi)\)</span> as well as the <em>precision</em> of this estimation.</p>
-<pre class="sourceCode r" id="cb354"><code class="sourceCode r">B =<span class="st"> </span><span class="dv">4</span><span class="op">^</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">13</span>)
-results =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="kw">length</span>(B), <span class="dv">2</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(B)){
-  mc_res =<span class="st"> </span><span class="kw">mc_int</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="st">&quot;sin(x^2)&quot;</span>, <span class="dt">B =</span> B[i], <span class="dt">seed =</span> i<span class="op">+</span><span class="dv">12</span>)
-  results[i, ] =<span class="st"> </span><span class="kw">c</span>(mc_res<span class="op">$</span>I, <span class="kw">sqrt</span>(mc_res<span class="op">$</span>var))
-}
-
-
-trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.15</span>)[<span class="dv">2</span>]
-<span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(B), <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">cbind</span>(results[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>results[,<span class="dv">2</span>], 
-      results[, <span class="dv">1</span>] <span class="op">-</span>results[,<span class="dv">2</span>])), <span class="dt">log =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Estimated Integral&quot;</span>,
-      <span class="dt">xlab =</span> <span class="st">&quot;Number of Simulations B&quot;</span>, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>)
-<span class="kw">grid</span>()
-<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> B, <span class="dt">labels =</span> <span class="kw">parse</span>(<span class="dt">text =</span> <span class="kw">paste</span>(<span class="st">&quot;4^&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">13</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)))
-<span class="kw">polygon</span>(<span class="kw">c</span>(B, <span class="kw">rev</span>(B)), <span class="kw">c</span>(results[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>results[, <span class="dv">2</span>], 
-                        <span class="kw">rev</span>(results[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>results[, <span class="dv">2</span>])), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> trans_blue)
-<span class="kw">lines</span>(B, results[, <span class="dv">1</span>], <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue4&quot;</span>, <span class="dt">pch =</span> <span class="dv">16</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8048208</span>, <span class="dt">col =</span> <span class="st">&quot;red4&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimated value&quot;</span>, <span class="st">&quot;Standard error interval&quot;</span>, <span class="st">&quot;Good approximation (MatLab)&quot;</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
-       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="ot">NA</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>), 
-       <span class="dt">pt.cex =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue4&quot;</span>, trans_blue, <span class="st">&quot;red4&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1">B =<span class="st"> </span><span class="dv">4</span><span class="op">^</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">13</span>)</a>
+<a class="sourceLine" id="cb354-2" data-line-number="2">results =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="kw">length</span>(B), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb354-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(B)){</a>
+<a class="sourceLine" id="cb354-4" data-line-number="4">  mc_res =<span class="st"> </span><span class="kw">mc_int</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="st">&quot;sin(x^2)&quot;</span>, <span class="dt">B =</span> B[i], <span class="dt">seed =</span> i<span class="op">+</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb354-5" data-line-number="5">  results[i, ] =<span class="st"> </span><span class="kw">c</span>(mc_res<span class="op">$</span>I, <span class="kw">sqrt</span>(mc_res<span class="op">$</span>var))</a>
+<a class="sourceLine" id="cb354-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb354-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb354-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb354-9" data-line-number="9">trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.15</span>)[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb354-10" data-line-number="10"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(B), <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">cbind</span>(results[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>results[,<span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb354-11" data-line-number="11">      results[, <span class="dv">1</span>] <span class="op">-</span>results[,<span class="dv">2</span>])), <span class="dt">log =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Estimated Integral&quot;</span>,</a>
+<a class="sourceLine" id="cb354-12" data-line-number="12">      <span class="dt">xlab =</span> <span class="st">&quot;Number of Simulations B&quot;</span>, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>)</a>
+<a class="sourceLine" id="cb354-13" data-line-number="13"><span class="kw">grid</span>()</a>
+<a class="sourceLine" id="cb354-14" data-line-number="14"><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> B, <span class="dt">labels =</span> <span class="kw">parse</span>(<span class="dt">text =</span> <span class="kw">paste</span>(<span class="st">&quot;4^&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">13</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)))</a>
+<a class="sourceLine" id="cb354-15" data-line-number="15"><span class="kw">polygon</span>(<span class="kw">c</span>(B, <span class="kw">rev</span>(B)), <span class="kw">c</span>(results[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>results[, <span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb354-16" data-line-number="16">                        <span class="kw">rev</span>(results[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>results[, <span class="dv">2</span>])), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> trans_blue)</a>
+<a class="sourceLine" id="cb354-17" data-line-number="17"><span class="kw">lines</span>(B, results[, <span class="dv">1</span>], <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue4&quot;</span>, <span class="dt">pch =</span> <span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb354-18" data-line-number="18"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8048208</span>, <span class="dt">col =</span> <span class="st">&quot;red4&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb354-19" data-line-number="19"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimated value&quot;</span>, <span class="st">&quot;Standard error interval&quot;</span>, <span class="st">&quot;Good approximation (MatLab)&quot;</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb354-20" data-line-number="20">       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="ot">NA</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb354-21" data-line-number="21">       <span class="dt">pt.cex =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue4&quot;</span>, trans_blue, <span class="st">&quot;red4&quot;</span>))</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-167-1.png" width="576" style="display: block; margin: auto;" /></p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -1120,7 +1125,7 @@ trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt
 <h3><span class="header-section-number">A</span> Basic Probability and Statistics with <code>R</code></h3>
 <div id="refs" class="references">
 <div id="ref-efron1979bootstrap">
-<p>Efron, B. 1979. “Bootstrap Methods: Another Look at the Jackknife.” <em>The Annals of Statistics</em> 7 (1). Institute of Mathematical Statistics:1–26.</p>
+<p>Efron, B. 1979. “Bootstrap Methods: Another Look at the Jackknife.” <em>The Annals of Statistics</em> 7 (1). Institute of Mathematical Statistics: 1–26.</p>
 </div>
 </div>
             </section>
@@ -1181,8 +1186,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

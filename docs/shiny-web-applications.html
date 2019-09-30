@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Shiny Web Applications | An Introduction to Statistical Programming Methods with R</title>
-  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Shiny Web Applications | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
   
 
-<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi">
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-09-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions.html">
-<link rel="next" href="r-packages.html">
+<link rel="prev" href="functions.html"/>
+<link rel="next" href="r-packages.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,20 +50,25 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
 @media print {
 code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -72,38 +76,40 @@ pre.numberSource a.sourceLine::before
     color: #aaaaaa;
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
 @media screen {
-a.sourceLine::before { text-decoration: underline; color: initial; }
+a.sourceLine::before { text-decoration: underline; }
 }
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
 code span.dt { color: #902000; } /* DataType */
 code span.dv { color: #40a070; } /* DecVal */
-code span.bn { color: #40a070; } /* BaseN */
-code span.fl { color: #40a070; } /* Float */
-code span.ch { color: #4070a0; } /* Char */
-code span.st { color: #4070a0; } /* String */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.ot { color: #007020; } /* Other */
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.fu { color: #06287e; } /* Function */
 code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code span.cn { color: #880000; } /* Constant */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.im { } /* Import */
-code span.va { color: #19177c; } /* Variable */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.op { color: #666666; } /* Operator */
-code span.bu { } /* BuiltIn */
 code span.ex { } /* Extension */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.at { color: #7d9029; } /* Attribute */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -316,60 +322,62 @@ code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Infor
 <div id="introduction-3" class="section level2">
 <h2><span class="header-section-number">7.1</span> Introduction</h2>
 <p>In order to build an application, we first need to understand its structure as well as the elements it needs to work. The idea is to take some input (such as parameters) and produce an output based on some code that will not be visible to the user and will connect the input and output. In this chapter we will describe how to build a Shiny application for which a brief tutorial can be found below.</p>
+<iframe src="https://www.youtube.com/embed/X5uQU5XX7iU" width="672" height="400px">
+</iframe>
 <p>In the following paragraphs, we will provide more details on how a Shiny app can be built using the example illustrated in the tutorial.</p>
 </div>
 <div id="step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app" class="section level2">
 <h2><span class="header-section-number">7.2</span> Step 1. Defining the R Code in the backend of the Shiny app</h2>
 <p>Before we build the interface of the web application, we need to focus on the R code which, in the framework of Shiny app development, is also commonly known as the “backend” of the application. To make sure that all the intended operations work within the application, we need to make sure that the R code that serves as the skeleton of this app works smoothly.</p>
 <p>For instance, based on the tutorial example, we may intend to build an application that creates a histogram based on the waiting time between eruptions of the Old Faithful geyser in Yellowstone National Park (that can be found in the R dataset <code>faithful</code>), allowing the user to specify the number of bins. Using the second column in the dataset (representing the waiting times), if we were to use the default values for the histogram function in R we would obtain the following plot.</p>
-<pre class="sourceCode r" id="cb418"><code class="sourceCode r">x &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] 
-<span class="kw">hist</span>(x)</code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1">x &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] </a>
+<a class="sourceLine" id="cb418-2" data-line-number="2"><span class="kw">hist</span>(x)</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
 <p>However, the representation and interpretation of the data can sometimes change considerably if using different visualization parameters. Indeed, among others, the <code>hist()</code> function includes an option called <code>breaks</code> that allows the user to specify a vector giving the number of breakpoints between histogram cells. An example of how this is used and changes the representation of the data can be found below.</p>
-<pre class="sourceCode r" id="cb419"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
-
-<span class="co"># Histogram with 9 bins</span>
-bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">10</span>)
-<span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)
-
-<span class="co"># Histogram with 19 bins</span>
-bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">20</span>)
-<span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb419-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb419-3" data-line-number="3"><span class="co"># Histogram with 9 bins</span></a>
+<a class="sourceLine" id="cb419-4" data-line-number="4">bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb419-5" data-line-number="5"><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</a>
+<a class="sourceLine" id="cb419-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb419-7" data-line-number="7"><span class="co"># Histogram with 19 bins</span></a>
+<a class="sourceLine" id="cb419-8" data-line-number="8">bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb419-9" data-line-number="9"><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
 <p>As you may notice, the number of bins created by using this option is always one unit less than the length of the specified vector (i.e. 9 and 19). Therefore, if we intend to deliver an app that allows the user to directly specify the number of bins, we should take this into account and add one unit to the input that the user has given within the <code>length.out</code> option. Ideally, we would be looking to implement a function which includes the following steps:</p>
-<pre class="sourceCode r" id="cb420"><code class="sourceCode r">input &lt;-<span class="st"> </span><span class="dv">10</span>
-
-<span class="co"># Histogram with input bins</span>
-bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)
-<span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1">input &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb420-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb420-3" data-line-number="3"><span class="co"># Histogram with input bins</span></a>
+<a class="sourceLine" id="cb420-4" data-line-number="4">bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb420-5" data-line-number="5"><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 <p>where the value given to the <code>input</code> object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.</p>
 </div>
 <div id="step-2-user-interface-ui-frontend" class="section level2">
 <h2><span class="header-section-number">7.3</span> Step 2: User Interface (UI) / Frontend</h2>
 <p>Once we have determined the structure of the code we can now start creating the Shiny app by firstly developing the UI (or frontend) with which the user will interact. To address this part, let us take the tutorial example as a guide and inspect the part of the code related to the UI.</p>
-<pre class="sourceCode r" id="cb421"><code class="sourceCode r"><span class="co"># Define UI for application that draws a histogram</span>
-ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
-   
-   <span class="co"># Application title</span>
-   <span class="kw">titlePanel</span>(<span class="st">&quot;Old Faithful Geyser Data&quot;</span>),
-   
-   <span class="co"># Sidebar with a slider input for number of bins </span>
-   <span class="kw">sidebarLayout</span>(
-      <span class="kw">sidebarPanel</span>(
-         <span class="kw">sliderInput</span>(<span class="st">&quot;bins&quot;</span>,
-                     <span class="st">&quot;Number of bins:&quot;</span>,
-                     <span class="dt">min =</span> <span class="dv">1</span>,
-                     <span class="dt">max =</span> <span class="dv">50</span>,
-                     <span class="dt">value =</span> <span class="dv">30</span>)
-      ),
-      
-      <span class="co"># Show a plot of the generated distribution</span>
-      <span class="kw">mainPanel</span>(
-         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)
-      )
-   )
-)</code></pre>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1"><span class="co"># Define UI for application that draws a histogram</span></a>
+<a class="sourceLine" id="cb421-2" data-line-number="2">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb421-3" data-line-number="3">   </a>
+<a class="sourceLine" id="cb421-4" data-line-number="4">   <span class="co"># Application title</span></a>
+<a class="sourceLine" id="cb421-5" data-line-number="5">   <span class="kw">titlePanel</span>(<span class="st">&quot;Old Faithful Geyser Data&quot;</span>),</a>
+<a class="sourceLine" id="cb421-6" data-line-number="6">   </a>
+<a class="sourceLine" id="cb421-7" data-line-number="7">   <span class="co"># Sidebar with a slider input for number of bins </span></a>
+<a class="sourceLine" id="cb421-8" data-line-number="8">   <span class="kw">sidebarLayout</span>(</a>
+<a class="sourceLine" id="cb421-9" data-line-number="9">      <span class="kw">sidebarPanel</span>(</a>
+<a class="sourceLine" id="cb421-10" data-line-number="10">         <span class="kw">sliderInput</span>(<span class="st">&quot;bins&quot;</span>,</a>
+<a class="sourceLine" id="cb421-11" data-line-number="11">                     <span class="st">&quot;Number of bins:&quot;</span>,</a>
+<a class="sourceLine" id="cb421-12" data-line-number="12">                     <span class="dt">min =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb421-13" data-line-number="13">                     <span class="dt">max =</span> <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb421-14" data-line-number="14">                     <span class="dt">value =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb421-15" data-line-number="15">      ),</a>
+<a class="sourceLine" id="cb421-16" data-line-number="16">      </a>
+<a class="sourceLine" id="cb421-17" data-line-number="17">      <span class="co"># Show a plot of the generated distribution</span></a>
+<a class="sourceLine" id="cb421-18" data-line-number="18">      <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb421-19" data-line-number="19">         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</a>
+<a class="sourceLine" id="cb421-20" data-line-number="20">      )</a>
+<a class="sourceLine" id="cb421-21" data-line-number="21">   )</a>
+<a class="sourceLine" id="cb421-22" data-line-number="22">)</a></code></pre></div>
 <p>As can be seen, all the code that will be dedicated to creating the UI is assigned to an object called <code>ui</code> through a function called <code>fluidPage()</code> (see <code>?fluidPage</code> for more information). The two main elements of this function are the panel dedicated to the title that will appear for the app (<code>titlePanel()</code>) and the layout to give to web page which in this example is a layout with a sidebar for the user to enter their inputs and a main panel in which the outputs will be visualized (<code>sidebarLayout()</code>). In the next paragraphs we will provide more details on the possible contents to be presented in the app interface, as well as the options that can be employed to allow the user to enter the needed inputs and the options for visualizing the outputs.</p>
 <div id="content-creation" class="section level3 unnumbered">
 <h3>Content Creation</h3>
@@ -484,7 +492,7 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 </tr>
 <tr class="odd">
 <td>verbatimTextOutput()</td>
-<td>“as is”&quot; Text Output“</td>
+<td>“as is”&quot; Text Output&quot;</td>
 </tr>
 <tr class="even">
 <td>imageOutput()</td>
@@ -501,23 +509,23 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <div id="step-3-implementing-the-backend-server" class="section level2">
 <h2><span class="header-section-number">7.4</span> Step 3: Implementing the backend (server)</h2>
 <p>This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure. This is done by creating a function which, as arguments, has an <code>input</code> and an <code>output</code> as can be seen below always using the example given in the tutorial.</p>
-<pre class="sourceCode r" id="cb422"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-   
-   output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-      <span class="co"># generate bins based on input$bins from ui.R</span>
-      x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] 
-      bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input<span class="op">$</span>bins <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)
-      
-      <span class="co"># draw the histogram with the specified number of bins</span>
-      <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)
-   })
-}</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
+<a class="sourceLine" id="cb422-2" data-line-number="2">   </a>
+<a class="sourceLine" id="cb422-3" data-line-number="3">   output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb422-4" data-line-number="4">      <span class="co"># generate bins based on input$bins from ui.R</span></a>
+<a class="sourceLine" id="cb422-5" data-line-number="5">      x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] </a>
+<a class="sourceLine" id="cb422-6" data-line-number="6">      bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input<span class="op">$</span>bins <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb422-7" data-line-number="7">      </a>
+<a class="sourceLine" id="cb422-8" data-line-number="8">      <span class="co"># draw the histogram with the specified number of bins</span></a>
+<a class="sourceLine" id="cb422-9" data-line-number="9">      <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)</a>
+<a class="sourceLine" id="cb422-10" data-line-number="10">   })</a>
+<a class="sourceLine" id="cb422-11" data-line-number="11">}</a></code></pre></div>
 <p>In this example, the function is called <code>server()</code> and contains only one object called <code>output</code> with a corresponding element called <code>distPlot</code> (<code>output$distPlot</code>). It must be underlined that the latter name must correspond to the name given for the output in the UI setup (i.e. the <code>distPlot</code> name inserted in <code>plotOutput(&quot;distPlot&quot;)</code>, see Step 2). The content of the output in this example is a plot and we therefore use the <code>renderPlot()</code> function in which we can include the code that we developed in Step 1 (with some added graphical parameters for the color of the bins and their borders). Of course, this output will depend on the input provided by the user which is used when defining the <code>bins</code> object (i.e. <code>bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)</code>). Just like for the <code>output</code> object, also in this case the <code>input</code> object has an element whose name must correspond to the name given for the input when building the UI (i.e. <code>sliderInput(&quot;bins&quot;,...)</code>).</p>
 </div>
 <div id="step-4-connecting-frontend-and-backend" class="section level2">
 <h2><span class="header-section-number">7.5</span> Step 4: Connecting frontend and backend</h2>
 <p>Once we have developed the structure and defined the functions and objects for the UI (frontend) and backend environments, all that needs to be done is to ensure that they can communicate with each other. Using the Shiny environment, this can be quickly and easily done by using the <code>shinyApp()</code> function which takes the object defining the UI interface (<code>ui</code> in our example, see Step 2) and the function that takes the input and delivers the output (<code>server</code> in our example, see Step 3).</p>
-<pre class="sourceCode r" id="cb423"><code class="sourceCode r"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
 <p>Therefore, having completed the UI and backend code, to launch the Shiny Web app you simply need to execute this code (or push the “Run App” button at the top of your Shiny app code).</p>
 </div>
 <div id="step-5-customize" class="section level2">
@@ -529,6 +537,8 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <div id="example-monte-carlo-integration-1" class="section level2">
 <h2><span class="header-section-number">7.7</span> Example: Monte-Carlo Integration</h2>
 <!-- STEF: To determine the structure and content of this section. -->
+<iframe src="https://www.youtube.com/embed/0zlWcHDKCFw" width="672" height="400px">
+</iframe>
 </div>
 <div id="example-buffons-needle" class="section level2">
 <h2><span class="header-section-number">7.8</span> Example: Buffon’s needle</h2>
@@ -537,10 +547,10 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <p>Suppose that you drop a needle of unit length on a plane ruled by the lines <span class="math inline">\(y = m \; (m = 0, \pm 1, \pm 2, ...)\)</span> - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?</p>
 </blockquote>
 <p>Compte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows:</p>
-<span class="math display" id="eq:probbuffon">\[\begin{equation} 
+<p><span class="math display" id="eq:probbuffon">\[\begin{equation} 
 \mathbb{P}(\text{intersection}) = \frac{2}{\pi}.
 \tag{7.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>If you are curious about the derivation of this result, click on the button below.</p>
 <button id="hidebutton2">
 Derivation - Equation (7.1)
@@ -562,7 +572,6 @@ f_{Z, \Theta} (z, \theta) = f_{Z} (z) f_{\Theta} (\theta) = \frac{1}{\pi},
 \]</span></p>
 which verifies Equation <a href="shiny-web-applications.html#eq:probbuffon">(7.1)</a> and concludes the proof.
 </div>
-
 </div>
 
 <p>Georges-Louis Leclerc’s motivation behind this problem was to design an experiment to estimate the value of <span class="math inline">\(\pi\)</span>. Indeed, if you fling a needle a large number <span class="math inline">\(B\)</span> times onto a ruled plane and count the number of times <span class="math inline">\(S_B\)</span> that the needle intersects a line, we might be able to approximate <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span> and therefore <span class="math inline">\(\pi\)</span>. From Equation <a href="shiny-web-applications.html#eq:probbuffon">(7.1)</a>, we know that the proportion <span class="math inline">\(S_B/B\)</span> will be “close” to the probability <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span>. In fact the (weak) law of large number garantees that <span class="math inline">\(S_B/B\)</span> converges (in probability) to <span class="math inline">\(2/\pi\)</span>, i.e. for any given <span class="math inline">\(\varepsilon &gt; 0\)</span>,</p>
@@ -621,18 +630,18 @@ An additional input could be added consisting in the length of the needle. Howev
 </div>
 
 <p>A possible implementation of this function is given below:</p>
-<pre class="sourceCode r" id="cb424"><code class="sourceCode r">cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){
-  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span>
-  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)
-  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)
-  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span>
-  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])
-  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)
-  out
-}</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1">cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){</a>
+<a class="sourceLine" id="cb424-2" data-line-number="2">  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span></a>
+<a class="sourceLine" id="cb424-3" data-line-number="3">  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)</a>
+<a class="sourceLine" id="cb424-4" data-line-number="4">  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)</a>
+<a class="sourceLine" id="cb424-5" data-line-number="5">  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span></a>
+<a class="sourceLine" id="cb424-6" data-line-number="6">  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb424-7" data-line-number="7">  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)</a>
+<a class="sourceLine" id="cb424-8" data-line-number="8">  out</a>
+<a class="sourceLine" id="cb424-9" data-line-number="9">}</a></code></pre></div>
 <p>Here is an example of the output of this function:</p>
-<pre class="sourceCode r" id="cb425"><code class="sourceCode r">needle &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)
-needle</code></pre>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1">needle &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb425-2" data-line-number="2">needle</a></code></pre></div>
 <pre><code>## $start
 ## [1] 0.1307334 0.3302562
 ## 
@@ -642,9 +651,9 @@ needle</code></pre>
 ## $cross
 ## [1] TRUE</code></pre>
 <p>and we could now for example provide the following graphical representation of this random cast:</p>
-<pre class="sourceCode r" id="cb427"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
-<span class="kw">lines</span>(<span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">1</span>], needle<span class="op">$</span>end[<span class="dv">1</span>]), <span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">2</span>], needle<span class="op">$</span>end[<span class="dv">2</span>]))</code></pre>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)</a>
+<a class="sourceLine" id="cb427-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb427-3" data-line-number="3"><span class="kw">lines</span>(<span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">1</span>], needle<span class="op">$</span>end[<span class="dv">1</span>]), <span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">2</span>], needle<span class="op">$</span>end[<span class="dv">2</span>]))</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-231-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Next, we consider the function <code>buffon_experiment()</code>. This function is based on the previous function and contains the following inputs:</p>
 <ul>
@@ -660,29 +669,29 @@ needle</code></pre>
 <li><code>$plane</code>: the width of the (square) plane.</li>
 </ul>
 <p>A possible implementation of this function is provided below:</p>
-<pre class="sourceCode r" id="cb428"><code class="sourceCode r">buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){
-  
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){
-    <span class="kw">set.seed</span>(seed)
-  }
-  
-  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) 
-  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)
-  
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){
-    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)
-    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start
-    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end
-    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross
-  }
-  
-  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)
-  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span>
-  out
-}</code></pre>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1">buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){</a>
+<a class="sourceLine" id="cb428-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb428-3" data-line-number="3">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){</a>
+<a class="sourceLine" id="cb428-4" data-line-number="4">    <span class="kw">set.seed</span>(seed)</a>
+<a class="sourceLine" id="cb428-5" data-line-number="5">  }</a>
+<a class="sourceLine" id="cb428-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb428-7" data-line-number="7">  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) </a>
+<a class="sourceLine" id="cb428-8" data-line-number="8">  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</a>
+<a class="sourceLine" id="cb428-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb428-10" data-line-number="10">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</a>
+<a class="sourceLine" id="cb428-11" data-line-number="11">    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)</a>
+<a class="sourceLine" id="cb428-12" data-line-number="12">    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start</a>
+<a class="sourceLine" id="cb428-13" data-line-number="13">    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end</a>
+<a class="sourceLine" id="cb428-14" data-line-number="14">    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross</a>
+<a class="sourceLine" id="cb428-15" data-line-number="15">  }</a>
+<a class="sourceLine" id="cb428-16" data-line-number="16">  </a>
+<a class="sourceLine" id="cb428-17" data-line-number="17">  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)</a>
+<a class="sourceLine" id="cb428-18" data-line-number="18">  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span></a>
+<a class="sourceLine" id="cb428-19" data-line-number="19">  out</a>
+<a class="sourceLine" id="cb428-20" data-line-number="20">}</a></code></pre></div>
 <p>For example, if we consider an experiment where four needles are cast, we could obtain:</p>
-<pre class="sourceCode r" id="cb429"><code class="sourceCode r">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)
-experiment</code></pre>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" data-line-number="1">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb429-2" data-line-number="2">experiment</a></code></pre></div>
 <pre><code>## $start
 ##            [,1]         [,2]
 ## [1,]  0.5668833 -0.719905025
@@ -706,40 +715,40 @@ experiment</code></pre>
 ## attr(,&quot;class&quot;)
 ## [1] &quot;buffon_experiment&quot;</code></pre>
 <p>which could be represented as</p>
-<pre class="sourceCode r" id="cb431"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){
-  <span class="kw">lines</span>(<span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">1</span>], experiment<span class="op">$</span>end[i,<span class="dv">1</span>]), 
-        <span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">2</span>], experiment<span class="op">$</span>end[i,<span class="dv">2</span>]))
-}</code></pre>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)</a>
+<a class="sourceLine" id="cb431-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb431-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){</a>
+<a class="sourceLine" id="cb431-4" data-line-number="4">  <span class="kw">lines</span>(<span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">1</span>], experiment<span class="op">$</span>end[i,<span class="dv">1</span>]), </a>
+<a class="sourceLine" id="cb431-5" data-line-number="5">        <span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">2</span>], experiment<span class="op">$</span>end[i,<span class="dv">2</span>]))</a>
+<a class="sourceLine" id="cb431-6" data-line-number="6">}</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-234-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>We can now write a custom <code>plot()</code> function for the output of the function <code>buffon_experiment()</code>. This function will provide a way to visualize the experiment and will compute <span class="math inline">\(\hat{\pi}_B\)</span>, which will be shown in the title. A possible function is provided below:</p>
-<pre class="sourceCode r" id="cb432"><code class="sourceCode r">plot.buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(obj){
-  cross &lt;-<span class="st"> </span>obj<span class="op">$</span>cross
-  X_start &lt;-<span class="st"> </span>obj<span class="op">$</span>start
-  X_end &lt;-<span class="st"> </span>obj<span class="op">$</span>end
-  B &lt;-<span class="st"> </span><span class="kw">length</span>(cross)
-  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])
-  
-  title_part1 &lt;-<span class="st"> &#39;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment  -  &#39;</span>
-  title_part2 &lt;-<span class="st"> &#39; = &#39;</span>
-  pi_hat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">mean</span>(obj<span class="op">$</span>cross), <span class="dv">6</span>)
-  
-  title &lt;-<span class="st"> </span><span class="kw">bquote</span>(.(title_part1) <span class="op">~</span><span class="st"> </span><span class="kw">hat</span>(pi)[B] <span class="op">~</span><span class="st"> </span>.(title_part2) <span class="op">~</span><span class="st"> </span>.(pi_hat))
-  
-  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>), 
-       <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>), 
-       <span class="dt">main =</span> title)
-  <span class="kw">abline</span>(<span class="dt">h =</span> (<span class="op">-</span>obj<span class="op">$</span>plan)<span class="op">:</span>obj<span class="op">$</span>plan, <span class="dt">lty =</span> <span class="dv">3</span>)
-  
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){
-    <span class="kw">lines</span>(<span class="kw">c</span>(X_start[i,<span class="dv">1</span>], X_end[i,<span class="dv">1</span>]), <span class="kw">c</span>(X_start[i,<span class="dv">2</span>], X_end[i,<span class="dv">2</span>]), 
-          <span class="dt">col =</span> cols[cross[i] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])
-  }
-}</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">plot.buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(obj){</a>
+<a class="sourceLine" id="cb432-2" data-line-number="2">  cross &lt;-<span class="st"> </span>obj<span class="op">$</span>cross</a>
+<a class="sourceLine" id="cb432-3" data-line-number="3">  X_start &lt;-<span class="st"> </span>obj<span class="op">$</span>start</a>
+<a class="sourceLine" id="cb432-4" data-line-number="4">  X_end &lt;-<span class="st"> </span>obj<span class="op">$</span>end</a>
+<a class="sourceLine" id="cb432-5" data-line-number="5">  B &lt;-<span class="st"> </span><span class="kw">length</span>(cross)</a>
+<a class="sourceLine" id="cb432-6" data-line-number="6">  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb432-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb432-8" data-line-number="8">  title_part1 &lt;-<span class="st"> &#39;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment  -  &#39;</span></a>
+<a class="sourceLine" id="cb432-9" data-line-number="9">  title_part2 &lt;-<span class="st"> &#39; = &#39;</span></a>
+<a class="sourceLine" id="cb432-10" data-line-number="10">  pi_hat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">mean</span>(obj<span class="op">$</span>cross), <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb432-11" data-line-number="11">  </a>
+<a class="sourceLine" id="cb432-12" data-line-number="12">  title &lt;-<span class="st"> </span><span class="kw">bquote</span>(.(title_part1) <span class="op">~</span><span class="st"> </span><span class="kw">hat</span>(pi)[B] <span class="op">~</span><span class="st"> </span>.(title_part2) <span class="op">~</span><span class="st"> </span>.(pi_hat))</a>
+<a class="sourceLine" id="cb432-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb432-14" data-line-number="14">  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb432-15" data-line-number="15">       <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb432-16" data-line-number="16">       <span class="dt">main =</span> title)</a>
+<a class="sourceLine" id="cb432-17" data-line-number="17">  <span class="kw">abline</span>(<span class="dt">h =</span> (<span class="op">-</span>obj<span class="op">$</span>plan)<span class="op">:</span>obj<span class="op">$</span>plan, <span class="dt">lty =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb432-18" data-line-number="18">  </a>
+<a class="sourceLine" id="cb432-19" data-line-number="19">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</a>
+<a class="sourceLine" id="cb432-20" data-line-number="20">    <span class="kw">lines</span>(<span class="kw">c</span>(X_start[i,<span class="dv">1</span>], X_end[i,<span class="dv">1</span>]), <span class="kw">c</span>(X_start[i,<span class="dv">2</span>], X_end[i,<span class="dv">2</span>]), </a>
+<a class="sourceLine" id="cb432-21" data-line-number="21">          <span class="dt">col =</span> cols[cross[i] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb432-22" data-line-number="22">  }</a>
+<a class="sourceLine" id="cb432-23" data-line-number="23">}</a></code></pre></div>
 <p>Therefore, we could now run the same experiment as Georges-Louis Leclerc by flinging 2084 needles almost instanteously (which is the default value in the <code>buffon_experiment()</code> function we created):</p>
-<pre class="sourceCode r" id="cb433"><code class="sourceCode r">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)
-<span class="kw">plot</span>(experiment)</code></pre>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)</a>
+<a class="sourceLine" id="cb433-2" data-line-number="2"><span class="kw">plot</span>(experiment)</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-236-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Finally, we can consider the function <code>converge()</code>. Similarly to <code>buffon_experiment()</code>, the function <code>converge()</code> has the following inputs:</p>
 <ul>
@@ -749,123 +758,123 @@ experiment</code></pre>
 <li><code>M</code>: the number of experiments.</li>
 </ul>
 <p>The function returns the graph mentioned at the end of the previous section. A possible implementation of this function is provided below:</p>
-<pre class="sourceCode r" id="cb434"><code class="sourceCode r">converge &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){
-  
-  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){
-    <span class="kw">warning</span>(<span class="st">&quot;B was changed to 10&quot;</span>)
-    B &lt;-<span class="st"> </span><span class="dv">10</span>
-  }
-  
-  pi_hat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, M)
-  trials &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>B
-  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="op">+</span><span class="dv">1</span>)), 
-                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="op">:</span>M])
-  <span class="kw">set.seed</span>(seed)
-  
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){
-    cross &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)<span class="op">$</span>cross
-    pi_hat[,i] &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>trials<span class="op">/</span><span class="kw">cumsum</span>(cross)
-  }
-  
-  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">4</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,
-       <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[j]),
-       <span class="dt">xlab =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment&quot;</span>)
-  <span class="kw">grid</span>()
-  
-  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){
-    <span class="kw">lines</span>(trials, pi_hat[,i], <span class="dt">col =</span> cols[i])
-  }
-  
-  <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-}</code></pre>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">converge &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){</a>
+<a class="sourceLine" id="cb434-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb434-3" data-line-number="3">  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb434-4" data-line-number="4">    <span class="kw">warning</span>(<span class="st">&quot;B was changed to 10&quot;</span>)</a>
+<a class="sourceLine" id="cb434-5" data-line-number="5">    B &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb434-6" data-line-number="6">  }</a>
+<a class="sourceLine" id="cb434-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb434-8" data-line-number="8">  pi_hat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, M)</a>
+<a class="sourceLine" id="cb434-9" data-line-number="9">  trials &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>B</a>
+<a class="sourceLine" id="cb434-10" data-line-number="10">  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="op">+</span><span class="dv">1</span>)), </a>
+<a class="sourceLine" id="cb434-11" data-line-number="11">                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="op">:</span>M])</a>
+<a class="sourceLine" id="cb434-12" data-line-number="12">  <span class="kw">set.seed</span>(seed)</a>
+<a class="sourceLine" id="cb434-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb434-14" data-line-number="14">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){</a>
+<a class="sourceLine" id="cb434-15" data-line-number="15">    cross &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)<span class="op">$</span>cross</a>
+<a class="sourceLine" id="cb434-16" data-line-number="16">    pi_hat[,i] &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>trials<span class="op">/</span><span class="kw">cumsum</span>(cross)</a>
+<a class="sourceLine" id="cb434-17" data-line-number="17">  }</a>
+<a class="sourceLine" id="cb434-18" data-line-number="18">  </a>
+<a class="sourceLine" id="cb434-19" data-line-number="19">  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">4</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,</a>
+<a class="sourceLine" id="cb434-20" data-line-number="20">       <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[j]),</a>
+<a class="sourceLine" id="cb434-21" data-line-number="21">       <span class="dt">xlab =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment&quot;</span>)</a>
+<a class="sourceLine" id="cb434-22" data-line-number="22">  <span class="kw">grid</span>()</a>
+<a class="sourceLine" id="cb434-23" data-line-number="23">  </a>
+<a class="sourceLine" id="cb434-24" data-line-number="24">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){</a>
+<a class="sourceLine" id="cb434-25" data-line-number="25">    <span class="kw">lines</span>(trials, pi_hat[,i], <span class="dt">col =</span> cols[i])</a>
+<a class="sourceLine" id="cb434-26" data-line-number="26">  }</a>
+<a class="sourceLine" id="cb434-27" data-line-number="27">  </a>
+<a class="sourceLine" id="cb434-28" data-line-number="28">  <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb434-29" data-line-number="29">}</a></code></pre></div>
 <p>Therefore, if we were to repeat the original experiment of Georges-Louis Leclerc 20 times and compute <span class="math inline">\(\hat{\pi}_j\)</span> for each experiment we would obtain:</p>
-<pre class="sourceCode r" id="cb435"><code class="sourceCode r"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</code></pre>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-238-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>which provides some illustrations on the convergence of the estimator.</p>
 </div>
 <div id="step-2-frontend" class="section level3">
 <h3><span class="header-section-number">7.8.2</span> Step 2: Frontend</h3>
 <p>We start by constructing an “empty” Shiny app, i.e.</p>
-<pre class="sourceCode r" id="cb436"><code class="sourceCode r"><span class="co"># Define UI for application</span>
-ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
-  
-  <span class="co"># Application title</span>
-  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
-  
-  <span class="kw">sidebarLayout</span>(
-    <span class="kw">sidebarPanel</span>(
-      <span class="co"># Add inputs here!</span>
-    ),
-    
-    <span class="kw">mainPanel</span>(
-      <span class="kw">tabsetPanel</span>(
-        <span class="co"># Add tabs here!</span>
-      )
-    )
-  )
-)
-
-<span class="co"># Define server</span>
-server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-}
-
-<span class="co"># Run the application </span>
-<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1"><span class="co"># Define UI for application</span></a>
+<a class="sourceLine" id="cb436-2" data-line-number="2">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb436-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb436-4" data-line-number="4">  <span class="co"># Application title</span></a>
+<a class="sourceLine" id="cb436-5" data-line-number="5">  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),</a>
+<a class="sourceLine" id="cb436-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb436-7" data-line-number="7">  <span class="kw">sidebarLayout</span>(</a>
+<a class="sourceLine" id="cb436-8" data-line-number="8">    <span class="kw">sidebarPanel</span>(</a>
+<a class="sourceLine" id="cb436-9" data-line-number="9">      <span class="co"># Add inputs here!</span></a>
+<a class="sourceLine" id="cb436-10" data-line-number="10">    ),</a>
+<a class="sourceLine" id="cb436-11" data-line-number="11">    </a>
+<a class="sourceLine" id="cb436-12" data-line-number="12">    <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb436-13" data-line-number="13">      <span class="kw">tabsetPanel</span>(</a>
+<a class="sourceLine" id="cb436-14" data-line-number="14">        <span class="co"># Add tabs here!</span></a>
+<a class="sourceLine" id="cb436-15" data-line-number="15">      )</a>
+<a class="sourceLine" id="cb436-16" data-line-number="16">    )</a>
+<a class="sourceLine" id="cb436-17" data-line-number="17">  )</a>
+<a class="sourceLine" id="cb436-18" data-line-number="18">)</a>
+<a class="sourceLine" id="cb436-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb436-20" data-line-number="20"><span class="co"># Define server</span></a>
+<a class="sourceLine" id="cb436-21" data-line-number="21">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
+<a class="sourceLine" id="cb436-22" data-line-number="22">}</a>
+<a class="sourceLine" id="cb436-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb436-24" data-line-number="24"><span class="co"># Run the application </span></a>
+<a class="sourceLine" id="cb436-25" data-line-number="25"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
 <p>If you run this empty app you should obtain the result below:</p>
 <center>
 <img src="images/shiny_ui_part1.png" />
 </center>
 <p>We will start by adding the required input widgets by modifying the <code>ui</code> function as follows:</p>
-<pre class="sourceCode r" id="cb437"><code class="sourceCode r"><span class="co"># Define UI for application</span>
-ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
-  
-  <span class="co"># Application title</span>
-  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
-  
-  <span class="kw">sidebarLayout</span>(
-    <span class="kw">sidebarPanel</span>(
-      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
-      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))
-    ),
-    
-    <span class="kw">mainPanel</span>(
-      <span class="kw">tabsetPanel</span>(
-        <span class="co"># Add tabs here!</span>
-      )
-    )
-  )
-)</code></pre>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1"><span class="co"># Define UI for application</span></a>
+<a class="sourceLine" id="cb437-2" data-line-number="2">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb437-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb437-4" data-line-number="4">  <span class="co"># Application title</span></a>
+<a class="sourceLine" id="cb437-5" data-line-number="5">  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),</a>
+<a class="sourceLine" id="cb437-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb437-7" data-line-number="7">  <span class="kw">sidebarLayout</span>(</a>
+<a class="sourceLine" id="cb437-8" data-line-number="8">    <span class="kw">sidebarPanel</span>(</a>
+<a class="sourceLine" id="cb437-9" data-line-number="9">      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb437-10" data-line-number="10">      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb437-11" data-line-number="11">      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb437-12" data-line-number="12">      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),</a>
+<a class="sourceLine" id="cb437-13" data-line-number="13">      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))</a>
+<a class="sourceLine" id="cb437-14" data-line-number="14">    ),</a>
+<a class="sourceLine" id="cb437-15" data-line-number="15">    </a>
+<a class="sourceLine" id="cb437-16" data-line-number="16">    <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb437-17" data-line-number="17">      <span class="kw">tabsetPanel</span>(</a>
+<a class="sourceLine" id="cb437-18" data-line-number="18">        <span class="co"># Add tabs here!</span></a>
+<a class="sourceLine" id="cb437-19" data-line-number="19">      )</a>
+<a class="sourceLine" id="cb437-20" data-line-number="20">    )</a>
+<a class="sourceLine" id="cb437-21" data-line-number="21">  )</a>
+<a class="sourceLine" id="cb437-22" data-line-number="22">)</a></code></pre></div>
 <p>By running this update you should now obtain:</p>
 <center>
 <img src="images/shiny_ui_part2.png" />
 </center>
 <p>Next, we create two output tabs in which we will find the previously mentioned graphs. This can be done by again modifying the <code>ui</code>function as follows:</p>
-<pre class="sourceCode r" id="cb438"><code class="sourceCode r"><span class="co"># Define UI for application</span>
-ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
-  
-  <span class="co"># Application title</span>
-  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),
-  
-  <span class="kw">sidebarLayout</span>(
-    <span class="kw">sidebarPanel</span>(
-      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),
-      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),
-      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))
-    ),
-    
-    <span class="kw">mainPanel</span>(
-      <span class="kw">tabsetPanel</span>(
-        <span class="kw">tabPanel</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;exp&quot;</span>)),
-        <span class="kw">tabPanel</span>(<span class="st">&quot;Convergence&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;conv&quot;</span>))
-      )
-    )
-  )
-)</code></pre>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1"><span class="co"># Define UI for application</span></a>
+<a class="sourceLine" id="cb438-2" data-line-number="2">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb438-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb438-4" data-line-number="4">  <span class="co"># Application title</span></a>
+<a class="sourceLine" id="cb438-5" data-line-number="5">  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),</a>
+<a class="sourceLine" id="cb438-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb438-7" data-line-number="7">  <span class="kw">sidebarLayout</span>(</a>
+<a class="sourceLine" id="cb438-8" data-line-number="8">    <span class="kw">sidebarPanel</span>(</a>
+<a class="sourceLine" id="cb438-9" data-line-number="9">      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb438-10" data-line-number="10">      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb438-11" data-line-number="11">      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb438-12" data-line-number="12">      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),</a>
+<a class="sourceLine" id="cb438-13" data-line-number="13">      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))</a>
+<a class="sourceLine" id="cb438-14" data-line-number="14">    ),</a>
+<a class="sourceLine" id="cb438-15" data-line-number="15">    </a>
+<a class="sourceLine" id="cb438-16" data-line-number="16">    <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb438-17" data-line-number="17">      <span class="kw">tabsetPanel</span>(</a>
+<a class="sourceLine" id="cb438-18" data-line-number="18">        <span class="kw">tabPanel</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;exp&quot;</span>)),</a>
+<a class="sourceLine" id="cb438-19" data-line-number="19">        <span class="kw">tabPanel</span>(<span class="st">&quot;Convergence&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;conv&quot;</span>))</a>
+<a class="sourceLine" id="cb438-20" data-line-number="20">      )</a>
+<a class="sourceLine" id="cb438-21" data-line-number="21">    )</a>
+<a class="sourceLine" id="cb438-22" data-line-number="22">  )</a>
+<a class="sourceLine" id="cb438-23" data-line-number="23">)</a></code></pre></div>
 <p>The app should now look like this:</p>
 <center>
 <img src="images/shiny_ui_part3.png" />
@@ -875,120 +884,120 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 <div id="step-3-connecting-frontend-and-backend" class="section level3">
 <h3><span class="header-section-number">7.8.3</span> Step 3: Connecting frontend and backend</h3>
 <p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start by “connecting” our output tabs defined in the <code>ui</code> function with the output in the server function. Since both outputs are graphs, we will use the function <code>renderPlot()</code> as follows:</p>
-<pre class="sourceCode r" id="cb439"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="co"># Add graph 1 here!</span>
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-  
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="co"># Add graph 2 here!</span>
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-}</code></pre>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
+<a class="sourceLine" id="cb439-2" data-line-number="2">  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb439-3" data-line-number="3">    <span class="co"># Add graph 1 here!</span></a>
+<a class="sourceLine" id="cb439-4" data-line-number="4">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb439-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb439-6" data-line-number="6">  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb439-7" data-line-number="7">    <span class="co"># Add graph 2 here!</span></a>
+<a class="sourceLine" id="cb439-8" data-line-number="8">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb439-9" data-line-number="9">}</a></code></pre></div>
 <p>If you re-run the app at this point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user clicks on the “action” button. This can be done by adding the following lines to the <code>server</code> function:</p>
-<pre class="sourceCode r" id="cb440"><code class="sourceCode r">cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
-  })</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" data-line-number="1">cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb440-2" data-line-number="2">    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb440-3" data-line-number="3">                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</a>
+<a class="sourceLine" id="cb440-4" data-line-number="4">  })</a></code></pre></div>
 <p>When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing the following part of the <code>server</code> function</p>
-<pre class="sourceCode r" id="cb441"><code class="sourceCode r">output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="co"># Add graph 1 here!</span>
-}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" data-line-number="1">output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb441-2" data-line-number="2">    <span class="co"># Add graph 1 here!</span></a>
+<a class="sourceLine" id="cb441-3" data-line-number="3">}, <span class="dt">height =</span> <span class="dv">620</span>)</a></code></pre></div>
 <p>with</p>
-<pre class="sourceCode r" id="cb442"><code class="sourceCode r">output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">plot</span>(<span class="kw">cast</span>())
-}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" data-line-number="1">output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb442-2" data-line-number="2">    <span class="kw">plot</span>(<span class="kw">cast</span>())</a>
+<a class="sourceLine" id="cb442-3" data-line-number="3">}, <span class="dt">height =</span> <span class="dv">620</span>)</a></code></pre></div>
 <p>Therefore, your <code>server</code> function should now be:</p>
-<pre class="sourceCode r" id="cb443"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-  
-  <span class="co"># Fling some needles!</span>
-  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
-  })
-  
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">plot</span>(<span class="kw">cast</span>())
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-  
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="co"># Add graph 2 here!</span>
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-}</code></pre>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
+<a class="sourceLine" id="cb443-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb443-3" data-line-number="3">  <span class="co"># Fling some needles!</span></a>
+<a class="sourceLine" id="cb443-4" data-line-number="4">  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb443-5" data-line-number="5">    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb443-6" data-line-number="6">                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</a>
+<a class="sourceLine" id="cb443-7" data-line-number="7">  })</a>
+<a class="sourceLine" id="cb443-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb443-9" data-line-number="9">  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb443-10" data-line-number="10">    <span class="kw">plot</span>(<span class="kw">cast</span>())</a>
+<a class="sourceLine" id="cb443-11" data-line-number="11">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb443-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb443-13" data-line-number="13">  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb443-14" data-line-number="14">    <span class="co"># Add graph 2 here!</span></a>
+<a class="sourceLine" id="cb443-15" data-line-number="15">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb443-16" data-line-number="16">}</a></code></pre></div>
 <p>and when reloading the app you should now see:</p>
 <center>
 <img src="images/shiny_server_part1.png" />
 </center>
 <p>Similarly, we do the same thing for the second graph by adding the following lines to our <code>server</code> function:</p>
-<pre class="sourceCode r" id="cb444"><code class="sourceCode r">conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)
-})</code></pre>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" data-line-number="1">conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb444-2" data-line-number="2">    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb444-3" data-line-number="3">             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)</a>
+<a class="sourceLine" id="cb444-4" data-line-number="4">})</a></code></pre></div>
 <p>and replacing</p>
-<pre class="sourceCode r" id="cb445"><code class="sourceCode r">output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="co"># Add graph 2 here!</span>
-}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1">output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb445-2" data-line-number="2">    <span class="co"># Add graph 2 here!</span></a>
+<a class="sourceLine" id="cb445-3" data-line-number="3">}, <span class="dt">height =</span> <span class="dv">620</span>)</a></code></pre></div>
 <p>with</p>
-<pre class="sourceCode r" id="cb446"><code class="sourceCode r">output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">conv</span>()
-}, <span class="dt">height =</span> <span class="dv">620</span>)</code></pre>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" data-line-number="1">output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb446-2" data-line-number="2">    <span class="kw">conv</span>()</a>
+<a class="sourceLine" id="cb446-3" data-line-number="3">}, <span class="dt">height =</span> <span class="dv">620</span>)</a></code></pre></div>
 <p>After these changes, your <code>server</code> function should look like this:</p>
-<pre class="sourceCode r" id="cb447"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-  
-  <span class="co"># Fling some needles!</span>
-  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
-  })
-  
-  conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)
-  })
-  
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">plot</span>(<span class="kw">cast</span>())
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-  
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">conv</span>()
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-}</code></pre>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
+<a class="sourceLine" id="cb447-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb447-3" data-line-number="3">  <span class="co"># Fling some needles!</span></a>
+<a class="sourceLine" id="cb447-4" data-line-number="4">  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb447-5" data-line-number="5">    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb447-6" data-line-number="6">                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</a>
+<a class="sourceLine" id="cb447-7" data-line-number="7">  })</a>
+<a class="sourceLine" id="cb447-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb447-9" data-line-number="9">  conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb447-10" data-line-number="10">    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb447-11" data-line-number="11">             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)</a>
+<a class="sourceLine" id="cb447-12" data-line-number="12">  })</a>
+<a class="sourceLine" id="cb447-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb447-14" data-line-number="14">  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb447-15" data-line-number="15">    <span class="kw">plot</span>(<span class="kw">cast</span>())</a>
+<a class="sourceLine" id="cb447-16" data-line-number="16">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb447-17" data-line-number="17">  </a>
+<a class="sourceLine" id="cb447-18" data-line-number="18">  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb447-19" data-line-number="19">    <span class="kw">conv</span>()</a>
+<a class="sourceLine" id="cb447-20" data-line-number="20">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb447-21" data-line-number="21">}</a></code></pre></div>
 <p>and when reloading the app you should now see on the second tab:</p>
 <center>
 <img src="images/shiny_server_part2.png" />
 </center>
 <p>Our next step is now to update the seed every time the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynamically</strong> update the input directly from the <code>server</code> function. Therefore, in order to randomly generate a new seed each time the user clicks on the “action” button, we can do the following:</p>
-<pre class="sourceCode r" id="cb448"><code class="sourceCode r"><span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{
-    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
-                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))
-})</code></pre>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1"><span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{</a>
+<a class="sourceLine" id="cb448-2" data-line-number="2">    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, </a>
+<a class="sourceLine" id="cb448-3" data-line-number="3">                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb448-4" data-line-number="4">})</a></code></pre></div>
 <p>Therefore, your final <code>server</code> function is now:</p>
-<pre class="sourceCode r" id="cb449"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {
-  
-  <span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{
-    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, 
-                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))
-  })
-  
-  <span class="co"># Fling some needles!</span>
-  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-                      <span class="dt">seed =</span> input<span class="op">$</span>seed)
-  })
-  
-  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {
-    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, 
-             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)
-  })
-  
-  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">plot</span>(<span class="kw">cast</span>())
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-  
-  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
-    <span class="kw">conv</span>()
-  }, <span class="dt">height =</span> <span class="dv">620</span>)
-}</code></pre>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb449-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb449-3" data-line-number="3">  <span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{</a>
+<a class="sourceLine" id="cb449-4" data-line-number="4">    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, </a>
+<a class="sourceLine" id="cb449-5" data-line-number="5">                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb449-6" data-line-number="6">  })</a>
+<a class="sourceLine" id="cb449-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb449-8" data-line-number="8">  <span class="co"># Fling some needles!</span></a>
+<a class="sourceLine" id="cb449-9" data-line-number="9">  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb449-10" data-line-number="10">    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb449-11" data-line-number="11">                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</a>
+<a class="sourceLine" id="cb449-12" data-line-number="12">  })</a>
+<a class="sourceLine" id="cb449-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb449-14" data-line-number="14">  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</a>
+<a class="sourceLine" id="cb449-15" data-line-number="15">    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </a>
+<a class="sourceLine" id="cb449-16" data-line-number="16">             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)</a>
+<a class="sourceLine" id="cb449-17" data-line-number="17">  })</a>
+<a class="sourceLine" id="cb449-18" data-line-number="18">  </a>
+<a class="sourceLine" id="cb449-19" data-line-number="19">  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb449-20" data-line-number="20">    <span class="kw">plot</span>(<span class="kw">cast</span>())</a>
+<a class="sourceLine" id="cb449-21" data-line-number="21">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb449-22" data-line-number="22">  </a>
+<a class="sourceLine" id="cb449-23" data-line-number="23">  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</a>
+<a class="sourceLine" id="cb449-24" data-line-number="24">    <span class="kw">conv</span>()</a>
+<a class="sourceLine" id="cb449-25" data-line-number="25">  }, <span class="dt">height =</span> <span class="dv">620</span>)</a>
+<a class="sourceLine" id="cb449-26" data-line-number="26">}</a></code></pre></div>
 <p>With this change, you will now observe that the seed is updated each time the “action” button is clicked. The final version of the app we have just created can be found <a href="http://shiny.science.psu.edu/szg279/buffon/">here</a>.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -1007,14 +1016,14 @@ ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
 </div>
 <h3><span class="header-section-number">A</span> Basic Probability and Statistics with <code>R</code></h3>
 <div id="refs" class="references">
+<div id="ref-dasgupta2008asymptotic">
+<p>DasGupta, Anirban. 2008. <em>Asymptotic Theory of Statistics and Probability</em>. Springer Science &amp; Business Media.</p>
+</div>
 <div id="ref-buffon1777essai">
 <p>Georges-Louis Leclerc, Compte de Buffon. 1777. <em>Essai d’arithmétique Morale</em>. Histoire naturelle, générale, et particulière (supplément).</p>
 </div>
 <div id="ref-grimmett2001probability">
 <p>Grimmett, Geoffrey, and David Stirzaker. 2001. <em>Probability and Random Processes</em>. Oxford university press.</p>
-</div>
-<div id="ref-dasgupta2008asymptotic">
-<p>DasGupta, Anirban. 2008. <em>Asymptotic Theory of Statistics and Probability</em>. Springer Science &amp; Business Media.</p>
 </div>
 </div>
             </section>
@@ -1075,8 +1084,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
