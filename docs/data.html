@@ -1633,10 +1633,16 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 </div>
 <div id="example-maps" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Example: Maps</h3>
+
+<div class="rmdimportant">
+This example uses the Google API that first requires the user to register. Unfortunately, one needs a credit card for potential billing. Nonetheless, there is some free use before billing. Check this <a href="https://github.com/dkahle/ggmap">link</a> for further information.
+</div>
+
 <p>Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, <code>ggmap</code> to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using <code>geocode</code> within <code>ggmap</code>.</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">library</span>(ggmap)</a>
-<a class="sourceLine" id="cb286-2" data-line-number="2">birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>, <span class="st">&quot;Moscow, Russia&quot;</span>, <span class="st">&quot;Wiener Neustadt, Austria&quot;</span>)</a>
-<a class="sourceLine" id="cb286-3" data-line-number="3">birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place, <span class="dt">source =</span> <span class="st">&quot;dsk&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb286-2" data-line-number="2"><span class="kw">register_google</span>(<span class="dt">key =</span> <span class="st">&quot;your key&quot;</span>)</a>
+<a class="sourceLine" id="cb286-3" data-line-number="3">birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>, <span class="st">&quot;Moscow, Russia&quot;</span>, <span class="st">&quot;Wiener Neustadt, Austria&quot;</span>)</a>
+<a class="sourceLine" id="cb286-4" data-line-number="4">birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place)</a></code></pre></div>
 <p>Furthermore, we can create new columns of dataframes using vectors that we created before.</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">birth_coord<span class="op">$</span>Players &lt;-<span class="st"> </span>players</a>
 <a class="sourceLine" id="cb287-2" data-line-number="2">birth_coord<span class="op">$</span>WP &lt;-<span class="st"> </span>win_percentage</a>
@@ -1644,21 +1650,21 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <pre><code>## # A tibble: 5 x 4
 ##     lon   lat Players            WP
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
-## 1    NA    NA Novak Djokovic   82.7
-## 2    NA    NA Rafael Nadal     83.1
-## 3    NA    NA Roger Federer    82.2
-## 4    NA    NA Daniil Medvedev  63.6
-## 5    NA    NA Dominic Thiem    64.3</code></pre>
+## 1 20.4   44.8 Novak Djokovic   82.7
+## 2  3.21  39.6 Rafael Nadal     83.1
+## 3  7.59  47.6 Roger Federer    82.2
+## 4 37.6   55.8 Daniil Medvedev  63.6
+## 5 16.2   47.8 Dominic Thiem    64.3</code></pre>
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="kw">is.data.frame</span>(birth_coord)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made.</p>
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">library</span>(mapproj)</a>
-<a class="sourceLine" id="cb291-2" data-line-number="2">map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb291-2" data-line-number="2">map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb291-3" data-line-number="3"><span class="kw">ggmap</span>(map) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, </a>
 <a class="sourceLine" id="cb291-4" data-line-number="4">             <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> WP)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb291-5" data-line-number="5"><span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</a></code></pre></div>
 <center>
-<img src="images/ggmap_tennis.png" style="width:80.0%" />
+<img src="images/ggmap_tennis_30092019.png" style="width:80.0%" />
 </center>
 <p>As we see, we can produce various output using dataframe objects.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>

@@ -1246,17 +1246,29 @@ tennis[order(tennis[,"grand_slam_win"], decreasing = TRUE),]
 
 ### Example: Maps 
 
-Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
-
-```{r, eval = FALSE, echo = FALSE}
-library(ggmap)
-register_google(key = "AIzaSyC94oaWm17jLECQfbcCCVylkIZ1m1WveU4") # private!
+```{block2,  type='rmdimportant'}
+This example uses the Google API that first requires the user to register. Unfortunately, one needs a credit card for potential billing. Nonetheless, there is some free use before billing. Check this [link](https://github.com/dkahle/ggmap) for further information.
 ```
 
-```{r, message = FALSE, cache = TRUE, eval=FALSE}
+Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, `ggmap` to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using `geocode` within `ggmap`. 
+
+```{r, eval = F, echo = FALSE}
 library(ggmap)
+register_google(key = "") # private!
+```
+
+```{r, message = FALSE, cache = TRUE, eval=F}
+library(ggmap)
+register_google(key = "your key")
 birth_place <- c("Belgrade, Serbia", "Manacor, Spain", "Basel, Switzerland", "Moscow, Russia", "Wiener Neustadt, Austria")
-birth_coord <- geocode(birth_place, source = "dsk")
+birth_coord <- geocode(birth_place)
+```
+
+```{r, message = FALSE, cache = TRUE, eval=F, echo=F}
+library(ggmap)
+# register_google(key = "your l)
+birth_place <- c("Belgrade, Serbia", "Manacor, Spain", "Basel, Switzerland", "Moscow, Russia", "Wiener Neustadt, Austria")
+birth_coord <- geocode(birth_place)
 ```
 
 Furthermore, we can create new columns of dataframes using vectors that we created before. 
@@ -1273,13 +1285,13 @@ Let's represent this information graphically. We haven't seen how to make graph 
 
 ```{r, eval=F, message = FALSE, fig.align = "center", fig.height = 5, fig.width = 7.5, cache = TRUE}
 library(mapproj)
-map <- get_map(location = 'Switzerland', zoom = 4)
+map <- get_map(location = 'Switzerland', zoom = 3)
 ggmap(map) + geom_point(data = birth_coord, 
              aes(lon, lat, col = Players, size = WP)) + 
              xlab("Longitude") + ylab("Latitude")
 ```
 
-<center>![](images/ggmap_tennis.png){width=80%}</center>
+<center>![](images/ggmap_tennis_30092019.png){width=80%}</center>
 
 As we see, we can produce various output using dataframe objects. 
 

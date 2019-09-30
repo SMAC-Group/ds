@@ -332,7 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For instance, based on the tutorial example, we may intend to build an application that creates a histogram based on the waiting time between eruptions of the Old Faithful geyser in Yellowstone National Park (that can be found in the R dataset <code>faithful</code>), allowing the user to specify the number of bins. Using the second column in the dataset (representing the waiting times), if we were to use the default values for the histogram function in R we would obtain the following plot.</p>
 <div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1">x &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] </a>
 <a class="sourceLine" id="cb418-2" data-line-number="2"><span class="kw">hist</span>(x)</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 <p>However, the representation and interpretation of the data can sometimes change considerably if using different visualization parameters. Indeed, among others, the <code>hist()</code> function includes an option called <code>breaks</code> that allows the user to specify a vector giving the number of breakpoints between histogram cells. An example of how this is used and changes the representation of the data can be found below.</p>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb419-2" data-line-number="2"></a>
@@ -343,14 +343,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb419-7" data-line-number="7"><span class="co"># Histogram with 19 bins</span></a>
 <a class="sourceLine" id="cb419-8" data-line-number="8">bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb419-9" data-line-number="9"><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p>As you may notice, the number of bins created by using this option is always one unit less than the length of the specified vector (i.e. 9 and 19). Therefore, if we intend to deliver an app that allows the user to directly specify the number of bins, we should take this into account and add one unit to the input that the user has given within the <code>length.out</code> option. Ideally, we would be looking to implement a function which includes the following steps:</p>
 <div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1">input &lt;-<span class="st"> </span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb420-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb420-3" data-line-number="3"><span class="co"># Histogram with input bins</span></a>
 <a class="sourceLine" id="cb420-4" data-line-number="4">bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb420-5" data-line-number="5"><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 <p>where the value given to the <code>input</code> object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.</p>
 </div>
 <div id="step-2-user-interface-ui-frontend" class="section level2">
@@ -654,7 +654,7 @@ An additional input could be added consisting in the length of the needle. Howev
 <div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1"><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)</a>
 <a class="sourceLine" id="cb427-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb427-3" data-line-number="3"><span class="kw">lines</span>(<span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">1</span>], needle<span class="op">$</span>end[<span class="dv">1</span>]), <span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">2</span>], needle<span class="op">$</span>end[<span class="dv">2</span>]))</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-231-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-233-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Next, we consider the function <code>buffon_experiment()</code>. This function is based on the previous function and contains the following inputs:</p>
 <ul>
 <li><code>B</code>: the number of needles being casted;</li>
@@ -721,7 +721,7 @@ An additional input could be added consisting in the length of the needle. Howev
 <a class="sourceLine" id="cb431-4" data-line-number="4">  <span class="kw">lines</span>(<span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">1</span>], experiment<span class="op">$</span>end[i,<span class="dv">1</span>]), </a>
 <a class="sourceLine" id="cb431-5" data-line-number="5">        <span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">2</span>], experiment<span class="op">$</span>end[i,<span class="dv">2</span>]))</a>
 <a class="sourceLine" id="cb431-6" data-line-number="6">}</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-234-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-236-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>We can now write a custom <code>plot()</code> function for the output of the function <code>buffon_experiment()</code>. This function will provide a way to visualize the experiment and will compute <span class="math inline">\(\hat{\pi}_B\)</span>, which will be shown in the title. A possible function is provided below:</p>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">plot.buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(obj){</a>
 <a class="sourceLine" id="cb432-2" data-line-number="2">  cross &lt;-<span class="st"> </span>obj<span class="op">$</span>cross</a>
@@ -749,7 +749,7 @@ An additional input could be added consisting in the length of the needle. Howev
 <p>Therefore, we could now run the same experiment as Georges-Louis Leclerc by flinging 2084 needles almost instanteously (which is the default value in the <code>buffon_experiment()</code> function we created):</p>
 <div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)</a>
 <a class="sourceLine" id="cb433-2" data-line-number="2"><span class="kw">plot</span>(experiment)</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-236-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-238-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Finally, we can consider the function <code>converge()</code>. Similarly to <code>buffon_experiment()</code>, the function <code>converge()</code> has the following inputs:</p>
 <ul>
 <li><code>B</code>: the number of needles being cast;</li>
@@ -789,7 +789,7 @@ An additional input could be added consisting in the length of the needle. Howev
 <a class="sourceLine" id="cb434-29" data-line-number="29">}</a></code></pre></div>
 <p>Therefore, if we were to repeat the original experiment of Georges-Louis Leclerc 20 times and compute <span class="math inline">\(\hat{\pi}_j\)</span> for each experiment we would obtain:</p>
 <div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1"><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</a></code></pre></div>
-<p><img src="ds_files/figure-html/unnamed-chunk-238-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="ds_files/figure-html/unnamed-chunk-240-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>which provides some illustrations on the convergence of the estimator.</p>
 </div>
 <div id="step-2-frontend" class="section level3">
