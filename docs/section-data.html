@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-02-20" />
+<meta name="date" content="2020-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -458,38 +458,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <p><code>c()</code> is a generic function that combines arguments to form a vector. All arguments are coerced to a common type (which is the type of the returned value) and all attributes except names are removed. For example, consider the number of grand slams won by the five players considered in the eighth column of Table <a href="section-data.html#tab:tennis">4.2</a>:</p>
-<div class="sourceCode" id="section-cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="section-data.html#cb37-1"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="section-data.html#cb36-1"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div>
 <p>To display the values stored in <code>grand_slam_win</code> we could simply enter the following in the R console:</p>
-<div class="sourceCode" id="section-cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="section-data.html#cb38-1"></a>grand_slam_win</span></code></pre></div>
+<div class="sourceCode" id="section-cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="section-data.html#cb37-1"></a>grand_slam_win</span></code></pre></div>
 <pre><code>## [1] 16 19 20  0  0</code></pre>
 <p>Alternatively, we could have created and displayed the value by using <code>()</code> around the definition of the object itself as follows:</p>
-<div class="sourceCode" id="section-cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="section-data.html#cb40-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="section-data.html#cb39-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>## [1] 16 19 20  0  0</code></pre>
 <p>Various forms of “nested concatenation” can be used to define vectors. For example, we could also define <code>grand_slam_win</code> as</p>
-<div class="sourceCode" id="section-cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="section-data.html#cb42-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">20</span>, <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">c</span>(<span class="dv">0</span>)))))</span></code></pre></div>
+<div class="sourceCode" id="section-cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="section-data.html#cb41-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">20</span>, <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">c</span>(<span class="dv">0</span>)))))</span></code></pre></div>
 <pre><code>## [1] 16 19 20  0  0</code></pre>
 <p>This approach is often used to assemble vectors in various ways.</p>
 <p>It is also possible to define vectors with characters, for example we could define a vector with the player names as follows:</p>
-<div class="sourceCode" id="section-cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="section-data.html#cb44-1"></a>(players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
-<span id="cb44-2"><a href="section-data.html#cb44-2"></a>              <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="section-data.html#cb43-1"></a>(players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
+<span id="cb43-2"><a href="section-data.html#cb43-2"></a>              <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;   &quot;Daniil Medvedev&quot;
 ## [5] &quot;Dominic Thiem&quot;</code></pre>
 <div id="section-type" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Type</h3>
 <p>We can evaluate the kind or type of elements that are stored in a vector using the function <code>typeof()</code>. For example, for the vectors we just created we obtain:</p>
-<div class="sourceCode" id="section-cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="section-data.html#cb46-1"></a><span class="kw">typeof</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="section-data.html#cb45-1"></a><span class="kw">typeof</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="section-cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="section-data.html#cb48-1"></a><span class="kw">typeof</span>(players)</span></code></pre></div>
+<div class="sourceCode" id="section-cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="section-data.html#cb47-1"></a><span class="kw">typeof</span>(players)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>This is a little surprising since all the elements in <code>grand_slam_win</code> are integers and it would seem natural to expect this as an output of the function <code>typeof()</code>. This is because R considers any number as a “double” by default, except when adding the suffix <code>L</code> after an integer. For example:</p>
-<div class="sourceCode" id="section-cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="section-data.html#cb50-1"></a><span class="kw">typeof</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="section-data.html#cb49-1"></a><span class="kw">typeof</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="section-cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="section-data.html#cb52-1"></a><span class="kw">typeof</span>(1L)</span></code></pre></div>
+<div class="sourceCode" id="section-cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="section-data.html#cb51-1"></a><span class="kw">typeof</span>(1L)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Therefore, we could express <code>grand_slam_win</code> as follows:</p>
-<div class="sourceCode" id="section-cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="section-data.html#cb54-1"></a>(grand_slam_win_int &lt;-<span class="st"> </span><span class="kw">c</span>(16L, 19L, 20L, 0L, 0L))</span></code></pre></div>
+<div class="sourceCode" id="section-cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="section-data.html#cb53-1"></a>(grand_slam_win_int &lt;-<span class="st"> </span><span class="kw">c</span>(16L, 19L, 20L, 0L, 0L))</span></code></pre></div>
 <pre><code>## [1] 16 19 20  0  0</code></pre>
-<div class="sourceCode" id="section-cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="section-data.html#cb56-1"></a><span class="kw">typeof</span>(grand_slam_win_int)</span></code></pre></div>
+<div class="sourceCode" id="section-cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="section-data.html#cb55-1"></a><span class="kw">typeof</span>(grand_slam_win_int)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>In general, the difference between the two is relatively unimportant.</p>
 </div>
@@ -500,15 +500,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  \text{logical} &lt; \text{integer} &lt; \text{numeric} &lt; \text{character},
 \end{equation*}\]</span></p>
 <p>which simply means that if a vector has more than one data type, the “shared” type will be that of the “largest” type according to the progression shown above. For example:</p>
-<div class="sourceCode" id="section-cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="section-data.html#cb58-1"></a><span class="co"># Logical + numeric</span></span>
-<span id="cb58-2"><a href="section-data.html#cb58-2"></a>(mix_logic_int &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">12</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="section-data.html#cb57-1"></a><span class="co"># Logical + numeric</span></span>
+<span id="cb57-2"><a href="section-data.html#cb57-2"></a>(mix_logic_int &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">12</span>, <span class="fl">0.5</span>))</span></code></pre></div>
 <pre><code>## [1]  1.0 12.0  0.5</code></pre>
-<div class="sourceCode" id="section-cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="section-data.html#cb60-1"></a><span class="kw">typeof</span>(mix_logic_int)</span></code></pre></div>
+<div class="sourceCode" id="section-cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="section-data.html#cb59-1"></a><span class="kw">typeof</span>(mix_logic_int)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="section-cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="section-data.html#cb62-1"></a><span class="co"># Numeric + character</span></span>
-<span id="cb62-2"><a href="section-data.html#cb62-2"></a>(mix_int_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">14.3</span>, <span class="st">&quot;Hi&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="section-data.html#cb61-1"></a><span class="co"># Numeric + character</span></span>
+<span id="cb61-2"><a href="section-data.html#cb61-2"></a>(mix_int_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">14.3</span>, <span class="st">&quot;Hi&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;14.3&quot; &quot;Hi&quot;</code></pre>
-<div class="sourceCode" id="section-cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="section-data.html#cb64-1"></a><span class="kw">typeof</span>(mix_int_char)</span></code></pre></div>
+<div class="sourceCode" id="section-cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="section-data.html#cb63-1"></a><span class="kw">typeof</span>(mix_int_char)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="section-subsetting" class="section level3">
@@ -517,29 +517,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><strong>Positive Index</strong>: We can <em>access</em> or <em>subset</em> the <span class="math inline">\(i\)</span>-th element of a vector by simply using <code>grand_slam_win[i]</code> where <span class="math inline">\(i\)</span> is a positive number between 1 and the length of the vector.</li>
 </ul>
-<div class="sourceCode" id="section-cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="section-data.html#cb66-1"></a><span class="co"># Accessing the first element</span></span>
-<span id="cb66-2"><a href="section-data.html#cb66-2"></a>grand_slam_win[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="section-data.html#cb65-1"></a><span class="co"># Accessing the first element</span></span>
+<span id="cb65-2"><a href="section-data.html#cb65-2"></a>grand_slam_win[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
-<div class="sourceCode" id="section-cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="section-data.html#cb68-1"></a><span class="co"># Accessing the third and first value</span></span>
-<span id="cb68-2"><a href="section-data.html#cb68-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="section-data.html#cb67-1"></a><span class="co"># Accessing the third and first value</span></span>
+<span id="cb67-2"><a href="section-data.html#cb67-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>## [1] 20 16</code></pre>
-<div class="sourceCode" id="section-cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="section-data.html#cb70-1"></a><span class="co"># Duplicated indices yield duplicated values</span></span>
-<span id="cb70-2"><a href="section-data.html#cb70-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="section-data.html#cb69-1"></a><span class="co"># Duplicated indices yield duplicated values</span></span>
+<span id="cb69-2"><a href="section-data.html#cb69-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</span></code></pre></div>
 <pre><code>## [1] 16 16 19 19 20  0</code></pre>
 <ul>
 <li><strong>Negative Index</strong>: We <em>remove</em> elements in a vector using negative indices:</li>
 </ul>
-<div class="sourceCode" id="section-cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="section-data.html#cb72-1"></a><span class="co"># Removing the second observation</span></span>
-<span id="cb72-2"><a href="section-data.html#cb72-2"></a>grand_slam_win[<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="section-data.html#cb71-1"></a><span class="co"># Removing the second observation</span></span>
+<span id="cb71-2"><a href="section-data.html#cb71-2"></a>grand_slam_win[<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 16 20  0  0</code></pre>
-<div class="sourceCode" id="section-cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="section-data.html#cb74-1"></a><span class="co"># Removing the first and fourth observations</span></span>
-<span id="cb74-2"><a href="section-data.html#cb74-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="section-data.html#cb73-1"></a><span class="co"># Removing the first and fourth observations</span></span>
+<span id="cb73-2"><a href="section-data.html#cb73-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-4</span>)]</span></code></pre></div>
 <pre><code>## [1] 19 20  0</code></pre>
 <ul>
 <li><strong>Logical Indices</strong>: Another useful approach is based on <em>logical</em> operators:</li>
 </ul>
-<div class="sourceCode" id="section-cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="section-data.html#cb76-1"></a><span class="co"># Access the first and fourth observations</span></span>
-<span id="cb76-2"><a href="section-data.html#cb76-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="section-data.html#cb75-1"></a><span class="co"># Access the first and fourth observations</span></span>
+<span id="cb75-2"><a href="section-data.html#cb75-2"></a>grand_slam_win[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</span></code></pre></div>
 <pre><code>## [1] 16  0</code></pre>
 
 <div class="rmdcaution">
@@ -550,43 +550,43 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <div id="section-vectattr" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Attributes</h3>
 <p>Let’s suppose that we conduct an experiment under specific conditions, say a date and place that are stored as attributes of the object containing the results of this experiment. Indeed, objects can have arbitrary additional attributes that are used to store metadata on the object of interest. For example:</p>
-<div class="sourceCode" id="section-cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="section-data.html#cb78-1"></a><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) &lt;-<span class="st"> &quot;09-30-2019&quot;</span></span>
-<span id="cb78-2"><a href="section-data.html#cb78-2"></a><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;type&quot;</span>) &lt;-<span class="st"> &quot;Men, Singles&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="section-data.html#cb77-1"></a><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>) &lt;-<span class="st"> &quot;09-30-2019&quot;</span></span>
+<span id="cb77-2"><a href="section-data.html#cb77-2"></a><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;type&quot;</span>) &lt;-<span class="st"> &quot;Men, Singles&quot;</span></span></code></pre></div>
 <p>To display the vector with its attributes</p>
-<div class="sourceCode" id="section-cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="section-data.html#cb79-1"></a>grand_slam_win</span></code></pre></div>
+<div class="sourceCode" id="section-cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="section-data.html#cb78-1"></a>grand_slam_win</span></code></pre></div>
 <pre><code>## [1] 16 19 20  0  0
 ## attr(,&quot;date&quot;)
 ## [1] &quot;09-30-2019&quot;
 ## attr(,&quot;type&quot;)
 ## [1] &quot;Men, Singles&quot;</code></pre>
 <p>To only display the attributes we can use</p>
-<div class="sourceCode" id="section-cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="section-data.html#cb81-1"></a><span class="kw">attributes</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="section-data.html#cb80-1"></a><span class="kw">attributes</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## $date
 ## [1] &quot;09-30-2019&quot;
 ## 
 ## $type
 ## [1] &quot;Men, Singles&quot;</code></pre>
 <p>It is also possible to extract a specific attribute</p>
-<div class="sourceCode" id="section-cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="section-data.html#cb83-1"></a><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="section-data.html#cb82-1"></a><span class="kw">attr</span>(grand_slam_win, <span class="st">&quot;date&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;09-30-2019&quot;</code></pre>
 </div>
 <div id="section-addlab" class="section level3">
 <h3><span class="header-section-number">4.1.5</span> Adding Labels</h3>
 <p>In some cases, it is useful to characterize vector elements with labels. For example, we could define the vector <code>grand_slam_win</code> and associate the name of each corresponding athlete as a label, i.e.</p>
-<div class="sourceCode" id="section-cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="section-data.html#cb85-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">16</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">18</span>, </span>
-<span id="cb85-2"><a href="section-data.html#cb85-2"></a>                     <span class="st">&quot;Roger Federer&quot;</span> =<span class="st"> </span><span class="dv">20</span>, <span class="st">&quot;Daniil Medvedev&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</span>
-<span id="cb85-3"><a href="section-data.html#cb85-3"></a>                     <span class="st">&quot;Dominic Thiem&quot;</span> =<span class="st"> </span><span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="section-data.html#cb84-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">16</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">18</span>, </span>
+<span id="cb84-2"><a href="section-data.html#cb84-2"></a>                     <span class="st">&quot;Roger Federer&quot;</span> =<span class="st"> </span><span class="dv">20</span>, <span class="st">&quot;Daniil Medvedev&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</span>
+<span id="cb84-3"><a href="section-data.html#cb84-3"></a>                     <span class="st">&quot;Dominic Thiem&quot;</span> =<span class="st"> </span><span class="dv">0</span>))</span></code></pre></div>
 <pre><code>##  Novak Djokovic    Rafael Nadal   Roger Federer Daniil Medvedev   Dominic Thiem 
 ##              16              18              20               0               0</code></pre>
 <p>The main advantage of this approach is that the number of grand slams won can now be referred to by the player’s name. For example:</p>
-<div class="sourceCode" id="section-cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="section-data.html#cb87-1"></a>grand_slam_win[<span class="st">&quot;Novak Djokovic&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="section-data.html#cb86-1"></a>grand_slam_win[<span class="st">&quot;Novak Djokovic&quot;</span>]</span></code></pre></div>
 <pre><code>## Novak Djokovic 
 ##             16</code></pre>
-<div class="sourceCode" id="section-cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="section-data.html#cb89-1"></a>grand_slam_win[<span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>,<span class="st">&quot;Roger Federer&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="section-data.html#cb88-1"></a>grand_slam_win[<span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>,<span class="st">&quot;Roger Federer&quot;</span>)]</span></code></pre></div>
 <pre><code>## Novak Djokovic  Roger Federer 
 ##             16             20</code></pre>
 <p>All labels (athlete names in this case) can be obtained with the function <code>names()</code>, i.e.</p>
-<div class="sourceCode" id="section-cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="section-data.html#cb91-1"></a><span class="kw">names</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="section-data.html#cb90-1"></a><span class="kw">names</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;   &quot;Daniil Medvedev&quot;
 ## [5] &quot;Dominic Thiem&quot;</code></pre>
 </div>
@@ -594,16 +594,16 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <h3><span class="header-section-number">4.1.6</span> Working with Dates</h3>
 <p>When working with dates it is useful to treat them as real dates rather than character strings that <em>look</em> like dates (to a human) but don’t otherwise <em>behave</em> like dates. For example, consider a vector of three dates: <code>c("03-21-2015", "12-13-2011", "06-27-2008")</code>.</p>
 <p>The <code>sort()</code> function returns the elements of a vector in ascending order, but since these dates are actually just character strings that <em>look</em> like dates (to a human), R sorts them in alphanumeric order (for characters) rather than chronological order (for dates):</p>
-<div class="sourceCode" id="section-cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="section-data.html#cb93-1"></a><span class="co"># The `sort()` function sorts elements in a vector in ascending order</span></span>
-<span id="cb93-2"><a href="section-data.html#cb93-2"></a><span class="kw">sort</span>(<span class="kw">c</span>(<span class="st">&quot;03-21-2015&quot;</span>, <span class="st">&quot;12-31-2011&quot;</span>, <span class="st">&quot;06-27-2008&quot;</span>, <span class="st">&quot;01-01-2012&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="section-data.html#cb92-1"></a><span class="co"># The `sort()` function sorts elements in a vector in ascending order</span></span>
+<span id="cb92-2"><a href="section-data.html#cb92-2"></a><span class="kw">sort</span>(<span class="kw">c</span>(<span class="st">&quot;03-21-2015&quot;</span>, <span class="st">&quot;12-31-2011&quot;</span>, <span class="st">&quot;06-27-2008&quot;</span>, <span class="st">&quot;01-01-2012&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;01-01-2012&quot; &quot;03-21-2015&quot; &quot;06-27-2008&quot; &quot;12-31-2011&quot;</code></pre>
 <p>Converting the character strings to “yyyy-mm-dd” would solve our sorting problem, but perhaps we also want to calculate the number of days between two events that are several months or years apart.</p>
 <p>The <code>as.Date()</code> function is one straight-forward method for converting character strings into dates that can be used as such. The typical syntax is of the form:</p>
-<div class="sourceCode" id="section-cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="section-data.html#cb95-1"></a><span class="kw">as.Dates</span>(<span class="op">&lt;</span>vector of dates<span class="op">&gt;</span>, <span class="dt">format =</span> <span class="op">&lt;</span>your format<span class="op">&gt;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="section-data.html#cb94-1"></a><span class="kw">as.Dates</span>(<span class="op">&lt;</span>vector of dates<span class="op">&gt;</span>, <span class="dt">format =</span> <span class="op">&lt;</span>your format<span class="op">&gt;</span>)</span></code></pre></div>
 <p>Considering the dates of birth presented in Table <a href="section-data.html#tab:tennis">4.2</a> we can save them in an appropriate format using:</p>
-<div class="sourceCode" id="section-cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="section-data.html#cb96-1"></a>(players_dob &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;3 Jun 1986&quot;</span>, <span class="st">&quot;8 Aug 1981&quot;</span>, </span>
-<span id="cb96-2"><a href="section-data.html#cb96-2"></a>                         <span class="st">&quot;11 Feb 1996&quot;</span>, <span class="st">&quot;3 Sep 1993&quot;</span>), </span>
-<span id="cb96-3"><a href="section-data.html#cb96-3"></a>                       <span class="dt">format =</span> <span class="st">&quot;%d %b %Y&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="section-data.html#cb95-1"></a>(players_dob &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;3 Jun 1986&quot;</span>, <span class="st">&quot;8 Aug 1981&quot;</span>, </span>
+<span id="cb95-2"><a href="section-data.html#cb95-2"></a>                         <span class="st">&quot;11 Feb 1996&quot;</span>, <span class="st">&quot;3 Sep 1993&quot;</span>), </span>
+<span id="cb95-3"><a href="section-data.html#cb95-3"></a>                       <span class="dt">format =</span> <span class="st">&quot;%d %b %Y&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;1987-05-22&quot; &quot;1986-06-03&quot; &quot;1981-08-08&quot; &quot;1996-02-11&quot; &quot;1993-09-03&quot;</code></pre>
 <p>Note the syntax of <code>format = "%d %b %Y"</code>. The following table shows common format elements for use with the <code>as.Date()</code> function:</p>
 <table>
@@ -659,10 +659,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 </tbody>
 </table>
 <p>There are many advantages to using the <code>as.Date()</code> format (in addition to proper sorting). For example, the subtraction between two dates becomes more meaningful and yields the difference in days between them. As an example, the number of days between Rafael Nadal’s and Andy Murray’s dates of birth can be obtained as</p>
-<div class="sourceCode" id="section-cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="section-data.html#cb98-1"></a>players_dob[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>players_dob[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="section-data.html#cb97-1"></a>players_dob[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>players_dob[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## Time difference of 353 days</code></pre>
 <p>In addition, subsetting becomes also more intuitive and, for example, to find the players born after 1 January 1986 we can simply run:</p>
-<div class="sourceCode" id="section-cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="section-data.html#cb100-1"></a>players[players_dob <span class="op">&gt;</span><span class="st"> &quot;1986-01-01&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="section-data.html#cb99-1"></a>players[players_dob <span class="op">&gt;</span><span class="st"> &quot;1986-01-01&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;</code></pre>
 <p>There are many other reasons for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Cole Beck’s notes</a>.</p>
 </div>
@@ -671,37 +671,37 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <p>The reason for extracting or creating vectors often lies in the need to collect information from them. For this purpose, a series of useful functions are available that allow to extract information or arrange the vector elements in a certain way which can be of interest to the user. Among the most commonly used functions we can find the following ones</p>
 <p><code>length()</code> <code>sum()</code> <code>mean()</code> <code>order()</code> and <code>sort()</code></p>
 <p>whose name is self-explanatory in most cases. For example we have</p>
-<div class="sourceCode" id="section-cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="section-data.html#cb102-1"></a><span class="kw">length</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="section-data.html#cb101-1"></a><span class="kw">length</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="section-cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="section-data.html#cb104-1"></a><span class="kw">sum</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="section-data.html#cb103-1"></a><span class="kw">sum</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## [1] 54</code></pre>
-<div class="sourceCode" id="section-cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="section-data.html#cb106-1"></a><span class="kw">mean</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="section-data.html#cb105-1"></a><span class="kw">mean</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## [1] 10.8</code></pre>
 <p>To sort the players by number of grand slam wins, we could use the function <code>order()</code> which returns the <em>position</em> of the elements of a vector sorted in an ascending order,</p>
-<div class="sourceCode" id="section-cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="section-data.html#cb108-1"></a><span class="kw">order</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="section-data.html#cb107-1"></a><span class="kw">order</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## [1] 4 5 1 2 3</code></pre>
 <p>Therefore, we can sort the players in ascending order of wins as follows</p>
-<div class="sourceCode" id="section-cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="section-data.html#cb110-1"></a>players[<span class="kw">order</span>(grand_slam_win)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="section-data.html#cb109-1"></a>players[<span class="kw">order</span>(grand_slam_win)]</span></code></pre></div>
 <pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;   
 ## [5] &quot;Roger Federer&quot;</code></pre>
 <p>which implies that Roger Federer won most grand slams. Another related function is <code>sort()</code> which simply sorts the elements of a vector in an ascending manner. For example,</p>
-<div class="sourceCode" id="section-cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="section-data.html#cb112-1"></a><span class="kw">sort</span>(grand_slam_win)</span></code></pre></div>
+<div class="sourceCode" id="section-cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="section-data.html#cb111-1"></a><span class="kw">sort</span>(grand_slam_win)</span></code></pre></div>
 <pre><code>## Daniil Medvedev   Dominic Thiem  Novak Djokovic    Rafael Nadal   Roger Federer 
 ##               0               0              16              18              20</code></pre>
 <p>which is compact version of</p>
-<div class="sourceCode" id="section-cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="section-data.html#cb114-1"></a>grand_slam_win[<span class="kw">order</span>(grand_slam_win)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="section-data.html#cb113-1"></a>grand_slam_win[<span class="kw">order</span>(grand_slam_win)]</span></code></pre></div>
 <pre><code>## Daniil Medvedev   Dominic Thiem  Novak Djokovic    Rafael Nadal   Roger Federer 
 ##               0               0              16              18              20</code></pre>
 <p>It is also possible to use the functions <code>sort()</code> and <code>order()</code> with characters and dates. For example, to sort the players’ names alphabetically (by first name) we can use:</p>
-<div class="sourceCode" id="section-cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="section-data.html#cb116-1"></a><span class="kw">sort</span>(players)</span></code></pre></div>
+<div class="sourceCode" id="section-cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="section-data.html#cb115-1"></a><span class="kw">sort</span>(players)</span></code></pre></div>
 <pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;   
 ## [5] &quot;Roger Federer&quot;</code></pre>
 <p>Similarly, we can sort players by age (oldest first)</p>
-<div class="sourceCode" id="section-cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="section-data.html#cb118-1"></a>players[<span class="kw">order</span>(players_dob)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="section-data.html#cb117-1"></a>players[<span class="kw">order</span>(players_dob)]</span></code></pre></div>
 <pre><code>## [1] &quot;Roger Federer&quot;   &quot;Rafael Nadal&quot;    &quot;Novak Djokovic&quot;  &quot;Dominic Thiem&quot;  
 ## [5] &quot;Daniil Medvedev&quot;</code></pre>
 <p>or in an reversed manner (oldest last):</p>
-<div class="sourceCode" id="section-cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="section-data.html#cb120-1"></a>players[<span class="kw">order</span>(players_dob, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="section-data.html#cb119-1"></a>players[<span class="kw">order</span>(players_dob, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)]</span></code></pre></div>
 <pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;   
 ## [5] &quot;Roger Federer&quot;</code></pre>
 <p>There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references <span class="citation">(see e.g. Wickham <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>.</p>
@@ -712,48 +712,48 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <ul>
 <li><code>from:to</code>: This method is quite intuitive and very compact. For example:</li>
 </ul>
-<div class="sourceCode" id="section-cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="section-data.html#cb122-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="section-data.html#cb121-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="section-cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="section-data.html#cb124-1"></a>(x &lt;-<span class="st"> </span><span class="dv">3</span><span class="op">:</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="section-data.html#cb123-1"></a>(x &lt;-<span class="st"> </span><span class="dv">3</span><span class="op">:</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 3 2 1</code></pre>
-<div class="sourceCode" id="section-cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="section-data.html#cb126-1"></a>(y &lt;-<span class="st"> </span><span class="dv">-1</span><span class="op">:-</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="section-data.html#cb125-1"></a>(y &lt;-<span class="st"> </span><span class="dv">-1</span><span class="op">:-</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] -1 -2 -3 -4</code></pre>
-<div class="sourceCode" id="section-cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="section-data.html#cb128-1"></a>(z &lt;-<span class="st"> </span><span class="fl">1.3</span><span class="op">:</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="section-data.html#cb127-1"></a>(z &lt;-<span class="st"> </span><span class="fl">1.3</span><span class="op">:</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1.3 2.3</code></pre>
 <ul>
 <li><code>seq_len(n)</code>: This function provides a simple way to generate a sequence from 1 to an arbitrary number <code>n</code>. In general, <code>1:n</code> and <code>seq_len(n)</code> are equivalent with the notable exceptions where <code>n = 0</code> and <code>n &lt; 0</code>. The reason for these exceptions will become clear in Section <a href="section-control.html#section-forloop">5.2.3.1</a>. Let’s see a few examples:</li>
 </ul>
-<div class="sourceCode" id="section-cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="section-data.html#cb130-1"></a>n &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb130-2"><a href="section-data.html#cb130-2"></a><span class="dv">1</span><span class="op">:</span>n</span></code></pre></div>
+<div class="sourceCode" id="section-cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="section-data.html#cb129-1"></a>n &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb129-2"><a href="section-data.html#cb129-2"></a><span class="dv">1</span><span class="op">:</span>n</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="section-cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="section-data.html#cb132-1"></a><span class="kw">seq_len</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="section-cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="section-data.html#cb131-1"></a><span class="kw">seq_len</span>(n)</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="section-cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="section-data.html#cb134-1"></a>n &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb134-2"><a href="section-data.html#cb134-2"></a><span class="dv">1</span><span class="op">:</span>n</span></code></pre></div>
+<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-data.html#cb133-1"></a>n &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb133-2"><a href="section-data.html#cb133-2"></a><span class="dv">1</span><span class="op">:</span>n</span></code></pre></div>
 <pre><code>## [1] 1 0</code></pre>
-<div class="sourceCode" id="section-cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="section-data.html#cb136-1"></a><span class="kw">seq_len</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="section-cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="section-data.html#cb135-1"></a><span class="kw">seq_len</span>(n)</span></code></pre></div>
 <pre><code>## integer(0)</code></pre>
 <ul>
 <li><code>seq(a, b, by/length.out = d)</code>: This function can be used to create more “complex” sequences. It can either be used to create a sequence from <code>a</code> to <code>b</code> by increments of <code>d</code> (using the option <code>by</code>) or of a total length of <code>d</code> (using the option <code>length.out</code>). A few examples:</li>
 </ul>
-<div class="sourceCode" id="section-cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="section-data.html#cb138-1"></a>(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">by =</span> <span class="fl">0.4</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="section-data.html#cb137-1"></a>(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">by =</span> <span class="fl">0.4</span>))</span></code></pre></div>
 <pre><code>## [1] 1.0 1.4 1.8 2.2 2.6</code></pre>
-<div class="sourceCode" id="section-cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="section-data.html#cb140-1"></a>(y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">length.out =</span> <span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="section-data.html#cb139-1"></a>(y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="fl">2.8</span>, <span class="dt">length.out =</span> <span class="dv">6</span>))</span></code></pre></div>
 <pre><code>## [1] 1.00 1.36 1.72 2.08 2.44 2.80</code></pre>
 <p>This can be combined with the <code>rep()</code> function to create vectors with repeated values or sequences, for example:</p>
-<div class="sourceCode" id="section-cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="section-data.html#cb142-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">3</span>, <span class="dt">each =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="section-data.html#cb141-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">3</span>, <span class="dt">each =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2 1 2 1 2</code></pre>
-<div class="sourceCode" id="section-cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="section-data.html#cb144-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">1</span>, <span class="dt">each =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="section-data.html#cb143-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">1</span>, <span class="dt">each =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1 1 1 2 2 2</code></pre>
-<div class="sourceCode" id="section-cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="section-data.html#cb146-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">2</span>, <span class="dt">each =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="section-data.html#cb145-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">2</span>, <span class="dt">each =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 1 1 2 2 1 1 2 2</code></pre>
 <p>where the option <code>times</code> allows to specify how many times the object needs to be repeated and <code>each</code> regulates how many times each element in the object is repeated.</p>
 <p>It is also possible to generate sequences of dates using the function <code>seq()</code>. For example, to generate a sequence of 10 dates between the dates of birth of Andy Murray and Rafael Nadal we can use</p>
-<div class="sourceCode" id="section-cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="section-data.html#cb148-1"></a><span class="kw">seq</span>(<span class="dt">from =</span> players_dob[<span class="dv">1</span>], <span class="dt">to =</span> players_dob[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="section-data.html#cb147-1"></a><span class="kw">seq</span>(<span class="dt">from =</span> players_dob[<span class="dv">1</span>], <span class="dt">to =</span> players_dob[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;1987-05-22&quot; &quot;1987-04-12&quot; &quot;1987-03-04&quot; &quot;1987-01-24&quot; &quot;1986-12-16&quot;
 ##  [6] &quot;1986-11-06&quot; &quot;1986-09-28&quot; &quot;1986-08-20&quot; &quot;1986-07-12&quot; &quot;1986-06-03&quot;</code></pre>
 <p>Similarly, we can create a sequence between the two dates by increments of one week (backwards)</p>
-<div class="sourceCode" id="section-cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="section-data.html#cb150-1"></a><span class="kw">seq</span>(players_dob[<span class="dv">1</span>], players_dob[<span class="dv">2</span>], <span class="dt">by =</span> <span class="st">&quot;-1 week&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="section-data.html#cb149-1"></a><span class="kw">seq</span>(players_dob[<span class="dv">1</span>], players_dob[<span class="dv">2</span>], <span class="dt">by =</span> <span class="st">&quot;-1 week&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;1987-05-22&quot; &quot;1987-05-15&quot; &quot;1987-05-08&quot; &quot;1987-05-01&quot; &quot;1987-04-24&quot;
 ##  [6] &quot;1987-04-17&quot; &quot;1987-04-10&quot; &quot;1987-04-03&quot; &quot;1987-03-27&quot; &quot;1987-03-20&quot;
 ## [11] &quot;1987-03-13&quot; &quot;1987-03-06&quot; &quot;1987-02-27&quot; &quot;1987-02-20&quot; &quot;1987-02-13&quot;
@@ -766,7 +766,7 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 ## [46] &quot;1986-07-11&quot; &quot;1986-07-04&quot; &quot;1986-06-27&quot; &quot;1986-06-20&quot; &quot;1986-06-13&quot;
 ## [51] &quot;1986-06-06&quot;</code></pre>
 <p>or by increments of one month (forwards)</p>
-<div class="sourceCode" id="section-cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="section-data.html#cb152-1"></a><span class="kw">seq</span>(players_dob[<span class="dv">2</span>], players_dob[<span class="dv">1</span>], <span class="dt">by =</span> <span class="st">&quot;1 month&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="section-data.html#cb151-1"></a><span class="kw">seq</span>(players_dob[<span class="dv">2</span>], players_dob[<span class="dv">1</span>], <span class="dt">by =</span> <span class="st">&quot;1 month&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;1986-06-03&quot; &quot;1986-07-03&quot; &quot;1986-08-03&quot; &quot;1986-09-03&quot; &quot;1986-10-03&quot;
 ##  [6] &quot;1986-11-03&quot; &quot;1986-12-03&quot; &quot;1987-01-03&quot; &quot;1987-02-03&quot; &quot;1987-03-03&quot;
 ## [11] &quot;1987-04-03&quot; &quot;1987-05-03&quot;</code></pre>
@@ -774,15 +774,15 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <div id="section-example-apple-stock-price" class="section level3">
 <h3><span class="header-section-number">4.1.9</span> Example: Apple Stock Price</h3>
 <p>Suppose that someone is interested in analyzing the behavior of Apple’s stock price over the last three months. The first thing needed to perform such analysis is to recover (automatically) today’s date. In R, this can be obtained as follows</p>
-<div class="sourceCode" id="section-cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="section-data.html#cb154-1"></a>(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</span></code></pre></div>
+<div class="sourceCode" id="section-cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="section-data.html#cb153-1"></a>(today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>())</span></code></pre></div>
 <pre><code>## [1] &quot;2020-02-20&quot;</code></pre>
 <p>Once this is done, we can obtain the date which is exactly three months ago by using</p>
-<div class="sourceCode" id="section-cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="section-data.html#cb156-1"></a>(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</span></code></pre></div>
+<div class="sourceCode" id="section-cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="section-data.html#cb155-1"></a>(three_months_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-3 months&quot;</span>)[<span class="dv">2</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;2019-11-20&quot;</code></pre>
 <p>With this information, we can now download Apple’s stock price and represent these stocks through a candlestick chart which summarizes information on daily opening and closing prices as well as minimum and maximum prices. These charts are often used with the hope of detecting trading patterns over a given period of time.</p>
-<div class="sourceCode" id="section-cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="section-data.html#cb158-1"></a><span class="kw">library</span>(quantmod)</span>
-<span id="cb158-2"><a href="section-data.html#cb158-2"></a><span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</span>
-<span id="cb158-3"><a href="section-data.html#cb158-3"></a><span class="kw">candleChart</span>(AAPL, <span class="dt">theme =</span> <span class="st">&#39;white&#39;</span>, <span class="dt">type =</span> <span class="st">&#39;candles&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="section-data.html#cb157-1"></a><span class="kw">library</span>(quantmod)</span>
+<span id="cb157-2"><a href="section-data.html#cb157-2"></a><span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> three_months_ago, <span class="dt">to =</span> today)</span>
+<span id="cb157-3"><a href="section-data.html#cb157-3"></a><span class="kw">candleChart</span>(AAPL, <span class="dt">theme =</span> <span class="st">&#39;white&#39;</span>, <span class="dt">type =</span> <span class="st">&#39;candles&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:candleAAPL"></span>
 <img src="ds_files/figure-html/candleAAPL-1.png" alt="Candlestick chart for Apple's stock price for the last three months." width="576" />
 <p class="caption">
@@ -795,11 +795,11 @@ Figure 4.1: Candlestick chart for Apple’s stock price for the last three month
     \tag{4.1}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(R_t\)</span> are the returns at time <em>t</em> and <span class="math inline">\(S_t\)</span> is the stock price. This is implemented in the function <code>ClCl()</code> within the <code>quantmod</code> package. For example, we can create a vector of returns as follows</p>
-<div class="sourceCode" id="section-cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="section-data.html#cb159-1"></a>AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</span></code></pre></div>
+<div class="sourceCode" id="section-cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="section-data.html#cb158-1"></a>AAPL_returns &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</span></code></pre></div>
 <p>where <code>na.omit()</code> is used to remove missing values in the stock prices vector since, if we have <span class="math inline">\(n+1\)</span> stock prices, we will only have <span class="math inline">\(n\)</span> returns and therefore the first return cannot be computed. We can now compute the mean and median of the returns over the considered period.</p>
-<div class="sourceCode" id="section-cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="section-data.html#cb160-1"></a><span class="kw">mean</span>(AAPL_returns)</span></code></pre></div>
+<div class="sourceCode" id="section-cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="section-data.html#cb159-1"></a><span class="kw">mean</span>(AAPL_returns)</span></code></pre></div>
 <pre><code>## [1] 0.0001369265</code></pre>
-<div class="sourceCode" id="section-cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="section-data.html#cb162-1"></a><span class="kw">median</span>(AAPL_returns)</span></code></pre></div>
+<div class="sourceCode" id="section-cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="section-data.html#cb161-1"></a><span class="kw">median</span>(AAPL_returns)</span></code></pre></div>
 <pre><code>## [1] 0.003158065</code></pre>
 <p>However, a statistic that is of particular interest to financial operators is the Excess Kurtosis which, for a random variable that we denote as <span class="math inline">\(X\)</span>, can be defined as</p>
 <p><span class="math display">\[\begin{equation}
@@ -833,8 +833,8 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
   \bar{R} = \frac{1}{n} \sum_{i = 1}^n R_i.
 \end{equation*}\]</span></p>
 <p>In R, this can simply be done as follows:</p>
-<div class="sourceCode" id="section-cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="section-data.html#cb164-1"></a>mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)</span>
-<span id="cb164-2"><a href="section-data.html#cb164-2"></a>(k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns <span class="op">-</span><span class="st"> </span>mu)<span class="op">^</span><span class="dv">4</span>)<span class="op">/</span>(<span class="kw">mean</span>((AAPL_returns <span class="op">-</span><span class="st"> </span>mu)<span class="op">^</span><span class="dv">2</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="section-data.html#cb163-1"></a>mu &lt;-<span class="st"> </span><span class="kw">mean</span>(AAPL_returns)</span>
+<span id="cb163-2"><a href="section-data.html#cb163-2"></a>(k &lt;-<span class="st"> </span><span class="kw">mean</span>((AAPL_returns <span class="op">-</span><span class="st"> </span>mu)<span class="op">^</span><span class="dv">4</span>)<span class="op">/</span>(<span class="kw">mean</span>((AAPL_returns <span class="op">-</span><span class="st"> </span>mu)<span class="op">^</span><span class="dv">2</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1.724814</code></pre>
 <p>Therefore, we observe an estimated Excess Kurtosis of 1.72 which is quite high and tends to indicate that the returns have heavier tails than the normal distribution. In Chapter <a href="section-control.html#section-control">5</a>, we will revisit this example and investigate if there is <strong>enough evidence</strong> to conclude that Apple’s stock has Excess Kurtosis larger than zero.</p>
 </div>
@@ -842,7 +842,7 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 <div id="section-matrices" class="section level2">
 <h2><span class="header-section-number">4.2</span> Matrices</h2>
 <p>Matrices are a common data structure in R which have two dimensions to store multiple vectors of the same length combined as a unified object. The <code>matrix()</code> function can be used to create a matrix from a vector:</p>
-<div class="sourceCode" id="section-cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="section-data.html#cb166-1"></a>(mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="section-data.html#cb165-1"></a>(mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
@@ -853,8 +853,8 @@ This implies that the theoretical value of the excess Kurtosis for a normally di
 <p>By default, the vectors are transformed into matrices by placing the elements by column (i.e. top to the bottom of ech column in sequence until all columns are full). If you wish to fill the matrix by row, all you need to do is specify the argument <code>byrow = T</code>.</p>
 </div>
 
-<div class="sourceCode" id="section-cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="section-data.html#cb168-1"></a><span class="co"># Compare with the matrix above</span></span>
-<span id="cb168-2"><a href="section-data.html#cb168-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="section-cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="section-data.html#cb167-1"></a><span class="co"># Compare with the matrix above</span></span>
+<span id="cb167-2"><a href="section-data.html#cb167-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>,  <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> T)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8
@@ -865,11 +865,11 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 </div>
 
 <p>It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as matrix. In these cases, two useful functions are <code>cbind()</code> to combine vectors as vertical <strong>c</strong>olumns side-by-side, and <code>rbind()</code> to combine vectors as horizontal <strong>r</strong>ows. An example of <code>cbind()</code> is shown here:</p>
-<div class="sourceCode" id="section-cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="section-data.html#cb170-1"></a>players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
-<span id="cb170-2"><a href="section-data.html#cb170-2"></a>             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</span>
-<span id="cb170-3"><a href="section-data.html#cb170-3"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb170-4"><a href="section-data.html#cb170-4"></a>win_percentage &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">82.7</span>, <span class="fl">83.1</span>, <span class="fl">82.2</span>, <span class="fl">63.6</span>, <span class="fl">64.3</span>)</span>
-<span id="cb170-5"><a href="section-data.html#cb170-5"></a>(mat &lt;-<span class="st"> </span><span class="kw">cbind</span>(grand_slam_win, win_percentage))</span></code></pre></div>
+<div class="sourceCode" id="section-cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="section-data.html#cb169-1"></a>players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
+<span id="cb169-2"><a href="section-data.html#cb169-2"></a>             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</span>
+<span id="cb169-3"><a href="section-data.html#cb169-3"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb169-4"><a href="section-data.html#cb169-4"></a>win_percentage &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">82.7</span>, <span class="fl">83.1</span>, <span class="fl">82.2</span>, <span class="fl">63.6</span>, <span class="fl">64.3</span>)</span>
+<span id="cb169-5"><a href="section-data.html#cb169-5"></a>(mat &lt;-<span class="st"> </span><span class="kw">cbind</span>(grand_slam_win, win_percentage))</span></code></pre></div>
 <pre><code>##      grand_slam_win win_percentage
 ## [1,]             16           82.7
 ## [2,]             19           83.1
@@ -877,9 +877,9 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 ## [4,]              0           63.6
 ## [5,]              0           64.3</code></pre>
 <p>The result in this case is a <span class="math inline">\(5 \times 2\)</span> matrix (with <code>rbind()</code> it would have been a <span class="math inline">\(2 \times 5\)</span> matrix). Once the matrix is defined, we can assign names to its rows and columns by using <code>rownames()</code> and <code>colnames()</code>, respectively. Of course, the number of names must match the corresponding matrix dimension. In the following example, each row corresponds to a specific player (thereby using the <code>players</code> vector) and each column corresponds to a specific statistic of the players.</p>
-<div class="sourceCode" id="section-cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="section-data.html#cb172-1"></a><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players</span>
-<span id="cb172-2"><a href="section-data.html#cb172-2"></a><span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)</span>
-<span id="cb172-3"><a href="section-data.html#cb172-3"></a>mat</span></code></pre></div>
+<div class="sourceCode" id="section-cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="section-data.html#cb171-1"></a><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players</span>
+<span id="cb171-2"><a href="section-data.html#cb171-2"></a><span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)</span>
+<span id="cb171-3"><a href="section-data.html#cb171-3"></a>mat</span></code></pre></div>
 <pre><code>##                 GS win Win rate
 ## Novak Djokovic      16     82.7
 ## Rafael Nadal        19     83.1
@@ -889,22 +889,22 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 <div id="section-subsetting-1" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Subsetting</h3>
 <p>As with vectors, it is possible to subset the elements of a matrix. Since matrices are two-dimensional data structures, it is necessary to specify the position of the elements of interest in both dimensions. For this purpose we can use <code>[ , ]</code> immediately following the named matrix. Note the use of <code>,</code> within the square brackets in order to specify both row and column position of desired elements within the matrix (e.g. <code>matrixName[row, column]</code>). Consider the following examples:</p>
-<div class="sourceCode" id="section-cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="section-data.html#cb174-1"></a><span class="co"># Subset players &quot;Dominic Thiem&quot; and &quot;Roger Federer&quot; in matrix named &quot;mat&quot;</span></span>
-<span id="cb174-2"><a href="section-data.html#cb174-2"></a>mat[<span class="kw">c</span>(<span class="st">&quot;Dominic Thiem&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="section-cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="section-data.html#cb173-1"></a><span class="co"># Subset players &quot;Dominic Thiem&quot; and &quot;Roger Federer&quot; in matrix named &quot;mat&quot;</span></span>
+<span id="cb173-2"><a href="section-data.html#cb173-2"></a>mat[<span class="kw">c</span>(<span class="st">&quot;Dominic Thiem&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>), ]</span></code></pre></div>
 <pre><code>##               GS win Win rate
 ## Dominic Thiem      0     64.3
 ## Roger Federer     20     82.2</code></pre>
-<div class="sourceCode" id="section-cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="section-data.html#cb176-1"></a><span class="co"># Subset includes row 1 and 3 for all columns </span></span>
-<span id="cb176-2"><a href="section-data.html#cb176-2"></a>mat[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="section-cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="section-data.html#cb175-1"></a><span class="co"># Subset includes row 1 and 3 for all columns </span></span>
+<span id="cb175-2"><a href="section-data.html#cb175-2"></a>mat[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</span></code></pre></div>
 <pre><code>##                GS win Win rate
 ## Novak Djokovic     16     82.7
 ## Roger Federer      20     82.2</code></pre>
-<div class="sourceCode" id="section-cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="section-data.html#cb178-1"></a><span class="co"># Subset includes all rows for column 2  </span></span>
-<span id="cb178-2"><a href="section-data.html#cb178-2"></a>mat[ , <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="section-data.html#cb177-1"></a><span class="co"># Subset includes all rows for column 2  </span></span>
+<span id="cb177-2"><a href="section-data.html#cb177-2"></a>mat[ , <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##  Novak Djokovic    Rafael Nadal   Roger Federer Daniil Medvedev   Dominic Thiem 
 ##            82.7            83.1            82.2            63.6            64.3</code></pre>
-<div class="sourceCode" id="section-cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="section-data.html#cb180-1"></a><span class="co"># Subset includes rows 1, 2, &amp; 3 for column 1  </span></span>
-<span id="cb180-2"><a href="section-data.html#cb180-2"></a>mat[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="section-data.html#cb179-1"></a><span class="co"># Subset includes rows 1, 2, &amp; 3 for column 1  </span></span>
+<span id="cb179-2"><a href="section-data.html#cb179-2"></a>mat[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## Novak Djokovic   Rafael Nadal  Roger Federer 
 ##             16             19             20</code></pre>
 <p>It can be noticed that, when a space is left blank before or after the comma, this means that respectively all the rows or all the columns are considered.</p>
@@ -923,14 +923,14 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 \right]
 \end{equation*}\]</span></p>
 <p>which can be created in R as follows:</p>
-<div class="sourceCode" id="section-cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="section-data.html#cb182-1"></a>(A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="section-data.html#cb181-1"></a>(A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    5
 ## [2,]    2    6
 ## [3,]    3    7
 ## [4,]    4    8</code></pre>
 <p>Therefore, we expect <code>dim(A)</code> to return the vector <code>c(4, 2)</code>. Indeed, we have</p>
-<div class="sourceCode" id="section-cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="section-data.html#cb184-1"></a><span class="kw">dim</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="section-data.html#cb183-1"></a><span class="kw">dim</span>(A)</span></code></pre></div>
 <pre><code>## [1] 4 2</code></pre>
 <p>Next, we consider the function <code>t()</code> that allows transpose a matrix. For example, <span class="math inline">\(\mathbf{A}^T\)</span> is equal to:</p>
 <p><span class="math display">\[\begin{equation*}
@@ -942,11 +942,11 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 \right],
 \end{equation*}\]</span></p>
 <p>which is a <span class="math inline">\(2 \times 4\)</span> matrix. In R, we achieve this as follows</p>
-<div class="sourceCode" id="section-cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="section-data.html#cb186-1"></a>(At &lt;-<span class="st"> </span><span class="kw">t</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="section-cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="section-data.html#cb185-1"></a>(At &lt;-<span class="st"> </span><span class="kw">t</span>(A))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8</code></pre>
-<div class="sourceCode" id="section-cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="section-data.html#cb188-1"></a><span class="kw">dim</span>(At)</span></code></pre></div>
+<div class="sourceCode" id="section-cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="section-data.html#cb187-1"></a><span class="kw">dim</span>(At)</span></code></pre></div>
 <pre><code>## [1] 2 4</code></pre>
 <p>Aside from playing with matrix dimensions, matrix algebraic operations have specific commands. For example, the operator <code>%*%</code> is used in R to denote matrix multiplication while, as opposed to scalar objects, the regular product operator <code>*</code> performs the element by element product (or Hadamard product) when applied to matrices. For example, consider the following matrix product:</p>
 <p><span class="math display">\[\begin{equation*}
@@ -958,7 +958,7 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 \right],
 \end{equation*}\]</span></p>
 <p>which can be done in R as follows:</p>
-<div class="sourceCode" id="section-cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="section-data.html#cb190-1"></a>(B &lt;-<span class="st"> </span>At <span class="op">%*%</span><span class="st"> </span>A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="section-data.html#cb189-1"></a>(B &lt;-<span class="st"> </span>At <span class="op">%*%</span><span class="st"> </span>A)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   30   70
 ## [2,]   70  174</code></pre>
@@ -976,7 +976,7 @@ d_3 &amp; d_4
   \text{det} \left( \mathbf{B}\right) = 30 \cdot 174 - 70^2 = 320.
 \end{equation*}\]</span></p>
 <p>In R, we can simply do</p>
-<div class="sourceCode" id="section-cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="section-data.html#cb192-1"></a><span class="kw">det</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="section-cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="section-data.html#cb191-1"></a><span class="kw">det</span>(B)</span></code></pre></div>
 <pre><code>## [1] 320</code></pre>
 <p>The function <code>solve()</code> is also an important function when working with matrices as it allows to inverse a matrix. It is worth remembering that a square matrix that is not invertible (i.e. <span class="math inline">\(\mathbf{A}^{-1}\)</span> doesn’t exist) is called <em>singular</em> and the determinant offers a way to “check” if this is the case for a given matrix. Indeed, a square matrix is singular if and only if its determinant is 0. Therefore, in the case of <span class="math inline">\(\mathbf{B}\)</span>, we should be able to compute its inverse. As for the determinant, there exists a formula to compute the inverse of <span class="math inline">\(2 \times 2\)</span> matrices, i.e.</p>
 <p><span class="math display">\[\begin{equation*}
@@ -1011,7 +1011,7 @@ d_3 &amp; d_4
 \end{matrix}
 \right] 
 \end{equation*}\]</span></p>
-<div class="sourceCode" id="section-cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="section-data.html#cb194-1"></a>(B_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(B))</span></code></pre></div>
+<div class="sourceCode" id="section-cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="section-data.html#cb193-1"></a>(B_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(B))</span></code></pre></div>
 <pre><code>##          [,1]     [,2]
 ## [1,]  0.54375 -0.21875
 ## [2,] -0.21875  0.09375</code></pre>
@@ -1020,7 +1020,7 @@ d_3 &amp; d_4
 \mathbf{G} = \mathbf{B} \mathbf{B}^{-1},
 \end{equation*}\]</span></p>
 <p>should be equal to the identity matrix,</p>
-<div class="sourceCode" id="section-cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="section-data.html#cb196-1"></a>(G &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>B_inv)</span></code></pre></div>
+<div class="sourceCode" id="section-cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="section-data.html#cb195-1"></a>(G &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>B_inv)</span></code></pre></div>
 <pre><code>##      [,1]          [,2]
 ## [1,]    1 -8.881784e-16
 ## [2,]    0  1.000000e+00</code></pre>
@@ -1030,14 +1030,14 @@ d_3 &amp; d_4
 \text{diag} \left( \mathbf{B} \right) = \left[30 \;\; 174\right],
 \end{equation*}\]</span></p>
 <p>which can be done in R as follows:</p>
-<div class="sourceCode" id="section-cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="section-data.html#cb198-1"></a><span class="kw">diag</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="section-cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="section-data.html#cb197-1"></a><span class="kw">diag</span>(B)</span></code></pre></div>
 <pre><code>## [1]  30 174</code></pre>
 <p>Therefore, the function <code>diag()</code> computes the trace of matrix (i.e. the sum of the diagonal elements). For example,</p>
 <p><span class="math display">\[\begin{equation*}
 \text{tr} \left( \mathbf{B} \right) = 204,
 \end{equation*}\]</span></p>
 <p>or in R:</p>
-<div class="sourceCode" id="section-cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="section-data.html#cb200-1"></a><span class="kw">sum</span>(<span class="kw">diag</span>(B))</span></code></pre></div>
+<div class="sourceCode" id="section-cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="section-data.html#cb199-1"></a><span class="kw">sum</span>(<span class="kw">diag</span>(B))</span></code></pre></div>
 <pre><code>## [1] 204</code></pre>
 <p>Another use of the function <code>diag()</code> is to create diagonal matrices. Indeed, if the argument of this function is a vector, its behavior is the following:</p>
 <p><span class="math display">\[\begin{equation*}
@@ -1051,8 +1051,8 @@ a_1     &amp; 0       &amp; \cdots &amp; 0  \\
 \right].
 \end{equation*}\]</span></p>
 <p>Therefore, this provides a simple way of creating an identity matrix by combining the functions <code>diag()</code> and <code>rep()</code> (discussed in the previous section) as follows:</p>
-<div class="sourceCode" id="section-cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="section-data.html#cb202-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb202-2"><a href="section-data.html#cb202-2"></a>(ident &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)))</span></code></pre></div>
+<div class="sourceCode" id="section-cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="section-data.html#cb201-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb201-2"><a href="section-data.html#cb201-2"></a>(ident &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -1100,38 +1100,38 @@ a_1     &amp; 0       &amp; \cdots &amp; 0  \\
   \end{aligned}
 \end{equation*}\]</span></p>
 <p>In the code below we verify the validity of these results through a simple simulated example where we compare the values of the three statistics based on the different formulas discussed above.</p>
-<div class="sourceCode" id="section-cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="section-data.html#cb204-1"></a><span class="co"># Sample size</span></span>
-<span id="cb204-2"><a href="section-data.html#cb204-2"></a>n &lt;-<span class="st"> </span><span class="dv">100</span></span>
-<span id="cb204-3"><a href="section-data.html#cb204-3"></a></span>
-<span id="cb204-4"><a href="section-data.html#cb204-4"></a><span class="co"># Simulate random numbers from a zero mean normal distribution with</span></span>
-<span id="cb204-5"><a href="section-data.html#cb204-5"></a><span class="co"># variance equal to 4.</span></span>
-<span id="cb204-6"><a href="section-data.html#cb204-6"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">0</span>, <span class="kw">sqrt</span>(<span class="dv">4</span>))</span>
-<span id="cb204-7"><a href="section-data.html#cb204-7"></a></span>
-<span id="cb204-8"><a href="section-data.html#cb204-8"></a><span class="co"># Simulate random numbers from normal distribution with mean 3 and</span></span>
-<span id="cb204-9"><a href="section-data.html#cb204-9"></a><span class="co"># variance equal to 1.</span></span>
-<span id="cb204-10"><a href="section-data.html#cb204-10"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3</span>, <span class="dv">1</span>)</span>
-<span id="cb204-11"><a href="section-data.html#cb204-11"></a></span>
-<span id="cb204-12"><a href="section-data.html#cb204-12"></a><span class="co"># Note that x and y are independent.</span></span>
-<span id="cb204-13"><a href="section-data.html#cb204-13"></a></span>
-<span id="cb204-14"><a href="section-data.html#cb204-14"></a><span class="co"># Sample mean</span></span>
-<span id="cb204-15"><a href="section-data.html#cb204-15"></a>one &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)</span>
-<span id="cb204-16"><a href="section-data.html#cb204-16"></a>x_bar &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">sum</span>(x)</span>
-<span id="cb204-17"><a href="section-data.html#cb204-17"></a>x_bar_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(x)<span class="op">%*%</span>one</span>
-<span id="cb204-18"><a href="section-data.html#cb204-18"></a></span>
-<span id="cb204-19"><a href="section-data.html#cb204-19"></a><span class="co"># Sample variance of x</span></span>
-<span id="cb204-20"><a href="section-data.html#cb204-20"></a>H &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>n <span class="op">*</span><span class="st"> </span>one <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(one)</span>
-<span id="cb204-21"><a href="section-data.html#cb204-21"></a>s_x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>((x <span class="op">-</span><span class="st"> </span>x_bar)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb204-22"><a href="section-data.html#cb204-22"></a>s_x_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(x) <span class="op">%*%</span><span class="st"> </span>H <span class="op">%*%</span><span class="st"> </span>x</span>
-<span id="cb204-23"><a href="section-data.html#cb204-23"></a></span>
-<span id="cb204-24"><a href="section-data.html#cb204-24"></a><span class="co"># Sample covariance</span></span>
-<span id="cb204-25"><a href="section-data.html#cb204-25"></a>y_bar &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">sum</span>(y)</span>
-<span id="cb204-26"><a href="section-data.html#cb204-26"></a>s_xy &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">sum</span>((x <span class="op">-</span><span class="st"> </span>x_bar)<span class="op">*</span>(y <span class="op">-</span><span class="st"> </span>y_bar))</span>
-<span id="cb204-27"><a href="section-data.html#cb204-27"></a>s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(x) <span class="op">%*%</span><span class="st"> </span>H <span class="op">%*%</span><span class="st"> </span>y</span></code></pre></div>
+<div class="sourceCode" id="section-cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="section-data.html#cb203-1"></a><span class="co"># Sample size</span></span>
+<span id="cb203-2"><a href="section-data.html#cb203-2"></a>n &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb203-3"><a href="section-data.html#cb203-3"></a></span>
+<span id="cb203-4"><a href="section-data.html#cb203-4"></a><span class="co"># Simulate random numbers from a zero mean normal distribution with</span></span>
+<span id="cb203-5"><a href="section-data.html#cb203-5"></a><span class="co"># variance equal to 4.</span></span>
+<span id="cb203-6"><a href="section-data.html#cb203-6"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">0</span>, <span class="kw">sqrt</span>(<span class="dv">4</span>))</span>
+<span id="cb203-7"><a href="section-data.html#cb203-7"></a></span>
+<span id="cb203-8"><a href="section-data.html#cb203-8"></a><span class="co"># Simulate random numbers from normal distribution with mean 3 and</span></span>
+<span id="cb203-9"><a href="section-data.html#cb203-9"></a><span class="co"># variance equal to 1.</span></span>
+<span id="cb203-10"><a href="section-data.html#cb203-10"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb203-11"><a href="section-data.html#cb203-11"></a></span>
+<span id="cb203-12"><a href="section-data.html#cb203-12"></a><span class="co"># Note that x and y are independent.</span></span>
+<span id="cb203-13"><a href="section-data.html#cb203-13"></a></span>
+<span id="cb203-14"><a href="section-data.html#cb203-14"></a><span class="co"># Sample mean</span></span>
+<span id="cb203-15"><a href="section-data.html#cb203-15"></a>one &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)</span>
+<span id="cb203-16"><a href="section-data.html#cb203-16"></a>x_bar &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">sum</span>(x)</span>
+<span id="cb203-17"><a href="section-data.html#cb203-17"></a>x_bar_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(x)<span class="op">%*%</span>one</span>
+<span id="cb203-18"><a href="section-data.html#cb203-18"></a></span>
+<span id="cb203-19"><a href="section-data.html#cb203-19"></a><span class="co"># Sample variance of x</span></span>
+<span id="cb203-20"><a href="section-data.html#cb203-20"></a>H &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n)) <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>n <span class="op">*</span><span class="st"> </span>one <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(one)</span>
+<span id="cb203-21"><a href="section-data.html#cb203-21"></a>s_x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>((x <span class="op">-</span><span class="st"> </span>x_bar)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb203-22"><a href="section-data.html#cb203-22"></a>s_x_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(x) <span class="op">%*%</span><span class="st"> </span>H <span class="op">%*%</span><span class="st"> </span>x</span>
+<span id="cb203-23"><a href="section-data.html#cb203-23"></a></span>
+<span id="cb203-24"><a href="section-data.html#cb203-24"></a><span class="co"># Sample covariance</span></span>
+<span id="cb203-25"><a href="section-data.html#cb203-25"></a>y_bar &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">sum</span>(y)</span>
+<span id="cb203-26"><a href="section-data.html#cb203-26"></a>s_xy &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">sum</span>((x <span class="op">-</span><span class="st"> </span>x_bar)<span class="op">*</span>(y <span class="op">-</span><span class="st"> </span>y_bar))</span>
+<span id="cb203-27"><a href="section-data.html#cb203-27"></a>s_xy_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(x) <span class="op">%*%</span><span class="st"> </span>H <span class="op">%*%</span><span class="st"> </span>y</span></code></pre></div>
 <p>To compare, let’s construct a matrix of all the results that we calculated.</p>
-<div class="sourceCode" id="section-cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="section-data.html#cb205-1"></a>cp_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x_bar, x_bar_mat, s_x, s_x_mat, s_xy, s_xy_mat), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T)</span>
-<span id="cb205-2"><a href="section-data.html#cb205-2"></a><span class="kw">row.names</span>(cp_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sample Mean&quot;</span>, <span class="st">&quot;Sample Variance&quot;</span>, <span class="st">&quot;Sample Covariance&quot;</span>)</span>
-<span id="cb205-3"><a href="section-data.html#cb205-3"></a><span class="kw">colnames</span>(cp_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)</span>
-<span id="cb205-4"><a href="section-data.html#cb205-4"></a>cp_matrix</span></code></pre></div>
+<div class="sourceCode" id="section-cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="section-data.html#cb204-1"></a>cp_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x_bar, x_bar_mat, s_x, s_x_mat, s_xy, s_xy_mat), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T)</span>
+<span id="cb204-2"><a href="section-data.html#cb204-2"></a><span class="kw">row.names</span>(cp_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sample Mean&quot;</span>, <span class="st">&quot;Sample Variance&quot;</span>, <span class="st">&quot;Sample Covariance&quot;</span>)</span>
+<span id="cb204-3"><a href="section-data.html#cb204-3"></a><span class="kw">colnames</span>(cp_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scalar&quot;</span>, <span class="st">&quot;Matrix&quot;</span>)</span>
+<span id="cb204-4"><a href="section-data.html#cb204-4"></a>cp_matrix</span></code></pre></div>
 <pre><code>##                         Scalar       Matrix
 ## Sample Mean       -0.095715724 -0.095715724
 ## Sample Variance    3.485078494  3.485078494
@@ -1146,21 +1146,21 @@ s_{x,y}      &amp; s_y^2
 \right].
 \end{equation}\]</span></p>
 <p>In R, this can be done as</p>
-<div class="sourceCode" id="section-cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="section-data.html#cb207-1"></a><span class="co"># Sample variance of y</span></span>
-<span id="cb207-2"><a href="section-data.html#cb207-2"></a>s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(y) <span class="op">%*%</span><span class="st"> </span>H <span class="op">%*%</span><span class="st"> </span>y</span>
-<span id="cb207-3"><a href="section-data.html#cb207-3"></a></span>
-<span id="cb207-4"><a href="section-data.html#cb207-4"></a><span class="co"># Covariance matrix</span></span>
-<span id="cb207-5"><a href="section-data.html#cb207-5"></a>(V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="section-data.html#cb206-1"></a><span class="co"># Sample variance of y</span></span>
+<span id="cb206-2"><a href="section-data.html#cb206-2"></a>s_y_mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>n<span class="op">*</span><span class="kw">t</span>(y) <span class="op">%*%</span><span class="st"> </span>H <span class="op">%*%</span><span class="st"> </span>y</span>
+<span id="cb206-3"><a href="section-data.html#cb206-3"></a></span>
+<span id="cb206-4"><a href="section-data.html#cb206-4"></a><span class="co"># Covariance matrix</span></span>
+<span id="cb206-5"><a href="section-data.html#cb206-5"></a>(V &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(s_x_mat, s_xy_mat, s_xy_mat, s_y_mat), <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##              [,1]         [,2]
 ## [1,]  3.485078494 -0.007969419
 ## [2,] -0.007969419  0.956116661</code></pre>
 <p>This result can now be compared to</p>
-<div class="sourceCode" id="section-cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="section-data.html#cb209-1"></a><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</span></code></pre></div>
+<div class="sourceCode" id="section-cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="section-data.html#cb208-1"></a><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</span></code></pre></div>
 <pre><code>##              x            y
 ## x  3.520281307 -0.008049918
 ## y -0.008049918  0.965774405</code></pre>
 <p>We can see that the results are slightly different from what we expected. This is because the calculation of <code>cov()</code> within the default R <code>stats</code> package is based on an unbiased estimator which is not the one we used. To obtain the same result, we can go back to our estimation by calculating via the below method</p>
-<div class="sourceCode" id="section-cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="section-data.html#cb211-1"></a>(n<span class="dv">-1</span>)<span class="op">/</span>n<span class="op">*</span><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</span></code></pre></div>
+<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-data.html#cb210-1"></a>(n<span class="dv">-1</span>)<span class="op">/</span>n<span class="op">*</span><span class="kw">cov</span>(<span class="kw">cbind</span>(x, y))</span></code></pre></div>
 <pre><code>##              x            y
 ## x  3.485078494 -0.007969419
 ## y -0.007969419  0.956116661</code></pre>
@@ -1238,37 +1238,37 @@ which verifies that our result is a minimum.
 \end{aligned}
 \]</span></p>
 <p>In practice, the vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and the matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are unknown and must be estimated using historical data. In the code below, we compute the optimal value of <span class="math inline">\(\omega\)</span> based on <a href="section-data.html#eq:omega">(4.2)</a> by using the last five years of historical data for the two stocks considered. For simplicity we set <span class="math inline">\(W\)</span> to one but note that <span class="math inline">\(W\)</span> plays no role in determining <span class="math inline">\(\omega^*\)</span>.</p>
-<div class="sourceCode" id="section-cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="section-data.html#cb213-1"></a><span class="co"># Load quantmod</span></span>
-<span id="cb213-2"><a href="section-data.html#cb213-2"></a><span class="kw">library</span>(quantmod)</span>
-<span id="cb213-3"><a href="section-data.html#cb213-3"></a></span>
-<span id="cb213-4"><a href="section-data.html#cb213-4"></a><span class="co"># Download data</span></span>
-<span id="cb213-5"><a href="section-data.html#cb213-5"></a>today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</span>
-<span id="cb213-6"><a href="section-data.html#cb213-6"></a>five_years_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-5 year&quot;</span>)[<span class="dv">2</span>]</span>
-<span id="cb213-7"><a href="section-data.html#cb213-7"></a><span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> five_years_ago, <span class="dt">to =</span> today)</span>
-<span id="cb213-8"><a href="section-data.html#cb213-8"></a><span class="kw">getSymbols</span>(<span class="st">&quot;NFLX&quot;</span>, <span class="dt">from =</span> five_years_ago, <span class="dt">to =</span> today)</span>
-<span id="cb213-9"><a href="section-data.html#cb213-9"></a></span>
-<span id="cb213-10"><a href="section-data.html#cb213-10"></a><span class="co"># Compute returns</span></span>
-<span id="cb213-11"><a href="section-data.html#cb213-11"></a>Ra &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</span>
-<span id="cb213-12"><a href="section-data.html#cb213-12"></a>Rn &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(NFLX)) </span>
-<span id="cb213-13"><a href="section-data.html#cb213-13"></a></span>
-<span id="cb213-14"><a href="section-data.html#cb213-14"></a><span class="co"># Estimation of mu and Sigma</span></span>
-<span id="cb213-15"><a href="section-data.html#cb213-15"></a>Sigma &lt;-<span class="st"> </span><span class="kw">cov</span>(<span class="kw">cbind</span>(Ra, Rn))</span>
-<span id="cb213-16"><a href="section-data.html#cb213-16"></a>mu &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(Ra), <span class="kw">mean</span>(Rn))</span>
-<span id="cb213-17"><a href="section-data.html#cb213-17"></a></span>
-<span id="cb213-18"><a href="section-data.html#cb213-18"></a><span class="co"># Compute omega^*</span></span>
-<span id="cb213-19"><a href="section-data.html#cb213-19"></a>omega_star &lt;-<span class="st"> </span>(Sigma[<span class="dv">2</span>, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>Sigma[<span class="dv">1</span>, <span class="dv">2</span>])<span class="op">/</span>(Sigma[<span class="dv">1</span>, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Sigma[<span class="dv">2</span>, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb213-20"><a href="section-data.html#cb213-20"></a></span>
-<span id="cb213-21"><a href="section-data.html#cb213-21"></a><span class="co"># Compute investment expected value and variance</span></span>
-<span id="cb213-22"><a href="section-data.html#cb213-22"></a>mu_investment &lt;-<span class="st"> </span>omega_star<span class="op">*</span>mu[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">*</span>mu[<span class="dv">2</span>]</span>
-<span id="cb213-23"><a href="section-data.html#cb213-23"></a>var_investment &lt;-<span class="st"> </span>omega_star<span class="op">^</span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span></span>
-<span id="cb213-24"><a href="section-data.html#cb213-24"></a><span class="st">  </span><span class="dv">2</span><span class="op">*</span>omega_star<span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">*</span>Sigma[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="section-data.html#cb212-1"></a><span class="co"># Load quantmod</span></span>
+<span id="cb212-2"><a href="section-data.html#cb212-2"></a><span class="kw">library</span>(quantmod)</span>
+<span id="cb212-3"><a href="section-data.html#cb212-3"></a></span>
+<span id="cb212-4"><a href="section-data.html#cb212-4"></a><span class="co"># Download data</span></span>
+<span id="cb212-5"><a href="section-data.html#cb212-5"></a>today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</span>
+<span id="cb212-6"><a href="section-data.html#cb212-6"></a>five_years_ago &lt;-<span class="st"> </span><span class="kw">seq</span>(today, <span class="dt">length =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="st">&quot;-5 year&quot;</span>)[<span class="dv">2</span>]</span>
+<span id="cb212-7"><a href="section-data.html#cb212-7"></a><span class="kw">getSymbols</span>(<span class="st">&quot;AAPL&quot;</span>, <span class="dt">from =</span> five_years_ago, <span class="dt">to =</span> today)</span>
+<span id="cb212-8"><a href="section-data.html#cb212-8"></a><span class="kw">getSymbols</span>(<span class="st">&quot;NFLX&quot;</span>, <span class="dt">from =</span> five_years_ago, <span class="dt">to =</span> today)</span>
+<span id="cb212-9"><a href="section-data.html#cb212-9"></a></span>
+<span id="cb212-10"><a href="section-data.html#cb212-10"></a><span class="co"># Compute returns</span></span>
+<span id="cb212-11"><a href="section-data.html#cb212-11"></a>Ra &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(AAPL))</span>
+<span id="cb212-12"><a href="section-data.html#cb212-12"></a>Rn &lt;-<span class="st"> </span><span class="kw">na.omit</span>(<span class="kw">ClCl</span>(NFLX)) </span>
+<span id="cb212-13"><a href="section-data.html#cb212-13"></a></span>
+<span id="cb212-14"><a href="section-data.html#cb212-14"></a><span class="co"># Estimation of mu and Sigma</span></span>
+<span id="cb212-15"><a href="section-data.html#cb212-15"></a>Sigma &lt;-<span class="st"> </span><span class="kw">cov</span>(<span class="kw">cbind</span>(Ra, Rn))</span>
+<span id="cb212-16"><a href="section-data.html#cb212-16"></a>mu &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(Ra), <span class="kw">mean</span>(Rn))</span>
+<span id="cb212-17"><a href="section-data.html#cb212-17"></a></span>
+<span id="cb212-18"><a href="section-data.html#cb212-18"></a><span class="co"># Compute omega^*</span></span>
+<span id="cb212-19"><a href="section-data.html#cb212-19"></a>omega_star &lt;-<span class="st"> </span>(Sigma[<span class="dv">2</span>, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>Sigma[<span class="dv">1</span>, <span class="dv">2</span>])<span class="op">/</span>(Sigma[<span class="dv">1</span>, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Sigma[<span class="dv">2</span>, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb212-20"><a href="section-data.html#cb212-20"></a></span>
+<span id="cb212-21"><a href="section-data.html#cb212-21"></a><span class="co"># Compute investment expected value and variance</span></span>
+<span id="cb212-22"><a href="section-data.html#cb212-22"></a>mu_investment &lt;-<span class="st"> </span>omega_star<span class="op">*</span>mu[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">*</span>mu[<span class="dv">2</span>]</span>
+<span id="cb212-23"><a href="section-data.html#cb212-23"></a>var_investment &lt;-<span class="st"> </span>omega_star<span class="op">^</span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>Sigma[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span></span>
+<span id="cb212-24"><a href="section-data.html#cb212-24"></a><span class="st">  </span><span class="dv">2</span><span class="op">*</span>omega_star<span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>omega_star)<span class="op">*</span>Sigma[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
 <p>From this code, we obtain <span class="math inline">\(\omega^* \approx\)</span> 86.03%. In the table below we compare the empirical expected values and variances of the stocks as well as those of our investment:</p>
-<div class="sourceCode" id="section-cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="section-data.html#cb214-1"></a>investment_summary &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb214-2"><a href="section-data.html#cb214-2"></a><span class="kw">dimnames</span>(investment_summary)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Expected value&quot;</span>, <span class="st">&quot;Variance&quot;</span>)</span>
-<span id="cb214-3"><a href="section-data.html#cb214-3"></a><span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)</span>
-<span id="cb214-4"><a href="section-data.html#cb214-4"></a>investment_summary[<span class="dv">1</span>, ] &lt;-<span class="st"> </span><span class="kw">c</span>(mu, mu_investment)</span>
-<span id="cb214-5"><a href="section-data.html#cb214-5"></a>investment_summary[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">diag</span>(Sigma), var_investment)</span>
-<span id="cb214-6"><a href="section-data.html#cb214-6"></a>knitr<span class="op">::</span><span class="kw">kable</span>(investment_summary)</span></code></pre></div>
+<div class="sourceCode" id="section-cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="section-data.html#cb213-1"></a>investment_summary &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb213-2"><a href="section-data.html#cb213-2"></a><span class="kw">dimnames</span>(investment_summary)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Expected value&quot;</span>, <span class="st">&quot;Variance&quot;</span>)</span>
+<span id="cb213-3"><a href="section-data.html#cb213-3"></a><span class="kw">dimnames</span>(investment_summary)[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Netflix&quot;</span>, <span class="st">&quot;Investment&quot;</span>)</span>
+<span id="cb213-4"><a href="section-data.html#cb213-4"></a>investment_summary[<span class="dv">1</span>, ] &lt;-<span class="st"> </span><span class="kw">c</span>(mu, mu_investment)</span>
+<span id="cb213-5"><a href="section-data.html#cb213-5"></a>investment_summary[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">diag</span>(Sigma), var_investment)</span>
+<span id="cb213-6"><a href="section-data.html#cb213-6"></a>knitr<span class="op">::</span><span class="kw">kable</span>(investment_summary)</span></code></pre></div>
 <table>
 <caption><span id="tab:tableprtexample">Table 4.4: </span>Expected value and variance of stocks and our investment</caption>
 <thead>
@@ -1308,14 +1308,14 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <div id="section-array" class="section level2">
 <h2><span class="header-section-number">4.3</span> Array</h2>
 <p>Arrays allow to construct <strong>multidimensional</strong> objects. Indeed, vectors and matrices are respectively objects in one and two dimensions while arrays can in be in an arbitrary <span class="math inline">\(n\)</span> dimension. Essentially, matrices are a special case of arrays which is only in two dimensions. Matrices are commonly used in Statistics while arrays are much rarer but nevertheless worth being aware of. To consider a simple using arrays we will revisit an example presented in the previous section where we constructed a matrix containing the number of Grand Slam won and the win rate of the five players considered in Table <a href="section-data.html#tab:tennis">4.2</a>. This matrix was constructed as follows:</p>
-<div class="sourceCode" id="section-cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="section-data.html#cb215-1"></a>players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>, </span>
-<span id="cb215-2"><a href="section-data.html#cb215-2"></a>             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</span>
-<span id="cb215-3"><a href="section-data.html#cb215-3"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb215-4"><a href="section-data.html#cb215-4"></a>win_percentage &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">82.7</span>, <span class="fl">83.1</span>, <span class="fl">82.2</span>, <span class="fl">63.6</span>, <span class="fl">64.3</span>)</span>
-<span id="cb215-5"><a href="section-data.html#cb215-5"></a>mat &lt;-<span class="st"> </span><span class="kw">cbind</span>(grand_slam_win, win_percentage)</span>
-<span id="cb215-6"><a href="section-data.html#cb215-6"></a><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players</span>
-<span id="cb215-7"><a href="section-data.html#cb215-7"></a><span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)</span>
-<span id="cb215-8"><a href="section-data.html#cb215-8"></a>mat</span></code></pre></div>
+<div class="sourceCode" id="section-cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="section-data.html#cb214-1"></a>players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>, </span>
+<span id="cb214-2"><a href="section-data.html#cb214-2"></a>             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</span>
+<span id="cb214-3"><a href="section-data.html#cb214-3"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb214-4"><a href="section-data.html#cb214-4"></a>win_percentage &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">82.7</span>, <span class="fl">83.1</span>, <span class="fl">82.2</span>, <span class="fl">63.6</span>, <span class="fl">64.3</span>)</span>
+<span id="cb214-5"><a href="section-data.html#cb214-5"></a>mat &lt;-<span class="st"> </span><span class="kw">cbind</span>(grand_slam_win, win_percentage)</span>
+<span id="cb214-6"><a href="section-data.html#cb214-6"></a><span class="kw">rownames</span>(mat) &lt;-<span class="st"> </span>players</span>
+<span id="cb214-7"><a href="section-data.html#cb214-7"></a><span class="kw">colnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)</span>
+<span id="cb214-8"><a href="section-data.html#cb214-8"></a>mat</span></code></pre></div>
 <pre><code>##                 GS win Win rate
 ## Novak Djokovic      16     82.7
 ## Rafael Nadal        19     83.1
@@ -1323,17 +1323,17 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Daniil Medvedev      0     63.6
 ## Dominic Thiem        0     64.3</code></pre>
 <p>The data used to construct this matrix was collected in the end of September 2019. Suppose that we now would like to update this object in the end of October 2019. This can be done by constructing an array as shown in the example below.</p>
-<div class="sourceCode" id="section-cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="section-data.html#cb217-1"></a><span class="co"># Constuct &quot;empty&quot; array</span></span>
-<span id="cb217-2"><a href="section-data.html#cb217-2"></a>my_array &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="ot">NA</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb217-3"><a href="section-data.html#cb217-3"></a><span class="kw">dimnames</span>(my_array)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>players</span>
-<span id="cb217-4"><a href="section-data.html#cb217-4"></a><span class="kw">dimnames</span>(my_array)[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)</span>
-<span id="cb217-5"><a href="section-data.html#cb217-5"></a><span class="kw">dimnames</span>(my_array)[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;09-30-2019&quot;</span>, <span class="st">&quot;10-31-2019&quot;</span>)</span>
-<span id="cb217-6"><a href="section-data.html#cb217-6"></a></span>
-<span id="cb217-7"><a href="section-data.html#cb217-7"></a><span class="co"># Construct matrix</span></span>
-<span id="cb217-8"><a href="section-data.html#cb217-8"></a>my_array[,,<span class="dv">1</span>] &lt;-<span class="st"> </span>mat</span>
-<span id="cb217-9"><a href="section-data.html#cb217-9"></a>my_array[,,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb217-10"><a href="section-data.html#cb217-10"></a>                       <span class="kw">c</span>(<span class="fl">82.7</span>, <span class="fl">83.1</span>, <span class="fl">82.2</span>, <span class="fl">63.6</span>, <span class="fl">64.3</span>))</span>
-<span id="cb217-11"><a href="section-data.html#cb217-11"></a>my_array</span></code></pre></div>
+<div class="sourceCode" id="section-cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="section-data.html#cb216-1"></a><span class="co"># Constuct &quot;empty&quot; array</span></span>
+<span id="cb216-2"><a href="section-data.html#cb216-2"></a>my_array &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="ot">NA</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb216-3"><a href="section-data.html#cb216-3"></a><span class="kw">dimnames</span>(my_array)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>players</span>
+<span id="cb216-4"><a href="section-data.html#cb216-4"></a><span class="kw">dimnames</span>(my_array)[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GS win&quot;</span>, <span class="st">&quot;Win rate&quot;</span>)</span>
+<span id="cb216-5"><a href="section-data.html#cb216-5"></a><span class="kw">dimnames</span>(my_array)[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;09-30-2019&quot;</span>, <span class="st">&quot;10-31-2019&quot;</span>)</span>
+<span id="cb216-6"><a href="section-data.html#cb216-6"></a></span>
+<span id="cb216-7"><a href="section-data.html#cb216-7"></a><span class="co"># Construct matrix</span></span>
+<span id="cb216-8"><a href="section-data.html#cb216-8"></a>my_array[,,<span class="dv">1</span>] &lt;-<span class="st"> </span>mat</span>
+<span id="cb216-9"><a href="section-data.html#cb216-9"></a>my_array[,,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb216-10"><a href="section-data.html#cb216-10"></a>                       <span class="kw">c</span>(<span class="fl">82.7</span>, <span class="fl">83.1</span>, <span class="fl">82.2</span>, <span class="fl">63.6</span>, <span class="fl">64.3</span>))</span>
+<span id="cb216-11"><a href="section-data.html#cb216-11"></a>my_array</span></code></pre></div>
 <pre><code>## , , 09-30-2019
 ## 
 ##                 GS win Win rate
@@ -1352,24 +1352,24 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Daniil Medvedev      0     63.6
 ## Dominic Thiem        0     64.3</code></pre>
 <p>Like what we experimented with matrices, we can extract and manipulate information.</p>
-<div class="sourceCode" id="section-cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="section-data.html#cb219-1"></a><span class="kw">length</span>(my_array)    <span class="co"># length is 20, i.e. 5x2x2 = 20</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="section-data.html#cb218-1"></a><span class="kw">length</span>(my_array)    <span class="co"># length is 20, i.e. 5x2x2 = 20</span></span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
-<div class="sourceCode" id="section-cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="section-data.html#cb221-1"></a><span class="kw">dim</span>(my_array)       <span class="co"># dimensions are 5x2x2</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="section-data.html#cb220-1"></a><span class="kw">dim</span>(my_array)       <span class="co"># dimensions are 5x2x2</span></span></code></pre></div>
 <pre><code>## [1] 5 2 2</code></pre>
-<div class="sourceCode" id="section-cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="section-data.html#cb223-1"></a><span class="kw">is.array</span>(my_array)  <span class="co"># yes it is an array!</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="section-data.html#cb222-1"></a><span class="kw">is.array</span>(my_array)  <span class="co"># yes it is an array!</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Subsetting the elements of an array works similarly to what we already discussed with matrices. Below are a few examples:</p>
-<div class="sourceCode" id="section-cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="section-data.html#cb225-1"></a>my_array[,,<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="section-data.html#cb224-1"></a>my_array[,,<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##                 GS win Win rate
 ## Novak Djokovic      16     82.7
 ## Rafael Nadal        19     83.1
 ## Roger Federer       20     82.2
 ## Daniil Medvedev      0     63.6
 ## Dominic Thiem        0     64.3</code></pre>
-<div class="sourceCode" id="section-cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="section-data.html#cb227-1"></a>my_array[<span class="dv">1</span>,,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="section-data.html#cb226-1"></a>my_array[<span class="dv">1</span>,,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##   GS win Win rate 
 ##     16.0     82.7</code></pre>
-<div class="sourceCode" id="section-cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="section-data.html#cb229-1"></a>my_array[,<span class="dv">1</span>,]</span></code></pre></div>
+<div class="sourceCode" id="section-cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="section-data.html#cb228-1"></a>my_array[,<span class="dv">1</span>,]</span></code></pre></div>
 <pre><code>##                 09-30-2019 10-31-2019
 ## Novak Djokovic          16         16
 ## Rafael Nadal            19         19
@@ -1377,20 +1377,20 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Daniil Medvedev          0          0
 ## Dominic Thiem            0          0</code></pre>
 <p>Finally, we can assess if some our five won any Grand Slam between mid-July and mid-September 2017 by using the code below:</p>
-<div class="sourceCode" id="section-cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="section-data.html#cb231-1"></a>players[my_array[,<span class="dv">1</span>,<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span>my_array[,<span class="dv">1</span>,<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="section-cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="section-data.html#cb230-1"></a>players[my_array[,<span class="dv">1</span>,<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span>my_array[,<span class="dv">1</span>,<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
 </div>
 <div id="section-list" class="section level2">
 <h2><span class="header-section-number">4.4</span> List</h2>
 <p>A list is one of the commonly used <strong>heterogeneous</strong> data structures, which depicts a generic “vector” containing other object types. For example, we can create a list containing numeric character and logical vectors as well as matrices. Here we can create a list that contains different element types. (numeric, character, logical, matrix)</p>
-<div class="sourceCode" id="section-cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="section-data.html#cb233-1"></a><span class="co"># List elements</span></span>
-<span id="cb233-2"><a href="section-data.html#cb233-2"></a>num_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">188</span>, <span class="dv">140</span>)</span>
-<span id="cb233-3"><a href="section-data.html#cb233-3"></a>char_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>)</span>
-<span id="cb233-4"><a href="section-data.html#cb233-4"></a>logic_vec &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">TRUE</span>, <span class="dv">8</span>)</span>
-<span id="cb233-5"><a href="section-data.html#cb233-5"></a>my_mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb233-6"><a href="section-data.html#cb233-6"></a></span>
-<span id="cb233-7"><a href="section-data.html#cb233-7"></a><span class="co"># List initialization </span></span>
-<span id="cb233-8"><a href="section-data.html#cb233-8"></a>(my_list &lt;-<span class="st"> </span><span class="kw">list</span>(num_vec, char_vec, logic_vec, my_mat))</span></code></pre></div>
+<div class="sourceCode" id="section-cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="section-data.html#cb232-1"></a><span class="co"># List elements</span></span>
+<span id="cb232-2"><a href="section-data.html#cb232-2"></a>num_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">188</span>, <span class="dv">140</span>)</span>
+<span id="cb232-3"><a href="section-data.html#cb232-3"></a>char_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>)</span>
+<span id="cb232-4"><a href="section-data.html#cb232-4"></a>logic_vec &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">TRUE</span>, <span class="dv">8</span>)</span>
+<span id="cb232-5"><a href="section-data.html#cb232-5"></a>my_mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb232-6"><a href="section-data.html#cb232-6"></a></span>
+<span id="cb232-7"><a href="section-data.html#cb232-7"></a><span class="co"># List initialization </span></span>
+<span id="cb232-8"><a href="section-data.html#cb232-8"></a>(my_list &lt;-<span class="st"> </span><span class="kw">list</span>(num_vec, char_vec, logic_vec, my_mat))</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 188 140
 ## 
@@ -1408,9 +1408,9 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## [4,]    0    0    0    0    0
 ## [5,]    0    0    0    0    0</code></pre>
 <p>Alternatively, it is possible to add named labels to the elements of your list. For example,</p>
-<div class="sourceCode" id="section-cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="section-data.html#cb235-1"></a><span class="co"># List initialization with custom names </span></span>
-<span id="cb235-2"><a href="section-data.html#cb235-2"></a>(my_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">number =</span> num_vec, <span class="dt">character =</span> char_vec, </span>
-<span id="cb235-3"><a href="section-data.html#cb235-3"></a>                 <span class="dt">logic =</span> logic_vec, <span class="dt">matrix =</span> my_mat))</span></code></pre></div>
+<div class="sourceCode" id="section-cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="section-data.html#cb234-1"></a><span class="co"># List initialization with custom names </span></span>
+<span id="cb234-2"><a href="section-data.html#cb234-2"></a>(my_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">number =</span> num_vec, <span class="dt">character =</span> char_vec, </span>
+<span id="cb234-3"><a href="section-data.html#cb234-3"></a>                 <span class="dt">logic =</span> logic_vec, <span class="dt">matrix =</span> my_mat))</span></code></pre></div>
 <pre><code>## $number
 ## [1] 188 140
 ## 
@@ -1428,47 +1428,47 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## [4,]    0    0    0    0    0
 ## [5,]    0    0    0    0    0</code></pre>
 <p>Subsetting is very similar to what we have already discussed. Indeed, we have</p>
-<div class="sourceCode" id="section-cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="section-data.html#cb237-1"></a><span class="co"># Extract the first and third element </span></span>
-<span id="cb237-2"><a href="section-data.html#cb237-2"></a>my_list[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="section-data.html#cb236-1"></a><span class="co"># Extract the first and third element </span></span>
+<span id="cb236-2"><a href="section-data.html#cb236-2"></a>my_list[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
 <pre><code>## $number
 ## [1] 188 140
 ## 
 ## $logic
 ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
-<div class="sourceCode" id="section-cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="section-data.html#cb239-1"></a><span class="co"># Compare these two subsets  </span></span>
-<span id="cb239-2"><a href="section-data.html#cb239-2"></a>my_list[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="section-data.html#cb238-1"></a><span class="co"># Compare these two subsets  </span></span>
+<span id="cb238-2"><a href="section-data.html#cb238-2"></a>my_list[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## $number
 ## [1] 188 140</code></pre>
-<div class="sourceCode" id="section-cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="section-data.html#cb241-1"></a>my_list[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="section-cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="section-data.html#cb240-1"></a>my_list[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] 188 140</code></pre>
-<div class="sourceCode" id="section-cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="section-data.html#cb243-1"></a><span class="co"># Using labels to subset </span></span>
-<span id="cb243-2"><a href="section-data.html#cb243-2"></a>my_list<span class="op">$</span>number</span></code></pre></div>
+<div class="sourceCode" id="section-cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="section-data.html#cb242-1"></a><span class="co"># Using labels to subset </span></span>
+<span id="cb242-2"><a href="section-data.html#cb242-2"></a>my_list<span class="op">$</span>number</span></code></pre></div>
 <pre><code>## [1] 188 140</code></pre>
-<div class="sourceCode" id="section-cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="section-data.html#cb245-1"></a>my_list<span class="op">$</span>matrix</span></code></pre></div>
+<div class="sourceCode" id="section-cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="section-data.html#cb244-1"></a>my_list<span class="op">$</span>matrix</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    0    0    0    0    0
 ## [2,]    0    0    0    0    0
 ## [3,]    0    0    0    0    0
 ## [4,]    0    0    0    0    0
 ## [5,]    0    0    0    0    0</code></pre>
-<div class="sourceCode" id="section-cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="section-data.html#cb247-1"></a>my_list<span class="op">$</span>matrix[,<span class="dv">3</span>] <span class="co"># Extract third column of matrix </span></span></code></pre></div>
+<div class="sourceCode" id="section-cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="section-data.html#cb246-1"></a>my_list<span class="op">$</span>matrix[,<span class="dv">3</span>] <span class="co"># Extract third column of matrix </span></span></code></pre></div>
 <pre><code>## [1] 0 0 0 0 0</code></pre>
 <p>It is interesting to notice the difference between <code>my_list[1]</code> and <code>my_list[[1]]</code>. To understand this difference suppose that we are interested in retrieving the second element of the vector <code>num_vec</code> which is stored in list <code>my_list</code>. In general most people use of the two ways presented below:</p>
-<div class="sourceCode" id="section-cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="section-data.html#cb249-1"></a><span class="co"># These mean the same thing! </span></span>
-<span id="cb249-2"><a href="section-data.html#cb249-2"></a>my_list[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="section-data.html#cb248-1"></a><span class="co"># These mean the same thing! </span></span>
+<span id="cb248-2"><a href="section-data.html#cb248-2"></a>my_list[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 140</code></pre>
-<div class="sourceCode" id="section-cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="section-data.html#cb251-1"></a>my_list<span class="op">$</span>number[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="section-data.html#cb250-1"></a>my_list<span class="op">$</span>number[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 140</code></pre>
 <p>Simply including one bracket like <code>my_list[1]</code> will return the first element of the list, but will retain the <code>list</code> structure. <code>my_list</code> is a list, and <code>my_list[1]</code> is also a list. In other words, one bracket retains the class information, while using two brackets simplifies the list into a numeric vector.</p>
-<div class="sourceCode" id="section-cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="section-data.html#cb253-1"></a><span class="co"># type of object </span></span>
-<span id="cb253-2"><a href="section-data.html#cb253-2"></a><span class="kw">typeof</span>(my_list)</span></code></pre></div>
+<div class="sourceCode" id="section-cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="section-data.html#cb252-1"></a><span class="co"># type of object </span></span>
+<span id="cb252-2"><a href="section-data.html#cb252-2"></a><span class="kw">typeof</span>(my_list)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="section-cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="section-data.html#cb255-1"></a><span class="kw">typeof</span>(my_list[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="section-cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="section-data.html#cb254-1"></a><span class="kw">typeof</span>(my_list[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Therefore, <code>my_list[1][2]</code> <strong>does not work</strong> and if you wish to use <code>my_list[1]</code> you will have to a syntax similar to the ones presented below:</p>
-<div class="sourceCode" id="section-cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="section-data.html#cb257-1"></a>my_list[<span class="dv">1</span>][[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="section-data.html#cb256-1"></a>my_list[<span class="dv">1</span>][[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 140</code></pre>
-<div class="sourceCode" id="section-cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="section-data.html#cb259-1"></a>my_list[<span class="dv">1</span>]<span class="op">$</span>number[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="section-data.html#cb258-1"></a>my_list[<span class="dv">1</span>]<span class="op">$</span>number[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 140</code></pre>
 <p>Most people generally uses <code>[[</code> to select any single element, whereas <code>[</code> returns a list of the selected elements.</p>
 </div>
@@ -1476,26 +1476,26 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <h2><span class="header-section-number">4.5</span> Dataframe</h2>
 <p>A data frame is a <strong>heterogeneous</strong> data structure used for storing data tables. A data frame is the most common way of storing data in R, and it has a 2D structure and shares properties of both the matrix and the list. The table contains lists of equal-length, same-type vectors, and most datasets will have a data frame format.</p>
 <p>We can create a data frame using data.frame()</p>
-<div class="sourceCode" id="section-cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="section-data.html#cb261-1"></a><span class="co">### Creation</span></span>
-<span id="cb261-2"><a href="section-data.html#cb261-2"></a></span>
-<span id="cb261-3"><a href="section-data.html#cb261-3"></a>players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
-<span id="cb261-4"><a href="section-data.html#cb261-4"></a>             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</span>
-<span id="cb261-5"><a href="section-data.html#cb261-5"></a></span>
-<span id="cb261-6"><a href="section-data.html#cb261-6"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>) </span>
-<span id="cb261-7"><a href="section-data.html#cb261-7"></a></span>
-<span id="cb261-8"><a href="section-data.html#cb261-8"></a>date_of_birth &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;3 June 1986&quot;</span>, <span class="st">&quot;8 August 1981&quot;</span>,</span>
-<span id="cb261-9"><a href="section-data.html#cb261-9"></a>                   <span class="st">&quot;11 February 1996&quot;</span>, <span class="st">&quot;3 September 1993&quot;</span>)</span>
-<span id="cb261-10"><a href="section-data.html#cb261-10"></a></span>
-<span id="cb261-11"><a href="section-data.html#cb261-11"></a>place_of_birth &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Serbia&quot;</span>, <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>, <span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)</span>
-<span id="cb261-12"><a href="section-data.html#cb261-12"></a>ATP_ranking &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb261-13"><a href="section-data.html#cb261-13"></a></span>
-<span id="cb261-14"><a href="section-data.html#cb261-14"></a>prize_money &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">135259120</span>, <span class="dv">115178858</span>, <span class="dv">126840700</span>, <span class="dv">8171483</span>, <span class="dv">18588662</span>)</span>
-<span id="cb261-15"><a href="section-data.html#cb261-15"></a></span>
-<span id="cb261-16"><a href="section-data.html#cb261-16"></a>tennis &lt;-<span class="st"> </span><span class="kw">data.frame</span>(date_of_birth, grand_slam_win, place_of_birth, </span>
-<span id="cb261-17"><a href="section-data.html#cb261-17"></a>                    ATP_ranking, prize_money)</span>
-<span id="cb261-18"><a href="section-data.html#cb261-18"></a></span>
-<span id="cb261-19"><a href="section-data.html#cb261-19"></a><span class="kw">dimnames</span>(tennis)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>players</span>
-<span id="cb261-20"><a href="section-data.html#cb261-20"></a>tennis</span></code></pre></div>
+<div class="sourceCode" id="section-cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="section-data.html#cb260-1"></a><span class="co">### Creation</span></span>
+<span id="cb260-2"><a href="section-data.html#cb260-2"></a></span>
+<span id="cb260-3"><a href="section-data.html#cb260-3"></a>players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
+<span id="cb260-4"><a href="section-data.html#cb260-4"></a>             <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>)</span>
+<span id="cb260-5"><a href="section-data.html#cb260-5"></a></span>
+<span id="cb260-6"><a href="section-data.html#cb260-6"></a>grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">0</span>) </span>
+<span id="cb260-7"><a href="section-data.html#cb260-7"></a></span>
+<span id="cb260-8"><a href="section-data.html#cb260-8"></a>date_of_birth &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;22 May 1987&quot;</span>, <span class="st">&quot;3 June 1986&quot;</span>, <span class="st">&quot;8 August 1981&quot;</span>,</span>
+<span id="cb260-9"><a href="section-data.html#cb260-9"></a>                   <span class="st">&quot;11 February 1996&quot;</span>, <span class="st">&quot;3 September 1993&quot;</span>)</span>
+<span id="cb260-10"><a href="section-data.html#cb260-10"></a></span>
+<span id="cb260-11"><a href="section-data.html#cb260-11"></a>place_of_birth &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Serbia&quot;</span>, <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>, <span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)</span>
+<span id="cb260-12"><a href="section-data.html#cb260-12"></a>ATP_ranking &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb260-13"><a href="section-data.html#cb260-13"></a></span>
+<span id="cb260-14"><a href="section-data.html#cb260-14"></a>prize_money &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">135259120</span>, <span class="dv">115178858</span>, <span class="dv">126840700</span>, <span class="dv">8171483</span>, <span class="dv">18588662</span>)</span>
+<span id="cb260-15"><a href="section-data.html#cb260-15"></a></span>
+<span id="cb260-16"><a href="section-data.html#cb260-16"></a>tennis &lt;-<span class="st"> </span><span class="kw">data.frame</span>(date_of_birth, grand_slam_win, place_of_birth, </span>
+<span id="cb260-17"><a href="section-data.html#cb260-17"></a>                    ATP_ranking, prize_money)</span>
+<span id="cb260-18"><a href="section-data.html#cb260-18"></a></span>
+<span id="cb260-19"><a href="section-data.html#cb260-19"></a><span class="kw">dimnames</span>(tennis)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>players</span>
+<span id="cb260-20"><a href="section-data.html#cb260-20"></a>tennis</span></code></pre></div>
 <pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
 ## Novak Djokovic       22 May 1987             16         Serbia           1
 ## Rafael Nadal         3 June 1986             19          Spain           2
@@ -1509,16 +1509,16 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Daniil Medvedev     8171483
 ## Dominic Thiem      18588662</code></pre>
 <p>Notice that each column has its own type. We can check if we have achieved our goal by using:</p>
-<div class="sourceCode" id="section-cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="section-data.html#cb263-1"></a><span class="kw">is.data.frame</span>(tennis)</span></code></pre></div>
+<div class="sourceCode" id="section-cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="section-data.html#cb262-1"></a><span class="kw">is.data.frame</span>(tennis)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div id="section-combination" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Combination</h3>
 <p>Data frames can also be combined. Let say we want to add some information to the table above (e.g. the player’s height) and if he is right-handed or left-handed.</p>
 <p>We can do so by using <code>cbind()</code> - column bind and <code>rbind()</code> - row bind:</p>
-<div class="sourceCode" id="section-cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="section-data.html#cb265-1"></a>height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.85</span>, <span class="fl">1.85</span>, <span class="fl">1.98</span>, <span class="fl">1.85</span>)</span>
-<span id="cb265-2"><a href="section-data.html#cb265-2"></a>hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)</span>
-<span id="cb265-3"><a href="section-data.html#cb265-3"></a></span>
-<span id="cb265-4"><a href="section-data.html#cb265-4"></a>(tennis &lt;-<span class="st"> </span><span class="kw">cbind</span>(tennis, <span class="kw">data.frame</span>(height, hand)))</span></code></pre></div>
+<div class="sourceCode" id="section-cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="section-data.html#cb264-1"></a>height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.85</span>, <span class="fl">1.85</span>, <span class="fl">1.98</span>, <span class="fl">1.85</span>)</span>
+<span id="cb264-2"><a href="section-data.html#cb264-2"></a>hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)</span>
+<span id="cb264-3"><a href="section-data.html#cb264-3"></a></span>
+<span id="cb264-4"><a href="section-data.html#cb264-4"></a>(tennis &lt;-<span class="st"> </span><span class="kw">cbind</span>(tennis, <span class="kw">data.frame</span>(height, hand)))</span></code></pre></div>
 <pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
 ## Novak Djokovic       22 May 1987             16         Serbia           1
 ## Rafael Nadal         3 June 1986             19          Spain           2
@@ -1536,17 +1536,17 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <h3><span class="header-section-number">4.5.2</span> Subsetting</h3>
 <p>Like for vectors, it is also possible to subset the values that we have stored in our data frames. Since data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists; if you subset with two vectors, they behave like matrices.</p>
 <p>Let us say we want only want to know the country and date of birth of the players.</p>
-<div class="sourceCode" id="section-cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="section-data.html#cb267-1"></a><span class="co"># There are two ways to select columns from a data frame</span></span>
-<span id="cb267-2"><a href="section-data.html#cb267-2"></a><span class="co"># Like a list:</span></span>
-<span id="cb267-3"><a href="section-data.html#cb267-3"></a>tennis[<span class="kw">c</span>(<span class="st">&quot;place_of_birth&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="section-data.html#cb266-1"></a><span class="co"># There are two ways to select columns from a data frame</span></span>
+<span id="cb266-2"><a href="section-data.html#cb266-2"></a><span class="co"># Like a list:</span></span>
+<span id="cb266-3"><a href="section-data.html#cb266-3"></a>tennis[<span class="kw">c</span>(<span class="st">&quot;place_of_birth&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</span></code></pre></div>
 <pre><code>##                 place_of_birth    date_of_birth
 ## Novak Djokovic          Serbia      22 May 1987
 ## Rafael Nadal             Spain      3 June 1986
 ## Roger Federer      Switzerland    8 August 1981
 ## Daniil Medvedev         Russia 11 February 1996
 ## Dominic Thiem          Austria 3 September 1993</code></pre>
-<div class="sourceCode" id="section-cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="section-data.html#cb269-1"></a><span class="co"># Like a matrix</span></span>
-<span id="cb269-2"><a href="section-data.html#cb269-2"></a>tennis[, <span class="kw">c</span>(<span class="st">&quot;place_of_birth&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="section-data.html#cb268-1"></a><span class="co"># Like a matrix</span></span>
+<span id="cb268-2"><a href="section-data.html#cb268-2"></a>tennis[, <span class="kw">c</span>(<span class="st">&quot;place_of_birth&quot;</span>, <span class="st">&quot;date_of_birth&quot;</span>)]</span></code></pre></div>
 <pre><code>##                 place_of_birth    date_of_birth
 ## Novak Djokovic          Serbia      22 May 1987
 ## Rafael Nadal             Spain      3 June 1986
@@ -1554,26 +1554,26 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Daniil Medvedev         Russia 11 February 1996
 ## Dominic Thiem          Austria 3 September 1993</code></pre>
 <p>We can extract column names of dataframes by using <code>names</code>.</p>
-<div class="sourceCode" id="section-cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="section-data.html#cb271-1"></a><span class="kw">names</span>(tennis)</span></code></pre></div>
+<div class="sourceCode" id="section-cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="section-data.html#cb270-1"></a><span class="kw">names</span>(tennis)</span></code></pre></div>
 <pre><code>## [1] &quot;date_of_birth&quot;  &quot;grand_slam_win&quot; &quot;place_of_birth&quot; &quot;ATP_ranking&quot;   
 ## [5] &quot;prize_money&quot;    &quot;height&quot;         &quot;hand&quot;</code></pre>
-<div class="sourceCode" id="section-cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="section-data.html#cb273-1"></a><span class="co"># To access a single element, let say the date of birth, </span></span>
-<span id="cb273-2"><a href="section-data.html#cb273-2"></a><span class="co"># you can also use:</span></span>
-<span id="cb273-3"><a href="section-data.html#cb273-3"></a>tennis<span class="op">$</span>date_of_birth</span></code></pre></div>
+<div class="sourceCode" id="section-cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="section-data.html#cb272-1"></a><span class="co"># To access a single element, let say the date of birth, </span></span>
+<span id="cb272-2"><a href="section-data.html#cb272-2"></a><span class="co"># you can also use:</span></span>
+<span id="cb272-3"><a href="section-data.html#cb272-3"></a>tennis<span class="op">$</span>date_of_birth</span></code></pre></div>
 <pre><code>## [1] 22 May 1987      3 June 1986      8 August 1981    11 February 1996
 ## [5] 3 September 1993
 ## 5 Levels: 11 February 1996 22 May 1987 3 June 1986 ... 8 August 1981</code></pre>
 <p>We can change the ordering of the columns outputted by simply changing the order within the <code>c()</code> subsetting.</p>
-<div class="sourceCode" id="section-cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="section-data.html#cb275-1"></a><span class="co"># Note the difference between </span></span>
-<span id="cb275-2"><a href="section-data.html#cb275-2"></a>tennis[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="section-data.html#cb274-1"></a><span class="co"># Note the difference between </span></span>
+<span id="cb274-2"><a href="section-data.html#cb274-2"></a>tennis[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
 <pre><code>##                    date_of_birth place_of_birth
 ## Novak Djokovic       22 May 1987         Serbia
 ## Rafael Nadal         3 June 1986          Spain
 ## Roger Federer      8 August 1981    Switzerland
 ## Daniil Medvedev 11 February 1996         Russia
 ## Dominic Thiem   3 September 1993        Austria</code></pre>
-<div class="sourceCode" id="section-cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="section-data.html#cb277-1"></a><span class="co"># and </span></span>
-<span id="cb277-2"><a href="section-data.html#cb277-2"></a>tennis[, <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="section-cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="section-data.html#cb276-1"></a><span class="co"># and </span></span>
+<span id="cb276-2"><a href="section-data.html#cb276-2"></a>tennis[, <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>##                 place_of_birth    date_of_birth
 ## Novak Djokovic          Serbia      22 May 1987
 ## Rafael Nadal             Spain      3 June 1986
@@ -1581,9 +1581,9 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Daniil Medvedev         Russia 11 February 1996
 ## Dominic Thiem          Austria 3 September 1993</code></pre>
 <p>Let us say we want only want to know right-handed players. We can subset <code>rows</code> using similar syntax as above.</p>
-<div class="sourceCode" id="section-cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="section-data.html#cb279-1"></a><span class="co"># We will talk more about == in the next chapter</span></span>
-<span id="cb279-2"><a href="section-data.html#cb279-2"></a><span class="co"># This represents all players with hand equal to &quot;R&quot;</span></span>
-<span id="cb279-3"><a href="section-data.html#cb279-3"></a>tennis[hand<span class="op">==</span><span class="st">&quot;R&quot;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="section-cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="section-data.html#cb278-1"></a><span class="co"># We will talk more about == in the next chapter</span></span>
+<span id="cb278-2"><a href="section-data.html#cb278-2"></a><span class="co"># This represents all players with hand equal to &quot;R&quot;</span></span>
+<span id="cb278-3"><a href="section-data.html#cb278-3"></a>tennis[hand<span class="op">==</span><span class="st">&quot;R&quot;</span>,]</span></code></pre></div>
 <pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
 ## Novak Djokovic       22 May 1987             16         Serbia           1
 ## Roger Federer      8 August 1981             20    Switzerland           3
@@ -1594,13 +1594,13 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Roger Federer     126840700   1.85    R
 ## Daniil Medvedev     8171483   1.98    R
 ## Dominic Thiem      18588662   1.85    R</code></pre>
-<div class="sourceCode" id="section-cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="section-data.html#cb281-1"></a><span class="co"># Note what this returns </span></span>
-<span id="cb281-2"><a href="section-data.html#cb281-2"></a>hand<span class="op">==</span><span class="st">&quot;R&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="section-data.html#cb280-1"></a><span class="co"># Note what this returns </span></span>
+<span id="cb280-2"><a href="section-data.html#cb280-2"></a>hand<span class="op">==</span><span class="st">&quot;R&quot;</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>Often data are better view when it is sorted. The function <code>order</code> helps do this, which can be utilized with subsetting to output a custom sorted dataframe based on a column(s).</p>
 <p>Below we will order the tennis players by the number of grand slam wins. Set <code>decreasing=TRUE</code> to order the rows in descreasing order.</p>
-<div class="sourceCode" id="section-cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="section-data.html#cb283-1"></a><span class="co"># increasing order</span></span>
-<span id="cb283-2"><a href="section-data.html#cb283-2"></a>tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>]),]</span></code></pre></div>
+<div class="sourceCode" id="section-cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="section-data.html#cb282-1"></a><span class="co"># increasing order</span></span>
+<span id="cb282-2"><a href="section-data.html#cb282-2"></a>tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>]),]</span></code></pre></div>
 <pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
 ## Daniil Medvedev 11 February 1996              0         Russia           4
 ## Dominic Thiem   3 September 1993              0        Austria           5
@@ -1613,8 +1613,8 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Novak Djokovic    135259120   1.88    R
 ## Rafael Nadal      115178858   1.85    L
 ## Roger Federer     126840700   1.85    R</code></pre>
-<div class="sourceCode" id="section-cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="section-data.html#cb285-1"></a><span class="co"># descreasing order</span></span>
-<span id="cb285-2"><a href="section-data.html#cb285-2"></a>tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>], <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]</span></code></pre></div>
+<div class="sourceCode" id="section-cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="section-data.html#cb284-1"></a><span class="co"># descreasing order</span></span>
+<span id="cb284-2"><a href="section-data.html#cb284-2"></a>tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>], <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]</span></code></pre></div>
 <pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
 ## Roger Federer      8 August 1981             20    Switzerland           3
 ## Rafael Nadal         3 June 1986             19          Spain           2
@@ -1636,21 +1636,21 @@ This example uses the Google API that first requires the user to register. Unfor
 </div>
 
 <p>Dataframe objects can be optimized for different applications, as many packages use dataframes as input or output objects. For example, we will use a package, <code>ggmap</code> to map simple cities. We will talk more about the functionality of the package later. We can extract the latitude - longitude information of the specific cities of the tennis players using <code>geocode</code> within <code>ggmap</code>.</p>
-<div class="sourceCode" id="section-cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="section-data.html#cb287-1"></a><span class="kw">library</span>(ggmap)</span>
-<span id="cb287-2"><a href="section-data.html#cb287-2"></a><span class="kw">register_google</span>(<span class="dt">key =</span> <span class="st">&quot;your key&quot;</span>)</span>
-<span id="cb287-3"><a href="section-data.html#cb287-3"></a>birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>, <span class="st">&quot;Moscow, Russia&quot;</span>, <span class="st">&quot;Wiener Neustadt, Austria&quot;</span>)</span>
-<span id="cb287-4"><a href="section-data.html#cb287-4"></a>birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place)</span></code></pre></div>
+<div class="sourceCode" id="section-cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="section-data.html#cb286-1"></a><span class="kw">library</span>(ggmap)</span>
+<span id="cb286-2"><a href="section-data.html#cb286-2"></a><span class="kw">register_google</span>(<span class="dt">key =</span> <span class="st">&quot;your key&quot;</span>)</span>
+<span id="cb286-3"><a href="section-data.html#cb286-3"></a>birth_place &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgrade, Serbia&quot;</span>, <span class="st">&quot;Manacor, Spain&quot;</span>, <span class="st">&quot;Basel, Switzerland&quot;</span>, <span class="st">&quot;Moscow, Russia&quot;</span>, <span class="st">&quot;Wiener Neustadt, Austria&quot;</span>)</span>
+<span id="cb286-4"><a href="section-data.html#cb286-4"></a>birth_coord &lt;-<span class="st"> </span><span class="kw">geocode</span>(birth_place)</span></code></pre></div>
 <p>Furthermore, we can create new columns of dataframes using vectors that we created before.</p>
-<div class="sourceCode" id="section-cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="section-data.html#cb288-1"></a>birth_coord<span class="op">$</span>Players &lt;-<span class="st"> </span>players</span>
-<span id="cb288-2"><a href="section-data.html#cb288-2"></a>birth_coord<span class="op">$</span>WP &lt;-<span class="st"> </span>win_percentage</span>
-<span id="cb288-3"><a href="section-data.html#cb288-3"></a>birth_coord</span>
-<span id="cb288-4"><a href="section-data.html#cb288-4"></a><span class="kw">is.data.frame</span>(birth_coord)</span></code></pre></div>
+<div class="sourceCode" id="section-cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="section-data.html#cb287-1"></a>birth_coord<span class="op">$</span>Players &lt;-<span class="st"> </span>players</span>
+<span id="cb287-2"><a href="section-data.html#cb287-2"></a>birth_coord<span class="op">$</span>WP &lt;-<span class="st"> </span>win_percentage</span>
+<span id="cb287-3"><a href="section-data.html#cb287-3"></a>birth_coord</span>
+<span id="cb287-4"><a href="section-data.html#cb287-4"></a><span class="kw">is.data.frame</span>(birth_coord)</span></code></pre></div>
 <p>Let’s represent this information graphically. We haven’t seen how to make graph yet so don’t worry too much about the details of how this graph is made.</p>
-<div class="sourceCode" id="section-cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="section-data.html#cb289-1"></a><span class="kw">library</span>(mapproj)</span>
-<span id="cb289-2"><a href="section-data.html#cb289-2"></a>map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">3</span>)</span>
-<span id="cb289-3"><a href="section-data.html#cb289-3"></a><span class="kw">ggmap</span>(map) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, </span>
-<span id="cb289-4"><a href="section-data.html#cb289-4"></a>             <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> WP)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb289-5"><a href="section-data.html#cb289-5"></a><span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="section-data.html#cb288-1"></a><span class="kw">library</span>(mapproj)</span>
+<span id="cb288-2"><a href="section-data.html#cb288-2"></a>map &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="st">&#39;Switzerland&#39;</span>, <span class="dt">zoom =</span> <span class="dv">3</span>)</span>
+<span id="cb288-3"><a href="section-data.html#cb288-3"></a><span class="kw">ggmap</span>(map) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> birth_coord, </span>
+<span id="cb288-4"><a href="section-data.html#cb288-4"></a>             <span class="kw">aes</span>(lon, lat, <span class="dt">col =</span> Players, <span class="dt">size =</span> WP)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb288-5"><a href="section-data.html#cb288-5"></a><span class="st">             </span><span class="kw">xlab</span>(<span class="st">&quot;Longitude&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Latitude&quot;</span>)</span></code></pre></div>
 <center>
 <img src="images/ggmap_tennis_30092019.png" style="width:80.0%" />
 </center>

@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-02-20" />
+<meta name="date" content="2020-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,84 +326,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this chapter we introduce one of the most useful tools for R programming as well as for statistical programming in general. Indeed, one of the main goals for statistical programming is to then be able to share all the code and functions that have been implemented in order to respond to a specific task. The latter may often be quite <em>messy</em> to do given that different files and functions can be present in various directories or repositories and, for example, some codes may use functions from other codes but do not load the same libraries, thereby producing execution errors.</p>
 <p>In order to avoid the above complications (and to program in a healthy and organized manner), R allows you to create <em>packages</em> that are software platforms that collect functions as well as other files which, among others, describe these functions and provide users with documentation that allow them to understand and efficiently use these functions. Moreover, when sharing a package (or making it available within a repository) all the user needs to do is to install and load the package within an R session which then makes available the entire environment needed for all the functions included in the package to work. In a nutshell, whenever creating functions to answer a specific research interest or professional task, it is always good to do so by first creating a package within which these functions can be stored and documented.</p>
 <p>In this chapter we will describe and explain the steps necessary to create an R package using RStudio. There are other ways and other procedures to produce an R package but in this chapter we will describe one possible way which is consistent with the approach to statistical programming that is presented in this book. As in the previous chapters, we will make use of an example to guide the reader through the different aspects of package building and, for this purpose, let us assume we want to build a package that allows a user to perform Monte-Carlo integration for any user-specificed function as well as produce plots that represent these functions as well as the integrated area. In this case, we have an extremely simple setting where, based on code used in the previous chapters, we only have the following two functions to be included in the package:</p>
-<div class="sourceCode" id="section-cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="section-r-packages.html#cb450-1"></a>mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){</span>
-<span id="cb450-2"><a href="section-r-packages.html#cb450-2"></a>  <span class="co"># A few checks</span></span>
-<span id="cb450-3"><a href="section-r-packages.html#cb450-3"></a>  <span class="co"># Check x_range</span></span>
-<span id="cb450-4"><a href="section-r-packages.html#cb450-4"></a>  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){</span>
-<span id="cb450-5"><a href="section-r-packages.html#cb450-5"></a>    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)</span>
-<span id="cb450-6"><a href="section-r-packages.html#cb450-6"></a>  }</span>
-<span id="cb450-7"><a href="section-r-packages.html#cb450-7"></a></span>
-<span id="cb450-8"><a href="section-r-packages.html#cb450-8"></a>  <span class="co"># Check fun</span></span>
-<span id="cb450-9"><a href="section-r-packages.html#cb450-9"></a>  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){</span>
-<span id="cb450-10"><a href="section-r-packages.html#cb450-10"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)</span>
-<span id="cb450-11"><a href="section-r-packages.html#cb450-11"></a>  }</span>
-<span id="cb450-12"><a href="section-r-packages.html#cb450-12"></a></span>
-<span id="cb450-13"><a href="section-r-packages.html#cb450-13"></a>  x =<span class="st"> </span><span class="kw">mean</span>(x_range)</span>
-<span id="cb450-14"><a href="section-r-packages.html#cb450-14"></a>  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb450-15"><a href="section-r-packages.html#cb450-15"></a>  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){</span>
-<span id="cb450-16"><a href="section-r-packages.html#cb450-16"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)</span>
-<span id="cb450-17"><a href="section-r-packages.html#cb450-17"></a>  }</span>
-<span id="cb450-18"><a href="section-r-packages.html#cb450-18"></a></span>
-<span id="cb450-19"><a href="section-r-packages.html#cb450-19"></a>  <span class="co"># Check B</span></span>
-<span id="cb450-20"><a href="section-r-packages.html#cb450-20"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){</span>
-<span id="cb450-21"><a href="section-r-packages.html#cb450-21"></a>    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)</span>
-<span id="cb450-22"><a href="section-r-packages.html#cb450-22"></a>  }</span>
-<span id="cb450-23"><a href="section-r-packages.html#cb450-23"></a></span>
-<span id="cb450-24"><a href="section-r-packages.html#cb450-24"></a>  <span class="co"># Set seed</span></span>
-<span id="cb450-25"><a href="section-r-packages.html#cb450-25"></a>  <span class="kw">set.seed</span>(seed)</span>
-<span id="cb450-26"><a href="section-r-packages.html#cb450-26"></a></span>
-<span id="cb450-27"><a href="section-r-packages.html#cb450-27"></a>  <span class="co"># Compute the length of the interval, i.e. (b-a)</span></span>
-<span id="cb450-28"><a href="section-r-packages.html#cb450-28"></a>  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
-<span id="cb450-29"><a href="section-r-packages.html#cb450-29"></a></span>
-<span id="cb450-30"><a href="section-r-packages.html#cb450-30"></a>  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span></span>
-<span id="cb450-31"><a href="section-r-packages.html#cb450-31"></a>  Ui =<span class="st"> </span><span class="kw">runif</span>(B)</span>
-<span id="cb450-32"><a href="section-r-packages.html#cb450-32"></a>  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length</span>
-<span id="cb450-33"><a href="section-r-packages.html#cb450-33"></a></span>
-<span id="cb450-34"><a href="section-r-packages.html#cb450-34"></a>  <span class="co"># Compute \hat{I}</span></span>
-<span id="cb450-35"><a href="section-r-packages.html#cb450-35"></a>  x =<span class="st"> </span>Xi</span>
-<span id="cb450-36"><a href="section-r-packages.html#cb450-36"></a>  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))</span>
-<span id="cb450-37"><a href="section-r-packages.html#cb450-37"></a></span>
-<span id="cb450-38"><a href="section-r-packages.html#cb450-38"></a>  <span class="co"># Compute \hat{I}_2</span></span>
-<span id="cb450-39"><a href="section-r-packages.html#cb450-39"></a>  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb450-40"><a href="section-r-packages.html#cb450-40"></a>  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B</span>
-<span id="cb450-41"><a href="section-r-packages.html#cb450-41"></a></span>
-<span id="cb450-42"><a href="section-r-packages.html#cb450-42"></a>  <span class="co"># Output list</span></span>
-<span id="cb450-43"><a href="section-r-packages.html#cb450-43"></a>  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,</span>
-<span id="cb450-44"><a href="section-r-packages.html#cb450-44"></a>             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)</span>
-<span id="cb450-45"><a href="section-r-packages.html#cb450-45"></a>  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span></span>
-<span id="cb450-46"><a href="section-r-packages.html#cb450-46"></a>  out</span>
-<span id="cb450-47"><a href="section-r-packages.html#cb450-47"></a>}</span>
-<span id="cb450-48"><a href="section-r-packages.html#cb450-48"></a></span>
-<span id="cb450-49"><a href="section-r-packages.html#cb450-49"></a>plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
-<span id="cb450-50"><a href="section-r-packages.html#cb450-50"></a>  obj =<span class="st"> </span>x</span>
-<span id="cb450-51"><a href="section-r-packages.html#cb450-51"></a>  x_range =<span class="st"> </span>obj<span class="op">$</span>x_range</span>
-<span id="cb450-52"><a href="section-r-packages.html#cb450-52"></a>  fun =<span class="st"> </span>obj<span class="op">$</span>fun</span>
-<span id="cb450-53"><a href="section-r-packages.html#cb450-53"></a></span>
-<span id="cb450-54"><a href="section-r-packages.html#cb450-54"></a>  Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
-<span id="cb450-55"><a href="section-r-packages.html#cb450-55"></a>  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)</span>
-<span id="cb450-56"><a href="section-r-packages.html#cb450-56"></a>  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
-<span id="cb450-57"><a href="section-r-packages.html#cb450-57"></a>  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))</span>
-<span id="cb450-58"><a href="section-r-packages.html#cb450-58"></a>  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)</span>
-<span id="cb450-59"><a href="section-r-packages.html#cb450-59"></a>  <span class="kw">grid</span>()</span>
-<span id="cb450-60"><a href="section-r-packages.html#cb450-60"></a>  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj<span class="op">$</span>I,<span class="dv">4</span>),</span>
-<span id="cb450-61"><a href="section-r-packages.html#cb450-61"></a>              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))</span>
-<span id="cb450-62"><a href="section-r-packages.html#cb450-62"></a>  <span class="kw">lines</span>(x, f_x)</span>
-<span id="cb450-63"><a href="section-r-packages.html#cb450-63"></a>  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
-<span id="cb450-64"><a href="section-r-packages.html#cb450-64"></a>  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))</span>
-<span id="cb450-65"><a href="section-r-packages.html#cb450-65"></a>  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
-<span id="cb450-66"><a href="section-r-packages.html#cb450-66"></a>  <span class="kw">polygon</span>(<span class="kw">c</span>(x, <span class="kw">rev</span>(x)), <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="kw">rev</span>(f_x)),</span>
-<span id="cb450-67"><a href="section-r-packages.html#cb450-67"></a>          <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])</span>
-<span id="cb450-68"><a href="section-r-packages.html#cb450-68"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb450-69"><a href="section-r-packages.html#cb450-69"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb450-70"><a href="section-r-packages.html#cb450-70"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="section-r-packages.html#cb449-1"></a>mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){</span>
+<span id="cb449-2"><a href="section-r-packages.html#cb449-2"></a>  <span class="co"># A few checks</span></span>
+<span id="cb449-3"><a href="section-r-packages.html#cb449-3"></a>  <span class="co"># Check x_range</span></span>
+<span id="cb449-4"><a href="section-r-packages.html#cb449-4"></a>  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){</span>
+<span id="cb449-5"><a href="section-r-packages.html#cb449-5"></a>    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)</span>
+<span id="cb449-6"><a href="section-r-packages.html#cb449-6"></a>  }</span>
+<span id="cb449-7"><a href="section-r-packages.html#cb449-7"></a></span>
+<span id="cb449-8"><a href="section-r-packages.html#cb449-8"></a>  <span class="co"># Check fun</span></span>
+<span id="cb449-9"><a href="section-r-packages.html#cb449-9"></a>  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){</span>
+<span id="cb449-10"><a href="section-r-packages.html#cb449-10"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)</span>
+<span id="cb449-11"><a href="section-r-packages.html#cb449-11"></a>  }</span>
+<span id="cb449-12"><a href="section-r-packages.html#cb449-12"></a></span>
+<span id="cb449-13"><a href="section-r-packages.html#cb449-13"></a>  x =<span class="st"> </span><span class="kw">mean</span>(x_range)</span>
+<span id="cb449-14"><a href="section-r-packages.html#cb449-14"></a>  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb449-15"><a href="section-r-packages.html#cb449-15"></a>  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){</span>
+<span id="cb449-16"><a href="section-r-packages.html#cb449-16"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)</span>
+<span id="cb449-17"><a href="section-r-packages.html#cb449-17"></a>  }</span>
+<span id="cb449-18"><a href="section-r-packages.html#cb449-18"></a></span>
+<span id="cb449-19"><a href="section-r-packages.html#cb449-19"></a>  <span class="co"># Check B</span></span>
+<span id="cb449-20"><a href="section-r-packages.html#cb449-20"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){</span>
+<span id="cb449-21"><a href="section-r-packages.html#cb449-21"></a>    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)</span>
+<span id="cb449-22"><a href="section-r-packages.html#cb449-22"></a>  }</span>
+<span id="cb449-23"><a href="section-r-packages.html#cb449-23"></a></span>
+<span id="cb449-24"><a href="section-r-packages.html#cb449-24"></a>  <span class="co"># Set seed</span></span>
+<span id="cb449-25"><a href="section-r-packages.html#cb449-25"></a>  <span class="kw">set.seed</span>(seed)</span>
+<span id="cb449-26"><a href="section-r-packages.html#cb449-26"></a></span>
+<span id="cb449-27"><a href="section-r-packages.html#cb449-27"></a>  <span class="co"># Compute the length of the interval, i.e. (b-a)</span></span>
+<span id="cb449-28"><a href="section-r-packages.html#cb449-28"></a>  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
+<span id="cb449-29"><a href="section-r-packages.html#cb449-29"></a></span>
+<span id="cb449-30"><a href="section-r-packages.html#cb449-30"></a>  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span></span>
+<span id="cb449-31"><a href="section-r-packages.html#cb449-31"></a>  Ui =<span class="st"> </span><span class="kw">runif</span>(B)</span>
+<span id="cb449-32"><a href="section-r-packages.html#cb449-32"></a>  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length</span>
+<span id="cb449-33"><a href="section-r-packages.html#cb449-33"></a></span>
+<span id="cb449-34"><a href="section-r-packages.html#cb449-34"></a>  <span class="co"># Compute \hat{I}</span></span>
+<span id="cb449-35"><a href="section-r-packages.html#cb449-35"></a>  x =<span class="st"> </span>Xi</span>
+<span id="cb449-36"><a href="section-r-packages.html#cb449-36"></a>  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))</span>
+<span id="cb449-37"><a href="section-r-packages.html#cb449-37"></a></span>
+<span id="cb449-38"><a href="section-r-packages.html#cb449-38"></a>  <span class="co"># Compute \hat{I}_2</span></span>
+<span id="cb449-39"><a href="section-r-packages.html#cb449-39"></a>  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb449-40"><a href="section-r-packages.html#cb449-40"></a>  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B</span>
+<span id="cb449-41"><a href="section-r-packages.html#cb449-41"></a></span>
+<span id="cb449-42"><a href="section-r-packages.html#cb449-42"></a>  <span class="co"># Output list</span></span>
+<span id="cb449-43"><a href="section-r-packages.html#cb449-43"></a>  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,</span>
+<span id="cb449-44"><a href="section-r-packages.html#cb449-44"></a>             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)</span>
+<span id="cb449-45"><a href="section-r-packages.html#cb449-45"></a>  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span></span>
+<span id="cb449-46"><a href="section-r-packages.html#cb449-46"></a>  out</span>
+<span id="cb449-47"><a href="section-r-packages.html#cb449-47"></a>}</span>
+<span id="cb449-48"><a href="section-r-packages.html#cb449-48"></a></span>
+<span id="cb449-49"><a href="section-r-packages.html#cb449-49"></a>plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
+<span id="cb449-50"><a href="section-r-packages.html#cb449-50"></a>  obj =<span class="st"> </span>x</span>
+<span id="cb449-51"><a href="section-r-packages.html#cb449-51"></a>  x_range =<span class="st"> </span>obj<span class="op">$</span>x_range</span>
+<span id="cb449-52"><a href="section-r-packages.html#cb449-52"></a>  fun =<span class="st"> </span>obj<span class="op">$</span>fun</span>
+<span id="cb449-53"><a href="section-r-packages.html#cb449-53"></a></span>
+<span id="cb449-54"><a href="section-r-packages.html#cb449-54"></a>  Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
+<span id="cb449-55"><a href="section-r-packages.html#cb449-55"></a>  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)</span>
+<span id="cb449-56"><a href="section-r-packages.html#cb449-56"></a>  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb449-57"><a href="section-r-packages.html#cb449-57"></a>  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))</span>
+<span id="cb449-58"><a href="section-r-packages.html#cb449-58"></a>  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)</span>
+<span id="cb449-59"><a href="section-r-packages.html#cb449-59"></a>  <span class="kw">grid</span>()</span>
+<span id="cb449-60"><a href="section-r-packages.html#cb449-60"></a>  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj<span class="op">$</span>I,<span class="dv">4</span>),</span>
+<span id="cb449-61"><a href="section-r-packages.html#cb449-61"></a>              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb449-62"><a href="section-r-packages.html#cb449-62"></a>  <span class="kw">lines</span>(x, f_x)</span>
+<span id="cb449-63"><a href="section-r-packages.html#cb449-63"></a>  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb449-64"><a href="section-r-packages.html#cb449-64"></a>  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))</span>
+<span id="cb449-65"><a href="section-r-packages.html#cb449-65"></a>  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
+<span id="cb449-66"><a href="section-r-packages.html#cb449-66"></a>  <span class="kw">polygon</span>(<span class="kw">c</span>(x, <span class="kw">rev</span>(x)), <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="kw">rev</span>(f_x)),</span>
+<span id="cb449-67"><a href="section-r-packages.html#cb449-67"></a>          <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])</span>
+<span id="cb449-68"><a href="section-r-packages.html#cb449-68"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb449-69"><a href="section-r-packages.html#cb449-69"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb449-70"><a href="section-r-packages.html#cb449-70"></a>}</span></code></pre></div>
 <p>Hence, the package will contain:</p>
 <ul>
 <li>the <code>mc_int()</code> function: that computes an approximation of the integral of the function <code>fun</code> with respect to <code>x</code> within the range <code>x_range</code> via Monte-Carlo integration using uniform sampling;</li>
 <li>the <code>plot.MCI()</code> function: a class function that will plot the object that is created as an output of the <code>mc_int()</code> function.</li>
 </ul>
 <p>An example of use of these functions and their output is the following:</p>
-<div class="sourceCode" id="section-cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="section-r-packages.html#cb451-1"></a>obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
-<span id="cb451-2"><a href="section-r-packages.html#cb451-2"></a><span class="kw">plot</span>(obj)</span></code></pre></div>
+<div class="sourceCode" id="section-cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="section-r-packages.html#cb450-1"></a>obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb450-2"><a href="section-r-packages.html#cb450-2"></a><span class="kw">plot</span>(obj)</span></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 <p>Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.</p>
 <div id="section-basic-steps" class="section level2">
@@ -445,12 +445,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-author-roles" class="section level4 unnumbered">
 <h4>Author Roles</h4>
 <p>One of the lines of information in the description file corresponds to the authors of the package. This therefore corresponds to the list of persons who have actively contributed to the development of code and functions that are included in the package. When there is more than author, the line corresponding to the author can be replaced by a format like the following:</p>
-<div class="sourceCode" id="section-cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="section-r-packages.html#cb452-1"></a>Authors<span class="op">@</span>R<span class="op">:</span><span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb452-2"><a href="section-r-packages.html#cb452-2"></a>    <span class="kw">person</span>(<span class="st">&quot;Justin&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="dt">email =</span> <span class="st">&quot;justinlee@psu.edu&quot;</span>, <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>,<span class="st">&quot;cre&quot;</span>)),</span>
-<span id="cb452-3"><a href="section-r-packages.html#cb452-3"></a>    <span class="kw">person</span>(<span class="st">&quot;Stephane&quot;</span>, <span class="st">&quot;Guerrier&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),</span>
-<span id="cb452-4"><a href="section-r-packages.html#cb452-4"></a>    <span class="kw">person</span>(<span class="st">&quot;Roberto&quot;</span>, <span class="st">&quot;Molinari&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),</span>
-<span id="cb452-5"><a href="section-r-packages.html#cb452-5"></a>    <span class="kw">person</span>(<span class="st">&quot;Matthew&quot;</span>, <span class="st">&quot;Beckman&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>)</span>
-<span id="cb452-6"><a href="section-r-packages.html#cb452-6"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="section-cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="section-r-packages.html#cb451-1"></a>Authors<span class="op">@</span>R<span class="op">:</span><span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb451-2"><a href="section-r-packages.html#cb451-2"></a>    <span class="kw">person</span>(<span class="st">&quot;Justin&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="dt">email =</span> <span class="st">&quot;justinlee@psu.edu&quot;</span>, <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>,<span class="st">&quot;cre&quot;</span>)),</span>
+<span id="cb451-3"><a href="section-r-packages.html#cb451-3"></a>    <span class="kw">person</span>(<span class="st">&quot;Stephane&quot;</span>, <span class="st">&quot;Guerrier&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),</span>
+<span id="cb451-4"><a href="section-r-packages.html#cb451-4"></a>    <span class="kw">person</span>(<span class="st">&quot;Roberto&quot;</span>, <span class="st">&quot;Molinari&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),</span>
+<span id="cb451-5"><a href="section-r-packages.html#cb451-5"></a>    <span class="kw">person</span>(<span class="st">&quot;Matthew&quot;</span>, <span class="st">&quot;Beckman&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>)</span>
+<span id="cb451-6"><a href="section-r-packages.html#cb451-6"></a>    )</span></code></pre></div>
 <p>This information is important also because it will impact how it is displayed later in the rendered package website (see further on). As you can notice it possible to also specify the role that the author has in relation to the package using the option <code>role =</code>, followed by codes for the type of role. In the above examples we can see two types of role that correspond to <code>aut</code> which indicates an <em>author</em> of the package while <code>cre</code> stands for <em>creator</em> who is the person in charge of maintaining the package and receiving information as well as bug reports or suggestions. There are other two possible roles available which are <code>ctb</code> and <code>cph</code> that correspond to <em>contributor</em> and <em>copyright holder</em> respectively, where the contributor is a person who has provided some minor contributions to the package while the copyright holder is the person or company who holds the copyright of the package.</p>
 </div>
 <div id="section-license-1" class="section level4 unnumbered">
@@ -480,76 +480,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.1.4</span> Step 4: Documentation</h3>
 <p>The next essential component of a package is its documentation which enables users to know how to use it. Indeed, when users access the <code>demo</code> package, they should essentially know how to use its functions by gaining access to help files through the use of commands like <code>?mc_int</code> for example. A possible (and efficient) way of creating package documentation is by using a specific syntax before each function in your R scripts which will then be used to automatically generate the necessary <code>.Rd</code> files by using the commands <code>devtools::document()</code> or <code>roxygen2::roxygenize</code>.</p>
 <p>We will use the <code>mc_int()</code> function from our demo package as an example to show the syntax that can be used before each function which is intended for the user:</p>
-<div class="sourceCode" id="section-cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="section-r-packages.html#cb453-1"></a><span class="co">#&#39; @title Simple Monte-Carlo integration</span></span>
-<span id="cb453-2"><a href="section-r-packages.html#cb453-2"></a><span class="co">#&#39;</span></span>
-<span id="cb453-3"><a href="section-r-packages.html#cb453-3"></a><span class="co">#&#39; @description Compute an approximation of the integral of the function f(x)</span></span>
-<span id="cb453-4"><a href="section-r-packages.html#cb453-4"></a><span class="co">#&#39; with respect to dx in the range [a, b] by Monte-Carlo integration using</span></span>
-<span id="cb453-5"><a href="section-r-packages.html#cb453-5"></a><span class="co">#&#39; uniform sampling.</span></span>
-<span id="cb453-6"><a href="section-r-packages.html#cb453-6"></a><span class="co">#&#39; @param x_range A \code{vector} of dimension 2 used to denote the integration</span></span>
-<span id="cb453-7"><a href="section-r-packages.html#cb453-7"></a><span class="co">#&#39; region of interest, i.e. [a, b].</span></span>
-<span id="cb453-8"><a href="section-r-packages.html#cb453-8"></a><span class="co">#&#39; @param fun A \code{string} containing the function to be integrated. It</span></span>
-<span id="cb453-9"><a href="section-r-packages.html#cb453-9"></a><span class="co">#&#39; is assumed that \code{x} is used as the variable of interest.</span></span>
-<span id="cb453-10"><a href="section-r-packages.html#cb453-10"></a><span class="co">#&#39; @param B A \code{numeric} (integer) used to denote the number of simulations.</span></span>
-<span id="cb453-11"><a href="section-r-packages.html#cb453-11"></a><span class="co">#&#39; @param seed A \code{numeric} used to control the seed of the random number</span></span>
-<span id="cb453-12"><a href="section-r-packages.html#cb453-12"></a><span class="co">#&#39; generator used by this function.</span></span>
-<span id="cb453-13"><a href="section-r-packages.html#cb453-13"></a><span class="co">#&#39; @return A \code{list} containing the following attributes:</span></span>
-<span id="cb453-14"><a href="section-r-packages.html#cb453-14"></a><span class="co">#&#39; \describe{</span></span>
-<span id="cb453-15"><a href="section-r-packages.html#cb453-15"></a><span class="co">#&#39;      \item{I}{Estimated value of the integral}</span></span>
-<span id="cb453-16"><a href="section-r-packages.html#cb453-16"></a><span class="co">#&#39;      \item{var}{Estimated variance of the estimator}</span></span>
-<span id="cb453-17"><a href="section-r-packages.html#cb453-17"></a><span class="co">#&#39; }</span></span>
-<span id="cb453-18"><a href="section-r-packages.html#cb453-18"></a><span class="co">#&#39; @author Stephane Guerrier</span></span>
-<span id="cb453-19"><a href="section-r-packages.html#cb453-19"></a><span class="co">#&#39; @importFrom stats runif</span></span>
-<span id="cb453-20"><a href="section-r-packages.html#cb453-20"></a><span class="co">#&#39; @export</span></span>
-<span id="cb453-21"><a href="section-r-packages.html#cb453-21"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb453-22"><a href="section-r-packages.html#cb453-22"></a><span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2&quot;, B = 10^5)</span></span>
-<span id="cb453-23"><a href="section-r-packages.html#cb453-23"></a><span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2*sin(x^2/pi)&quot;, B = 10^5)</span></span>
-<span id="cb453-24"><a href="section-r-packages.html#cb453-24"></a>mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){</span>
-<span id="cb453-25"><a href="section-r-packages.html#cb453-25"></a>  <span class="co"># A few checks</span></span>
-<span id="cb453-26"><a href="section-r-packages.html#cb453-26"></a>  <span class="co"># Check x_range</span></span>
-<span id="cb453-27"><a href="section-r-packages.html#cb453-27"></a>  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){</span>
-<span id="cb453-28"><a href="section-r-packages.html#cb453-28"></a>    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)</span>
-<span id="cb453-29"><a href="section-r-packages.html#cb453-29"></a>  }</span>
-<span id="cb453-30"><a href="section-r-packages.html#cb453-30"></a></span>
-<span id="cb453-31"><a href="section-r-packages.html#cb453-31"></a>  <span class="co"># Check fun</span></span>
-<span id="cb453-32"><a href="section-r-packages.html#cb453-32"></a>  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){</span>
-<span id="cb453-33"><a href="section-r-packages.html#cb453-33"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)</span>
-<span id="cb453-34"><a href="section-r-packages.html#cb453-34"></a>  }</span>
-<span id="cb453-35"><a href="section-r-packages.html#cb453-35"></a></span>
-<span id="cb453-36"><a href="section-r-packages.html#cb453-36"></a>  x =<span class="st"> </span><span class="kw">mean</span>(x_range)</span>
-<span id="cb453-37"><a href="section-r-packages.html#cb453-37"></a>  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb453-38"><a href="section-r-packages.html#cb453-38"></a>  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){</span>
-<span id="cb453-39"><a href="section-r-packages.html#cb453-39"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)</span>
-<span id="cb453-40"><a href="section-r-packages.html#cb453-40"></a>  }</span>
-<span id="cb453-41"><a href="section-r-packages.html#cb453-41"></a></span>
-<span id="cb453-42"><a href="section-r-packages.html#cb453-42"></a>  <span class="co"># Check B</span></span>
-<span id="cb453-43"><a href="section-r-packages.html#cb453-43"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){</span>
-<span id="cb453-44"><a href="section-r-packages.html#cb453-44"></a>    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)</span>
-<span id="cb453-45"><a href="section-r-packages.html#cb453-45"></a>  }</span>
-<span id="cb453-46"><a href="section-r-packages.html#cb453-46"></a></span>
-<span id="cb453-47"><a href="section-r-packages.html#cb453-47"></a>  <span class="co"># Set seed</span></span>
-<span id="cb453-48"><a href="section-r-packages.html#cb453-48"></a>  <span class="kw">set.seed</span>(seed)</span>
-<span id="cb453-49"><a href="section-r-packages.html#cb453-49"></a></span>
-<span id="cb453-50"><a href="section-r-packages.html#cb453-50"></a>  <span class="co"># Compute the length of the interval, i.e. (b-a)</span></span>
-<span id="cb453-51"><a href="section-r-packages.html#cb453-51"></a>  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
-<span id="cb453-52"><a href="section-r-packages.html#cb453-52"></a></span>
-<span id="cb453-53"><a href="section-r-packages.html#cb453-53"></a>  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span></span>
-<span id="cb453-54"><a href="section-r-packages.html#cb453-54"></a>  Ui =<span class="st"> </span><span class="kw">runif</span>(B)</span>
-<span id="cb453-55"><a href="section-r-packages.html#cb453-55"></a>  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length</span>
-<span id="cb453-56"><a href="section-r-packages.html#cb453-56"></a></span>
-<span id="cb453-57"><a href="section-r-packages.html#cb453-57"></a>  <span class="co"># Compute \hat{I}</span></span>
-<span id="cb453-58"><a href="section-r-packages.html#cb453-58"></a>  x =<span class="st"> </span>Xi</span>
-<span id="cb453-59"><a href="section-r-packages.html#cb453-59"></a>  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))</span>
-<span id="cb453-60"><a href="section-r-packages.html#cb453-60"></a></span>
-<span id="cb453-61"><a href="section-r-packages.html#cb453-61"></a>  <span class="co"># Compute \hat{I}_2</span></span>
-<span id="cb453-62"><a href="section-r-packages.html#cb453-62"></a>  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb453-63"><a href="section-r-packages.html#cb453-63"></a>  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B</span>
-<span id="cb453-64"><a href="section-r-packages.html#cb453-64"></a></span>
-<span id="cb453-65"><a href="section-r-packages.html#cb453-65"></a>  <span class="co"># Output list</span></span>
-<span id="cb453-66"><a href="section-r-packages.html#cb453-66"></a>  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,</span>
-<span id="cb453-67"><a href="section-r-packages.html#cb453-67"></a>             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)</span>
-<span id="cb453-68"><a href="section-r-packages.html#cb453-68"></a>  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span></span>
-<span id="cb453-69"><a href="section-r-packages.html#cb453-69"></a>  out</span>
-<span id="cb453-70"><a href="section-r-packages.html#cb453-70"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="section-r-packages.html#cb452-1"></a><span class="co">#&#39; @title Simple Monte-Carlo integration</span></span>
+<span id="cb452-2"><a href="section-r-packages.html#cb452-2"></a><span class="co">#&#39;</span></span>
+<span id="cb452-3"><a href="section-r-packages.html#cb452-3"></a><span class="co">#&#39; @description Compute an approximation of the integral of the function f(x)</span></span>
+<span id="cb452-4"><a href="section-r-packages.html#cb452-4"></a><span class="co">#&#39; with respect to dx in the range [a, b] by Monte-Carlo integration using</span></span>
+<span id="cb452-5"><a href="section-r-packages.html#cb452-5"></a><span class="co">#&#39; uniform sampling.</span></span>
+<span id="cb452-6"><a href="section-r-packages.html#cb452-6"></a><span class="co">#&#39; @param x_range A \code{vector} of dimension 2 used to denote the integration</span></span>
+<span id="cb452-7"><a href="section-r-packages.html#cb452-7"></a><span class="co">#&#39; region of interest, i.e. [a, b].</span></span>
+<span id="cb452-8"><a href="section-r-packages.html#cb452-8"></a><span class="co">#&#39; @param fun A \code{string} containing the function to be integrated. It</span></span>
+<span id="cb452-9"><a href="section-r-packages.html#cb452-9"></a><span class="co">#&#39; is assumed that \code{x} is used as the variable of interest.</span></span>
+<span id="cb452-10"><a href="section-r-packages.html#cb452-10"></a><span class="co">#&#39; @param B A \code{numeric} (integer) used to denote the number of simulations.</span></span>
+<span id="cb452-11"><a href="section-r-packages.html#cb452-11"></a><span class="co">#&#39; @param seed A \code{numeric} used to control the seed of the random number</span></span>
+<span id="cb452-12"><a href="section-r-packages.html#cb452-12"></a><span class="co">#&#39; generator used by this function.</span></span>
+<span id="cb452-13"><a href="section-r-packages.html#cb452-13"></a><span class="co">#&#39; @return A \code{list} containing the following attributes:</span></span>
+<span id="cb452-14"><a href="section-r-packages.html#cb452-14"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb452-15"><a href="section-r-packages.html#cb452-15"></a><span class="co">#&#39;      \item{I}{Estimated value of the integral}</span></span>
+<span id="cb452-16"><a href="section-r-packages.html#cb452-16"></a><span class="co">#&#39;      \item{var}{Estimated variance of the estimator}</span></span>
+<span id="cb452-17"><a href="section-r-packages.html#cb452-17"></a><span class="co">#&#39; }</span></span>
+<span id="cb452-18"><a href="section-r-packages.html#cb452-18"></a><span class="co">#&#39; @author Stephane Guerrier</span></span>
+<span id="cb452-19"><a href="section-r-packages.html#cb452-19"></a><span class="co">#&#39; @importFrom stats runif</span></span>
+<span id="cb452-20"><a href="section-r-packages.html#cb452-20"></a><span class="co">#&#39; @export</span></span>
+<span id="cb452-21"><a href="section-r-packages.html#cb452-21"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb452-22"><a href="section-r-packages.html#cb452-22"></a><span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2&quot;, B = 10^5)</span></span>
+<span id="cb452-23"><a href="section-r-packages.html#cb452-23"></a><span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2*sin(x^2/pi)&quot;, B = 10^5)</span></span>
+<span id="cb452-24"><a href="section-r-packages.html#cb452-24"></a>mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){</span>
+<span id="cb452-25"><a href="section-r-packages.html#cb452-25"></a>  <span class="co"># A few checks</span></span>
+<span id="cb452-26"><a href="section-r-packages.html#cb452-26"></a>  <span class="co"># Check x_range</span></span>
+<span id="cb452-27"><a href="section-r-packages.html#cb452-27"></a>  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){</span>
+<span id="cb452-28"><a href="section-r-packages.html#cb452-28"></a>    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)</span>
+<span id="cb452-29"><a href="section-r-packages.html#cb452-29"></a>  }</span>
+<span id="cb452-30"><a href="section-r-packages.html#cb452-30"></a></span>
+<span id="cb452-31"><a href="section-r-packages.html#cb452-31"></a>  <span class="co"># Check fun</span></span>
+<span id="cb452-32"><a href="section-r-packages.html#cb452-32"></a>  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){</span>
+<span id="cb452-33"><a href="section-r-packages.html#cb452-33"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)</span>
+<span id="cb452-34"><a href="section-r-packages.html#cb452-34"></a>  }</span>
+<span id="cb452-35"><a href="section-r-packages.html#cb452-35"></a></span>
+<span id="cb452-36"><a href="section-r-packages.html#cb452-36"></a>  x =<span class="st"> </span><span class="kw">mean</span>(x_range)</span>
+<span id="cb452-37"><a href="section-r-packages.html#cb452-37"></a>  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb452-38"><a href="section-r-packages.html#cb452-38"></a>  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){</span>
+<span id="cb452-39"><a href="section-r-packages.html#cb452-39"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)</span>
+<span id="cb452-40"><a href="section-r-packages.html#cb452-40"></a>  }</span>
+<span id="cb452-41"><a href="section-r-packages.html#cb452-41"></a></span>
+<span id="cb452-42"><a href="section-r-packages.html#cb452-42"></a>  <span class="co"># Check B</span></span>
+<span id="cb452-43"><a href="section-r-packages.html#cb452-43"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){</span>
+<span id="cb452-44"><a href="section-r-packages.html#cb452-44"></a>    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)</span>
+<span id="cb452-45"><a href="section-r-packages.html#cb452-45"></a>  }</span>
+<span id="cb452-46"><a href="section-r-packages.html#cb452-46"></a></span>
+<span id="cb452-47"><a href="section-r-packages.html#cb452-47"></a>  <span class="co"># Set seed</span></span>
+<span id="cb452-48"><a href="section-r-packages.html#cb452-48"></a>  <span class="kw">set.seed</span>(seed)</span>
+<span id="cb452-49"><a href="section-r-packages.html#cb452-49"></a></span>
+<span id="cb452-50"><a href="section-r-packages.html#cb452-50"></a>  <span class="co"># Compute the length of the interval, i.e. (b-a)</span></span>
+<span id="cb452-51"><a href="section-r-packages.html#cb452-51"></a>  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
+<span id="cb452-52"><a href="section-r-packages.html#cb452-52"></a></span>
+<span id="cb452-53"><a href="section-r-packages.html#cb452-53"></a>  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span></span>
+<span id="cb452-54"><a href="section-r-packages.html#cb452-54"></a>  Ui =<span class="st"> </span><span class="kw">runif</span>(B)</span>
+<span id="cb452-55"><a href="section-r-packages.html#cb452-55"></a>  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length</span>
+<span id="cb452-56"><a href="section-r-packages.html#cb452-56"></a></span>
+<span id="cb452-57"><a href="section-r-packages.html#cb452-57"></a>  <span class="co"># Compute \hat{I}</span></span>
+<span id="cb452-58"><a href="section-r-packages.html#cb452-58"></a>  x =<span class="st"> </span>Xi</span>
+<span id="cb452-59"><a href="section-r-packages.html#cb452-59"></a>  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))</span>
+<span id="cb452-60"><a href="section-r-packages.html#cb452-60"></a></span>
+<span id="cb452-61"><a href="section-r-packages.html#cb452-61"></a>  <span class="co"># Compute \hat{I}_2</span></span>
+<span id="cb452-62"><a href="section-r-packages.html#cb452-62"></a>  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb452-63"><a href="section-r-packages.html#cb452-63"></a>  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B</span>
+<span id="cb452-64"><a href="section-r-packages.html#cb452-64"></a></span>
+<span id="cb452-65"><a href="section-r-packages.html#cb452-65"></a>  <span class="co"># Output list</span></span>
+<span id="cb452-66"><a href="section-r-packages.html#cb452-66"></a>  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,</span>
+<span id="cb452-67"><a href="section-r-packages.html#cb452-67"></a>             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)</span>
+<span id="cb452-68"><a href="section-r-packages.html#cb452-68"></a>  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span></span>
+<span id="cb452-69"><a href="section-r-packages.html#cb452-69"></a>  out</span>
+<span id="cb452-70"><a href="section-r-packages.html#cb452-70"></a>}</span></code></pre></div>
 <p>As can be seen, all the syntax which contributes to the documentation of the function is preceded by the syntax <code>#'</code> and is immediately followed (with no spacing) by the code of the function itself. Focussing on the contents of this documentation, the <code>@title</code> and <code>@description</code> entries will constitute respectively the title describing the function in a succint manner and the text providing a more detailed description of what the function does. We then find the <code>@param</code> syntax that is repeated for each parameter considered by the function in which a brief description of what the parameter is and what type of input is needed for it from the user. Finally we find the <code>@return</code> section where there is a description of the outputs of the function and eventual indications as to how these should be interpreted. Additional information can be provided such as the author(s) who specifically contributed to creating the function (<code>@author</code>), the packages or functions needed for the function to be employed (<code>@importFrom</code>) and examples that can show the user how to use this function in practice (<code>@examples</code>).</p>
 <p>A final note should be given to the <code>@export</code> syntax which MUST absolutely be specified if you want the function you’re documenting to be made available to the user. Indeed, there may be functions that are simply created to be used within other functions that are made available to the user and these therefore don’t need to have this option specified. However, if the function needs to be made available to the user, then it is essential that this option is specified within the function documentation. Additional information on package documentation can be found <a href="http://r-pkgs.had.co.nz/man.html#man-functions">here</a>.</p>
 <p>Once all the necessary functions have been documented, it is possible to compile this documentation by using the commands <code>devtools::document()</code> or <code>roxygen2::roxygenize</code> (as mentioned earlier) or by directly building the package. Having done so, an <code>.Rd</code> file for each function will appear in the “man” folder (from which we earlier deleted the <code>hello.Rd</code> file). Below is an example of the <code>.Rd</code> files created for the functions in our example (with an added documentation for a function called <code>MC_gui</code> which is related to the code created for the Shiny app).</p>
@@ -617,52 +617,52 @@ Explain what your package is doing here</code></pre>
 <div id="section-adding-a-shiny-app" class="section level3">
 <h3><span class="header-section-number">8.2.1</span> Adding a shiny app</h3>
 <p>A feature which can be useful to make your package accessible to the general user (as well as to promote it) can be the possibility of including a Shiny app as an interface to your package. To do so, you will have to include a new folder called “inst” within your package main folder and in which an additional folder is then included with a name of your choice (let us say “MC_int” for the example we have used throughout this chapter). Within the latter you can then include the R script(s) to run the Shiny app (say “app.R”) which makes use of the functions made available within the package. An example of the content of such a script is the following:</p>
-<div class="sourceCode" id="section-cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="section-r-packages.html#cb455-1"></a><span class="co"># Define UI for application that draws a plot of the approximate integral</span></span>
-<span id="cb455-2"><a href="section-r-packages.html#cb455-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
-<span id="cb455-3"><a href="section-r-packages.html#cb455-3"></a></span>
-<span id="cb455-4"><a href="section-r-packages.html#cb455-4"></a>   <span class="co"># Application title</span></span>
-<span id="cb455-5"><a href="section-r-packages.html#cb455-5"></a>   <span class="kw">titlePanel</span>(<span class="st">&quot;Monte-Carlo Integration&quot;</span>),</span>
-<span id="cb455-6"><a href="section-r-packages.html#cb455-6"></a></span>
-<span id="cb455-7"><a href="section-r-packages.html#cb455-7"></a>   <span class="co"># Sidebar with text input for the function to integrate, numeric inputs for the range of integration and number of Monte-Carlo replications</span></span>
-<span id="cb455-8"><a href="section-r-packages.html#cb455-8"></a>   <span class="kw">sidebarLayout</span>(</span>
-<span id="cb455-9"><a href="section-r-packages.html#cb455-9"></a>      <span class="kw">sidebarPanel</span>(</span>
-<span id="cb455-10"><a href="section-r-packages.html#cb455-10"></a>        <span class="kw">textInput</span>(<span class="st">&quot;fun&quot;</span>, <span class="st">&quot;Function to integrate:&quot;</span>,<span class="st">&quot;sin(10*x)*exp(cos(x))&quot;</span>),</span>
-<span id="cb455-11"><a href="section-r-packages.html#cb455-11"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),</span>
-<span id="cb455-12"><a href="section-r-packages.html#cb455-12"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),</span>
-<span id="cb455-13"><a href="section-r-packages.html#cb455-13"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of Monte-Carlo replications:&quot;</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>,</span>
-<span id="cb455-14"><a href="section-r-packages.html#cb455-14"></a>                     <span class="dt">min =</span> <span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">9</span>),</span>
-<span id="cb455-15"><a href="section-r-packages.html#cb455-15"></a>        <span class="kw">actionButton</span>(<span class="st">&quot;button&quot;</span>, <span class="st">&quot;Compute Integral&quot;</span>)</span>
-<span id="cb455-16"><a href="section-r-packages.html#cb455-16"></a>      ),</span>
-<span id="cb455-17"><a href="section-r-packages.html#cb455-17"></a></span>
-<span id="cb455-18"><a href="section-r-packages.html#cb455-18"></a>      <span class="co"># Show a plot of the integrated area under the function</span></span>
-<span id="cb455-19"><a href="section-r-packages.html#cb455-19"></a>      <span class="kw">mainPanel</span>(</span>
-<span id="cb455-20"><a href="section-r-packages.html#cb455-20"></a>         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
-<span id="cb455-21"><a href="section-r-packages.html#cb455-21"></a>      )</span>
-<span id="cb455-22"><a href="section-r-packages.html#cb455-22"></a>   )</span>
-<span id="cb455-23"><a href="section-r-packages.html#cb455-23"></a>)</span>
-<span id="cb455-24"><a href="section-r-packages.html#cb455-24"></a></span>
-<span id="cb455-25"><a href="section-r-packages.html#cb455-25"></a><span class="co"># Define server logic required to draw the integration plot</span></span>
-<span id="cb455-26"><a href="section-r-packages.html#cb455-26"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb455-27"><a href="section-r-packages.html#cb455-27"></a></span>
-<span id="cb455-28"><a href="section-r-packages.html#cb455-28"></a>  a &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>button, {</span>
-<span id="cb455-29"><a href="section-r-packages.html#cb455-29"></a>    <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(input<span class="op">$</span>low, input<span class="op">$</span>up),</span>
-<span id="cb455-30"><a href="section-r-packages.html#cb455-30"></a>          <span class="dt">fun =</span> input<span class="op">$</span>fun, <span class="dt">B =</span> input<span class="op">$</span>B)</span>
-<span id="cb455-31"><a href="section-r-packages.html#cb455-31"></a>  })</span>
-<span id="cb455-32"><a href="section-r-packages.html#cb455-32"></a></span>
-<span id="cb455-33"><a href="section-r-packages.html#cb455-33"></a>  output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
-<span id="cb455-34"><a href="section-r-packages.html#cb455-34"></a>      <span class="kw">plot</span>(<span class="kw">a</span>())</span>
-<span id="cb455-35"><a href="section-r-packages.html#cb455-35"></a>  })</span>
-<span id="cb455-36"><a href="section-r-packages.html#cb455-36"></a></span>
-<span id="cb455-37"><a href="section-r-packages.html#cb455-37"></a>}</span>
-<span id="cb455-38"><a href="section-r-packages.html#cb455-38"></a></span>
-<span id="cb455-39"><a href="section-r-packages.html#cb455-39"></a><span class="co"># Run the application</span></span>
-<span id="cb455-40"><a href="section-r-packages.html#cb455-40"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="section-cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="section-r-packages.html#cb454-1"></a><span class="co"># Define UI for application that draws a plot of the approximate integral</span></span>
+<span id="cb454-2"><a href="section-r-packages.html#cb454-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb454-3"><a href="section-r-packages.html#cb454-3"></a></span>
+<span id="cb454-4"><a href="section-r-packages.html#cb454-4"></a>   <span class="co"># Application title</span></span>
+<span id="cb454-5"><a href="section-r-packages.html#cb454-5"></a>   <span class="kw">titlePanel</span>(<span class="st">&quot;Monte-Carlo Integration&quot;</span>),</span>
+<span id="cb454-6"><a href="section-r-packages.html#cb454-6"></a></span>
+<span id="cb454-7"><a href="section-r-packages.html#cb454-7"></a>   <span class="co"># Sidebar with text input for the function to integrate, numeric inputs for the range of integration and number of Monte-Carlo replications</span></span>
+<span id="cb454-8"><a href="section-r-packages.html#cb454-8"></a>   <span class="kw">sidebarLayout</span>(</span>
+<span id="cb454-9"><a href="section-r-packages.html#cb454-9"></a>      <span class="kw">sidebarPanel</span>(</span>
+<span id="cb454-10"><a href="section-r-packages.html#cb454-10"></a>        <span class="kw">textInput</span>(<span class="st">&quot;fun&quot;</span>, <span class="st">&quot;Function to integrate:&quot;</span>,<span class="st">&quot;sin(10*x)*exp(cos(x))&quot;</span>),</span>
+<span id="cb454-11"><a href="section-r-packages.html#cb454-11"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),</span>
+<span id="cb454-12"><a href="section-r-packages.html#cb454-12"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),</span>
+<span id="cb454-13"><a href="section-r-packages.html#cb454-13"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of Monte-Carlo replications:&quot;</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>,</span>
+<span id="cb454-14"><a href="section-r-packages.html#cb454-14"></a>                     <span class="dt">min =</span> <span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">9</span>),</span>
+<span id="cb454-15"><a href="section-r-packages.html#cb454-15"></a>        <span class="kw">actionButton</span>(<span class="st">&quot;button&quot;</span>, <span class="st">&quot;Compute Integral&quot;</span>)</span>
+<span id="cb454-16"><a href="section-r-packages.html#cb454-16"></a>      ),</span>
+<span id="cb454-17"><a href="section-r-packages.html#cb454-17"></a></span>
+<span id="cb454-18"><a href="section-r-packages.html#cb454-18"></a>      <span class="co"># Show a plot of the integrated area under the function</span></span>
+<span id="cb454-19"><a href="section-r-packages.html#cb454-19"></a>      <span class="kw">mainPanel</span>(</span>
+<span id="cb454-20"><a href="section-r-packages.html#cb454-20"></a>         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb454-21"><a href="section-r-packages.html#cb454-21"></a>      )</span>
+<span id="cb454-22"><a href="section-r-packages.html#cb454-22"></a>   )</span>
+<span id="cb454-23"><a href="section-r-packages.html#cb454-23"></a>)</span>
+<span id="cb454-24"><a href="section-r-packages.html#cb454-24"></a></span>
+<span id="cb454-25"><a href="section-r-packages.html#cb454-25"></a><span class="co"># Define server logic required to draw the integration plot</span></span>
+<span id="cb454-26"><a href="section-r-packages.html#cb454-26"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb454-27"><a href="section-r-packages.html#cb454-27"></a></span>
+<span id="cb454-28"><a href="section-r-packages.html#cb454-28"></a>  a &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>button, {</span>
+<span id="cb454-29"><a href="section-r-packages.html#cb454-29"></a>    <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(input<span class="op">$</span>low, input<span class="op">$</span>up),</span>
+<span id="cb454-30"><a href="section-r-packages.html#cb454-30"></a>          <span class="dt">fun =</span> input<span class="op">$</span>fun, <span class="dt">B =</span> input<span class="op">$</span>B)</span>
+<span id="cb454-31"><a href="section-r-packages.html#cb454-31"></a>  })</span>
+<span id="cb454-32"><a href="section-r-packages.html#cb454-32"></a></span>
+<span id="cb454-33"><a href="section-r-packages.html#cb454-33"></a>  output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb454-34"><a href="section-r-packages.html#cb454-34"></a>      <span class="kw">plot</span>(<span class="kw">a</span>())</span>
+<span id="cb454-35"><a href="section-r-packages.html#cb454-35"></a>  })</span>
+<span id="cb454-36"><a href="section-r-packages.html#cb454-36"></a></span>
+<span id="cb454-37"><a href="section-r-packages.html#cb454-37"></a>}</span>
+<span id="cb454-38"><a href="section-r-packages.html#cb454-38"></a></span>
+<span id="cb454-39"><a href="section-r-packages.html#cb454-39"></a><span class="co"># Run the application</span></span>
+<span id="cb454-40"><a href="section-r-packages.html#cb454-40"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
 <p>Once this is done, an additional R script needs to included within the “R” folder. This R script will contain a function that allows the user to generate a Shiny app (based on the contents of “app.R” for example) and consequently to use the app interface to make use of the package functions. Following from our example, suppose that the latter script, which we will call “run_shiny.r” for this example, contains the following function:</p>
-<div class="sourceCode" id="section-cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="section-r-packages.html#cb456-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb456-2"><a href="section-r-packages.html#cb456-2"></a>MC_gui =<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb456-3"><a href="section-r-packages.html#cb456-3"></a>  appDir =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;MC_int&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;demo&quot;</span>)</span>
-<span id="cb456-4"><a href="section-r-packages.html#cb456-4"></a>  shiny<span class="op">::</span><span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)</span>
-<span id="cb456-5"><a href="section-r-packages.html#cb456-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="section-r-packages.html#cb455-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb455-2"><a href="section-r-packages.html#cb455-2"></a>MC_gui =<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb455-3"><a href="section-r-packages.html#cb455-3"></a>  appDir =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;MC_int&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;demo&quot;</span>)</span>
+<span id="cb455-4"><a href="section-r-packages.html#cb455-4"></a>  shiny<span class="op">::</span><span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)</span>
+<span id="cb455-5"><a href="section-r-packages.html#cb455-5"></a>}</span></code></pre></div>
 <p>Given these steps, our main package folder should look like this:</p>
 <center>
 <img src="images/adv_1.png" />

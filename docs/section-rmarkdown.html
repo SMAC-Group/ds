@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-02-20" />
+<meta name="date" content="2020-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,8 +340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-3"><a href="section-rmarkdown.html#cb13-3"></a></span>
 <span id="cb13-4"><a href="section-rmarkdown.html#cb13-4"></a><span class="co"># RMarkdown Mobile</span></span>
 <span id="cb13-5"><a href="section-rmarkdown.html#cb13-5"></a>introDS<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd_mini&#39;</span>)</span></code></pre></div>
-<pre><code>## Warning: package &#39;shiny&#39; was built under R version 3.6.2</code></pre>
-<iframe data-deferred-src="appf92ca5c339c56387d12f656d87d5833b/?w=&amp;__subapp__=1" width="100%" height="400" class="shiny-frame shiny-frame-deferred"></iframe>
+<iframe src="https://dal-unige.shinyapps.io/rmd_app/" width="672" height="400px">
+</iframe>
 <p>Then a shiny app window will pop out for you to access the application like the following:</p>
 <center>
 <img src="images/rmd_shiny_mainpage.png" title="fig:" alt="Screenshot of RMarkdown Shiny App Main Page" />
@@ -625,13 +625,13 @@ The references in the “.bib” file will not appear in the references that are
 <p>“Don’t document bad code – rewrite it.”
 The Elements of Programming Style, Kernighan &amp; Plauger</p>
 </blockquote>
-<div class="sourceCode" id="section-cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="section-rmarkdown.html#cb24-1"></a><span class="co"># Comment your code by preceding text with a # </span></span>
-<span id="cb24-2"><a href="section-rmarkdown.html#cb24-2"></a><span class="co"># Keep it brief but comprehensible, so you can return to it </span></span></code></pre></div>
+<div class="sourceCode" id="section-cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="section-rmarkdown.html#cb23-1"></a><span class="co"># Comment your code by preceding text with a # </span></span>
+<span id="cb23-2"><a href="section-rmarkdown.html#cb23-2"></a><span class="co"># Keep it brief but comprehensible, so you can return to it </span></span></code></pre></div>
 </div>
 <div id="section-in-line-r" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> In-line R</h3>
 <p>The variables we store in an RMarkdown document will stay within the environment they were created in. This means that we can call and manipulate them anywhere within the document. For example, supposing we have a variable called <code>x</code> to which we assign a specific value, then in RMarkdown we can reference this variable by using <code>r x</code>: this will affix the value of the variable directly in a sentence. Here is a practical example:</p>
-<div class="sourceCode" id="section-cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="section-rmarkdown.html#cb25-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="section-rmarkdown.html#cb24-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <p>where we have stored the value 2 in a variable called <code>a</code>. We can use the value of <code>a</code> as follows:</p>
 <pre class="text"><code>The value of $a$ is `r a`. </code></pre>
 <p>This translates in R Markdown to “The value of <span class="math inline">\(a\)</span> is 2.”</p>
@@ -644,26 +644,26 @@ The Elements of Programming Style, Kernighan &amp; Plauger</p>
 </iframe>
 <p>The RMarkdown file used for this particular example can be found here: <a href="code_examples/caching.Rmd">caching.Rmd</a>.</p>
 <p>Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call <code>a</code> (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the <code>cache</code> argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:</p>
-<div class="sourceCode" id="section-cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="section-rmarkdown.html#cb27-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="section-rmarkdown.html#cb26-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <p>which would be written in RMarkdown as:</p>
-<div class="sourceCode" id="section-cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="section-rmarkdown.html#cb28-1"></a><span class="st">```</span><span class="dt">{r computeA, cache = TRUE}</span></span>
-<span id="cb28-2"><a href="section-rmarkdown.html#cb28-2"></a><span class="dt">a &lt;- 2</span></span>
-<span id="cb28-3"><a href="section-rmarkdown.html#cb28-3"></a><span class="st">```</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="section-rmarkdown.html#cb27-1"></a><span class="st">```</span><span class="dt">{r computeA, cache = TRUE}</span></span>
+<span id="cb27-2"><a href="section-rmarkdown.html#cb27-2"></a><span class="dt">a &lt;- 2</span></span>
+<span id="cb27-3"><a href="section-rmarkdown.html#cb27-3"></a><span class="st">```</span></span></code></pre></div>
 <p>You will notice that we called this chunk of embedded R code <code>computeA</code> and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been “cached”, then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.</p>
 <p>This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your “cached” R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your “cached” R code. As an example, suppose we have another chunk of R code that we can “cache” and that takes the value of <code>a</code> from the previous chunk:</p>
-<div class="sourceCode" id="section-cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="section-rmarkdown.html#cb29-1"></a>(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</span></code></pre></div>
+<div class="sourceCode" id="section-cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="section-rmarkdown.html#cb28-1"></a>(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>which would be written in RMarkdown as:</p>
-<div class="sourceCode" id="section-cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="section-rmarkdown.html#cb31-1"></a><span class="st">```</span><span class="dt">{r, cache = TRUE}</span></span>
-<span id="cb31-2"><a href="section-rmarkdown.html#cb31-2"></a><span class="dt">(d &lt;- 2*a)</span></span>
-<span id="cb31-3"><a href="section-rmarkdown.html#cb31-3"></a><span class="st">```</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="section-rmarkdown.html#cb30-1"></a><span class="st">```</span><span class="dt">{r, cache = TRUE}</span></span>
+<span id="cb30-2"><a href="section-rmarkdown.html#cb30-2"></a><span class="dt">(d &lt;- 2*a)</span></span>
+<span id="cb30-3"><a href="section-rmarkdown.html#cb30-3"></a><span class="st">```</span></span></code></pre></div>
 <p>In this case, the output of this chunk will be <code>## 4</code> since <code>a &lt;- 2</code> (from the previous chunk). What happens however if we modify the value of <code>a</code> in the previous chunk? In this case, the previous chunk will be recomputed but the value of <code>d</code> (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the “cached” code depends on. This is why we initially gave a name to the first chunk of code (“computeA”) so as to refer to it in following chunks of “cached” code that depend on it. To refer to this code you need to use the option <code>dependson</code> as follows:</p>
-<div class="sourceCode" id="section-cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="section-rmarkdown.html#cb32-1"></a>(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</span></code></pre></div>
+<div class="sourceCode" id="section-cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="section-rmarkdown.html#cb31-1"></a>(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>which we would write as:</p>
-<div class="sourceCode" id="section-cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="section-rmarkdown.html#cb34-1"></a><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span></span>
-<span id="cb34-2"><a href="section-rmarkdown.html#cb34-2"></a><span class="dt">(d &lt;- 2*a)</span></span>
-<span id="cb34-3"><a href="section-rmarkdown.html#cb34-3"></a><span class="st">```</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="section-rmarkdown.html#cb33-1"></a><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span></span>
+<span id="cb33-2"><a href="section-rmarkdown.html#cb33-2"></a><span class="dt">(d &lt;- 2*a)</span></span>
+<span id="cb33-3"><a href="section-rmarkdown.html#cb33-3"></a><span class="st">```</span></span></code></pre></div>
 <p>In this manner, if the value of <code>a</code> changes in the first chunk, the value of <code>d</code> will also change but will be stored until either the <code>computeA</code> chunk or the latter chunk is modified.</p>
 </div>
 </div>
