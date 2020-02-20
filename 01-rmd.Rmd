@@ -33,7 +33,7 @@ introDS::runShiny('rmd_mini')
 ```
 
 ```{r, echo = FALSE}
-knitr::include_url("https://dal-unige.shinyapps.io/rmd_app/")
+knitr::include_url("https://dal-unige.shinyapps.io/rmd_mobile_app/")
 ```
 
 Then a shiny app window will pop out for you to access the application like the following:
