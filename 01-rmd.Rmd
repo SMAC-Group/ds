@@ -18,7 +18,7 @@ Below is a short video showing a basic overview of RMarkdown.
 knitr::include_url("https://www.youtube.com/embed/Fti30-mZkC0")
 ```
 
-We have created a framework application that you can use to test out different RMarkdown functions. Simply run the following code within the `stat297` package by using either
+We have created a framework application that you can use to test out different RMarkdown functions. Simply run the following code within the `introDS` package by using either
 
 ```{r, eval = FALSE}
 # RMarkdown Web
