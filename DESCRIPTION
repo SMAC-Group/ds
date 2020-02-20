@@ -19,7 +19,7 @@ RoxygenNote: 6.0.1.9000
 Imports: bookdown, 
   quantmod, 
   gamair, 
-  stat297, 
+  introDS, 
   ggmap,
   mapproj, 
   shiny, 
