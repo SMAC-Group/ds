@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 RMarkdown | 01-rmd.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 RMarkdown | 01-rmd.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 RMarkdown | 01-rmd.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="C:/Users/voirolli/Documents/github_repo/ds/libs/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="1" data-path=""><a href="#section-rmarkdown"><i class="fa fa-check"></i><b>1</b> RMarkdown</a><ul>
+<li><a href="#section-what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="#section-what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
+<li class="chapter" data-level="1.1" data-path=""><a href="#section-create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>1.1</b> Create an R Markdown file in RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#section-yaml-metadata"><i class="fa fa-check"></i><b>1.2</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="1.2.1" data-path=""><a href="#section-subsections"><i class="fa fa-check"></i><b>1.2.1</b> Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#section-text"><i class="fa fa-check"></i><b>1.3</b> Text</a><ul>
+<li class="chapter" data-level="1.3.1" data-path=""><a href="#section-headers"><i class="fa fa-check"></i><b>1.3.1</b> Headers</a></li>
+<li class="chapter" data-level="1.3.2" data-path=""><a href="#section-lists"><i class="fa fa-check"></i><b>1.3.2</b> Lists</a></li>
+<li class="chapter" data-level="1.3.3" data-path=""><a href="#section-hyperlinks"><i class="fa fa-check"></i><b>1.3.3</b> Hyperlinks</a></li>
+<li class="chapter" data-level="1.3.4" data-path=""><a href="#section-blockquotes"><i class="fa fa-check"></i><b>1.3.4</b> Blockquotes</a></li>
+<li class="chapter" data-level="1.3.5" data-path=""><a href="#section-pictures"><i class="fa fa-check"></i><b>1.3.5</b> Pictures</a></li>
+<li class="chapter" data-level="1.3.6" data-path=""><a href="#section-latex"><i class="fa fa-check"></i><b>1.3.6</b> LaTeX</a></li>
+<li class="chapter" data-level="1.3.7" data-path=""><a href="#section-cross-referencing-sections"><i class="fa fa-check"></i><b>1.3.7</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="1.3.8" data-path=""><a href="#section-citations-and-bibliography"><i class="fa fa-check"></i><b>1.3.8</b> Citations and Bibliography</a></li>
+<li class="chapter" data-level="1.3.9" data-path=""><a href="#section-tables"><i class="fa fa-check"></i><b>1.3.9</b> Tables</a></li>
+<li class="chapter" data-level="1.3.10" data-path=""><a href="#section-additional-references"><i class="fa fa-check"></i><b>1.3.10</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#section-code-chunks"><i class="fa fa-check"></i><b>1.4</b> Code Chunks</a><ul>
+<li class="chapter" data-level="1.4.1" data-path=""><a href="#section-code-chunk-options"><i class="fa fa-check"></i><b>1.4.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="1.4.2" data-path=""><a href="#section-comments"><i class="fa fa-check"></i><b>1.4.2</b> Comments</a></li>
+<li class="chapter" data-level="1.4.3" data-path=""><a href="#section-in-line-r"><i class="fa fa-check"></i><b>1.4.3</b> In-line R</a></li>
+<li class="chapter" data-level="1.4.4" data-path=""><a href="#section-cache"><i class="fa fa-check"></i><b>1.4.4</b> Cache</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path=""><a href="#section-render-output"><i class="fa fa-check"></i><b>1.5</b> Render Output</a></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#section-addition-information"><i class="fa fa-check"></i><b>1.6</b> Addition Information</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="section-rmarkdown" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> RMarkdown</h1>
+<p>RMarkdown is a framework that provides a literate programming format for data science. It can be used to save and execute R code within RStudio and also as a simple formatting syntax for authoring HTML, PDF, ODT, RTF, and MS Word documents as well as seamless transitions between available formats. The name “markdown” is an intentional contrast to other “markup” languages–e.g., hypertext markup language (HTML)–which require syntax that can be quite difficult to decipher for the uninitiated. One aim of the markdown paradigm is a syntax that is as human-readable as possible. “RMarkdown” is an implementation of the “markdown” language designed to accommodate embedded <code>R</code> code.</p>
+<div id="section-what-is-literate-programming" class="section level3 unnumbered">
+<h3>What is <strong>literate</strong> programming ?</h3>
+<p>Literate programming is the notion for programmers of adding narrative context with code to produce documentation for the program simultaneously. Consequently, it is possible to read through the code with explanations so that any viewer can follow through the presentation. RMarkdown offers a simple tool that allows to create reports or presentation slides in a reproducible manner with collateral advantages such as avoiding repetitive tasks by, for example, changing all figures when data are updated.</p>
+</div>
+<div id="section-what-is-reproducible-research" class="section level3 unnumbered">
+<h3>What is <strong>reproducible</strong> research ?</h3>
+<p>Reproducible research or reproducible analysis is the notion that an experiment’s whole process, including collecting data, performing analysis and producing output, can be reproduced the same way by someone else. Building non-reproducible experiments has been a problem both in research and in the industry, and having such an issue highly decreases the credibility of the authors’ findings and, potentially, the authors themselves. In essence, allowing for reproducible research implies that anyone could run the code (knit the document, etc.) and obtain the same exact results as the original research and RMarkdown is commonly used to address this issue.</p>
+<p>Below is a short video showing a basic overview of RMarkdown.</p>
+<iframe src="https://www.youtube.com/embed/Fti30-mZkC0" width="672" height="400px">
+</iframe>
+<p>We have created a framework application that you can use to test out different RMarkdown functions. Simply run the following code within the <code>introDS</code> package by using either</p>
+<div class="sourceCode" id="section-cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># RMarkdown Web</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>introDS<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># RMarkdown Mobile</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>introDS<span class="op">::</span><span class="kw">runShiny</span>(<span class="st">&#39;rmd_mini&#39;</span>)</span></code></pre></div>
+<iframe data-deferred-src="app7bcba38d5148222850b112010e147945/?w=&amp;__subapp__=1" width="100%" height="400" class="shiny-frame shiny-frame-deferred"></iframe>
+<p>Then a shiny app window will pop out for you to access the application like the following:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_shiny_mainpage.png" title="fig:" alt="Screenshot of RMarkdown Shiny App Main Page" />
+</center>
+<p>As you can see, the toolbar on the left hand side allows you to try different RMarkdown functions. On the right hand side, <code>Raw code</code> shows the original R code that generates the output, <code>Compiled html</code> shows the compiled output based on the <code>Raw code</code>, and <code>BibTex file</code> shows the formatting lists of references.</p>
+<p>For example, let’s try to compile some R code within RMarkdown. Click on the <code>Code</code> in the toolbar for some example code:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_illustration1.png" title="fig:" alt="Screenshot of RMarkdown Shiny App Illustration: Code" />
+</center>
+<p>Then when we click on the <code>Compiled html</code>, we can see the following output:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_illustration2.png" title="fig:" alt="Screenshot of RMarkdown Shiny App Illustration: Code Output" />
+</center>
+<p>You can also try multiple functions at the same time. For example, let’s click both <code>Code</code> and <code>Emoji</code> in the toolbar, we can see the following R code used:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_illustration3.png" title="fig:" alt="Screenshot of RMarkdown Shiny App Illustration: Code and Emoji" />
+</center>
+<p>The above code generates the following output:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_illustration4.png" title="fig:" alt="Screenshot of RMarkdown Shiny App Illustration: Code and Emoji Output" />
+</center>
+<p>Now you are ready to experiment different RMarkdown functions and test the corresponding outputs! 😉</p>
+</div>
+<div id="section-create-an-r-markdown-file-in-rstudio" class="section level2">
+<h2><span class="header-section-number">1.1</span> Create an R Markdown file in RStudio</h2>
+<p>Within RStudio, click <code>File</code> → <code>New File</code> → <code>R Markdown</code>. Give the file a title and the author
+(your name) and select the default output, HTML. We can change this later so don’t worry about it for the moment.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_new.png" title="fig:" alt="Screenshot of RMarkdown Creation" />
+</center>
+<p>An RMarkdown is a plain text file that contains three different aspects:</p>
+<ul>
+<li>YAML metadata</li>
+<li>Text</li>
+<li>Code Chunks</li>
+</ul>
+</div>
+<div id="section-yaml-metadata" class="section level2">
+<h2><span class="header-section-number">1.2</span> YAML Metadata</h2>
+<p>YAML stands for <em>YAML Ain’t Markup Language</em> and is used to specify document configurations and properties such as name, date, output format, etc. The (optional) YAML header is surrounded before and after by “—” on a dedicated line.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_yaml.png" title="fig:" alt="Screenshot of RMarkdown YAML section" />
+</center>
+<p>You can also include additional formatting <a href="http://RMarkdown.rstudio.com/html_document_format.html">options</a> such as a table of contents or even a custom CSS style template which can be used to further enhance the presentation. For the purpose of this book, the default options should be sufficient. Below is an example knit output of the above RMarkdown file.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_example_output.png" title="fig:" alt="Screenshot of RMarkdown Example Output" />
+</center>
+<p>The default output above is an html_document format but this format can be modified using, for example, <code>pdf_document</code> to output a pdf. However, the pdf format requires additional installation and configuration of a TeX distribution such as <a href="https://miktex.org/2.9/setup">MikTeX</a>. Once available, the user can also include raw LaTeX and even define LaTeX macros in the RMarkdown document if necessary (we’ll discuss more about LaTeX further on).</p>
+<div id="section-subsections" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Subsections</h3>
+<p>To make your sections numbered as sections and subsections, make sure you specify <code>number_sections: yes</code> as part of the YAML Metadata as shown below.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/yaml_number_sections.png" title="fig:" alt="Screenshot of RMarkdown YAML Subsection Option" />
+</center>
+</div>
+</div>
+<div id="section-text" class="section level2">
+<h2><span class="header-section-number">1.3</span> Text</h2>
+<p>Due to its literate nature, text will be an essential part in explaining your analysis. With RMarkdown, we can specify custom text formatting with emphases such as <em>italics</em>, <strong>bold</strong>, or <code>code style</code>. To understand how to format text, our previous sentence would be typed out as follows in RMarkdown:</p>
+<pre><code>With RMarkdown, we can specify custom text formatting with emphases such as *italics*, **bold**, or `code style</code></pre>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_text.png" title="fig:" alt="Screenshot of RMarkdown text section" />
+</center>
+<div id="section-headers" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Headers</h3>
+<p>As seen above, headers are preceded by a #. A single <code>#</code> produces the largest heading text while, to produce smaller headings, you simply need to add more <code>#</code>s! Heading level also impacts section and subsection nesting in documents and tables of contents, as well as slide breaks in presentation formats.</p>
+</div>
+<div id="section-lists" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Lists</h3>
+<p>Lists can be extremely convenient to make text more readable or to take course notes during class. RMarkdown allows to create different list structures as shown in the code below:</p>
+<pre class="text"><code>* You can create bullet points by using symbols such as *, +, or -. 
++ simply add an indent or four preceding spaces to indent a list. 
+    + You can manipulate the number of spaces or indents to your liking. 
+        - Like this. 
+    * Here we go back to the first indent. 
+1. To make the list ordered, use numbers. 
+1. We can use one again to continue our ordered list. 
+2. Or we can add the next consecutive number. </code></pre>
+<p>which delivers the following list structure:</p>
+<ul>
+<li>You can create bullet points by using symbols such as *, +, or -.</li>
+<li>simply add an indent or four preceding spaces to indent a list.
+<ul>
+<li>You can manipulate the number of spaces or indents to your liking.
+<ul>
+<li>Like this.</li>
+</ul></li>
+<li>Here we go back to the first indent.</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>To make the list ordered, use numbers.</li>
+<li>We can use one again to continue our ordered list.</li>
+<li>Or we can add the next consecutive number.</li>
+</ol>
+</div>
+<div id="section-hyperlinks" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Hyperlinks</h3>
+<p>To add hyperlinks with the full link, (ex: <a href="https://google.com/" class="uri">https://google.com/</a>) you can follow the syntax below:</p>
+<pre class="text"><code>&lt;https://google.com/&gt;</code></pre>
+<p>whereas to add hyperlinks with a custom link title, (ex: <a href="https://google.com">Google</a>) follow the syntax below:</p>
+<pre class="text"><code>[Google](https://google.com)</code></pre>
+</div>
+<div id="section-blockquotes" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> Blockquotes</h3>
+<p>Use the &gt; character in front of a line, <em>just like in email</em> to produce blockquotes which styles the text in a way to use if we quote a person, a song or another entity.</p>
+<blockquote>
+<p>“To grow taller, you should shave your head. Remember to bring the towels!”</p>
+<p>Justin Lee</p>
+</blockquote>
+</div>
+<div id="section-pictures" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> Pictures</h3>
+<p>To add a picture with captions, follow the syntax below:</p>
+<pre class="text"><code>![Eberly College of Science Banner](http://science.psu.edu/psu_eberly_blue.png)</code></pre>
+<p>which will produce:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/psu_eberly_blue.png" title="fig:" alt="Eberly College of Science Banner" />
+</center>
+<p>Otherwise, to add a picture without any captions, follow the syntax below:</p>
+<pre class="text"><code>![](http://www.alumni.psu.edu/s/1218/16/images/logo.png)</code></pre>
+<p>which delivers:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/logo.png" style="width:50.0%" />
+</center>
+</div>
+<div id="section-latex" class="section level3">
+<h3><span class="header-section-number">1.3.6</span> LaTeX</h3>
+<p>LaTeX is a document preparation system that uses plain text as opposed to formatted text that is used for applications such as Microsoft Word. It is widely used in academia as a standard for the publication of scientific documents. It has control over large documents containing sectioning, cross-references, tables and figures.</p>
+<div id="section-latex-in-rmarkdown" class="section level4">
+<h4><span class="header-section-number">1.3.6.1</span> LaTeX in RMarkdown</h4>
+<p>Unlike a highly formatted word processor, we cannot produce equations by clicking on symbols. As data scientists there is often the need to explain distributions and equations that are behind the methods we present. Within the text section of an RMarkdown document you can include LaTeX format text to output different forms of text, mainly equations and mathematical expressions.</p>
+<p>Inline mathematical expressions can be added using the syntax: <code>$math expression$</code>. For example, if we want to write “where <span class="math inline">\(\alpha\)</span> is in degrees” we would write:</p>
+<pre class="text"><code>&quot;where $\alpha$ is in degrees&quot;.</code></pre>
+<p>Using a slightly different syntax (i.e. <code>$$math expression$$</code>) we can obtain centered mathematical expressions. For example, the binomial probability distribution in LaTeX is written as</p>
+<p><code>$$f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}$$</code></p>
+<p>which is output as:</p>
+<p><span class="math display">\[f(y|N,p) = \frac{N!}{y!(N-y)!}\cdot p^y \cdot (1-p)^{N-y} = {{N}\choose{y}} \cdot p^y \cdot (1-p)^{N-y}\]</span></p>
+<p>An introduction to the LaTeX format can be found <a href="http://www.math.harvard.edu/texman/">here</a> if you want to learn more about the basics. An alternative can be to insert custom LaTeX formulas using a graphical interface such as <a href="https://www.codecogs.com/latex/eqneditor.php">codecogs</a>.</p>
+</div>
+</div>
+<div id="section-cross-referencing-sections" class="section level3">
+<h3><span class="header-section-number">1.3.7</span> Cross-referencing Sections</h3>
+<p>You can also use the same syntax <code>\@ref(label)</code> to reference sections, where label is the section identifier (ID). By default, Pandoc will generate IDs for all section headers, e.g., <code># Hello World</code> will have an ID <code>hello-world</code>. To call header <code>hello-world</code> as a header, we type <code>\@ref(hello-world)</code> to cross-reference the section. In order to avoid forgetting to update the reference label after you change the section header, you may also manually assign an ID to a section header by appending {#id} to it.</p>
+</div>
+<div id="section-citations-and-bibliography" class="section level3">
+<h3><span class="header-section-number">1.3.8</span> Citations and Bibliography</h3>
+<p>Citations and bibliographies can automatically be generated with RMarkdown. In order to use this feature we first need to create a “BibTex” database which is a simple plain text file (with the extension “.bib”) where each reference you would like to cite is entered in a specific manner.</p>
+<p>To illustrate how this is done, let us take the example of a recent paper where two researchers from Oxford University investigated the connection between the taste of food and various features of cutlery such as weight and color (calling this phenomenon the “taste of cutlery”). The BibTeX “entry” for this paper is given below:</p>
+<pre><code>@article{harrar2013taste,
+  title={The taste of cutlery: how the taste of food is affected by the weight, size,
+   shape, and colour of the cutlery used to eat it},
+  author={Harrar, Vanessa and Spence, Charles},
+  journal={Flavour},
+  volume={2},
+  number={1},
+  pages={21},
+  year={2013},
+  publisher={BioMed Central}
+}</code></pre>
+<p>This may look like a complicated format to save a reference but there is an easy way to obtain this format without having to manually fill in the different slots. To do so, go online and search for “Google Scholar” which is a search engine specifically dedicated to academic or other types of publications. In the latter search engine you can insert keywords or the title and/or authors of the publication you are interested in and find it in the list of results. In our example we search for “The taste of cutlery” and the publication we are interested in is the first in the results list.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/googlescholar1.png" />
+</center>
+<p>Below every publication in the list there is a set of options among which the one we are interested in is the “Cite” option that should open a window in which a series of reference options are available. Aside from different reference formats that can be copied and pasted into your document, at the bottom of the window you can find another set of options (with related links) that refer to different bibliography managers.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/googlescholar2.png" />
+</center>
+<p>For “.bib” files we are interested in the “BibTeX” option and by clicking on it we will be taken to another tab in which the format of the reference we want is provided. All that needs to be done at this point is to copy this format (that we saw earlier in this section) and paste in the “.bib” file you created and save the changes.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/googlescholar3.png" />
+</center>
+<p>However, your RMarkdown document does not know about the existence of this bibliography file and therefore we need to insert this information in the YAML metadata at the start of our document. To do so, let us suppose that you named this file “biblio.bib” (saved in the same location as your RMarkdown document). All that needs to be done is to add another line in the YAML metadata with <code>bibliography: biblio.bib</code> and your RMarkdown will now be able to recognize the references within your “.bib” file.</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_yaml2.png" />
+</center>
+<p>There are also a series of other options that can be specified for the bibliography such as its format or the way references can be used within the text (see links at the end of this section).</p>
+<p>Once the “.bib” file has been created and has been linked to your RMarkdown document through the details in the YAML metadata, you can now start using the references you have collected in the “.bib” file. To insert these references within your document at any point of your text you need to use the name that starts the reference field in your “.bib” file and place it immediately after the <code>@</code> symbol (without spaces). So, for example, say that we wanted to cite the publication on the “taste of cutlery”: in your RMarkdown all you have to do is to type <code>@harrar2013taste</code> at the point where you want this citation in the text and you will obtain: <span class="citation">@harrar2013taste</span>. Moreover, it is often useful to put a citation in braces and for example if you want to obtain <span class="citation">[see e.g. @harrar2013taste]</span> you can simply write <code>[see e.g. @harrar2013taste]</code>.</p>
+
+<div class="rmdnote">
+The user can also change the name that is used to call the desired reference as long as the same name is used to cite it in the RMarkdown document and that this name is not the same as another reference.
+</div>
+
+
+<div class="rmdcaution">
+The references in the “.bib” file will not appear in the references that are output from the RMarkdown compiling procedure unless they are specifically used within the RMarkdown document.
+</div>
+
+<p>Additional information on BibTeX and reference in RMarkdown can be found in the links below:</p>
+<ul>
+<li><a href="https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM">Introduction to bibtex</a></li>
+<li><a href="http://RMarkdown.rstudio.com/authoring_bibliographies_and_citations.html">Reference in RMarkdown</a></li>
+</ul>
+</div>
+<div id="section-tables" class="section level3">
+<h3><span class="header-section-number">1.3.9</span> Tables</h3>
+<p>For simple tables, we can be manually insert values as such follows:</p>
+<pre><code>+---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| *Bananas*     | $1.34         | - built-in wrapper |
+|               |               | - bright color     |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | - cures scurvy     |
+|               |               | - **tasty**        |
++---------------+---------------+--------------------+</code></pre>
+<p>to produce:</p>
+<table style="width:74%;">
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fruit</th>
+<th>Price</th>
+<th>Advantages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Bananas</em></td>
+<td>$1.34</td>
+<td><ul>
+<li>built-in wrapper</li>
+<li>bright color</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Oranges</td>
+<td>$2.10</td>
+<td><ul>
+<li>cures scurvy</li>
+<li><strong>tasty</strong></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<p>As an alternative we can use the simple graphical user interface <a href="http://www.tablesgenerator.com/markdown_tables">online</a>. For more extensive tables, we create dataframe objects and project them using <code>knitr::kable()</code> which we will explain later on this book.</p>
+</div>
+<div id="section-additional-references" class="section level3">
+<h3><span class="header-section-number">1.3.10</span> Additional References</h3>
+<p>There are many more elements to creating a useful report using RMarkdown, and we encourage you to use the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown Cheatsheet</a> as a reference.</p>
+</div>
+</div>
+<div id="section-code-chunks" class="section level2">
+<h2><span class="header-section-number">1.4</span> Code Chunks</h2>
+<p>Code chunks are those parts of the RMarkdown document where it is possible to embed R code within your output. To insert these chunks within your RMarkdown file you can use the following shortcuts:</p>
+<ul>
+<li>the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)</li>
+<li>the Add Chunk command in the editor toolbar</li>
+<li>by typing the chunk delimiters <strong>```{* and </strong>```**.</li>
+</ul>
+<p>The following example highlights the code chunks in the example RMarkdown document we saw at the start of this chapter:</p>
+<center>
+<img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_code_chunk.png" />
+</center>
+<div id="section-code-chunk-options" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Code Chunk Options</h3>
+<p>A variety of options can be specified to manage the code chunks contained in the document. For example, as can be seen in the third code chunk in the example above, we specify an argument that reads <code>echo = FALSE</code> which is a parameter that was added to the code chunk to prevent printing the R code that generated the plot. This is a useful way to embed figures. More options can be found from the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown Cheatsheet</a> and Yihui’s notes on knitr <a href="https://yihui.name/knitr/options/">options</a>. Here are some explanations of the most commonly used chunk options taken from these references:</p>
+<ul>
+<li><code>eval</code>: (TRUE; logical) whether to evaluate the code chunk;</li>
+<li><code>echo</code>: (TRUE; logical or numeric) whether to include R source code in the output file;</li>
+<li><code>warning</code>: (TRUE; logical) whether to preserve warnings (produced by warning()) in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document);</li>
+<li><code>cache</code>: (FALSE; logical) whether to “<em>cache</em>” a code chunk. This option is particularly important in practice and is discussed in more details in Section <a href="#section-cache">1.4.4</a>.</li>
+</ul>
+<p>Plot figure options:</p>
+<ul>
+<li><code>fig.path</code>: (‘figure/’; character) prefix to be used for figure filenames (fig.path and chunk labels are concatenated to make filenames);</li>
+<li><code>fig.show</code>: (‘asis’; character) how to show/arrange the plots;</li>
+<li><code>fig.width</code>, <code>fig.height</code>: (both are 7; numeric) width and height of the plot, to be used in the graphics device (in inches) and have to be numeric;</li>
+<li><code>fig.align</code>: (‘default’; character) alignment of figures in the output document (possible values are left, right and center;</li>
+<li><code>fig.cap</code>: (NULL; character) figure caption to be used in a figure environment.</li>
+</ul>
+</div>
+<div id="section-comments" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Comments</h3>
+<p>Adding comments to describe the code is extremely useful (if not essential) during every coding and programming process. It helps <strong>you</strong> take notes and remember what is going on and why you made use of these functions, as well as helping others understand your code. Forgetting to comment or document your code often becomes a larger problem in the future when, among numerous lines of code, you have forgotten the reason for using certain functions or algorithms.</p>
+<blockquote>
+<p>“Don’t document bad code – rewrite it.”
+The Elements of Programming Style, Kernighan &amp; Plauger</p>
+</blockquote>
+<div class="sourceCode" id="section-cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Comment your code by preceding text with a # </span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># Keep it brief but comprehensible, so you can return to it </span></span></code></pre></div>
+</div>
+<div id="section-in-line-r" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> In-line R</h3>
+<p>The variables we store in an RMarkdown document will stay within the environment they were created in. This means that we can call and manipulate them anywhere within the document. For example, supposing we have a variable called <code>x</code> to which we assign a specific value, then in RMarkdown we can reference this variable by using <code>r x</code>: this will affix the value of the variable directly in a sentence. Here is a practical example:</p>
+<div class="sourceCode" id="section-cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<p>where we have stored the value 2 in a variable called <code>a</code>. We can use the value of <code>a</code> as follows:</p>
+<pre class="text"><code>The value of $a$ is `r a`. </code></pre>
+<p>This translates in R Markdown to “The value of <span class="math inline">\(a\)</span> is 2.”</p>
+</div>
+<div id="section-cache" class="section level3">
+<h3><span class="header-section-number">1.4.4</span> Cache</h3>
+<p>Depending on the complexity of calculations in your embedded R code, it may be convenient to avoid re-running the computations (which could be lengthy) each time you knit the document together. For this purpose, it possible to specify an additional argument for your embedded R code which is the <code>cache</code> argument. By default this argument is assigned the value <code>FALSE</code> and therefore the R code is run every time your document is compiled. However, if you specify this argument as <code>cache = TRUE</code>, then the code is only run the first time the document is compiled while the following times it simply stores and presents the results of the computations when the document was first compiled.</p>
+<p>Below is a short video introducing caching in R Markdown.</p>
+<iframe src="https://www.youtube.com/embed/9q1eJyOQQsE" width="672" height="400px">
+</iframe>
+<p>The RMarkdown file used for this particular example can be found here: <a href="code_examples/caching.Rmd">caching.Rmd</a>.</p>
+<p>Let us consider an example where we want to embed an R code with a very simple operation such as assigning the value of 2 to an object that we call <code>a</code> (that we saw earlier). This is clearly not the best example since this operation runs extremely quickly and there is no visible loss in document compilation time. However, we will use it just to highlight how the <code>cache</code> argument works. Therefore, if we want to avoid running this operation each time the document is compiled, then we just embed our R code as follows:</p>
+<div class="sourceCode" id="section-cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<p>which would be written in RMarkdown as:</p>
+<div class="sourceCode" id="section-cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="st">```</span><span class="dt">{r computeA, cache = TRUE}</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="dt">a &lt;- 2</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="st">```</span></span></code></pre></div>
+<p>You will notice that we called this chunk of embedded R code <code>computeA</code> and the reason for this will become apparent further on. Once we have done this we can compile the document that will run this operation and store its result. Now, if we compile the document again (independently from whether we made changes to the rest of the document or not) this operation will not be run and the result of the previous (first) compiling will be presented. However, if changes are made to the R code which has been “cached”, then the code will be run again and this time its new result will be stored for all the following compilings until it is changed again.</p>
+<p>This argument can therefore be very useful when computationally intensive R code is embedded within your document. Nevertheless it can suffer from a drawback which consists in dependencies of your “cached” R code with other chunks within the document. In this case, the other chunks of R code can be modified thereby outputting different results but these will not be considered by your “cached” R code. As an example, suppose we have another chunk of R code that we can “cache” and that takes the value of <code>a</code> from the previous chunk:</p>
+<div class="sourceCode" id="section-cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>which would be written in RMarkdown as:</p>
+<div class="sourceCode" id="section-cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="st">```</span><span class="dt">{r, cache = TRUE}</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="dt">(d &lt;- 2*a)</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="st">```</span></span></code></pre></div>
+<p>In this case, the output of this chunk will be <code>## 4</code> since <code>a &lt;- 2</code> (from the previous chunk). What happens however if we modify the value of <code>a</code> in the previous chunk? In this case, the previous chunk will be recomputed but the value of <code>d</code> (in the following chunk) will not be updated since it has stored the value of 4 and it is not recomputed since this chunk has not been modified. To avoid this, a solution is to specify the chunks of code that the “cached” code depends on. This is why we initially gave a name to the first chunk of code (“computeA”) so as to refer to it in following chunks of “cached” code that depend on it. To refer to this code you need to use the option <code>dependson</code> as follows:</p>
+<div class="sourceCode" id="section-cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>(d &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>a)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>which we would write as:</p>
+<div class="sourceCode" id="section-cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="st">```</span><span class="dt">{r, cache = TRUE, dependson = &quot;computeA&quot;}</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="dt">(d &lt;- 2*a)</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="st">```</span></span></code></pre></div>
+<p>In this manner, if the value of <code>a</code> changes in the first chunk, the value of <code>d</code> will also change but will be stored until either the <code>computeA</code> chunk or the latter chunk is modified.</p>
+</div>
+</div>
+<div id="section-render-output" class="section level2">
+<h2><span class="header-section-number">1.5</span> Render Output</h2>
+<p>After you are done, run <code>RMarkdown::render()</code> or click the <code>Knit</code> button at the top of the RStudio scripts pane to save the output in your working directory.</p>
+<p><img src="C:/Users/voirolli/Documents/github_repo/ds/libs/images/rmd_knit.png" /></p>
+<p>The use of RMarkdown makes it possible to generate any file format such as HTML, pdf and Word processor formats using <code>pandoc</code>. Pandoc is a free software that understands and converts useful markdown syntax, such as the code mentioned above, into a readable and clean format.</p>
+</div>
+<div id="section-addition-information" class="section level2">
+<h2><span class="header-section-number">1.6</span> Addition Information</h2>
+<p>Click on the links below for more information on RMarkdown:</p>
+<ul>
+<li><a href="http://RMarkdown.rstudio.com/authoring_quick_tour.html">RStudio RMarkdown tutorial</a></li>
+<li><a href="https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/">R-blogger’s RMarkdown tutorial</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown Cheatsheet</a></li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
