@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Web scraping in R | An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Web scraping in R | An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://smac-group.github.io/ds/" />
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Web scraping in R | An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
+
+
+<meta name="date" content="2020-02-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="section-high-performance-computing.html"/>
+<link rel="next" href="section-references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#section-getting-started-with-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#section-why-r"><i class="fa fa-check"></i><b>1.1.2</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#section-about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#section-conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#section-getting-help"><i class="fa fa-check"></i><b>1.1.5</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#section-installing-packages"><i class="fa fa-check"></i><b>1.1.6</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>1.1.7</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#section-simple-calculations"><i class="fa fa-check"></i><b>1.2.1</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#section-probability-distributions"><i class="fa fa-check"></i><b>1.2.2</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#section-summary-statistics"><i class="fa fa-check"></i><b>1.2.3</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#section-main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#section-license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li><a href="section-rmarkdown.html#section-what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="section-rmarkdown.html#section-what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
+<li class="chapter" data-level="2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-text"><i class="fa fa-check"></i><b>2.3</b> Text</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-headers"><i class="fa fa-check"></i><b>2.3.1</b> Headers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-lists"><i class="fa fa-check"></i><b>2.3.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-hyperlinks"><i class="fa fa-check"></i><b>2.3.3</b> Hyperlinks</a></li>
+<li class="chapter" data-level="2.3.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-blockquotes"><i class="fa fa-check"></i><b>2.3.4</b> Blockquotes</a></li>
+<li class="chapter" data-level="2.3.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-pictures"><i class="fa fa-check"></i><b>2.3.5</b> Pictures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-latex"><i class="fa fa-check"></i><b>2.3.6</b> LaTeX</a></li>
+<li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
+<li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
+<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="2.4.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments</a></li>
+<li class="chapter" data-level="2.4.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-in-line-r"><i class="fa fa-check"></i><b>2.4.3</b> In-line R</a></li>
+<li class="chapter" data-level="2.4.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cache"><i class="fa fa-check"></i><b>2.4.4</b> Cache</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
+<li class="chapter" data-level="2.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-addition-information"><i class="fa fa-check"></i><b>2.6</b> Addition Information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-github.html"><a href="section-github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-github.html"><a href="section-github.html#section-version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="section-github.html"><a href="section-github.html#section-git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-github.html"><a href="section-github.html#section-git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-github.html"><a href="section-github.html#section-github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-github.html"><a href="section-github.html#section-connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-github.html"><a href="section-github.html#section-the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-github.html"><a href="section-github.html#section-note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-data.html"><a href="section-data.html#section-vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="section-data.html"><a href="section-data.html#section-type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="section-data.html"><a href="section-data.html#section-coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="section-data.html"><a href="section-data.html#section-subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="section-data.html"><a href="section-data.html#section-vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="section-data.html"><a href="section-data.html#section-addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding Labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="section-data.html"><a href="section-data.html#section-working-with-dates"><i class="fa fa-check"></i><b>4.1.6</b> Working with Dates</a></li>
+<li class="chapter" data-level="4.1.7" data-path="section-data.html"><a href="section-data.html#section-useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.7</b> Useful Functions with Vectors</a></li>
+<li class="chapter" data-level="4.1.8" data-path="section-data.html"><a href="section-data.html#section-creating-sequences"><i class="fa fa-check"></i><b>4.1.8</b> Creating sequences</a></li>
+<li class="chapter" data-level="4.1.9" data-path="section-data.html"><a href="section-data.html#section-example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.9</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="section-data.html"><a href="section-data.html#section-matrices"><i class="fa fa-check"></i><b>4.2</b> Matrices</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-data.html"><a href="section-data.html#section-subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-data.html"><a href="section-data.html#section-matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
+<li class="chapter" data-level="4.2.3" data-path="section-data.html"><a href="section-data.html#section-example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="section-data.html"><a href="section-data.html#section-example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="section-data.html"><a href="section-data.html#section-array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="section-data.html"><a href="section-data.html#section-list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="section-data.html"><a href="section-data.html#section-dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="section-data.html"><a href="section-data.html#section-combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="section-data.html"><a href="section-data.html#section-subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="section-data.html"><a href="section-data.html#section-example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+<li class="chapter" data-level="5.2.3" data-path="section-control.html"><a href="section-control.html#section-iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
+<li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
+<li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
+<li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
+<li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section-functions.html"><a href="section-functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-functions.html"><a href="section-functions.html#section-r-functions"><i class="fa fa-check"></i><b>6.1</b> R functions</a></li>
+<li class="chapter" data-level="6.2" data-path="section-functions.html"><a href="section-functions.html#section-creating-functions-in-r"><i class="fa fa-check"></i><b>6.2</b> Creating functions in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-functions.html"><a href="section-functions.html#section-function-arguments"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-functions.html"><a href="section-functions.html#section-function-body"><i class="fa fa-check"></i><b>6.2.2</b> Function body</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-functions.html"><a href="section-functions.html#section-function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
+<li class="chapter" data-level="6.4" data-path="section-functions.html"><a href="section-functions.html#section-example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
+</ul></li>
+<li class="part"><span><b>III Extending</b></span></li>
+<li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
+<li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-output-render-controls"><i class="fa fa-check"></i>Output Render Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
+<li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
+<li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
+<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
+<li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
+<li class="chapter" data-level="7.8.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.8.3</b> Step 3: Connecting frontend and backend</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-r-packages.html"><a href="section-r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-basic-steps"><i class="fa fa-check"></i><b>8.1</b> Basic steps</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-1-create-an-empty-r-package"><i class="fa fa-check"></i><b>8.1.1</b> Step 1: Create an “empty” R package</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-2-edit-description-file"><i class="fa fa-check"></i><b>8.1.2</b> Step 2: Edit description file</a></li>
+<li class="chapter" data-level="8.1.3" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-3-move-your-r-scripts-into-the-r-folder"><i class="fa fa-check"></i><b>8.1.3</b> Step 3: Move your R scripts into the R folder</a></li>
+<li class="chapter" data-level="8.1.4" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-4-documentation"><i class="fa fa-check"></i><b>8.1.4</b> Step 4: Documentation</a></li>
+<li class="chapter" data-level="8.1.5" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-5-test-your-package"><i class="fa fa-check"></i><b>8.1.5</b> Step 5: Test your package</a></li>
+<li class="chapter" data-level="8.1.6" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-6-add-a-readme.rmd-file"><i class="fa fa-check"></i><b>8.1.6</b> Step 6: Add a “README.Rmd” file</a></li>
+<li class="chapter" data-level="8.1.7" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-7-create-a-github-repo---possibly-with-the-same-name-as-package"><i class="fa fa-check"></i><b>8.1.7</b> Step 7: Create a github repo - possibly with the same name as package</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-advanced"><i class="fa fa-check"></i><b>8.2</b> Advanced</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-adding-a-shiny-app"><i class="fa fa-check"></i><b>8.2.1</b> Adding a shiny app</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-rcpp-using-c-within-r"><i class="fa fa-check"></i><b>9.1</b> Rcpp: using C++ within R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-installation"><i class="fa fa-check"></i><b>9.1.1</b> Installation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
+<li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+<li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-web-scraping-in-r" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Web scraping in <code>R</code></h1>
+<p>Imagine: you are invited to your significant one’s parents’ place for dinner. You know that his/her father is a big fan of Swiss wine and you can exploit this fact to make a good impression. You are not an expert of wine though, but you can “show off” with your data science skills and build a story around Chasselas grapes.<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn3" class="footnote-ref" id="section-fnref3"><sup>3</sup></a> After an intense googling you realize that the desired dataset simply does not exist, and therefore, you have to collect it by yourself. You find a nice app Vivino, which is a great representative of the recent trends in wine. But how to get the data?</p>
+<p>Very often (if not always) well-structured data you need for analysis does not exist and you need to collect it somehow by yourself. Nowadays, a vast majority of data are user-generated content, presented in <em>unstructured</em> HTML format. But it is not the worst part – the data are typically dynamic and vary over the time (e.g., the rating of a particular wine or your Facebook friends list). The good thing is that all information is located on the Internet in human-readable format, that is you have an accesses to these data. Therefore, the problem is not in accessing the data, but how to convert this information into the structured (think of tabular or spreadsheet-like) format. In this chapter, we will learn what is the web scraping, how to scrape using <code>R</code>, and when it is legal.</p>
+<div id="section-web-scraping-overview" class="section level2">
+<h2><span class="header-section-number">10.1</span> Web scraping overview</h2>
+<p>Web scraping is the process of collecting the data from the World Wide Web and transforming it into a structured format. Typically web scraping is referred to an automated procedure, even though formally it includes a manual human scraping. We distinguish several techniques of web scraping:</p>
+<ul>
+<li><p>Human manual copy-and-paste</p>
+<p>The name is self-explanatory, that is when humans copy the content of the page and paste it into a well-formatted data structure. This method is very slow but sometimes is unavoidable as the only solution due to legal issues. For instance, one can copy all prices and names from the Vivino list directly into a data frame.</p></li>
+<li><p>Text pattern matching</p>
+<p>This approach is the next step in web scraping. After fetching the page, regular expressions (regex) are used to match the pattern in the text. For example, you can get each character that starts with “Price:” and ends with “CHF”.</p></li>
+<li><p>Using API/SDK (socket programming)</p>
+<p>Web APIs are interfaces, introduced by large websites, to allow getting the content of the web pages (think of databases) directly by posing HTTP requests. For example, Twitter has its API to search tweets, account activities, etc., so that anyone can get these data by sending an HTTP request. Further, <code>R</code> has a package called <a href="http://geoffjentry.hexdump.org/twitteR.pdf"><code>twitteR</code></a>, that generates those requests for you (i.e., it can be considered as Software Development Kit, SDK for short).</p></li>
+<li><p>HTML parsing</p>
+<p>Most of web pages are generated dynamically from databases using similar templates and css selectors. Identifying such css selectors allows mimicking the structure of databases’ tables.</p></li>
+</ul>
+<p>The focus of this chapter is on the HTML parsing, and at the end of it you should be able to scrape data using <code>R</code>. But there is one more thing we should mention before getting to the nitty-gritty details of scraping.</p>
+</div>
+<div id="section-denial-of-service-dos-crawl-rate-and-robots.txt" class="section level2">
+<h2><span class="header-section-number">10.2</span> Denial-of-service (DoS), crawl rate, and robots.txt</h2>
+<p>Web pages are stored on servers so that if there will be too many requests per unit of time, they can become unavailable (i.e., shut down). When the server is not accessible by intended users, it is called denial-of-service (DoS).<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn4" class="footnote-ref" id="section-fnref4"><sup>4</sup></a> Often, this property is exploited for DoS attacks, that is when websites are flooded with traffic (buffer overflow attacks) and stop responding. However, it could happen unintentionally (e.g., the introduction of a new exciting website, which was developed to handle only a limited number of users).</p>
+<p>Another concept we need to introduce is a <em>web crawling</em>, which has been used extensively by the search engines (such as Google, Bing, etc.) for web indexing. This process is similar to web scraping, but after fetching the content of the web page, crawler extracts only hyperlinks. It means that web crawling also accesses the web page by sending requests. The number of such requests per unit of time is called a crawl rate. Each web crawling requests is the same as a request of a user. Therefore, if your crawler sends too many requests (crawl rate is too high), the server can experience the DoS.</p>
+<p>That is exactly what happens to Martijn Koster’s server when Charles Stross’s web crawler caused DoS (if rumors are trusted). This event inspired Martijn Koster to propose a new standard, a file <code>robots.txt</code> that stores a set of rules defining how bots and crawlers should interact with a website, namely which parts should not be accessed, the allowed crawl rate, etc.</p>
+<p>The same applies to web scraping: the number of requests should not be too high, and you should access only parts not listed in <em>robots.txt</em>.</p>
+</div>
+<div id="section-why-web-scraping-could-be-bad" class="section level2">
+<h2><span class="header-section-number">10.3</span> Why web scraping could be bad?</h2>
+<p>Over the years the reputation of the web scraping has been decreased significantly. There are more and more people who ignore and violate not only <em>robots.txt</em>, but also Terms of Service (ToS) of websites.<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn5" class="footnote-ref" id="section-fnref5"><sup>5</sup></a> However, that is not the only negative side of web scraping.</p>
+<p>Remember the film “The Social Network”? At the beginning of the movie, the main character scrapes pictures of female students and then creates a service to rank students by their attractiveness. This is an example of unethical use of web scraping. The topic is very subjective and controversial, therefore, you are at your own responsibility to define what is ethical and what is not (there is no <code>robots.txt</code> to define ethics).</p>
+</div>
+<div id="section-how-to-avoid-troubles" class="section level2">
+<h2><span class="header-section-number">10.4</span> How to avoid troubles?</h2>
+<p>Rules are simple:</p>
+<ol style="list-style-type: decimal">
+<li><p>Read carefully the Terms of Service of the web page you want to scrape.<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn6" class="footnote-ref" id="section-fnref6"><sup>6</sup></a></p></li>
+<li><p>Inspect <code>robots.txt</code> to identify which parts can be accessed.</p></li>
+<li><p>Do not be too aggressive by using a high frequency of requests. If the crawl rate is not mentioned in <code>robot.txt</code> (section <code>crawl-delay:</code>), then use something reasonable, e.g. one request per second.<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn7" class="footnote-ref" id="section-fnref7"><sup>7</sup></a></p></li>
+</ol>
+</div>
+<div id="section-workflow" class="section level2">
+<h2><span class="header-section-number">10.5</span> Workflow</h2>
+<p>This workflow is based on two famous works by <span class="citation">Wickham (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-scrap" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-scrap" role="doc-biblioref">b</a>)</span> and <span class="citation">Wickham (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-sg" role="doc-biblioref">2019</a>)</span> with a couple of twists.</p>
+<ol style="list-style-type: decimal">
+<li><p>Make sure that you have no other choice than to scrape. That is, if web resourse has API, then use it instead of scraping.</p></li>
+<li><p>Make sure that scraping is legal and ethical for a given web page. You can inspect a particular subdomain (path) using <code>path_allower</code> from <code>robotstxt</code>:<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn8" class="footnote-ref" id="section-fnref8"><sup>8</sup></a></p>
+<div class="sourceCode" id="section-cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="section-web-scraping-in-r.html#cb489-1"></a><span class="kw">library</span>(<span class="st">&quot;robotstxt&quot;</span>)</span>
+<span id="cb489-2"><a href="section-web-scraping-in-r.html#cb489-2"></a></span>
+<span id="cb489-3"><a href="section-web-scraping-in-r.html#cb489-3"></a><span class="kw">paths_allowed</span>(</span>
+<span id="cb489-4"><a href="section-web-scraping-in-r.html#cb489-4"></a>    <span class="dt">path =</span> <span class="st">&quot;/en/real-estate/rent/city-basel&quot;</span>,</span>
+<span id="cb489-5"><a href="section-web-scraping-in-r.html#cb489-5"></a>    <span class="dt">domain =</span> <span class="st">&quot;https://www.immoscout24.ch/&quot;</span></span>
+<span id="cb489-6"><a href="section-web-scraping-in-r.html#cb489-6"></a>)</span></code></pre></div>
+<p>or manually go through <code>robots.txt</code> of the domain (a function <code>get_robotstxt()</code>):</p>
+<div class="sourceCode" id="section-cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="section-web-scraping-in-r.html#cb490-1"></a><span class="kw">get_robotstxt</span>(<span class="dt">domain =</span> <span class="st">&quot;https://www.immoscout24.ch/&quot;</span>)</span></code></pre></div>
+<p>Sometimes <code>R</code> could fail to load this file, and it is a good idea to double check yourself by opening the link to <code>robots.txt</code> at your browser (e.g., manually inspecting <a href="https://www.immoscout24.ch/robots.txt">https://www.immoscout24.ch/robots.txt</a>).</p></li>
+<li><p>Load (fetch) and parse the HTML file by using function <code>read_html()</code> from <code>xml2</code> package:</p>
+<div class="sourceCode" id="section-cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="section-web-scraping-in-r.html#cb491-1"></a><span class="kw">library</span>(<span class="st">&quot;xml2&quot;</span>)</span>
+<span id="cb491-2"><a href="section-web-scraping-in-r.html#cb491-2"></a></span>
+<span id="cb491-3"><a href="section-web-scraping-in-r.html#cb491-3"></a>real_estate &lt;-<span class="st"> </span><span class="kw">read_html</span>(</span>
+<span id="cb491-4"><a href="section-web-scraping-in-r.html#cb491-4"></a>    <span class="st">&quot;https://www.immoscout24.ch/en/real-estate/rent/city-basel&quot;</span></span>
+<span id="cb491-5"><a href="section-web-scraping-in-r.html#cb491-5"></a>)</span></code></pre></div></li>
+<li><p>Using <a href="https://selectorgadget.com">selectorgadget</a> define a css element of interest.</p>
+<p>Selectorgadget is a tool in your browser (JavaScript bookmarklet) that uses the idea of back engeneering to determine which css object contains the data you want to extract. Selectorgadget is like a kind librarian who tells you in which section to look for a particular book.</p>
+<p>First off, we need to install it. Depending on your browser you can install a Google Chrome <a href="https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb">extenssion</a> or drag the link from <a href="https://selectorgadget.com">https://selectorgadget.com page</a> to Bookmarks (shown in the picture below).</p>
+<p><!-- <img src="/images/sg_install.png" alt="map" width="400px"/>  --></p>
+<p><img src="images/sg_install.png" width="1392" /></p>
+<p>Once it has been installed, it is time to use it:</p>
+<ul>
+<li><p>Open the web page you want to scrap in your browser (e.g., <a href="https://www.immoscout24.ch/en/real-estate/rent/city-basel">https://www.immoscout24.ch/en/real-estate/rent/city-basel</a>)</p></li>
+<li><p>Run the selectorgadget. If you use Safari (or similar browsers), click on it in your Bookmarks:</p></li>
+</ul>
+<p><img src="images/sg_safari.png" width="1280" /></p>
+<p>Or click on the icon of the selectorgadget extenssion in Chrome:</p>
+<p><img src="images/sg_chrome.png" width="1392" /></p>
+<ul>
+<li>Click on the element you want to select. The element you have selected will be highlighted in green, and all other elements with the same css selector will be higlighted in yellow. If there are redundant elements higlighted in yellow, simply click on them, and they will turn red.</li>
+</ul>
+<p><img src="images/sg_select.png" width="1392" /></p>
+<ul>
+<li>Copy the css selector from the text box to <code>R</code>.</li>
+</ul>
+<p><img src="images/sg_textbox.png" width="1392" /></p></li>
+<li><p>Extract data from from the web page by using <code>html_nodes()</code> and <code>html_text()</code> from <code>rvest</code>:</p>
+<div class="sourceCode" id="section-cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="section-web-scraping-in-r.html#cb492-1"></a><span class="kw">library</span>(<span class="st">&quot;rvest&quot;</span>)</span>
+<span id="cb492-2"><a href="section-web-scraping-in-r.html#cb492-2"></a><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
+<span id="cb492-3"><a href="section-web-scraping-in-r.html#cb492-3"></a>flats &lt;-<span class="st"> </span>real_estate <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb492-4"><a href="section-web-scraping-in-r.html#cb492-4"></a><span class="st">    </span><span class="kw">html_nodes</span>(<span class="st">&quot;.chqpnT&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb492-5"><a href="section-web-scraping-in-r.html#cb492-5"></a><span class="st">    </span><span class="kw">html_text</span>()</span></code></pre></div></li>
+<li><p>(Optional) Clean and tidy the extracted data. For instance, we use regex to get the number of rooms and the prices in the following code chunk:</p>
+<div class="sourceCode" id="section-cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="section-web-scraping-in-r.html#cb493-1"></a>flats_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb493-2"><a href="section-web-scraping-in-r.html#cb493-2"></a>  <span class="dt">rooms =</span> <span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot; room.*&quot;</span>, <span class="st">&quot;&quot;</span>, flats) <span class="op">%&gt;%</span></span>
+<span id="cb493-3"><a href="section-web-scraping-in-r.html#cb493-3"></a><span class="st">    </span><span class="kw">as.numeric</span>(),</span>
+<span id="cb493-4"><a href="section-web-scraping-in-r.html#cb493-4"></a>  <span class="dt">price =</span> <span class="kw">gsub</span>(<span class="st">&quot;.*CHF |.—.*&quot;</span>, <span class="st">&quot;&quot;</span>, flats) <span class="op">%&gt;%</span></span>
+<span id="cb493-5"><a href="section-web-scraping-in-r.html#cb493-5"></a><span class="st">    </span><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb493-6"><a href="section-web-scraping-in-r.html#cb493-6"></a><span class="st">    </span><span class="kw">as.numeric</span>()</span>
+<span id="cb493-7"><a href="section-web-scraping-in-r.html#cb493-7"></a>)</span></code></pre></div></li>
+</ol>
+<p>As the conclusion, the web scraping is a very powerful tool for extracting data. However, it comes with a certain responsibility.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-high-performance-computing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09-scraping.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

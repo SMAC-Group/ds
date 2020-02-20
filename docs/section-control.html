@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://smac-group.github.io/ds/" />
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Control Structures | An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
+
+
+<meta name="date" content="2020-02-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="section-data.html"/>
+<link rel="next" href="section-functions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#section-getting-started-with-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#section-why-r"><i class="fa fa-check"></i><b>1.1.2</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#section-about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#section-conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#section-getting-help"><i class="fa fa-check"></i><b>1.1.5</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#section-installing-packages"><i class="fa fa-check"></i><b>1.1.6</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>1.1.7</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#section-simple-calculations"><i class="fa fa-check"></i><b>1.2.1</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#section-probability-distributions"><i class="fa fa-check"></i><b>1.2.2</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#section-summary-statistics"><i class="fa fa-check"></i><b>1.2.3</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#section-main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#section-license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li><a href="section-rmarkdown.html#section-what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="section-rmarkdown.html#section-what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
+<li class="chapter" data-level="2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-text"><i class="fa fa-check"></i><b>2.3</b> Text</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-headers"><i class="fa fa-check"></i><b>2.3.1</b> Headers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-lists"><i class="fa fa-check"></i><b>2.3.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-hyperlinks"><i class="fa fa-check"></i><b>2.3.3</b> Hyperlinks</a></li>
+<li class="chapter" data-level="2.3.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-blockquotes"><i class="fa fa-check"></i><b>2.3.4</b> Blockquotes</a></li>
+<li class="chapter" data-level="2.3.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-pictures"><i class="fa fa-check"></i><b>2.3.5</b> Pictures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-latex"><i class="fa fa-check"></i><b>2.3.6</b> LaTeX</a></li>
+<li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
+<li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
+<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="2.4.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments</a></li>
+<li class="chapter" data-level="2.4.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-in-line-r"><i class="fa fa-check"></i><b>2.4.3</b> In-line R</a></li>
+<li class="chapter" data-level="2.4.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cache"><i class="fa fa-check"></i><b>2.4.4</b> Cache</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
+<li class="chapter" data-level="2.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-addition-information"><i class="fa fa-check"></i><b>2.6</b> Addition Information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-github.html"><a href="section-github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-github.html"><a href="section-github.html#section-version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="section-github.html"><a href="section-github.html#section-git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-github.html"><a href="section-github.html#section-git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-github.html"><a href="section-github.html#section-github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-github.html"><a href="section-github.html#section-connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-github.html"><a href="section-github.html#section-the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-github.html"><a href="section-github.html#section-note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-data.html"><a href="section-data.html#section-vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="section-data.html"><a href="section-data.html#section-type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="section-data.html"><a href="section-data.html#section-coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="section-data.html"><a href="section-data.html#section-subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="section-data.html"><a href="section-data.html#section-vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="section-data.html"><a href="section-data.html#section-addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding Labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="section-data.html"><a href="section-data.html#section-working-with-dates"><i class="fa fa-check"></i><b>4.1.6</b> Working with Dates</a></li>
+<li class="chapter" data-level="4.1.7" data-path="section-data.html"><a href="section-data.html#section-useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.7</b> Useful Functions with Vectors</a></li>
+<li class="chapter" data-level="4.1.8" data-path="section-data.html"><a href="section-data.html#section-creating-sequences"><i class="fa fa-check"></i><b>4.1.8</b> Creating sequences</a></li>
+<li class="chapter" data-level="4.1.9" data-path="section-data.html"><a href="section-data.html#section-example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.9</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="section-data.html"><a href="section-data.html#section-matrices"><i class="fa fa-check"></i><b>4.2</b> Matrices</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-data.html"><a href="section-data.html#section-subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-data.html"><a href="section-data.html#section-matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
+<li class="chapter" data-level="4.2.3" data-path="section-data.html"><a href="section-data.html#section-example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="section-data.html"><a href="section-data.html#section-example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="section-data.html"><a href="section-data.html#section-array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="section-data.html"><a href="section-data.html#section-list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="section-data.html"><a href="section-data.html#section-dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="section-data.html"><a href="section-data.html#section-combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="section-data.html"><a href="section-data.html#section-subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="section-data.html"><a href="section-data.html#section-example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+<li class="chapter" data-level="5.2.3" data-path="section-control.html"><a href="section-control.html#section-iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
+<li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
+<li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
+<li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
+<li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section-functions.html"><a href="section-functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-functions.html"><a href="section-functions.html#section-r-functions"><i class="fa fa-check"></i><b>6.1</b> R functions</a></li>
+<li class="chapter" data-level="6.2" data-path="section-functions.html"><a href="section-functions.html#section-creating-functions-in-r"><i class="fa fa-check"></i><b>6.2</b> Creating functions in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-functions.html"><a href="section-functions.html#section-function-arguments"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-functions.html"><a href="section-functions.html#section-function-body"><i class="fa fa-check"></i><b>6.2.2</b> Function body</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-functions.html"><a href="section-functions.html#section-function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
+<li class="chapter" data-level="6.4" data-path="section-functions.html"><a href="section-functions.html#section-example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
+</ul></li>
+<li class="part"><span><b>III Extending</b></span></li>
+<li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
+<li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-output-render-controls"><i class="fa fa-check"></i>Output Render Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
+<li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
+<li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
+<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
+<li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
+<li class="chapter" data-level="7.8.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.8.3</b> Step 3: Connecting frontend and backend</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-r-packages.html"><a href="section-r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-basic-steps"><i class="fa fa-check"></i><b>8.1</b> Basic steps</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-1-create-an-empty-r-package"><i class="fa fa-check"></i><b>8.1.1</b> Step 1: Create an “empty” R package</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-2-edit-description-file"><i class="fa fa-check"></i><b>8.1.2</b> Step 2: Edit description file</a></li>
+<li class="chapter" data-level="8.1.3" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-3-move-your-r-scripts-into-the-r-folder"><i class="fa fa-check"></i><b>8.1.3</b> Step 3: Move your R scripts into the R folder</a></li>
+<li class="chapter" data-level="8.1.4" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-4-documentation"><i class="fa fa-check"></i><b>8.1.4</b> Step 4: Documentation</a></li>
+<li class="chapter" data-level="8.1.5" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-5-test-your-package"><i class="fa fa-check"></i><b>8.1.5</b> Step 5: Test your package</a></li>
+<li class="chapter" data-level="8.1.6" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-6-add-a-readme.rmd-file"><i class="fa fa-check"></i><b>8.1.6</b> Step 6: Add a “README.Rmd” file</a></li>
+<li class="chapter" data-level="8.1.7" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-7-create-a-github-repo---possibly-with-the-same-name-as-package"><i class="fa fa-check"></i><b>8.1.7</b> Step 7: Create a github repo - possibly with the same name as package</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-advanced"><i class="fa fa-check"></i><b>8.2</b> Advanced</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-adding-a-shiny-app"><i class="fa fa-check"></i><b>8.2.1</b> Adding a shiny app</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-rcpp-using-c-within-r"><i class="fa fa-check"></i><b>9.1</b> Rcpp: using C++ within R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-installation"><i class="fa fa-check"></i><b>9.1.1</b> Installation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
+<li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+<li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-control" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Control Structures</h1>
+<div id="section-introduction-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>When you’re building a larger or more complex program than the examples we considered previously, we need to use various <strong>control structures</strong> to control the “flow” of our actions. Essentially, a control structure is a “block” of code that analyzes variables and chooses a direction in which to go based on given parameters. These pieces of code represent the most basic decision-making processes in computing.</p>
+<p>There exist essentially two kinds of control structures.</p>
+<ul>
+<li>The first one allows to determine whether a given condition is satisfied and select an appropriate response. A simple analogy to our day-to-day life would be “<strong>if</strong> it’s cold outside, <strong>then</strong> take a jacket” (we will come back to this example in the next section).</li>
+<li>The second kind of control structure allows to repeat of a block of code multiple times. For example, such an approach can be used to convert a color image to a gray-scale by applying the same operation(s) (i.e. same code) to each pixel of the image. In this chapter, we will first discuss the two kinds of control structures previously mentioned and then present various examples to help build our intuition.</li>
+</ul>
+<!-- Just like in our daily life, we need to place conditions in which we manipulate our behavior. Statistical programming also fundamentally works in the same way. We program specific behaviors for the program to follow to obtain the statistics that we may need for various tasks like regression and bootstrapping. -->
+</div>
+<div id="section-selcontrostat" class="section level2">
+<h2><span class="header-section-number">5.2</span> Selection control statements</h2>
+<p>Suppose that we are interested in creating a simple code to check if it can possibly get very cold and, if this is the case, lead us to decide whether we should take a jacket today. To write such a code we essentially need three things:</p>
+<ol style="list-style-type: decimal">
+<li>Find out how cold it can possibly get today at our location, i.e. the minimum temperature. Such information is now easily accessible through various websites and we can for example use the R package <code>ROpenWeatherMap</code> to access this information. Note that you will need to create an account and request an API key before being able to use it (see <a href="https://github.com/mukul13/ROpenWeatherMap">package documentation</a> for more details). Then, the minimum temperature of the day at our location can be retrieved using the code below:</li>
+</ol>
+<div class="sourceCode" id="section-cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="section-control.html#cb290-1"></a><span class="kw">library</span>(ROpenWeatherMap)</span>
+<span id="cb290-2"><a href="section-control.html#cb290-2"></a>data =<span class="st"> </span><span class="kw">get_current_weather</span>(mykey, <span class="dt">city=</span><span class="st">&quot;geneva&quot;</span>)</span>
+<span id="cb290-3"><a href="section-control.html#cb290-3"></a>min_temp =<span class="st"> </span>data<span class="op">$</span>main<span class="op">$</span>temp_min <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span>  <span class="co"># kelvin to celsius</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Construct a logical (or Boolean) variable created from the variable <code>min_temp</code> to assess whether or not a jacket is needed. For example, we can say that if the temperature can possibly drop below 5 celsius today, then we should bring a jacket with us. This can be done using the code below and in Section <a href="section-control.html#section-logoperators">5.2.1</a> we will discuss how to construct logical variables in more details.</li>
+</ol>
+<div class="sourceCode" id="section-cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="section-control.html#cb291-1"></a>(<span class="dt">jacket =</span> min_temp <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Finally, we need to select operators based on the logical variables constructed in the previous step to bring everything together. For example, we could use the <code>if/else</code> statement presented below. This simple code will print “<em>You should probably bring a jacket</em>” if the logical variable <code>jacket</code> is <code>TRUE</code> and print “<em>A jacket is probably not necessary</em>”, otherwise.</li>
+</ol>
+<div class="sourceCode" id="section-cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="section-control.html#cb293-1"></a><span class="cf">if</span> (jacket){</span>
+<span id="cb293-2"><a href="section-control.html#cb293-2"></a>  <span class="kw">print</span>(<span class="st">&quot;You should probably bring a jacket&quot;</span>)</span>
+<span id="cb293-3"><a href="section-control.html#cb293-3"></a>}<span class="cf">else</span>{</span>
+<span id="cb293-4"><a href="section-control.html#cb293-4"></a>  <span class="kw">print</span>(<span class="st">&quot;A jacket is probably not necessary&quot;</span>)</span>
+<span id="cb293-5"><a href="section-control.html#cb293-5"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;You should probably bring a jacket&quot;</code></pre>
+<div id="section-logoperators" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Logical Operators</h3>
+<p>Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. In general, logical operations take place by comparing one or more variables following specific rules. The table below summarizes the commonly used logical operators:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x <code>&gt;</code> y</td>
+<td>x greater than y</td>
+<td><code>4 &gt; 3</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>x <code>&gt;=</code> y</td>
+<td>x greater or equals to y</td>
+<td><code>1 &gt;= 1</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>x <code>&lt;</code> y</td>
+<td>x less than y</td>
+<td><code>c(12 &lt; 20, 1 &lt; 1)</code></td>
+<td>TRUE, FALSE</td>
+</tr>
+<tr class="even">
+<td>x <code>&lt;=</code> y</td>
+<td>x less than or equals to y</td>
+<td><code>12 &lt;= 1</code></td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td>x <code>==</code> y</td>
+<td>x equal to y</td>
+<td><code>c(2 == 2, 1 == 2)</code></td>
+<td>TRUE, FALSE</td>
+</tr>
+<tr class="even">
+<td>x <code>!=</code> y</td>
+<td>x not equal to y</td>
+<td><code>c(2 != 2, F != T)</code></td>
+<td>FALSE, TRUE</td>
+</tr>
+<tr class="odd">
+<td><code>!</code>x</td>
+<td>Not x</td>
+<td><code>c(!(2 &gt; 1), !FALSE)</code></td>
+<td>FALSE, TRUE</td>
+</tr>
+<tr class="even">
+<td>x <code>||</code>y</td>
+<td>x or y (not vectorized)</td>
+<td><code>(1 &gt; 1) || (2 &lt; 3)</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>x <code>|</code>y</td>
+<td>x or y (vectorized)</td>
+<td><code>c(1 &gt; 1, F) || c(T, 2 &lt; 3)</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>x <code>&amp;&amp;</code> y</td>
+<td>x and y (not vectorized)</td>
+<td><code>TRUE &amp;&amp; TRUE</code></td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>x <code>&amp;</code> y</td>
+<td>x and y (vectorized)</td>
+<td><code>c(TRUE, T) &amp; c(TRUE, F)</code></td>
+<td>TRUE, FALSE</td>
+</tr>
+<tr class="even">
+<td>xor(x,y)</td>
+<td>test if only one is TRUE</td>
+<td><code>xor(TRUE, TRUE)</code></td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td><code>all</code>(x)</td>
+<td>test if all are TRUE</td>
+<td><code>all(c(T, F, F))</code></td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td><code>any</code>(x)</td>
+<td>test if one or more is TRUE</td>
+<td><code>any(c(T, F, F))</code></td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+
+<div class="rmdnote">
+There is a subtle difference between <code>||</code>and <code>|</code> (or <code>&amp;&amp;</code> and <code>&amp;</code>). Indeed, when using <code>x &amp;&amp; y</code> or <code>x || y</code> it implicitly assumes that <code>x</code> and <code>y</code>are of length 1 and when these are applied to vectors <strong>only the first elements</strong> of each vector will be considered. For example, <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>TRUE || FALSE</code> and will only return <code>TRUE</code>. On the other hand, <code>&amp;</code> and <code>|</code> can be applied to vectors and <code>c(TRUE,FALSE) || c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, FALSE || FALSE)</code> and will return <code>TRUE FALSE</code>. It is also worth mentioning that <code>TRUE | c(FALSE, FALSE)</code> is equivalent to <code>c(TRUE || FALSE, TRUE || FALSE)</code> (i.e. the <code>TRUE</code> is used twice) and will return <code>TRUE TRUE</code>. These differences are a common source of bugs.
+</div>
+
+
+<div class="rmdnote">
+When using <code>&amp;</code> or <code>|</code> to create/return logical variables we have to be aware of something called <strong>short-circuit evaluation</strong> which can create bugs that may be difficult to find. Indeed, suppose that we interested in using an expression such as <code>x &amp; y</code> and that if the variable <code>x</code> is <code>FALSE</code> then <code>y</code> will not be evaluated. The idea behind this evaluation is that, regardless of the value of <code>y</code>, the expression <code>x &amp; y</code> should be <code>TRUE</code>. However, this implicitly assumes that <code>y</code> does not contain any mistakes and if this were indeed to be the case, this could create bugs that would be hard to find. For example, consider the expression <code>y = x &amp;&amp; 2 == NULL</code>, then if <code>x</code> is <code>FALSE</code> <code>y</code> will be <code>FALSE</code> while if <code>x</code> is <code>TRUE</code> <code>y</code> will be <code>NA</code>, which obviously is likely to be problematic. Similarly, when considering an expression such as <code>x | y</code>, the variable <code>y</code> will only be evaluated if <code>x</code> is <code>FALSE</code>.
+</div>
+
+<!--
+
+```r
+x = c(3,6,3,4,5)
+y = c(2,3,4,5,6)
+x>y
+```
+
+```
+## [1]  TRUE  TRUE FALSE FALSE FALSE
+```
+
+This method outputs a vector of boolean TRUE and FALSE values that perform element-wise comparisons. Note, this is called a vectorized method, which we will further mention in more details later. `isTRUE()` checks if all the elements within the object is `TRUE`. 
+
+
+```r
+isTRUE(TRUE)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+isTRUE(x>y)
+```
+
+```
+## [1] FALSE
+```
+-->
+</div>
+<div id="section-selection-operators" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Selection Operators</h3>
+<p>Selection operators govern the flow of code. We can observe if/else statements everywhere, no matter what language.</p>
+<div id="section-if-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.1</span> <code>if</code> Statements</h4>
+<p>The most basic selection operator is called an <code>if</code> statement. Essentially, an <code>if</code> statement tells R to do a certain task for a certain case. In plain English it would correspond to something like, “If this is true, do that” or as in our motivating example “If it can possibly get too cold, bring a jacket”. In R, you would say:</p>
+<div class="sourceCode" id="section-cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="section-control.html#cb295-1"></a><span class="cf">if</span> (<span class="op">&lt;</span>this is <span class="ot">TRUE</span><span class="op">&gt;</span>){</span>
+<span id="cb295-2"><a href="section-control.html#cb295-2"></a>  <span class="op">&lt;</span>do that<span class="op">&gt;</span></span>
+<span id="cb295-3"><a href="section-control.html#cb295-3"></a>}</span></code></pre></div>
+<p>or</p>
+<div class="sourceCode" id="section-cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="section-control.html#cb296-1"></a><span class="cf">if</span> (<span class="op">&lt;</span>it can get very cold<span class="op">&gt;</span>){</span>
+<span id="cb296-2"><a href="section-control.html#cb296-2"></a>  <span class="op">&lt;</span>bring a jacket<span class="op">&gt;</span></span>
+<span id="cb296-3"><a href="section-control.html#cb296-3"></a>}</span></code></pre></div>
+<p>In general, we can represent an <code>if</code> statement using the following diagram:</p>
+<center>
+<img src="images/if.png" />
+</center>
+<p>The <code>&lt;conditon&gt;</code> denotes a <strong>logical</strong> variable that is used determine if the code inside of <code>{ }</code> will be evaluated. For example, if <code>&lt;condition&gt;</code> is <code>FALSE</code> then our program will run <code>Code block A</code> and then <code>Code block C</code>. On the other hand, if <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block C</code>.</p>
+<p>Below we present two examples where two <code>if</code> statements are used. In the first example, we use an <code>if</code> statement to compute the absolute value of a variable called <code>x</code>:</p>
+<div class="sourceCode" id="section-cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="section-control.html#cb297-1"></a>x &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb297-2"><a href="section-control.html#cb297-2"></a></span>
+<span id="cb297-3"><a href="section-control.html#cb297-3"></a><span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb297-4"><a href="section-control.html#cb297-4"></a>  x &lt;-<span class="st"> </span><span class="op">-</span>x</span>
+<span id="cb297-5"><a href="section-control.html#cb297-5"></a>}</span>
+<span id="cb297-6"><a href="section-control.html#cb297-6"></a></span>
+<span id="cb297-7"><a href="section-control.html#cb297-7"></a>x</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Now we change <code>x</code> to a negative value:</p>
+<div class="sourceCode" id="section-cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="section-control.html#cb299-1"></a>x &lt;-<span class="st"> </span><span class="dv">-4</span></span>
+<span id="cb299-2"><a href="section-control.html#cb299-2"></a></span>
+<span id="cb299-3"><a href="section-control.html#cb299-3"></a><span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb299-4"><a href="section-control.html#cb299-4"></a>  x &lt;-<span class="st"> </span><span class="op">-</span>x</span>
+<span id="cb299-5"><a href="section-control.html#cb299-5"></a>}</span>
+<span id="cb299-6"><a href="section-control.html#cb299-6"></a></span>
+<span id="cb299-7"><a href="section-control.html#cb299-7"></a>x</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>In the second example, we use an <code>if</code> statement to assess if <code>x</code> is an even number and, if this is the case, we print a simple message.</p>
+<div class="sourceCode" id="section-cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="section-control.html#cb301-1"></a><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb301-2"><a href="section-control.html#cb301-2"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</span>
+<span id="cb301-3"><a href="section-control.html#cb301-3"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;4 is an even number&quot;</code></pre>
+<div class="sourceCode" id="section-cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="section-control.html#cb303-1"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb303-2"><a href="section-control.html#cb303-2"></a></span>
+<span id="cb303-3"><a href="section-control.html#cb303-3"></a><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb303-4"><a href="section-control.html#cb303-4"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</span>
+<span id="cb303-5"><a href="section-control.html#cb303-5"></a>}</span></code></pre></div>
+</div>
+<div id="section-ifelse-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.2</span> <code>if/else</code> Statements</h4>
+<p>Often when we write a program we want to tell R what to do when our condition is <code>TRUE</code> and also what to do when it is <code>FALSE</code>. Of course, we could do something like:</p>
+<div class="sourceCode" id="section-cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="section-control.html#cb304-1"></a><span class="cf">if</span> (condition){</span>
+<span id="cb304-2"><a href="section-control.html#cb304-2"></a>  plan A</span>
+<span id="cb304-3"><a href="section-control.html#cb304-3"></a>}</span>
+<span id="cb304-4"><a href="section-control.html#cb304-4"></a></span>
+<span id="cb304-5"><a href="section-control.html#cb304-5"></a><span class="cf">if</span> (<span class="op">!</span>condition){</span>
+<span id="cb304-6"><a href="section-control.html#cb304-6"></a>  plan B</span>
+<span id="cb304-7"><a href="section-control.html#cb304-7"></a>}</span></code></pre></div>
+<p>However, the above syntax is somewhat clumsy and one generally would prefer to use an <code>if/else</code> statement. In plain English it would correspond to something like, “If this is true, then do plan A otherwise do plan B”. In R we would write:</p>
+<div class="sourceCode" id="section-cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="section-control.html#cb305-1"></a><span class="cf">if</span> (condition){</span>
+<span id="cb305-2"><a href="section-control.html#cb305-2"></a>  plan A</span>
+<span id="cb305-3"><a href="section-control.html#cb305-3"></a>}<span class="cf">else</span>{</span>
+<span id="cb305-4"><a href="section-control.html#cb305-4"></a>  plan B</span>
+<span id="cb305-5"><a href="section-control.html#cb305-5"></a>}</span></code></pre></div>
+<p>Similarly to an <code>if</code> statement, we can represent an <code>if/else</code> statement using the diagram below:</p>
+<center>
+<img src="images/ifelse.png" />
+</center>
+<p>Therefore, when <code>&lt;condition&gt;</code> is <code>TRUE</code> our program will run <code>Code block A</code>, <code>Code block B</code> and then <code>Code block D</code> while when <code>&lt;condition&gt;</code> is <code>FALSE</code> it will run <code>Code block A</code>, <code>Code block B</code> and finally <code>Code block D</code>. Using this new tool we can revisit our previous example on even numbers to include a custom message in the case of an odd number. This can be done as follows:</p>
+<div class="sourceCode" id="section-cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="section-control.html#cb306-1"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb306-2"><a href="section-control.html#cb306-2"></a></span>
+<span id="cb306-3"><a href="section-control.html#cb306-3"></a><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb306-4"><a href="section-control.html#cb306-4"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</span>
+<span id="cb306-5"><a href="section-control.html#cb306-5"></a>}<span class="cf">else</span>{</span>
+<span id="cb306-6"><a href="section-control.html#cb306-6"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))</span>
+<span id="cb306-7"><a href="section-control.html#cb306-7"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;2 is an even number&quot;</code></pre>
+<div class="sourceCode" id="section-cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="section-control.html#cb308-1"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb308-2"><a href="section-control.html#cb308-2"></a></span>
+<span id="cb308-3"><a href="section-control.html#cb308-3"></a><span class="cf">if</span> (x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb308-4"><a href="section-control.html#cb308-4"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</span>
+<span id="cb308-5"><a href="section-control.html#cb308-5"></a>}<span class="cf">else</span>{</span>
+<span id="cb308-6"><a href="section-control.html#cb308-6"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, <span class="st">&quot;is an odd number&quot;</span>))</span>
+<span id="cb308-7"><a href="section-control.html#cb308-7"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;3 is an odd number&quot;</code></pre>
+</div>
+<div id="section-ifelseifelse-statements" class="section level4">
+<h4><span class="header-section-number">5.2.2.3</span> <code>if/elseif/else</code> Statements</h4>
+<p>We can also control the flow of statements with multiple if/else statements, depending on the number of cases we consider. Typically, the more cases we have, the more else if statements. An example visualization is provided below.</p>
+<center>
+<img src="images/ifelseifelse.png" />
+</center>
+</div>
+<div id="section-switch-statement" class="section level4">
+<h4><span class="header-section-number">5.2.2.4</span> <code>switch</code> Statement</h4>
+<p>Earlier we mentioned that if/elseif/else statements allow us to choose between TRUE and FALSE when there are two options. With the above idea, when there are more than two options we can simply use nested if/else statements. What about when we have roughly 20 options to choose from? In this case, if we stick to using nested if/else statements, the programming logic will be very difficult to understand. The switch statement option in R programming can help us handle this type of problems more effectively.</p>
+<p>Before we put switch statements into the case study, let’s first start to understand the basic switch statement syntax in R.</p>
+<div class="sourceCode" id="section-cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="section-control.html#cb310-1"></a><span class="cf">switch</span> (Expression,</span>
+<span id="cb310-2"><a href="section-control.html#cb310-2"></a>        <span class="st">&quot;Option 1&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">1</span>,</span>
+<span id="cb310-3"><a href="section-control.html#cb310-3"></a>        <span class="st">&quot;Option 2&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">2</span>,</span>
+<span id="cb310-4"><a href="section-control.html#cb310-4"></a>        <span class="st">&quot;Option 3&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option <span class="dv">3</span>,</span>
+<span id="cb310-5"><a href="section-control.html#cb310-5"></a>        ....</span>
+<span id="cb310-6"><a href="section-control.html#cb310-6"></a>        ....</span>
+<span id="cb310-7"><a href="section-control.html#cb310-7"></a>        <span class="st">&quot;Option N&quot;</span> =<span class="st"> </span>Execute this statement when the expression result matches Option N,</span>
+<span id="cb310-8"><a href="section-control.html#cb310-8"></a>        Default Statements</span>
+<span id="cb310-9"><a href="section-control.html#cb310-9"></a>)</span></code></pre></div>
+<ul>
+<li>The <code>expression</code> value is the condition which R will evaluate. This should be either integer or character.</li>
+<li>When the <code>expression</code> value matches more than one option, the first matching statement will be returned.</li>
+<li>Besides the conditional statement, R also allows us to add the <code>default statement</code>, which will be returned when none of the listed options are matched.</li>
+</ul>
+<p>With the above syntax in mind, let’s now check a simple case study with R switch statements.</p>
+<div class="sourceCode" id="section-cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="section-control.html#cb311-1"></a>number1 &lt;-<span class="st"> </span><span class="dv">20</span></span>
+<span id="cb311-2"><a href="section-control.html#cb311-2"></a>number2 &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb311-3"><a href="section-control.html#cb311-3"></a>operator =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt=</span><span class="st">&quot;Please enter any ARITHMETIC OPERATOR: &quot;</span>)</span>
+<span id="cb311-4"><a href="section-control.html#cb311-4"></a></span>
+<span id="cb311-5"><a href="section-control.html#cb311-5"></a><span class="cf">switch</span>(operator,</span>
+<span id="cb311-6"><a href="section-control.html#cb311-6"></a>       <span class="st">&quot;+&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Addition of two numbers is: &quot;</span>, number1 <span class="op">+</span><span class="st"> </span>number2)),</span>
+<span id="cb311-7"><a href="section-control.html#cb311-7"></a>       <span class="st">&quot;-&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Subtraction of two numbers is: &quot;</span>, number1 <span class="op">-</span><span class="st"> </span>number2)),</span>
+<span id="cb311-8"><a href="section-control.html#cb311-8"></a>       <span class="st">&quot;*&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Multiplication of two numbers is: &quot;</span>, number1 <span class="op">*</span><span class="st"> </span>number2)),</span>
+<span id="cb311-9"><a href="section-control.html#cb311-9"></a>       <span class="st">&quot;/&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Division of two numbers is: &quot;</span>, number1 <span class="op">/</span><span class="st"> </span>number2))</span>
+<span id="cb311-10"><a href="section-control.html#cb311-10"></a>)</span></code></pre></div>
+When running the above code in R, we can expect results like:
+<center>
+<img src="images/switch_example.png" />
+</center>
+In conclusion, we can visualize the R switch statement as follows:
+<center>
+<img src="images/flowchart_switch.png" />
+</center>
+</div>
+</div>
+<div id="section-iter_cont_stat" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Iterative Control Statements</h3>
+<p>Iterative control statements are an extremly useful R method for repeating a task multiple times. For example, pretend we are trying to build a program that solves a simple maze like the one below.</p>
+<center>
+<img src="images/maze.jpg" />
+</center>
+<p>It would be pretty easy to simply draw out the possible solutions with the naked eye. However, if you were actually inside the maze, you would need to narrow your perspective and think of a strategy, like marking paths you have already visited. Suppose that we have a strategy in mind to solve this problem. For example, we could consider the following approach at any given point in time:</p>
+<ul>
+<li>if there is space in front of you, go forward</li>
+<li>else, if there is space on your right, turn right</li>
+<li>else, if there is space on your left, turn left</li>
+<li>else, [all three sides (forward, left, right) are closed] turn around</li>
+</ul>
+<p>This strategy could easily be programmed using the methods discussed in Section <a href="section-control.html#section-selcontrostat">5.2</a> but to actually program it you would need to repeat this strategy until you escaped the maze. Your strategy could for example be written as:</p>
+<div class="sourceCode" id="section-cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="section-control.html#cb312-1"></a><span class="cf">repeat</span> (until <span class="st">&quot;you are free&quot;</span>){</span>
+<span id="cb312-2"><a href="section-control.html#cb312-2"></a>  <span class="cf">if</span> (<span class="st">&quot;space in front of you&quot;</span>){</span>
+<span id="cb312-3"><a href="section-control.html#cb312-3"></a>    go forward</span>
+<span id="cb312-4"><a href="section-control.html#cb312-4"></a>  }<span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;space on your right&quot;</span>){</span>
+<span id="cb312-5"><a href="section-control.html#cb312-5"></a>    turn right </span>
+<span id="cb312-6"><a href="section-control.html#cb312-6"></a>  }<span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;space on your left&quot;</span>){</span>
+<span id="cb312-7"><a href="section-control.html#cb312-7"></a>    turn left</span>
+<span id="cb312-8"><a href="section-control.html#cb312-8"></a>  }<span class="cf">else</span>{</span>
+<span id="cb312-9"><a href="section-control.html#cb312-9"></a>    turn around</span>
+<span id="cb312-10"><a href="section-control.html#cb312-10"></a>  }</span>
+<span id="cb312-11"><a href="section-control.html#cb312-11"></a>}</span></code></pre></div>
+<p>Try to develop an algorithm to exit the maze presented above. Could you escape? Though it might take some time (and probably would not correspond to the fastest strategy) one can show that this method can solve any maze (assuming of course that a solution exists). In this section we discuss the elements necessary to actually program the “<code>repeat (until "you are free")</code>” part of our algorithm.</p>
+<div id="section-forloop" class="section level4">
+<h4><span class="header-section-number">5.2.3.1</span> <code>for</code> Loops</h4>
+<p>Let’s consider the following situation:</p>
+<div class="sourceCode" id="section-cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="section-control.html#cb313-1"></a><span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb313-2"><a href="section-control.html#cb313-2"></a><span class="kw">print</span>(<span class="dv">2</span>)</span>
+<span id="cb313-3"><a href="section-control.html#cb313-3"></a><span class="kw">print</span>(<span class="dv">3</span>)</span>
+<span id="cb313-4"><a href="section-control.html#cb313-4"></a><span class="kw">print</span>(<span class="dv">4</span>)</span>
+<span id="cb313-5"><a href="section-control.html#cb313-5"></a><span class="kw">print</span>(<span class="dv">5</span>)</span>
+<span id="cb313-6"><a href="section-control.html#cb313-6"></a><span class="kw">print</span>(<span class="dv">6</span>)</span></code></pre></div>
+<p>This seems feasible when we only need to print out the numbers from 1 to 6. What if we want to print out the numbers from 1 to 100? It is such a clumsy and tedious approach if we keep repeating <code>print()</code> line by line to do so.</p>
+<p>For loops in R help us solve this type of problems much more effectively in only a couple lines of codes. It allows us to repeat the same part of code, or say a sequence of same instructions, under certain conditions without explicitly writing out the code everytime. For example, to do exactly the same as the above example with for loops, all we need is:</p>
+<div class="sourceCode" id="section-cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="section-control.html#cb314-1"></a><span class="cf">for</span> (number <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>){</span>
+<span id="cb314-2"><a href="section-control.html#cb314-2"></a>  <span class="kw">print</span>(number)</span>
+<span id="cb314-3"><a href="section-control.html#cb314-3"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+<p>To interpret the above for loops in plain English, we can read it as “When the number is in the sequence {1,2,3,4,5,6}, we will print this number until we exhaust all numbers in the sequence”. As we can see obviously, this approach simplifies our code so much more as we only need to write the code chunk (<code>print()</code> in this case) once, not six times, not to mention when we want to print out all the numbers from 1 to 100 compared to repeating <code>print()</code> line by line for 100 times.</p>
+<p>The basic syntax of for loops in R is as follows:</p>
+<div class="sourceCode" id="section-cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="section-control.html#cb316-1"></a><span class="cf">for</span> (some specified sequence to loop over){</span>
+<span id="cb316-2"><a href="section-control.html#cb316-2"></a>  execute this statement when we still haven not reached the last item <span class="cf">in</span> the sequence</span>
+<span id="cb316-3"><a href="section-control.html#cb316-3"></a>}</span></code></pre></div>
+<p><code>Next</code> also helps when you want to skip for some cases in which you don’t want the statement to be executed. To see how <code>next</code> works together with for loops in R, let’s consider the following more mathematical example when you want to print out all the odd numbers between 1 to 10.</p>
+<div class="sourceCode" id="section-cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="section-control.html#cb317-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
+<span id="cb317-2"><a href="section-control.html#cb317-2"></a>  <span class="cf">if</span> (<span class="op">!</span>i <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>){</span>
+<span id="cb317-3"><a href="section-control.html#cb317-3"></a>    <span class="cf">next</span></span>
+<span id="cb317-4"><a href="section-control.html#cb317-4"></a>  }</span>
+<span id="cb317-5"><a href="section-control.html#cb317-5"></a>  <span class="kw">print</span>(i)</span>
+<span id="cb317-6"><a href="section-control.html#cb317-6"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9</code></pre>
+<p>From the results, we notice that R automatically skip to run <code>print(i)</code> when <code>!i %%2</code> is TRUE. To interpret the above in plain English, we can read it as “if the number i cannot be divided by 2, we skip the below and consider the NEXT number in the sequence”. In this case, we can still use for loops when we have some exceptional cases.</p>
+In conclusion, we can visualize the R for loops as follows:
+<center>
+<img src="images/flowchart___for_loop.png" />
+</center>
+<p>Up till now, we can see that for loops can simplify our work a lot when we need to execute a sequence of same instructions for multiple times. However, there are still disadvantages to use for loops in R. We may hardly notice now with only a few simple iterations to run. But indeed, R can be very slow when running iteration, especially when we need to do a lot of big iterations with big data. Sometimes we may prefer to avoid using for loops in R by using other approaches since R supports vectorization, which will allow for much faster calculations. For example, solutions that make use of loops are less efficient than vectorized solutions that make use of apply functions, such as lapply and sapply. It’s often better to use the latter.</p>
+<p>Apply methods are often used to make operations on some structured data. For example, let’s simulate a matrix of some random samples.</p>
+<div class="sourceCode" id="section-cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="section-control.html#cb319-1"></a>(<span class="dt">exp_mat =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">60</span>),<span class="dt">ncol =</span> <span class="dv">3</span>))</span></code></pre></div>
+<pre><code>##             [,1]         [,2]        [,3]
+##  [1,]  1.2641127 -1.455629201  1.18725660
+##  [2,]  0.7605783 -0.003717245  0.62239538
+##  [3,]  0.8986743  0.201608421 -0.63467405
+##  [4,] -0.2599687 -1.717030566  0.13811572
+##  [5,] -1.2732897 -0.553815979 -1.68757532
+##  [6,]  1.4665207  1.797689516 -1.69342039
+##  [7,] -0.1886869 -0.487240060  2.00632838
+##  [8,] -0.8078425 -0.067124376  0.28370037
+##  [9,]  0.2201780  0.476543256 -1.63774310
+## [10,] -0.2420270  1.102555363  0.85130893
+## [11,]  0.1616306  1.413921582  1.57550258
+## [12,] -1.5155518 -1.683922909  0.16483272
+## [13,] -0.5130531 -0.213472626  0.15858790
+## [14,] -1.7673859 -0.173933741 -1.65122474
+## [15,] -1.2921990  0.791080267 -0.21468870
+## [16,] -0.5180424  0.505944277 -0.55773403
+## [17,]  0.8689581  0.814993972 -0.22162617
+## [18,] -1.6382529 -0.546740017 -0.72351140
+## [19,] -1.4691652  0.292504331 -0.09889761
+## [20,] -1.3349362  0.153025747  1.28550326</code></pre>
+<p>To get the mean of each column, we can calculate each column mean separately or use a for loop.</p>
+<div class="sourceCode" id="section-cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="section-control.html#cb321-1"></a><span class="co"># Observe what this does</span></span>
+<span id="cb321-2"><a href="section-control.html#cb321-2"></a><span class="kw">mean</span>(exp_mat)</span></code></pre></div>
+<pre><code>## [1] -0.1230012</code></pre>
+<div class="sourceCode" id="section-cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="section-control.html#cb323-1"></a><span class="co"># Calculate separately </span></span>
+<span id="cb323-2"><a href="section-control.html#cb323-2"></a><span class="kw">mean</span>(exp_mat[,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## [1] -0.3589874</code></pre>
+<div class="sourceCode" id="section-cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="section-control.html#cb325-1"></a><span class="kw">mean</span>(exp_mat[,<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## [1] 0.032362</code></pre>
+<div class="sourceCode" id="section-cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="section-control.html#cb327-1"></a><span class="kw">mean</span>(exp_mat[,<span class="dv">3</span>])</span></code></pre></div>
+<pre><code>## [1] -0.04237818</code></pre>
+<div class="sourceCode" id="section-cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="section-control.html#cb329-1"></a><span class="co"># Using a for loop </span></span>
+<span id="cb329-2"><a href="section-control.html#cb329-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</span>
+<span id="cb329-3"><a href="section-control.html#cb329-3"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(exp_mat[,i]))</span>
+<span id="cb329-4"><a href="section-control.html#cb329-4"></a>}</span></code></pre></div>
+<pre><code>## [1] -0.3589874
+## [1] 0.032362
+## [1] -0.04237818</code></pre>
+<p>However, using <code>apply</code>, we can do this in a very simple manner.</p>
+<div class="sourceCode" id="section-cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="section-control.html#cb331-1"></a><span class="kw">apply</span>(exp_mat, <span class="dv">2</span>, mean) </span></code></pre></div>
+<pre><code>## [1] -0.35898743  0.03236200 -0.04237818</code></pre>
+<div class="sourceCode" id="section-cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="section-control.html#cb333-1"></a><span class="co"># The 2 indicates operations on columns and not rows </span></span></code></pre></div>
+<p>We will see how these approaches can help accelerate our work later.</p>
+</div>
+<div id="section-while-statements" class="section level4">
+<h4><span class="header-section-number">5.2.3.2</span> <code>while</code> Statements</h4>
+<p>As an alternative of for loops, while statement in R is another approach that can help us repeat the code chunk only when specific conditions are satisfied. For example, we can use while statement to do exactly the same as above to print out all numbers from 1 to 6 as followings:</p>
+<div class="sourceCode" id="section-cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="section-control.html#cb334-1"></a>i =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb334-2"><a href="section-control.html#cb334-2"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">6</span>){</span>
+<span id="cb334-3"><a href="section-control.html#cb334-3"></a>  <span class="kw">print</span>(i)</span>
+<span id="cb334-4"><a href="section-control.html#cb334-4"></a>  i =<span class="st"> </span>i<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb334-5"><a href="section-control.html#cb334-5"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+<p>The above code can be interprented in plain English as: “Let’s start with number 1. When the number i is still smaller than or equal to 6, we print it out. Then we consider the next integer of it and stop when we finish all the numbers smaller than or equal to 6.”</p>
+<p>As we can see, while statement is used to iterate until a specific condition is met. To make use of while statement in R, we introduce the basic syntax of it as following:</p>
+<div class="sourceCode" id="section-cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="section-control.html#cb336-1"></a><span class="cf">while</span> (some specified condition)</span>
+<span id="cb336-2"><a href="section-control.html#cb336-2"></a>{</span>
+<span id="cb336-3"><a href="section-control.html#cb336-3"></a>   statement to execute when the above condition is satisfied</span>
+<span id="cb336-4"><a href="section-control.html#cb336-4"></a>}</span></code></pre></div>
+<p>Here we evaluate the condition and if it is <code>TRUE</code>, then we execute the statement inside the code chunk. Once we finish running the statement, we evaluate the condition again and exit the loops when the condition is evaluated as <code>FALSE</code>.</p>
+In conclusion, we can visualize how the while statement works in R as following:
+<center>
+<img src="images/flowchart___while_statement.png" />
+</center>
+</div>
+</div>
+</div>
+<div id="section-example-the-bootstrap" class="section level2">
+<h2><span class="header-section-number">5.3</span> Example: The Bootstrap</h2>
+<p>The (non-parametric) bootstrap was introduced by <span class="citation">Efron (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-efron1979bootstrap" role="doc-biblioref">1979</a>)</span> as a numerical method to provide a simple estimator of the distribution of an estimator. This method became rapidly very popular since it is completely automatic, requires no theoretical derivation and is (almost) always available no matter how complicated our estimator of interest is. Moreover, most statistical methods are based on various asymptotic approximations (often through the central limit theorem) that can however deliver poor results in finite sample settings. Bootstrap techniques generally enjoy better finite sample performance while paying a price in terms of computation burden. A formal discussion of the properties of (non-parametric) bootstrap techniques is far beyond the scope of this textbook but it’s actually quite simple to understand its algorithm. To motivate this discussion, suppose that we ask 10 students how much time they work at home for their STAT 297 class. Say we obtain the following results (in hours):</p>
+<div class="sourceCode" id="section-cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="section-control.html#cb337-1"></a>student_work &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="dv">6</span>)</span></code></pre></div>
+<p>We can compute the mean time spent</p>
+<div class="sourceCode" id="section-cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="section-control.html#cb338-1"></a>mean_hour &lt;-<span class="st"> </span><span class="kw">mean</span>(student_work)</span></code></pre></div>
+<p>Moreover, we compute a simple confidence interval of the <strong>average number</strong> of hours spent by a student enrolled in STAT 297. Since we have no reason to believe that the number of hours spent working at home for this class is not Gaussian, we can construct an asymtotic confidence interval using:</p>
+<p><span class="math display">\[
+\bar{x} \pm z_{1-\alpha/2} \frac{\hat{\sigma}}{\sqrt{n}},
+\]</span></p>
+<p>where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\alpha\)</span> is the significance level which delivers <span class="math inline">\(z_{1-\alpha/2}\)</span> quantile of standard Gaussian distribution and <span class="math inline">\(\hat{\sigma}\)</span> is the sample standard deviation (we assume that estimating the standard deviation has no impact on the distribution of <span class="math inline">\(\bar{x}\)</span>). In R, this interval can therefore be computed as follows:</p>
+<div class="sourceCode" id="section-cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="section-control.html#cb339-1"></a>alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></span>
+<span id="cb339-2"><a href="section-control.html#cb339-2"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(student_work)</span>
+<span id="cb339-3"><a href="section-control.html#cb339-3"></a>sd_hour &lt;-<span class="st"> </span><span class="kw">sd</span>(student_work)</span>
+<span id="cb339-4"><a href="section-control.html#cb339-4"></a>z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb339-5"><a href="section-control.html#cb339-5"></a>mean_hour <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="op">*</span>z<span class="op">*</span>sd_hour<span class="op">/</span><span class="kw">sqrt</span>(n)</span></code></pre></div>
+<pre><code>## [1] -0.1256494  1.9438313</code></pre>
+<p>Based on this confidence interval your instructor is very disappointed since the confidence interval includes 0, indicating that it is possible that the students study on average zero hours. But does this interval makes sense? The lower bound of the interval is negative implying that students can also have negative hours of study. This of course makes no sense indicating that with this sample size the asymptotic Gaussian approximation makes little sense.</p>
+<p>To solve this issue, the (non-parametric) bootstrap is a convenient and appropriate tool to compute more adequate finite sample confidence intervals. Letting <span class="math inline">\(\mathbf{X} = \left[X_1 \;\; \ldots \;\; X_n\right]\)</span> denote the sample (in our case <code>student_work</code>), the way the bootstrap works is as follows:</p>
+<ul>
+<li><strong>Step 1:</strong> Let <span class="math inline">\(i = 1\)</span>.</li>
+<li><strong>Step 2:</strong> Construct a new sample, say <span class="math inline">\(\mathbf{X}^*\)</span>, by sampling <strong>with replacement</strong> <span class="math inline">\(n\)</span> observations from <span class="math inline">\(\mathbf{X}\)</span>.</li>
+<li><strong>Step 3:</strong> Compute the average of <span class="math inline">\(\mathbf{X}^*\)</span> which we will denote as <span class="math inline">\(\bar{X}_i\)</span>. Let <span class="math inline">\(i = i + 1\)</span> and if <span class="math inline">\(i &lt; B\)</span> go to <strong>Step 2</strong> otherwise go to <strong>Step 4</strong>.</li>
+<li><strong>Step 4</strong>: Compute the empirical quantiles of <span class="math inline">\(\bar{X}_i\)</span>.</li>
+</ul>
+<p>Here is a simple function to implement this approach:</p>
+<div class="sourceCode" id="section-cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="section-control.html#cb341-1"></a><span class="co"># Number of boostrap replications</span></span>
+<span id="cb341-2"><a href="section-control.html#cb341-2"></a>B &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb341-3"><a href="section-control.html#cb341-3"></a></span>
+<span id="cb341-4"><a href="section-control.html#cb341-4"></a><span class="co"># Compute the length of vector</span></span>
+<span id="cb341-5"><a href="section-control.html#cb341-5"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(student_work)</span>
+<span id="cb341-6"><a href="section-control.html#cb341-6"></a></span>
+<span id="cb341-7"><a href="section-control.html#cb341-7"></a><span class="co"># Confidence level</span></span>
+<span id="cb341-8"><a href="section-control.html#cb341-8"></a>alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></span>
+<span id="cb341-9"><a href="section-control.html#cb341-9"></a></span>
+<span id="cb341-10"><a href="section-control.html#cb341-10"></a><span class="co"># Initialisation of </span></span>
+<span id="cb341-11"><a href="section-control.html#cb341-11"></a>boot_mean &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</span>
+<span id="cb341-12"><a href="section-control.html#cb341-12"></a></span>
+<span id="cb341-13"><a href="section-control.html#cb341-13"></a><span class="co"># Step 1</span></span>
+<span id="cb341-14"><a href="section-control.html#cb341-14"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
+<span id="cb341-15"><a href="section-control.html#cb341-15"></a>  <span class="co"># Step 2</span></span>
+<span id="cb341-16"><a href="section-control.html#cb341-16"></a>  student_work_star &lt;-<span class="st"> </span>student_work[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)]</span>
+<span id="cb341-17"><a href="section-control.html#cb341-17"></a>  </span>
+<span id="cb341-18"><a href="section-control.html#cb341-18"></a>  <span class="co"># Step 3</span></span>
+<span id="cb341-19"><a href="section-control.html#cb341-19"></a>  boot_mean[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(student_work_star)</span>
+<span id="cb341-20"><a href="section-control.html#cb341-20"></a>}</span>
+<span id="cb341-21"><a href="section-control.html#cb341-21"></a></span>
+<span id="cb341-22"><a href="section-control.html#cb341-22"></a><span class="co"># Step 4</span></span>
+<span id="cb341-23"><a href="section-control.html#cb341-23"></a><span class="kw">quantile</span>(boot_mean, <span class="kw">c</span>(alpha<span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>##      2.5%     97.5% 
+## 0.1818182 2.0000000</code></pre>
+<p>Based on this result your instructor is relieved since they know that, at a level of confidence of 95%, you are spending at least more than 10 minutes on your course work.</p>
+
+<div class="rmdnote">
+How would you modify the above code to obtain the same output using the <code>while</code> control?
+</div>
+
+
+<div class="rmdnote">
+<p>A researcher developed a new drug to help patients recover after a surgery. To investigate if her drug is working as expected, she starts by creating a simple test experiment on mice. In this experiment, the researcher records the survival times of 14 mice after a test surgery. Out of the 14 mice, 8 of them are given the new drug while the remaining ones are used as a control group (where no treatement is given). Her results (in days) are the following:</p>
+<ul>
+<li><strong>Treatement</strong> group: 38, 76, 121, 86, 52, 69, 41 and 171;</li>
+<li><strong>Control</strong> group: 18, 12, 52, 82, 102 and 25.</li>
+</ul>
+She believes that the median survival time is a “good” way to measure effectiveness of her drug. Based on this experiment, she obtains that the median survival time for the control group is 38.5 days while it is 72.5 days for the treatement group. She wonders if you could help her to find an approriate (bootstrap) confidence interval for the difference of the medians. Using this result, do you believe that the drug increases the median survial time of mice after the test surgery?
+</div>
+
+</div>
+<div id="section-example-random-walk" class="section level2">
+<h2><span class="header-section-number">5.4</span> Example: Random Walk</h2>
+<p>The term <em>random walk</em> was first introduced by Karl Pearson in the early nineteen-hundreds. There exist a large range of random walk processes. For example, one of the simplest forms of a random walk process can be explained as follows: suppose that you are walking on campus and your next step can either be to your left, your right, forward or backward (each with equal probability). The code illustrates how to program such a random process:</p>
+<div class="sourceCode" id="section-cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="section-control.html#cb343-1"></a><span class="co"># Control seed</span></span>
+<span id="cb343-2"><a href="section-control.html#cb343-2"></a><span class="kw">set.seed</span>(<span class="dv">1992</span>)</span>
+<span id="cb343-3"><a href="section-control.html#cb343-3"></a></span>
+<span id="cb343-4"><a href="section-control.html#cb343-4"></a><span class="co"># Number of steps</span></span>
+<span id="cb343-5"><a href="section-control.html#cb343-5"></a>steps &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">5</span></span>
+<span id="cb343-6"><a href="section-control.html#cb343-6"></a></span>
+<span id="cb343-7"><a href="section-control.html#cb343-7"></a><span class="co"># Direction probability (i.e. all direction are equally likely)</span></span>
+<span id="cb343-8"><a href="section-control.html#cb343-8"></a>probs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb343-9"><a href="section-control.html#cb343-9"></a></span>
+<span id="cb343-10"><a href="section-control.html#cb343-10"></a><span class="co"># Initial matrix</span></span>
+<span id="cb343-11"><a href="section-control.html#cb343-11"></a>step_direction &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, steps<span class="op">+</span><span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb343-12"><a href="section-control.html#cb343-12"></a></span>
+<span id="cb343-13"><a href="section-control.html#cb343-13"></a><span class="co"># Start random walk</span></span>
+<span id="cb343-14"><a href="section-control.html#cb343-14"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>, steps<span class="op">+</span><span class="dv">1</span>)){</span>
+<span id="cb343-15"><a href="section-control.html#cb343-15"></a>  <span class="co"># Draw a random number from U(0,1)</span></span>
+<span id="cb343-16"><a href="section-control.html#cb343-16"></a>  rn =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb343-17"><a href="section-control.html#cb343-17"></a></span>
+<span id="cb343-18"><a href="section-control.html#cb343-18"></a>  <span class="co"># Go right if rn \in [0,prob[1])</span></span>
+<span id="cb343-19"><a href="section-control.html#cb343-19"></a>  <span class="cf">if</span> (rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">1</span>]) {step_direction[i,<span class="dv">1</span>] =<span class="st"> </span><span class="dv">1</span>}</span>
+<span id="cb343-20"><a href="section-control.html#cb343-20"></a></span>
+<span id="cb343-21"><a href="section-control.html#cb343-21"></a>  <span class="co"># Go left if rn \in [probs[1], probs[2])</span></span>
+<span id="cb343-22"><a href="section-control.html#cb343-22"></a>  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">1</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">2</span>]) {step_direction[i,<span class="dv">1</span>] =<span class="st"> </span><span class="dv">-1</span>}</span>
+<span id="cb343-23"><a href="section-control.html#cb343-23"></a></span>
+<span id="cb343-24"><a href="section-control.html#cb343-24"></a>  <span class="co"># Go forward if rn \in [probs[2], probs[3])</span></span>
+<span id="cb343-25"><a href="section-control.html#cb343-25"></a>  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">2</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>rn <span class="op">&lt;</span><span class="st"> </span>probs[<span class="dv">3</span>]) {step_direction[i,<span class="dv">2</span>] =<span class="st"> </span><span class="dv">1</span>}</span>
+<span id="cb343-26"><a href="section-control.html#cb343-26"></a></span>
+<span id="cb343-27"><a href="section-control.html#cb343-27"></a>  <span class="co"># Go backward if rn \in [probs[3],1]</span></span>
+<span id="cb343-28"><a href="section-control.html#cb343-28"></a>  <span class="cf">if</span> (rn <span class="op">&gt;=</span><span class="st"> </span>probs[<span class="dv">3</span>]) {step_direction[i,<span class="dv">2</span>] =<span class="st"> </span><span class="dv">-1</span>}</span>
+<span id="cb343-29"><a href="section-control.html#cb343-29"></a>}</span>
+<span id="cb343-30"><a href="section-control.html#cb343-30"></a></span>
+<span id="cb343-31"><a href="section-control.html#cb343-31"></a><span class="co"># Cumulative steps</span></span>
+<span id="cb343-32"><a href="section-control.html#cb343-32"></a>position =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">cumsum</span>(step_direction[, <span class="dv">1</span>]), </span>
+<span id="cb343-33"><a href="section-control.html#cb343-33"></a>                      <span class="dt">y =</span> <span class="kw">cumsum</span>(step_direction[, <span class="dv">2</span>]))</span>
+<span id="cb343-34"><a href="section-control.html#cb343-34"></a>  </span>
+<span id="cb343-35"><a href="section-control.html#cb343-35"></a><span class="co"># Let&#39;s make a nice graph...</span></span>
+<span id="cb343-36"><a href="section-control.html#cb343-36"></a><span class="co"># Graph parameters</span></span>
+<span id="cb343-37"><a href="section-control.html#cb343-37"></a>color =<span class="st"> &quot;blue4&quot;</span></span>
+<span id="cb343-38"><a href="section-control.html#cb343-38"></a>xlab =<span class="st"> &quot;X-position&quot;</span></span>
+<span id="cb343-39"><a href="section-control.html#cb343-39"></a>ylab =<span class="st"> &quot;Y-position&quot;</span></span>
+<span id="cb343-40"><a href="section-control.html#cb343-40"></a>pt_pch =<span class="st"> </span><span class="dv">16</span></span>
+<span id="cb343-41"><a href="section-control.html#cb343-41"></a>pt.cex =<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb343-42"><a href="section-control.html#cb343-42"></a>main =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;Simulated 2D RW with&quot;</span>, steps, <span class="st">&quot;steps&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb343-43"><a href="section-control.html#cb343-43"></a>hues =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>)</span>
+<span id="cb343-44"><a href="section-control.html#cb343-44"></a>pt_col =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> hues, <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb343-45"><a href="section-control.html#cb343-45"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">5.1</span>, <span class="fl">5.1</span>, <span class="dv">1</span>, <span class="fl">2.1</span>))</span>
+<span id="cb343-46"><a href="section-control.html#cb343-46"></a></span>
+<span id="cb343-47"><a href="section-control.html#cb343-47"></a><span class="co"># Main plot</span></span>
+<span id="cb343-48"><a href="section-control.html#cb343-48"></a><span class="kw">plot</span>(<span class="ot">NA</span>,  <span class="dt">xlim =</span> <span class="kw">range</span>(position[,<span class="dv">1</span>]), </span>
+<span id="cb343-49"><a href="section-control.html#cb343-49"></a>          <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">range</span>(position[,<span class="dv">2</span>])), </span>
+<span id="cb343-50"><a href="section-control.html#cb343-50"></a>          <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, </span>
+<span id="cb343-51"><a href="section-control.html#cb343-51"></a>          <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb343-52"><a href="section-control.html#cb343-52"></a>win_dim =<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)</span>
+<span id="cb343-53"><a href="section-control.html#cb343-53"></a></span>
+<span id="cb343-54"><a href="section-control.html#cb343-54"></a><span class="kw">par</span>(<span class="dt">new =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb343-55"><a href="section-control.html#cb343-55"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(position[,<span class="dv">1</span>]), <span class="dt">ylim =</span> <span class="kw">c</span>(win_dim[<span class="dv">3</span>], win_dim[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])),</span>
+<span id="cb343-56"><a href="section-control.html#cb343-56"></a>       <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb343-57"><a href="section-control.html#cb343-57"></a>  win_dim =<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)</span>
+<span id="cb343-58"><a href="section-control.html#cb343-58"></a></span>
+<span id="cb343-59"><a href="section-control.html#cb343-59"></a><span class="co"># Add grid</span></span>
+<span id="cb343-60"><a href="section-control.html#cb343-60"></a><span class="kw">grid</span>(<span class="ot">NULL</span>, <span class="ot">NULL</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;grey95&quot;</span>)</span>
+<span id="cb343-61"><a href="section-control.html#cb343-61"></a></span>
+<span id="cb343-62"><a href="section-control.html#cb343-62"></a><span class="co"># Add title</span></span>
+<span id="cb343-63"><a href="section-control.html#cb343-63"></a>x_vec =<span class="st"> </span><span class="kw">c</span>(win_dim[<span class="dv">1</span>], win_dim[<span class="dv">2</span>], win_dim[<span class="dv">2</span>], win_dim[<span class="dv">1</span>])</span>
+<span id="cb343-64"><a href="section-control.html#cb343-64"></a>y_vec =<span class="st"> </span><span class="kw">c</span>(win_dim[<span class="dv">4</span>], win_dim[<span class="dv">4</span>],</span>
+<span id="cb343-65"><a href="section-control.html#cb343-65"></a>            win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]),</span>
+<span id="cb343-66"><a href="section-control.html#cb343-66"></a>            win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]))</span>
+<span id="cb343-67"><a href="section-control.html#cb343-67"></a><span class="kw">polygon</span>(x_vec, y_vec, <span class="dt">col =</span> <span class="st">&quot;grey95&quot;</span>, <span class="dt">border =</span> <span class="ot">NA</span>)</span>
+<span id="cb343-68"><a href="section-control.html#cb343-68"></a><span class="kw">text</span>(<span class="dt">x =</span> <span class="kw">mean</span>(<span class="kw">c</span>(win_dim[<span class="dv">1</span>], win_dim[<span class="dv">2</span>])), <span class="dt">y =</span> (win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])), main)</span>
+<span id="cb343-69"><a href="section-control.html#cb343-69"></a></span>
+<span id="cb343-70"><a href="section-control.html#cb343-70"></a><span class="co"># Add axes and box</span></span>
+<span id="cb343-71"><a href="section-control.html#cb343-71"></a><span class="kw">lines</span>(x_vec[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="kw">rep</span>((win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>])),<span class="dv">2</span>), <span class="dt">col =</span> <span class="dv">1</span>)</span>
+<span id="cb343-72"><a href="section-control.html#cb343-72"></a><span class="kw">box</span>()</span>
+<span id="cb343-73"><a href="section-control.html#cb343-73"></a><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">padj =</span> <span class="fl">0.3</span>)</span>
+<span id="cb343-74"><a href="section-control.html#cb343-74"></a>y_axis =<span class="st"> </span><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">labels =</span> <span class="ot">FALSE</span>, <span class="dt">tick =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb343-75"><a href="section-control.html#cb343-75"></a>y_axis =<span class="st"> </span>y_axis[y_axis <span class="op">&lt;</span><span class="st"> </span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.09</span><span class="op">*</span>(win_dim[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>win_dim[<span class="dv">3</span>]))]</span>
+<span id="cb343-76"><a href="section-control.html#cb343-76"></a><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">padj =</span> <span class="fl">-0.2</span>, <span class="dt">at =</span> y_axis)</span>
+<span id="cb343-77"><a href="section-control.html#cb343-77"></a></span>
+<span id="cb343-78"><a href="section-control.html#cb343-78"></a><span class="co"># Add trajectory</span></span>
+<span id="cb343-79"><a href="section-control.html#cb343-79"></a><span class="kw">lines</span>(position, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> color, <span class="dt">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb343-80"><a href="section-control.html#cb343-80"></a>  </span>
+<span id="cb343-81"><a href="section-control.html#cb343-81"></a><span class="co"># Start and end points</span></span>
+<span id="cb343-82"><a href="section-control.html#cb343-82"></a><span class="kw">points</span>(<span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>]), <span class="kw">c</span>(<span class="dv">0</span>,position[steps<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>]), <span class="dt">cex =</span> pt.cex, <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch)</span>
+<span id="cb343-83"><a href="section-control.html#cb343-83"></a>  </span>
+<span id="cb343-84"><a href="section-control.html#cb343-84"></a><span class="co"># Legend</span></span>
+<span id="cb343-85"><a href="section-control.html#cb343-85"></a>leg_pos =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(position[,<span class="dv">1</span>]), <span class="kw">max</span>(position[,<span class="dv">2</span>]))</span>
+<span id="cb343-86"><a href="section-control.html#cb343-86"></a><span class="kw">legend</span>(leg_pos[<span class="dv">1</span>], leg_pos[<span class="dv">2</span>], <span class="kw">c</span>(<span class="st">&quot;Start&quot;</span>,<span class="st">&quot;End&quot;</span>), </span>
+<span id="cb343-87"><a href="section-control.html#cb343-87"></a>      <span class="dt">col =</span> pt_col, <span class="dt">pch =</span> pt_pch, <span class="dt">pt.cex =</span> pt.cex, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="ds_files/figure-html/RW2d-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p>Such processes inspired Karl Pearson’s famous quote that</p>
+<blockquote>
+<p>“<em>the most likely place to find a drunken walker is somewhere near his starting point.</em>”</p>
+</blockquote>
+<p>Empirical evidence of this phenomenon is not too hard to find on a Friday night.</p>
+</div>
+<div id="section-example-monte-carlo-integration" class="section level2">
+<h2><span class="header-section-number">5.5</span> Example: Monte-Carlo Integration</h2>
+<div id="section-introduction-2" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Introduction</h3>
+<p>Monte Carlo integration is a powerful technique for numerical integration. It is particularly useful to evaluate integrals of “high-dimension”. A detailed (and formal) discussion of this method is clearly beyond the scope of this class and we shall restrict our attention to the most basic form(s) of Monte Carlo integration and briefly discuss the rational behind this method.</p>
+<p>Originally, such Monte Carlo methods were known under various names among which <em>statistical sampling</em> was probably the most commonly used. In fact, the name <em>Monte Carlo</em> was popularized by several researchers in Physics, including Stanislaw Ulam, Enrico Fermi and John von Neumann. The name is believed to be a reference to a famous casino in Monaco where Stanislaw Ulam’s uncle would borrow money to gamble. Enrico Fermi was one of the first to use this technique which he employed to study the properties of a newly-discovered neutron in the 1930s. Later for example, these methods played a central role in many of the simulations required for the Manhattan project.</p>
+<p>With this in mind, let us give an idea of this approach by supposing we are interested in computing the following integral:</p>
+<p><span class="math display">\[I = \int_a^b f(x) dx.\]</span></p>
+<p>Of course, this integral can be approximated by a Riemann sum:</p>
+<p><span class="math display">\[I \approx \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x),\]</span></p>
+<p>where <span class="math inline">\(\Delta x = \frac{b - a}{n}\;\)</span> and the idea behind this approximation is that as the number of partitions <span class="math inline">\(n\)</span> increases, the Riemann sum will become closer and closer to <span class="math inline">\(I\)</span>. Also (under some technical conditions), we have that</p>
+<p><span class="math display">\[I = \lim_{n \to \infty} \Delta x \sum_{i = 1}^n f(a + (i-1) \Delta x).\]</span></p>
+<p>In fact, the rational of a Monte Carlo integral is quite close to the Riemann sum since, in its most basic form, we approximate <span class="math inline">\(I\)</span> by averaging samples of the function <span class="math inline">\(f(x)\)</span> at uniform random points within the interval <span class="math inline">\([a, b]\)</span>. Therefore, the Monte Carlo <em>estimator</em> of <span class="math inline">\(I\)</span> is given by</p>
+<p><span class="math display" id="eq:binom">\[\begin{equation} 
+\hat{I} = \frac{b - a}{B} \sum_{i = 1}^B f(X_i), 
+ \tag{5.1}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(X_i = a + U_i (b - a)\)</span> and <span class="math inline">\(U_i \sim \mathcal{U}(0,1)\)</span>. In fact, <a href="section-control.html#eq:binom">(5.1)</a> is quite intuitive since <span class="math inline">\(\frac{1}{B} \sum_{i = 1}^B f(X_i)\)</span> represents an estimation of the average value of <span class="math inline">\(f(x)\)</span> in the interval <span class="math inline">\([a, b]\)</span> and thus <span class="math inline">\(\hat{I}\)</span> is simply the average value times the length of the interval, i.e. <span class="math inline">\((b-a)\)</span>. If you would like to learn more about the properties of Monte-Carlo integrals, click on the button below:</p>
+<button id="hidebutton1">
+Properties
+</button>
+<div id="section-hideclass1">
+
+<div class="rmdnote">
+<p>A more formal argument on the validity of this approach can be found in analyzing the statistical properties of the estimator <span class="math inline">\(\hat{I}\)</span>. In order to do so, we start by considering its expected value
+<span class="math display">\[
+\mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \mathbb{E}\left[ f(X_i)  \right]
+= \frac{b - a}{B} \sum_{i = 1}^B \int f(x) g(x) dx, 
+\]</span></p>
+<p>where <span class="math inline">\(g(x)\)</span> denotes the pdf of <span class="math inline">\(X_i\)</span>. Since <span class="math inline">\(X_i \sim \mathcal{U}(a, b)\)</span> it follows that</p>
+<p><span class="math display">\[
+g(x) = \left\{
+    \begin{array}{ll}
+        \frac{1}{b - a}  &amp; \mbox{if } x \in [a, b] \\
+        0 &amp; \mbox{if } x \not\in [a, b]
+    \end{array}
+\right.
+\]</span></p>
+<p>Therefore, we have</p>
+<p><span class="math display">\[
+\mathbb{E}\left[ \hat{I} \right] = \frac{b - a}{B} \sum_{i = 1}^B \int_a^b \frac{f(x)}{b-a} dx = \int_a^b f(x) dx = I, 
+\]</span></p>
+<p>Since <span class="math inline">\(X_i\)</span> are iid, the same can be said about <span class="math inline">\(f(X_i)\)</span> and therefore by the <strong>Strong Law of Large Numbers</strong> we have that <span class="math inline">\(\hat{I}\)</span> converges <em>almost surely</em> to <span class="math inline">\(I\)</span>, which means that</p>
+<p><span class="math display">\[
+\mathbb{P}\left(\lim_{B \to \infty} \hat{I} = I    \right) = 1.
+\]</span></p>
+<p>This result implies that as the number of simulations <span class="math inline">\(B\)</span> goes to infinity we can guarantee that the solution will be exact.</p>
+<p>Unfortunately, this result doesn’t give us any information on how quickly this estimate converges to a “sufficiently accurate” solution for the problem at hand. This can be done by studying the variance of <span class="math inline">\(\hat{I}\)</span> and its <em>rate of convergence</em>. Indeed, we have</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{var} \left( \hat{I} \right) &amp;= \left(\frac{b - a}{B}\right)^2  \sum_{i = 1}^B \left\{\mathbb{E}\left[f^2(X_i)\right] - \mathbb{E}^2\left[f(X_i)\right]\right\}\\
+&amp;= \frac{1}{B^2} \sum_{i = 1}^B \left\{(b-a) \int_a^b f^2(x) dx - \left(\int_a^b f(x) dx \right)^2 \right\}\\
+&amp;= \frac{(b-a) I_2 - I^2}{B}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(I_2 = \int_a^b f^2(x) dx\)</span>. A simple estimator of this quantity is given by</p>
+<p><span class="math display">\[
+\hat{I}_2 = \frac{b - a}{B} \sum_{i = 1}^B f^2(X_i),
+\]</span></p>
+<p>and therefore using <span class="math inline">\(\hat{I}\)</span> we obtain:</p>
+<p><span class="math display">\[
+\widehat{\operatorname{var}} \left(\hat{I} \right) = \frac{(b-a) \hat{I}_2 - \hat{I}^2}{B} = \frac{b - a}{B^2} \sum_{i = 1}^B\left[ (b - a )f^2(X_i) - f(X_i)\right]
+\]</span></p>
+Thus, it is easy to see that the rate of convergence of <span class="math inline">\(\widehat{\operatorname{var}} \left(\hat{I} \right)\)</span> is <span class="math inline">\(B^{-1}\)</span> and we may write <span class="math inline">\({\operatorname{var}} \left(\hat{I} \right) = \mathcal{O}(B)\)</span>. This implies that if we wish to reduce the error (or standard deviation) by half, we need to quadruple <span class="math inline">\(B\)</span>. Such a phenomon is very common in many fields of research such as Statistics where this is often called the <em>curse of dimensionality</em>.
+</div>
+</div>
+
+</div>
+<div id="section-implementation" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Implementation</h3>
+<p>The function <code>mc_int()</code>, which is available in the <code>introDS</code> package, implements the above method. This functions has four inputs:</p>
+<ul>
+<li><code>x_range</code>: A vector containing the integration domain, i.e. <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>,</li>
+<li><code>fun</code>: A string containing the function you wish to integrate where <span class="math inline">\(x\)</span> is used to indicate the variable of integration,</li>
+<li><code>B</code>: A numeric value to denote the number of Monte-Carlo replications,</li>
+<li><code>seed</code>: A numeric value to control the seed of the random number generator.</li>
+</ul>
+<p>For example, if you want to estimate</p>
+<p><span class="math display">\[
+\int_1^3 \frac{\exp\left(\sin(x)\right)}{x} dx,
+\]</span></p>
+<p>using <span class="math inline">\(10^4\)</span> Monte-Carlo replications, you can use the following command:</p>
+<div class="sourceCode" id="section-cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="section-control.html#cb344-1"></a><span class="kw">library</span>(introDS)</span>
+<span id="cb344-2"><a href="section-control.html#cb344-2"></a><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">fun =</span> <span class="st">&quot;exp(sin(x))/x&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## $I
+## [1] 2.558104
+## 
+## $var
+## [1] 1.401222e-05
+## 
+## $fun
+## [1] &quot;exp(sin(x))/x&quot;
+## 
+## $x_range
+## [1] 1 3
+## 
+## $B
+## [1] 1e+05
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;MCI&quot;</code></pre>
+<p>At this point, it is probably a good idea to try to programm this yourself and to compare your results (and code!) with the function <code>mc_int()</code>. This should be rather easy to implement but one thing that may be a little delicate is how to pass the function you wish to integrate as an input. A possible way of doing this is to use a string so that, for example, if we have to integrate the function <span class="math inline">\(\sin(x)\)</span> you could simply write <code>fun = sin(x)</code> when calling your function. This implies that we should be able to “transform” a string into a function that we can evaluate, which is something that we can achieve by combining the functions <code>eval</code> and <code>parse</code>. An example is provided below:</p>
+<div class="sourceCode" id="section-cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="section-control.html#cb346-1"></a>my_fun =<span class="st"> &quot;x^2&quot;</span></span>
+<span id="cb346-2"><a href="section-control.html#cb346-2"></a>x =<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb346-3"><a href="section-control.html#cb346-3"></a><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> my_fun))</span></code></pre></div>
+<pre><code>## [1] 0 1 4 9</code></pre>
+<p>If you’re having trouble understanding what these functions are doing have a look at their help files by writing <code>?eval</code> and <code>?parse</code>.</p>
+</div>
+<div id="section-application-to-the-normal-distribution" class="section level3">
+<h3><span class="header-section-number">5.5.3</span> Application to the Normal Distribution</h3>
+<p>Suppose that <span class="math inline">\(X \sim \mathcal{N}(4, 1.25^2)\)</span> and that we are interested in computing the following probability <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right)\)</span>. The probability density of the normal distribution for a random variable with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> is given by:</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{\left(x - \mu\right)^2}{2 \sigma^2}\right).
+\]</span></p>
+<p>Therefore, the probability we are interested in can be written as the following integral</p>
+<p><span class="math display">\[
+\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) = \int_1^{4.5} \frac{1}{\sqrt{3.125 \pi}} \exp \left(- \frac{\left(x - 4\right)^2}{3.125}\right).
+\]</span></p>
+<p>Analytically, this is not an easy problem and of course there are many ways to solve it. However, we could try to use a Monte-Carlo integral to solve it. For example:</p>
+<div class="sourceCode" id="section-cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="section-control.html#cb348-1"></a>my_fun =<span class="st"> &quot;1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)&quot;</span></span>
+<span id="cb348-2"><a href="section-control.html#cb348-2"></a>(<span class="dt">prob =</span> <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">4.5</span>), <span class="dt">fun =</span> my_fun, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">7</span>))</span></code></pre></div>
+<pre><code>## $I
+## [1] 0.6471691
+## 
+## $var
+## [1] 1.449985e-08
+## 
+## $fun
+## [1] &quot;1/sqrt(3.125*pi)*exp(-((x - 4)^2)/3.125)&quot;
+## 
+## $x_range
+## [1] 1.0 4.5
+## 
+## $B
+## [1] 1e+07
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;MCI&quot;</code></pre>
+<p>Based on this result, we can write <span class="math inline">\(\mathbb{P}\left(1 &lt; X &lt; 4.5 \right) \approx 64.72 \%\)</span> with a standard error of about 0.01%. We can compare our results with what we would obtain with the function <code>pnorm</code> which provides a nearly exact result:</p>
+<div class="sourceCode" id="section-cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="section-control.html#cb350-1"></a><span class="kw">pnorm</span>(<span class="fl">4.5</span>, <span class="dv">4</span>, <span class="fl">1.25</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">1.25</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6472242</code></pre>
+<p>This shows that our estimation is within one standard error of a near perfect result.</p>
+</div>
+<div id="section-application-to-nonelementary-integrals" class="section level3">
+<h3><span class="header-section-number">5.5.4</span> Application to Nonelementary Integrals</h3>
+<p>In layman’s terms, a nonelementary integral of a given (elementary) function is an integral that cannot be expressed as an elementary function. The French mathematicien Joseph Liouville was the first to prove the existance of such a nonelementary integral. A well-known example of such integrals are the Fresnel integrals that have been used for a very wide range of applications going from the computation of electromagnetic field intensity to roller roster design. These integrals are defined as:</p>
+<p><span class="math display">\[S(y) = \int_0^t \sin\left(x^2\right) dx \;\;\;\;\;\; \text{and}  \;\;\;\;\;\; 
+C(y) = \int_0^y \cos \left( x^2 \right) dx.\]</span></p>
+<p>In this example, we will only consider <span class="math inline">\(S(y)\)</span>. In general it is believed that the most convenient way of evaluating these functions up to an arbitrary level of precision is to use a power series representation that converges for all <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[
+S(y) = \sum_{i = 1}^\infty \, \left(-1\right)^n \, \frac{y^{4i + 1}}{\left(2i + 1\right) \, !\left(4i + 3\right)}.
+\]</span></p>
+<p>In this example, we will study the estimation of <span class="math inline">\(S(\pi)\)</span> as well as the <em>precision</em> of this estimation.</p>
+<div class="sourceCode" id="section-cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="section-control.html#cb352-1"></a>B =<span class="st"> </span><span class="dv">4</span><span class="op">^</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">13</span>)</span>
+<span id="cb352-2"><a href="section-control.html#cb352-2"></a>results =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="kw">length</span>(B), <span class="dv">2</span>)</span>
+<span id="cb352-3"><a href="section-control.html#cb352-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(B)){</span>
+<span id="cb352-4"><a href="section-control.html#cb352-4"></a>  mc_res =<span class="st"> </span><span class="kw">mc_int</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="st">&quot;sin(x^2)&quot;</span>, <span class="dt">B =</span> B[i], <span class="dt">seed =</span> i<span class="op">+</span><span class="dv">12</span>)</span>
+<span id="cb352-5"><a href="section-control.html#cb352-5"></a>  results[i, ] =<span class="st"> </span><span class="kw">c</span>(mc_res<span class="op">$</span>I, <span class="kw">sqrt</span>(mc_res<span class="op">$</span>var))</span>
+<span id="cb352-6"><a href="section-control.html#cb352-6"></a>}</span>
+<span id="cb352-7"><a href="section-control.html#cb352-7"></a></span>
+<span id="cb352-8"><a href="section-control.html#cb352-8"></a></span>
+<span id="cb352-9"><a href="section-control.html#cb352-9"></a>trans_blue =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.15</span>)[<span class="dv">2</span>]</span>
+<span id="cb352-10"><a href="section-control.html#cb352-10"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(B), <span class="dt">ylim =</span> <span class="kw">range</span>(<span class="kw">cbind</span>(results[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>results[,<span class="dv">2</span>], </span>
+<span id="cb352-11"><a href="section-control.html#cb352-11"></a>      results[, <span class="dv">1</span>] <span class="op">-</span>results[,<span class="dv">2</span>])), <span class="dt">log =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Estimated Integral&quot;</span>,</span>
+<span id="cb352-12"><a href="section-control.html#cb352-12"></a>      <span class="dt">xlab =</span> <span class="st">&quot;Number of Simulations B&quot;</span>, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb352-13"><a href="section-control.html#cb352-13"></a><span class="kw">grid</span>()</span>
+<span id="cb352-14"><a href="section-control.html#cb352-14"></a><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> B, <span class="dt">labels =</span> <span class="kw">parse</span>(<span class="dt">text =</span> <span class="kw">paste</span>(<span class="st">&quot;4^&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">13</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)))</span>
+<span id="cb352-15"><a href="section-control.html#cb352-15"></a><span class="kw">polygon</span>(<span class="kw">c</span>(B, <span class="kw">rev</span>(B)), <span class="kw">c</span>(results[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>results[, <span class="dv">2</span>], </span>
+<span id="cb352-16"><a href="section-control.html#cb352-16"></a>                        <span class="kw">rev</span>(results[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>results[, <span class="dv">2</span>])), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> trans_blue)</span>
+<span id="cb352-17"><a href="section-control.html#cb352-17"></a><span class="kw">lines</span>(B, results[, <span class="dv">1</span>], <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue4&quot;</span>, <span class="dt">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb352-18"><a href="section-control.html#cb352-18"></a><span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8048208</span>, <span class="dt">col =</span> <span class="st">&quot;red4&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb352-19"><a href="section-control.html#cb352-19"></a><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimated value&quot;</span>, <span class="st">&quot;Standard error interval&quot;</span>, <span class="st">&quot;Good approximation (MatLab)&quot;</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb352-20"><a href="section-control.html#cb352-20"></a>       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="ot">NA</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>), </span>
+<span id="cb352-21"><a href="section-control.html#cb352-21"></a>       <span class="dt">pt.cex =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue4&quot;</span>, trans_blue, <span class="st">&quot;red4&quot;</span>))</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-170-1.png" width="576" style="display: block; margin: auto;" /></p>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
+    });
+</script>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-control.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

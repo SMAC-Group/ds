@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 R Packages | An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 R Packages | An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://smac-group.github.io/ds/" />
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 R Packages | An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
+
+
+<meta name="date" content="2020-02-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="section-shiny-web-applications.html"/>
+<link rel="next" href="section-high-performance-computing.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#section-getting-started-with-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#section-why-r"><i class="fa fa-check"></i><b>1.1.2</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#section-about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#section-conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#section-getting-help"><i class="fa fa-check"></i><b>1.1.5</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#section-installing-packages"><i class="fa fa-check"></i><b>1.1.6</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>1.1.7</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#section-simple-calculations"><i class="fa fa-check"></i><b>1.2.1</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#section-probability-distributions"><i class="fa fa-check"></i><b>1.2.2</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#section-summary-statistics"><i class="fa fa-check"></i><b>1.2.3</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#section-main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#section-license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li><a href="section-rmarkdown.html#section-what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="section-rmarkdown.html#section-what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
+<li class="chapter" data-level="2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-text"><i class="fa fa-check"></i><b>2.3</b> Text</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-headers"><i class="fa fa-check"></i><b>2.3.1</b> Headers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-lists"><i class="fa fa-check"></i><b>2.3.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-hyperlinks"><i class="fa fa-check"></i><b>2.3.3</b> Hyperlinks</a></li>
+<li class="chapter" data-level="2.3.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-blockquotes"><i class="fa fa-check"></i><b>2.3.4</b> Blockquotes</a></li>
+<li class="chapter" data-level="2.3.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-pictures"><i class="fa fa-check"></i><b>2.3.5</b> Pictures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-latex"><i class="fa fa-check"></i><b>2.3.6</b> LaTeX</a></li>
+<li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
+<li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
+<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="2.4.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments</a></li>
+<li class="chapter" data-level="2.4.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-in-line-r"><i class="fa fa-check"></i><b>2.4.3</b> In-line R</a></li>
+<li class="chapter" data-level="2.4.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cache"><i class="fa fa-check"></i><b>2.4.4</b> Cache</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
+<li class="chapter" data-level="2.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-addition-information"><i class="fa fa-check"></i><b>2.6</b> Addition Information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-github.html"><a href="section-github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-github.html"><a href="section-github.html#section-version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="section-github.html"><a href="section-github.html#section-git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-github.html"><a href="section-github.html#section-git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-github.html"><a href="section-github.html#section-github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-github.html"><a href="section-github.html#section-connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-github.html"><a href="section-github.html#section-the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-github.html"><a href="section-github.html#section-note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-data.html"><a href="section-data.html#section-vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="section-data.html"><a href="section-data.html#section-type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="section-data.html"><a href="section-data.html#section-coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="section-data.html"><a href="section-data.html#section-subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="section-data.html"><a href="section-data.html#section-vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="section-data.html"><a href="section-data.html#section-addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding Labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="section-data.html"><a href="section-data.html#section-working-with-dates"><i class="fa fa-check"></i><b>4.1.6</b> Working with Dates</a></li>
+<li class="chapter" data-level="4.1.7" data-path="section-data.html"><a href="section-data.html#section-useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.7</b> Useful Functions with Vectors</a></li>
+<li class="chapter" data-level="4.1.8" data-path="section-data.html"><a href="section-data.html#section-creating-sequences"><i class="fa fa-check"></i><b>4.1.8</b> Creating sequences</a></li>
+<li class="chapter" data-level="4.1.9" data-path="section-data.html"><a href="section-data.html#section-example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.9</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="section-data.html"><a href="section-data.html#section-matrices"><i class="fa fa-check"></i><b>4.2</b> Matrices</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-data.html"><a href="section-data.html#section-subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-data.html"><a href="section-data.html#section-matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
+<li class="chapter" data-level="4.2.3" data-path="section-data.html"><a href="section-data.html#section-example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="section-data.html"><a href="section-data.html#section-example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="section-data.html"><a href="section-data.html#section-array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="section-data.html"><a href="section-data.html#section-list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="section-data.html"><a href="section-data.html#section-dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="section-data.html"><a href="section-data.html#section-combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="section-data.html"><a href="section-data.html#section-subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="section-data.html"><a href="section-data.html#section-example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+<li class="chapter" data-level="5.2.3" data-path="section-control.html"><a href="section-control.html#section-iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
+<li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
+<li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
+<li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
+<li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section-functions.html"><a href="section-functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-functions.html"><a href="section-functions.html#section-r-functions"><i class="fa fa-check"></i><b>6.1</b> R functions</a></li>
+<li class="chapter" data-level="6.2" data-path="section-functions.html"><a href="section-functions.html#section-creating-functions-in-r"><i class="fa fa-check"></i><b>6.2</b> Creating functions in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-functions.html"><a href="section-functions.html#section-function-arguments"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-functions.html"><a href="section-functions.html#section-function-body"><i class="fa fa-check"></i><b>6.2.2</b> Function body</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-functions.html"><a href="section-functions.html#section-function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
+<li class="chapter" data-level="6.4" data-path="section-functions.html"><a href="section-functions.html#section-example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
+</ul></li>
+<li class="part"><span><b>III Extending</b></span></li>
+<li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
+<li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-output-render-controls"><i class="fa fa-check"></i>Output Render Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
+<li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
+<li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
+<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
+<li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
+<li class="chapter" data-level="7.8.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.8.3</b> Step 3: Connecting frontend and backend</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-r-packages.html"><a href="section-r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-basic-steps"><i class="fa fa-check"></i><b>8.1</b> Basic steps</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-1-create-an-empty-r-package"><i class="fa fa-check"></i><b>8.1.1</b> Step 1: Create an “empty” R package</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-2-edit-description-file"><i class="fa fa-check"></i><b>8.1.2</b> Step 2: Edit description file</a></li>
+<li class="chapter" data-level="8.1.3" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-3-move-your-r-scripts-into-the-r-folder"><i class="fa fa-check"></i><b>8.1.3</b> Step 3: Move your R scripts into the R folder</a></li>
+<li class="chapter" data-level="8.1.4" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-4-documentation"><i class="fa fa-check"></i><b>8.1.4</b> Step 4: Documentation</a></li>
+<li class="chapter" data-level="8.1.5" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-5-test-your-package"><i class="fa fa-check"></i><b>8.1.5</b> Step 5: Test your package</a></li>
+<li class="chapter" data-level="8.1.6" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-6-add-a-readme.rmd-file"><i class="fa fa-check"></i><b>8.1.6</b> Step 6: Add a “README.Rmd” file</a></li>
+<li class="chapter" data-level="8.1.7" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-7-create-a-github-repo---possibly-with-the-same-name-as-package"><i class="fa fa-check"></i><b>8.1.7</b> Step 7: Create a github repo - possibly with the same name as package</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-advanced"><i class="fa fa-check"></i><b>8.2</b> Advanced</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-adding-a-shiny-app"><i class="fa fa-check"></i><b>8.2.1</b> Adding a shiny app</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-rcpp-using-c-within-r"><i class="fa fa-check"></i><b>9.1</b> Rcpp: using C++ within R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-installation"><i class="fa fa-check"></i><b>9.1.1</b> Installation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
+<li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+<li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-r-packages" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> R Packages</h1>
+<p>In this chapter we introduce one of the most useful tools for R programming as well as for statistical programming in general. Indeed, one of the main goals for statistical programming is to then be able to share all the code and functions that have been implemented in order to respond to a specific task. The latter may often be quite <em>messy</em> to do given that different files and functions can be present in various directories or repositories and, for example, some codes may use functions from other codes but do not load the same libraries, thereby producing execution errors.</p>
+<p>In order to avoid the above complications (and to program in a healthy and organized manner), R allows you to create <em>packages</em> that are software platforms that collect functions as well as other files which, among others, describe these functions and provide users with documentation that allow them to understand and efficiently use these functions. Moreover, when sharing a package (or making it available within a repository) all the user needs to do is to install and load the package within an R session which then makes available the entire environment needed for all the functions included in the package to work. In a nutshell, whenever creating functions to answer a specific research interest or professional task, it is always good to do so by first creating a package within which these functions can be stored and documented.</p>
+<p>In this chapter we will describe and explain the steps necessary to create an R package using RStudio. There are other ways and other procedures to produce an R package but in this chapter we will describe one possible way which is consistent with the approach to statistical programming that is presented in this book. As in the previous chapters, we will make use of an example to guide the reader through the different aspects of package building and, for this purpose, let us assume we want to build a package that allows a user to perform Monte-Carlo integration for any user-specificed function as well as produce plots that represent these functions as well as the integrated area. In this case, we have an extremely simple setting where, based on code used in the previous chapters, we only have the following two functions to be included in the package:</p>
+<div class="sourceCode" id="section-cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="section-r-packages.html#cb450-1"></a>mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){</span>
+<span id="cb450-2"><a href="section-r-packages.html#cb450-2"></a>  <span class="co"># A few checks</span></span>
+<span id="cb450-3"><a href="section-r-packages.html#cb450-3"></a>  <span class="co"># Check x_range</span></span>
+<span id="cb450-4"><a href="section-r-packages.html#cb450-4"></a>  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){</span>
+<span id="cb450-5"><a href="section-r-packages.html#cb450-5"></a>    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)</span>
+<span id="cb450-6"><a href="section-r-packages.html#cb450-6"></a>  }</span>
+<span id="cb450-7"><a href="section-r-packages.html#cb450-7"></a></span>
+<span id="cb450-8"><a href="section-r-packages.html#cb450-8"></a>  <span class="co"># Check fun</span></span>
+<span id="cb450-9"><a href="section-r-packages.html#cb450-9"></a>  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){</span>
+<span id="cb450-10"><a href="section-r-packages.html#cb450-10"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)</span>
+<span id="cb450-11"><a href="section-r-packages.html#cb450-11"></a>  }</span>
+<span id="cb450-12"><a href="section-r-packages.html#cb450-12"></a></span>
+<span id="cb450-13"><a href="section-r-packages.html#cb450-13"></a>  x =<span class="st"> </span><span class="kw">mean</span>(x_range)</span>
+<span id="cb450-14"><a href="section-r-packages.html#cb450-14"></a>  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb450-15"><a href="section-r-packages.html#cb450-15"></a>  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){</span>
+<span id="cb450-16"><a href="section-r-packages.html#cb450-16"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)</span>
+<span id="cb450-17"><a href="section-r-packages.html#cb450-17"></a>  }</span>
+<span id="cb450-18"><a href="section-r-packages.html#cb450-18"></a></span>
+<span id="cb450-19"><a href="section-r-packages.html#cb450-19"></a>  <span class="co"># Check B</span></span>
+<span id="cb450-20"><a href="section-r-packages.html#cb450-20"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){</span>
+<span id="cb450-21"><a href="section-r-packages.html#cb450-21"></a>    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)</span>
+<span id="cb450-22"><a href="section-r-packages.html#cb450-22"></a>  }</span>
+<span id="cb450-23"><a href="section-r-packages.html#cb450-23"></a></span>
+<span id="cb450-24"><a href="section-r-packages.html#cb450-24"></a>  <span class="co"># Set seed</span></span>
+<span id="cb450-25"><a href="section-r-packages.html#cb450-25"></a>  <span class="kw">set.seed</span>(seed)</span>
+<span id="cb450-26"><a href="section-r-packages.html#cb450-26"></a></span>
+<span id="cb450-27"><a href="section-r-packages.html#cb450-27"></a>  <span class="co"># Compute the length of the interval, i.e. (b-a)</span></span>
+<span id="cb450-28"><a href="section-r-packages.html#cb450-28"></a>  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
+<span id="cb450-29"><a href="section-r-packages.html#cb450-29"></a></span>
+<span id="cb450-30"><a href="section-r-packages.html#cb450-30"></a>  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span></span>
+<span id="cb450-31"><a href="section-r-packages.html#cb450-31"></a>  Ui =<span class="st"> </span><span class="kw">runif</span>(B)</span>
+<span id="cb450-32"><a href="section-r-packages.html#cb450-32"></a>  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length</span>
+<span id="cb450-33"><a href="section-r-packages.html#cb450-33"></a></span>
+<span id="cb450-34"><a href="section-r-packages.html#cb450-34"></a>  <span class="co"># Compute \hat{I}</span></span>
+<span id="cb450-35"><a href="section-r-packages.html#cb450-35"></a>  x =<span class="st"> </span>Xi</span>
+<span id="cb450-36"><a href="section-r-packages.html#cb450-36"></a>  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))</span>
+<span id="cb450-37"><a href="section-r-packages.html#cb450-37"></a></span>
+<span id="cb450-38"><a href="section-r-packages.html#cb450-38"></a>  <span class="co"># Compute \hat{I}_2</span></span>
+<span id="cb450-39"><a href="section-r-packages.html#cb450-39"></a>  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb450-40"><a href="section-r-packages.html#cb450-40"></a>  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B</span>
+<span id="cb450-41"><a href="section-r-packages.html#cb450-41"></a></span>
+<span id="cb450-42"><a href="section-r-packages.html#cb450-42"></a>  <span class="co"># Output list</span></span>
+<span id="cb450-43"><a href="section-r-packages.html#cb450-43"></a>  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,</span>
+<span id="cb450-44"><a href="section-r-packages.html#cb450-44"></a>             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)</span>
+<span id="cb450-45"><a href="section-r-packages.html#cb450-45"></a>  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span></span>
+<span id="cb450-46"><a href="section-r-packages.html#cb450-46"></a>  out</span>
+<span id="cb450-47"><a href="section-r-packages.html#cb450-47"></a>}</span>
+<span id="cb450-48"><a href="section-r-packages.html#cb450-48"></a></span>
+<span id="cb450-49"><a href="section-r-packages.html#cb450-49"></a>plot.MCI =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
+<span id="cb450-50"><a href="section-r-packages.html#cb450-50"></a>  obj =<span class="st"> </span>x</span>
+<span id="cb450-51"><a href="section-r-packages.html#cb450-51"></a>  x_range =<span class="st"> </span>obj<span class="op">$</span>x_range</span>
+<span id="cb450-52"><a href="section-r-packages.html#cb450-52"></a>  fun =<span class="st"> </span>obj<span class="op">$</span>fun</span>
+<span id="cb450-53"><a href="section-r-packages.html#cb450-53"></a></span>
+<span id="cb450-54"><a href="section-r-packages.html#cb450-54"></a>  Delta =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
+<span id="cb450-55"><a href="section-r-packages.html#cb450-55"></a>  x_range_graph =<span class="st"> </span><span class="kw">c</span>(x_range[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta, x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.15</span><span class="op">*</span>Delta)</span>
+<span id="cb450-56"><a href="section-r-packages.html#cb450-56"></a>  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range_graph[<span class="dv">1</span>], <span class="dt">to =</span> x_range_graph[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb450-57"><a href="section-r-packages.html#cb450-57"></a>  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))</span>
+<span id="cb450-58"><a href="section-r-packages.html#cb450-58"></a>  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">range</span>(x), <span class="dt">ylim =</span> <span class="kw">range</span>(f_x), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>)</span>
+<span id="cb450-59"><a href="section-r-packages.html#cb450-59"></a>  <span class="kw">grid</span>()</span>
+<span id="cb450-60"><a href="section-r-packages.html#cb450-60"></a>  <span class="kw">title</span>(<span class="kw">paste</span>(<span class="st">&quot;Estimated integral: &quot;</span>, <span class="kw">round</span>(obj<span class="op">$</span>I,<span class="dv">4</span>),</span>
+<span id="cb450-61"><a href="section-r-packages.html#cb450-61"></a>              <span class="st">&quot; (&quot;</span>, <span class="kw">round</span>(<span class="kw">sqrt</span>(obj<span class="op">$</span>var),<span class="dv">4</span>),<span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb450-62"><a href="section-r-packages.html#cb450-62"></a>  <span class="kw">lines</span>(x, f_x)</span>
+<span id="cb450-63"><a href="section-r-packages.html#cb450-63"></a>  x =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> x_range[<span class="dv">1</span>], <span class="dt">to =</span> x_range[<span class="dv">2</span>], <span class="dt">length.out =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb450-64"><a href="section-r-packages.html#cb450-64"></a>  f_x =<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun))</span>
+<span id="cb450-65"><a href="section-r-packages.html#cb450-65"></a>  cols =<span class="st"> </span><span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
+<span id="cb450-66"><a href="section-r-packages.html#cb450-66"></a>  <span class="kw">polygon</span>(<span class="kw">c</span>(x, <span class="kw">rev</span>(x)), <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="kw">rev</span>(f_x)),</span>
+<span id="cb450-67"><a href="section-r-packages.html#cb450-67"></a>          <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">col =</span> cols[<span class="dv">1</span>])</span>
+<span id="cb450-68"><a href="section-r-packages.html#cb450-68"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb450-69"><a href="section-r-packages.html#cb450-69"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> x_range[<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb450-70"><a href="section-r-packages.html#cb450-70"></a>}</span></code></pre></div>
+<p>Hence, the package will contain:</p>
+<ul>
+<li>the <code>mc_int()</code> function: that computes an approximation of the integral of the function <code>fun</code> with respect to <code>x</code> within the range <code>x_range</code> via Monte-Carlo integration using uniform sampling;</li>
+<li>the <code>plot.MCI()</code> function: a class function that will plot the object that is created as an output of the <code>mc_int()</code> function.</li>
+</ul>
+<p>An example of use of these functions and their output is the following:</p>
+<div class="sourceCode" id="section-cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="section-r-packages.html#cb451-1"></a>obj =<span class="st"> </span><span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">fun =</span> <span class="st">&quot;x^2*sin(x^2/pi)&quot;</span>, <span class="dt">B =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb451-2"><a href="section-r-packages.html#cb451-2"></a><span class="kw">plot</span>(obj)</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
+<p>Now let us suppose that we want to make these functions available to the general user who may be looking for tools that allow them to perform Monte-Carlo intergration. Although we only have two functions, it would be appropriate to provide a single platform containing these functions along with documentation that describes the contents and use of these functions. Therefore, in the following sections we will describe the process to develop an R package for these functions which is consquently valid for any collection of functions needed to perform a specific task.</p>
+<div id="section-basic-steps" class="section level2">
+<h2><span class="header-section-number">8.1</span> Basic steps</h2>
+<p>As mentioned earlier, the process to develop an R package that is described in this chapter is not strict or unique since there are many different ways of structuring and building them. However, in this book we will describe one way of building a package which is consistent with the approach to statistical programming that has been described thus far. Keeping this in mind, below the reader can find the basic steps to build an R package.</p>
+<div id="section-step-1-create-an-empty-r-package" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Step 1: Create an “empty” R package</h3>
+<p>The first step to create an R package using RStudio is to build the <em>skeleton</em> of the package which contains the basic folders and files that are needed. To do so, within RStudio you should select to create a “New Project…” from the File menu within RStudio as shown below.</p>
+<center>
+<img src="images/part1_1.png" />
+</center>
+<p>Once this is done you will see a new window with different options (see image below) among which you select “New Directory” (unless you wish to create the package within an existing directory which is usually not convenient for purpose of organization).</p>
+<center>
+<img src="images/part1_2.png" />
+</center>
+<p>Again, another window will appear in which RStudio asks you for the type of project you wish to create and, quite intuitively, you should select the “R Package” option as shown below.</p>
+<center>
+<img src="images/part1_3.png" />
+</center>
+<p>By doing so you prompt a successive window in which it is possible to name our package which, in the example below, will be <code>demo</code>. In the context of this chapter we will not consider the other options that are made available to the user (for more details you can check <a href="http://r-pkgs.had.co.nz/">this link</a>).</p>
+<center>
+<img src="images/part1_4.png" />
+</center>
+<p>Once the package has been named, you can select “Create Project” and another window will be prompted in which the basic files and folders needed for a package will be visualized within an overall repository with the same name as the package (i.e. “demo”) as shown below.</p>
+<center>
+<img src="images/part2_1.png" />
+</center>
+<p>Within the logic of this chapter which provides one possible procedure (out of various) to build an R package, we will proceed to removing the following files from this folder:</p>
+<ul>
+<li>NAMESPACE</li>
+<li>man/hello.Rd</li>
+<li>R/hello.R</li>
+</ul>
+<p>These files are default functions and documentation that are created to provide a basis for the user who can then modify them using their own descriptions and functions. However, for the procedure described in this chapter their presence is redundant (as seen further on) and consequently we invite the reader to remove them if they decide to follow the steps described in this chapter.</p>
+</div>
+<div id="section-step-2-edit-description-file" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Step 2: Edit description file</h3>
+<p>This first step hence creates the skeleton of the package and, in the following steps, we can focus on giving body to this skeleton, starting from the file which contains a summary description of the structure and contents of the package which is to be found in the “DESCRIPTION” file. Once this is opened the user will notice different parts to this file in which various information on the package is contained such as the package name, author information, license and imports. Although there are other pieces of information (see <a href="http://r-pkgs.had.co.nz/description.html">this link</a>), we will quickly discuss the latter three in the following paragraphs.</p>
+<div id="section-author-roles" class="section level4 unnumbered">
+<h4>Author Roles</h4>
+<p>One of the lines of information in the description file corresponds to the authors of the package. This therefore corresponds to the list of persons who have actively contributed to the development of code and functions that are included in the package. When there is more than author, the line corresponding to the author can be replaced by a format like the following:</p>
+<div class="sourceCode" id="section-cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="section-r-packages.html#cb452-1"></a>Authors<span class="op">@</span>R<span class="op">:</span><span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb452-2"><a href="section-r-packages.html#cb452-2"></a>    <span class="kw">person</span>(<span class="st">&quot;Justin&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="dt">email =</span> <span class="st">&quot;justinlee@psu.edu&quot;</span>, <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>,<span class="st">&quot;cre&quot;</span>)),</span>
+<span id="cb452-3"><a href="section-r-packages.html#cb452-3"></a>    <span class="kw">person</span>(<span class="st">&quot;Stephane&quot;</span>, <span class="st">&quot;Guerrier&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),</span>
+<span id="cb452-4"><a href="section-r-packages.html#cb452-4"></a>    <span class="kw">person</span>(<span class="st">&quot;Roberto&quot;</span>, <span class="st">&quot;Molinari&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>),</span>
+<span id="cb452-5"><a href="section-r-packages.html#cb452-5"></a>    <span class="kw">person</span>(<span class="st">&quot;Matthew&quot;</span>, <span class="st">&quot;Beckman&quot;</span>, <span class="dt">role =</span> <span class="st">&quot;aut&quot;</span>)</span>
+<span id="cb452-6"><a href="section-r-packages.html#cb452-6"></a>    )</span></code></pre></div>
+<p>This information is important also because it will impact how it is displayed later in the rendered package website (see further on). As you can notice it possible to also specify the role that the author has in relation to the package using the option <code>role =</code>, followed by codes for the type of role. In the above examples we can see two types of role that correspond to <code>aut</code> which indicates an <em>author</em> of the package while <code>cre</code> stands for <em>creator</em> who is the person in charge of maintaining the package and receiving information as well as bug reports or suggestions. There are other two possible roles available which are <code>ctb</code> and <code>cph</code> that correspond to <em>contributor</em> and <em>copyright holder</em> respectively, where the contributor is a person who has provided some minor contributions to the package while the copyright holder is the person or company who holds the copyright of the package.</p>
+</div>
+<div id="section-license-1" class="section level4 unnumbered">
+<h4>License</h4>
+<p>The package license determines to what extent and under what conditions the package (and its contents) can be shared and accessed by users. The most common license is the GNU General Public License which is a widely used free software license that guarantees end-users the possibility to run, study, share and modify the software. A complete list of all the possible licenses can be found at this <a href="https://cran.r-project.org/web/licenses/">link</a> and you are free to choose the license that best fits your requirements.</p>
+</div>
+<div id="section-imports" class="section level4 unnumbered">
+<h4>Imports</h4>
+<p>It is often the case that your code and functions will depend on functions that are made available from other packages in R. In order to make sure that these packages are available to the user when they install your package, it is important to specify on which external packages yours relies on. In this sense, the <code>Imports</code> line in the DESCRIPTION file allows you to do just this so it is important to remember to check whether external packages are correctly specified in this section of the file.</p>
+<p>Our example on Monte-Carlo integration only depends on the base functions in R and therefore there is no need to specify external packages for this case. Therefore, our “demo” package DESCRIPTION file ends up looking as follows:</p>
+<center>
+<img src="images/description.png" />
+</center>
+</div>
+</div>
+<div id="section-step-3-move-your-r-scripts-into-the-r-folder" class="section level3">
+<h3><span class="header-section-number">8.1.3</span> Step 3: Move your R scripts into the R folder</h3>
+<p>Having completed the description of the package we can now focus on adding the truly essential part of the package: the functions that deliver the outputs required by the user. In order for the functions to be considered as part of the package, the scripts containing these functions need to be moved into the R folder that is created as part of the package skeleton as seen earlier (therefore replacing the “hello.R” script that we chose to delete).</p>
+<p>The organization of the code that collects the functions is subjective and can be included all in one single R script or in various scripts. It is usually suggested to group these functions into separate scripts according to their relative themes or specific tasks they are created for, especially when there is a considerable number of functions in the package. This approach allows to more easily find and fix any errors that are present in the functions as opposed to going through thousands of lines of code to find the function you’re interested in.</p>
+<p>In our example we only have two functions so there is no need to separate them and, consequently, we include them in a single R script that we call “mc_integration.R” which is included in the R folder for our demo package.</p>
+<center>
+<img src="images/r_code.png" />
+</center>
+<p>As you may notice, there is another file called “run_shiny.R” which, as we will see later, contains the code to create a Shiny app that is part of the package.</p>
+</div>
+<div id="section-step-4-documentation" class="section level3">
+<h3><span class="header-section-number">8.1.4</span> Step 4: Documentation</h3>
+<p>The next essential component of a package is its documentation which enables users to know how to use it. Indeed, when users access the <code>demo</code> package, they should essentially know how to use its functions by gaining access to help files through the use of commands like <code>?mc_int</code> for example. A possible (and efficient) way of creating package documentation is by using a specific syntax before each function in your R scripts which will then be used to automatically generate the necessary <code>.Rd</code> files by using the commands <code>devtools::document()</code> or <code>roxygen2::roxygenize</code>.</p>
+<p>We will use the <code>mc_int()</code> function from our demo package as an example to show the syntax that can be used before each function which is intended for the user:</p>
+<div class="sourceCode" id="section-cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="section-r-packages.html#cb453-1"></a><span class="co">#&#39; @title Simple Monte-Carlo integration</span></span>
+<span id="cb453-2"><a href="section-r-packages.html#cb453-2"></a><span class="co">#&#39;</span></span>
+<span id="cb453-3"><a href="section-r-packages.html#cb453-3"></a><span class="co">#&#39; @description Compute an approximation of the integral of the function f(x)</span></span>
+<span id="cb453-4"><a href="section-r-packages.html#cb453-4"></a><span class="co">#&#39; with respect to dx in the range [a, b] by Monte-Carlo integration using</span></span>
+<span id="cb453-5"><a href="section-r-packages.html#cb453-5"></a><span class="co">#&#39; uniform sampling.</span></span>
+<span id="cb453-6"><a href="section-r-packages.html#cb453-6"></a><span class="co">#&#39; @param x_range A \code{vector} of dimension 2 used to denote the integration</span></span>
+<span id="cb453-7"><a href="section-r-packages.html#cb453-7"></a><span class="co">#&#39; region of interest, i.e. [a, b].</span></span>
+<span id="cb453-8"><a href="section-r-packages.html#cb453-8"></a><span class="co">#&#39; @param fun A \code{string} containing the function to be integrated. It</span></span>
+<span id="cb453-9"><a href="section-r-packages.html#cb453-9"></a><span class="co">#&#39; is assumed that \code{x} is used as the variable of interest.</span></span>
+<span id="cb453-10"><a href="section-r-packages.html#cb453-10"></a><span class="co">#&#39; @param B A \code{numeric} (integer) used to denote the number of simulations.</span></span>
+<span id="cb453-11"><a href="section-r-packages.html#cb453-11"></a><span class="co">#&#39; @param seed A \code{numeric} used to control the seed of the random number</span></span>
+<span id="cb453-12"><a href="section-r-packages.html#cb453-12"></a><span class="co">#&#39; generator used by this function.</span></span>
+<span id="cb453-13"><a href="section-r-packages.html#cb453-13"></a><span class="co">#&#39; @return A \code{list} containing the following attributes:</span></span>
+<span id="cb453-14"><a href="section-r-packages.html#cb453-14"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb453-15"><a href="section-r-packages.html#cb453-15"></a><span class="co">#&#39;      \item{I}{Estimated value of the integral}</span></span>
+<span id="cb453-16"><a href="section-r-packages.html#cb453-16"></a><span class="co">#&#39;      \item{var}{Estimated variance of the estimator}</span></span>
+<span id="cb453-17"><a href="section-r-packages.html#cb453-17"></a><span class="co">#&#39; }</span></span>
+<span id="cb453-18"><a href="section-r-packages.html#cb453-18"></a><span class="co">#&#39; @author Stephane Guerrier</span></span>
+<span id="cb453-19"><a href="section-r-packages.html#cb453-19"></a><span class="co">#&#39; @importFrom stats runif</span></span>
+<span id="cb453-20"><a href="section-r-packages.html#cb453-20"></a><span class="co">#&#39; @export</span></span>
+<span id="cb453-21"><a href="section-r-packages.html#cb453-21"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb453-22"><a href="section-r-packages.html#cb453-22"></a><span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2&quot;, B = 10^5)</span></span>
+<span id="cb453-23"><a href="section-r-packages.html#cb453-23"></a><span class="co">#&#39; mc_int(x_range = c(0,1), fun = &quot;x^2*sin(x^2/pi)&quot;, B = 10^5)</span></span>
+<span id="cb453-24"><a href="section-r-packages.html#cb453-24"></a>mc_int =<span class="st"> </span><span class="cf">function</span>(x_range, fun, B, <span class="dt">seed =</span> <span class="dv">1291</span>){</span>
+<span id="cb453-25"><a href="section-r-packages.html#cb453-25"></a>  <span class="co"># A few checks</span></span>
+<span id="cb453-26"><a href="section-r-packages.html#cb453-26"></a>  <span class="co"># Check x_range</span></span>
+<span id="cb453-27"><a href="section-r-packages.html#cb453-27"></a>  <span class="cf">if</span> (<span class="kw">length</span>(x_range) <span class="op">!=</span><span class="st"> </span><span class="dv">2</span> <span class="op">||</span><span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">&gt;=</span><span class="st"> </span>x_range[<span class="dv">2</span>]){</span>
+<span id="cb453-28"><a href="section-r-packages.html#cb453-28"></a>    <span class="kw">stop</span>(<span class="st">&quot;x_range is incorrectly specified&quot;</span>)</span>
+<span id="cb453-29"><a href="section-r-packages.html#cb453-29"></a>  }</span>
+<span id="cb453-30"><a href="section-r-packages.html#cb453-30"></a></span>
+<span id="cb453-31"><a href="section-r-packages.html#cb453-31"></a>  <span class="co"># Check fun</span></span>
+<span id="cb453-32"><a href="section-r-packages.html#cb453-32"></a>  <span class="cf">if</span> (<span class="kw">class</span>(fun) <span class="op">!=</span><span class="st"> &quot;character&quot;</span>){</span>
+<span id="cb453-33"><a href="section-r-packages.html#cb453-33"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun is incorrectly specified and should be a character&quot;</span>)</span>
+<span id="cb453-34"><a href="section-r-packages.html#cb453-34"></a>  }</span>
+<span id="cb453-35"><a href="section-r-packages.html#cb453-35"></a></span>
+<span id="cb453-36"><a href="section-r-packages.html#cb453-36"></a>  x =<span class="st"> </span><span class="kw">mean</span>(x_range)</span>
+<span id="cb453-37"><a href="section-r-packages.html#cb453-37"></a>  test_fun =<span class="st"> </span><span class="kw">try</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb453-38"><a href="section-r-packages.html#cb453-38"></a>  <span class="cf">if</span> (<span class="kw">class</span>(test_fun) <span class="op">==</span><span class="st"> &quot;try-error&quot;</span>){</span>
+<span id="cb453-39"><a href="section-r-packages.html#cb453-39"></a>    <span class="kw">stop</span>(<span class="st">&quot;fun cannot be evaluated&quot;</span>)</span>
+<span id="cb453-40"><a href="section-r-packages.html#cb453-40"></a>  }</span>
+<span id="cb453-41"><a href="section-r-packages.html#cb453-41"></a></span>
+<span id="cb453-42"><a href="section-r-packages.html#cb453-42"></a>  <span class="co"># Check B</span></span>
+<span id="cb453-43"><a href="section-r-packages.html#cb453-43"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>){</span>
+<span id="cb453-44"><a href="section-r-packages.html#cb453-44"></a>    <span class="kw">error</span>(<span class="st">&quot;B is incorrectly specified&quot;</span>)</span>
+<span id="cb453-45"><a href="section-r-packages.html#cb453-45"></a>  }</span>
+<span id="cb453-46"><a href="section-r-packages.html#cb453-46"></a></span>
+<span id="cb453-47"><a href="section-r-packages.html#cb453-47"></a>  <span class="co"># Set seed</span></span>
+<span id="cb453-48"><a href="section-r-packages.html#cb453-48"></a>  <span class="kw">set.seed</span>(seed)</span>
+<span id="cb453-49"><a href="section-r-packages.html#cb453-49"></a></span>
+<span id="cb453-50"><a href="section-r-packages.html#cb453-50"></a>  <span class="co"># Compute the length of the interval, i.e. (b-a)</span></span>
+<span id="cb453-51"><a href="section-r-packages.html#cb453-51"></a>  interval_length =<span class="st"> </span><span class="kw">diff</span>(x_range)</span>
+<span id="cb453-52"><a href="section-r-packages.html#cb453-52"></a></span>
+<span id="cb453-53"><a href="section-r-packages.html#cb453-53"></a>  <span class="co"># Let&#39;s draw some uniforms to get Ui and Xi</span></span>
+<span id="cb453-54"><a href="section-r-packages.html#cb453-54"></a>  Ui =<span class="st"> </span><span class="kw">runif</span>(B)</span>
+<span id="cb453-55"><a href="section-r-packages.html#cb453-55"></a>  Xi =<span class="st"> </span>x_range[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>Ui<span class="op">*</span>interval_length</span>
+<span id="cb453-56"><a href="section-r-packages.html#cb453-56"></a></span>
+<span id="cb453-57"><a href="section-r-packages.html#cb453-57"></a>  <span class="co"># Compute \hat{I}</span></span>
+<span id="cb453-58"><a href="section-r-packages.html#cb453-58"></a>  x =<span class="st"> </span>Xi</span>
+<span id="cb453-59"><a href="section-r-packages.html#cb453-59"></a>  I_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>(<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))</span>
+<span id="cb453-60"><a href="section-r-packages.html#cb453-60"></a></span>
+<span id="cb453-61"><a href="section-r-packages.html#cb453-61"></a>  <span class="co"># Compute \hat{I}_2</span></span>
+<span id="cb453-62"><a href="section-r-packages.html#cb453-62"></a>  I2_hat =<span class="st"> </span>interval_length<span class="op">*</span><span class="kw">mean</span>((<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> fun)))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb453-63"><a href="section-r-packages.html#cb453-63"></a>  var_I_hat =<span class="st"> </span>(interval_length<span class="op">*</span>I2_hat <span class="op">-</span><span class="st"> </span>I_hat<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>B</span>
+<span id="cb453-64"><a href="section-r-packages.html#cb453-64"></a></span>
+<span id="cb453-65"><a href="section-r-packages.html#cb453-65"></a>  <span class="co"># Output list</span></span>
+<span id="cb453-66"><a href="section-r-packages.html#cb453-66"></a>  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">I =</span> I_hat, <span class="dt">var =</span> var_I_hat,</span>
+<span id="cb453-67"><a href="section-r-packages.html#cb453-67"></a>             <span class="dt">fun =</span> fun, <span class="dt">x_range =</span> x_range, <span class="dt">B =</span> B)</span>
+<span id="cb453-68"><a href="section-r-packages.html#cb453-68"></a>  <span class="kw">class</span>(out) =<span class="st"> &quot;MCI&quot;</span></span>
+<span id="cb453-69"><a href="section-r-packages.html#cb453-69"></a>  out</span>
+<span id="cb453-70"><a href="section-r-packages.html#cb453-70"></a>}</span></code></pre></div>
+<p>As can be seen, all the syntax which contributes to the documentation of the function is preceded by the syntax <code>#'</code> and is immediately followed (with no spacing) by the code of the function itself. Focussing on the contents of this documentation, the <code>@title</code> and <code>@description</code> entries will constitute respectively the title describing the function in a succint manner and the text providing a more detailed description of what the function does. We then find the <code>@param</code> syntax that is repeated for each parameter considered by the function in which a brief description of what the parameter is and what type of input is needed for it from the user. Finally we find the <code>@return</code> section where there is a description of the outputs of the function and eventual indications as to how these should be interpreted. Additional information can be provided such as the author(s) who specifically contributed to creating the function (<code>@author</code>), the packages or functions needed for the function to be employed (<code>@importFrom</code>) and examples that can show the user how to use this function in practice (<code>@examples</code>).</p>
+<p>A final note should be given to the <code>@export</code> syntax which MUST absolutely be specified if you want the function you’re documenting to be made available to the user. Indeed, there may be functions that are simply created to be used within other functions that are made available to the user and these therefore don’t need to have this option specified. However, if the function needs to be made available to the user, then it is essential that this option is specified within the function documentation. Additional information on package documentation can be found <a href="http://r-pkgs.had.co.nz/man.html#man-functions">here</a>.</p>
+<p>Once all the necessary functions have been documented, it is possible to compile this documentation by using the commands <code>devtools::document()</code> or <code>roxygen2::roxygenize</code> (as mentioned earlier) or by directly building the package. Having done so, an <code>.Rd</code> file for each function will appear in the “man” folder (from which we earlier deleted the <code>hello.Rd</code> file). Below is an example of the <code>.Rd</code> files created for the functions in our example (with an added documentation for a function called <code>MC_gui</code> which is related to the code created for the Shiny app).</p>
+<center>
+<img src="images/documentation.png" title="fig:" alt="Example .Rd files created after documentation" />
+</center>
+<p>It is possible to check whether the documentation has been correctly compiled by using the command <code>?yourfunction</code>. Indeed, if we compiled our example documentation properly, this is what we get by using <code>?mc_int</code>:</p>
+<center>
+<img src="images/part5_2.png" title="fig:" alt="Output when running ?mc_int" />
+</center>
+</div>
+<div id="section-step-5-test-your-package" class="section level3">
+<h3><span class="header-section-number">8.1.5</span> Step 5: Test your package</h3>
+<p>The previous steps are all that is necessary to complete the main components that are essential for an R package. Once these have correctly been completed, it is possible to build your package, meaning that you can combine all functions and documentation into a single software platform which can then be made available to the user. This can be done directly through the RStudio IDE where the “Environment, History, …” pane contains a label named “Build”. When selecting this label different options will appear just beneath it, including one called “Build &amp; Reload” which, if selected, will allow you to build the package and load it in your work session. If everything has worked smoothly, then the mentioned pane should report some logs that end with <code>* DONE (nameofpackage)</code> (see example below).</p>
+<center>
+<img src="images/build.png" />
+</center>
+<p>It is at this point that you can start testing whether the documentation and the functions work as they are supposed to. For this reason, it is always appropriate to create a test script to be placed in the main directory of the package folder that can be run to check if the functions behave the same and that no errors are output after some major changes are made to the package.</p>
+<center>
+<img src="images/part6_2.png" />
+</center>
+<p>In our example, given that we can check both functions with one command, our test file can be as follows:</p>
+<center>
+<img src="images/test.png" />
+</center>
+<p>After making possible changes to the functions, we can run the test script and always expect to obtain the following output:</p>
+<center>
+<img src="images/check.png" />
+</center>
+<p>If this output is not the same or does not appear at all, then we need to go back to the functions to find where an error was made.</p>
+</div>
+<div id="section-step-6-add-a-readme.rmd-file" class="section level3">
+<h3><span class="header-section-number">8.1.6</span> Step 6: Add a “README.Rmd” file</h3>
+<p>It is always helpful to create additional material to ensure that your package can be understood and used in the widest manner possible. For this purpose it is possible to create an additional “README.Rmd” file which, as an RMarkdown document, can be used to add descriptions, examples and videos that showcase the usage of your package through a web-page. An example of how to structure this file is given below:</p>
+<pre eval="FALSE"><code>---
+output: github_document
+---
+
+# Add a title
+  
+Explain what your package is doing here</code></pre>
+<p>Having saved this file within the main folder of your package, you can compile this document using the <code>pkgdown</code> package (this can be installed by executing the following command in your console: <code>devtools::install_github("hadley/pkgdown")</code>). When the latter package is installed and loaded, all you need to do is execute the command <code>pkgdown::build_site()</code> to obtain the following web-page:</p>
+<center>
+<img src="images/part7_1.png" />
+</center>
+<p>In order to publish this web-page, it is possible to do so by creating a GitHub repository dedicated to your package which constitutes the final basic step.</p>
+</div>
+<div id="section-step-7-create-a-github-repo---possibly-with-the-same-name-as-package" class="section level3">
+<h3><span class="header-section-number">8.1.7</span> Step 7: Create a github repo - possibly with the same name as package</h3>
+<p>The basic idea of creating a package is to share a set of functions with collaborators and users. As we saw in Chapter 2, a convenient tool to share code and projects is GitHub and, in this case as well, you can create a repository dedicated to your package. In this case, it would be convenient to name the repository with the same name of your package so that users can more easily find and access the package that you make available through GitHub.</p>
+<p>Once you have created a repository and loaded your package on GitHub, for our example you should obtain something similar to the following case:</p>
+<center>
+<img src="images/part8_1.png" />
+</center>
+<p>As you can see, the GitHub repository takes the content of the .Rmd file and presents its content just below the list of folders and files that compose the package. However, it is possible to also create a separate and dedicated web-page (using the contents of the .Rmd file) by using GitHub Pages. To do so, select the “Settings” label within your GitHub repository and scroll down to the GitHub Pages section where you can select the “master branch/docs folder” option under the “Source” area (as can be seen below).</p>
+<center>
+<img src="images/part8_2.png" />
+</center>
+<p>Once this is done, you can eventually personalize the web-page a little more by selecting a particular theme for it (more details further on). Having done so, the page is already made available through the following address: <code>https://&lt;your github id&gt;.github.io/&lt;your repo name&gt;/</code>. For our example, this is available at <a href="https://smac-group.github.io/demo/">https://smac-group.github.io/demo/</a>.</p>
+</div>
+</div>
+<div id="section-advanced" class="section level2">
+<h2><span class="header-section-number">8.2</span> Advanced</h2>
+<p>Up to now we have described the basic steps that are necessary to build, share and describe an R package. However, it is always possible to add features to the package itself or to the documentation used to explain and promote it. In the following paragraphs we just describe a few of them to allow the reader to get a further idea of the extent to which one can develop packages.</p>
+<div id="section-adding-a-shiny-app" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Adding a shiny app</h3>
+<p>A feature which can be useful to make your package accessible to the general user (as well as to promote it) can be the possibility of including a Shiny app as an interface to your package. To do so, you will have to include a new folder called “inst” within your package main folder and in which an additional folder is then included with a name of your choice (let us say “MC_int” for the example we have used throughout this chapter). Within the latter you can then include the R script(s) to run the Shiny app (say “app.R”) which makes use of the functions made available within the package. An example of the content of such a script is the following:</p>
+<div class="sourceCode" id="section-cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="section-r-packages.html#cb455-1"></a><span class="co"># Define UI for application that draws a plot of the approximate integral</span></span>
+<span id="cb455-2"><a href="section-r-packages.html#cb455-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb455-3"><a href="section-r-packages.html#cb455-3"></a></span>
+<span id="cb455-4"><a href="section-r-packages.html#cb455-4"></a>   <span class="co"># Application title</span></span>
+<span id="cb455-5"><a href="section-r-packages.html#cb455-5"></a>   <span class="kw">titlePanel</span>(<span class="st">&quot;Monte-Carlo Integration&quot;</span>),</span>
+<span id="cb455-6"><a href="section-r-packages.html#cb455-6"></a></span>
+<span id="cb455-7"><a href="section-r-packages.html#cb455-7"></a>   <span class="co"># Sidebar with text input for the function to integrate, numeric inputs for the range of integration and number of Monte-Carlo replications</span></span>
+<span id="cb455-8"><a href="section-r-packages.html#cb455-8"></a>   <span class="kw">sidebarLayout</span>(</span>
+<span id="cb455-9"><a href="section-r-packages.html#cb455-9"></a>      <span class="kw">sidebarPanel</span>(</span>
+<span id="cb455-10"><a href="section-r-packages.html#cb455-10"></a>        <span class="kw">textInput</span>(<span class="st">&quot;fun&quot;</span>, <span class="st">&quot;Function to integrate:&quot;</span>,<span class="st">&quot;sin(10*x)*exp(cos(x))&quot;</span>),</span>
+<span id="cb455-11"><a href="section-r-packages.html#cb455-11"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;Integral lower bound:&quot;</span>, <span class="dv">0</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),</span>
+<span id="cb455-12"><a href="section-r-packages.html#cb455-12"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;up&quot;</span>, <span class="st">&quot;Integral upper bound:&quot;</span>, <span class="dv">1</span>, <span class="dt">min =</span> <span class="dv">-100</span>, <span class="dt">max =</span> <span class="dv">100</span>),</span>
+<span id="cb455-13"><a href="section-r-packages.html#cb455-13"></a>        <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of Monte-Carlo replications:&quot;</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>,</span>
+<span id="cb455-14"><a href="section-r-packages.html#cb455-14"></a>                     <span class="dt">min =</span> <span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">9</span>),</span>
+<span id="cb455-15"><a href="section-r-packages.html#cb455-15"></a>        <span class="kw">actionButton</span>(<span class="st">&quot;button&quot;</span>, <span class="st">&quot;Compute Integral&quot;</span>)</span>
+<span id="cb455-16"><a href="section-r-packages.html#cb455-16"></a>      ),</span>
+<span id="cb455-17"><a href="section-r-packages.html#cb455-17"></a></span>
+<span id="cb455-18"><a href="section-r-packages.html#cb455-18"></a>      <span class="co"># Show a plot of the integrated area under the function</span></span>
+<span id="cb455-19"><a href="section-r-packages.html#cb455-19"></a>      <span class="kw">mainPanel</span>(</span>
+<span id="cb455-20"><a href="section-r-packages.html#cb455-20"></a>         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb455-21"><a href="section-r-packages.html#cb455-21"></a>      )</span>
+<span id="cb455-22"><a href="section-r-packages.html#cb455-22"></a>   )</span>
+<span id="cb455-23"><a href="section-r-packages.html#cb455-23"></a>)</span>
+<span id="cb455-24"><a href="section-r-packages.html#cb455-24"></a></span>
+<span id="cb455-25"><a href="section-r-packages.html#cb455-25"></a><span class="co"># Define server logic required to draw the integration plot</span></span>
+<span id="cb455-26"><a href="section-r-packages.html#cb455-26"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb455-27"><a href="section-r-packages.html#cb455-27"></a></span>
+<span id="cb455-28"><a href="section-r-packages.html#cb455-28"></a>  a &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>button, {</span>
+<span id="cb455-29"><a href="section-r-packages.html#cb455-29"></a>    <span class="kw">mc_int</span>(<span class="dt">x_range =</span> <span class="kw">c</span>(input<span class="op">$</span>low, input<span class="op">$</span>up),</span>
+<span id="cb455-30"><a href="section-r-packages.html#cb455-30"></a>          <span class="dt">fun =</span> input<span class="op">$</span>fun, <span class="dt">B =</span> input<span class="op">$</span>B)</span>
+<span id="cb455-31"><a href="section-r-packages.html#cb455-31"></a>  })</span>
+<span id="cb455-32"><a href="section-r-packages.html#cb455-32"></a></span>
+<span id="cb455-33"><a href="section-r-packages.html#cb455-33"></a>  output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb455-34"><a href="section-r-packages.html#cb455-34"></a>      <span class="kw">plot</span>(<span class="kw">a</span>())</span>
+<span id="cb455-35"><a href="section-r-packages.html#cb455-35"></a>  })</span>
+<span id="cb455-36"><a href="section-r-packages.html#cb455-36"></a></span>
+<span id="cb455-37"><a href="section-r-packages.html#cb455-37"></a>}</span>
+<span id="cb455-38"><a href="section-r-packages.html#cb455-38"></a></span>
+<span id="cb455-39"><a href="section-r-packages.html#cb455-39"></a><span class="co"># Run the application</span></span>
+<span id="cb455-40"><a href="section-r-packages.html#cb455-40"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<p>Once this is done, an additional R script needs to included within the “R” folder. This R script will contain a function that allows the user to generate a Shiny app (based on the contents of “app.R” for example) and consequently to use the app interface to make use of the package functions. Following from our example, suppose that the latter script, which we will call “run_shiny.r” for this example, contains the following function:</p>
+<div class="sourceCode" id="section-cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="section-r-packages.html#cb456-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb456-2"><a href="section-r-packages.html#cb456-2"></a>MC_gui =<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb456-3"><a href="section-r-packages.html#cb456-3"></a>  appDir =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;MC_int&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;demo&quot;</span>)</span>
+<span id="cb456-4"><a href="section-r-packages.html#cb456-4"></a>  shiny<span class="op">::</span><span class="kw">runApp</span>(appDir, <span class="dt">display.mode =</span> <span class="st">&quot;normal&quot;</span>)</span>
+<span id="cb456-5"><a href="section-r-packages.html#cb456-5"></a>}</span></code></pre></div>
+<p>Given these steps, our main package folder should look like this:</p>
+<center>
+<img src="images/adv_1.png" />
+</center>
+<p>After having created the above mentioned folders and correctly written and placed the functions within these folders, all you need to do to make this feature available to the user is to execute the command <code>devtools::document()</code> and successively build the package again. Having done so, the only command that the user needs to use to access the Shiny app is to run the function <code>MC_gui()</code> in the console.</p>
+</div>
+<div id="section-custom-website" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Custom website</h3>
+<p>Below is a video about customizing the website.</p>
+<iframe src="https://www.youtube.com/embed/HO54ZoGtzzQ" width="672" height="400px">
+</iframe>
+<p>EXAMPLE: smac-group/demo</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-shiny-web-applications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-high-performance-computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-package.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

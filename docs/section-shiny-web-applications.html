@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Shiny Web Applications | An Introduction to Statistical Programming Methods with R</title>
+  <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Shiny Web Applications | An Introduction to Statistical Programming Methods with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://smac-group.github.io/ds/" />
+  
+  <meta property="og:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  <meta name="github-repo" content="smac-group/ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Shiny Web Applications | An Introduction to Statistical Programming Methods with R" />
+  
+  <meta name="twitter:description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
+  
+
+<meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
+
+
+<meta name="date" content="2020-02-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="section-functions.html"/>
+<link rel="next" href="section-r-packages.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Programming Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and <code>RStudio</code></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#section-getting-started-with-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#section-why-r"><i class="fa fa-check"></i><b>1.1.2</b> Why <code>R</code>?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#section-about-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> About RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#section-conventions"><i class="fa fa-check"></i><b>1.1.4</b> Conventions</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#section-getting-help"><i class="fa fa-check"></i><b>1.1.5</b> Getting help</a></li>
+<li class="chapter" data-level="1.1.6" data-path="index.html"><a href="index.html#section-installing-packages"><i class="fa fa-check"></i><b>1.1.6</b> Installing packages</a></li>
+<li class="chapter" data-level="1.1.7" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>1.1.7</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>1.2</b> Basic Probability and Statistics with <code>R</code></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#section-simple-calculations"><i class="fa fa-check"></i><b>1.2.1</b> Simple calculations</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#section-probability-distributions"><i class="fa fa-check"></i><b>1.2.2</b> Probability Distributions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#section-summary-statistics"><i class="fa fa-check"></i><b>1.2.3</b> Summary Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#section-main-references"><i class="fa fa-check"></i><b>1.3</b> Main References</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#section-license"><i class="fa fa-check"></i><b>1.4</b> License</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li><a href="section-rmarkdown.html#section-what-is-literate-programming">What is <strong>literate</strong> programming ?</a></li>
+<li><a href="section-rmarkdown.html#section-what-is-reproducible-research">What is <strong>reproducible</strong> research ?</a></li>
+<li class="chapter" data-level="2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-create-an-r-markdown-file-in-rstudio"><i class="fa fa-check"></i><b>2.1</b> Create an R Markdown file in RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-yaml-metadata"><i class="fa fa-check"></i><b>2.2</b> YAML Metadata</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-subsections"><i class="fa fa-check"></i><b>2.2.1</b> Subsections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-text"><i class="fa fa-check"></i><b>2.3</b> Text</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-headers"><i class="fa fa-check"></i><b>2.3.1</b> Headers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-lists"><i class="fa fa-check"></i><b>2.3.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-hyperlinks"><i class="fa fa-check"></i><b>2.3.3</b> Hyperlinks</a></li>
+<li class="chapter" data-level="2.3.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-blockquotes"><i class="fa fa-check"></i><b>2.3.4</b> Blockquotes</a></li>
+<li class="chapter" data-level="2.3.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-pictures"><i class="fa fa-check"></i><b>2.3.5</b> Pictures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-latex"><i class="fa fa-check"></i><b>2.3.6</b> LaTeX</a></li>
+<li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
+<li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
+<li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
+<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="2.4.2" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments</a></li>
+<li class="chapter" data-level="2.4.3" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-in-line-r"><i class="fa fa-check"></i><b>2.4.3</b> In-line R</a></li>
+<li class="chapter" data-level="2.4.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cache"><i class="fa fa-check"></i><b>2.4.4</b> Cache</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-render-output"><i class="fa fa-check"></i><b>2.5</b> Render Output</a></li>
+<li class="chapter" data-level="2.6" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-addition-information"><i class="fa fa-check"></i><b>2.6</b> Addition Information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-github.html"><a href="section-github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-github.html"><a href="section-github.html#section-version-control"><i class="fa fa-check"></i><b>3.1</b> Version Control</a></li>
+<li class="chapter" data-level="3.2" data-path="section-github.html"><a href="section-github.html#section-git-and-github"><i class="fa fa-check"></i><b>3.2</b> Git and GitHub</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-github.html"><a href="section-github.html#section-git-rstudio-configuration"><i class="fa fa-check"></i><b>3.2.1</b> Git &amp; RStudio Configuration</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-github.html"><a href="section-github.html#section-github-setup"><i class="fa fa-check"></i><b>3.2.2</b> GitHub Setup</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-github.html"><a href="section-github.html#section-connecting-to-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Connecting to RStudio</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-github.html"><a href="section-github.html#section-the-basic-workflow"><i class="fa fa-check"></i><b>3.2.4</b> The basic workflow</a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-github.html"><a href="section-github.html#section-note-about-github-student-developer-pack"><i class="fa fa-check"></i><b>3.2.5</b> Note about GitHub Student Developer Pack</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
+<li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
+<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-data.html"><a href="section-data.html#section-vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="section-data.html"><a href="section-data.html#section-type"><i class="fa fa-check"></i><b>4.1.1</b> Type</a></li>
+<li class="chapter" data-level="4.1.2" data-path="section-data.html"><a href="section-data.html#section-coercion"><i class="fa fa-check"></i><b>4.1.2</b> Coercion</a></li>
+<li class="chapter" data-level="4.1.3" data-path="section-data.html"><a href="section-data.html#section-subsetting"><i class="fa fa-check"></i><b>4.1.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.1.4" data-path="section-data.html"><a href="section-data.html#section-vectattr"><i class="fa fa-check"></i><b>4.1.4</b> Attributes</a></li>
+<li class="chapter" data-level="4.1.5" data-path="section-data.html"><a href="section-data.html#section-addlab"><i class="fa fa-check"></i><b>4.1.5</b> Adding Labels</a></li>
+<li class="chapter" data-level="4.1.6" data-path="section-data.html"><a href="section-data.html#section-working-with-dates"><i class="fa fa-check"></i><b>4.1.6</b> Working with Dates</a></li>
+<li class="chapter" data-level="4.1.7" data-path="section-data.html"><a href="section-data.html#section-useful-functions-with-vectors"><i class="fa fa-check"></i><b>4.1.7</b> Useful Functions with Vectors</a></li>
+<li class="chapter" data-level="4.1.8" data-path="section-data.html"><a href="section-data.html#section-creating-sequences"><i class="fa fa-check"></i><b>4.1.8</b> Creating sequences</a></li>
+<li class="chapter" data-level="4.1.9" data-path="section-data.html"><a href="section-data.html#section-example-apple-stock-price"><i class="fa fa-check"></i><b>4.1.9</b> Example: Apple Stock Price</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="section-data.html"><a href="section-data.html#section-matrices"><i class="fa fa-check"></i><b>4.2</b> Matrices</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-data.html"><a href="section-data.html#section-subsetting-1"><i class="fa fa-check"></i><b>4.2.1</b> Subsetting</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-data.html"><a href="section-data.html#section-matrix-operators-in-r"><i class="fa fa-check"></i><b>4.2.2</b> Matrix Operators in R</a></li>
+<li class="chapter" data-level="4.2.3" data-path="section-data.html"><a href="section-data.html#section-example-summary-statistics-with-matrix-notation"><i class="fa fa-check"></i><b>4.2.3</b> Example: Summary Statistics with Matrix Notation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="section-data.html"><a href="section-data.html#section-example-portfolio-optimization"><i class="fa fa-check"></i><b>4.2.4</b> Example: Portfolio Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="section-data.html"><a href="section-data.html#section-array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="section-data.html"><a href="section-data.html#section-list"><i class="fa fa-check"></i><b>4.4</b> List</a></li>
+<li class="chapter" data-level="4.5" data-path="section-data.html"><a href="section-data.html#section-dataframe"><i class="fa fa-check"></i><b>4.5</b> Dataframe</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="section-data.html"><a href="section-data.html#section-combination"><i class="fa fa-check"></i><b>4.5.1</b> Combination</a></li>
+<li class="chapter" data-level="4.5.2" data-path="section-data.html"><a href="section-data.html#section-subsetting-2"><i class="fa fa-check"></i><b>4.5.2</b> Subsetting</a></li>
+<li class="chapter" data-level="4.5.3" data-path="section-data.html"><a href="section-data.html#section-example-maps"><i class="fa fa-check"></i><b>4.5.3</b> Example: Maps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
+<li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
+<li class="chapter" data-level="5.2.3" data-path="section-control.html"><a href="section-control.html#section-iter_cont_stat"><i class="fa fa-check"></i><b>5.2.3</b> Iterative Control Statements</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
+<li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
+<li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
+<li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
+<li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section-functions.html"><a href="section-functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-functions.html"><a href="section-functions.html#section-r-functions"><i class="fa fa-check"></i><b>6.1</b> R functions</a></li>
+<li class="chapter" data-level="6.2" data-path="section-functions.html"><a href="section-functions.html#section-creating-functions-in-r"><i class="fa fa-check"></i><b>6.2</b> Creating functions in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-functions.html"><a href="section-functions.html#section-function-arguments"><i class="fa fa-check"></i><b>6.2.1</b> Function arguments</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-functions.html"><a href="section-functions.html#section-function-body"><i class="fa fa-check"></i><b>6.2.2</b> Function body</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-functions.html"><a href="section-functions.html#section-function-environment"><i class="fa fa-check"></i><b>6.3</b> Function environment</a></li>
+<li class="chapter" data-level="6.4" data-path="section-functions.html"><a href="section-functions.html#section-example-continued-least-squares-function"><i class="fa fa-check"></i><b>6.4</b> Example (continued): Least-squares function</a></li>
+</ul></li>
+<li class="part"><span><b>III Extending</b></span></li>
+<li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
+<li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-input-controls"><i class="fa fa-check"></i>Input Controls</a></li>
+<li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-output-render-controls"><i class="fa fa-check"></i>Output Render Controls</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
+<li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
+<li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
+<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
+<li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
+<li class="chapter" data-level="7.8.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.8.3</b> Step 3: Connecting frontend and backend</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-r-packages.html"><a href="section-r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-basic-steps"><i class="fa fa-check"></i><b>8.1</b> Basic steps</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-1-create-an-empty-r-package"><i class="fa fa-check"></i><b>8.1.1</b> Step 1: Create an “empty” R package</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-2-edit-description-file"><i class="fa fa-check"></i><b>8.1.2</b> Step 2: Edit description file</a></li>
+<li class="chapter" data-level="8.1.3" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-3-move-your-r-scripts-into-the-r-folder"><i class="fa fa-check"></i><b>8.1.3</b> Step 3: Move your R scripts into the R folder</a></li>
+<li class="chapter" data-level="8.1.4" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-4-documentation"><i class="fa fa-check"></i><b>8.1.4</b> Step 4: Documentation</a></li>
+<li class="chapter" data-level="8.1.5" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-5-test-your-package"><i class="fa fa-check"></i><b>8.1.5</b> Step 5: Test your package</a></li>
+<li class="chapter" data-level="8.1.6" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-6-add-a-readme.rmd-file"><i class="fa fa-check"></i><b>8.1.6</b> Step 6: Add a “README.Rmd” file</a></li>
+<li class="chapter" data-level="8.1.7" data-path="section-r-packages.html"><a href="section-r-packages.html#section-step-7-create-a-github-repo---possibly-with-the-same-name-as-package"><i class="fa fa-check"></i><b>8.1.7</b> Step 7: Create a github repo - possibly with the same name as package</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-advanced"><i class="fa fa-check"></i><b>8.2</b> Advanced</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-r-packages.html"><a href="section-r-packages.html#section-adding-a-shiny-app"><i class="fa fa-check"></i><b>8.2.1</b> Adding a shiny app</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-r-packages.html"><a href="section-r-packages.html#section-custom-website"><i class="fa fa-check"></i><b>8.2.2</b> Custom website</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html"><i class="fa fa-check"></i><b>9</b> High performance computing</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-rcpp-using-c-within-r"><i class="fa fa-check"></i><b>9.1</b> Rcpp: using C++ within R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-installation"><i class="fa fa-check"></i><b>9.1.1</b> Installation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
+<li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
+<li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Statistical Programming Methods with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-shiny-web-applications" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Shiny Web Applications</h1>
+<p>Shiny is an R package that makes it easy to build interactive web apps through R. It made avaialble directly through RStudio and can be employed loading the corresponding library (i.e. <code>library(shiny)</code>).</p>
+<div id="section-introduction-3" class="section level2">
+<h2><span class="header-section-number">7.1</span> Introduction</h2>
+<p>In order to build an application, we first need to understand its structure as well as the elements it needs to work. The idea is to take some input (such as parameters) and produce an output based on some code that will not be visible to the user and will connect the input and output. In this chapter we will describe how to build a Shiny application for which a brief tutorial can be found below.</p>
+<iframe src="https://www.youtube.com/embed/X5uQU5XX7iU" width="672" height="400px">
+</iframe>
+<p>In the following paragraphs, we will provide more details on how a Shiny app can be built using the example illustrated in the tutorial.</p>
+</div>
+<div id="section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app" class="section level2">
+<h2><span class="header-section-number">7.2</span> Step 1. Defining the R Code in the backend of the Shiny app</h2>
+<p>Before we build the interface of the web application, we need to focus on the R code which, in the framework of Shiny app development, is also commonly known as the “backend” of the application. To make sure that all the intended operations work within the application, we need to make sure that the R code that serves as the skeleton of this app works smoothly.</p>
+<p>For instance, based on the tutorial example, we may intend to build an application that creates a histogram based on the waiting time between eruptions of the Old Faithful geyser in Yellowstone National Park (that can be found in the R dataset <code>faithful</code>), allowing the user to specify the number of bins. Using the second column in the dataset (representing the waiting times), if we were to use the default values for the histogram function in R we would obtain the following plot.</p>
+<div class="sourceCode" id="section-cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="section-shiny-web-applications.html#cb418-1"></a>x &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] </span>
+<span id="cb418-2"><a href="section-shiny-web-applications.html#cb418-2"></a><span class="kw">hist</span>(x)</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
+<p>However, the representation and interpretation of the data can sometimes change considerably if using different visualization parameters. Indeed, among others, the <code>hist()</code> function includes an option called <code>breaks</code> that allows the user to specify a vector giving the number of breakpoints between histogram cells. An example of how this is used and changes the representation of the data can be found below.</p>
+<div class="sourceCode" id="section-cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="section-shiny-web-applications.html#cb419-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb419-2"><a href="section-shiny-web-applications.html#cb419-2"></a></span>
+<span id="cb419-3"><a href="section-shiny-web-applications.html#cb419-3"></a><span class="co"># Histogram with 9 bins</span></span>
+<span id="cb419-4"><a href="section-shiny-web-applications.html#cb419-4"></a>bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb419-5"><a href="section-shiny-web-applications.html#cb419-5"></a><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</span>
+<span id="cb419-6"><a href="section-shiny-web-applications.html#cb419-6"></a></span>
+<span id="cb419-7"><a href="section-shiny-web-applications.html#cb419-7"></a><span class="co"># Histogram with 19 bins</span></span>
+<span id="cb419-8"><a href="section-shiny-web-applications.html#cb419-8"></a>bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> <span class="dv">20</span>)</span>
+<span id="cb419-9"><a href="section-shiny-web-applications.html#cb419-9"></a><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<p>As you may notice, the number of bins created by using this option is always one unit less than the length of the specified vector (i.e. 9 and 19). Therefore, if we intend to deliver an app that allows the user to directly specify the number of bins, we should take this into account and add one unit to the input that the user has given within the <code>length.out</code> option. Ideally, we would be looking to implement a function which includes the following steps:</p>
+<div class="sourceCode" id="section-cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="section-shiny-web-applications.html#cb420-1"></a>input &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb420-2"><a href="section-shiny-web-applications.html#cb420-2"></a></span>
+<span id="cb420-3"><a href="section-shiny-web-applications.html#cb420-3"></a><span class="co"># Histogram with input bins</span></span>
+<span id="cb420-4"><a href="section-shiny-web-applications.html#cb420-4"></a>bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb420-5"><a href="section-shiny-web-applications.html#cb420-5"></a><span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins)</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+<p>where the value given to the <code>input</code> object (which is 10 in the above example) is the only value required and can be assigned by the user through the app interface. The next step will explain how to do so.</p>
+</div>
+<div id="section-step-2-user-interface-ui-frontend" class="section level2">
+<h2><span class="header-section-number">7.3</span> Step 2: User Interface (UI) / Frontend</h2>
+<p>Once we have determined the structure of the code we can now start creating the Shiny app by firstly developing the UI (or frontend) with which the user will interact. To address this part, let us take the tutorial example as a guide and inspect the part of the code related to the UI.</p>
+<div class="sourceCode" id="section-cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="section-shiny-web-applications.html#cb421-1"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb421-2"><a href="section-shiny-web-applications.html#cb421-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb421-3"><a href="section-shiny-web-applications.html#cb421-3"></a>   </span>
+<span id="cb421-4"><a href="section-shiny-web-applications.html#cb421-4"></a>   <span class="co"># Application title</span></span>
+<span id="cb421-5"><a href="section-shiny-web-applications.html#cb421-5"></a>   <span class="kw">titlePanel</span>(<span class="st">&quot;Old Faithful Geyser Data&quot;</span>),</span>
+<span id="cb421-6"><a href="section-shiny-web-applications.html#cb421-6"></a>   </span>
+<span id="cb421-7"><a href="section-shiny-web-applications.html#cb421-7"></a>   <span class="co"># Sidebar with a slider input for number of bins </span></span>
+<span id="cb421-8"><a href="section-shiny-web-applications.html#cb421-8"></a>   <span class="kw">sidebarLayout</span>(</span>
+<span id="cb421-9"><a href="section-shiny-web-applications.html#cb421-9"></a>      <span class="kw">sidebarPanel</span>(</span>
+<span id="cb421-10"><a href="section-shiny-web-applications.html#cb421-10"></a>         <span class="kw">sliderInput</span>(<span class="st">&quot;bins&quot;</span>,</span>
+<span id="cb421-11"><a href="section-shiny-web-applications.html#cb421-11"></a>                     <span class="st">&quot;Number of bins:&quot;</span>,</span>
+<span id="cb421-12"><a href="section-shiny-web-applications.html#cb421-12"></a>                     <span class="dt">min =</span> <span class="dv">1</span>,</span>
+<span id="cb421-13"><a href="section-shiny-web-applications.html#cb421-13"></a>                     <span class="dt">max =</span> <span class="dv">50</span>,</span>
+<span id="cb421-14"><a href="section-shiny-web-applications.html#cb421-14"></a>                     <span class="dt">value =</span> <span class="dv">30</span>)</span>
+<span id="cb421-15"><a href="section-shiny-web-applications.html#cb421-15"></a>      ),</span>
+<span id="cb421-16"><a href="section-shiny-web-applications.html#cb421-16"></a>      </span>
+<span id="cb421-17"><a href="section-shiny-web-applications.html#cb421-17"></a>      <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb421-18"><a href="section-shiny-web-applications.html#cb421-18"></a>      <span class="kw">mainPanel</span>(</span>
+<span id="cb421-19"><a href="section-shiny-web-applications.html#cb421-19"></a>         <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb421-20"><a href="section-shiny-web-applications.html#cb421-20"></a>      )</span>
+<span id="cb421-21"><a href="section-shiny-web-applications.html#cb421-21"></a>   )</span>
+<span id="cb421-22"><a href="section-shiny-web-applications.html#cb421-22"></a>)</span></code></pre></div>
+<p>As can be seen, all the code that will be dedicated to creating the UI is assigned to an object called <code>ui</code> through a function called <code>fluidPage()</code> (see <code>?fluidPage</code> for more information). The two main elements of this function are the panel dedicated to the title that will appear for the app (<code>titlePanel()</code>) and the layout to give to web page which in this example is a layout with a sidebar for the user to enter their inputs and a main panel in which the outputs will be visualized (<code>sidebarLayout()</code>). In the next paragraphs we will provide more details on the possible contents to be presented in the app interface, as well as the options that can be employed to allow the user to enter the needed inputs and the options for visualizing the outputs.</p>
+<div id="section-content-creation" class="section level3 unnumbered">
+<h3>Content Creation</h3>
+<p>We want to design the application in the way that it is comprehensive and also easy to interpret. Below are some often-used options of content creation that will be beneficial to know.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>titlePanel()</td>
+<td>The title of the application</td>
+</tr>
+<tr class="even">
+<td>sidebarLayout()</td>
+<td>Creates a sidebar layout for fluidPage()</td>
+</tr>
+<tr class="odd">
+<td>sidebarPanel()</td>
+<td>Makes a sidebar menu</td>
+</tr>
+<tr class="even">
+<td>mainPanel()</td>
+<td>Main content area for different outputs</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-input-controls" class="section level3 unnumbered">
+<h3>Input Controls</h3>
+<p>We also want to provide spaces so that the client can change any desired parameter. For example, in the above example, this would be the number of bins. Below are some input controls the developer can use.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>numericInput()</td>
+<td>Number entry input</td>
+</tr>
+<tr class="even">
+<td>radioButtons()</td>
+<td>Radio button selection</td>
+</tr>
+<tr class="odd">
+<td>selectInput()</td>
+<td>Dropdown menu</td>
+</tr>
+<tr class="even">
+<td>sliderInput()</td>
+<td>Range slider (1/2 values)</td>
+</tr>
+<tr class="odd">
+<td>submitButton()</td>
+<td>Submission button</td>
+</tr>
+<tr class="even">
+<td>textInput()</td>
+<td>Text input box</td>
+</tr>
+<tr class="odd">
+<td>checkboxInput()</td>
+<td>Single checkbox input</td>
+</tr>
+<tr class="even">
+<td>dateInput()</td>
+<td>Date Selection input</td>
+</tr>
+<tr class="odd">
+<td>fileInput()</td>
+<td>Upload a file to Shiny</td>
+</tr>
+<tr class="even">
+<td>helpText()</td>
+<td>Describe input field</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-output-render-controls" class="section level3 unnumbered">
+<h3>Output Render Controls</h3>
+<p>The different type of output that is shown can be designed depending on what the developer intends it to be. Examples of these options are shown below. We advise you to follow the videos and research different options that fit the desired output.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>plotOutput()</td>
+<td>Display a rendered plot</td>
+</tr>
+<tr class="even">
+<td>tableOutput()</td>
+<td>Display in Table</td>
+</tr>
+<tr class="odd">
+<td>textOutput()</td>
+<td>Formatted Text Output</td>
+</tr>
+<tr class="even">
+<td>uiOutput()</td>
+<td>Dynamic UI Elements</td>
+</tr>
+<tr class="odd">
+<td>verbatimTextOutput()</td>
+<td>“as is”" Text Output"</td>
+</tr>
+<tr class="even">
+<td>imageOutput()</td>
+<td>Render an Image</td>
+</tr>
+<tr class="odd">
+<td>htmlOutput()</td>
+<td>Render Pure HTML</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="section-step-3-implementing-the-backend-server" class="section level2">
+<h2><span class="header-section-number">7.4</span> Step 3: Implementing the backend (server)</h2>
+<p>This step consists in adapting the structure of the code seen in Step 1 to the requirements of the Shiny app structure. This is done by creating a function which, as arguments, has an <code>input</code> and an <code>output</code> as can be seen below always using the example given in the tutorial.</p>
+<div class="sourceCode" id="section-cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="section-shiny-web-applications.html#cb422-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb422-2"><a href="section-shiny-web-applications.html#cb422-2"></a>   </span>
+<span id="cb422-3"><a href="section-shiny-web-applications.html#cb422-3"></a>   output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb422-4"><a href="section-shiny-web-applications.html#cb422-4"></a>      <span class="co"># generate bins based on input$bins from ui.R</span></span>
+<span id="cb422-5"><a href="section-shiny-web-applications.html#cb422-5"></a>      x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>] </span>
+<span id="cb422-6"><a href="section-shiny-web-applications.html#cb422-6"></a>      bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input<span class="op">$</span>bins <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb422-7"><a href="section-shiny-web-applications.html#cb422-7"></a>      </span>
+<span id="cb422-8"><a href="section-shiny-web-applications.html#cb422-8"></a>      <span class="co"># draw the histogram with the specified number of bins</span></span>
+<span id="cb422-9"><a href="section-shiny-web-applications.html#cb422-9"></a>      <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)</span>
+<span id="cb422-10"><a href="section-shiny-web-applications.html#cb422-10"></a>   })</span>
+<span id="cb422-11"><a href="section-shiny-web-applications.html#cb422-11"></a>}</span></code></pre></div>
+<p>In this example, the function is called <code>server()</code> and contains only one object called <code>output</code> with a corresponding element called <code>distPlot</code> (<code>output$distPlot</code>). It must be underlined that the latter name must correspond to the name given for the output in the UI setup (i.e. the <code>distPlot</code> name inserted in <code>plotOutput("distPlot")</code>, see Step 2). The content of the output in this example is a plot and we therefore use the <code>renderPlot()</code> function in which we can include the code that we developed in Step 1 (with some added graphical parameters for the color of the bins and their borders). Of course, this output will depend on the input provided by the user which is used when defining the <code>bins</code> object (i.e. <code>bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)</code>). Just like for the <code>output</code> object, also in this case the <code>input</code> object has an element whose name must correspond to the name given for the input when building the UI (i.e. <code>sliderInput("bins",...)</code>).</p>
+</div>
+<div id="section-step-4-connecting-frontend-and-backend" class="section level2">
+<h2><span class="header-section-number">7.5</span> Step 4: Connecting frontend and backend</h2>
+<p>Once we have developed the structure and defined the functions and objects for the UI (frontend) and backend environments, all that needs to be done is to ensure that they can communicate with each other. Using the Shiny environment, this can be quickly and easily done by using the <code>shinyApp()</code> function which takes the object defining the UI interface (<code>ui</code> in our example, see Step 2) and the function that takes the input and delivers the output (<code>server</code> in our example, see Step 3).</p>
+<div class="sourceCode" id="section-cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="section-shiny-web-applications.html#cb423-1"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<p>Therefore, having completed the UI and backend code, to launch the Shiny Web app you simply need to execute this code (or push the “Run App” button at the top of your Shiny app code).</p>
+</div>
+<div id="section-step-5-customize" class="section level2">
+<h2><span class="header-section-number">7.6</span> Step 5: Customize</h2>
+<p>We can confidently say that shiny can be heavily customized, like how webpage applications are customized, even without explicitly using complex javascript or HTML elements.</p>
+<p>One of such examples are a <code>submitButton(...)</code>, in which we can run responsive output from input data using a button to initiate. More can be read from <a href="https://shiny.rstudio.com/reference/shiny/1.0.4/submitButton.html">here</a>.</p>
+<p>Another of such example is controlling the content creation process other than the default.</p>
+</div>
+<div id="section-example-monte-carlo-integration-1" class="section level2">
+<h2><span class="header-section-number">7.7</span> Example: Monte-Carlo Integration</h2>
+<!-- STEF: To determine the structure and content of this section. -->
+<iframe src="https://www.youtube.com/embed/0zlWcHDKCFw" width="672" height="400px">
+</iframe>
+</div>
+<div id="section-example-buffons-needle" class="section level2">
+<h2><span class="header-section-number">7.8</span> Example: Buffon’s needle</h2>
+<p>In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon (Count of Buffon) posed the following problem to the Royal Academy of Sciences in Paris <span class="citation">(Georges-Louis Leclerc <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-buffon1777essai" role="doc-biblioref">1777</a>)</span>:</p>
+<blockquote>
+<p>Suppose that you drop a needle of unit length on a plane ruled by the lines <span class="math inline">\(y = m \; (m = 0, \pm 1, \pm 2, ...)\)</span> - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?</p>
+</blockquote>
+<p>Compte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows:</p>
+<p><span class="math display" id="eq:probbuffon">\[\begin{equation} 
+\mathbb{P}(\text{intersection}) = \frac{2}{\pi}.
+\tag{7.1}
+\end{equation}\]</span></p>
+<p>If you are curious about the derivation of this result, click on the button below.</p>
+<button id="hidebutton2">
+Derivation - Equation (7.1)
+</button>
+<div id="section-hideclass2">
+
+<div class="rmdtip">
+<p>This proof is based on the solution of Example 4.5.8 of <span class="citation">Grimmett and Stirzaker (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-grimmett2001probability" role="doc-biblioref">2001</a>)</span>. We start by letting <span class="math inline">\((X, Y)\)</span> denote the coordinates of the point at the center of the needle and let <span class="math inline">\(\Theta\)</span> be the angle, modulo <span class="math inline">\(\pi\)</span>, that lies between the needle and the horizontal lines. Next, we define the distance from the needle’s center to the nearest line beneath it as <span class="math inline">\(Z = Y - \lfloor Y \rfloor\)</span>, where <span class="math inline">\(\lfloor Y \rfloor\)</span> denotes the “floor” of <span class="math inline">\(Y\)</span>, i.e. the greatest integer not greater than <span class="math inline">\(Y\)</span>. Since the needle is randomly casted, we have that the joint density of <span class="math inline">\((Z, \Theta)\)</span> is given by:</p>
+<p><span class="math display">\[
+f_{Z, \Theta} (z, \theta) = f_{Z} (z) f_{\Theta} (\theta) = \frac{1}{\pi},
+\]</span></p>
+<p>for <span class="math inline">\(0 \leq z \leq 1\)</span> and <span class="math inline">\(0 \leq \theta \leq \pi\)</span>. By drawing a diagram one can see that an interception occurs if and only if <span class="math inline">\((Z, \Theta) \in \mathcal{B}\)</span>, where</p>
+<p><span class="math display">\[
+\mathcal{B} = \left\{(z, \theta)\,: \;\; z \leq \frac{1}{2} \sin (\theta)  \;\; \text{or} \;\; 1-z \leq \frac{1}{2} \sin(\theta)\right\}.
+\]</span></p>
+<p>Therefore, we obtain</p>
+<p><span class="math display">\[
+\mathbb{P}(\text{intersection}) = \iint_\mathcal{B} \; f_{Z, \Theta} (z, \theta)\, dz \, d\theta = \frac{1}{\pi} \int_0^\pi \left(\int_0^{\frac{1}{2}\sin(\theta)} dz + \int_{1 - \frac{1}{2}\sin(\theta)}^{1} dz \right) d\theta = \frac{2}{\pi},
+\]</span></p>
+which verifies Equation <a href="section-shiny-web-applications.html#eq:probbuffon">(7.1)</a> and concludes the proof.
+</div>
+</div>
+
+<p>Georges-Louis Leclerc’s motivation behind this problem was to design an experiment to estimate the value of <span class="math inline">\(\pi\)</span>. Indeed, if you fling a needle a large number <span class="math inline">\(B\)</span> times onto a ruled plane and count the number of times <span class="math inline">\(S_B\)</span> that the needle intersects a line, we might be able to approximate <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span> and therefore <span class="math inline">\(\pi\)</span>. From Equation <a href="section-shiny-web-applications.html#eq:probbuffon">(7.1)</a>, we know that the proportion <span class="math inline">\(S_B/B\)</span> will be “close” to the probability <span class="math inline">\(\mathbb{P}(\text{intersection})\)</span>. In fact the (weak) law of large number garantees that <span class="math inline">\(S_B/B\)</span> converges (in probability) to <span class="math inline">\(2/\pi\)</span>, i.e. for any given <span class="math inline">\(\varepsilon &gt; 0\)</span>,</p>
+<p><span class="math display">\[
+\lim_{B \rightarrow \infty} \; \mathbb{P}\left( \left| \frac{S_B}{B} - \frac{2}{\pi} \right|  &gt; \varepsilon \right) = 0.
+\]</span></p>
+<p>Thus, the estimator</p>
+<p><span class="math display">\[
+\hat{\pi}_B = \frac{2B}{S_B},
+\]</span></p>
+<p>is a plausible estimator of <span class="math inline">\(\pi\)</span>. The Continous Mapping Theorem <span class="citation">(see e.g. Theorem 1.14 of DasGupta <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-dasgupta2008asymptotic" role="doc-biblioref">2008</a>)</span> can (among others) be used to show that <span class="math inline">\(\hat{\pi}\)</span> is a <strong>consistent</strong> estimator of <span class="math inline">\(\pi\)</span> (i.e. <span class="math inline">\(\hat{\pi}\)</span> converges in probability to <span class="math inline">\(\pi\)</span>). In 1777, Georges-Louis Leclerc investigated this problem and computed <span class="math inline">\(\hat{\pi}_B\)</span> by flinging a needle 2084 times, which may consitute the first recorded example of a Monte-Carlo method (simulation?) in use.</p>
+<p>To illustrate the convergence of our estimator we could fling a needle <span class="math inline">\(B\)</span> times and compute the following estimators:</p>
+<p><span class="math display">\[
+\hat{\pi}_j = \frac{2j}{S_j}, \;\; j = k,\, ...., \,B
+\]</span></p>
+<p>where <span class="math inline">\(k \ll B\)</span>. Once this is done, we could create a graph with <span class="math inline">\(j\)</span> on the horizontal axis and <span class="math inline">\(\hat{\pi}_j\)</span> on the vertical axis. Since <span class="math inline">\(\hat{\pi}_B\)</span> is a consistent estimator we should see that <span class="math inline">\(\hat{\pi}_j\)</span> tends to get closer and closer to <span class="math inline">\(\pi\)</span> as <span class="math inline">\(j\)</span> increases. In this graph we could also superimpose several experiments (recasting the needle <span class="math inline">\(B\)</span> times several times) to reinforce our argument.</p>
+<p>The goal of this example is to create a Shiny app to visualize and illustrate Buffon’s needle experiment. For this purpose, we will use the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Step 1: Backend</strong>: Create all the functions needed for the backend of our app. A possible approach is to create the following functions:
+<ol style="list-style-type: lower-alpha">
+<li><code>cast_needle()</code>: this function randomly casts a needle on plane and returns its coordinates as well as a binary variable to indicate if the needle crossed a line;</li>
+<li><code>buffon_experiment()</code>: this function performs a Monte-Carlo experiment by flinging a large number of needles using the function <code>cast_needle()</code>;</li>
+<li><code>plot.buffon_experiment()</code>: to visualize the experiment (i.e. show all the needles randomly dropped) and compute the estimator <span class="math inline">\(\hat{\pi}_B\)</span> for the experiment at hand;</li>
+</ol></li>
+</ol>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>converge()</code>: to illustrate the convergence of the estimator by creating the graph mentioned at the end of the previous paragraph.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Step 2: Frontend</strong>: Create widgets to collect all inputs needed by the backend:
+<ol style="list-style-type: lower-alpha">
+<li>dimension of the plane on which the needles are dropped;</li>
+<li>the number of needles being used, i.e. <span class="math inline">\(B\)</span>;</li>
+<li>number of experiments which is needed to illustrate the convergence of the estimator;</li>
+<li>the seed to allow “replicable” experiments.
+Aside from allowing the user to enter these variables, we will need to create two output “tabs”. In the first one, we will “print” the result(s) of the experiment and in the second one we will illustrate the convergence of the estimator. Finally, we will need a button to “run” a new experiment.</li>
+</ol></li>
+<li><strong>Step 3: Connecting frontend and backend</strong>: In this third step we will need to connect the inputs with the outputs. Indeed, we will use the <code>input</code> list created by the widget defined in the previous step (Step 2) to create the graphs to be displayed in the two output tabs. We will also need to “activate” the button (i.e. connect the inputs to the appropriate functions) in order to run a new experiment and update the “seed” after every new experiment.</li>
+</ol>
+<p>To summarize, our approach should follow the steps presented in the chart below:</p>
+<center>
+<img src="images/buffon.png" />
+</center>
+<p>In the next sections, we will discuss in detail how to program each step.</p>
+<div id="section-step-1-backend" class="section level3">
+<h3><span class="header-section-number">7.8.1</span> Step 1: Backend</h3>
+<p>Let us start with the function <code>cast_needle()</code>. This function has a single input, i.e. the width of the (square) plane on which the needle is cast and returns a <code>list</code> containing:</p>
+<ul>
+<li><code>$start</code>: the coordinates of one end of the needle;</li>
+<li><code>$end</code>: the coordinates of the other end of the needle;</li>
+<li><code>$cross</code>: a binary variable to indicate if the needle intercepts a line.</li>
+</ul>
+
+<div class="rmdnote">
+An additional input could be added consisting in the length of the needle. However, in this example we only consider needles of unit length.
+</div>
+
+<p>A possible implementation of this function is given below:</p>
+<div class="sourceCode" id="section-cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="section-shiny-web-applications.html#cb424-1"></a>cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){</span>
+<span id="cb424-2"><a href="section-shiny-web-applications.html#cb424-2"></a>  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span></span>
+<span id="cb424-3"><a href="section-shiny-web-applications.html#cb424-3"></a>  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)</span>
+<span id="cb424-4"><a href="section-shiny-web-applications.html#cb424-4"></a>  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)</span>
+<span id="cb424-5"><a href="section-shiny-web-applications.html#cb424-5"></a>  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span></span>
+<span id="cb424-6"><a href="section-shiny-web-applications.html#cb424-6"></a>  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])</span>
+<span id="cb424-7"><a href="section-shiny-web-applications.html#cb424-7"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)</span>
+<span id="cb424-8"><a href="section-shiny-web-applications.html#cb424-8"></a>  out</span>
+<span id="cb424-9"><a href="section-shiny-web-applications.html#cb424-9"></a>}</span></code></pre></div>
+<p>Here is an example of the output of this function:</p>
+<div class="sourceCode" id="section-cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="section-shiny-web-applications.html#cb425-1"></a>needle &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> <span class="dv">4</span>)</span>
+<span id="cb425-2"><a href="section-shiny-web-applications.html#cb425-2"></a>needle</span></code></pre></div>
+<pre><code>## $start
+## [1] 0.1307334 0.3302562
+## 
+## $end
+## [1] 0.1470854 1.3301225
+## 
+## $cross
+## [1] TRUE</code></pre>
+<p>and we could now for example provide the following graphical representation of this random cast:</p>
+<div class="sourceCode" id="section-cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="section-shiny-web-applications.html#cb427-1"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb427-2"><a href="section-shiny-web-applications.html#cb427-2"></a><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb427-3"><a href="section-shiny-web-applications.html#cb427-3"></a><span class="kw">lines</span>(<span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">1</span>], needle<span class="op">$</span>end[<span class="dv">1</span>]), <span class="kw">c</span>(needle<span class="op">$</span>start[<span class="dv">2</span>], needle<span class="op">$</span>end[<span class="dv">2</span>]))</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-234-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p>Next, we consider the function <code>buffon_experiment()</code>. This function is based on the previous function and contains the following inputs:</p>
+<ul>
+<li><code>B</code>: the number of needles being casted;</li>
+<li><code>plane_width</code>: the width of the (square) plane on which the needles are casted;</li>
+<li><code>seed</code>: the “seed” used by the random number generator (allows to replicate results);</li>
+</ul>
+<p>and returns a <code>list</code> containing:</p>
+<ul>
+<li><code>$start</code>: a <span class="math inline">\(B \times 2\)</span> matrix containing the coordinates of one end of the <span class="math inline">\(B\)</span> needles;</li>
+<li><code>$end</code>: a <span class="math inline">\(B \times 2\)</span> matrix containing the coordinates of the other end of the <span class="math inline">\(B\)</span> needles;</li>
+<li><code>$cross</code>: a vector of length <span class="math inline">\(B\)</span> containing boolean variables to indicate whether a needle crosses a line or not;</li>
+<li><code>$plane</code>: the width of the (square) plane.</li>
+</ul>
+<p>A possible implementation of this function is provided below:</p>
+<div class="sourceCode" id="section-cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="section-shiny-web-applications.html#cb428-1"></a>buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){</span>
+<span id="cb428-2"><a href="section-shiny-web-applications.html#cb428-2"></a>  </span>
+<span id="cb428-3"><a href="section-shiny-web-applications.html#cb428-3"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){</span>
+<span id="cb428-4"><a href="section-shiny-web-applications.html#cb428-4"></a>    <span class="kw">set.seed</span>(seed)</span>
+<span id="cb428-5"><a href="section-shiny-web-applications.html#cb428-5"></a>  }</span>
+<span id="cb428-6"><a href="section-shiny-web-applications.html#cb428-6"></a>  </span>
+<span id="cb428-7"><a href="section-shiny-web-applications.html#cb428-7"></a>  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) </span>
+<span id="cb428-8"><a href="section-shiny-web-applications.html#cb428-8"></a>  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</span>
+<span id="cb428-9"><a href="section-shiny-web-applications.html#cb428-9"></a>  </span>
+<span id="cb428-10"><a href="section-shiny-web-applications.html#cb428-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
+<span id="cb428-11"><a href="section-shiny-web-applications.html#cb428-11"></a>    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)</span>
+<span id="cb428-12"><a href="section-shiny-web-applications.html#cb428-12"></a>    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start</span>
+<span id="cb428-13"><a href="section-shiny-web-applications.html#cb428-13"></a>    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end</span>
+<span id="cb428-14"><a href="section-shiny-web-applications.html#cb428-14"></a>    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross</span>
+<span id="cb428-15"><a href="section-shiny-web-applications.html#cb428-15"></a>  }</span>
+<span id="cb428-16"><a href="section-shiny-web-applications.html#cb428-16"></a>  </span>
+<span id="cb428-17"><a href="section-shiny-web-applications.html#cb428-17"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)</span>
+<span id="cb428-18"><a href="section-shiny-web-applications.html#cb428-18"></a>  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span></span>
+<span id="cb428-19"><a href="section-shiny-web-applications.html#cb428-19"></a>  out</span>
+<span id="cb428-20"><a href="section-shiny-web-applications.html#cb428-20"></a>}</span></code></pre></div>
+<p>For example, if we consider an experiment where four needles are cast, we could obtain:</p>
+<div class="sourceCode" id="section-cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="section-shiny-web-applications.html#cb429-1"></a>experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">4</span>, <span class="dt">plane_width =</span> <span class="dv">4</span>)</span>
+<span id="cb429-2"><a href="section-shiny-web-applications.html#cb429-2"></a>experiment</span></code></pre></div>
+<pre><code>## $start
+##            [,1]         [,2]
+## [1,]  0.5668833 -0.719905025
+## [2,]  0.7966649  0.304674088
+## [3,] -0.7692311 -0.007315481
+## [4,]  0.2704636 -0.262152664
+## 
+## $end
+##             [,1]       [,2]
+## [1,] -0.24968864 -0.1426613
+## [2,] -0.17226155  0.5520232
+## [3,] -0.05723734 -0.7095013
+## [4,]  0.16782619  0.7325662
+## 
+## $cross
+## [1] FALSE FALSE FALSE  TRUE
+## 
+## $plane
+## [1] 4
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;buffon_experiment&quot;</code></pre>
+<p>which could be represented as</p>
+<div class="sourceCode" id="section-cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="section-shiny-web-applications.html#cb431-1"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb431-2"><a href="section-shiny-web-applications.html#cb431-2"></a><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb431-3"><a href="section-shiny-web-applications.html#cb431-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){</span>
+<span id="cb431-4"><a href="section-shiny-web-applications.html#cb431-4"></a>  <span class="kw">lines</span>(<span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">1</span>], experiment<span class="op">$</span>end[i,<span class="dv">1</span>]), </span>
+<span id="cb431-5"><a href="section-shiny-web-applications.html#cb431-5"></a>        <span class="kw">c</span>(experiment<span class="op">$</span>start[i,<span class="dv">2</span>], experiment<span class="op">$</span>end[i,<span class="dv">2</span>]))</span>
+<span id="cb431-6"><a href="section-shiny-web-applications.html#cb431-6"></a>}</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-237-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p>We can now write a custom <code>plot()</code> function for the output of the function <code>buffon_experiment()</code>. This function will provide a way to visualize the experiment and will compute <span class="math inline">\(\hat{\pi}_B\)</span>, which will be shown in the title. A possible function is provided below:</p>
+<div class="sourceCode" id="section-cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="section-shiny-web-applications.html#cb432-1"></a>plot.buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(obj){</span>
+<span id="cb432-2"><a href="section-shiny-web-applications.html#cb432-2"></a>  cross &lt;-<span class="st"> </span>obj<span class="op">$</span>cross</span>
+<span id="cb432-3"><a href="section-shiny-web-applications.html#cb432-3"></a>  X_start &lt;-<span class="st"> </span>obj<span class="op">$</span>start</span>
+<span id="cb432-4"><a href="section-shiny-web-applications.html#cb432-4"></a>  X_end &lt;-<span class="st"> </span>obj<span class="op">$</span>end</span>
+<span id="cb432-5"><a href="section-shiny-web-applications.html#cb432-5"></a>  B &lt;-<span class="st"> </span><span class="kw">length</span>(cross)</span>
+<span id="cb432-6"><a href="section-shiny-web-applications.html#cb432-6"></a>  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> <span class="dv">3</span>), <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</span>
+<span id="cb432-7"><a href="section-shiny-web-applications.html#cb432-7"></a>  </span>
+<span id="cb432-8"><a href="section-shiny-web-applications.html#cb432-8"></a>  title_part1 &lt;-<span class="st"> &#39;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment  -  &#39;</span></span>
+<span id="cb432-9"><a href="section-shiny-web-applications.html#cb432-9"></a>  title_part2 &lt;-<span class="st"> &#39; = &#39;</span></span>
+<span id="cb432-10"><a href="section-shiny-web-applications.html#cb432-10"></a>  pi_hat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">mean</span>(obj<span class="op">$</span>cross), <span class="dv">6</span>)</span>
+<span id="cb432-11"><a href="section-shiny-web-applications.html#cb432-11"></a>  </span>
+<span id="cb432-12"><a href="section-shiny-web-applications.html#cb432-12"></a>  title &lt;-<span class="st"> </span><span class="kw">bquote</span>(.(title_part1) <span class="op">~</span><span class="st"> </span><span class="kw">hat</span>(pi)[B] <span class="op">~</span><span class="st"> </span>.(title_part2) <span class="op">~</span><span class="st"> </span>.(pi_hat))</span>
+<span id="cb432-13"><a href="section-shiny-web-applications.html#cb432-13"></a>  </span>
+<span id="cb432-14"><a href="section-shiny-web-applications.html#cb432-14"></a>  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plane<span class="op">/</span><span class="dv">2</span>), </span>
+<span id="cb432-15"><a href="section-shiny-web-applications.html#cb432-15"></a>       <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span>obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>, obj<span class="op">$</span>plan<span class="op">/</span><span class="dv">2</span>), </span>
+<span id="cb432-16"><a href="section-shiny-web-applications.html#cb432-16"></a>       <span class="dt">main =</span> title)</span>
+<span id="cb432-17"><a href="section-shiny-web-applications.html#cb432-17"></a>  <span class="kw">abline</span>(<span class="dt">h =</span> (<span class="op">-</span>obj<span class="op">$</span>plan)<span class="op">:</span>obj<span class="op">$</span>plan, <span class="dt">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb432-18"><a href="section-shiny-web-applications.html#cb432-18"></a>  </span>
+<span id="cb432-19"><a href="section-shiny-web-applications.html#cb432-19"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
+<span id="cb432-20"><a href="section-shiny-web-applications.html#cb432-20"></a>    <span class="kw">lines</span>(<span class="kw">c</span>(X_start[i,<span class="dv">1</span>], X_end[i,<span class="dv">1</span>]), <span class="kw">c</span>(X_start[i,<span class="dv">2</span>], X_end[i,<span class="dv">2</span>]), </span>
+<span id="cb432-21"><a href="section-shiny-web-applications.html#cb432-21"></a>          <span class="dt">col =</span> cols[cross[i] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</span>
+<span id="cb432-22"><a href="section-shiny-web-applications.html#cb432-22"></a>  }</span>
+<span id="cb432-23"><a href="section-shiny-web-applications.html#cb432-23"></a>}</span></code></pre></div>
+<p>Therefore, we could now run the same experiment as Georges-Louis Leclerc by flinging 2084 needles almost instanteously (which is the default value in the <code>buffon_experiment()</code> function we created):</p>
+<div class="sourceCode" id="section-cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="section-shiny-web-applications.html#cb433-1"></a>experiment &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> <span class="dv">2084</span>)</span>
+<span id="cb433-2"><a href="section-shiny-web-applications.html#cb433-2"></a><span class="kw">plot</span>(experiment)</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-239-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Finally, we can consider the function <code>converge()</code>. Similarly to <code>buffon_experiment()</code>, the function <code>converge()</code> has the following inputs:</p>
+<ul>
+<li><code>B</code>: the number of needles being cast;</li>
+<li><code>plane_width</code>: the width of the (square) plane on which the needles are cast;</li>
+<li><code>seed</code>: the “seed” used by the random number generator (allows to replicate results);</li>
+<li><code>M</code>: the number of experiments.</li>
+</ul>
+<p>The function returns the graph mentioned at the end of the previous section. A possible implementation of this function is provided below:</p>
+<div class="sourceCode" id="section-cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="section-shiny-web-applications.html#cb434-1"></a>converge &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="dv">1777</span>, <span class="dt">M =</span> <span class="dv">12</span>){</span>
+<span id="cb434-2"><a href="section-shiny-web-applications.html#cb434-2"></a>  </span>
+<span id="cb434-3"><a href="section-shiny-web-applications.html#cb434-3"></a>  <span class="cf">if</span> (B <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</span>
+<span id="cb434-4"><a href="section-shiny-web-applications.html#cb434-4"></a>    <span class="kw">warning</span>(<span class="st">&quot;B was changed to 10&quot;</span>)</span>
+<span id="cb434-5"><a href="section-shiny-web-applications.html#cb434-5"></a>    B &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb434-6"><a href="section-shiny-web-applications.html#cb434-6"></a>  }</span>
+<span id="cb434-7"><a href="section-shiny-web-applications.html#cb434-7"></a>  </span>
+<span id="cb434-8"><a href="section-shiny-web-applications.html#cb434-8"></a>  pi_hat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, M)</span>
+<span id="cb434-9"><a href="section-shiny-web-applications.html#cb434-9"></a>  trials &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>B</span>
+<span id="cb434-10"><a href="section-shiny-web-applications.html#cb434-10"></a>  cols &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">hcl</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">375</span>, <span class="dt">length =</span> (M<span class="op">+</span><span class="dv">1</span>)), </span>
+<span id="cb434-11"><a href="section-shiny-web-applications.html#cb434-11"></a>                 <span class="dt">l =</span> <span class="dv">65</span>, <span class="dt">c =</span> <span class="dv">100</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="op">:</span>M])</span>
+<span id="cb434-12"><a href="section-shiny-web-applications.html#cb434-12"></a>  <span class="kw">set.seed</span>(seed)</span>
+<span id="cb434-13"><a href="section-shiny-web-applications.html#cb434-13"></a>  </span>
+<span id="cb434-14"><a href="section-shiny-web-applications.html#cb434-14"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){</span>
+<span id="cb434-15"><a href="section-shiny-web-applications.html#cb434-15"></a>    cross &lt;-<span class="st"> </span><span class="kw">buffon_experiment</span>(<span class="dt">B =</span> B, <span class="dt">plane_width =</span> plane_width)<span class="op">$</span>cross</span>
+<span id="cb434-16"><a href="section-shiny-web-applications.html#cb434-16"></a>    pi_hat[,i] &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>trials<span class="op">/</span><span class="kw">cumsum</span>(cross)</span>
+<span id="cb434-17"><a href="section-shiny-web-applications.html#cb434-17"></a>  }</span>
+<span id="cb434-18"><a href="section-shiny-web-applications.html#cb434-18"></a>  </span>
+<span id="cb434-19"><a href="section-shiny-web-applications.html#cb434-19"></a>  <span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,B), <span class="dt">ylim =</span> pi <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">4</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb434-20"><a href="section-shiny-web-applications.html#cb434-20"></a>       <span class="dt">ylab =</span> <span class="kw">bquote</span>(<span class="kw">hat</span>(pi)[j]),</span>
+<span id="cb434-21"><a href="section-shiny-web-applications.html#cb434-21"></a>       <span class="dt">xlab =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment&quot;</span>)</span>
+<span id="cb434-22"><a href="section-shiny-web-applications.html#cb434-22"></a>  <span class="kw">grid</span>()</span>
+<span id="cb434-23"><a href="section-shiny-web-applications.html#cb434-23"></a>  </span>
+<span id="cb434-24"><a href="section-shiny-web-applications.html#cb434-24"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>M){</span>
+<span id="cb434-25"><a href="section-shiny-web-applications.html#cb434-25"></a>    <span class="kw">lines</span>(trials, pi_hat[,i], <span class="dt">col =</span> cols[i])</span>
+<span id="cb434-26"><a href="section-shiny-web-applications.html#cb434-26"></a>  }</span>
+<span id="cb434-27"><a href="section-shiny-web-applications.html#cb434-27"></a>  </span>
+<span id="cb434-28"><a href="section-shiny-web-applications.html#cb434-28"></a>  <span class="kw">abline</span>(<span class="dt">h =</span> pi, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb434-29"><a href="section-shiny-web-applications.html#cb434-29"></a>}</span></code></pre></div>
+<p>Therefore, if we were to repeat the original experiment of Georges-Louis Leclerc 20 times and compute <span class="math inline">\(\hat{\pi}_j\)</span> for each experiment we would obtain:</p>
+<div class="sourceCode" id="section-cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="section-shiny-web-applications.html#cb435-1"></a><span class="kw">converge</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">M =</span> <span class="dv">20</span>, <span class="dt">seed =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="ds_files/figure-html/unnamed-chunk-241-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>which provides some illustrations on the convergence of the estimator.</p>
+</div>
+<div id="section-step-2-frontend" class="section level3">
+<h3><span class="header-section-number">7.8.2</span> Step 2: Frontend</h3>
+<p>We start by constructing an “empty” Shiny app, i.e.</p>
+<div class="sourceCode" id="section-cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="section-shiny-web-applications.html#cb436-1"></a><span class="co"># Define UI for application</span></span>
+<span id="cb436-2"><a href="section-shiny-web-applications.html#cb436-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb436-3"><a href="section-shiny-web-applications.html#cb436-3"></a>  </span>
+<span id="cb436-4"><a href="section-shiny-web-applications.html#cb436-4"></a>  <span class="co"># Application title</span></span>
+<span id="cb436-5"><a href="section-shiny-web-applications.html#cb436-5"></a>  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),</span>
+<span id="cb436-6"><a href="section-shiny-web-applications.html#cb436-6"></a>  </span>
+<span id="cb436-7"><a href="section-shiny-web-applications.html#cb436-7"></a>  <span class="kw">sidebarLayout</span>(</span>
+<span id="cb436-8"><a href="section-shiny-web-applications.html#cb436-8"></a>    <span class="kw">sidebarPanel</span>(</span>
+<span id="cb436-9"><a href="section-shiny-web-applications.html#cb436-9"></a>      <span class="co"># Add inputs here!</span></span>
+<span id="cb436-10"><a href="section-shiny-web-applications.html#cb436-10"></a>    ),</span>
+<span id="cb436-11"><a href="section-shiny-web-applications.html#cb436-11"></a>    </span>
+<span id="cb436-12"><a href="section-shiny-web-applications.html#cb436-12"></a>    <span class="kw">mainPanel</span>(</span>
+<span id="cb436-13"><a href="section-shiny-web-applications.html#cb436-13"></a>      <span class="kw">tabsetPanel</span>(</span>
+<span id="cb436-14"><a href="section-shiny-web-applications.html#cb436-14"></a>        <span class="co"># Add tabs here!</span></span>
+<span id="cb436-15"><a href="section-shiny-web-applications.html#cb436-15"></a>      )</span>
+<span id="cb436-16"><a href="section-shiny-web-applications.html#cb436-16"></a>    )</span>
+<span id="cb436-17"><a href="section-shiny-web-applications.html#cb436-17"></a>  )</span>
+<span id="cb436-18"><a href="section-shiny-web-applications.html#cb436-18"></a>)</span>
+<span id="cb436-19"><a href="section-shiny-web-applications.html#cb436-19"></a></span>
+<span id="cb436-20"><a href="section-shiny-web-applications.html#cb436-20"></a><span class="co"># Define server</span></span>
+<span id="cb436-21"><a href="section-shiny-web-applications.html#cb436-21"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb436-22"><a href="section-shiny-web-applications.html#cb436-22"></a>}</span>
+<span id="cb436-23"><a href="section-shiny-web-applications.html#cb436-23"></a></span>
+<span id="cb436-24"><a href="section-shiny-web-applications.html#cb436-24"></a><span class="co"># Run the application </span></span>
+<span id="cb436-25"><a href="section-shiny-web-applications.html#cb436-25"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<p>If you run this empty app you should obtain the result below:</p>
+<center>
+<img src="images/shiny_ui_part1.png" />
+</center>
+<p>We will start by adding the required input widgets by modifying the <code>ui</code> function as follows:</p>
+<div class="sourceCode" id="section-cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="section-shiny-web-applications.html#cb437-1"></a><span class="co"># Define UI for application</span></span>
+<span id="cb437-2"><a href="section-shiny-web-applications.html#cb437-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb437-3"><a href="section-shiny-web-applications.html#cb437-3"></a>  </span>
+<span id="cb437-4"><a href="section-shiny-web-applications.html#cb437-4"></a>  <span class="co"># Application title</span></span>
+<span id="cb437-5"><a href="section-shiny-web-applications.html#cb437-5"></a>  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),</span>
+<span id="cb437-6"><a href="section-shiny-web-applications.html#cb437-6"></a>  </span>
+<span id="cb437-7"><a href="section-shiny-web-applications.html#cb437-7"></a>  <span class="kw">sidebarLayout</span>(</span>
+<span id="cb437-8"><a href="section-shiny-web-applications.html#cb437-8"></a>    <span class="kw">sidebarPanel</span>(</span>
+<span id="cb437-9"><a href="section-shiny-web-applications.html#cb437-9"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),</span>
+<span id="cb437-10"><a href="section-shiny-web-applications.html#cb437-10"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),</span>
+<span id="cb437-11"><a href="section-shiny-web-applications.html#cb437-11"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),</span>
+<span id="cb437-12"><a href="section-shiny-web-applications.html#cb437-12"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),</span>
+<span id="cb437-13"><a href="section-shiny-web-applications.html#cb437-13"></a>      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))</span>
+<span id="cb437-14"><a href="section-shiny-web-applications.html#cb437-14"></a>    ),</span>
+<span id="cb437-15"><a href="section-shiny-web-applications.html#cb437-15"></a>    </span>
+<span id="cb437-16"><a href="section-shiny-web-applications.html#cb437-16"></a>    <span class="kw">mainPanel</span>(</span>
+<span id="cb437-17"><a href="section-shiny-web-applications.html#cb437-17"></a>      <span class="kw">tabsetPanel</span>(</span>
+<span id="cb437-18"><a href="section-shiny-web-applications.html#cb437-18"></a>        <span class="co"># Add tabs here!</span></span>
+<span id="cb437-19"><a href="section-shiny-web-applications.html#cb437-19"></a>      )</span>
+<span id="cb437-20"><a href="section-shiny-web-applications.html#cb437-20"></a>    )</span>
+<span id="cb437-21"><a href="section-shiny-web-applications.html#cb437-21"></a>  )</span>
+<span id="cb437-22"><a href="section-shiny-web-applications.html#cb437-22"></a>)</span></code></pre></div>
+<p>By running this update you should now obtain:</p>
+<center>
+<img src="images/shiny_ui_part2.png" />
+</center>
+<p>Next, we create two output tabs in which we will find the previously mentioned graphs. This can be done by again modifying the <code>ui</code>function as follows:</p>
+<div class="sourceCode" id="section-cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="section-shiny-web-applications.html#cb438-1"></a><span class="co"># Define UI for application</span></span>
+<span id="cb438-2"><a href="section-shiny-web-applications.html#cb438-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb438-3"><a href="section-shiny-web-applications.html#cb438-3"></a>  </span>
+<span id="cb438-4"><a href="section-shiny-web-applications.html#cb438-4"></a>  <span class="co"># Application title</span></span>
+<span id="cb438-5"><a href="section-shiny-web-applications.html#cb438-5"></a>  <span class="kw">titlePanel</span>(<span class="kw">h4</span>(<span class="st">&quot;Buffon</span><span class="ch">\&#39;</span><span class="st">s needle experiment - Inputs:&quot;</span>)),</span>
+<span id="cb438-6"><a href="section-shiny-web-applications.html#cb438-6"></a>  </span>
+<span id="cb438-7"><a href="section-shiny-web-applications.html#cb438-7"></a>  <span class="kw">sidebarLayout</span>(</span>
+<span id="cb438-8"><a href="section-shiny-web-applications.html#cb438-8"></a>    <span class="kw">sidebarPanel</span>(</span>
+<span id="cb438-9"><a href="section-shiny-web-applications.html#cb438-9"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;plane&quot;</span>, <span class="st">&quot;Plane width:&quot;</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">100</span>),</span>
+<span id="cb438-10"><a href="section-shiny-web-applications.html#cb438-10"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Number of trials:&quot;</span>, <span class="dv">100</span>, <span class="dv">20</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),</span>
+<span id="cb438-11"><a href="section-shiny-web-applications.html#cb438-11"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Number of experiments:&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>),</span>
+<span id="cb438-12"><a href="section-shiny-web-applications.html#cb438-12"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Simulation seed&quot;</span>, <span class="dv">1777</span>, <span class="dv">1</span>, <span class="dv">1000000</span>),</span>
+<span id="cb438-13"><a href="section-shiny-web-applications.html#cb438-13"></a>      <span class="kw">actionButton</span>(<span class="st">&quot;cast&quot;</span>, <span class="st">&quot;Let&#39;s cast some needles!&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;thumbs-up&quot;</span>))</span>
+<span id="cb438-14"><a href="section-shiny-web-applications.html#cb438-14"></a>    ),</span>
+<span id="cb438-15"><a href="section-shiny-web-applications.html#cb438-15"></a>    </span>
+<span id="cb438-16"><a href="section-shiny-web-applications.html#cb438-16"></a>    <span class="kw">mainPanel</span>(</span>
+<span id="cb438-17"><a href="section-shiny-web-applications.html#cb438-17"></a>      <span class="kw">tabsetPanel</span>(</span>
+<span id="cb438-18"><a href="section-shiny-web-applications.html#cb438-18"></a>        <span class="kw">tabPanel</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;exp&quot;</span>)),</span>
+<span id="cb438-19"><a href="section-shiny-web-applications.html#cb438-19"></a>        <span class="kw">tabPanel</span>(<span class="st">&quot;Convergence&quot;</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;conv&quot;</span>))</span>
+<span id="cb438-20"><a href="section-shiny-web-applications.html#cb438-20"></a>      )</span>
+<span id="cb438-21"><a href="section-shiny-web-applications.html#cb438-21"></a>    )</span>
+<span id="cb438-22"><a href="section-shiny-web-applications.html#cb438-22"></a>  )</span>
+<span id="cb438-23"><a href="section-shiny-web-applications.html#cb438-23"></a>)</span></code></pre></div>
+<p>The app should now look like this:</p>
+<center>
+<img src="images/shiny_ui_part3.png" />
+</center>
+<p>At this point, we have completed the <code>ui</code> function and will modify the <code>server</code> in the next section.</p>
+</div>
+<div id="section-step-3-connecting-frontend-and-backend" class="section level3">
+<h3><span class="header-section-number">7.8.3</span> Step 3: Connecting frontend and backend</h3>
+<p>In this section, we will focus on the <code>server</code> function to produce the desired output. Let us start by “connecting” our output tabs defined in the <code>ui</code> function with the output in the server function. Since both outputs are graphs, we will use the function <code>renderPlot()</code> as follows:</p>
+<div class="sourceCode" id="section-cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="section-shiny-web-applications.html#cb439-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb439-2"><a href="section-shiny-web-applications.html#cb439-2"></a>  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb439-3"><a href="section-shiny-web-applications.html#cb439-3"></a>    <span class="co"># Add graph 1 here!</span></span>
+<span id="cb439-4"><a href="section-shiny-web-applications.html#cb439-4"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb439-5"><a href="section-shiny-web-applications.html#cb439-5"></a>  </span>
+<span id="cb439-6"><a href="section-shiny-web-applications.html#cb439-6"></a>  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb439-7"><a href="section-shiny-web-applications.html#cb439-7"></a>    <span class="co"># Add graph 2 here!</span></span>
+<span id="cb439-8"><a href="section-shiny-web-applications.html#cb439-8"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb439-9"><a href="section-shiny-web-applications.html#cb439-9"></a>}</span></code></pre></div>
+<p>If you re-run the app at this point our changes will have no visible effect. Next, we will focus on the first graph based on the functions <code>buffon_experiment()</code> and <code>plot.buffon_experiment()</code>. The first thing we will need is to (re-)run the <code>buffon_experiment()</code> when the user clicks on the “action” button. This can be done by adding the following lines to the <code>server</code> function:</p>
+<div class="sourceCode" id="section-cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="section-shiny-web-applications.html#cb440-1"></a>cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb440-2"><a href="section-shiny-web-applications.html#cb440-2"></a>    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb440-3"><a href="section-shiny-web-applications.html#cb440-3"></a>                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</span>
+<span id="cb440-4"><a href="section-shiny-web-applications.html#cb440-4"></a>  })</span></code></pre></div>
+<p>When this function is (re-)evaluated we want to update/create the first plot, which can be done by replacing the following part of the <code>server</code> function</p>
+<div class="sourceCode" id="section-cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="section-shiny-web-applications.html#cb441-1"></a>output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb441-2"><a href="section-shiny-web-applications.html#cb441-2"></a>    <span class="co"># Add graph 1 here!</span></span>
+<span id="cb441-3"><a href="section-shiny-web-applications.html#cb441-3"></a>}, <span class="dt">height =</span> <span class="dv">620</span>)</span></code></pre></div>
+<p>with</p>
+<div class="sourceCode" id="section-cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="section-shiny-web-applications.html#cb442-1"></a>output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb442-2"><a href="section-shiny-web-applications.html#cb442-2"></a>    <span class="kw">plot</span>(<span class="kw">cast</span>())</span>
+<span id="cb442-3"><a href="section-shiny-web-applications.html#cb442-3"></a>}, <span class="dt">height =</span> <span class="dv">620</span>)</span></code></pre></div>
+<p>Therefore, your <code>server</code> function should now be:</p>
+<div class="sourceCode" id="section-cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="section-shiny-web-applications.html#cb443-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb443-2"><a href="section-shiny-web-applications.html#cb443-2"></a>  </span>
+<span id="cb443-3"><a href="section-shiny-web-applications.html#cb443-3"></a>  <span class="co"># Fling some needles!</span></span>
+<span id="cb443-4"><a href="section-shiny-web-applications.html#cb443-4"></a>  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb443-5"><a href="section-shiny-web-applications.html#cb443-5"></a>    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb443-6"><a href="section-shiny-web-applications.html#cb443-6"></a>                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</span>
+<span id="cb443-7"><a href="section-shiny-web-applications.html#cb443-7"></a>  })</span>
+<span id="cb443-8"><a href="section-shiny-web-applications.html#cb443-8"></a>  </span>
+<span id="cb443-9"><a href="section-shiny-web-applications.html#cb443-9"></a>  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb443-10"><a href="section-shiny-web-applications.html#cb443-10"></a>    <span class="kw">plot</span>(<span class="kw">cast</span>())</span>
+<span id="cb443-11"><a href="section-shiny-web-applications.html#cb443-11"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb443-12"><a href="section-shiny-web-applications.html#cb443-12"></a>  </span>
+<span id="cb443-13"><a href="section-shiny-web-applications.html#cb443-13"></a>  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb443-14"><a href="section-shiny-web-applications.html#cb443-14"></a>    <span class="co"># Add graph 2 here!</span></span>
+<span id="cb443-15"><a href="section-shiny-web-applications.html#cb443-15"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb443-16"><a href="section-shiny-web-applications.html#cb443-16"></a>}</span></code></pre></div>
+<p>and when reloading the app you should now see:</p>
+<center>
+<img src="images/shiny_server_part1.png" />
+</center>
+<p>Similarly, we do the same thing for the second graph by adding the following lines to our <code>server</code> function:</p>
+<div class="sourceCode" id="section-cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="section-shiny-web-applications.html#cb444-1"></a>conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb444-2"><a href="section-shiny-web-applications.html#cb444-2"></a>    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb444-3"><a href="section-shiny-web-applications.html#cb444-3"></a>             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)</span>
+<span id="cb444-4"><a href="section-shiny-web-applications.html#cb444-4"></a>})</span></code></pre></div>
+<p>and replacing</p>
+<div class="sourceCode" id="section-cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="section-shiny-web-applications.html#cb445-1"></a>output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb445-2"><a href="section-shiny-web-applications.html#cb445-2"></a>    <span class="co"># Add graph 2 here!</span></span>
+<span id="cb445-3"><a href="section-shiny-web-applications.html#cb445-3"></a>}, <span class="dt">height =</span> <span class="dv">620</span>)</span></code></pre></div>
+<p>with</p>
+<div class="sourceCode" id="section-cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="section-shiny-web-applications.html#cb446-1"></a>output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb446-2"><a href="section-shiny-web-applications.html#cb446-2"></a>    <span class="kw">conv</span>()</span>
+<span id="cb446-3"><a href="section-shiny-web-applications.html#cb446-3"></a>}, <span class="dt">height =</span> <span class="dv">620</span>)</span></code></pre></div>
+<p>After these changes, your <code>server</code> function should look like this:</p>
+<div class="sourceCode" id="section-cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="section-shiny-web-applications.html#cb447-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb447-2"><a href="section-shiny-web-applications.html#cb447-2"></a>  </span>
+<span id="cb447-3"><a href="section-shiny-web-applications.html#cb447-3"></a>  <span class="co"># Fling some needles!</span></span>
+<span id="cb447-4"><a href="section-shiny-web-applications.html#cb447-4"></a>  cast &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb447-5"><a href="section-shiny-web-applications.html#cb447-5"></a>    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb447-6"><a href="section-shiny-web-applications.html#cb447-6"></a>                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</span>
+<span id="cb447-7"><a href="section-shiny-web-applications.html#cb447-7"></a>  })</span>
+<span id="cb447-8"><a href="section-shiny-web-applications.html#cb447-8"></a>  </span>
+<span id="cb447-9"><a href="section-shiny-web-applications.html#cb447-9"></a>  conv &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb447-10"><a href="section-shiny-web-applications.html#cb447-10"></a>    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb447-11"><a href="section-shiny-web-applications.html#cb447-11"></a>             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)</span>
+<span id="cb447-12"><a href="section-shiny-web-applications.html#cb447-12"></a>  })</span>
+<span id="cb447-13"><a href="section-shiny-web-applications.html#cb447-13"></a>  </span>
+<span id="cb447-14"><a href="section-shiny-web-applications.html#cb447-14"></a>  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb447-15"><a href="section-shiny-web-applications.html#cb447-15"></a>    <span class="kw">plot</span>(<span class="kw">cast</span>())</span>
+<span id="cb447-16"><a href="section-shiny-web-applications.html#cb447-16"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb447-17"><a href="section-shiny-web-applications.html#cb447-17"></a>  </span>
+<span id="cb447-18"><a href="section-shiny-web-applications.html#cb447-18"></a>  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb447-19"><a href="section-shiny-web-applications.html#cb447-19"></a>    <span class="kw">conv</span>()</span>
+<span id="cb447-20"><a href="section-shiny-web-applications.html#cb447-20"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb447-21"><a href="section-shiny-web-applications.html#cb447-21"></a>}</span></code></pre></div>
+<p>and when reloading the app you should now see on the second tab:</p>
+<center>
+<img src="images/shiny_server_part2.png" />
+</center>
+<p>Our next step is now to update the seed every time the “action” button is pushed. To do so, we will first need to add an additional input to the <code>server</code> function called <code>session</code> which will allow us to <strong>dynamically</strong> update the input directly from the <code>server</code> function. Therefore, in order to randomly generate a new seed each time the user clicks on the “action” button, we can do the following:</p>
+<div class="sourceCode" id="section-cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="section-shiny-web-applications.html#cb448-1"></a><span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{</span>
+<span id="cb448-2"><a href="section-shiny-web-applications.html#cb448-2"></a>    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, </span>
+<span id="cb448-3"><a href="section-shiny-web-applications.html#cb448-3"></a>                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))</span>
+<span id="cb448-4"><a href="section-shiny-web-applications.html#cb448-4"></a>})</span></code></pre></div>
+<p>Therefore, your final <code>server</code> function is now:</p>
+<div class="sourceCode" id="section-cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="section-shiny-web-applications.html#cb449-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</span>
+<span id="cb449-2"><a href="section-shiny-web-applications.html#cb449-2"></a>  </span>
+<span id="cb449-3"><a href="section-shiny-web-applications.html#cb449-3"></a>  <span class="kw">observeEvent</span>(input<span class="op">$</span>cast,{</span>
+<span id="cb449-4"><a href="section-shiny-web-applications.html#cb449-4"></a>    <span class="kw">updateNumericInput</span>(session, <span class="st">&quot;seed&quot;</span>, </span>
+<span id="cb449-5"><a href="section-shiny-web-applications.html#cb449-5"></a>                       <span class="dt">value =</span> <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)))</span>
+<span id="cb449-6"><a href="section-shiny-web-applications.html#cb449-6"></a>  })</span>
+<span id="cb449-7"><a href="section-shiny-web-applications.html#cb449-7"></a>  </span>
+<span id="cb449-8"><a href="section-shiny-web-applications.html#cb449-8"></a>  <span class="co"># Fling some needles!</span></span>
+<span id="cb449-9"><a href="section-shiny-web-applications.html#cb449-9"></a>  cast =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb449-10"><a href="section-shiny-web-applications.html#cb449-10"></a>    <span class="kw">buffon_experiment</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb449-11"><a href="section-shiny-web-applications.html#cb449-11"></a>                      <span class="dt">seed =</span> input<span class="op">$</span>seed)</span>
+<span id="cb449-12"><a href="section-shiny-web-applications.html#cb449-12"></a>  })</span>
+<span id="cb449-13"><a href="section-shiny-web-applications.html#cb449-13"></a>  </span>
+<span id="cb449-14"><a href="section-shiny-web-applications.html#cb449-14"></a>  conv =<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>cast, {</span>
+<span id="cb449-15"><a href="section-shiny-web-applications.html#cb449-15"></a>    <span class="kw">converge</span>(<span class="dt">B =</span> input<span class="op">$</span>B, <span class="dt">plane_width =</span> input<span class="op">$</span>plane, </span>
+<span id="cb449-16"><a href="section-shiny-web-applications.html#cb449-16"></a>             <span class="dt">seed =</span> input<span class="op">$</span>seed, <span class="dt">M =</span> input<span class="op">$</span>M)</span>
+<span id="cb449-17"><a href="section-shiny-web-applications.html#cb449-17"></a>  })</span>
+<span id="cb449-18"><a href="section-shiny-web-applications.html#cb449-18"></a>  </span>
+<span id="cb449-19"><a href="section-shiny-web-applications.html#cb449-19"></a>  output<span class="op">$</span>exp &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb449-20"><a href="section-shiny-web-applications.html#cb449-20"></a>    <span class="kw">plot</span>(<span class="kw">cast</span>())</span>
+<span id="cb449-21"><a href="section-shiny-web-applications.html#cb449-21"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb449-22"><a href="section-shiny-web-applications.html#cb449-22"></a>  </span>
+<span id="cb449-23"><a href="section-shiny-web-applications.html#cb449-23"></a>  output<span class="op">$</span>conv &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb449-24"><a href="section-shiny-web-applications.html#cb449-24"></a>    <span class="kw">conv</span>()</span>
+<span id="cb449-25"><a href="section-shiny-web-applications.html#cb449-25"></a>  }, <span class="dt">height =</span> <span class="dv">620</span>)</span>
+<span id="cb449-26"><a href="section-shiny-web-applications.html#cb449-26"></a>}</span></code></pre></div>
+<p>With this change, you will now observe that the seed is updated each time the “action” button is clicked. The final version of the app we have just created can be found <a href="http://shiny.science.psu.edu/szg279/buffon/">here</a>.</p>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#hideclass1").hide();
+    $("#hideclass2").hide();
+    $("#hidebutton1").click(function(){
+      $("#hideclass1").toggle();
+    });
+    $("#hidebutton2").click(function(){
+      $("#hideclass2").toggle();
+    });
+</script>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-r-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-shiny.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds.pdf", "ds.dvi", "ds.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
