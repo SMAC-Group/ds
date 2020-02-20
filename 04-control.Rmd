@@ -699,7 +699,7 @@ Thus, it is easy to see that the rate of convergence of $\widehat{\operatorname{
 
 ### Implementation
 
-The function `mc_int()`, which is available in the `stat297` package, implements the above method. This functions has four inputs:
+The function `mc_int()`, which is available in the `introDS` package, implements the above method. This functions has four inputs:
 
 - `x_range`: A vector containing the integration domain, i.e. $a$ and $b$,
 - `fun`: A string containing the function you wish to integrate where $x$ is used to indicate the variable of integration,
@@ -715,7 +715,7 @@ For example, if you want to estimate
 using $10^4$ Monte-Carlo replications, you can use the following command:
 
 ```{r}
-library(stat297)
+library(introDS)
 mc_int(x_range = c(1,3), fun = "exp(sin(x))/x", B = 10^5)
 ```
 

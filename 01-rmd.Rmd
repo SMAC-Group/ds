@@ -22,10 +22,10 @@ We have created a framework application that you can use to test out different R
 
 ```{r, eval = FALSE}
 # RMarkdown Web
-stat297::runShiny('rmd')
+introDS::runShiny('rmd')
 
 # RMarkdown Mobile
-stat297::runShiny('rmd_mini')
+introDS::runShiny('rmd_mini')
 ```
 
 Then a shiny app window will pop out for you to access the application like the following:
