@@ -1254,7 +1254,7 @@ library(ggmap)
 register_google(key = "AIzaSyC94oaWm17jLECQfbcCCVylkIZ1m1WveU4") # private!
 ```
 
-```{r, message = FALSE, cache = TRUE}
+```{r, message = FALSE, cache = TRUE, eval = FALSE}
 library(ggmap)
 birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland", "Belgrade, Serbia", "Basel, Switzerland")
 birth_coord <- geocode(birth_place, source = "google")
@@ -1262,7 +1262,7 @@ birth_coord <- geocode(birth_place, source = "google")
 
 Furthermore, we can create new columns of dataframes using vectors that we created before. 
 
-```{r}
+```{r,  eval = FALSE}
 birth_coord$Players <- players
 birth_coord$GS <- grand_slam_win
 birth_coord

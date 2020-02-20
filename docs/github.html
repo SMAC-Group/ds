@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 GitHub | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 GitHub | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2019-09-30" />
+<meta name="date" content="2020-02-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -61,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -349,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.2</span> Git and GitHub</h2>
 <p>Importantly, adding Git(Hub) to your workflow doesn’t <em>necessarily</em> change that much of your workflow. In fact, for many RStudio users who have properly configured RStudio and Git, the vast majority of your version control workflow can happen entirely within a convenient the RStudio interface. We’ll discuss specific details, but it’s sufficient to note the “Git” tab shown in the upper right pane of the RStudio window shown.</p>
 <center>
-<img src="images/RStudio-Git.png" alt="Git functionality shown within the RStudio environment (top right)" />
+<img src="images/RStudio-Git.png" title="fig:" alt="Git functionality shown within the RStudio environment (top right)" />
 </center>
 <p>The latter uses the Git platform and stores local files into a flexible folder called a “repository”.</p>
 <p>Git(Hub) uses <em>repositories</em> to organize your work. If you like, you can store a bunch of files in a repository (or Repo) on the GitHub remote servers and delete them from your computer entirely. You can replace the files with new versions or even edit some specific types of files right from the GitHub webpage. When you are ready to get them back, you could simply locate the files through your GitHub account and retrieve them.</p>
@@ -368,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>which git
 git --version</code></pre>
 <center>
-<img src="images/Terminal.png" alt="Terminal Window in RStudio" />
+<img src="images/Terminal.png" title="fig:" alt="Terminal Window in RStudio" />
 </center>
 <p>If git is installed, the result will indicate a where the software is located and the version you have available. If Git has not yet been installed, go to the <a href="https://git-scm.com/downloads">website</a> and select the version which is compatible with the OS of your computer (e.g. Windows/Mac/Linux/Solaris). Again, for additional support corresponding to various operating systems see <a href="https://happygitwithr.com/install-git.html" class="uri">https://happygitwithr.com/install-git.html</a>.</p>
 </div>
@@ -394,21 +399,21 @@ Since your profile will be public, it’s a good idea to choose a username that 
 
 <p>Once you have a GitHub profile, log in and create a Repo for your project (or navigate to an existing Repo). Make sure you check the box to “initialize this repository with a README.” <em>It’s generally a good idea to always initialize new Repos with a README unless you have a specific reason not to do so.</em> Then, click the green button “Clone or Download” and copy the URL as shown here.</p>
 <center>
-<img src="images/Repo.png" alt="Fig. Cloning a repo" />
+<img src="images/Repo.png" title="fig:" alt="Fig. Cloning a repo" />
 </center>
 </div>
 <div id="connecting-to-rstudio" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Connecting to RStudio</h3>
 <p>With the URL of your GitHub Repo still copied to your clipboard, go to RStudio and initate a new “Project.” You can either navigate the menus in RStudio (RStudio &gt;&gt; File &gt;&gt; New Project) or use the “Project” navigation feature in the upper right of the RStudio window a shown.</p>
 <center>
-<img src="images/RStudio%20Projects.png" alt="RStudio &gt;&gt; “New Project”" />
+<img src="images/RStudio%20Projects.png" title="fig:" alt="RStudio &gt;&gt; “New Project”" />
 </center>
 <p>Next, RStudio will prompt you with a dialogue box to configure the new project. Select “Version Control” and then “Git” on the following screen as shown.</p>
 <center>
-<img src="images/VC.png" alt="RStudio &gt;&gt; New Project &gt;&gt; “Version Control”" />
+<img src="images/VC.png" title="fig:" alt="RStudio &gt;&gt; New Project &gt;&gt; “Version Control”" />
 </center>
 <center>
-<img src="images/Git.png" alt="Fig. New Project &gt;&gt; Version Control &gt;&gt; “Git”" />
+<img src="images/Git.png" title="fig:" alt="Fig. New Project &gt;&gt; Version Control &gt;&gt; “Git”" />
 </center>
 <p>Remember when you copied the URL for your Repo from GitHub? If not, go copy it again and we’ll paste it into the line “Repository URL” in order to “Clone” the Git Repository to a file directory (i.e. folder) on your computer as shown.</p>
 <ul>
@@ -417,7 +422,7 @@ Since your profile will be public, it’s a good idea to choose a username that 
 <li>“Create Project as a Subdirectory Of”: This is the location on <strong>your computer</strong> for the new folder. For example, you may want to make a folder on your computer for each class and then put this Repo (and others for the class) together in that directory location.</li>
 </ul>
 <center>
-<img src="images/Dir.png" alt="Clone Repository to Local directory" />
+<img src="images/Dir.png" title="fig:" alt="Clone Repository to Local directory" />
 </center>
 <p></br></p>
 <p>You’re <em>in</em>! (hopefully)…</p>
@@ -456,7 +461,7 @@ Since your profile will be public, it’s a good idea to choose a username that 
 <li><em>When you want to preserve a <strong>snapshot</strong> of your project, you make a “commit.”</em> This is the first new bit.</li>
 </ol>
 <p>A commit is quite literally a snapshot of the state of your whole project (e.g., file directory), like a photograph. One you take a photograph, you have an exact picture of precisely how things looked at that moment in time. You should make commits frequently as you make progress with your work.<br />
-When you want to make a commit using the RStudio interface, you simply select a small checkbox next to the files that you want to include in the snapshot. This is called “staging” files for the commit. Then, when you click the “commit button, a new window will open that will attempt to summarize all the differences between the new file and the previous version. This is called the”diff.&quot;</p>
+When you want to make a commit using the RStudio interface, you simply select a small checkbox next to the files that you want to include in the snapshot. This is called “staging” files for the commit. Then, when you click the “commit button, a new window will open that will attempt to summarize all the differences between the new file and the previous version. This is called the”diff."</p>
 <p>In order to complete each commit, you must include a commit message. It’s a good idea to write informative commit messages, and Git will even force you to write <em>something</em> before executing the commit. Remember when we described version control as a sort of time machine? You will probably be the one reading through many dozens of commit messages to figure out where to send the time machine… They are also tremendously helpful if you have collaborators on a Repo so you can all keep up with what is changing throughout the project.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <center>
 <img src="images/git_commit.png" />
@@ -562,7 +567,7 @@ When you want to make a commit using the RStudio interface, you simply select a 
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>This scheme is inspired from diagrams by Prof. Bob Rudis and James Balamuta.<a href="github.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>This scheme is inspired from diagrams by Prof. Bob Rudis and James Balamuta.<a href="github.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -576,11 +581,13 @@ When you want to make a commit using the RStudio interface, you simply select a 
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -588,12 +595,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -605,6 +611,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

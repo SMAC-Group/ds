@@ -1273,7 +1273,7 @@ birth_coord <- geocode(birth_place)
 
 Furthermore, we can create new columns of dataframes using vectors that we created before. 
 
-```{r}
+```{r, eval = FALSE}
 birth_coord$Players <- players
 birth_coord$WP <- win_percentage
 birth_coord

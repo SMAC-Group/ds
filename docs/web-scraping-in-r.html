@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Web scraping in R | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Web scraping in R | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2019-09-30" />
+<meta name="date" content="2020-02-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -61,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -358,25 +363,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="workflow" class="section level2">
 <h2><span class="header-section-number">10.5</span> Workflow</h2>
-<p>This workflow is based on two famous works by <span class="citation">Wickham (<a href="#ref-scrap">2014</a><a href="#ref-scrap">b</a>)</span> and <span class="citation">Wickham (<a href="#ref-sg">2019</a>)</span> with a couple of twists.</p>
+<p>This workflow is based on two famous works by <span class="citation">Wickham (<a href="#ref-scrap" role="doc-biblioref">2014</a><a href="#ref-scrap" role="doc-biblioref">b</a>)</span> and <span class="citation">Wickham (<a href="#ref-sg" role="doc-biblioref">2019</a>)</span> with a couple of twists.</p>
 <ol style="list-style-type: decimal">
 <li><p>Make sure that you have no other choice than to scrape. That is, if web resourse has API, then use it instead of scraping.</p></li>
 <li><p>Make sure that scraping is legal and ethical for a given web page. You can inspect a particular subdomain (path) using <code>path_allower</code> from <code>robotstxt</code>:<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;robotstxt&quot;</span>)</a>
-<a class="sourceLine" id="cb486-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb486-3" data-line-number="3"><span class="kw">paths_allowed</span>(</a>
-<a class="sourceLine" id="cb486-4" data-line-number="4">    <span class="dt">path =</span> <span class="st">&quot;/en/real-estate/rent/city-basel&quot;</span>,</a>
-<a class="sourceLine" id="cb486-5" data-line-number="5">    <span class="dt">domain =</span> <span class="st">&quot;https://www.immoscout24.ch/&quot;</span></a>
-<a class="sourceLine" id="cb486-6" data-line-number="6">)</a></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="web-scraping-in-r.html#cb488-1"></a><span class="kw">library</span>(<span class="st">&quot;robotstxt&quot;</span>)</span>
+<span id="cb488-2"><a href="web-scraping-in-r.html#cb488-2"></a></span>
+<span id="cb488-3"><a href="web-scraping-in-r.html#cb488-3"></a><span class="kw">paths_allowed</span>(</span>
+<span id="cb488-4"><a href="web-scraping-in-r.html#cb488-4"></a>    <span class="dt">path =</span> <span class="st">&quot;/en/real-estate/rent/city-basel&quot;</span>,</span>
+<span id="cb488-5"><a href="web-scraping-in-r.html#cb488-5"></a>    <span class="dt">domain =</span> <span class="st">&quot;https://www.immoscout24.ch/&quot;</span></span>
+<span id="cb488-6"><a href="web-scraping-in-r.html#cb488-6"></a>)</span></code></pre></div>
 <p>or manually go through <code>robots.txt</code> of the domain (a function <code>get_robotstxt()</code>):</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb487-1" data-line-number="1"><span class="kw">get_robotstxt</span>(<span class="dt">domain =</span> <span class="st">&quot;https://www.immoscout24.ch/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="web-scraping-in-r.html#cb489-1"></a><span class="kw">get_robotstxt</span>(<span class="dt">domain =</span> <span class="st">&quot;https://www.immoscout24.ch/&quot;</span>)</span></code></pre></div>
 <p>Sometimes <code>R</code> could fail to load this file, and it is a good idea to double check yourself by opening the link to <code>robots.txt</code> at your browser (e.g., manually inspecting <a href="https://www.immoscout24.ch/robots.txt">https://www.immoscout24.ch/robots.txt</a>).</p></li>
 <li><p>Load (fetch) and parse the HTML file by using function <code>read_html()</code> from <code>xml2</code> package:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb488-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;xml2&quot;</span>)</a>
-<a class="sourceLine" id="cb488-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb488-3" data-line-number="3">real_estate &lt;-<span class="st"> </span><span class="kw">read_html</span>(</a>
-<a class="sourceLine" id="cb488-4" data-line-number="4">    <span class="st">&quot;https://www.immoscout24.ch/en/real-estate/rent/city-basel&quot;</span></a>
-<a class="sourceLine" id="cb488-5" data-line-number="5">)</a></code></pre></div></li>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="web-scraping-in-r.html#cb490-1"></a><span class="kw">library</span>(<span class="st">&quot;xml2&quot;</span>)</span>
+<span id="cb490-2"><a href="web-scraping-in-r.html#cb490-2"></a></span>
+<span id="cb490-3"><a href="web-scraping-in-r.html#cb490-3"></a>real_estate &lt;-<span class="st"> </span><span class="kw">read_html</span>(</span>
+<span id="cb490-4"><a href="web-scraping-in-r.html#cb490-4"></a>    <span class="st">&quot;https://www.immoscout24.ch/en/real-estate/rent/city-basel&quot;</span></span>
+<span id="cb490-5"><a href="web-scraping-in-r.html#cb490-5"></a>)</span></code></pre></div></li>
 <li><p>Using <a href="https://selectorgadget.com">selectorgadget</a> define a css element of interest.</p>
 <p>Selectorgadget is a tool in your browser (JavaScript bookmarklet) that uses the idea of back engeneering to determine which css object contains the data you want to extract. Selectorgadget is like a kind librarian who tells you in which section to look for a particular book.</p>
 <p>First off, we need to install it. Depending on your browser you can install a Google Chrome <a href="https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb">extenssion</a> or drag the link from <a href="https://selectorgadget.com">https://selectorgadget.com page</a> to Bookmarks (shown in the picture below).</p>
@@ -399,19 +404,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><img src="images/sg_textbox.png" width="1392" /></p></li>
 <li><p>Extract data from from the web page by using <code>html_nodes()</code> and <code>html_text()</code> from <code>rvest</code>:</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;rvest&quot;</span>)</a>
-<a class="sourceLine" id="cb489-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</a>
-<a class="sourceLine" id="cb489-3" data-line-number="3">flats &lt;-<span class="st"> </span>real_estate <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb489-4" data-line-number="4"><span class="st">    </span><span class="kw">html_nodes</span>(<span class="st">&quot;.chqpnT&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb489-5" data-line-number="5"><span class="st">    </span><span class="kw">html_text</span>()</a></code></pre></div></li>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="web-scraping-in-r.html#cb491-1"></a><span class="kw">library</span>(<span class="st">&quot;rvest&quot;</span>)</span>
+<span id="cb491-2"><a href="web-scraping-in-r.html#cb491-2"></a><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
+<span id="cb491-3"><a href="web-scraping-in-r.html#cb491-3"></a>flats &lt;-<span class="st"> </span>real_estate <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb491-4"><a href="web-scraping-in-r.html#cb491-4"></a><span class="st">    </span><span class="kw">html_nodes</span>(<span class="st">&quot;.chqpnT&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb491-5"><a href="web-scraping-in-r.html#cb491-5"></a><span class="st">    </span><span class="kw">html_text</span>()</span></code></pre></div></li>
 <li><p>(Optional) Clean and tidy the extracted data. For instance, we use regex to get the number of rooms and the prices in the following code chunk:</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">flats_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb490-2" data-line-number="2">  <span class="dt">rooms =</span> <span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot; room.*&quot;</span>, <span class="st">&quot;&quot;</span>, flats) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb490-3" data-line-number="3"><span class="st">    </span><span class="kw">as.numeric</span>(),</a>
-<a class="sourceLine" id="cb490-4" data-line-number="4">  <span class="dt">price =</span> <span class="kw">gsub</span>(<span class="st">&quot;.*CHF |.—.*&quot;</span>, <span class="st">&quot;&quot;</span>, flats) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb490-5" data-line-number="5"><span class="st">    </span><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb490-6" data-line-number="6"><span class="st">    </span><span class="kw">as.numeric</span>()</a>
-<a class="sourceLine" id="cb490-7" data-line-number="7">)</a></code></pre></div></li>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="web-scraping-in-r.html#cb492-1"></a>flats_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb492-2"><a href="web-scraping-in-r.html#cb492-2"></a>  <span class="dt">rooms =</span> <span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot; room.*&quot;</span>, <span class="st">&quot;&quot;</span>, flats) <span class="op">%&gt;%</span></span>
+<span id="cb492-3"><a href="web-scraping-in-r.html#cb492-3"></a><span class="st">    </span><span class="kw">as.numeric</span>(),</span>
+<span id="cb492-4"><a href="web-scraping-in-r.html#cb492-4"></a>  <span class="dt">price =</span> <span class="kw">gsub</span>(<span class="st">&quot;.*CHF |.—.*&quot;</span>, <span class="st">&quot;&quot;</span>, flats) <span class="op">%&gt;%</span></span>
+<span id="cb492-5"><a href="web-scraping-in-r.html#cb492-5"></a><span class="st">    </span><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb492-6"><a href="web-scraping-in-r.html#cb492-6"></a><span class="st">    </span><span class="kw">as.numeric</span>()</span>
+<span id="cb492-7"><a href="web-scraping-in-r.html#cb492-7"></a>)</span></code></pre></div></li>
 </ol>
 <p>As the conclusion, the web scraping is a very powerful tool for extracting data. However, it comes with a certain responsibility.</p>
 
@@ -429,12 +434,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="footnotes">
 <hr />
 <ol start="3">
-<li id="fn3"><p><a href="https://en.wikipedia.org/wiki/Chasselas">Chasselas or Chasselas blanc is a wine grape variety grown mostly in Switzerland.</a><a href="web-scraping-in-r.html#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p><a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-denial-of-service-attack-dos">What is a denial-of-serive attack (DoS)?</a><a href="web-scraping-in-r.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p><a href="https://benbernardblog.com/web-scraping-and-crawling-are-perfectly-legal-right/">Web Scraping and Crawling Are Perfectly Legal, Right?</a><a href="web-scraping-in-r.html#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6"><p><a href="http://www.prowebscraper.com/blog/six-compelling-facts-about-legality-of-web-scraping/">Six Compelling Facts about Legality of Web Scraping</a><a href="web-scraping-in-r.html#fnref6" class="footnote-back">↩</a></p></li>
-<li id="fn7"><p><a href="https://www.scrapehero.com/how-to-prevent-getting-blacklisted-while-scraping/">How to prevent getting blacklisted while scraping</a><a href="web-scraping-in-r.html#fnref7" class="footnote-back">↩</a></p></li>
-<li id="fn8"><p><a href="https://www.r-bloggers.com/scraping-responsibly-with-r/">Scraping Responsibly with R</a><a href="web-scraping-in-r.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p><a href="https://en.wikipedia.org/wiki/Chasselas">Chasselas or Chasselas blanc is a wine grape variety grown mostly in Switzerland.</a><a href="web-scraping-in-r.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-denial-of-service-attack-dos">What is a denial-of-serive attack (DoS)?</a><a href="web-scraping-in-r.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://benbernardblog.com/web-scraping-and-crawling-are-perfectly-legal-right/">Web Scraping and Crawling Are Perfectly Legal, Right?</a><a href="web-scraping-in-r.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="http://www.prowebscraper.com/blog/six-compelling-facts-about-legality-of-web-scraping/">Six Compelling Facts about Legality of Web Scraping</a><a href="web-scraping-in-r.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://www.scrapehero.com/how-to-prevent-getting-blacklisted-while-scraping/">How to prevent getting blacklisted while scraping</a><a href="web-scraping-in-r.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://www.r-bloggers.com/scraping-responsibly-with-r/">Scraping Responsibly with R</a><a href="web-scraping-in-r.html#fnref8" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -448,11 +453,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -460,12 +467,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -477,6 +483,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
