@@ -32,10 +32,6 @@ introDS::runShiny('rmd')
 introDS::runShiny('rmd_mini')
 ```
 
-```{r, echo = FALSE}
-knitr::include_url("https://dal-unige.shinyapps.io/rmd_mobile_app/")
-```
-
 Then a shiny app window will pop out for you to access the application like the following:
 
 <center>![Screenshot of RMarkdown Shiny App Main Page](images/rmd_shiny_mainpage.png)</center>
@@ -59,6 +55,13 @@ The above code generates the following output:
 <center>![Screenshot of RMarkdown Shiny App Illustration: Code and Emoji Output](images/rmd_illustration4.png)</center>
 
 Now you are ready to experiment different RMarkdown functions and test the corresponding outputs! `r emo::ji('wink')`
+
+You can access either to the web or mobile Rmarkdown app respectively [here](https://dal-unige.shinyapps.io/rmd_app/) and [here](https://dal-unige.shinyapps.io/rmd_mobile_app/). Also, the mobile version of the app is embedded below:
+
+```{r, echo = FALSE}
+knitr::include_url("https://dal-unige.shinyapps.io/rmd_mobile_app/")
+```
+
 
 ## Create an R Markdown file in RStudio
 
