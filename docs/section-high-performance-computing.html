@@ -741,9 +741,9 @@ In R, you can write</p>
 <pre><code>## Warning: package &#39;microbenchmark&#39; was built under R version 3.6.2</code></pre>
 <div class="sourceCode" id="section-cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="section-high-performance-computing.html#cb481-1"></a><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                expr    min      lq     mean median     uq    max neval
-##  my_factorialR(500) 11.401 11.6010 11.89200 11.701 12.000 16.401   100
-##  my_factorialC(500)  1.500  1.6015  2.36396  1.702  2.201 16.901   100</code></pre>
+##                expr    min     lq     mean median     uq    max neval
+##  my_factorialR(500) 11.501 11.802 12.09297 11.901 12.002 23.200   100
+##  my_factorialC(500)  1.500  1.601  2.25100  1.701  2.000 15.501   100</code></pre>
 <p>It is clear that the computational performance is considerably different.</p>
 </div>
 <div id="section-example-buffons-needle-cont" class="section level3">
