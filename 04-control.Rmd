@@ -603,6 +603,8 @@ Such processes inspired Karl Pearson's famous quote that
 > "*the most likely place to find a drunken walker is somewhere near his starting point.*"
 > 
 
+![A 3D example of a Random Walk](images/rw3.gif)
+
 Empirical evidence of this phenomenon is not too hard to find on a Friday night. 
 
 ## Example: Monte-Carlo Integration
