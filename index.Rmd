@@ -165,7 +165,7 @@ Once this is done, all the functions and documentation of this package are avail
 Please notice that although packages need to be loaded at each session if you want to use them, they need to be installed only once. The only exception to this rule is when you need to update the package or reinstall it for some reason.
 ```
 
-One of the main packages that is required for this class would be our STAT 297 package, that contains all the necessary packages and functions that will be utilized in this book. Run the following code to install the package directly from GitHub. 
+One of the main packages that is required for this class would be our introDS package, that contains all the necessary packages and functions that will be utilized in this book. Run the following code to install the package directly from GitHub. 
 
 ```{r, eval = FALSE}
 install_github("SMAC-Group/introDS")
