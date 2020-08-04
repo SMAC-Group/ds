@@ -24,7 +24,7 @@ runtime: shiny
 
 This book is an early version of an ongoing project to equip students with the basic knowledge to master "statistical programming" with R. 
 
-The statistical software `R` has come into prominence due to its flexibility as an efficient language that builds a bridge between software development and data analysis. For example, one strength of `R` is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions. This book intends to present an approachable framework to statistical programming and software development using the wide variety of tools made available through `R`, from method-specific packages to version control programs. The general goals of the book are therefore the following:
+The statistical software `R` has come into prominence due to its flexibility as an efficient language that builds a bridge between software development and data analysis. For example, one strength of `R` is the ease with which one can develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions. This book intends to present an approachable framework to statistical programming and software development using the wide variety of tools made available through `R`, from method-specific packages to version control programs. The general goals of the book are therefore the following:
 
 * introduce tools and workflow for reproducible research (R/RStudio, Git/GitHub, etc.); 
 * introduce principles of tidy data and tools for data wrangling; 
