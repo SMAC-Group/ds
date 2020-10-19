@@ -1,4 +1,4 @@
-# Web scraping in `R`
+# Web scraping
 
 Imagine: you are invited to your significant one's parents' place for dinner. You know that his/her father is a big fan of Swiss wine and you can exploit this fact to make a good impression. You are not an expert of wine though, but you can "show off" with your data science skills and build a story around Chasselas grapes.^[[Chasselas or Chasselas blanc is a wine grape variety grown mostly in Switzerland.](https://en.wikipedia.org/wiki/Chasselas)] After an intense googling you realize that the desired dataset simply does not exist, and therefore, you have to collect it by yourself. You find a nice app Vivino, which is a great representative of the recent trends in wine. But how to get the data?
 

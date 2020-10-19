@@ -181,11 +181,11 @@ knitr::include_url("https://www.youtube.com/embed/0zlWcHDKCFw")
 
 ## Example: Buffon's needle
 
-In 1777, the French nobleman Georges-Louis Leclerc, Compte de Buffon (Count of Buffon) posed the following problem to the Royal Academy of Sciences in Paris [@buffon1777essai]:
+In 1777, the French nobleman Georges-Louis Leclerc, Comte de Buffon (Count of Buffon) posed the following problem to the Royal Academy of Sciences in Paris [@buffon1777essai]:
 
 > Suppose that you drop a needle of unit length on a plane ruled by the lines $y = m \; (m = 0, \pm 1, \pm 2, ...)$ - what is then the probability that the needle comes to lie in a position where it crosses one of the lines?
 
-Compte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows:
+Comte de Buffon also provided the answer and showed that the needle will intersect lines with a predictable probability. In mathematical terms, his solution (still known today as the Buffon principle) can be stated as follows:
 
 \begin{equation} 
 \mathbb{P}(\text{intersection}) = \frac{2}{\pi}.

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 High performance computing | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 High performance computing | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-r-packages.html"/>
-<link rel="next" href="section-web-scraping-in-r.html"/>
+<link rel="next" href="section-web-scraping.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,21 +50,21 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
 <li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
 <li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
-<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+<li class="chapter" data-level="2.3.10" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
 <li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+<li class="chapter" data-level="3.5" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
-<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
 <li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
 <li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
 <li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
 <li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Extending</b></span></li>
 <li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
 <li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
 <li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
 <li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
 <li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
-<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.7" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
 <li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
@@ -285,22 +285,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
 <li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
 <li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
-<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-functions.html"><a href="section-functions.html#section-functions"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
 <li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
-<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
-<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
-<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
-<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
-<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping.html"><a href="section-web-scraping.html"><i class="fa fa-check"></i><b>10</b> Web scraping</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html"><i class="fa fa-check"></i><b>11</b> Blogdown: websites and blogs creation</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-static-website-overview"><i class="fa fa-check"></i><b>11.1</b> Static website overview</a></li>
+<li class="chapter" data-level="11.2" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-getting-started"><i class="fa fa-check"></i><b>11.2</b> Getting started</a></li>
+<li class="chapter" data-level="11.3" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-choosing-a-theme"><i class="fa fa-check"></i><b>11.3</b> Choosing a theme</a></li>
+<li class="chapter" data-level="11.4" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-rendering-the-website"><i class="fa fa-check"></i><b>11.4</b> Rendering the website</a></li>
+<li class="chapter" data-level="11.5" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-creating-content"><i class="fa fa-check"></i><b>11.5</b> Creating content</a></li>
+<li class="chapter" data-level="11.6" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-website-structure-and-content-organization"><i class="fa fa-check"></i><b>11.6</b> Website structure and content organization</a></li>
+<li class="chapter" data-level="11.7" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-customizing-the-theme"><i class="fa fa-check"></i><b>11.7</b> Customizing the theme</a></li>
+<li class="chapter" data-level="11.8" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-deployment"><i class="fa fa-check"></i><b>11.8</b> Deployment</a></li>
+<li class="chapter" data-level="11.9" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-see-also"><i class="fa fa-check"></i><b>11.9</b> See also</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="A" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="B" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -349,24 +360,24 @@ approaches that compile <em>just in time</em> (at runtime) such as the <a href="
 <p>Working with C++ in R does not come “out of the box”, but it is nevertheless a well handled procedure due to the latest contributions to R. In order to make use of these tools, you basically need two elements: a C++ compiler and a
 program that permits to connect R and C++. For the latter, you need to install
 the <code>Rcpp</code> package:</p>
-<div class="sourceCode" id="section-cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="section-high-performance-computing.html#cb456-1"></a><span class="co"># For CRAN official release</span></span>
-<span id="cb456-2"><a href="section-high-performance-computing.html#cb456-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;Rcpp&quot;</span>)</span>
-<span id="cb456-3"><a href="section-high-performance-computing.html#cb456-3"></a></span>
-<span id="cb456-4"><a href="section-high-performance-computing.html#cb456-4"></a><span class="co"># For development version</span></span>
-<span id="cb456-5"><a href="section-high-performance-computing.html#cb456-5"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;RcppCore/Rcpp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="section-high-performance-computing.html#cb454-1"></a><span class="co"># For CRAN official release</span></span>
+<span id="cb454-2"><a href="section-high-performance-computing.html#cb454-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;Rcpp&quot;</span>)</span>
+<span id="cb454-3"><a href="section-high-performance-computing.html#cb454-3"></a></span>
+<span id="cb454-4"><a href="section-high-performance-computing.html#cb454-4"></a><span class="co"># For development version</span></span>
+<span id="cb454-5"><a href="section-high-performance-computing.html#cb454-5"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;RcppCore/Rcpp&quot;</span>)</span></code></pre></div>
 <p>For the former, it depends on your OS:<br />
 1. On Windows, install <code>RTools</code>.<br />
 2. On Mac, install <code>Xcode</code> from the App Store.<br />
 3. On Linux, you need to install <code>r-bas-dev</code> (or similar) from
 your package manager.</p>
 <p>Verify that your installation works by running:</p>
-<div class="sourceCode" id="section-cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="section-high-performance-computing.html#cb457-1"></a><span class="kw">require</span>(Rcpp)</span>
-<span id="cb457-2"><a href="section-high-performance-computing.html#cb457-2"></a><span class="kw">cppFunction</span>(<span class="st">&quot;double sumC(double x, double y){</span></span>
-<span id="cb457-3"><a href="section-high-performance-computing.html#cb457-3"></a><span class="st">  double s;</span></span>
-<span id="cb457-4"><a href="section-high-performance-computing.html#cb457-4"></a><span class="st">  s = x + y;</span></span>
-<span id="cb457-5"><a href="section-high-performance-computing.html#cb457-5"></a><span class="st">  return s;</span></span>
-<span id="cb457-6"><a href="section-high-performance-computing.html#cb457-6"></a><span class="st">} &quot;</span>)</span>
-<span id="cb457-7"><a href="section-high-performance-computing.html#cb457-7"></a><span class="kw">sumC</span>(<span class="fl">3.5</span>, <span class="fl">6.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="section-high-performance-computing.html#cb455-1"></a><span class="kw">require</span>(Rcpp)</span>
+<span id="cb455-2"><a href="section-high-performance-computing.html#cb455-2"></a><span class="kw">cppFunction</span>(<span class="st">&quot;double sumC(double x, double y){</span></span>
+<span id="cb455-3"><a href="section-high-performance-computing.html#cb455-3"></a><span class="st">  double s;</span></span>
+<span id="cb455-4"><a href="section-high-performance-computing.html#cb455-4"></a><span class="st">  s = x + y;</span></span>
+<span id="cb455-5"><a href="section-high-performance-computing.html#cb455-5"></a><span class="st">  return s;</span></span>
+<span id="cb455-6"><a href="section-high-performance-computing.html#cb455-6"></a><span class="st">} &quot;</span>)</span>
+<span id="cb455-7"><a href="section-high-performance-computing.html#cb455-7"></a><span class="kw">sumC</span>(<span class="fl">3.5</span>, <span class="fl">6.5</span>)</span></code></pre></div>
 
 <div class="rmdcaution">
 In C++, a line of code must end with a semicolon <code>;</code> ottherwise the compiler will return an error.
@@ -374,9 +385,9 @@ In C++, a line of code must end with a semicolon <code>;</code> ottherwise the c
 
 <p>The function <code>sumC(x,y)</code> takes two doubles (numeric) values (<code>x</code> and <code>y</code>)
 and returns a double (the sum of the two values). Can you predict what happens if you run the following lines? Can you explain why?</p>
-<div class="sourceCode" id="section-cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="section-high-performance-computing.html#cb458-1"></a><span class="kw">sumC</span>(3L, 6L)</span>
-<span id="cb458-2"><a href="section-high-performance-computing.html#cb458-2"></a><span class="kw">sumC</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</span>
-<span id="cb458-3"><a href="section-high-performance-computing.html#cb458-3"></a><span class="kw">sumC</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="section-high-performance-computing.html#cb456-1"></a><span class="kw">sumC</span>(3L, 6L)</span>
+<span id="cb456-2"><a href="section-high-performance-computing.html#cb456-2"></a><span class="kw">sumC</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</span>
+<span id="cb456-3"><a href="section-high-performance-computing.html#cb456-3"></a><span class="kw">sumC</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>))</span></code></pre></div>
 </div>
 <div id="section-a-first-program" class="section level3">
 <h3><span class="header-section-number">9.1.2</span> A first program</h3>
@@ -385,8 +396,8 @@ However, it is a better practice to create a separate file dedicated to C++ func
 It is possible then to compile your C++ functions and call them within R.</p>
 <p>In RStudio, you can create a C++ file by clicking on <em>File</em> &gt; <em>New File</em> &gt; <em>C++ File</em>.
 RStudio provides you with an example. At the top of C++ file, you should see:</p>
-<div class="sourceCode" id="section-cb459"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb459-1"><a href="section-high-performance-computing.html#cb459-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb459-2"><a href="section-high-performance-computing.html#cb459-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span></code></pre></div>
+<div class="sourceCode" id="section-cb457"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb457-1"><a href="section-high-performance-computing.html#cb457-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb457-2"><a href="section-high-performance-computing.html#cb457-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span></code></pre></div>
 <p>The first line tells your program that you can access functionalities from the <code>Rcpp</code> library.
 The second line tells your program that you can access those functionalities without specifying/loading
 the <code>Rcpp</code> library. For example, suppose there is function <code>mean()</code> in <code>Rcpp</code>.
@@ -395,23 +406,23 @@ Adding the second line allows you to directly write <code>mean()</code> in your 
 This is somehow equivalent to using <code>library(Rcpp)</code> in your R code.</p>
 <p>Once the C++ code is written, it should be saved with the appropriate extension which is either
 <code>*.cc</code> or <code>*.cpp</code>. Now you can compile your first C++ program and for this type the following command in your R file:</p>
-<div class="sourceCode" id="section-cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="section-high-performance-computing.html#cb460-1"></a><span class="kw">sourceCpp</span>(<span class="st">&quot;file_name.cpp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="section-high-performance-computing.html#cb458-1"></a><span class="kw">sourceCpp</span>(<span class="st">&quot;file_name.cpp&quot;</span>)</span></code></pre></div>
 <p>To test this, try to write the <code>sumC()</code> function within a separate C++ file and compile it in R.</p>
 <p>By default, C++ functions are not accessible within your R program.
 One key element is to use the attribute <code>[[Rcpp::export]]</code> in comment
 <strong>just before the function definition</strong>. For example, the separate C++ file could look something like this:</p>
-<div class="sourceCode" id="section-cb461"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb461-1"><a href="section-high-performance-computing.html#cb461-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb461-2"><a href="section-high-performance-computing.html#cb461-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span>
-<span id="cb461-3"><a href="section-high-performance-computing.html#cb461-3"></a></span>
-<span id="cb461-4"><a href="section-high-performance-computing.html#cb461-4"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb461-5"><a href="section-high-performance-computing.html#cb461-5"></a><span class="dt">double</span> sumC(</span>
-<span id="cb461-6"><a href="section-high-performance-computing.html#cb461-6"></a>    <span class="dt">double</span> x,</span>
-<span id="cb461-7"><a href="section-high-performance-computing.html#cb461-7"></a>    <span class="dt">double</span> y</span>
-<span id="cb461-8"><a href="section-high-performance-computing.html#cb461-8"></a>) {</span>
-<span id="cb461-9"><a href="section-high-performance-computing.html#cb461-9"></a>  <span class="dt">double</span> s;</span>
-<span id="cb461-10"><a href="section-high-performance-computing.html#cb461-10"></a>  s = x + y;</span>
-<span id="cb461-11"><a href="section-high-performance-computing.html#cb461-11"></a>  <span class="cf">return</span> s;</span>
-<span id="cb461-12"><a href="section-high-performance-computing.html#cb461-12"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb459"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb459-1"><a href="section-high-performance-computing.html#cb459-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb459-2"><a href="section-high-performance-computing.html#cb459-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span>
+<span id="cb459-3"><a href="section-high-performance-computing.html#cb459-3"></a></span>
+<span id="cb459-4"><a href="section-high-performance-computing.html#cb459-4"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb459-5"><a href="section-high-performance-computing.html#cb459-5"></a><span class="dt">double</span> sumC(</span>
+<span id="cb459-6"><a href="section-high-performance-computing.html#cb459-6"></a>    <span class="dt">double</span> x,</span>
+<span id="cb459-7"><a href="section-high-performance-computing.html#cb459-7"></a>    <span class="dt">double</span> y</span>
+<span id="cb459-8"><a href="section-high-performance-computing.html#cb459-8"></a>) {</span>
+<span id="cb459-9"><a href="section-high-performance-computing.html#cb459-9"></a>  <span class="dt">double</span> s;</span>
+<span id="cb459-10"><a href="section-high-performance-computing.html#cb459-10"></a>  s = x + y;</span>
+<span id="cb459-11"><a href="section-high-performance-computing.html#cb459-11"></a>  <span class="cf">return</span> s;</span>
+<span id="cb459-12"><a href="section-high-performance-computing.html#cb459-12"></a>}</span></code></pre></div>
 
 <div class="rmdnote">
 In C++, the symbol <code>//</code> is used for single line comment. The symbol <code>/*</code> starts a comment
@@ -502,56 +513,56 @@ the transition to C++ easier. Here is a non-exhaustive list:</p>
 </tr>
 </tbody>
 </table>
-<div id="section-vectors-1" class="section level4">
+<div id="section-vectors" class="section level4">
 <h4><span class="header-section-number">9.1.3.1</span> Vectors</h4>
 <p>Before using a vector in C++, you need to create one.
 For example,</p>
-<div class="sourceCode" id="section-cb462"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb462-1"><a href="section-high-performance-computing.html#cb462-1"></a>NumericVector v(<span class="dv">10</span>);</span></code></pre></div>
+<div class="sourceCode" id="section-cb460"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb460-1"><a href="section-high-performance-computing.html#cb460-1"></a>NumericVector v(<span class="dv">10</span>);</span></code></pre></div>
 <p>creates an empty vector of double of length 10.</p>
 <p>To access elements of a vector, the syntax is the same as in R with one notable exception:
 <strong>accessor starts at 0</strong>! So if you want to access the first element of a vector <code>v</code>,
 you should write <code>v[0]</code>, the ith element, <code>v[i-1]</code>. Note that you can equivalently
 write <code>v(0)</code> and <code>v(i-1)</code>.</p>
 <p>The length of the vector <code>v</code> can be obtained as follows</p>
-<div class="sourceCode" id="section-cb463"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb463-1"><a href="section-high-performance-computing.html#cb463-1"></a><span class="dt">int</span> n = v.length();</span></code></pre></div>
+<div class="sourceCode" id="section-cb461"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb461-1"><a href="section-high-performance-computing.html#cb461-1"></a><span class="dt">int</span> n = v.length();</span></code></pre></div>
 <p>Here the length of the vector is saved into an integer <code>n</code>.</p>
 <p>Note that <code>length()</code> is a <em>method</em> for the <em>class</em> <code>NumericVector</code>
 and uses the syntax ‘’dot-function’’. Theses concepts are beyond
 the scope of this introduction and the only aspect to underline is that the above
 notation gives the same result as if you wrote <code>length(v)</code> in R.</p>
 </div>
-<div id="section-matrices-1" class="section level4">
+<div id="section-matrices" class="section level4">
 <h4><span class="header-section-number">9.1.3.2</span> Matrices</h4>
 <p>Creating a matrix is similar to creating a vector. The command</p>
-<div class="sourceCode" id="section-cb464"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb464-1"><a href="section-high-performance-computing.html#cb464-1"></a>NumericMatrix m(<span class="dv">3</span>,<span class="dv">4</span>);</span></code></pre></div>
+<div class="sourceCode" id="section-cb462"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb462-1"><a href="section-high-performance-computing.html#cb462-1"></a>NumericMatrix m(<span class="dv">3</span>,<span class="dv">4</span>);</span></code></pre></div>
 <p>creates an empty matrix with 3 rows and 4 columns.
 This is equivalent to writing the following in R</p>
-<div class="sourceCode" id="section-cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="section-high-performance-computing.html#cb465-1"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nr=</span><span class="dv">3</span>,<span class="dt">nc=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="section-high-performance-computing.html#cb463-1"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nr=</span><span class="dv">3</span>,<span class="dt">nc=</span><span class="dv">4</span>)</span></code></pre></div>
 <p>The syntax for accessing matrix elements is slightly different.
 For example, accessing a column or a row can be done as follows</p>
-<div class="sourceCode" id="section-cb466"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb466-1"><a href="section-high-performance-computing.html#cb466-1"></a><span class="co">// Copy first column into a vector</span></span>
-<span id="cb466-2"><a href="section-high-performance-computing.html#cb466-2"></a>NumericVector v = m( _ , <span class="dv">0</span>);</span>
-<span id="cb466-3"><a href="section-high-performance-computing.html#cb466-3"></a></span>
-<span id="cb466-4"><a href="section-high-performance-computing.html#cb466-4"></a><span class="co">// Copy first row into a vector</span></span>
-<span id="cb466-5"><a href="section-high-performance-computing.html#cb466-5"></a>NumericVector v = m(<span class="dv">0</span>, _);</span>
-<span id="cb466-6"><a href="section-high-performance-computing.html#cb466-6"></a></span>
-<span id="cb466-7"><a href="section-high-performance-computing.html#cb466-7"></a><span class="co">// Access the ith row, jth column</span></span>
-<span id="cb466-8"><a href="section-high-performance-computing.html#cb466-8"></a><span class="dt">double</span> x = m(i-<span class="dv">1</span>, j-<span class="dv">1</span>); <span class="co">// i and j are positive integers already defined</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb464"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb464-1"><a href="section-high-performance-computing.html#cb464-1"></a><span class="co">// Copy first column into a vector</span></span>
+<span id="cb464-2"><a href="section-high-performance-computing.html#cb464-2"></a>NumericVector v = m( _ , <span class="dv">0</span>);</span>
+<span id="cb464-3"><a href="section-high-performance-computing.html#cb464-3"></a></span>
+<span id="cb464-4"><a href="section-high-performance-computing.html#cb464-4"></a><span class="co">// Copy first row into a vector</span></span>
+<span id="cb464-5"><a href="section-high-performance-computing.html#cb464-5"></a>NumericVector v = m(<span class="dv">0</span>, _);</span>
+<span id="cb464-6"><a href="section-high-performance-computing.html#cb464-6"></a></span>
+<span id="cb464-7"><a href="section-high-performance-computing.html#cb464-7"></a><span class="co">// Access the ith row, jth column</span></span>
+<span id="cb464-8"><a href="section-high-performance-computing.html#cb464-8"></a><span class="dt">double</span> x = m(i-<span class="dv">1</span>, j-<span class="dv">1</span>); <span class="co">// i and j are positive integers already defined</span></span></code></pre></div>
 <p>The number of columns/rows of a matrix can be retrieved using</p>
-<div class="sourceCode" id="section-cb467"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb467-1"><a href="section-high-performance-computing.html#cb467-1"></a><span class="co">// number of rows</span></span>
-<span id="cb467-2"><a href="section-high-performance-computing.html#cb467-2"></a><span class="dt">int</span> nr = m.nrow();</span>
-<span id="cb467-3"><a href="section-high-performance-computing.html#cb467-3"></a></span>
-<span id="cb467-4"><a href="section-high-performance-computing.html#cb467-4"></a><span class="co">// number of columns</span></span>
-<span id="cb467-5"><a href="section-high-performance-computing.html#cb467-5"></a><span class="dt">int</span> nc = m.ncol();</span></code></pre></div>
+<div class="sourceCode" id="section-cb465"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb465-1"><a href="section-high-performance-computing.html#cb465-1"></a><span class="co">// number of rows</span></span>
+<span id="cb465-2"><a href="section-high-performance-computing.html#cb465-2"></a><span class="dt">int</span> nr = m.nrow();</span>
+<span id="cb465-3"><a href="section-high-performance-computing.html#cb465-3"></a></span>
+<span id="cb465-4"><a href="section-high-performance-computing.html#cb465-4"></a><span class="co">// number of columns</span></span>
+<span id="cb465-5"><a href="section-high-performance-computing.html#cb465-5"></a><span class="dt">int</span> nc = m.ncol();</span></code></pre></div>
 </div>
-<div id="section-list-1" class="section level4">
+<div id="section-list" class="section level4">
 <h4><span class="header-section-number">9.1.3.3</span> List</h4>
 <p>List creation can be accomplished as follows:</p>
-<div class="sourceCode" id="section-cb468"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb468-1"><a href="section-high-performance-computing.html#cb468-1"></a><span class="co">// Create a list with elements e1 and e2</span></span>
-<span id="cb468-2"><a href="section-high-performance-computing.html#cb468-2"></a>List L = List::create(e1, e2);</span>
-<span id="cb468-3"><a href="section-high-performance-computing.html#cb468-3"></a></span>
-<span id="cb468-4"><a href="section-high-performance-computing.html#cb468-4"></a><span class="co">// Create a list with elements e1 and e2 with names</span></span>
-<span id="cb468-5"><a href="section-high-performance-computing.html#cb468-5"></a>List L = List::create(Named(<span class="st">&quot;name1&quot;</span>) e1, Named(<span class="st">&quot;name2&quot;</span>) e2);</span></code></pre></div>
+<div class="sourceCode" id="section-cb466"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb466-1"><a href="section-high-performance-computing.html#cb466-1"></a><span class="co">// Create a list with elements e1 and e2</span></span>
+<span id="cb466-2"><a href="section-high-performance-computing.html#cb466-2"></a>List L = List::create(e1, e2);</span>
+<span id="cb466-3"><a href="section-high-performance-computing.html#cb466-3"></a></span>
+<span id="cb466-4"><a href="section-high-performance-computing.html#cb466-4"></a><span class="co">// Create a list with elements e1 and e2 with names</span></span>
+<span id="cb466-5"><a href="section-high-performance-computing.html#cb466-5"></a>List L = List::create(Named(<span class="st">&quot;name1&quot;</span>) e1, Named(<span class="st">&quot;name2&quot;</span>) e2);</span></code></pre></div>
 <p>The elements <code>e1</code> and <code>e2</code> can be of any type (e.g. vector, matrix, etc.)</p>
 </div>
 </div>
@@ -611,23 +622,23 @@ Here is a list where <code>x</code> and <code>y</code> are scalar (not vectors!)
 <p>R and C++ share the same syntax also for <code>if</code>/<code>else</code>/<code>elseif</code> statements
 with the exception that <code>else if</code> has a space in C++ syntax. For example,
 the following expression is valid within both R and C++:</p>
-<div class="sourceCode" id="section-cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="section-high-performance-computing.html#cb469-1"></a><span class="cf">if</span> (condition){</span>
-<span id="cb469-2"><a href="section-high-performance-computing.html#cb469-2"></a>  plan A;</span>
-<span id="cb469-3"><a href="section-high-performance-computing.html#cb469-3"></a>}<span class="cf">else</span>{</span>
-<span id="cb469-4"><a href="section-high-performance-computing.html#cb469-4"></a>  plan B;</span>
-<span id="cb469-5"><a href="section-high-performance-computing.html#cb469-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="section-high-performance-computing.html#cb467-1"></a><span class="cf">if</span> (condition){</span>
+<span id="cb467-2"><a href="section-high-performance-computing.html#cb467-2"></a>  plan A;</span>
+<span id="cb467-3"><a href="section-high-performance-computing.html#cb467-3"></a>}<span class="cf">else</span>{</span>
+<span id="cb467-4"><a href="section-high-performance-computing.html#cb467-4"></a>  plan B;</span>
+<span id="cb467-5"><a href="section-high-performance-computing.html#cb467-5"></a>}</span></code></pre></div>
 </div>
 <div id="section-loops" class="section level4">
 <h4><span class="header-section-number">9.1.4.2</span> loops</h4>
 <p>Loops are much faster in C++ than in R and the syntax is slightly different.
 For example, the following R <code>for</code> loop</p>
-<div class="sourceCode" id="section-cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="section-high-performance-computing.html#cb470-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb470-2"><a href="section-high-performance-computing.html#cb470-2"></a>  <span class="kw">print</span>(<span class="st">&quot;The value is: &quot;</span>, i)</span>
-<span id="cb470-3"><a href="section-high-performance-computing.html#cb470-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="section-high-performance-computing.html#cb468-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
+<span id="cb468-2"><a href="section-high-performance-computing.html#cb468-2"></a>  <span class="kw">print</span>(<span class="st">&quot;The value is: &quot;</span>, i)</span>
+<span id="cb468-3"><a href="section-high-performance-computing.html#cb468-3"></a>}</span></code></pre></div>
 <p>can be written in C++ with the following code</p>
-<div class="sourceCode" id="section-cb471"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb471-1"><a href="section-high-performance-computing.html#cb471-1"></a><span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">1</span>); i&lt;=<span class="dv">10</span>; i++){</span>
-<span id="cb471-2"><a href="section-high-performance-computing.html#cb471-2"></a>  Rcpp::Rcout &lt;&lt; <span class="st">&quot;The value is: &quot;</span> &lt;&lt; i &lt;&lt; <span class="bu">std::</span>endl;</span>
-<span id="cb471-3"><a href="section-high-performance-computing.html#cb471-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb469"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb469-1"><a href="section-high-performance-computing.html#cb469-1"></a><span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">1</span>); i&lt;=<span class="dv">10</span>; i++){</span>
+<span id="cb469-2"><a href="section-high-performance-computing.html#cb469-2"></a>  Rcpp::Rcout &lt;&lt; <span class="st">&quot;The value is: &quot;</span> &lt;&lt; i &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb469-3"><a href="section-high-performance-computing.html#cb469-3"></a>}</span></code></pre></div>
 <p>Three elements need to be defined:<br />
 1. The initialization statement: an iterator (<code>i</code> here), generally of type integer, needs to be initialized
 (here <code>i</code> is initialized to 1).<br />
@@ -675,41 +686,41 @@ if <code>true</code>, the body of the for loop is evaluated.<br />
 </table>
 <p>Therefore, <code>i++</code> is equivalent to <code>i+=1</code>. If one therefore wanted to increment by 2 at each loop, one would use <code>i+=2</code>.</p>
 <p>The C++ <code>while</code> loop has the same syntax as R. The following expression</p>
-<div class="sourceCode" id="section-cb472"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb472-1"><a href="section-high-performance-computing.html#cb472-1"></a><span class="cf">while</span>( condition ) {</span>
-<span id="cb472-2"><a href="section-high-performance-computing.html#cb472-2"></a>  body;</span>
-<span id="cb472-3"><a href="section-high-performance-computing.html#cb472-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb470"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb470-1"><a href="section-high-performance-computing.html#cb470-1"></a><span class="cf">while</span>( condition ) {</span>
+<span id="cb470-2"><a href="section-high-performance-computing.html#cb470-2"></a>  body;</span>
+<span id="cb470-3"><a href="section-high-performance-computing.html#cb470-3"></a>}</span></code></pre></div>
 <p>is the same in both languages.</p>
 <p>Note that C++ is also equipped with a <code>do ... while</code> loop.
 This may be useful, for example, in the situation where
 you need a first run of the body prior to checking the condition.</p>
-<div class="sourceCode" id="section-cb473"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb473-1"><a href="section-high-performance-computing.html#cb473-1"></a><span class="cf">do</span>{</span>
-<span id="cb473-2"><a href="section-high-performance-computing.html#cb473-2"></a>  body;</span>
-<span id="cb473-3"><a href="section-high-performance-computing.html#cb473-3"></a>}</span>
-<span id="cb473-4"><a href="section-high-performance-computing.html#cb473-4"></a><span class="cf">while</span>(condition);</span></code></pre></div>
+<div class="sourceCode" id="section-cb471"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb471-1"><a href="section-high-performance-computing.html#cb471-1"></a><span class="cf">do</span>{</span>
+<span id="cb471-2"><a href="section-high-performance-computing.html#cb471-2"></a>  body;</span>
+<span id="cb471-3"><a href="section-high-performance-computing.html#cb471-3"></a>}</span>
+<span id="cb471-4"><a href="section-high-performance-computing.html#cb471-4"></a><span class="cf">while</span>(condition);</span></code></pre></div>
 </div>
 </div>
-<div id="section-functions-1" class="section level3">
+<div id="section-functions" class="section level3">
 <h3><span class="header-section-number">9.1.5</span> Functions</h3>
 <p>Creating functions in C++ is fundamentally not much different from writing them in R.
 Neverthelss, C++ requires an additional layer of precision.
 A function can follow this pattern:</p>
-<div class="sourceCode" id="section-cb474"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb474-1"><a href="section-high-performance-computing.html#cb474-1"></a>type function_name(type arg1, ..., type argn){</span>
-<span id="cb474-2"><a href="section-high-performance-computing.html#cb474-2"></a>  body of the function;</span>
-<span id="cb474-3"><a href="section-high-performance-computing.html#cb474-3"></a>  </span>
-<span id="cb474-4"><a href="section-high-performance-computing.html#cb474-4"></a>  <span class="cf">return</span> obj;</span>
-<span id="cb474-5"><a href="section-high-performance-computing.html#cb474-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb472"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb472-1"><a href="section-high-performance-computing.html#cb472-1"></a>type function_name(type arg1, ..., type argn){</span>
+<span id="cb472-2"><a href="section-high-performance-computing.html#cb472-2"></a>  body of the function;</span>
+<span id="cb472-3"><a href="section-high-performance-computing.html#cb472-3"></a>  </span>
+<span id="cb472-4"><a href="section-high-performance-computing.html#cb472-4"></a>  <span class="cf">return</span> obj;</span>
+<span id="cb472-5"><a href="section-high-performance-computing.html#cb472-5"></a>}</span></code></pre></div>
 <p>First, the type of return of the function should be specified.
 The <code>obj</code> that is returned should be of the same type as the one specified
 at the start of the function declaration and each argument should have a type.
 Otherwise, as in R, the body of the function contains statements that define what the function does.</p>
 <p>As mentioned earlier, by default a C++ function cannot be used within R and the attribute <code>[[Rcpp::export]]</code> in comment
 <strong>just before the function definition</strong> needs to be specified. For example</p>
-<div class="sourceCode" id="section-cb475"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb475-1"><a href="section-high-performance-computing.html#cb475-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb475-2"><a href="section-high-performance-computing.html#cb475-2"></a>type function_name(type arg1, ..., type argn){</span>
-<span id="cb475-3"><a href="section-high-performance-computing.html#cb475-3"></a>  body of the function;</span>
-<span id="cb475-4"><a href="section-high-performance-computing.html#cb475-4"></a>  </span>
-<span id="cb475-5"><a href="section-high-performance-computing.html#cb475-5"></a>  <span class="cf">return</span> obj;</span>
-<span id="cb475-6"><a href="section-high-performance-computing.html#cb475-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb473"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb473-1"><a href="section-high-performance-computing.html#cb473-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb473-2"><a href="section-high-performance-computing.html#cb473-2"></a>type function_name(type arg1, ..., type argn){</span>
+<span id="cb473-3"><a href="section-high-performance-computing.html#cb473-3"></a>  body of the function;</span>
+<span id="cb473-4"><a href="section-high-performance-computing.html#cb473-4"></a>  </span>
+<span id="cb473-5"><a href="section-high-performance-computing.html#cb473-5"></a>  <span class="cf">return</span> obj;</span>
+<span id="cb473-6"><a href="section-high-performance-computing.html#cb473-6"></a>}</span></code></pre></div>
 <p>will make <code>function_name</code> available within R.</p>
 </div>
 <div id="section-comparing-with-r" class="section level3">
@@ -721,29 +732,30 @@ This can be achieved, for example, using the <code>microbenchmark</code> package
 <p>For example, suppose you create a function that computes the factorial number of
 a positive integer input.
 In R, you can write</p>
-<div class="sourceCode" id="section-cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="section-high-performance-computing.html#cb476-1"></a>my_factorialR &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
-<span id="cb476-2"><a href="section-high-performance-computing.html#cb476-2"></a>  factorial &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb476-3"><a href="section-high-performance-computing.html#cb476-3"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>n){</span>
-<span id="cb476-4"><a href="section-high-performance-computing.html#cb476-4"></a>    factorial &lt;-<span class="st"> </span>factorial <span class="op">*</span><span class="st"> </span>i</span>
-<span id="cb476-5"><a href="section-high-performance-computing.html#cb476-5"></a>  }</span>
-<span id="cb476-6"><a href="section-high-performance-computing.html#cb476-6"></a>  <span class="kw">return</span>(factorial)</span>
-<span id="cb476-7"><a href="section-high-performance-computing.html#cb476-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="section-high-performance-computing.html#cb474-1"></a>my_factorialR &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb474-2"><a href="section-high-performance-computing.html#cb474-2"></a>  factorial &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb474-3"><a href="section-high-performance-computing.html#cb474-3"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>n){</span>
+<span id="cb474-4"><a href="section-high-performance-computing.html#cb474-4"></a>    factorial &lt;-<span class="st"> </span>factorial <span class="op">*</span><span class="st"> </span>i</span>
+<span id="cb474-5"><a href="section-high-performance-computing.html#cb474-5"></a>  }</span>
+<span id="cb474-6"><a href="section-high-performance-computing.html#cb474-6"></a>  <span class="kw">return</span>(factorial)</span>
+<span id="cb474-7"><a href="section-high-performance-computing.html#cb474-7"></a>}</span></code></pre></div>
 <p>An equivalent C++ function could be</p>
-<div class="sourceCode" id="section-cb477"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb477-1"><a href="section-high-performance-computing.html#cb477-1"></a><span class="dt">int</span> my_factorialC(<span class="dt">int</span> n){</span>
-<span id="cb477-2"><a href="section-high-performance-computing.html#cb477-2"></a>  <span class="dt">int</span> factorial = <span class="dv">1</span>;</span>
-<span id="cb477-3"><a href="section-high-performance-computing.html#cb477-3"></a>  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">2</span>); i&lt;=n; ++i){</span>
-<span id="cb477-4"><a href="section-high-performance-computing.html#cb477-4"></a>    factorial *= i;</span>
-<span id="cb477-5"><a href="section-high-performance-computing.html#cb477-5"></a>  }</span>
-<span id="cb477-6"><a href="section-high-performance-computing.html#cb477-6"></a>  <span class="cf">return</span> factorial;</span>
-<span id="cb477-7"><a href="section-high-performance-computing.html#cb477-7"></a>}</span></code></pre></div>
-<div class="sourceCode" id="section-cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="section-high-performance-computing.html#cb478-1"></a><span class="kw">require</span>(microbenchmark)</span></code></pre></div>
-<pre><code>## Loading required package: microbenchmark</code></pre>
-<pre><code>## Warning: package &#39;microbenchmark&#39; was built under R version 3.6.2</code></pre>
-<div class="sourceCode" id="section-cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="section-high-performance-computing.html#cb481-1"></a><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb475"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb475-1"><a href="section-high-performance-computing.html#cb475-1"></a><span class="dt">int</span> my_factorialC(<span class="dt">int</span> n){</span>
+<span id="cb475-2"><a href="section-high-performance-computing.html#cb475-2"></a>  <span class="dt">int</span> factorial = <span class="dv">1</span>;</span>
+<span id="cb475-3"><a href="section-high-performance-computing.html#cb475-3"></a>  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">2</span>); i&lt;=n; ++i){</span>
+<span id="cb475-4"><a href="section-high-performance-computing.html#cb475-4"></a>    factorial *= i;</span>
+<span id="cb475-5"><a href="section-high-performance-computing.html#cb475-5"></a>  }</span>
+<span id="cb475-6"><a href="section-high-performance-computing.html#cb475-6"></a>  <span class="cf">return</span> factorial;</span>
+<span id="cb475-7"><a href="section-high-performance-computing.html#cb475-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="section-high-performance-computing.html#cb476-1"></a><span class="kw">require</span>(microbenchmark)</span>
+<span id="cb476-2"><a href="section-high-performance-computing.html#cb476-2"></a><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                expr  min     lq     mean median     uq    max neval
-##  my_factorialR(500) 12.1 12.201 12.41096 12.301 12.401 16.801   100
-##  my_factorialC(500)  1.5  1.651  2.09605  1.801  2.101 15.700   100</code></pre>
+##                expr    min     lq     mean  median      uq     max
+##  my_factorialR(500) 13.351 13.538 13.96051 13.6215 13.7375  32.462
+##  my_factorialC(500)  2.340  2.455  6.32134  2.5440  2.6530 362.720
+##  neval cld
+##    100   b
+##    100  a</code></pre>
 <p>It is clear that the computational performance is considerably different.</p>
 </div>
 <div id="section-example-buffons-needle-cont" class="section level3">
@@ -752,45 +764,45 @@ In R, you can write</p>
 We propose to recode the R functions <code>cast_needle()</code> and
 <code>buffon_experiment()</code> into C++.</p>
 <p>For this purpose, first create a C++ file with header</p>
-<div class="sourceCode" id="section-cb483"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb483-1"><a href="section-high-performance-computing.html#cb483-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb483-2"><a href="section-high-performance-computing.html#cb483-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span></code></pre></div>
+<div class="sourceCode" id="section-cb478"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb478-1"><a href="section-high-performance-computing.html#cb478-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb478-2"><a href="section-high-performance-computing.html#cb478-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span></code></pre></div>
 <p>The <code>cast_needle()</code> function was defined as</p>
-<div class="sourceCode" id="section-cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="section-high-performance-computing.html#cb484-1"></a>cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){</span>
-<span id="cb484-2"><a href="section-high-performance-computing.html#cb484-2"></a>  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span></span>
-<span id="cb484-3"><a href="section-high-performance-computing.html#cb484-3"></a>  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)</span>
-<span id="cb484-4"><a href="section-high-performance-computing.html#cb484-4"></a>  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)</span>
-<span id="cb484-5"><a href="section-high-performance-computing.html#cb484-5"></a>  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span></span>
-<span id="cb484-6"><a href="section-high-performance-computing.html#cb484-6"></a>  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])</span>
-<span id="cb484-7"><a href="section-high-performance-computing.html#cb484-7"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)</span>
-<span id="cb484-8"><a href="section-high-performance-computing.html#cb484-8"></a>  out</span>
-<span id="cb484-9"><a href="section-high-performance-computing.html#cb484-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="section-high-performance-computing.html#cb479-1"></a>cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){</span>
+<span id="cb479-2"><a href="section-high-performance-computing.html#cb479-2"></a>  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span></span>
+<span id="cb479-3"><a href="section-high-performance-computing.html#cb479-3"></a>  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)</span>
+<span id="cb479-4"><a href="section-high-performance-computing.html#cb479-4"></a>  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)</span>
+<span id="cb479-5"><a href="section-high-performance-computing.html#cb479-5"></a>  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span></span>
+<span id="cb479-6"><a href="section-high-performance-computing.html#cb479-6"></a>  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])</span>
+<span id="cb479-7"><a href="section-high-performance-computing.html#cb479-7"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)</span>
+<span id="cb479-8"><a href="section-high-performance-computing.html#cb479-8"></a>  out</span>
+<span id="cb479-9"><a href="section-high-performance-computing.html#cb479-9"></a>}</span></code></pre></div>
 <p>A possible C++ implementation is</p>
-<div class="sourceCode" id="section-cb485"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb485-1"><a href="section-high-performance-computing.html#cb485-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb485-2"><a href="section-high-performance-computing.html#cb485-2"></a>List cast_needle(</span>
-<span id="cb485-3"><a href="section-high-performance-computing.html#cb485-3"></a>  <span class="dt">unsigned</span> <span class="dt">int</span> plane_width = <span class="dv">20</span></span>
-<span id="cb485-4"><a href="section-high-performance-computing.html#cb485-4"></a>){</span>
-<span id="cb485-5"><a href="section-high-performance-computing.html#cb485-5"></a>  <span class="co">// Variable declaration</span></span>
-<span id="cb485-6"><a href="section-high-performance-computing.html#cb485-6"></a>  <span class="dt">int</span> available_range;</span>
-<span id="cb485-7"><a href="section-high-performance-computing.html#cb485-7"></a>  <span class="dt">double</span> angle,my_pi;</span>
-<span id="cb485-8"><a href="section-high-performance-computing.html#cb485-8"></a>  NumericVector x_start(<span class="dv">2</span>), x_end(<span class="dv">2</span>), tmp_angle(<span class="dv">1</span>);</span>
-<span id="cb485-9"><a href="section-high-performance-computing.html#cb485-9"></a>  <span class="dt">bool</span> cross;</span>
-<span id="cb485-10"><a href="section-high-performance-computing.html#cb485-10"></a>  </span>
-<span id="cb485-11"><a href="section-high-performance-computing.html#cb485-11"></a>  <span class="co">// Computation</span></span>
-<span id="cb485-12"><a href="section-high-performance-computing.html#cb485-12"></a>  my_pi = atan(<span class="dv">1</span>) * <span class="dv">4</span>; <span class="co">// defines pi (for simplicity)</span></span>
-<span id="cb485-13"><a href="section-high-performance-computing.html#cb485-13"></a>  available_range = plane_width / <span class="dv">2</span> - <span class="dv">1</span>;</span>
-<span id="cb485-14"><a href="section-high-performance-computing.html#cb485-14"></a>  x_start = runif(<span class="dv">2</span>, -available_range, available_range);</span>
-<span id="cb485-15"><a href="section-high-performance-computing.html#cb485-15"></a>  tmp_angle = runif(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span> * my_pi);</span>
-<span id="cb485-16"><a href="section-high-performance-computing.html#cb485-16"></a>  angle = tmp_angle[<span class="dv">0</span>];</span>
-<span id="cb485-17"><a href="section-high-performance-computing.html#cb485-17"></a>  x_end[<span class="dv">0</span>] = cos(angle) + x_start[<span class="dv">0</span>];</span>
-<span id="cb485-18"><a href="section-high-performance-computing.html#cb485-18"></a>  x_end[<span class="dv">1</span>] = sin(angle) + x_start[<span class="dv">1</span>];</span>
-<span id="cb485-19"><a href="section-high-performance-computing.html#cb485-19"></a>  cross = floor(x_start[<span class="dv">2</span>]) != floor(x_end[<span class="dv">2</span>]);</span>
-<span id="cb485-20"><a href="section-high-performance-computing.html#cb485-20"></a>  </span>
-<span id="cb485-21"><a href="section-high-performance-computing.html#cb485-21"></a>  <span class="cf">return</span> List::create(</span>
-<span id="cb485-22"><a href="section-high-performance-computing.html#cb485-22"></a>    Named(<span class="st">&quot;start&quot;</span>) = x_start,</span>
-<span id="cb485-23"><a href="section-high-performance-computing.html#cb485-23"></a>    Named(<span class="st">&quot;end&quot;</span>) = x_end,</span>
-<span id="cb485-24"><a href="section-high-performance-computing.html#cb485-24"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross</span>
-<span id="cb485-25"><a href="section-high-performance-computing.html#cb485-25"></a>  );</span>
-<span id="cb485-26"><a href="section-high-performance-computing.html#cb485-26"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb480"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb480-1"><a href="section-high-performance-computing.html#cb480-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb480-2"><a href="section-high-performance-computing.html#cb480-2"></a>List cast_needle(</span>
+<span id="cb480-3"><a href="section-high-performance-computing.html#cb480-3"></a>  <span class="dt">unsigned</span> <span class="dt">int</span> plane_width = <span class="dv">20</span></span>
+<span id="cb480-4"><a href="section-high-performance-computing.html#cb480-4"></a>){</span>
+<span id="cb480-5"><a href="section-high-performance-computing.html#cb480-5"></a>  <span class="co">// Variable declaration</span></span>
+<span id="cb480-6"><a href="section-high-performance-computing.html#cb480-6"></a>  <span class="dt">int</span> available_range;</span>
+<span id="cb480-7"><a href="section-high-performance-computing.html#cb480-7"></a>  <span class="dt">double</span> angle,my_pi;</span>
+<span id="cb480-8"><a href="section-high-performance-computing.html#cb480-8"></a>  NumericVector x_start(<span class="dv">2</span>), x_end(<span class="dv">2</span>), tmp_angle(<span class="dv">1</span>);</span>
+<span id="cb480-9"><a href="section-high-performance-computing.html#cb480-9"></a>  <span class="dt">bool</span> cross;</span>
+<span id="cb480-10"><a href="section-high-performance-computing.html#cb480-10"></a>  </span>
+<span id="cb480-11"><a href="section-high-performance-computing.html#cb480-11"></a>  <span class="co">// Computation</span></span>
+<span id="cb480-12"><a href="section-high-performance-computing.html#cb480-12"></a>  my_pi = atan(<span class="dv">1</span>) * <span class="dv">4</span>; <span class="co">// defines pi (for simplicity)</span></span>
+<span id="cb480-13"><a href="section-high-performance-computing.html#cb480-13"></a>  available_range = plane_width / <span class="dv">2</span> - <span class="dv">1</span>;</span>
+<span id="cb480-14"><a href="section-high-performance-computing.html#cb480-14"></a>  x_start = runif(<span class="dv">2</span>, -available_range, available_range);</span>
+<span id="cb480-15"><a href="section-high-performance-computing.html#cb480-15"></a>  tmp_angle = runif(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span> * my_pi);</span>
+<span id="cb480-16"><a href="section-high-performance-computing.html#cb480-16"></a>  angle = tmp_angle[<span class="dv">0</span>];</span>
+<span id="cb480-17"><a href="section-high-performance-computing.html#cb480-17"></a>  x_end[<span class="dv">0</span>] = cos(angle) + x_start[<span class="dv">0</span>];</span>
+<span id="cb480-18"><a href="section-high-performance-computing.html#cb480-18"></a>  x_end[<span class="dv">1</span>] = sin(angle) + x_start[<span class="dv">1</span>];</span>
+<span id="cb480-19"><a href="section-high-performance-computing.html#cb480-19"></a>  cross = floor(x_start[<span class="dv">2</span>]) != floor(x_end[<span class="dv">2</span>]);</span>
+<span id="cb480-20"><a href="section-high-performance-computing.html#cb480-20"></a>  </span>
+<span id="cb480-21"><a href="section-high-performance-computing.html#cb480-21"></a>  <span class="cf">return</span> List::create(</span>
+<span id="cb480-22"><a href="section-high-performance-computing.html#cb480-22"></a>    Named(<span class="st">&quot;start&quot;</span>) = x_start,</span>
+<span id="cb480-23"><a href="section-high-performance-computing.html#cb480-23"></a>    Named(<span class="st">&quot;end&quot;</span>) = x_end,</span>
+<span id="cb480-24"><a href="section-high-performance-computing.html#cb480-24"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross</span>
+<span id="cb480-25"><a href="section-high-performance-computing.html#cb480-25"></a>  );</span>
+<span id="cb480-26"><a href="section-high-performance-computing.html#cb480-26"></a>}</span></code></pre></div>
 <p>Based on the above function, we can make a few remarks:</p>
 <ul>
 <li>For better readibility, it is good practice to separate variable declaration and computation.<br />
@@ -803,55 +815,55 @@ by <code>Rcpp</code> (check for <strong>Rcpp sugar</strong>).<br />
 <li>To avoid an error we have first to save the result of <code>runif()</code> as <code>NumericVector</code> (its default result type).</li>
 </ul>
 <p>The <code>buffon_needle()</code> function was declared in R as follows:</p>
-<div class="sourceCode" id="section-cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="section-high-performance-computing.html#cb486-1"></a>buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){</span>
-<span id="cb486-2"><a href="section-high-performance-computing.html#cb486-2"></a>  </span>
-<span id="cb486-3"><a href="section-high-performance-computing.html#cb486-3"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){</span>
-<span id="cb486-4"><a href="section-high-performance-computing.html#cb486-4"></a>    <span class="kw">set.seed</span>(seed)</span>
-<span id="cb486-5"><a href="section-high-performance-computing.html#cb486-5"></a>  }</span>
-<span id="cb486-6"><a href="section-high-performance-computing.html#cb486-6"></a>  </span>
-<span id="cb486-7"><a href="section-high-performance-computing.html#cb486-7"></a>  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) </span>
-<span id="cb486-8"><a href="section-high-performance-computing.html#cb486-8"></a>  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</span>
-<span id="cb486-9"><a href="section-high-performance-computing.html#cb486-9"></a>  </span>
-<span id="cb486-10"><a href="section-high-performance-computing.html#cb486-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
-<span id="cb486-11"><a href="section-high-performance-computing.html#cb486-11"></a>    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)</span>
-<span id="cb486-12"><a href="section-high-performance-computing.html#cb486-12"></a>    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start</span>
-<span id="cb486-13"><a href="section-high-performance-computing.html#cb486-13"></a>    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end</span>
-<span id="cb486-14"><a href="section-high-performance-computing.html#cb486-14"></a>    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross</span>
-<span id="cb486-15"><a href="section-high-performance-computing.html#cb486-15"></a>  }</span>
-<span id="cb486-16"><a href="section-high-performance-computing.html#cb486-16"></a>  </span>
-<span id="cb486-17"><a href="section-high-performance-computing.html#cb486-17"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)</span>
-<span id="cb486-18"><a href="section-high-performance-computing.html#cb486-18"></a>  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span></span>
-<span id="cb486-19"><a href="section-high-performance-computing.html#cb486-19"></a>  out</span>
-<span id="cb486-20"><a href="section-high-performance-computing.html#cb486-20"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="section-high-performance-computing.html#cb481-1"></a>buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){</span>
+<span id="cb481-2"><a href="section-high-performance-computing.html#cb481-2"></a>  </span>
+<span id="cb481-3"><a href="section-high-performance-computing.html#cb481-3"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){</span>
+<span id="cb481-4"><a href="section-high-performance-computing.html#cb481-4"></a>    <span class="kw">set.seed</span>(seed)</span>
+<span id="cb481-5"><a href="section-high-performance-computing.html#cb481-5"></a>  }</span>
+<span id="cb481-6"><a href="section-high-performance-computing.html#cb481-6"></a>  </span>
+<span id="cb481-7"><a href="section-high-performance-computing.html#cb481-7"></a>  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) </span>
+<span id="cb481-8"><a href="section-high-performance-computing.html#cb481-8"></a>  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</span>
+<span id="cb481-9"><a href="section-high-performance-computing.html#cb481-9"></a>  </span>
+<span id="cb481-10"><a href="section-high-performance-computing.html#cb481-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
+<span id="cb481-11"><a href="section-high-performance-computing.html#cb481-11"></a>    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)</span>
+<span id="cb481-12"><a href="section-high-performance-computing.html#cb481-12"></a>    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start</span>
+<span id="cb481-13"><a href="section-high-performance-computing.html#cb481-13"></a>    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end</span>
+<span id="cb481-14"><a href="section-high-performance-computing.html#cb481-14"></a>    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross</span>
+<span id="cb481-15"><a href="section-high-performance-computing.html#cb481-15"></a>  }</span>
+<span id="cb481-16"><a href="section-high-performance-computing.html#cb481-16"></a>  </span>
+<span id="cb481-17"><a href="section-high-performance-computing.html#cb481-17"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)</span>
+<span id="cb481-18"><a href="section-high-performance-computing.html#cb481-18"></a>  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span></span>
+<span id="cb481-19"><a href="section-high-performance-computing.html#cb481-19"></a>  out</span>
+<span id="cb481-20"><a href="section-high-performance-computing.html#cb481-20"></a>}</span></code></pre></div>
 <p>The C++ alternative we propose is the following</p>
-<div class="sourceCode" id="section-cb487"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb487-1"><a href="section-high-performance-computing.html#cb487-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb487-2"><a href="section-high-performance-computing.html#cb487-2"></a>List buffon_experiment(</span>
-<span id="cb487-3"><a href="section-high-performance-computing.html#cb487-3"></a>  <span class="dt">int</span> B = <span class="dv">2084</span>,</span>
-<span id="cb487-4"><a href="section-high-performance-computing.html#cb487-4"></a>  <span class="dt">int</span> plane_width = <span class="dv">10</span></span>
-<span id="cb487-5"><a href="section-high-performance-computing.html#cb487-5"></a>){</span>
-<span id="cb487-6"><a href="section-high-performance-computing.html#cb487-6"></a>  <span class="co">// Variable declaration</span></span>
-<span id="cb487-7"><a href="section-high-performance-computing.html#cb487-7"></a>  NumericMatrix X_start(B,<span class="dv">2</span>), X_end(B,<span class="dv">2</span>);</span>
-<span id="cb487-8"><a href="section-high-performance-computing.html#cb487-8"></a>  LogicalVector cross(B);</span>
-<span id="cb487-9"><a href="section-high-performance-computing.html#cb487-9"></a>  List L;</span>
-<span id="cb487-10"><a href="section-high-performance-computing.html#cb487-10"></a>  NumericVector tmp(<span class="dv">2</span>);</span>
-<span id="cb487-11"><a href="section-high-performance-computing.html#cb487-11"></a>  </span>
-<span id="cb487-12"><a href="section-high-performance-computing.html#cb487-12"></a>  <span class="co">// Computation</span></span>
-<span id="cb487-13"><a href="section-high-performance-computing.html#cb487-13"></a>  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">0</span>); i&lt;B; ++i){</span>
-<span id="cb487-14"><a href="section-high-performance-computing.html#cb487-14"></a>    L = cast_needle(plane_width);</span>
-<span id="cb487-15"><a href="section-high-performance-computing.html#cb487-15"></a>    tmp = L[<span class="st">&quot;start&quot;</span>];</span>
-<span id="cb487-16"><a href="section-high-performance-computing.html#cb487-16"></a>    X_start(i,_) = tmp; </span>
-<span id="cb487-17"><a href="section-high-performance-computing.html#cb487-17"></a>    tmp = L[<span class="st">&quot;end&quot;</span>];</span>
-<span id="cb487-18"><a href="section-high-performance-computing.html#cb487-18"></a>    X_end(i,_) = tmp;</span>
-<span id="cb487-19"><a href="section-high-performance-computing.html#cb487-19"></a>    cross(i) = L[<span class="st">&quot;cross&quot;</span>];</span>
-<span id="cb487-20"><a href="section-high-performance-computing.html#cb487-20"></a>  }</span>
-<span id="cb487-21"><a href="section-high-performance-computing.html#cb487-21"></a>  </span>
-<span id="cb487-22"><a href="section-high-performance-computing.html#cb487-22"></a>  <span class="cf">return</span> List::create(</span>
-<span id="cb487-23"><a href="section-high-performance-computing.html#cb487-23"></a>    Named(<span class="st">&quot;start&quot;</span>) = X_start,</span>
-<span id="cb487-24"><a href="section-high-performance-computing.html#cb487-24"></a>    Named(<span class="st">&quot;end&quot;</span>) = X_end,</span>
-<span id="cb487-25"><a href="section-high-performance-computing.html#cb487-25"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross,</span>
-<span id="cb487-26"><a href="section-high-performance-computing.html#cb487-26"></a>    Named(<span class="st">&quot;plane&quot;</span>) = plane_width</span>
-<span id="cb487-27"><a href="section-high-performance-computing.html#cb487-27"></a>  );</span>
-<span id="cb487-28"><a href="section-high-performance-computing.html#cb487-28"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb482"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb482-1"><a href="section-high-performance-computing.html#cb482-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb482-2"><a href="section-high-performance-computing.html#cb482-2"></a>List buffon_experiment(</span>
+<span id="cb482-3"><a href="section-high-performance-computing.html#cb482-3"></a>  <span class="dt">int</span> B = <span class="dv">2084</span>,</span>
+<span id="cb482-4"><a href="section-high-performance-computing.html#cb482-4"></a>  <span class="dt">int</span> plane_width = <span class="dv">10</span></span>
+<span id="cb482-5"><a href="section-high-performance-computing.html#cb482-5"></a>){</span>
+<span id="cb482-6"><a href="section-high-performance-computing.html#cb482-6"></a>  <span class="co">// Variable declaration</span></span>
+<span id="cb482-7"><a href="section-high-performance-computing.html#cb482-7"></a>  NumericMatrix X_start(B,<span class="dv">2</span>), X_end(B,<span class="dv">2</span>);</span>
+<span id="cb482-8"><a href="section-high-performance-computing.html#cb482-8"></a>  LogicalVector cross(B);</span>
+<span id="cb482-9"><a href="section-high-performance-computing.html#cb482-9"></a>  List L;</span>
+<span id="cb482-10"><a href="section-high-performance-computing.html#cb482-10"></a>  NumericVector tmp(<span class="dv">2</span>);</span>
+<span id="cb482-11"><a href="section-high-performance-computing.html#cb482-11"></a>  </span>
+<span id="cb482-12"><a href="section-high-performance-computing.html#cb482-12"></a>  <span class="co">// Computation</span></span>
+<span id="cb482-13"><a href="section-high-performance-computing.html#cb482-13"></a>  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">0</span>); i&lt;B; ++i){</span>
+<span id="cb482-14"><a href="section-high-performance-computing.html#cb482-14"></a>    L = cast_needle(plane_width);</span>
+<span id="cb482-15"><a href="section-high-performance-computing.html#cb482-15"></a>    tmp = L[<span class="st">&quot;start&quot;</span>];</span>
+<span id="cb482-16"><a href="section-high-performance-computing.html#cb482-16"></a>    X_start(i,_) = tmp; </span>
+<span id="cb482-17"><a href="section-high-performance-computing.html#cb482-17"></a>    tmp = L[<span class="st">&quot;end&quot;</span>];</span>
+<span id="cb482-18"><a href="section-high-performance-computing.html#cb482-18"></a>    X_end(i,_) = tmp;</span>
+<span id="cb482-19"><a href="section-high-performance-computing.html#cb482-19"></a>    cross(i) = L[<span class="st">&quot;cross&quot;</span>];</span>
+<span id="cb482-20"><a href="section-high-performance-computing.html#cb482-20"></a>  }</span>
+<span id="cb482-21"><a href="section-high-performance-computing.html#cb482-21"></a>  </span>
+<span id="cb482-22"><a href="section-high-performance-computing.html#cb482-22"></a>  <span class="cf">return</span> List::create(</span>
+<span id="cb482-23"><a href="section-high-performance-computing.html#cb482-23"></a>    Named(<span class="st">&quot;start&quot;</span>) = X_start,</span>
+<span id="cb482-24"><a href="section-high-performance-computing.html#cb482-24"></a>    Named(<span class="st">&quot;end&quot;</span>) = X_end,</span>
+<span id="cb482-25"><a href="section-high-performance-computing.html#cb482-25"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross,</span>
+<span id="cb482-26"><a href="section-high-performance-computing.html#cb482-26"></a>    Named(<span class="st">&quot;plane&quot;</span>) = plane_width</span>
+<span id="cb482-27"><a href="section-high-performance-computing.html#cb482-27"></a>  );</span>
+<span id="cb482-28"><a href="section-high-performance-computing.html#cb482-28"></a>}</span></code></pre></div>
 <p>Also in this case we have few remarks:</p>
 <ul>
 <li>C++ does not know the content of <code>L["start"]</code> in advance, so for this reason
@@ -890,7 +902,7 @@ uses the same syntax except that <code>#</code> should be replaced by <code>//</
         </div>
       </div>
 <a href="section-r-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-web-scraping-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

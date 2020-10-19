@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Functions | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Functions | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,21 +50,21 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
 <li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
 <li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
-<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+<li class="chapter" data-level="2.3.10" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
 <li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+<li class="chapter" data-level="3.5" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
-<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
 <li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
 <li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
 <li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
 <li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Extending</b></span></li>
 <li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
 <li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
 <li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
 <li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
 <li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
-<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.7" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
 <li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
@@ -285,22 +285,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
 <li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
 <li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
-<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-functions.html"><a href="section-functions.html#section-functions"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
 <li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
-<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
-<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
-<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
-<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
-<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping.html"><a href="section-web-scraping.html"><i class="fa fa-check"></i><b>10</b> Web scraping</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html"><i class="fa fa-check"></i><b>11</b> Blogdown: websites and blogs creation</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-static-website-overview"><i class="fa fa-check"></i><b>11.1</b> Static website overview</a></li>
+<li class="chapter" data-level="11.2" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-getting-started"><i class="fa fa-check"></i><b>11.2</b> Getting started</a></li>
+<li class="chapter" data-level="11.3" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-choosing-a-theme"><i class="fa fa-check"></i><b>11.3</b> Choosing a theme</a></li>
+<li class="chapter" data-level="11.4" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-rendering-the-website"><i class="fa fa-check"></i><b>11.4</b> Rendering the website</a></li>
+<li class="chapter" data-level="11.5" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-creating-content"><i class="fa fa-check"></i><b>11.5</b> Creating content</a></li>
+<li class="chapter" data-level="11.6" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-website-structure-and-content-organization"><i class="fa fa-check"></i><b>11.6</b> Website structure and content organization</a></li>
+<li class="chapter" data-level="11.7" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-customizing-the-theme"><i class="fa fa-check"></i><b>11.7</b> Customizing the theme</a></li>
+<li class="chapter" data-level="11.8" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-deployment"><i class="fa fa-check"></i><b>11.8</b> Deployment</a></li>
+<li class="chapter" data-level="11.9" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-see-also"><i class="fa fa-check"></i><b>11.9</b> See also</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="A" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="B" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -326,26 +337,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This chapter aims at highlighting the main advantages, characteristics, arguments and structure of functions in R. As you might already know, a function is a collection of logically connected commands and operations that allow the user to input some arguments and obtain a desired output (based on the given arguments) without having to rewrite the mentioned code each time that specific output is needed. Indeed, a common task in statistical research for example consists in running some simulation studies which give support (or not) to the use of a certain method of inference. In this case, it’s not efficient to rewrite the code each time it is needed within a simulation study because it would lead to lengthy code and increased risk of miss-coding.</p>
 <p>In the following paragraphs, we will describe an example for which we will build a function that allows to respond to the related research question. Following from the previous chapter where we discussed matrix algebra in R, at the end of this chapter we will therefore implement a function that allows us to perform least-squares regression and inference using these notions of matrix algebra. Indeed, it may be interesting to understand the behavior of this estimator in different simulation settings and it would not be practical to rewrite the series of commands to obtain the least-squares estimator in each setting. For this reason, a function that implements this estimator would be more appropriate and, in fact, this function already exists in the base R functions and is called <code>lm()</code>. However, we will learn how to build our own least-squares regression function and compare its results with those of <code>lm()</code> to check if they’re the same. To do so, we will consider a dataset in which linear regression is used to study the age of the universe.</p>
 <p><strong>Example: The Hubble Constant</strong></p>
-<p>The example dataset we will study is taken from <span class="citation">Wood (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wood2017generalized" role="doc-biblioref">2017</a>)</span> which discusses data collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the “Hubble constant” which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the “Big Bang” theory. The link is given by this simple linear relationship</p>
+<p>The example dataset we will study is taken from <span class="citation">Wood (<a href="section-references.html#section-ref-wood2017generalized" role="doc-biblioref">2017</a>)</span> which discusses data collected from the Hubble Space Telescope key project containing information on the velocity and relative distance of 24 galaxies. This information has been used to compute the “Hubble constant” which is a fixed parameter that links velocity and distance of celestial bodies through which it is possible to compute the age of the universe based on the “Big Bang” theory. The link is given by this simple linear relationship</p>
 <p><span class="math display">\[\begin{equation*}
   y = \beta x ,
 \end{equation*}\]</span></p>
 <p>where <span class="math inline">\(y\)</span> represents the velocity while <span class="math inline">\(x\)</span> is the distance between galaxies. Once the Hubble constant is known, its inverse (i.e. <span class="math inline">\(\beta^{-1}\)</span>) gives the age of the universe based on the big bang theory.</p>
 <p>Therefore we will use the abovementioned dataset to estimate Hubble’s constant to then get an estimate of the age of the universe. This dataset can be found in the <code>gamair</code> package under the name <code>hubble</code> and when plotting the two variables of interest in a scatterplot there appears to be a positive linear relationship between the two variables.</p>
 <div class="sourceCode" id="section-cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="section-functions.html#cb352-1"></a><span class="co"># Load gamair library and retrieve Hubble dataset</span></span>
-<span id="cb352-2"><a href="section-functions.html#cb352-2"></a><span class="kw">library</span>(gamair)</span></code></pre></div>
-<pre><code>## Warning: package &#39;gamair&#39; was built under R version 3.6.2</code></pre>
-<div class="sourceCode" id="section-cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="section-functions.html#cb354-1"></a><span class="kw">data</span>(hubble)</span>
-<span id="cb354-2"><a href="section-functions.html#cb354-2"></a></span>
-<span id="cb354-3"><a href="section-functions.html#cb354-3"></a><span class="co"># Plot data</span></span>
-<span id="cb354-4"><a href="section-functions.html#cb354-4"></a><span class="kw">plot</span>(<span class="dt">y =</span> hubble<span class="op">$</span>y, <span class="dt">x =</span> hubble<span class="op">$</span>x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, </span>
-<span id="cb354-5"><a href="section-functions.html#cb354-5"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</span>
-<span id="cb354-6"><a href="section-functions.html#cb354-6"></a><span class="kw">grid</span>()</span></code></pre></div>
+<span id="cb352-2"><a href="section-functions.html#cb352-2"></a><span class="kw">library</span>(gamair)</span>
+<span id="cb352-3"><a href="section-functions.html#cb352-3"></a><span class="kw">data</span>(hubble)</span>
+<span id="cb352-4"><a href="section-functions.html#cb352-4"></a></span>
+<span id="cb352-5"><a href="section-functions.html#cb352-5"></a><span class="co"># Plot data</span></span>
+<span id="cb352-6"><a href="section-functions.html#cb352-6"></a><span class="kw">plot</span>(<span class="dt">y =</span> hubble<span class="op">$</span>y, <span class="dt">x =</span> hubble<span class="op">$</span>x, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">main=</span><span class="st">&quot;Distance vs. Velocity&quot;</span>, </span>
+<span id="cb352-7"><a href="section-functions.html#cb352-7"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Velocity (in km/s)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Distance (in Megaparsecs)&quot;</span>)</span>
+<span id="cb352-8"><a href="section-functions.html#cb352-8"></a><span class="kw">grid</span>()</span></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 <p>By the end of this chapter we will therefore be able to build a function to obtain an estimate of <span class="math inline">\(\beta\)</span> and, consequently, an estimate of the age of the universe based on the big bang theory (as well as a means of testing whether a Creationist hypothesis on the age of the universe is reasonable based on the latter theory).</p>
 <div id="section-r-functions" class="section level2">
 <h2><span class="header-section-number">6.1</span> R functions</h2>
-<p>In order to build our own functions, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that draws a random number issued from the “spin” of an American roulette:<a href="section-basic-probability-and-statistics-with-r-1.html#section-fn2" class="footnote-ref" id="section-fnref2"><sup>2</sup></a></p>
+<p>In order to build our own functions, the next sections will present the main features of functions in R by studying their main components. The following annotated example gives a brief overview of a simple function that draws a random number issued from the “spin” of an American roulette:<a href="section-references.html#section-fn2" class="footnote-ref" id="section-fnref2"><sup>2</sup></a></p>
 <center>
 <img src="images/function.png" title="fig:" style="width:80.0%" alt="Function Structure" />
 </center>
@@ -357,36 +367,36 @@ It is important to make sure that the function name is specific and does not cor
 
 <p>Once we have defined the name, we then attribute a function to this name by using the <code>function</code> syntax to which we assign some parameters (or attributes). The latter are the values or data that the user will input in order for the function to deliver the desired output. The latter is subsequently obtained through the code constituting the <em>body</em> of the function. Once the code has made the necessary computations, the function needs to know which results are to be given as an output. This can be done, for example, using the <code>return</code> syntax.</p>
 <p>A couple of simple examples can be functions that compute the sample mean:</p>
-<div class="sourceCode" id="section-cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="section-functions.html#cb355-1"></a>my_mean &lt;-<span class="st"> </span><span class="cf">function</span> (x) {</span>
-<span id="cb355-2"><a href="section-functions.html#cb355-2"></a>  average &lt;-<span class="st"> </span><span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(x))</span>
-<span id="cb355-3"><a href="section-functions.html#cb355-3"></a>  <span class="kw">return</span>(average)</span>
-<span id="cb355-4"><a href="section-functions.html#cb355-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="section-functions.html#cb353-1"></a>my_mean &lt;-<span class="st"> </span><span class="cf">function</span> (x) {</span>
+<span id="cb353-2"><a href="section-functions.html#cb353-2"></a>  average &lt;-<span class="st"> </span><span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(x))</span>
+<span id="cb353-3"><a href="section-functions.html#cb353-3"></a>  <span class="kw">return</span>(average)</span>
+<span id="cb353-4"><a href="section-functions.html#cb353-4"></a>}</span></code></pre></div>
 <p>or multiplies two numbers:</p>
-<div class="sourceCode" id="section-cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="section-functions.html#cb356-1"></a>my_prod &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {</span>
-<span id="cb356-2"><a href="section-functions.html#cb356-2"></a>  prod &lt;-<span class="st"> </span>a<span class="op">*</span>b</span>
-<span id="cb356-3"><a href="section-functions.html#cb356-3"></a>  <span class="kw">return</span>(prod)</span>
-<span id="cb356-4"><a href="section-functions.html#cb356-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="section-functions.html#cb354-1"></a>my_prod &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {</span>
+<span id="cb354-2"><a href="section-functions.html#cb354-2"></a>  prod &lt;-<span class="st"> </span>a<span class="op">*</span>b</span>
+<span id="cb354-3"><a href="section-functions.html#cb354-3"></a>  <span class="kw">return</span>(prod)</span>
+<span id="cb354-4"><a href="section-functions.html#cb354-4"></a>}</span></code></pre></div>
 <p>Using these functions, we can compute the sample mean of the annual precipitation in US cities (that can be found in the base R dataset <code>precip</code>):</p>
-<div class="sourceCode" id="section-cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="section-functions.html#cb357-1"></a><span class="kw">my_mean</span>(precip)</span></code></pre></div>
+<div class="sourceCode" id="section-cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="section-functions.html#cb355-1"></a><span class="kw">my_mean</span>(precip)</span></code></pre></div>
 <pre><code>## [1] 34.88571</code></pre>
 <p>or the product of 265 and 83:</p>
-<div class="sourceCode" id="section-cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="section-functions.html#cb359-1"></a><span class="kw">my_prod</span>(<span class="dv">265</span>, <span class="dv">83</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="section-functions.html#cb357-1"></a><span class="kw">my_prod</span>(<span class="dv">265</span>, <span class="dv">83</span>)</span></code></pre></div>
 <pre><code>## [1] 21995</code></pre>
 <p>A particular case of function building are so-called “infix” functions that allow to create new operators that carry out specific types of computations. So, instead of defining the name of a function, you can define the symbol to be used in order to make use of that function. For example, to sum two numbers in R you can do as follows:</p>
-<div class="sourceCode" id="section-cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="section-functions.html#cb361-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="section-functions.html#cb359-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>which is simply a predefined infix function that can also be used as follows:</p>
-<div class="sourceCode" id="section-cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="section-functions.html#cb363-1"></a><span class="st">`</span><span class="dt">+</span><span class="st">`</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="section-functions.html#cb361-1"></a><span class="st">`</span><span class="dt">+</span><span class="st">`</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Therefore the <code>+</code> operator is the result of a predefined infix function in R. However, all user-defined infix functions must start and end with the <code>%</code> symbol. For example, using an operator that we define as <code>%^%</code>, we can deliver the product of two numbers that is zero if the product is actually negative:</p>
-<div class="sourceCode" id="section-cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="section-functions.html#cb365-1"></a><span class="st">`</span><span class="dt">%^%</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {</span>
-<span id="cb365-2"><a href="section-functions.html#cb365-2"></a>  prod =<span class="st"> </span>a<span class="op">*</span>b</span>
-<span id="cb365-3"><a href="section-functions.html#cb365-3"></a>  (prod <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)<span class="op">*</span>prod</span>
-<span id="cb365-4"><a href="section-functions.html#cb365-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="section-functions.html#cb363-1"></a><span class="st">`</span><span class="dt">%^%</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {</span>
+<span id="cb363-2"><a href="section-functions.html#cb363-2"></a>  prod =<span class="st"> </span>a<span class="op">*</span>b</span>
+<span id="cb363-3"><a href="section-functions.html#cb363-3"></a>  (prod <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)<span class="op">*</span>prod</span>
+<span id="cb363-4"><a href="section-functions.html#cb363-4"></a>}</span></code></pre></div>
 <p>This infix function can now be used through the operator as follows:</p>
-<div class="sourceCode" id="section-cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="section-functions.html#cb366-1"></a><span class="dv">2</span> <span class="op">%^%</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="section-functions.html#cb364-1"></a><span class="dv">2</span> <span class="op">%^%</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="section-cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="section-functions.html#cb368-1"></a><span class="dv">2</span> <span class="op">%^%</span><span class="st"> </span><span class="dv">-1</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="section-functions.html#cb366-1"></a><span class="dv">2</span> <span class="op">%^%</span><span class="st"> </span><span class="dv">-1</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>Having described the general structure of an R function, let us go more into detail by analysing the three main components to R functions:</p>
 <ul>
@@ -399,47 +409,47 @@ It is important to make sure that the function name is specific and does not cor
 <div id="section-creating-functions-in-r" class="section level2">
 <h2><span class="header-section-number">6.2</span> Creating functions in R</h2>
 <p>As an example for the following sections, let us implement a function that takes two arguments and multiplies them according to the type of object they are (i.e. scalar, vector or matrix). To do so, we will first build a skeleton for this function:</p>
-<div class="sourceCode" id="section-cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="section-functions.html#cb370-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (...) {</span>
-<span id="cb370-2"><a href="section-functions.html#cb370-2"></a>  ...</span>
-<span id="cb370-3"><a href="section-functions.html#cb370-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="section-functions.html#cb368-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (...) {</span>
+<span id="cb368-2"><a href="section-functions.html#cb368-2"></a>  ...</span>
+<span id="cb368-3"><a href="section-functions.html#cb368-3"></a>}</span></code></pre></div>
 <p>As you can see, we find a name for the function we want to build, which in this case is <code>gen_prod</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. The next two sections will describe these two components and then discuss the third component which is the function <em>environment</em>.</p>
 <div id="section-function-arguments" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Function arguments</h3>
 <p>Before implementing a function, we first need to ask ourselves what is the basic information that we need in order to obtain the desired output. In the case of a general product, as mentioned above, the only information that is essential to perform the operation is the first element and the second element we wish to multiply. These will therefore have to be the elements we need to provide to our function in order for it to deliver the desired product and, in R, we can provide the names we want for them (say <code>first_arg</code> and <code>second_arg</code>):</p>
-<div class="sourceCode" id="section-cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="section-functions.html#cb371-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (first_arg, second_arg) {</span>
-<span id="cb371-2"><a href="section-functions.html#cb371-2"></a>  ...</span>
-<span id="cb371-3"><a href="section-functions.html#cb371-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="section-functions.html#cb369-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (first_arg, second_arg) {</span>
+<span id="cb369-2"><a href="section-functions.html#cb369-2"></a>  ...</span>
+<span id="cb369-3"><a href="section-functions.html#cb369-3"></a>}</span></code></pre></div>
 <p>We will build this function such that the first argument has a higher (or equal) dimension than the second (e.g. the first is a vector while the second is another vector or a scalar). Let us suppose that <code>a = matrix(1:8, 4, 2)</code> is a 4 <span class="math inline">\(\times\)</span> 2 matrix and <code>b = matrix(8:1, 2, 4)</code> is a 2 <span class="math inline">\(\times\)</span> 4 matrix. Given that this is a matrix multiplication, these arguments need to be entered in the correct order (such that the dimensions correspond):</p>
-<div class="sourceCode" id="section-cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="section-functions.html#cb372-1"></a><span class="kw">gen_prod</span>(a, b)</span></code></pre></div>
+<div class="sourceCode" id="section-cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="section-functions.html#cb370-1"></a><span class="kw">gen_prod</span>(a, b)</span></code></pre></div>
 <p>In the above syntax, we used so-called <em>positional matching</em> where arguments to the function must be entered in the same order as they are defined in the function itself. If these are entered in the wrong order the function will either give the incorrect output or give errors since the format of the input could be incompatible with the body of the function. In general, it is therefore possible to use positional matching for the first and most important arguments of a function, but it is generally suggested to use names for the arguments. For our function, we could consequently define the arguments as follows:</p>
-<div class="sourceCode" id="section-cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="section-functions.html#cb373-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb373-2"><a href="section-functions.html#cb373-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb373-3"><a href="section-functions.html#cb373-3"></a>  ...</span>
-<span id="cb373-4"><a href="section-functions.html#cb373-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="section-functions.html#cb371-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb371-2"><a href="section-functions.html#cb371-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb371-3"><a href="section-functions.html#cb371-3"></a>  ...</span>
+<span id="cb371-4"><a href="section-functions.html#cb371-4"></a>}</span></code></pre></div>
 <p>You can notice that we assigned the value <code>matrix(rnorm(9), 3, 3)</code> to both of these variables. This is their “default” value which, if not specified otherwise, is used as input for the function (which in this case would deliver a 3 <span class="math inline">\(\times\)</span> 3 matrix result of the product of the two matrices whose elements are generated randomly from a standard normal distribution).</p>
 <p>Supposing that we leave the arguments of the functions defined as above, there are different ways to specify these arguments. When calling a function, R first matches the arguments through <em>perfect matching</em>, meaning that it searches for the arguments matching the exact name (in our case “first_arg” and “second_arg”). Failing to match the arguments by their exact name, R then searches for the arguments through <em>prefix matching</em>, meaning that it uses the first letters of the argument names to match them. For example, we could call the function in the following manner:</p>
-<div class="sourceCode" id="section-cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="section-functions.html#cb374-1"></a><span class="kw">gen_prod</span>(<span class="dt">second_arg =</span> b, <span class="dt">first_arg =</span> a)</span></code></pre></div>
+<div class="sourceCode" id="section-cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="section-functions.html#cb372-1"></a><span class="kw">gen_prod</span>(<span class="dt">second_arg =</span> b, <span class="dt">first_arg =</span> a)</span></code></pre></div>
 <p>or even</p>
-<div class="sourceCode" id="section-cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="section-functions.html#cb375-1"></a><span class="kw">gen_prod</span>(<span class="dt">fi =</span> a, <span class="dt">second =</span> b)</span></code></pre></div>
+<div class="sourceCode" id="section-cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="section-functions.html#cb373-1"></a><span class="kw">gen_prod</span>(<span class="dt">fi =</span> a, <span class="dt">second =</span> b)</span></code></pre></div>
 <p>So, as long we correctly specify the beginning of the argument’s name and as long as it’s not ambigiuous (meaning that its name cannot be confused with that of another argument), then it is possible to provide only part of the argument’s name and R will recognise and correctly associate the provided value with the corresponding variable.</p>
 <p>Finally, failing to match arguments in any of the above cases, R uses positional matching and therefore assigns values to the variables based on the order they have been entered when calling the function. We could therefore go back to using the function like we did at the start by specifying <code>gen_prod(a, b)</code>.</p>
 
 <div class="rmdnote">
-It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define the arguments as follows <code>a = matrix(rnorm(9), 3, 3), b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">Wickham (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span> .
+It is possible to also specify arguments in terms of the default value of other arguments. For example, we could define the arguments as follows <code>a = matrix(rnorm(9), 3, 3), b = 2*a</code>. There are many other interesting ways of specifying argument values and they can be seen, for example, in <span class="citation">Wickham (<a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span> .
 </div>
 
 <p>A special framework in which to specify arguments for a general function is the case where the arguments are objects that belong to a specific class for which a base function can be used. A simple example is the “<code>ts</code>” class of objects in R for which a function exists such that the user simply needs to call the <code>plot()</code> function (without needing to know that the function behind is the <code>plot.ts()</code> function). Let us for example suppose that some function has created a matrix whose elements represent pixel intensities of an image and that this function has assigned a class to this matrix called <code>"pixel"</code>. In the following code we therefore simply assign this class to an object called <code>image</code>.</p>
-<div class="sourceCode" id="section-cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="section-functions.html#cb376-1"></a>image &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rgamma</span>(<span class="dv">100</span>, <span class="dt">shape =</span> <span class="dv">2</span>), <span class="dv">10</span>, <span class="dv">10</span>)</span>
-<span id="cb376-2"><a href="section-functions.html#cb376-2"></a><span class="kw">class</span>(image) =<span class="st"> &quot;pixel&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="section-functions.html#cb374-1"></a>image &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rgamma</span>(<span class="dv">100</span>, <span class="dt">shape =</span> <span class="dv">2</span>), <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb374-2"><a href="section-functions.html#cb374-2"></a><span class="kw">class</span>(image) =<span class="st"> &quot;pixel&quot;</span></span></code></pre></div>
 <p>If we were to plot this, we would obtain the following plot:</p>
-<div class="sourceCode" id="section-cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="section-functions.html#cb377-1"></a><span class="kw">plot</span>(image)</span></code></pre></div>
+<div class="sourceCode" id="section-cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="section-functions.html#cb375-1"></a><span class="kw">plot</span>(image)</span></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
 <p>which simply plots the values for given coordinates. Given that this is not what we want, let us create a function that allows the user to simply use the <code>plot()</code> function which automatically recognises the object and plots a heatmap of the pixel intensity:</p>
-<div class="sourceCode" id="section-cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="section-functions.html#cb378-1"></a>plot.pixel &lt;-<span class="st"> </span><span class="cf">function</span> (mat) {</span>
-<span id="cb378-2"><a href="section-functions.html#cb378-2"></a>  <span class="kw">suppressWarnings</span>(<span class="kw">heatmap</span>(mat, <span class="dt">Colv=</span><span class="ot">NA</span>, <span class="dt">Rowv=</span><span class="ot">NA</span>, <span class="dt">labRow=</span><span class="ot">NA</span>, <span class="dt">labCol=</span><span class="ot">NA</span>, <span class="dt">scale=</span><span class="st">&#39;none&#39;</span>))</span>
-<span id="cb378-3"><a href="section-functions.html#cb378-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="section-functions.html#cb376-1"></a>plot.pixel &lt;-<span class="st"> </span><span class="cf">function</span> (mat) {</span>
+<span id="cb376-2"><a href="section-functions.html#cb376-2"></a>  <span class="kw">suppressWarnings</span>(<span class="kw">heatmap</span>(mat, <span class="dt">Colv=</span><span class="ot">NA</span>, <span class="dt">Rowv=</span><span class="ot">NA</span>, <span class="dt">labRow=</span><span class="ot">NA</span>, <span class="dt">labCol=</span><span class="ot">NA</span>, <span class="dt">scale=</span><span class="st">&#39;none&#39;</span>))</span>
+<span id="cb376-3"><a href="section-functions.html#cb376-3"></a>}</span></code></pre></div>
 <p>If we use the <code>plot()</code> function now, we obtain the following:</p>
-<div class="sourceCode" id="section-cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="section-functions.html#cb379-1"></a><span class="kw">plot</span>(image)</span></code></pre></div>
+<div class="sourceCode" id="section-cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="section-functions.html#cb377-1"></a><span class="kw">plot</span>(image)</span></code></pre></div>
 <p><img src="ds_files/figure-html/unnamed-chunk-191-1.png" width="672" /></p>
 <p>which produces the desired output simply using the general-purpose function <code>plot()</code>.</p>
 <p>To conclude, additional arguments can be left to be specified by the user. This is the case, for example, when there is the possibility of specifying arguments for other functions that are used within the function itself. This can be done by using the argument <code>...</code> which can be added to any function and will match user-specified arguments that do not match the predefined ones in the function. An example of this type of argument is again given by the base <code>plot()</code> function in R where the predefined arguments are <code>x</code> and <code>y</code> (representing the coordinates of the points in the plot) while other optional arguments, such as graphical parameters, can be added taking advantage of the <code>...</code> argument (e.g. the user could specify the argument <code>type = "l"</code> even though this is not included among the specified arguments of the function <code>plot()</code>). This argument is particularly useful when you want to obtain values for other function arguments but don’t want to specify their names in advance.</p>
@@ -447,91 +457,91 @@ It is possible to also specify arguments in terms of the default value of other 
 <div id="section-function-body" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Function body</h3>
 <p>The body of a function is simply the set of instructions and (possible) other functions that use the arguments provided by the user and computes the desired output. In our case, we need to put into practice a series of tools we learned in the previous chapter (e.g. matrix operations) in order to implement a function that delivers multiplication of objects of different nature. Let us start by delivering the product of the objects <code>first_arg</code> and <code>second_arg</code>:</p>
-<div class="sourceCode" id="section-cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="section-functions.html#cb380-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb380-2"><a href="section-functions.html#cb380-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb380-3"><a href="section-functions.html#cb380-3"></a>  first_arg<span class="op">%*%</span>second_arg</span>
-<span id="cb380-4"><a href="section-functions.html#cb380-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="section-functions.html#cb378-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb378-2"><a href="section-functions.html#cb378-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb378-3"><a href="section-functions.html#cb378-3"></a>  first_arg<span class="op">%*%</span>second_arg</span>
+<span id="cb378-4"><a href="section-functions.html#cb378-4"></a>}</span></code></pre></div>
 <p>If the user doesn’t provide any arguments to the function, this will automatically return a 3 <span class="math inline">\(\times\)</span> 3 matrix (product of two 3 <span class="math inline">\(\times\)</span> 3 matrices built using randomly generated observations from a standard normal). Otherwise, the user can enter the elements of multiplication to obtain their output of interest. For this reason, it would be appropriate that the first and second argument given by the user had compatible dimensions. But what if the latter isn’t the case? When building a function body it is important to consider the possible problems (“bugs”) that could arise if the inputs the user has given cannot be managed by the body of code you have written. For example, let us suppose that the user provides two 3 <span class="math inline">\(\times\)</span> 2 matrices as the first and second arguments:</p>
-<div class="sourceCode" id="section-cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="section-functions.html#cb381-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="section-functions.html#cb379-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## Error in first_arg %*% second_arg: non-conformable arguments</code></pre>
 <p>In this case we see that the function outputs an error and it would be appropriate to insert a checking procedure at the start of our function in order to consider all possible objects that can be multiplied and issue explanations that are useful to the user in order for them to realise what the problem is. We could therefore add a check procedure before we perform the multiplication:</p>
-<div class="sourceCode" id="section-cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="section-functions.html#cb383-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb383-2"><a href="section-functions.html#cb383-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb383-3"><a href="section-functions.html#cb383-3"></a>  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
-<span id="cb383-4"><a href="section-functions.html#cb383-4"></a>    first_arg<span class="op">%*%</span>second_arg</span>
-<span id="cb383-5"><a href="section-functions.html#cb383-5"></a>  } <span class="cf">else</span> {</span>
-<span id="cb383-6"><a href="section-functions.html#cb383-6"></a>    <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
-<span id="cb383-7"><a href="section-functions.html#cb383-7"></a>  }</span>
-<span id="cb383-8"><a href="section-functions.html#cb383-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="section-functions.html#cb381-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb381-2"><a href="section-functions.html#cb381-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb381-3"><a href="section-functions.html#cb381-3"></a>  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
+<span id="cb381-4"><a href="section-functions.html#cb381-4"></a>    first_arg<span class="op">%*%</span>second_arg</span>
+<span id="cb381-5"><a href="section-functions.html#cb381-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb381-6"><a href="section-functions.html#cb381-6"></a>    <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
+<span id="cb381-7"><a href="section-functions.html#cb381-7"></a>  }</span>
+<span id="cb381-8"><a href="section-functions.html#cb381-8"></a>}</span></code></pre></div>
 <p>As you can see in the example above, we have used a control statement in which we check whether the dimensions for matrix multiplication are respected. If they are, then the function returns the desired product while it returns an error message if this is not the case. The latter is done via the use of the <code>stop()</code> function which outputs the text <code>Error in ...: Object dimensions are not compatible</code> if the dimensions are not compatible:</p>
-<div class="sourceCode" id="section-cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="section-functions.html#cb384-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">12</span>),<span class="dv">4</span>,<span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="section-functions.html#cb382-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">12</span>),<span class="dv">4</span>,<span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), matrix(rnorm(12), 4, 3)): Object dimensions are not compatible</code></pre>
 <p>When a problem is detected in the body of a function, there may not necessarily be the need to interrupt the execution of the function with an error message. Indeed, in the above example, we could allow the function to check if the number of columns in the second object is compatible with that of the first and, if so, transpose the second matrix in order to obtain the correct multiplication with a warning message notifying the user that this has been done:</p>
-<div class="sourceCode" id="section-cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="section-functions.html#cb386-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb386-2"><a href="section-functions.html#cb386-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb386-3"><a href="section-functions.html#cb386-3"></a>  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
-<span id="cb386-4"><a href="section-functions.html#cb386-4"></a>    first_arg<span class="op">%*%</span>second_arg</span>
-<span id="cb386-5"><a href="section-functions.html#cb386-5"></a>  } <span class="cf">else</span> {</span>
-<span id="cb386-6"><a href="section-functions.html#cb386-6"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
-<span id="cb386-7"><a href="section-functions.html#cb386-7"></a>      <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
-<span id="cb386-8"><a href="section-functions.html#cb386-8"></a>      first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
-<span id="cb386-9"><a href="section-functions.html#cb386-9"></a>    } <span class="cf">else</span> {</span>
-<span id="cb386-10"><a href="section-functions.html#cb386-10"></a>      <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
-<span id="cb386-11"><a href="section-functions.html#cb386-11"></a>    }</span>
-<span id="cb386-12"><a href="section-functions.html#cb386-12"></a>  }</span>
-<span id="cb386-13"><a href="section-functions.html#cb386-13"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="section-functions.html#cb384-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb384-2"><a href="section-functions.html#cb384-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb384-3"><a href="section-functions.html#cb384-3"></a>  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
+<span id="cb384-4"><a href="section-functions.html#cb384-4"></a>    first_arg<span class="op">%*%</span>second_arg</span>
+<span id="cb384-5"><a href="section-functions.html#cb384-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb384-6"><a href="section-functions.html#cb384-6"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
+<span id="cb384-7"><a href="section-functions.html#cb384-7"></a>      <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
+<span id="cb384-8"><a href="section-functions.html#cb384-8"></a>      first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
+<span id="cb384-9"><a href="section-functions.html#cb384-9"></a>    } <span class="cf">else</span> {</span>
+<span id="cb384-10"><a href="section-functions.html#cb384-10"></a>      <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
+<span id="cb384-11"><a href="section-functions.html#cb384-11"></a>    }</span>
+<span id="cb384-12"><a href="section-functions.html#cb384-12"></a>  }</span>
+<span id="cb384-13"><a href="section-functions.html#cb384-13"></a>}</span></code></pre></div>
 <p>The function <code>warning()</code> therefore allows to output a result even though there can be some errors in the inputs, notifying the user of the steps made to achieve this output (please type <code>?message</code> to understand what this function allows you to do to communicate with the user). However, let us suppose that the second object entered in this function is a vector. Given our current body in the function we would get the following output:</p>
-<div class="sourceCode" id="section-cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="section-functions.html#cb387-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="section-functions.html#cb385-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## Error in if (dim(first_arg)[2] == dim(second_arg)[1]) {: argument is of length zero</code></pre>
 <p>We obtain this error because the function <code>dim()</code> only works on matrices (not vectors or scalars), therefore we can anticipate this problem by making sure that all objects are considered as matrices:</p>
-<div class="sourceCode" id="section-cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="section-functions.html#cb389-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb389-2"><a href="section-functions.html#cb389-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb389-3"><a href="section-functions.html#cb389-3"></a>  first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)</span>
-<span id="cb389-4"><a href="section-functions.html#cb389-4"></a>  second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)</span>
-<span id="cb389-5"><a href="section-functions.html#cb389-5"></a>  </span>
-<span id="cb389-6"><a href="section-functions.html#cb389-6"></a>  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
-<span id="cb389-7"><a href="section-functions.html#cb389-7"></a>    first_arg<span class="op">%*%</span>second_arg</span>
-<span id="cb389-8"><a href="section-functions.html#cb389-8"></a>  } <span class="cf">else</span> {</span>
-<span id="cb389-9"><a href="section-functions.html#cb389-9"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
-<span id="cb389-10"><a href="section-functions.html#cb389-10"></a>      <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
-<span id="cb389-11"><a href="section-functions.html#cb389-11"></a>      first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
-<span id="cb389-12"><a href="section-functions.html#cb389-12"></a>    } <span class="cf">else</span> {</span>
-<span id="cb389-13"><a href="section-functions.html#cb389-13"></a>      <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
-<span id="cb389-14"><a href="section-functions.html#cb389-14"></a>    }</span>
-<span id="cb389-15"><a href="section-functions.html#cb389-15"></a>  }</span>
-<span id="cb389-16"><a href="section-functions.html#cb389-16"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="section-functions.html#cb387-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb387-2"><a href="section-functions.html#cb387-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb387-3"><a href="section-functions.html#cb387-3"></a>  first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)</span>
+<span id="cb387-4"><a href="section-functions.html#cb387-4"></a>  second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)</span>
+<span id="cb387-5"><a href="section-functions.html#cb387-5"></a>  </span>
+<span id="cb387-6"><a href="section-functions.html#cb387-6"></a>  <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
+<span id="cb387-7"><a href="section-functions.html#cb387-7"></a>    first_arg<span class="op">%*%</span>second_arg</span>
+<span id="cb387-8"><a href="section-functions.html#cb387-8"></a>  } <span class="cf">else</span> {</span>
+<span id="cb387-9"><a href="section-functions.html#cb387-9"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
+<span id="cb387-10"><a href="section-functions.html#cb387-10"></a>      <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
+<span id="cb387-11"><a href="section-functions.html#cb387-11"></a>      first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
+<span id="cb387-12"><a href="section-functions.html#cb387-12"></a>    } <span class="cf">else</span> {</span>
+<span id="cb387-13"><a href="section-functions.html#cb387-13"></a>      <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
+<span id="cb387-14"><a href="section-functions.html#cb387-14"></a>    }</span>
+<span id="cb387-15"><a href="section-functions.html#cb387-15"></a>  }</span>
+<span id="cb387-16"><a href="section-functions.html#cb387-16"></a>}</span></code></pre></div>
 <p>which consequently gives us</p>
-<div class="sourceCode" id="section-cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="section-functions.html#cb390-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="section-functions.html#cb388-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">3</span>))</span></code></pre></div>
 <pre><code>##            [,1]
 ## [1,]  2.1907865
 ## [2,] -0.1400335
 ## [3,] -4.6557412</code></pre>
 <p>Finally, a last check that can be made is whether the second argument is a scalar. Indeed, if the first argument is not scalar, our function would not perform a multiplication:</p>
-<div class="sourceCode" id="section-cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="section-functions.html#cb392-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="section-functions.html#cb390-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## Error in gen_prod(matrix(rnorm(9), 3, 3), rnorm(1)): Object dimensions are not compatible</code></pre>
 <p>although we can always multiply a scalar by a matrix or a vector. Therefore we can add one last control statement:</p>
-<div class="sourceCode" id="section-cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="section-functions.html#cb394-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb394-2"><a href="section-functions.html#cb394-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb394-3"><a href="section-functions.html#cb394-3"></a>  first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)</span>
-<span id="cb394-4"><a href="section-functions.html#cb394-4"></a>  second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)</span>
-<span id="cb394-5"><a href="section-functions.html#cb394-5"></a></span>
-<span id="cb394-6"><a href="section-functions.html#cb394-6"></a>  <span class="cf">if</span>(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]<span class="op">==</span><span class="dv">1</span>) {</span>
-<span id="cb394-7"><a href="section-functions.html#cb394-7"></a>    first_arg<span class="op">*</span>second_arg[<span class="dv">1</span>]</span>
-<span id="cb394-8"><a href="section-functions.html#cb394-8"></a>  } <span class="cf">else</span> {</span>
-<span id="cb394-9"><a href="section-functions.html#cb394-9"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
-<span id="cb394-10"><a href="section-functions.html#cb394-10"></a>      first_arg<span class="op">%*%</span>second_arg</span>
-<span id="cb394-11"><a href="section-functions.html#cb394-11"></a>    } <span class="cf">else</span> {</span>
-<span id="cb394-12"><a href="section-functions.html#cb394-12"></a>      <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
-<span id="cb394-13"><a href="section-functions.html#cb394-13"></a>        <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
-<span id="cb394-14"><a href="section-functions.html#cb394-14"></a>        first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
-<span id="cb394-15"><a href="section-functions.html#cb394-15"></a>      } <span class="cf">else</span> {</span>
-<span id="cb394-16"><a href="section-functions.html#cb394-16"></a>        <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
-<span id="cb394-17"><a href="section-functions.html#cb394-17"></a>      }</span>
-<span id="cb394-18"><a href="section-functions.html#cb394-18"></a>    }</span>
-<span id="cb394-19"><a href="section-functions.html#cb394-19"></a>  }</span>
-<span id="cb394-20"><a href="section-functions.html#cb394-20"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="section-functions.html#cb392-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb392-2"><a href="section-functions.html#cb392-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb392-3"><a href="section-functions.html#cb392-3"></a>  first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)</span>
+<span id="cb392-4"><a href="section-functions.html#cb392-4"></a>  second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)</span>
+<span id="cb392-5"><a href="section-functions.html#cb392-5"></a></span>
+<span id="cb392-6"><a href="section-functions.html#cb392-6"></a>  <span class="cf">if</span>(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]<span class="op">==</span><span class="dv">1</span>) {</span>
+<span id="cb392-7"><a href="section-functions.html#cb392-7"></a>    first_arg<span class="op">*</span>second_arg[<span class="dv">1</span>]</span>
+<span id="cb392-8"><a href="section-functions.html#cb392-8"></a>  } <span class="cf">else</span> {</span>
+<span id="cb392-9"><a href="section-functions.html#cb392-9"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
+<span id="cb392-10"><a href="section-functions.html#cb392-10"></a>      first_arg<span class="op">%*%</span>second_arg</span>
+<span id="cb392-11"><a href="section-functions.html#cb392-11"></a>    } <span class="cf">else</span> {</span>
+<span id="cb392-12"><a href="section-functions.html#cb392-12"></a>      <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
+<span id="cb392-13"><a href="section-functions.html#cb392-13"></a>        <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
+<span id="cb392-14"><a href="section-functions.html#cb392-14"></a>        first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
+<span id="cb392-15"><a href="section-functions.html#cb392-15"></a>      } <span class="cf">else</span> {</span>
+<span id="cb392-16"><a href="section-functions.html#cb392-16"></a>        <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
+<span id="cb392-17"><a href="section-functions.html#cb392-17"></a>      }</span>
+<span id="cb392-18"><a href="section-functions.html#cb392-18"></a>    }</span>
+<span id="cb392-19"><a href="section-functions.html#cb392-19"></a>  }</span>
+<span id="cb392-20"><a href="section-functions.html#cb392-20"></a>}</span></code></pre></div>
 <p>which allows us to have</p>
-<div class="sourceCode" id="section-cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="section-functions.html#cb395-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="section-functions.html#cb393-1"></a><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">1</span>))</span></code></pre></div>
 <pre><code>##           [,1]      [,2]       [,3]
 ## [1,]  2.480805 4.2744753 -0.4074524
 ## [2,] -4.480960 0.4466988  1.7753060
@@ -542,35 +552,35 @@ Additional check procedures should be carried out in order to understand if the 
 </div>
 
 <p>As you can see, the body of a function can rapidly become lengthy and complex when adding control statements and computations to it. This can become an issue if you program a complex function and then have to share it with a collaborator or modify it after some time you haven’t used it. It is therefore good practice to comment your functions and make sure that the objects consisting in the output of your function are clear to someone who reads the function. In the latter case, the <code>return()</code> function makes sure that only the objects that you’re interested in are returned to the user (avoiding that eventual unassigned and unimportant values are returned).</p>
-<div class="sourceCode" id="section-cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="section-functions.html#cb397-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
-<span id="cb397-2"><a href="section-functions.html#cb397-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
-<span id="cb397-3"><a href="section-functions.html#cb397-3"></a>  </span>
-<span id="cb397-4"><a href="section-functions.html#cb397-4"></a>  <span class="co"># Make sure that all objects are considered as matrices</span></span>
-<span id="cb397-5"><a href="section-functions.html#cb397-5"></a>  first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)</span>
-<span id="cb397-6"><a href="section-functions.html#cb397-6"></a>  second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)</span>
-<span id="cb397-7"><a href="section-functions.html#cb397-7"></a>  </span>
-<span id="cb397-8"><a href="section-functions.html#cb397-8"></a>  <span class="co"># Check if second argument is a scalar and, if so, return product (prod)</span></span>
-<span id="cb397-9"><a href="section-functions.html#cb397-9"></a>  <span class="cf">if</span>(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]<span class="op">==</span><span class="dv">1</span>) {</span>
-<span id="cb397-10"><a href="section-functions.html#cb397-10"></a>    prod &lt;-<span class="st"> </span>first_arg<span class="op">*</span>second_arg[<span class="dv">1</span>]</span>
-<span id="cb397-11"><a href="section-functions.html#cb397-11"></a>  }<span class="cf">else</span>{</span>
-<span id="cb397-12"><a href="section-functions.html#cb397-12"></a>    <span class="co"># Check if the objects have compatible dimensions and, if so, return product (prod)</span></span>
-<span id="cb397-13"><a href="section-functions.html#cb397-13"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
-<span id="cb397-14"><a href="section-functions.html#cb397-14"></a>      prod &lt;-<span class="st"> </span>first_arg<span class="op">%*%</span>second_arg</span>
-<span id="cb397-15"><a href="section-functions.html#cb397-15"></a>    }<span class="cf">else</span>{</span>
-<span id="cb397-16"><a href="section-functions.html#cb397-16"></a>      <span class="co"># Check if other dimensions are compatible if the initial</span></span>
-<span id="cb397-17"><a href="section-functions.html#cb397-17"></a>      <span class="co"># ones are not and, if so, transpose the second object and return </span></span>
-<span id="cb397-18"><a href="section-functions.html#cb397-18"></a>      <span class="co"># product (prod) with warning for the user</span></span>
-<span id="cb397-19"><a href="section-functions.html#cb397-19"></a>      <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
-<span id="cb397-20"><a href="section-functions.html#cb397-20"></a>        <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
-<span id="cb397-21"><a href="section-functions.html#cb397-21"></a>        prod &lt;-<span class="st"> </span>first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
-<span id="cb397-22"><a href="section-functions.html#cb397-22"></a>      } <span class="cf">else</span> {</span>
-<span id="cb397-23"><a href="section-functions.html#cb397-23"></a>        <span class="co"># Output an error message if none of the dimensions are compatible</span></span>
-<span id="cb397-24"><a href="section-functions.html#cb397-24"></a>        <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
-<span id="cb397-25"><a href="section-functions.html#cb397-25"></a>      }</span>
-<span id="cb397-26"><a href="section-functions.html#cb397-26"></a>    }</span>
-<span id="cb397-27"><a href="section-functions.html#cb397-27"></a>  }</span>
-<span id="cb397-28"><a href="section-functions.html#cb397-28"></a>  <span class="kw">return</span>(prod)</span>
-<span id="cb397-29"><a href="section-functions.html#cb397-29"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="section-functions.html#cb395-1"></a>gen_prod &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">first_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>), </span>
+<span id="cb395-2"><a href="section-functions.html#cb395-2"></a>                      <span class="dt">second_arg =</span> <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>)) {</span>
+<span id="cb395-3"><a href="section-functions.html#cb395-3"></a>  </span>
+<span id="cb395-4"><a href="section-functions.html#cb395-4"></a>  <span class="co"># Make sure that all objects are considered as matrices</span></span>
+<span id="cb395-5"><a href="section-functions.html#cb395-5"></a>  first_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(first_arg)</span>
+<span id="cb395-6"><a href="section-functions.html#cb395-6"></a>  second_arg &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(second_arg)</span>
+<span id="cb395-7"><a href="section-functions.html#cb395-7"></a>  </span>
+<span id="cb395-8"><a href="section-functions.html#cb395-8"></a>  <span class="co"># Check if second argument is a scalar and, if so, return product (prod)</span></span>
+<span id="cb395-9"><a href="section-functions.html#cb395-9"></a>  <span class="cf">if</span>(<span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]<span class="op">==</span><span class="dv">1</span>) {</span>
+<span id="cb395-10"><a href="section-functions.html#cb395-10"></a>    prod &lt;-<span class="st"> </span>first_arg<span class="op">*</span>second_arg[<span class="dv">1</span>]</span>
+<span id="cb395-11"><a href="section-functions.html#cb395-11"></a>  }<span class="cf">else</span>{</span>
+<span id="cb395-12"><a href="section-functions.html#cb395-12"></a>    <span class="co"># Check if the objects have compatible dimensions and, if so, return product (prod)</span></span>
+<span id="cb395-13"><a href="section-functions.html#cb395-13"></a>    <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">1</span>]) {</span>
+<span id="cb395-14"><a href="section-functions.html#cb395-14"></a>      prod &lt;-<span class="st"> </span>first_arg<span class="op">%*%</span>second_arg</span>
+<span id="cb395-15"><a href="section-functions.html#cb395-15"></a>    }<span class="cf">else</span>{</span>
+<span id="cb395-16"><a href="section-functions.html#cb395-16"></a>      <span class="co"># Check if other dimensions are compatible if the initial</span></span>
+<span id="cb395-17"><a href="section-functions.html#cb395-17"></a>      <span class="co"># ones are not and, if so, transpose the second object and return </span></span>
+<span id="cb395-18"><a href="section-functions.html#cb395-18"></a>      <span class="co"># product (prod) with warning for the user</span></span>
+<span id="cb395-19"><a href="section-functions.html#cb395-19"></a>      <span class="cf">if</span> (<span class="kw">dim</span>(first_arg)[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(second_arg)[<span class="dv">2</span>]) {</span>
+<span id="cb395-20"><a href="section-functions.html#cb395-20"></a>        <span class="kw">warning</span>(<span class="st">&quot;Second object has been transposed&quot;</span>)</span>
+<span id="cb395-21"><a href="section-functions.html#cb395-21"></a>        prod &lt;-<span class="st"> </span>first_arg<span class="op">%*%</span><span class="kw">t</span>(second_arg)</span>
+<span id="cb395-22"><a href="section-functions.html#cb395-22"></a>      } <span class="cf">else</span> {</span>
+<span id="cb395-23"><a href="section-functions.html#cb395-23"></a>        <span class="co"># Output an error message if none of the dimensions are compatible</span></span>
+<span id="cb395-24"><a href="section-functions.html#cb395-24"></a>        <span class="kw">stop</span>(<span class="st">&quot;Object dimensions are not compatible&quot;</span>)</span>
+<span id="cb395-25"><a href="section-functions.html#cb395-25"></a>      }</span>
+<span id="cb395-26"><a href="section-functions.html#cb395-26"></a>    }</span>
+<span id="cb395-27"><a href="section-functions.html#cb395-27"></a>  }</span>
+<span id="cb395-28"><a href="section-functions.html#cb395-28"></a>  <span class="kw">return</span>(prod)</span>
+<span id="cb395-29"><a href="section-functions.html#cb395-29"></a>}</span></code></pre></div>
 </div>
 </div>
 <div id="section-function-environment" class="section level2">
@@ -589,34 +599,34 @@ Additional check procedures should be carried out in order to understand if the 
 <li>Calling: this environment is associated with the execution environment and reports the environment in which a function was called</li>
 </ul>
 <p>First of all, the enclosing environment of a function can be found by using the <code>environment()</code> function:</p>
-<div class="sourceCode" id="section-cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="section-functions.html#cb398-1"></a><span class="kw">environment</span>(gen_prod)</span></code></pre></div>
+<div class="sourceCode" id="section-cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="section-functions.html#cb396-1"></a><span class="kw">environment</span>(gen_prod)</span></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
 <p>With this function therefore informs the user on the enclosing environment and its main difference with the binding environment consists in the fact that the first determines how to find values (lexical scoping) while the second determines how to find the function. The reason for this separation (at least one of the main reasons) lies in the need to separate package namespaces. By the latter we mean, for example, the case where packages have the same names for different functions, allowing to preserve the name of the function in the enclosing environment unless otherwise specified. An example can be given with the <code>var()</code> function (to compute the variance) which uses the <code>missing()</code> function (in the base package) to check if a value is specified as an argument to a function (check with <code>?missing</code>). Let us suppose we compute the variance of a vector:</p>
-<div class="sourceCode" id="section-cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="section-functions.html#cb400-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb400-2"><a href="section-functions.html#cb400-2"></a><span class="kw">var</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="section-cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="section-functions.html#cb398-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb398-2"><a href="section-functions.html#cb398-2"></a><span class="kw">var</span>(x)</span></code></pre></div>
 <pre><code>## [1] 6.8</code></pre>
 <p>Let us now create another function called <code>missing</code> in the global environment which takes <code>x</code> as an argument but only returns 100. After this, we execute the code above again:</p>
-<div class="sourceCode" id="section-cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="section-functions.html#cb402-1"></a>missing =<span class="st"> </span><span class="cf">function</span> (x) <span class="dv">100</span></span>
-<span id="cb402-2"><a href="section-functions.html#cb402-2"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb402-3"><a href="section-functions.html#cb402-3"></a><span class="kw">var</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="section-cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="section-functions.html#cb400-1"></a>missing =<span class="st"> </span><span class="cf">function</span> (x) <span class="dv">100</span></span>
+<span id="cb400-2"><a href="section-functions.html#cb400-2"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb400-3"><a href="section-functions.html#cb400-3"></a><span class="kw">var</span>(x)</span></code></pre></div>
 <pre><code>## [1] 6.8</code></pre>
 <p>The result is always the same although the <code>var()</code> function would have halted execution if it had considered our own <code>missing()</code> function. This is possible thanks the to the package namespace which keeps packages independent through the separate use of enclosing and binding environments.</p>
 <p>Finally, the execution environment allows to create a temporary environment in which the function can create its objects without affecting the environment in which it is created and called. For example, suppose that we call our <code>gen_prod</code> function but, before doing so, we define an object called <code>prod</code> and assign a value to it:</p>
-<div class="sourceCode" id="section-cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="section-functions.html#cb404-1"></a>prod &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="section-functions.html#cb402-1"></a>prod &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
 <p>We know that our <code>gen_prod()</code> function creates an object with the same name and, according to standard R programming rules, the new object with the same name should overwrite the previous one:</p>
-<div class="sourceCode" id="section-cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="section-functions.html#cb405-1"></a>output &lt;-<span class="st"> </span><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dv">10</span>, <span class="dv">10</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dv">10</span>, <span class="dv">10</span>))</span>
-<span id="cb405-2"><a href="section-functions.html#cb405-2"></a>prod</span></code></pre></div>
+<div class="sourceCode" id="section-cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="section-functions.html#cb403-1"></a>output &lt;-<span class="st"> </span><span class="kw">gen_prod</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dv">10</span>, <span class="dv">10</span>), <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb403-2"><a href="section-functions.html#cb403-2"></a>prod</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>As can be seen, although our <code>gen_prod()</code> function defines the object <code>prod</code>, this quantity remains in the execution environment and does not affect or modify the environment in which is it called (calling environment) and is removed once the function has completed execution.</p>
 </div>
 <div id="section-example-continued-least-squares-function" class="section level2">
 <h2><span class="header-section-number">6.4</span> Example (continued): Least-squares function</h2>
 <p>To implement our linear regression function we need to understand the algebra behind least squares and make use of the matrix operations in R explained in the previous chapter. Based on the linear algebra behind least-squares regression, let us implement a function that delivers inference on the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span> and therefore define the skeleton of this R function:</p>
-<div class="sourceCode" id="section-cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="section-functions.html#cb407-1"></a>my_lm &lt;-<span class="st"> </span><span class="cf">function</span> (...) {</span>
-<span id="cb407-2"><a href="section-functions.html#cb407-2"></a>  </span>
-<span id="cb407-3"><a href="section-functions.html#cb407-3"></a>  ...</span>
-<span id="cb407-4"><a href="section-functions.html#cb407-4"></a>  </span>
-<span id="cb407-5"><a href="section-functions.html#cb407-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="section-functions.html#cb405-1"></a>my_lm &lt;-<span class="st"> </span><span class="cf">function</span> (...) {</span>
+<span id="cb405-2"><a href="section-functions.html#cb405-2"></a>  </span>
+<span id="cb405-3"><a href="section-functions.html#cb405-3"></a>  ...</span>
+<span id="cb405-4"><a href="section-functions.html#cb405-4"></a>  </span>
+<span id="cb405-5"><a href="section-functions.html#cb405-5"></a>}</span></code></pre></div>
 <p>As you can see, we find a name for the function we want to build, which in this case is <code>my_lm</code>, and specify that we are going to attribute a <code>function</code> to this name. Following this assignment, we find a set of curved brackets <code>(...)</code> followed by a set of curly brackets <code>{...}</code> which should include the <em>arguments</em> and <em>body</em> of the function respectively. While the <em>body</em> of a function simply corresponds to all the command lines (and other functions) that are used to deliver an output, the next sections will tackle function arguments as well as other important aspects such as their environment and attributes.</p>
 <p>In the framework of linear regression the goal is to explain an <span class="math inline">\(n \times 1\)</span> vector of observations <span class="math inline">\(\mathbf{y}\)</span> (representing the response variable) through a linear combination of <span class="math inline">\(p\)</span> explanatory variables (or predictors or covariates) that are stored in an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{X}\)</span>. More specifically, the framework is the following:</p>
 <p><span class="math display">\[
@@ -628,7 +638,7 @@ Additional check procedures should be carried out in order to understand if the 
   \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \mathbf{y}
 \tag{6.1}
 \end{equation}\]</span></p>
-<p>If you are interested in understanding how Eq. <a href="section-functions.html#eq:lsformula">(6.1)</a> is derived, click on the button. If you’re not familiar with such calculations we suggest you read some introduction to linear regression <span class="citation">(see for example Seber and Lee <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-seber2012linear" role="doc-biblioref">2012</a>)</span>.</p>
+<p>If you are interested in understanding how Eq. <a href="section-functions.html#eq:lsformula">(6.1)</a> is derived, click on the button. If you’re not familiar with such calculations we suggest you read some introduction to linear regression <span class="citation">(see for example Seber and Lee <a href="section-references.html#section-ref-seber2012linear" role="doc-biblioref">2012</a>)</span>.</p>
 <button id="hidebutton1">
 Derivation of Least-Squares Estimator
 </button>
@@ -717,26 +727,87 @@ Therefore since the matrix <span class="math inline">\(\mathbf{X}^T \mathbf{X}\)
 <!-- JUSTIN COMMENT: I agree with Rob's suggestion :)  -->
 <p>The rest of this section aims at implementing Eq. <a href="section-functions.html#eq:lsformula">(6.1)</a> to <a href="section-functions.html#eq:lssig2hat">(6.3)</a>.</p>
 <p>Putting aside possible problems with the data that would require a more in-depth knowledge and discussion of linear regression theory, we can proceed to estimate the Hubble constant by using the velocity as the response variable <span class="math inline">\(y\)</span> and the distance as the explanatory variable <span class="math inline">\(x\)</span>. Let us therefore start by implementing Eq. <a href="section-functions.html#eq:lsformula">(6.1)</a> within our function in order to get an estimate of <span class="math inline">\(\beta\)</span>.</p>
-<div class="sourceCode" id="section-cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="section-functions.html#cb408-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {</span>
-<span id="cb408-2"><a href="section-functions.html#cb408-2"></a>  </span>
-<span id="cb408-3"><a href="section-functions.html#cb408-3"></a>  <span class="co"># Define parameters</span></span>
-<span id="cb408-4"><a href="section-functions.html#cb408-4"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)</span>
-<span id="cb408-5"><a href="section-functions.html#cb408-5"></a>  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]</span>
-<span id="cb408-6"><a href="section-functions.html#cb408-6"></a>  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p</span>
-<span id="cb408-7"><a href="section-functions.html#cb408-7"></a>  </span>
-<span id="cb408-8"><a href="section-functions.html#cb408-8"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
-<span id="cb408-9"><a href="section-functions.html#cb408-9"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
-<span id="cb408-10"><a href="section-functions.html#cb408-10"></a>  </span>
-<span id="cb408-11"><a href="section-functions.html#cb408-11"></a>  <span class="co"># Return the estimated value of beta</span></span>
-<span id="cb408-12"><a href="section-functions.html#cb408-12"></a>  beta.hat</span>
-<span id="cb408-13"><a href="section-functions.html#cb408-13"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="section-functions.html#cb406-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {</span>
+<span id="cb406-2"><a href="section-functions.html#cb406-2"></a>  </span>
+<span id="cb406-3"><a href="section-functions.html#cb406-3"></a>  <span class="co"># Define parameters</span></span>
+<span id="cb406-4"><a href="section-functions.html#cb406-4"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)</span>
+<span id="cb406-5"><a href="section-functions.html#cb406-5"></a>  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]</span>
+<span id="cb406-6"><a href="section-functions.html#cb406-6"></a>  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p</span>
+<span id="cb406-7"><a href="section-functions.html#cb406-7"></a>  </span>
+<span id="cb406-8"><a href="section-functions.html#cb406-8"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
+<span id="cb406-9"><a href="section-functions.html#cb406-9"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
+<span id="cb406-10"><a href="section-functions.html#cb406-10"></a>  </span>
+<span id="cb406-11"><a href="section-functions.html#cb406-11"></a>  <span class="co"># Return the estimated value of beta</span></span>
+<span id="cb406-12"><a href="section-functions.html#cb406-12"></a>  beta.hat</span>
+<span id="cb406-13"><a href="section-functions.html#cb406-13"></a>}</span></code></pre></div>
 
 <div class="rmdimportant">
 Before discussing the body and output of this function, we can first underline an important aspect of programming. Indeed, we defined the number of covariates (and length of the vector <span class="math inline">\(\boldsymbol{\beta}\)</span>) as <code>p &lt;- dim(covariates)[2]</code> where the function <code>dim()</code> presupposes that the object <code>covariates</code> is a matrix. Nevertheless, in our case the object <code>covariates</code> would correspond to <code>hubble$x</code> which is a vector and therefore this operation would return <code>NULL</code> as an output. When programming it is therefore important to think ahead and understand if there are any particular cases where parts of the body of your function may not work.
 </div>
 
 <p>Taking into account the above note, it would be appropriate to make sure that the code in the body of the function works also in particular cases (e.g. the <code>covariates</code> object is a vector and not a matrix). In our case we therefore use the function <code>as.matrix()</code> which forces an object to be considered as a matrix in order for it to be used within matrix opeations.</p>
-<div class="sourceCode" id="section-cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="section-functions.html#cb409-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {</span>
+<div class="sourceCode" id="section-cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="section-functions.html#cb407-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {</span>
+<span id="cb407-2"><a href="section-functions.html#cb407-2"></a>  </span>
+<span id="cb407-3"><a href="section-functions.html#cb407-3"></a>  <span class="co"># Make sure data formats are appropriate</span></span>
+<span id="cb407-4"><a href="section-functions.html#cb407-4"></a>  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)</span>
+<span id="cb407-5"><a href="section-functions.html#cb407-5"></a>  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)</span>
+<span id="cb407-6"><a href="section-functions.html#cb407-6"></a>  </span>
+<span id="cb407-7"><a href="section-functions.html#cb407-7"></a>  <span class="co"># Define parameters</span></span>
+<span id="cb407-8"><a href="section-functions.html#cb407-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)</span>
+<span id="cb407-9"><a href="section-functions.html#cb407-9"></a>  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]</span>
+<span id="cb407-10"><a href="section-functions.html#cb407-10"></a>  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p</span>
+<span id="cb407-11"><a href="section-functions.html#cb407-11"></a>  </span>
+<span id="cb407-12"><a href="section-functions.html#cb407-12"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
+<span id="cb407-13"><a href="section-functions.html#cb407-13"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
+<span id="cb407-14"><a href="section-functions.html#cb407-14"></a>  </span>
+<span id="cb407-15"><a href="section-functions.html#cb407-15"></a>  <span class="co"># Return the estimated value of beta</span></span>
+<span id="cb407-16"><a href="section-functions.html#cb407-16"></a>  beta.hat</span>
+<span id="cb407-17"><a href="section-functions.html#cb407-17"></a>}</span></code></pre></div>
+
+<div class="rmdtip">
+Other checks can be introduced at the beginning of the function to make sure that the function is used correctly and obtain an appropriate output. In our case, for example, we could even introduce a check to understand if <code>response</code> and <code>covariates</code> have the same number of rows and interrupt the function execution and output an error message if this is not the case, making the user aware of this probem.
+</div>
+
+<p>As you may notice, using the matrix operators we obtain an object we decide to call <code>beta.hat</code> and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the <code>return()</code> function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using <code>return()</code> we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on).</p>
+<p>With the <code>my_lm()</code> function we can now estimate the value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. However, we don’t have an estimate of its variance for which we would need to implement Equations <a href="section-functions.html#eq:lsvar">(6.2)</a> and <a href="section-functions.html#eq:lssig2hat">(6.3)</a>. We can therefore add these equations to the body of our <code>my_lm()</code> function:</p>
+<div class="sourceCode" id="section-cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="section-functions.html#cb408-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {</span>
+<span id="cb408-2"><a href="section-functions.html#cb408-2"></a>  </span>
+<span id="cb408-3"><a href="section-functions.html#cb408-3"></a>  <span class="co"># Make sure data formats are appropriate</span></span>
+<span id="cb408-4"><a href="section-functions.html#cb408-4"></a>  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)</span>
+<span id="cb408-5"><a href="section-functions.html#cb408-5"></a>  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)</span>
+<span id="cb408-6"><a href="section-functions.html#cb408-6"></a>  </span>
+<span id="cb408-7"><a href="section-functions.html#cb408-7"></a>  <span class="co"># Define parameters</span></span>
+<span id="cb408-8"><a href="section-functions.html#cb408-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)</span>
+<span id="cb408-9"><a href="section-functions.html#cb408-9"></a>  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]</span>
+<span id="cb408-10"><a href="section-functions.html#cb408-10"></a>  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p</span>
+<span id="cb408-11"><a href="section-functions.html#cb408-11"></a>  </span>
+<span id="cb408-12"><a href="section-functions.html#cb408-12"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
+<span id="cb408-13"><a href="section-functions.html#cb408-13"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
+<span id="cb408-14"><a href="section-functions.html#cb408-14"></a>  </span>
+<span id="cb408-15"><a href="section-functions.html#cb408-15"></a>  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span></span>
+<span id="cb408-16"><a href="section-functions.html#cb408-16"></a>  <span class="co"># Compute residuals</span></span>
+<span id="cb408-17"><a href="section-functions.html#cb408-17"></a>  resid &lt;-<span class="st"> </span>response <span class="op">-</span><span class="st"> </span>covariates<span class="op">%*%</span><span class="kw">as.matrix</span>(beta.hat)</span>
+<span id="cb408-18"><a href="section-functions.html#cb408-18"></a>  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>df)<span class="op">*</span><span class="kw">t</span>(resid)<span class="op">%*%</span>resid</span>
+<span id="cb408-19"><a href="section-functions.html#cb408-19"></a>  </span>
+<span id="cb408-20"><a href="section-functions.html#cb408-20"></a>  <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span></span>
+<span id="cb408-21"><a href="section-functions.html#cb408-21"></a>  var.beta &lt;-<span class="st"> </span>sigma2.hat<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)</span>
+<span id="cb408-22"><a href="section-functions.html#cb408-22"></a>  </span>
+<span id="cb408-23"><a href="section-functions.html#cb408-23"></a>  <span class="co"># Return all estimated values</span></span>
+<span id="cb408-24"><a href="section-functions.html#cb408-24"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta))</span>
+<span id="cb408-25"><a href="section-functions.html#cb408-25"></a>}</span></code></pre></div>
+<p>There are a couple of things to underline in the above function. Firstly, when defining the <code>resid</code> object we also used <code>as.matrix()</code> for the object <code>beta.hat</code>: this is because it can happen (as in our example) that the dimension of <span class="math inline">\(\boldsymbol{\beta}\)</span> could be equal to one (i.e. a scalar) and the matrix multiplication would not work and output an error. By using the <code>as.matrix()</code> function, we ensure that this multiplication will work also when <span class="math inline">\(\boldsymbol{\beta}\)</span> is a scalar (i.e. when there is only one covariate). A second aspect to underline is the way in which we return multiple function outputs. Indeed, in our case we decide to return not only the estimate of <span class="math inline">\(\beta\)</span> but also the estimated residual variance as well as the variance of <span class="math inline">\(\hat{\beta}\)</span>. To do so, we use the <code>list()</code> function that allows to store objects of different nature (e.g. scalars, vectors, matrices) as elements of a single object while assigning names to them. For example, the estimated parameter <span class="math inline">\(\beta\)</span> will be accessible through the element name <code>beta</code> (we’ll see how this done further on).</p>
+<p>Nevertheless, in order to answer the question of our example on the Hubble constant, we would need to obtain a confidence interval for our estimated paramter <span class="math inline">\(\hat{\beta}\)</span>. Although the information needed for this purpose is available to the user through the current output, it may be useful to directly provide the confidence interval since it is a piece of information which is almost always required to deliver inference on the true parameter <span class="math inline">\(\beta\)</span>. Let us therefore build a confidence interval within our function for which we will assume that the estimated variance of <span class="math inline">\(\hat{\beta}\)</span> is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our course). Assuming therefore that</p>
+<p><span class="math display">\[\begin{equation*}
+  \hat{\beta} \sim \mathcal{N}\left(\beta,\hat{\sigma}^2(X^TX)^{-1}\right) ,
+\end{equation*}\]</span></p>
+<p>we consequently have that the confidence interval is given by</p>
+<p><span class="math display" id="eq:cibeta">\[\begin{equation}
+  \left[\hat{\beta} - z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \, , \, \hat{\beta} + z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \right] ,
+  \tag{6.4}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1-\alpha/2)^{th}\)</span> quantile of the standard normal distribution.</p>
+<p>Let us therefore add this output to our function which would require an extra argument: the confidence level. The most common confidence level used is the 95% level which is obtained by defining the significance level <span class="math inline">\(\alpha = 0.05\)</span>. We could therefore add the latter argument to our function and set its default value to 0.05.</p>
+<div class="sourceCode" id="section-cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="section-functions.html#cb409-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates, <span class="dt">alpha =</span> <span class="fl">0.05</span>) {</span>
 <span id="cb409-2"><a href="section-functions.html#cb409-2"></a>  </span>
 <span id="cb409-3"><a href="section-functions.html#cb409-3"></a>  <span class="co"># Make sure data formats are appropriate</span></span>
 <span id="cb409-4"><a href="section-functions.html#cb409-4"></a>  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)</span>
@@ -750,119 +821,58 @@ Before discussing the body and output of this function, we can first underline a
 <span id="cb409-12"><a href="section-functions.html#cb409-12"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
 <span id="cb409-13"><a href="section-functions.html#cb409-13"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
 <span id="cb409-14"><a href="section-functions.html#cb409-14"></a>  </span>
-<span id="cb409-15"><a href="section-functions.html#cb409-15"></a>  <span class="co"># Return the estimated value of beta</span></span>
-<span id="cb409-16"><a href="section-functions.html#cb409-16"></a>  beta.hat</span>
-<span id="cb409-17"><a href="section-functions.html#cb409-17"></a>}</span></code></pre></div>
-
-<div class="rmdtip">
-Other checks can be introduced at the beginning of the function to make sure that the function is used correctly and obtain an appropriate output. In our case, for example, we could even introduce a check to understand if <code>response</code> and <code>covariates</code> have the same number of rows and interrupt the function execution and output an error message if this is not the case, making the user aware of this probem.
-</div>
-
-<p>As you may notice, using the matrix operators we obtain an object we decide to call <code>beta.hat</code> and, to tell the function to return this value, we simply specify it without any other commands after it has been computed. A more appropriate way of defining the outputs of a function would however be the <code>return()</code> function that avoids ambiguous outputs due to mistakes in coding or others within the function body. By using <code>return()</code> we make sure the desired outputs are given and it improves readability of the function for other users (see the next example further on).</p>
-<p>With the <code>my_lm()</code> function we can now estimate the value for <span class="math inline">\(\beta\)</span> that we denote as <span class="math inline">\(\hat{\beta}\)</span>. However, we don’t have an estimate of its variance for which we would need to implement Equations <a href="section-functions.html#eq:lsvar">(6.2)</a> and <a href="section-functions.html#eq:lssig2hat">(6.3)</a>. We can therefore add these equations to the body of our <code>my_lm()</code> function:</p>
-<div class="sourceCode" id="section-cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="section-functions.html#cb410-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates) {</span>
-<span id="cb410-2"><a href="section-functions.html#cb410-2"></a>  </span>
-<span id="cb410-3"><a href="section-functions.html#cb410-3"></a>  <span class="co"># Make sure data formats are appropriate</span></span>
-<span id="cb410-4"><a href="section-functions.html#cb410-4"></a>  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)</span>
-<span id="cb410-5"><a href="section-functions.html#cb410-5"></a>  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)</span>
-<span id="cb410-6"><a href="section-functions.html#cb410-6"></a>  </span>
-<span id="cb410-7"><a href="section-functions.html#cb410-7"></a>  <span class="co"># Define parameters</span></span>
-<span id="cb410-8"><a href="section-functions.html#cb410-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)</span>
-<span id="cb410-9"><a href="section-functions.html#cb410-9"></a>  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]</span>
-<span id="cb410-10"><a href="section-functions.html#cb410-10"></a>  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p</span>
-<span id="cb410-11"><a href="section-functions.html#cb410-11"></a>  </span>
-<span id="cb410-12"><a href="section-functions.html#cb410-12"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
-<span id="cb410-13"><a href="section-functions.html#cb410-13"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
-<span id="cb410-14"><a href="section-functions.html#cb410-14"></a>  </span>
-<span id="cb410-15"><a href="section-functions.html#cb410-15"></a>  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span></span>
-<span id="cb410-16"><a href="section-functions.html#cb410-16"></a>  <span class="co"># Compute residuals</span></span>
-<span id="cb410-17"><a href="section-functions.html#cb410-17"></a>  resid &lt;-<span class="st"> </span>response <span class="op">-</span><span class="st"> </span>covariates<span class="op">%*%</span><span class="kw">as.matrix</span>(beta.hat)</span>
-<span id="cb410-18"><a href="section-functions.html#cb410-18"></a>  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>df)<span class="op">*</span><span class="kw">t</span>(resid)<span class="op">%*%</span>resid</span>
-<span id="cb410-19"><a href="section-functions.html#cb410-19"></a>  </span>
-<span id="cb410-20"><a href="section-functions.html#cb410-20"></a>  <span class="co"># Estimate of the variance of the estimated beta from Eq. (1.2)</span></span>
-<span id="cb410-21"><a href="section-functions.html#cb410-21"></a>  var.beta &lt;-<span class="st"> </span>sigma2.hat<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)</span>
-<span id="cb410-22"><a href="section-functions.html#cb410-22"></a>  </span>
-<span id="cb410-23"><a href="section-functions.html#cb410-23"></a>  <span class="co"># Return all estimated values</span></span>
-<span id="cb410-24"><a href="section-functions.html#cb410-24"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, <span class="dt">variance_beta =</span> var.beta))</span>
-<span id="cb410-25"><a href="section-functions.html#cb410-25"></a>}</span></code></pre></div>
-<p>There are a couple of things to underline in the above function. Firstly, when defining the <code>resid</code> object we also used <code>as.matrix()</code> for the object <code>beta.hat</code>: this is because it can happen (as in our example) that the dimension of <span class="math inline">\(\boldsymbol{\beta}\)</span> could be equal to one (i.e. a scalar) and the matrix multiplication would not work and output an error. By using the <code>as.matrix()</code> function, we ensure that this multiplication will work also when <span class="math inline">\(\boldsymbol{\beta}\)</span> is a scalar (i.e. when there is only one covariate). A second aspect to underline is the way in which we return multiple function outputs. Indeed, in our case we decide to return not only the estimate of <span class="math inline">\(\beta\)</span> but also the estimated residual variance as well as the variance of <span class="math inline">\(\hat{\beta}\)</span>. To do so, we use the <code>list()</code> function that allows to store objects of different nature (e.g. scalars, vectors, matrices) as elements of a single object while assigning names to them. For example, the estimated parameter <span class="math inline">\(\beta\)</span> will be accessible through the element name <code>beta</code> (we’ll see how this done further on).</p>
-<p>Nevertheless, in order to answer the question of our example on the Hubble constant, we would need to obtain a confidence interval for our estimated paramter <span class="math inline">\(\hat{\beta}\)</span>. Although the information needed for this purpose is available to the user through the current output, it may be useful to directly provide the confidence interval since it is a piece of information which is almost always required to deliver inference on the true parameter <span class="math inline">\(\beta\)</span>. Let us therefore build a confidence interval within our function for which we will assume that the estimated variance of <span class="math inline">\(\hat{\beta}\)</span> is actually the true variance (otherwise we would need to build a confidence interval based on the Student-t distribution which we will not deal with at this stage of our course). Assuming therefore that</p>
-<p><span class="math display">\[\begin{equation*}
-  \hat{\beta} \sim \mathcal{N}\left(\beta,\hat{\sigma}^2(X^TX)^{-1}\right) ,
-\end{equation*}\]</span></p>
-<p>we consequently have that the confidence interval is given by</p>
-<p><span class="math display" id="eq:cibeta">\[\begin{equation}
-  \left[\hat{\beta} - z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \, , \, \hat{\beta} + z_{1-\alpha/2}\sqrt{\hat{\sigma}^2(X^TX)^{-1}} \right] ,
-  \tag{6.4}
-\end{equation}\]</span></p>
-<p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1-\alpha/2)^{th}\)</span> quantile of the standard normal distribution.</p>
-<p>Let us therefore add this output to our function which would require an extra argument: the confidence level. The most common confidence level used is the 95% level which is obtained by defining the significance level <span class="math inline">\(\alpha = 0.05\)</span>. We could therefore add the latter argument to our function and set its default value to 0.05.</p>
-<div class="sourceCode" id="section-cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="section-functions.html#cb411-1"></a>my_lm =<span class="st"> </span><span class="cf">function</span>(response, covariates, <span class="dt">alpha =</span> <span class="fl">0.05</span>) {</span>
-<span id="cb411-2"><a href="section-functions.html#cb411-2"></a>  </span>
-<span id="cb411-3"><a href="section-functions.html#cb411-3"></a>  <span class="co"># Make sure data formats are appropriate</span></span>
-<span id="cb411-4"><a href="section-functions.html#cb411-4"></a>  response &lt;-<span class="st"> </span><span class="kw">as.vector</span>(response)</span>
-<span id="cb411-5"><a href="section-functions.html#cb411-5"></a>  covariates &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(covariates)</span>
-<span id="cb411-6"><a href="section-functions.html#cb411-6"></a>  </span>
-<span id="cb411-7"><a href="section-functions.html#cb411-7"></a>  <span class="co"># Define parameters</span></span>
-<span id="cb411-8"><a href="section-functions.html#cb411-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(response)</span>
-<span id="cb411-9"><a href="section-functions.html#cb411-9"></a>  p &lt;-<span class="st"> </span><span class="kw">dim</span>(covariates)[<span class="dv">2</span>]</span>
-<span id="cb411-10"><a href="section-functions.html#cb411-10"></a>  df &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>p</span>
-<span id="cb411-11"><a href="section-functions.html#cb411-11"></a>  </span>
-<span id="cb411-12"><a href="section-functions.html#cb411-12"></a>  <span class="co"># Estimate beta through Eq. (6.1)</span></span>
-<span id="cb411-13"><a href="section-functions.html#cb411-13"></a>  beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)<span class="op">%*%</span><span class="kw">t</span>(covariates)<span class="op">%*%</span>response</span>
-<span id="cb411-14"><a href="section-functions.html#cb411-14"></a>  </span>
-<span id="cb411-15"><a href="section-functions.html#cb411-15"></a>  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span></span>
-<span id="cb411-16"><a href="section-functions.html#cb411-16"></a>  <span class="co"># Compute residuals</span></span>
-<span id="cb411-17"><a href="section-functions.html#cb411-17"></a>  resid &lt;-<span class="st"> </span>response <span class="op">-</span><span class="st"> </span>covariates<span class="op">%*%</span><span class="kw">as.matrix</span>(beta.hat) </span>
-<span id="cb411-18"><a href="section-functions.html#cb411-18"></a>  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>df)<span class="op">*</span><span class="kw">t</span>(resid)<span class="op">%*%</span>resid</span>
-<span id="cb411-19"><a href="section-functions.html#cb411-19"></a>  </span>
-<span id="cb411-20"><a href="section-functions.html#cb411-20"></a>  <span class="co"># Estimate of the variance of the estimated beta from Eq. (6.2)</span></span>
-<span id="cb411-21"><a href="section-functions.html#cb411-21"></a>  var.beta &lt;-<span class="st"> </span>sigma2.hat<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)</span>
-<span id="cb411-22"><a href="section-functions.html#cb411-22"></a>  </span>
-<span id="cb411-23"><a href="section-functions.html#cb411-23"></a>  <span class="co"># Estimate of the confidence interval based on alpha</span></span>
-<span id="cb411-24"><a href="section-functions.html#cb411-24"></a>  quant &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb411-25"><a href="section-functions.html#cb411-25"></a>  ci.beta &lt;-<span class="st"> </span><span class="kw">c</span>(beta.hat <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)<span class="op">*</span><span class="kw">sqrt</span>(var.beta), beta.hat <span class="op">+</span><span class="st"> </span></span>
-<span id="cb411-26"><a href="section-functions.html#cb411-26"></a><span class="st">                 </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)<span class="op">*</span><span class="kw">sqrt</span>(var.beta))</span>
-<span id="cb411-27"><a href="section-functions.html#cb411-27"></a>  </span>
-<span id="cb411-28"><a href="section-functions.html#cb411-28"></a>  <span class="co"># Return all estimated values</span></span>
-<span id="cb411-29"><a href="section-functions.html#cb411-29"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, </span>
-<span id="cb411-30"><a href="section-functions.html#cb411-30"></a>              <span class="dt">variance_beta =</span> var.beta, <span class="dt">ci =</span> ci.beta))</span>
-<span id="cb411-31"><a href="section-functions.html#cb411-31"></a>}</span></code></pre></div>
+<span id="cb409-15"><a href="section-functions.html#cb409-15"></a>  <span class="co"># Estimate of the residual variance (sigma2) from Eq. (6.3)</span></span>
+<span id="cb409-16"><a href="section-functions.html#cb409-16"></a>  <span class="co"># Compute residuals</span></span>
+<span id="cb409-17"><a href="section-functions.html#cb409-17"></a>  resid &lt;-<span class="st"> </span>response <span class="op">-</span><span class="st"> </span>covariates<span class="op">%*%</span><span class="kw">as.matrix</span>(beta.hat) </span>
+<span id="cb409-18"><a href="section-functions.html#cb409-18"></a>  sigma2.hat &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>df)<span class="op">*</span><span class="kw">t</span>(resid)<span class="op">%*%</span>resid</span>
+<span id="cb409-19"><a href="section-functions.html#cb409-19"></a>  </span>
+<span id="cb409-20"><a href="section-functions.html#cb409-20"></a>  <span class="co"># Estimate of the variance of the estimated beta from Eq. (6.2)</span></span>
+<span id="cb409-21"><a href="section-functions.html#cb409-21"></a>  var.beta &lt;-<span class="st"> </span>sigma2.hat<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(covariates)<span class="op">%*%</span>covariates)</span>
+<span id="cb409-22"><a href="section-functions.html#cb409-22"></a>  </span>
+<span id="cb409-23"><a href="section-functions.html#cb409-23"></a>  <span class="co"># Estimate of the confidence interval based on alpha</span></span>
+<span id="cb409-24"><a href="section-functions.html#cb409-24"></a>  quant &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb409-25"><a href="section-functions.html#cb409-25"></a>  ci.beta &lt;-<span class="st"> </span><span class="kw">c</span>(beta.hat <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)<span class="op">*</span><span class="kw">sqrt</span>(var.beta), beta.hat <span class="op">+</span><span class="st"> </span></span>
+<span id="cb409-26"><a href="section-functions.html#cb409-26"></a><span class="st">                 </span><span class="kw">qnorm</span>(<span class="dt">p =</span> quant)<span class="op">*</span><span class="kw">sqrt</span>(var.beta))</span>
+<span id="cb409-27"><a href="section-functions.html#cb409-27"></a>  </span>
+<span id="cb409-28"><a href="section-functions.html#cb409-28"></a>  <span class="co"># Return all estimated values</span></span>
+<span id="cb409-29"><a href="section-functions.html#cb409-29"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">beta =</span> beta.hat, <span class="dt">sigma2 =</span> sigma2.hat, </span>
+<span id="cb409-30"><a href="section-functions.html#cb409-30"></a>              <span class="dt">variance_beta =</span> var.beta, <span class="dt">ci =</span> ci.beta))</span>
+<span id="cb409-31"><a href="section-functions.html#cb409-31"></a>}</span></code></pre></div>
 <p>We now have now a general function to perform linear regression which has a series of scalar outputs as well as a vector (i.e. the confidence interval). Let us now complete this chapter by investigating how the <code>my_lm()</code> function performs compared to the base <code>lm()</code> function.</p>
-<div class="sourceCode" id="section-cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="section-functions.html#cb412-1"></a><span class="co"># Linear regression with lm() function</span></span>
-<span id="cb412-2"><a href="section-functions.html#cb412-2"></a>fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="dv">-1</span>)</span>
-<span id="cb412-3"><a href="section-functions.html#cb412-3"></a></span>
-<span id="cb412-4"><a href="section-functions.html#cb412-4"></a><span class="co"># Linear regression with my_lm() function</span></span>
-<span id="cb412-5"><a href="section-functions.html#cb412-5"></a>fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)</span>
-<span id="cb412-6"><a href="section-functions.html#cb412-6"></a></span>
-<span id="cb412-7"><a href="section-functions.html#cb412-7"></a><span class="co"># Compare outputs</span></span>
-<span id="cb412-8"><a href="section-functions.html#cb412-8"></a>manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)</span>
-<span id="cb412-9"><a href="section-functions.html#cb412-9"></a>base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, </span>
-<span id="cb412-10"><a href="section-functions.html#cb412-10"></a>                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)</span>
-<span id="cb412-11"><a href="section-functions.html#cb412-11"></a>results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)</span>
-<span id="cb412-12"><a href="section-functions.html#cb412-12"></a><span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)</span>
-<span id="cb412-13"><a href="section-functions.html#cb412-13"></a>results</span></code></pre></div>
+<div class="sourceCode" id="section-cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="section-functions.html#cb410-1"></a><span class="co"># Linear regression with lm() function</span></span>
+<span id="cb410-2"><a href="section-functions.html#cb410-2"></a>fit_lm =<span class="st"> </span><span class="kw">lm</span>(hubble<span class="op">$</span>y<span class="op">~</span>hubble<span class="op">$</span>x<span class="dv">-1</span>)</span>
+<span id="cb410-3"><a href="section-functions.html#cb410-3"></a></span>
+<span id="cb410-4"><a href="section-functions.html#cb410-4"></a><span class="co"># Linear regression with my_lm() function</span></span>
+<span id="cb410-5"><a href="section-functions.html#cb410-5"></a>fit_my_lm =<span class="st"> </span><span class="kw">my_lm</span>(hubble<span class="op">$</span>y, hubble<span class="op">$</span>x)</span>
+<span id="cb410-6"><a href="section-functions.html#cb410-6"></a></span>
+<span id="cb410-7"><a href="section-functions.html#cb410-7"></a><span class="co"># Compare outputs</span></span>
+<span id="cb410-8"><a href="section-functions.html#cb410-8"></a>manual_results =<span class="st"> </span><span class="kw">c</span>(fit_my_lm<span class="op">$</span>beta, fit_my_lm<span class="op">$</span>sigma2)</span>
+<span id="cb410-9"><a href="section-functions.html#cb410-9"></a>base_results =<span class="st"> </span><span class="kw">c</span>(fit_lm<span class="op">$</span>coefficients, </span>
+<span id="cb410-10"><a href="section-functions.html#cb410-10"></a>                     (<span class="dv">1</span><span class="op">/</span>fit_lm<span class="op">$</span>df.residual)<span class="op">*</span><span class="kw">t</span>(fit_lm<span class="op">$</span>residuals)<span class="op">%*%</span>fit_lm<span class="op">$</span>residuals)</span>
+<span id="cb410-11"><a href="section-functions.html#cb410-11"></a>results =<span class="st"> </span><span class="kw">cbind</span>(manual_results, base_results)</span>
+<span id="cb410-12"><a href="section-functions.html#cb410-12"></a><span class="kw">row.names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Beta&quot;</span>, <span class="st">&quot;Sigma&quot;</span>)</span>
+<span id="cb410-13"><a href="section-functions.html#cb410-13"></a>results</span></code></pre></div>
 <pre><code>##       manual_results base_results
 ## Beta        76.58117     76.58117
 ## Sigma    67046.33165  67046.33165</code></pre>
 <p>As one can notice, the two procedures give the same outputs indicating that our <code>my_lm()</code> function well implements the linear regression method. We can now proceed to use our function in order to test the Creationist hypothesis on the age of the universe assuming the validity of the big bang theory. First of all, due to different measurement units we perform a unit transformation and then compute the age in years (which requires an additional transformation since the previous one gives a unit of <span class="math inline">\(s^{-1}\)</span>).</p>
-<div class="sourceCode" id="section-cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="section-functions.html#cb414-1"></a><span class="co"># Estimated Hubble&#39;s constant</span></span>
-<span id="cb414-2"><a href="section-functions.html#cb414-2"></a>hubble_const &lt;-<span class="st"> </span>fit_my_lm<span class="op">$</span>beta<span class="op">/</span><span class="fl">3.09e19</span> </span>
-<span id="cb414-3"><a href="section-functions.html#cb414-3"></a><span class="co"># Note: The estimated Hubble&#39;s constant in inverse seconds, [s^(-1)]</span></span>
-<span id="cb414-4"><a href="section-functions.html#cb414-4"></a></span>
-<span id="cb414-5"><a href="section-functions.html#cb414-5"></a><span class="co"># Age of the universe in seconds</span></span>
-<span id="cb414-6"><a href="section-functions.html#cb414-6"></a>age_sec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>hubble_const </span>
-<span id="cb414-7"><a href="section-functions.html#cb414-7"></a></span>
-<span id="cb414-8"><a href="section-functions.html#cb414-8"></a><span class="co"># Age of the universe in years</span></span>
-<span id="cb414-9"><a href="section-functions.html#cb414-9"></a>age_sec<span class="op">/</span>(<span class="dv">60</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="dv">24</span><span class="op">*</span><span class="dv">365</span>) </span></code></pre></div>
+<div class="sourceCode" id="section-cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="section-functions.html#cb412-1"></a><span class="co"># Estimated Hubble&#39;s constant</span></span>
+<span id="cb412-2"><a href="section-functions.html#cb412-2"></a>hubble_const &lt;-<span class="st"> </span>fit_my_lm<span class="op">$</span>beta<span class="op">/</span><span class="fl">3.09e19</span> </span>
+<span id="cb412-3"><a href="section-functions.html#cb412-3"></a><span class="co"># Note: The estimated Hubble&#39;s constant in inverse seconds, [s^(-1)]</span></span>
+<span id="cb412-4"><a href="section-functions.html#cb412-4"></a></span>
+<span id="cb412-5"><a href="section-functions.html#cb412-5"></a><span class="co"># Age of the universe in seconds</span></span>
+<span id="cb412-6"><a href="section-functions.html#cb412-6"></a>age_sec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>hubble_const </span>
+<span id="cb412-7"><a href="section-functions.html#cb412-7"></a></span>
+<span id="cb412-8"><a href="section-functions.html#cb412-8"></a><span class="co"># Age of the universe in years</span></span>
+<span id="cb412-9"><a href="section-functions.html#cb412-9"></a>age_sec<span class="op">/</span>(<span class="dv">60</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="dv">24</span><span class="op">*</span><span class="dv">365</span>) </span></code></pre></div>
 <p>Based on this estimation, the age of the universe appears to be almost 13 billion years. However, we know that <span class="math inline">\(\hat{\beta}\)</span> is a random variable that therefore follows a distribution which, based on asymptotic statistical theory, is a normal distribution with expectaton <span class="math inline">\(\beta\)</span> and variance <span class="math inline">\(\sigma^2(X^TX)^{-1}\)</span>.</p>
 <p>Now, let’s suppose that we have a hypothesis on the age of the universe, for example that of Creation Scientists who claim that the universe is 6000 years old based on a reading from the Bible. Assuming the validity of the big bang theory, which is not the case for Creation Scientists, let us nevertheless test if their claim appears to be reasonable within this postulated framework. For this purpose we can build a 95% confidence interval for the true Hubble constant <span class="math inline">\(\beta\)</span> and understand if the Hubble constant implied by the postulated age of the universe falls within this interval. Firstly, we can determine this constant under the null hypothesis which can be defined as follows</p>
 <p><span class="math display">\[\begin{equation*}
   H_0 \, : \, \beta = 163 \times 10^6 ,
 \end{equation*}\]</span></p>
 <p>since this value of <span class="math inline">\(\beta\)</span> would imply that the universe is roughly 6000 years old. The alternative hypothesis is that the true <span class="math inline">\(\beta\)</span> is not equal to the above quantity (i.e. <span class="math inline">\(H_A \, : \, \beta \neq 163 \times 10^6\)</span>). … Let us therefore replace the values in Eq. <a href="section-functions.html#eq:cibeta">(6.4)</a>:</p>
-<div class="sourceCode" id="section-cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="section-functions.html#cb415-1"></a><span class="co"># 95% confidence interval for the Hubble constant</span></span>
-<span id="cb415-2"><a href="section-functions.html#cb415-2"></a>fit_my_lm<span class="op">$</span>ci</span></code></pre></div>
+<div class="sourceCode" id="section-cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="section-functions.html#cb413-1"></a><span class="co"># 95% confidence interval for the Hubble constant</span></span>
+<span id="cb413-2"><a href="section-functions.html#cb413-2"></a>fit_my_lm<span class="op">$</span>ci</span></code></pre></div>
 <pre><code>## [1] 68.81032 84.35203</code></pre>
 <p>The confidence interval lies between 68 and 84 which clearly does not contain the value implied by the age of the universe postulated by the Creation Scientists. Hence, assuming the validity of the big bang theory, we can reject this hypothesis at a 95% level.</p>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>

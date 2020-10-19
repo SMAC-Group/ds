@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Data Structures | An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Data Structures | An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,21 +50,21 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
 <li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
 <li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
-<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+<li class="chapter" data-level="2.3.10" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
 <li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+<li class="chapter" data-level="3.5" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
-<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
 <li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
 <li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
 <li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
 <li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Extending</b></span></li>
 <li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
 <li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
 <li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
 <li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
 <li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
-<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.7" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
 <li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
@@ -285,22 +285,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
 <li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
 <li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
-<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-functions.html"><a href="section-functions.html#section-functions"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
 <li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
-<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
-<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
-<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
-<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
-<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping.html"><a href="section-web-scraping.html"><i class="fa fa-check"></i><b>10</b> Web scraping</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html"><i class="fa fa-check"></i><b>11</b> Blogdown: websites and blogs creation</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-static-website-overview"><i class="fa fa-check"></i><b>11.1</b> Static website overview</a></li>
+<li class="chapter" data-level="11.2" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-getting-started"><i class="fa fa-check"></i><b>11.2</b> Getting started</a></li>
+<li class="chapter" data-level="11.3" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-choosing-a-theme"><i class="fa fa-check"></i><b>11.3</b> Choosing a theme</a></li>
+<li class="chapter" data-level="11.4" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-rendering-the-website"><i class="fa fa-check"></i><b>11.4</b> Rendering the website</a></li>
+<li class="chapter" data-level="11.5" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-creating-content"><i class="fa fa-check"></i><b>11.5</b> Creating content</a></li>
+<li class="chapter" data-level="11.6" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-website-structure-and-content-organization"><i class="fa fa-check"></i><b>11.6</b> Website structure and content organization</a></li>
+<li class="chapter" data-level="11.7" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-customizing-the-theme"><i class="fa fa-check"></i><b>11.7</b> Customizing the theme</a></li>
+<li class="chapter" data-level="11.8" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-deployment"><i class="fa fa-check"></i><b>11.8</b> Deployment</a></li>
+<li class="chapter" data-level="11.9" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-see-also"><i class="fa fa-check"></i><b>11.9</b> See also</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="A" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="B" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -330,9 +341,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>Logical</strong> (or boolean): examples: <code>TRUE</code>, <code>FALSE</code>.</p></li>
 <li><p><strong>Character</strong>: examples: <code>"a"</code>, <code>"Bonjour"</code>.</p></li>
 </ul>
-<p>In R there are five types of data structures in which elements can be stored. A data structure is said to <em>homogeneous</em> if it only contains elements of the same type (for example it only contains character or only numeric values) and <em>heterogenous</em> if it contains elements of more than one type. The five types of data structures are commonly summarized in a table similar to the one below <span class="citation">(see e.g. Wickham <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>:</p>
+<p>In R there are five types of data structures in which elements can be stored. A data structure is said to <em>homogeneous</em> if it only contains elements of the same type (for example it only contains character or only numeric values) and <em>heterogenous</em> if it contains elements of more than one type. The five types of data structures are commonly summarized in a table similar to the one below <span class="citation">(see e.g. Wickham <a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>:</p>
 <table>
-<caption><span id="tab:ds">Table 4.1: </span> Five most common types of data structures used in R <span class="citation">(Wickham <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>.</caption>
+<caption><span id="tab:ds">Table 4.1: </span> Five most common types of data structures used in R <span class="citation">(Wickham <a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>.</caption>
 <thead>
 <tr class="header">
 <th align="left">Dimension</th>
@@ -472,8 +483,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is also possible to define vectors with characters, for example we could define a vector with the player names as follows:</p>
 <div class="sourceCode" id="section-cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="section-data.html#cb43-1"></a>(players &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span>, <span class="st">&quot;Rafael Nadal&quot;</span>, <span class="st">&quot;Roger Federer&quot;</span>,</span>
 <span id="cb43-2"><a href="section-data.html#cb43-2"></a>              <span class="st">&quot;Daniil Medvedev&quot;</span>, <span class="st">&quot;Dominic Thiem&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;   &quot;Daniil Medvedev&quot;
-## [5] &quot;Dominic Thiem&quot;</code></pre>
+<pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;  
+## [4] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;</code></pre>
 <div id="section-type" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Type</h3>
 <p>We can evaluate the kind or type of elements that are stored in a vector using the function <code>typeof()</code>. For example, for the vectors we just created we obtain:</p>
@@ -576,8 +587,10 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <div class="sourceCode" id="section-cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="section-data.html#cb84-1"></a>(grand_slam_win &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Novak Djokovic&quot;</span> =<span class="st"> </span><span class="dv">16</span>, <span class="st">&quot;Rafael Nadal&quot;</span> =<span class="st"> </span><span class="dv">18</span>, </span>
 <span id="cb84-2"><a href="section-data.html#cb84-2"></a>                     <span class="st">&quot;Roger Federer&quot;</span> =<span class="st"> </span><span class="dv">20</span>, <span class="st">&quot;Daniil Medvedev&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</span>
 <span id="cb84-3"><a href="section-data.html#cb84-3"></a>                     <span class="st">&quot;Dominic Thiem&quot;</span> =<span class="st"> </span><span class="dv">0</span>))</span></code></pre></div>
-<pre><code>##  Novak Djokovic    Rafael Nadal   Roger Federer Daniil Medvedev   Dominic Thiem 
-##              16              18              20               0               0</code></pre>
+<pre><code>##  Novak Djokovic    Rafael Nadal   Roger Federer Daniil Medvedev 
+##              16              18              20               0 
+##   Dominic Thiem 
+##               0</code></pre>
 <p>The main advantage of this approach is that the number of grand slams won can now be referred to by the player’s name. For example:</p>
 <div class="sourceCode" id="section-cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="section-data.html#cb86-1"></a>grand_slam_win[<span class="st">&quot;Novak Djokovic&quot;</span>]</span></code></pre></div>
 <pre><code>## Novak Djokovic 
@@ -587,8 +600,8 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 ##             16             20</code></pre>
 <p>All labels (athlete names in this case) can be obtained with the function <code>names()</code>, i.e.</p>
 <div class="sourceCode" id="section-cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="section-data.html#cb90-1"></a><span class="kw">names</span>(grand_slam_win)</span></code></pre></div>
-<pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;   &quot;Daniil Medvedev&quot;
-## [5] &quot;Dominic Thiem&quot;</code></pre>
+<pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;  
+## [4] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;</code></pre>
 </div>
 <div id="section-working-with-dates" class="section level3">
 <h3><span class="header-section-number">4.1.6</span> Working with Dates</h3>
@@ -663,7 +676,8 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <pre><code>## Time difference of 353 days</code></pre>
 <p>In addition, subsetting becomes also more intuitive and, for example, to find the players born after 1 January 1986 we can simply run:</p>
 <div class="sourceCode" id="section-cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="section-data.html#cb99-1"></a>players[players_dob <span class="op">&gt;</span><span class="st"> &quot;1986-01-01&quot;</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;</code></pre>
+<pre><code>## [1] &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;    &quot;Daniil Medvedev&quot;
+## [4] &quot;Dominic Thiem&quot;</code></pre>
 <p>There are many other reasons for using this format (or other date formats). A more detailed discussion on this topic can, for example, be found in <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Cole Beck’s notes</a>.</p>
 </div>
 <div id="section-useful-functions-with-vectors" class="section level3">
@@ -682,29 +696,33 @@ Note that it is not permitted to “mix” positive and negative indices. For ex
 <pre><code>## [1] 4 5 1 2 3</code></pre>
 <p>Therefore, we can sort the players in ascending order of wins as follows</p>
 <div class="sourceCode" id="section-cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="section-data.html#cb109-1"></a>players[<span class="kw">order</span>(grand_slam_win)]</span></code></pre></div>
-<pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;   
-## [5] &quot;Roger Federer&quot;</code></pre>
+<pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot; 
+## [4] &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;</code></pre>
 <p>which implies that Roger Federer won most grand slams. Another related function is <code>sort()</code> which simply sorts the elements of a vector in an ascending manner. For example,</p>
 <div class="sourceCode" id="section-cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="section-data.html#cb111-1"></a><span class="kw">sort</span>(grand_slam_win)</span></code></pre></div>
-<pre><code>## Daniil Medvedev   Dominic Thiem  Novak Djokovic    Rafael Nadal   Roger Federer 
-##               0               0              16              18              20</code></pre>
+<pre><code>## Daniil Medvedev   Dominic Thiem  Novak Djokovic    Rafael Nadal 
+##               0               0              16              18 
+##   Roger Federer 
+##              20</code></pre>
 <p>which is compact version of</p>
 <div class="sourceCode" id="section-cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="section-data.html#cb113-1"></a>grand_slam_win[<span class="kw">order</span>(grand_slam_win)]</span></code></pre></div>
-<pre><code>## Daniil Medvedev   Dominic Thiem  Novak Djokovic    Rafael Nadal   Roger Federer 
-##               0               0              16              18              20</code></pre>
+<pre><code>## Daniil Medvedev   Dominic Thiem  Novak Djokovic    Rafael Nadal 
+##               0               0              16              18 
+##   Roger Federer 
+##              20</code></pre>
 <p>It is also possible to use the functions <code>sort()</code> and <code>order()</code> with characters and dates. For example, to sort the players’ names alphabetically (by first name) we can use:</p>
 <div class="sourceCode" id="section-cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="section-data.html#cb115-1"></a><span class="kw">sort</span>(players)</span></code></pre></div>
-<pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;   
-## [5] &quot;Roger Federer&quot;</code></pre>
+<pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot; 
+## [4] &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;</code></pre>
 <p>Similarly, we can sort players by age (oldest first)</p>
 <div class="sourceCode" id="section-cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="section-data.html#cb117-1"></a>players[<span class="kw">order</span>(players_dob)]</span></code></pre></div>
-<pre><code>## [1] &quot;Roger Federer&quot;   &quot;Rafael Nadal&quot;    &quot;Novak Djokovic&quot;  &quot;Dominic Thiem&quot;  
-## [5] &quot;Daniil Medvedev&quot;</code></pre>
+<pre><code>## [1] &quot;Roger Federer&quot;   &quot;Rafael Nadal&quot;    &quot;Novak Djokovic&quot; 
+## [4] &quot;Dominic Thiem&quot;   &quot;Daniil Medvedev&quot;</code></pre>
 <p>or in an reversed manner (oldest last):</p>
 <div class="sourceCode" id="section-cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="section-data.html#cb119-1"></a>players[<span class="kw">order</span>(players_dob, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)]</span></code></pre></div>
-<pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot;  &quot;Rafael Nadal&quot;   
-## [5] &quot;Roger Federer&quot;</code></pre>
-<p>There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references <span class="citation">(see e.g. Wickham <a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>.</p>
+<pre><code>## [1] &quot;Daniil Medvedev&quot; &quot;Dominic Thiem&quot;   &quot;Novak Djokovic&quot; 
+## [4] &quot;Rafael Nadal&quot;    &quot;Roger Federer&quot;</code></pre>
+<p>There are of course many other useful functions that allow to deal with vectors which we will not mention in this section but can be found in a variety of references <span class="citation">(see e.g. Wickham <a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span>.</p>
 </div>
 <div id="section-creating-sequences" class="section level3">
 <h3><span class="header-section-number">4.1.8</span> Creating sequences</h3>
@@ -901,8 +919,10 @@ Usually the length of the vector (i.e. number of elements in the vector) is the
 ## Roger Federer      20     82.2</code></pre>
 <div class="sourceCode" id="section-cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="section-data.html#cb177-1"></a><span class="co"># Subset includes all rows for column 2  </span></span>
 <span id="cb177-2"><a href="section-data.html#cb177-2"></a>mat[ , <span class="dv">2</span>]</span></code></pre></div>
-<pre><code>##  Novak Djokovic    Rafael Nadal   Roger Federer Daniil Medvedev   Dominic Thiem 
-##            82.7            83.1            82.2            63.6            64.3</code></pre>
+<pre><code>##  Novak Djokovic    Rafael Nadal   Roger Federer Daniil Medvedev 
+##            82.7            83.1            82.2            63.6 
+##   Dominic Thiem 
+##            64.3</code></pre>
 <div class="sourceCode" id="section-cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="section-data.html#cb179-1"></a><span class="co"># Subset includes rows 1, 2, &amp; 3 for column 1  </span></span>
 <span id="cb179-2"><a href="section-data.html#cb179-2"></a>mat[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## Novak Djokovic   Rafael Nadal  Roger Federer 
@@ -1021,9 +1041,9 @@ d_3 &amp; d_4
 \end{equation*}\]</span></p>
 <p>should be equal to the identity matrix,</p>
 <div class="sourceCode" id="section-cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="section-data.html#cb195-1"></a>(G &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>B_inv)</span></code></pre></div>
-<pre><code>##      [,1]          [,2]
-## [1,]    1 -8.881784e-16
-## [2,]    0  1.000000e+00</code></pre>
+<pre><code>##              [,1]         [,2]
+## [1,] 1.000000e+00 2.498002e-16
+## [2,] 1.998401e-15 1.000000e+00</code></pre>
 <p>The result is of course extremely close but <span class="math inline">\(\mathbf{G}\)</span> is not exactly equal to the identity matrix due to rounding and other numerical errors.</p>
 <p>Another function of interest is the function <code>diag()</code> that can be used to extract the diagonal of a matrix. For example, we have</p>
 <p><span class="math display">\[\begin{equation*}
@@ -1273,7 +1293,7 @@ which verifies that our result is a minimum.
 <caption><span id="tab:tableprtexample">Table 4.4: </span>Expected value and variance of stocks and our investment</caption>
 <thead>
 <tr class="header">
-<th></th>
+<th align="left"></th>
 <th align="right">Apple</th>
 <th align="right">Netflix</th>
 <th align="right">Investment</th>
@@ -1281,13 +1301,13 @@ which verifies that our result is a minimum.
 </thead>
 <tbody>
 <tr class="odd">
-<td>Expected value</td>
+<td align="left">Expected value</td>
 <td align="right">0.0009275</td>
 <td align="right">0.0018499</td>
 <td align="right">0.0010563</td>
 </tr>
 <tr class="even">
-<td>Variance</td>
+<td align="left">Variance</td>
 <td align="right">0.0002109</td>
 <td align="right">0.0007084</td>
 <td align="right">0.0001975</td>
@@ -1496,18 +1516,18 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <span id="cb260-18"><a href="section-data.html#cb260-18"></a></span>
 <span id="cb260-19"><a href="section-data.html#cb260-19"></a><span class="kw">dimnames</span>(tennis)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>players</span>
 <span id="cb260-20"><a href="section-data.html#cb260-20"></a>tennis</span></code></pre></div>
-<pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
-## Novak Djokovic       22 May 1987             16         Serbia           1
-## Rafael Nadal         3 June 1986             19          Spain           2
-## Roger Federer      8 August 1981             20    Switzerland           3
-## Daniil Medvedev 11 February 1996              0         Russia           4
-## Dominic Thiem   3 September 1993              0        Austria           5
-##                 prize_money
-## Novak Djokovic    135259120
-## Rafael Nadal      115178858
-## Roger Federer     126840700
-## Daniil Medvedev     8171483
-## Dominic Thiem      18588662</code></pre>
+<pre><code>##                    date_of_birth grand_slam_win place_of_birth
+## Novak Djokovic       22 May 1987             16         Serbia
+## Rafael Nadal         3 June 1986             19          Spain
+## Roger Federer      8 August 1981             20    Switzerland
+## Daniil Medvedev 11 February 1996              0         Russia
+## Dominic Thiem   3 September 1993              0        Austria
+##                 ATP_ranking prize_money
+## Novak Djokovic            1   135259120
+## Rafael Nadal              2   115178858
+## Roger Federer             3   126840700
+## Daniil Medvedev           4     8171483
+## Dominic Thiem             5    18588662</code></pre>
 <p>Notice that each column has its own type. We can check if we have achieved our goal by using:</p>
 <div class="sourceCode" id="section-cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="section-data.html#cb262-1"></a><span class="kw">is.data.frame</span>(tennis)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -1519,18 +1539,18 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <span id="cb264-2"><a href="section-data.html#cb264-2"></a>hand &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;L&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>)</span>
 <span id="cb264-3"><a href="section-data.html#cb264-3"></a></span>
 <span id="cb264-4"><a href="section-data.html#cb264-4"></a>(tennis &lt;-<span class="st"> </span><span class="kw">cbind</span>(tennis, <span class="kw">data.frame</span>(height, hand)))</span></code></pre></div>
-<pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
-## Novak Djokovic       22 May 1987             16         Serbia           1
-## Rafael Nadal         3 June 1986             19          Spain           2
-## Roger Federer      8 August 1981             20    Switzerland           3
-## Daniil Medvedev 11 February 1996              0         Russia           4
-## Dominic Thiem   3 September 1993              0        Austria           5
-##                 prize_money height hand
-## Novak Djokovic    135259120   1.88    R
-## Rafael Nadal      115178858   1.85    L
-## Roger Federer     126840700   1.85    R
-## Daniil Medvedev     8171483   1.98    R
-## Dominic Thiem      18588662   1.85    R</code></pre>
+<pre><code>##                    date_of_birth grand_slam_win place_of_birth
+## Novak Djokovic       22 May 1987             16         Serbia
+## Rafael Nadal         3 June 1986             19          Spain
+## Roger Federer      8 August 1981             20    Switzerland
+## Daniil Medvedev 11 February 1996              0         Russia
+## Dominic Thiem   3 September 1993              0        Austria
+##                 ATP_ranking prize_money height hand
+## Novak Djokovic            1   135259120   1.88    R
+## Rafael Nadal              2   115178858   1.85    L
+## Roger Federer             3   126840700   1.85    R
+## Daniil Medvedev           4     8171483   1.98    R
+## Dominic Thiem             5    18588662   1.85    R</code></pre>
 </div>
 <div id="section-subsetting-2" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Subsetting</h3>
@@ -1555,14 +1575,14 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 ## Dominic Thiem          Austria 3 September 1993</code></pre>
 <p>We can extract column names of dataframes by using <code>names</code>.</p>
 <div class="sourceCode" id="section-cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="section-data.html#cb270-1"></a><span class="kw">names</span>(tennis)</span></code></pre></div>
-<pre><code>## [1] &quot;date_of_birth&quot;  &quot;grand_slam_win&quot; &quot;place_of_birth&quot; &quot;ATP_ranking&quot;   
-## [5] &quot;prize_money&quot;    &quot;height&quot;         &quot;hand&quot;</code></pre>
+<pre><code>## [1] &quot;date_of_birth&quot;  &quot;grand_slam_win&quot; &quot;place_of_birth&quot;
+## [4] &quot;ATP_ranking&quot;    &quot;prize_money&quot;    &quot;height&quot;        
+## [7] &quot;hand&quot;</code></pre>
 <div class="sourceCode" id="section-cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="section-data.html#cb272-1"></a><span class="co"># To access a single element, let say the date of birth, </span></span>
 <span id="cb272-2"><a href="section-data.html#cb272-2"></a><span class="co"># you can also use:</span></span>
 <span id="cb272-3"><a href="section-data.html#cb272-3"></a>tennis<span class="op">$</span>date_of_birth</span></code></pre></div>
-<pre><code>## [1] 22 May 1987      3 June 1986      8 August 1981    11 February 1996
-## [5] 3 September 1993
-## 5 Levels: 11 February 1996 22 May 1987 3 June 1986 ... 8 August 1981</code></pre>
+<pre><code>## [1] &quot;22 May 1987&quot;      &quot;3 June 1986&quot;      &quot;8 August 1981&quot;   
+## [4] &quot;11 February 1996&quot; &quot;3 September 1993&quot;</code></pre>
 <p>We can change the ordering of the columns outputted by simply changing the order within the <code>c()</code> subsetting.</p>
 <div class="sourceCode" id="section-cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="section-data.html#cb274-1"></a><span class="co"># Note the difference between </span></span>
 <span id="cb274-2"><a href="section-data.html#cb274-2"></a>tennis[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
@@ -1584,16 +1604,16 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <div class="sourceCode" id="section-cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="section-data.html#cb278-1"></a><span class="co"># We will talk more about == in the next chapter</span></span>
 <span id="cb278-2"><a href="section-data.html#cb278-2"></a><span class="co"># This represents all players with hand equal to &quot;R&quot;</span></span>
 <span id="cb278-3"><a href="section-data.html#cb278-3"></a>tennis[hand<span class="op">==</span><span class="st">&quot;R&quot;</span>,]</span></code></pre></div>
-<pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
-## Novak Djokovic       22 May 1987             16         Serbia           1
-## Roger Federer      8 August 1981             20    Switzerland           3
-## Daniil Medvedev 11 February 1996              0         Russia           4
-## Dominic Thiem   3 September 1993              0        Austria           5
-##                 prize_money height hand
-## Novak Djokovic    135259120   1.88    R
-## Roger Federer     126840700   1.85    R
-## Daniil Medvedev     8171483   1.98    R
-## Dominic Thiem      18588662   1.85    R</code></pre>
+<pre><code>##                    date_of_birth grand_slam_win place_of_birth
+## Novak Djokovic       22 May 1987             16         Serbia
+## Roger Federer      8 August 1981             20    Switzerland
+## Daniil Medvedev 11 February 1996              0         Russia
+## Dominic Thiem   3 September 1993              0        Austria
+##                 ATP_ranking prize_money height hand
+## Novak Djokovic            1   135259120   1.88    R
+## Roger Federer             3   126840700   1.85    R
+## Daniil Medvedev           4     8171483   1.98    R
+## Dominic Thiem             5    18588662   1.85    R</code></pre>
 <div class="sourceCode" id="section-cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="section-data.html#cb280-1"></a><span class="co"># Note what this returns </span></span>
 <span id="cb280-2"><a href="section-data.html#cb280-2"></a>hand<span class="op">==</span><span class="st">&quot;R&quot;</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
@@ -1601,32 +1621,32 @@ Figure 4.2: Graphical representation of Apple, Netflix and min-variance portfoli
 <p>Below we will order the tennis players by the number of grand slam wins. Set <code>decreasing=TRUE</code> to order the rows in descreasing order.</p>
 <div class="sourceCode" id="section-cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="section-data.html#cb282-1"></a><span class="co"># increasing order</span></span>
 <span id="cb282-2"><a href="section-data.html#cb282-2"></a>tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>]),]</span></code></pre></div>
-<pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
-## Daniil Medvedev 11 February 1996              0         Russia           4
-## Dominic Thiem   3 September 1993              0        Austria           5
-## Novak Djokovic       22 May 1987             16         Serbia           1
-## Rafael Nadal         3 June 1986             19          Spain           2
-## Roger Federer      8 August 1981             20    Switzerland           3
-##                 prize_money height hand
-## Daniil Medvedev     8171483   1.98    R
-## Dominic Thiem      18588662   1.85    R
-## Novak Djokovic    135259120   1.88    R
-## Rafael Nadal      115178858   1.85    L
-## Roger Federer     126840700   1.85    R</code></pre>
+<pre><code>##                    date_of_birth grand_slam_win place_of_birth
+## Daniil Medvedev 11 February 1996              0         Russia
+## Dominic Thiem   3 September 1993              0        Austria
+## Novak Djokovic       22 May 1987             16         Serbia
+## Rafael Nadal         3 June 1986             19          Spain
+## Roger Federer      8 August 1981             20    Switzerland
+##                 ATP_ranking prize_money height hand
+## Daniil Medvedev           4     8171483   1.98    R
+## Dominic Thiem             5    18588662   1.85    R
+## Novak Djokovic            1   135259120   1.88    R
+## Rafael Nadal              2   115178858   1.85    L
+## Roger Federer             3   126840700   1.85    R</code></pre>
 <div class="sourceCode" id="section-cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="section-data.html#cb284-1"></a><span class="co"># descreasing order</span></span>
 <span id="cb284-2"><a href="section-data.html#cb284-2"></a>tennis[<span class="kw">order</span>(tennis[,<span class="st">&quot;grand_slam_win&quot;</span>], <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]</span></code></pre></div>
-<pre><code>##                    date_of_birth grand_slam_win place_of_birth ATP_ranking
-## Roger Federer      8 August 1981             20    Switzerland           3
-## Rafael Nadal         3 June 1986             19          Spain           2
-## Novak Djokovic       22 May 1987             16         Serbia           1
-## Daniil Medvedev 11 February 1996              0         Russia           4
-## Dominic Thiem   3 September 1993              0        Austria           5
-##                 prize_money height hand
-## Roger Federer     126840700   1.85    R
-## Rafael Nadal      115178858   1.85    L
-## Novak Djokovic    135259120   1.88    R
-## Daniil Medvedev     8171483   1.98    R
-## Dominic Thiem      18588662   1.85    R</code></pre>
+<pre><code>##                    date_of_birth grand_slam_win place_of_birth
+## Roger Federer      8 August 1981             20    Switzerland
+## Rafael Nadal         3 June 1986             19          Spain
+## Novak Djokovic       22 May 1987             16         Serbia
+## Daniil Medvedev 11 February 1996              0         Russia
+## Dominic Thiem   3 September 1993              0        Austria
+##                 ATP_ranking prize_money height hand
+## Roger Federer             3   126840700   1.85    R
+## Rafael Nadal              2   115178858   1.85    L
+## Novak Djokovic            1   135259120   1.88    R
+## Daniil Medvedev           4     8171483   1.98    R
+## Dominic Thiem             5    18588662   1.85    R</code></pre>
 </div>
 <div id="section-example-maps" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Example: Maps</h3>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>An Introduction to Statistical Programming Methods with R</title>
   <meta name="description" content="This book is under construction and serves as a reference for students or other interested readers who intend to learn the basics of statistical programming using the R language. The book will provide the reader with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="An Introduction to Statistical Programming Methods with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,21 +50,21 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.7" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-cross-referencing-sections"><i class="fa fa-check"></i><b>2.3.7</b> Cross-referencing Sections</a></li>
 <li class="chapter" data-level="2.3.8" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-citations-and-bibliography"><i class="fa fa-check"></i><b>2.3.8</b> Citations and Bibliography</a></li>
 <li class="chapter" data-level="2.3.9" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-tables"><i class="fa fa-check"></i><b>2.3.9</b> Tables</a></li>
-<li class="chapter" data-level="2.3.10" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-additional-references-1"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
+<li class="chapter" data-level="2.3.10" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>2.3.10</b> Additional References</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunks"><i class="fa fa-check"></i><b>2.4</b> Code Chunks</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="section-rmarkdown.html"><a href="section-rmarkdown.html#section-code-chunk-options"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunk Options</a></li>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="section-github.html"><a href="section-github.html#section-issues"><i class="fa fa-check"></i><b>3.3</b> Issues</a></li>
 <li class="chapter" data-level="3.4" data-path="section-github.html"><a href="section-github.html#section-slack-integration"><i class="fa fa-check"></i><b>3.4</b> Slack Integration</a></li>
-<li class="chapter" data-level="3.5" data-path="section-github.html"><a href="section-github.html#section-additional-references-2"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
+<li class="chapter" data-level="3.5" data-path="index.html"><a href="index.html#section-additional-references"><i class="fa fa-check"></i><b>3.5</b> Additional References</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
 <li class="chapter" data-level="4" data-path="section-data.html"><a href="section-data.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="section-control.html"><a href="section-control.html"><i class="fa fa-check"></i><b>5</b> Control Structures</a><ul>
-<li class="chapter" data-level="5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="section-control.html"><a href="section-control.html#section-selcontrostat"><i class="fa fa-check"></i><b>5.2</b> Selection control statements</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="section-control.html"><a href="section-control.html#section-logoperators"><i class="fa fa-check"></i><b>5.2.1</b> Logical Operators</a></li>
 <li class="chapter" data-level="5.2.2" data-path="section-control.html"><a href="section-control.html#section-selection-operators"><i class="fa fa-check"></i><b>5.2.2</b> Selection Operators</a></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="section-control.html"><a href="section-control.html#section-example-the-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Example: The Bootstrap</a></li>
 <li class="chapter" data-level="5.4" data-path="section-control.html"><a href="section-control.html#section-example-random-walk"><i class="fa fa-check"></i><b>5.4</b> Example: Random Walk</a></li>
 <li class="chapter" data-level="5.5" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>5.5</b> Example: Monte-Carlo Integration</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-2"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.5.1" data-path="section-control.html"><a href="section-control.html#section-introduction-1"><i class="fa fa-check"></i><b>5.5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.5.2" data-path="section-control.html"><a href="section-control.html#section-implementation"><i class="fa fa-check"></i><b>5.5.2</b> Implementation</a></li>
 <li class="chapter" data-level="5.5.3" data-path="section-control.html"><a href="section-control.html#section-application-to-the-normal-distribution"><i class="fa fa-check"></i><b>5.5.3</b> Application to the Normal Distribution</a></li>
 <li class="chapter" data-level="5.5.4" data-path="section-control.html"><a href="section-control.html#section-application-to-nonelementary-integrals"><i class="fa fa-check"></i><b>5.5.4</b> Application to Nonelementary Integrals</a></li>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Extending</b></span></li>
 <li class="chapter" data-level="7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html"><i class="fa fa-check"></i><b>7</b> Shiny Web Applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#section-introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1.-defining-the-r-code-in-the-backend-of-the-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Step 1. Defining the R Code in the backend of the Shiny app</a></li>
 <li class="chapter" data-level="7.3" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-user-interface-ui-frontend"><i class="fa fa-check"></i><b>7.3</b> Step 2: User Interface (UI) / Frontend</a><ul>
 <li class="chapter" data-level="" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-content-creation"><i class="fa fa-check"></i>Content Creation</a></li>
@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-3-implementing-the-backend-server"><i class="fa fa-check"></i><b>7.4</b> Step 3: Implementing the backend (server)</a></li>
 <li class="chapter" data-level="7.5" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-4-connecting-frontend-and-backend"><i class="fa fa-check"></i><b>7.5</b> Step 4: Connecting frontend and backend</a></li>
 <li class="chapter" data-level="7.6" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-5-customize"><i class="fa fa-check"></i><b>7.6</b> Step 5: Customize</a></li>
-<li class="chapter" data-level="7.7" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-monte-carlo-integration-1"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
+<li class="chapter" data-level="7.7" data-path="section-control.html"><a href="section-control.html#section-example-monte-carlo-integration"><i class="fa fa-check"></i><b>7.7</b> Example: Monte-Carlo Integration</a></li>
 <li class="chapter" data-level="7.8" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-example-buffons-needle"><i class="fa fa-check"></i><b>7.8</b> Example: Buffon’s needle</a><ul>
 <li class="chapter" data-level="7.8.1" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-1-backend"><i class="fa fa-check"></i><b>7.8.1</b> Step 1: Backend</a></li>
 <li class="chapter" data-level="7.8.2" data-path="section-shiny-web-applications.html"><a href="section-shiny-web-applications.html#section-step-2-frontend"><i class="fa fa-check"></i><b>7.8.2</b> Step 2: Frontend</a></li>
@@ -285,22 +285,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.2" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-a-first-program"><i class="fa fa-check"></i><b>9.1.2</b> A first program</a></li>
 <li class="chapter" data-level="9.1.3" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-data-structures"><i class="fa fa-check"></i><b>9.1.3</b> Data structures</a></li>
 <li class="chapter" data-level="9.1.4" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-control-structures"><i class="fa fa-check"></i><b>9.1.4</b> Control structures</a></li>
-<li class="chapter" data-level="9.1.5" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-functions-1"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
+<li class="chapter" data-level="9.1.5" data-path="section-functions.html"><a href="section-functions.html#section-functions"><i class="fa fa-check"></i><b>9.1.5</b> Functions</a></li>
 <li class="chapter" data-level="9.1.6" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-comparing-with-r"><i class="fa fa-check"></i><b>9.1.6</b> Comparing with R</a></li>
 <li class="chapter" data-level="9.1.7" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-example-buffons-needle-cont"><i class="fa fa-check"></i><b>9.1.7</b> Example: Buffon’s needle (con’t)</a></li>
 <li class="chapter" data-level="9.1.8" data-path="section-high-performance-computing.html"><a href="section-high-performance-computing.html#section-c-in-an-r-package"><i class="fa fa-check"></i><b>9.1.8</b> C++ in an R package</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html"><i class="fa fa-check"></i><b>10</b> Web scraping in <code>R</code></a><ul>
-<li class="chapter" data-level="10.1" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
-<li class="chapter" data-level="10.2" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
-<li class="chapter" data-level="10.3" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
-<li class="chapter" data-level="10.4" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
-<li class="chapter" data-level="10.5" data-path="section-web-scraping-in-r.html"><a href="section-web-scraping-in-r.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
+<li class="chapter" data-level="10" data-path="section-web-scraping.html"><a href="section-web-scraping.html"><i class="fa fa-check"></i><b>10</b> Web scraping</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-web-scraping-overview"><i class="fa fa-check"></i><b>10.1</b> Web scraping overview</a></li>
+<li class="chapter" data-level="10.2" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-denial-of-service-dos-crawl-rate-and-robots.txt"><i class="fa fa-check"></i><b>10.2</b> Denial-of-service (DoS), crawl rate, and robots.txt</a></li>
+<li class="chapter" data-level="10.3" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-why-web-scraping-could-be-bad"><i class="fa fa-check"></i><b>10.3</b> Why web scraping could be bad?</a></li>
+<li class="chapter" data-level="10.4" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-how-to-avoid-troubles"><i class="fa fa-check"></i><b>10.4</b> How to avoid troubles?</a></li>
+<li class="chapter" data-level="10.5" data-path="section-web-scraping.html"><a href="section-web-scraping.html#section-workflow"><i class="fa fa-check"></i><b>10.5</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
+<li class="chapter" data-level="11" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html"><i class="fa fa-check"></i><b>11</b> Blogdown: websites and blogs creation</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-static-website-overview"><i class="fa fa-check"></i><b>11.1</b> Static website overview</a></li>
+<li class="chapter" data-level="11.2" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-getting-started"><i class="fa fa-check"></i><b>11.2</b> Getting started</a></li>
+<li class="chapter" data-level="11.3" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-choosing-a-theme"><i class="fa fa-check"></i><b>11.3</b> Choosing a theme</a></li>
+<li class="chapter" data-level="11.4" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-rendering-the-website"><i class="fa fa-check"></i><b>11.4</b> Rendering the website</a></li>
+<li class="chapter" data-level="11.5" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-creating-content"><i class="fa fa-check"></i><b>11.5</b> Creating content</a></li>
+<li class="chapter" data-level="11.6" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-website-structure-and-content-organization"><i class="fa fa-check"></i><b>11.6</b> Website structure and content organization</a></li>
+<li class="chapter" data-level="11.7" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-customizing-the-theme"><i class="fa fa-check"></i><b>11.7</b> Customizing the theme</a></li>
+<li class="chapter" data-level="11.8" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-deployment"><i class="fa fa-check"></i><b>11.8</b> Deployment</a></li>
+<li class="chapter" data-level="11.9" data-path="section-blogdown-websites-and-blogs-creation.html"><a href="section-blogdown-websites-and-blogs-creation.html#section-see-also"><i class="fa fa-check"></i><b>11.9</b> See also</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="section-basic-probability-and-statistics-with-r-1.html"><a href="section-basic-probability-and-statistics-with-r-1.html"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="A" data-path="index.html"><a href="index.html#section-basic-probability-and-statistics-with-r"><i class="fa fa-check"></i><b>A</b> Basic Probability and Statistics with <code>R</code></a></li>
+<li class="chapter" data-level="B" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -324,33 +335,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-header">
 <h1 class="title">An Introduction to Statistical Programming Methods with R</h1>
 <p class="author"><em>Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi</em></p>
-<p class="date"><em>2020-03-19</em></p>
+<p class="date"><em>2020-10-19</em></p>
 </div>
 <div id="section-introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
 <p>This book is an early version of an ongoing project to equip students with the basic knowledge to master “statistical programming” with R.</p>
-<p>The statistical software <code>R</code> has come into prominence due to its flexibility as an efficient language that builds a bridge between software development and data analysis. For example, one strength of <code>R</code> is the facility to develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions. This book intends to present an approachable framework to statistical programming and software development using the wide variety of tools made available through <code>R</code>, from method-specific packages to version control programs. The general goals of the book are therefore the following:</p>
+<p>The statistical software <code>R</code> has come into prominence due to its flexibility as an efficient language that builds a bridge between software development and data analysis. For example, one strength of <code>R</code> is the ease with which one can develop and quickly adapt to the different needs coming from the data management and analysis community while at the same time making use of other languages in order to deliver computationally efficient solutions. This book intends to present an approachable framework to statistical programming and software development using the wide variety of tools made available through <code>R</code>, from method-specific packages to version control programs. The general goals of the book are therefore the following:</p>
 <ul>
-<li>introduce tools and workflow for reproducible research (R/RStudio, Git/GitHub, etc.);</li>
+<li>introduce tools and workflows for reproducible research (R/RStudio, Git/GitHub, etc.);</li>
 <li>introduce principles of tidy data and tools for data wrangling;</li>
 <li>exploit data structures to appropriately manage data, computer memory and computations;</li>
 <li>data manipulation through controls, instructions, and tailored functions;</li>
 <li>develop new software tools including functions, Shiny applications, and packages;</li>
-<li>manage software development process including version control, documentation (with embedded code), and dissemination for other users.</li>
+<li>manage the software development process including version control, documentation (with embedded code), and dissemination for other users.</li>
 </ul>
 <p>The rest of this introductory chapter will present the R software by explaining why it is used for this book and describing the basic notations and tools that need to be known in order to better grasp its contents.</p>
 
 <div class="rmdimportant">
-This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (accessed here <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, once you have learned RMarkdown and GitHub, feel free to make a pull request to offer bug fixes or corrections!
+This document is <strong>under development</strong> and it is therefore preferable to always access the text online to be sure you are using the most up-to-date version. Due to its current development, you may encounter errors ranging from broken code to typos or poorly explained topics. If you do, please let us know! Simply add an issue to the GitHub repository used for this document (accessible at <a href="https://github.com/SMAC-Group/ds/issues" class="uri">https://github.com/SMAC-Group/ds/issues</a>) and we will make the changes as soon as possible. In addition, once you have learned RMarkdown and GitHub, feel free to make a pull request to offer bug fixes or corrections!
 </div>
 
 <center>
 <img src="images/diagram.png" title="fig:" alt="Note that this diagram is a adapted version of Figure 1 of http://r4ds.had.co.nz/explore-intro.html" />
 </center>
-<p>To demonstrate our goals, we will try to implement the process that is mentioned in the diagram above. In many cases, an input (e.g. data source) is provided, and then we process, explore, and/or manipulate the data with R. We then may communicate our findings through websites, reports, slides, etc. using some combination of RMarkdown, R, and/or Shiny. This process is not always sequential as we often have new ideas or observations at any stage and begin exploring again.</p>
+<p>To highlight our goals, we will roughly follow the process that is represented in the diagram above. Indeed, in many cases, an input (e.g. data source) is provided, and then we process, explore, and/or manipulate the data with R. Once this is done, we then can communicate our findings through websites, reports, slides, etc. using some combination of RMarkdown, R and/or Shiny. This process is not always sequential since we can often have new ideas or observations at any stage this process therefore bringing us back to exploring the data again.</p>
 <div id="section-r-and-rstudio" class="section level2">
 <h2><span class="header-section-number">1.1</span> <code>R</code> and <code>RStudio</code></h2>
-<p>The statistical computing language <a href="https://cran.r-project.org/"><code>R</code></a> has become commonplace for many applications in industry, government, and academia. Having started as an open-source language to make available different statistics and analytical tools to researchers and the public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound, and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important tools. The latter is amplified thanks to the development of the <a href="https://www.rstudio.com/">RStudio</a> interface which provides a pleasant and functional user-interface for <code>R</code> as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are readily available to the user. In order to illustrate the relationship between R &amp; RStudio in statistical programming, one might think of a car analogy in which R would be the drivetrain and chassis while RStudio adds comfortable seats and air conditioning. R is doing most of the work, and the user can basically get where they want to go using R without RStudio. RStudio is generally is making you more comfortable while you use R, but you won’t get very far using RStudio without R.</p>
+<p>The statistical computing language <a href="https://cran.r-project.org/"><code>R</code></a> has become commonplace for many applications in industry, government and academia. Having started as an open-source language to make different statistical and analytical tools available to researchers and the general public, it steadily developed into one of the major software languages which not only allows to develop up-to-date, sound and flexible analytical tools, but also to include these tools within a framework which is well-integrated with other important languages and features. The latter aspect is amplified thanks to the development of the <a href="https://www.rstudio.com/">RStudio</a> interface which provides a pleasant and functional user-interface for <code>R</code> as well as an efficient Integrated Development Environment (IDE) in which different programming languages, web-applications and other important tools are readily available to the user. In order to illustrate the relationship between R and RStudio in statistical programming, one might think of a car analogy in which R would be the drivetrain and chassis while RStudio adds bluetooth, vocal commands, comfortable seats and air conditioning. R is doing most of the work, and the user can basically get where they want to go using R without RStudio, but RStudio is generally making you more comfortable while you use R (although you won’t get very far using RStudio without R).</p>
 <div id="section-getting-started-with-r" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Getting started with <code>R</code></h3>
 <p>Since <code>R</code> is a free and open-source software, you may simply download it from the following link:</p>
@@ -600,9 +611,9 @@ The introDS package is required for use of many features in this book.
 <h2><span class="header-section-number">1.3</span> Main References</h2>
 <p>This is not the first (or the last) book that has been written explaining and describing statistical programming in <code>R</code>. Indeed, this can be seen as a book that brings together and reorganizes information and material from other sources structuring and tailoring it to a course in basic statistical programming. The main references (which are far from being an exhaustive review of literature) that can be used to have a more in-depth view of different aspects treated in this book are:</p>
 <ul>
-<li><span class="citation">Wickham (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span> : a more technical and advanced introduction to <code>R</code>;</li>
-<li><span class="citation">Wickham (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-wickham2015packages" role="doc-biblioref">2015</a>)</span> : basic building blocks of building packages in <code>R</code>;</li>
-<li><span class="citation">Xie (<a href="section-basic-probability-and-statistics-with-r-1.html#section-ref-xie2015" role="doc-biblioref">2015</a>)</span> : an overview of document generation in <code>R</code>;</li>
+<li><span class="citation">Wickham (<a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">2014</a><a href="section-references.html#section-ref-wickham2014advanced" role="doc-biblioref">a</a>)</span> : a more technical and advanced introduction to <code>R</code>;</li>
+<li><span class="citation">Wickham (<a href="section-references.html#section-ref-wickham2015packages" role="doc-biblioref">2015</a>)</span> : basic building blocks of building packages in <code>R</code>;</li>
+<li><span class="citation">Xie (<a href="section-references.html#section-ref-xie2015" role="doc-biblioref">2015</a>)</span> : an overview of document generation in <code>R</code>;</li>
 </ul>
 </div>
 <div id="section-license" class="section level2">
