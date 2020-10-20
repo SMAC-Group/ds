@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-10-19" />
+<meta name="date" content="2020-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -747,12 +747,13 @@ In R, you can write</p>
 <span id="cb475-5"><a href="section-high-performance-computing.html#cb475-5"></a>  }</span>
 <span id="cb475-6"><a href="section-high-performance-computing.html#cb475-6"></a>  <span class="cf">return</span> factorial;</span>
 <span id="cb475-7"><a href="section-high-performance-computing.html#cb475-7"></a>}</span></code></pre></div>
-<div class="sourceCode" id="section-cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="section-high-performance-computing.html#cb476-1"></a><span class="kw">require</span>(microbenchmark)</span>
-<span id="cb476-2"><a href="section-high-performance-computing.html#cb476-2"></a><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="section-high-performance-computing.html#cb476-1"></a><span class="kw">require</span>(microbenchmark)</span></code></pre></div>
+<pre><code>## Loading required package: microbenchmark</code></pre>
+<div class="sourceCode" id="section-cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="section-high-performance-computing.html#cb478-1"></a><span class="kw">microbenchmark</span>(<span class="kw">my_factorialR</span>(<span class="dv">500</span>), <span class="kw">my_factorialC</span>(<span class="dv">500</span>))</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                expr    min     lq     mean  median      uq     max
-##  my_factorialR(500) 13.351 13.538 13.96051 13.6215 13.7375  32.462
-##  my_factorialC(500)  2.340  2.455  6.32134  2.5440  2.6530 362.720
+##                expr    min      lq     mean median     uq    max
+##  my_factorialR(500) 13.400 13.5155 13.70697 13.573 13.700 18.937
+##  my_factorialC(500)  2.307  2.3930  2.57535  2.461  2.527  9.236
 ##  neval cld
 ##    100   b
 ##    100  a</code></pre>
@@ -764,45 +765,45 @@ In R, you can write</p>
 We propose to recode the R functions <code>cast_needle()</code> and
 <code>buffon_experiment()</code> into C++.</p>
 <p>For this purpose, first create a C++ file with header</p>
-<div class="sourceCode" id="section-cb478"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb478-1"><a href="section-high-performance-computing.html#cb478-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb478-2"><a href="section-high-performance-computing.html#cb478-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span></code></pre></div>
+<div class="sourceCode" id="section-cb480"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb480-1"><a href="section-high-performance-computing.html#cb480-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb480-2"><a href="section-high-performance-computing.html#cb480-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp;</span></code></pre></div>
 <p>The <code>cast_needle()</code> function was defined as</p>
-<div class="sourceCode" id="section-cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="section-high-performance-computing.html#cb479-1"></a>cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){</span>
-<span id="cb479-2"><a href="section-high-performance-computing.html#cb479-2"></a>  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span></span>
-<span id="cb479-3"><a href="section-high-performance-computing.html#cb479-3"></a>  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)</span>
-<span id="cb479-4"><a href="section-high-performance-computing.html#cb479-4"></a>  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)</span>
-<span id="cb479-5"><a href="section-high-performance-computing.html#cb479-5"></a>  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span></span>
-<span id="cb479-6"><a href="section-high-performance-computing.html#cb479-6"></a>  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])</span>
-<span id="cb479-7"><a href="section-high-performance-computing.html#cb479-7"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)</span>
-<span id="cb479-8"><a href="section-high-performance-computing.html#cb479-8"></a>  out</span>
-<span id="cb479-9"><a href="section-high-performance-computing.html#cb479-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="section-high-performance-computing.html#cb481-1"></a>cast_needle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">plane_width =</span> <span class="dv">20</span>){</span>
+<span id="cb481-2"><a href="section-high-performance-computing.html#cb481-2"></a>  available_range &lt;-<span class="st"> </span>plane_width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># where 1 is the length of the needle (unit)</span></span>
+<span id="cb481-3"><a href="section-high-performance-computing.html#cb481-3"></a>  x_start &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>, <span class="op">-</span>available_range, available_range)</span>
+<span id="cb481-4"><a href="section-high-performance-computing.html#cb481-4"></a>  angle &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>pi)</span>
+<span id="cb481-5"><a href="section-high-performance-computing.html#cb481-5"></a>  x_end &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">cos</span>(angle), <span class="kw">sin</span>(angle)) <span class="op">+</span><span class="st"> </span>x_start <span class="co"># where the angles are multiplied by the needle length which is 1 in this example</span></span>
+<span id="cb481-6"><a href="section-high-performance-computing.html#cb481-6"></a>  cross &lt;-<span class="st"> </span><span class="kw">floor</span>(x_start[<span class="dv">2</span>]) <span class="op">!=</span><span class="st"> </span><span class="kw">floor</span>(x_end[<span class="dv">2</span>])</span>
+<span id="cb481-7"><a href="section-high-performance-computing.html#cb481-7"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> x_start, <span class="dt">end =</span> x_end, <span class="dt">cross =</span> cross)</span>
+<span id="cb481-8"><a href="section-high-performance-computing.html#cb481-8"></a>  out</span>
+<span id="cb481-9"><a href="section-high-performance-computing.html#cb481-9"></a>}</span></code></pre></div>
 <p>A possible C++ implementation is</p>
-<div class="sourceCode" id="section-cb480"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb480-1"><a href="section-high-performance-computing.html#cb480-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb480-2"><a href="section-high-performance-computing.html#cb480-2"></a>List cast_needle(</span>
-<span id="cb480-3"><a href="section-high-performance-computing.html#cb480-3"></a>  <span class="dt">unsigned</span> <span class="dt">int</span> plane_width = <span class="dv">20</span></span>
-<span id="cb480-4"><a href="section-high-performance-computing.html#cb480-4"></a>){</span>
-<span id="cb480-5"><a href="section-high-performance-computing.html#cb480-5"></a>  <span class="co">// Variable declaration</span></span>
-<span id="cb480-6"><a href="section-high-performance-computing.html#cb480-6"></a>  <span class="dt">int</span> available_range;</span>
-<span id="cb480-7"><a href="section-high-performance-computing.html#cb480-7"></a>  <span class="dt">double</span> angle,my_pi;</span>
-<span id="cb480-8"><a href="section-high-performance-computing.html#cb480-8"></a>  NumericVector x_start(<span class="dv">2</span>), x_end(<span class="dv">2</span>), tmp_angle(<span class="dv">1</span>);</span>
-<span id="cb480-9"><a href="section-high-performance-computing.html#cb480-9"></a>  <span class="dt">bool</span> cross;</span>
-<span id="cb480-10"><a href="section-high-performance-computing.html#cb480-10"></a>  </span>
-<span id="cb480-11"><a href="section-high-performance-computing.html#cb480-11"></a>  <span class="co">// Computation</span></span>
-<span id="cb480-12"><a href="section-high-performance-computing.html#cb480-12"></a>  my_pi = atan(<span class="dv">1</span>) * <span class="dv">4</span>; <span class="co">// defines pi (for simplicity)</span></span>
-<span id="cb480-13"><a href="section-high-performance-computing.html#cb480-13"></a>  available_range = plane_width / <span class="dv">2</span> - <span class="dv">1</span>;</span>
-<span id="cb480-14"><a href="section-high-performance-computing.html#cb480-14"></a>  x_start = runif(<span class="dv">2</span>, -available_range, available_range);</span>
-<span id="cb480-15"><a href="section-high-performance-computing.html#cb480-15"></a>  tmp_angle = runif(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span> * my_pi);</span>
-<span id="cb480-16"><a href="section-high-performance-computing.html#cb480-16"></a>  angle = tmp_angle[<span class="dv">0</span>];</span>
-<span id="cb480-17"><a href="section-high-performance-computing.html#cb480-17"></a>  x_end[<span class="dv">0</span>] = cos(angle) + x_start[<span class="dv">0</span>];</span>
-<span id="cb480-18"><a href="section-high-performance-computing.html#cb480-18"></a>  x_end[<span class="dv">1</span>] = sin(angle) + x_start[<span class="dv">1</span>];</span>
-<span id="cb480-19"><a href="section-high-performance-computing.html#cb480-19"></a>  cross = floor(x_start[<span class="dv">2</span>]) != floor(x_end[<span class="dv">2</span>]);</span>
-<span id="cb480-20"><a href="section-high-performance-computing.html#cb480-20"></a>  </span>
-<span id="cb480-21"><a href="section-high-performance-computing.html#cb480-21"></a>  <span class="cf">return</span> List::create(</span>
-<span id="cb480-22"><a href="section-high-performance-computing.html#cb480-22"></a>    Named(<span class="st">&quot;start&quot;</span>) = x_start,</span>
-<span id="cb480-23"><a href="section-high-performance-computing.html#cb480-23"></a>    Named(<span class="st">&quot;end&quot;</span>) = x_end,</span>
-<span id="cb480-24"><a href="section-high-performance-computing.html#cb480-24"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross</span>
-<span id="cb480-25"><a href="section-high-performance-computing.html#cb480-25"></a>  );</span>
-<span id="cb480-26"><a href="section-high-performance-computing.html#cb480-26"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb482"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb482-1"><a href="section-high-performance-computing.html#cb482-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb482-2"><a href="section-high-performance-computing.html#cb482-2"></a>List cast_needle(</span>
+<span id="cb482-3"><a href="section-high-performance-computing.html#cb482-3"></a>  <span class="dt">unsigned</span> <span class="dt">int</span> plane_width = <span class="dv">20</span></span>
+<span id="cb482-4"><a href="section-high-performance-computing.html#cb482-4"></a>){</span>
+<span id="cb482-5"><a href="section-high-performance-computing.html#cb482-5"></a>  <span class="co">// Variable declaration</span></span>
+<span id="cb482-6"><a href="section-high-performance-computing.html#cb482-6"></a>  <span class="dt">int</span> available_range;</span>
+<span id="cb482-7"><a href="section-high-performance-computing.html#cb482-7"></a>  <span class="dt">double</span> angle,my_pi;</span>
+<span id="cb482-8"><a href="section-high-performance-computing.html#cb482-8"></a>  NumericVector x_start(<span class="dv">2</span>), x_end(<span class="dv">2</span>), tmp_angle(<span class="dv">1</span>);</span>
+<span id="cb482-9"><a href="section-high-performance-computing.html#cb482-9"></a>  <span class="dt">bool</span> cross;</span>
+<span id="cb482-10"><a href="section-high-performance-computing.html#cb482-10"></a>  </span>
+<span id="cb482-11"><a href="section-high-performance-computing.html#cb482-11"></a>  <span class="co">// Computation</span></span>
+<span id="cb482-12"><a href="section-high-performance-computing.html#cb482-12"></a>  my_pi = atan(<span class="dv">1</span>) * <span class="dv">4</span>; <span class="co">// defines pi (for simplicity)</span></span>
+<span id="cb482-13"><a href="section-high-performance-computing.html#cb482-13"></a>  available_range = plane_width / <span class="dv">2</span> - <span class="dv">1</span>;</span>
+<span id="cb482-14"><a href="section-high-performance-computing.html#cb482-14"></a>  x_start = runif(<span class="dv">2</span>, -available_range, available_range);</span>
+<span id="cb482-15"><a href="section-high-performance-computing.html#cb482-15"></a>  tmp_angle = runif(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span> * my_pi);</span>
+<span id="cb482-16"><a href="section-high-performance-computing.html#cb482-16"></a>  angle = tmp_angle[<span class="dv">0</span>];</span>
+<span id="cb482-17"><a href="section-high-performance-computing.html#cb482-17"></a>  x_end[<span class="dv">0</span>] = cos(angle) + x_start[<span class="dv">0</span>];</span>
+<span id="cb482-18"><a href="section-high-performance-computing.html#cb482-18"></a>  x_end[<span class="dv">1</span>] = sin(angle) + x_start[<span class="dv">1</span>];</span>
+<span id="cb482-19"><a href="section-high-performance-computing.html#cb482-19"></a>  cross = floor(x_start[<span class="dv">2</span>]) != floor(x_end[<span class="dv">2</span>]);</span>
+<span id="cb482-20"><a href="section-high-performance-computing.html#cb482-20"></a>  </span>
+<span id="cb482-21"><a href="section-high-performance-computing.html#cb482-21"></a>  <span class="cf">return</span> List::create(</span>
+<span id="cb482-22"><a href="section-high-performance-computing.html#cb482-22"></a>    Named(<span class="st">&quot;start&quot;</span>) = x_start,</span>
+<span id="cb482-23"><a href="section-high-performance-computing.html#cb482-23"></a>    Named(<span class="st">&quot;end&quot;</span>) = x_end,</span>
+<span id="cb482-24"><a href="section-high-performance-computing.html#cb482-24"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross</span>
+<span id="cb482-25"><a href="section-high-performance-computing.html#cb482-25"></a>  );</span>
+<span id="cb482-26"><a href="section-high-performance-computing.html#cb482-26"></a>}</span></code></pre></div>
 <p>Based on the above function, we can make a few remarks:</p>
 <ul>
 <li>For better readibility, it is good practice to separate variable declaration and computation.<br />
@@ -815,55 +816,55 @@ by <code>Rcpp</code> (check for <strong>Rcpp sugar</strong>).<br />
 <li>To avoid an error we have first to save the result of <code>runif()</code> as <code>NumericVector</code> (its default result type).</li>
 </ul>
 <p>The <code>buffon_needle()</code> function was declared in R as follows:</p>
-<div class="sourceCode" id="section-cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="section-high-performance-computing.html#cb481-1"></a>buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){</span>
-<span id="cb481-2"><a href="section-high-performance-computing.html#cb481-2"></a>  </span>
-<span id="cb481-3"><a href="section-high-performance-computing.html#cb481-3"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){</span>
-<span id="cb481-4"><a href="section-high-performance-computing.html#cb481-4"></a>    <span class="kw">set.seed</span>(seed)</span>
-<span id="cb481-5"><a href="section-high-performance-computing.html#cb481-5"></a>  }</span>
-<span id="cb481-6"><a href="section-high-performance-computing.html#cb481-6"></a>  </span>
-<span id="cb481-7"><a href="section-high-performance-computing.html#cb481-7"></a>  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) </span>
-<span id="cb481-8"><a href="section-high-performance-computing.html#cb481-8"></a>  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</span>
-<span id="cb481-9"><a href="section-high-performance-computing.html#cb481-9"></a>  </span>
-<span id="cb481-10"><a href="section-high-performance-computing.html#cb481-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
-<span id="cb481-11"><a href="section-high-performance-computing.html#cb481-11"></a>    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)</span>
-<span id="cb481-12"><a href="section-high-performance-computing.html#cb481-12"></a>    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start</span>
-<span id="cb481-13"><a href="section-high-performance-computing.html#cb481-13"></a>    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end</span>
-<span id="cb481-14"><a href="section-high-performance-computing.html#cb481-14"></a>    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross</span>
-<span id="cb481-15"><a href="section-high-performance-computing.html#cb481-15"></a>  }</span>
-<span id="cb481-16"><a href="section-high-performance-computing.html#cb481-16"></a>  </span>
-<span id="cb481-17"><a href="section-high-performance-computing.html#cb481-17"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)</span>
-<span id="cb481-18"><a href="section-high-performance-computing.html#cb481-18"></a>  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span></span>
-<span id="cb481-19"><a href="section-high-performance-computing.html#cb481-19"></a>  out</span>
-<span id="cb481-20"><a href="section-high-performance-computing.html#cb481-20"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="section-high-performance-computing.html#cb483-1"></a>buffon_experiment &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">B =</span> <span class="dv">2084</span>, <span class="dt">plane_width =</span> <span class="dv">10</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>){</span>
+<span id="cb483-2"><a href="section-high-performance-computing.html#cb483-2"></a>  </span>
+<span id="cb483-3"><a href="section-high-performance-computing.html#cb483-3"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(seed)){</span>
+<span id="cb483-4"><a href="section-high-performance-computing.html#cb483-4"></a>    <span class="kw">set.seed</span>(seed)</span>
+<span id="cb483-5"><a href="section-high-performance-computing.html#cb483-5"></a>  }</span>
+<span id="cb483-6"><a href="section-high-performance-computing.html#cb483-6"></a>  </span>
+<span id="cb483-7"><a href="section-high-performance-computing.html#cb483-7"></a>  X_start &lt;-<span class="st"> </span>X_end &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, B, <span class="dv">2</span>) </span>
+<span id="cb483-8"><a href="section-high-performance-computing.html#cb483-8"></a>  cross &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, B)</span>
+<span id="cb483-9"><a href="section-high-performance-computing.html#cb483-9"></a>  </span>
+<span id="cb483-10"><a href="section-high-performance-computing.html#cb483-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</span>
+<span id="cb483-11"><a href="section-high-performance-computing.html#cb483-11"></a>    inter &lt;-<span class="st"> </span><span class="kw">cast_needle</span>(<span class="dt">plane_width =</span> plane_width)</span>
+<span id="cb483-12"><a href="section-high-performance-computing.html#cb483-12"></a>    X_start[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>start</span>
+<span id="cb483-13"><a href="section-high-performance-computing.html#cb483-13"></a>    X_end[i, ] &lt;-<span class="st"> </span>inter<span class="op">$</span>end</span>
+<span id="cb483-14"><a href="section-high-performance-computing.html#cb483-14"></a>    cross[i] &lt;-<span class="st"> </span>inter<span class="op">$</span>cross</span>
+<span id="cb483-15"><a href="section-high-performance-computing.html#cb483-15"></a>  }</span>
+<span id="cb483-16"><a href="section-high-performance-computing.html#cb483-16"></a>  </span>
+<span id="cb483-17"><a href="section-high-performance-computing.html#cb483-17"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">start =</span> X_start, <span class="dt">end =</span> X_end, <span class="dt">cross =</span> cross, <span class="dt">plane =</span> plane_width)</span>
+<span id="cb483-18"><a href="section-high-performance-computing.html#cb483-18"></a>  <span class="kw">class</span>(out) &lt;-<span class="st"> &quot;buffon_experiment&quot;</span></span>
+<span id="cb483-19"><a href="section-high-performance-computing.html#cb483-19"></a>  out</span>
+<span id="cb483-20"><a href="section-high-performance-computing.html#cb483-20"></a>}</span></code></pre></div>
 <p>The C++ alternative we propose is the following</p>
-<div class="sourceCode" id="section-cb482"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb482-1"><a href="section-high-performance-computing.html#cb482-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb482-2"><a href="section-high-performance-computing.html#cb482-2"></a>List buffon_experiment(</span>
-<span id="cb482-3"><a href="section-high-performance-computing.html#cb482-3"></a>  <span class="dt">int</span> B = <span class="dv">2084</span>,</span>
-<span id="cb482-4"><a href="section-high-performance-computing.html#cb482-4"></a>  <span class="dt">int</span> plane_width = <span class="dv">10</span></span>
-<span id="cb482-5"><a href="section-high-performance-computing.html#cb482-5"></a>){</span>
-<span id="cb482-6"><a href="section-high-performance-computing.html#cb482-6"></a>  <span class="co">// Variable declaration</span></span>
-<span id="cb482-7"><a href="section-high-performance-computing.html#cb482-7"></a>  NumericMatrix X_start(B,<span class="dv">2</span>), X_end(B,<span class="dv">2</span>);</span>
-<span id="cb482-8"><a href="section-high-performance-computing.html#cb482-8"></a>  LogicalVector cross(B);</span>
-<span id="cb482-9"><a href="section-high-performance-computing.html#cb482-9"></a>  List L;</span>
-<span id="cb482-10"><a href="section-high-performance-computing.html#cb482-10"></a>  NumericVector tmp(<span class="dv">2</span>);</span>
-<span id="cb482-11"><a href="section-high-performance-computing.html#cb482-11"></a>  </span>
-<span id="cb482-12"><a href="section-high-performance-computing.html#cb482-12"></a>  <span class="co">// Computation</span></span>
-<span id="cb482-13"><a href="section-high-performance-computing.html#cb482-13"></a>  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">0</span>); i&lt;B; ++i){</span>
-<span id="cb482-14"><a href="section-high-performance-computing.html#cb482-14"></a>    L = cast_needle(plane_width);</span>
-<span id="cb482-15"><a href="section-high-performance-computing.html#cb482-15"></a>    tmp = L[<span class="st">&quot;start&quot;</span>];</span>
-<span id="cb482-16"><a href="section-high-performance-computing.html#cb482-16"></a>    X_start(i,_) = tmp; </span>
-<span id="cb482-17"><a href="section-high-performance-computing.html#cb482-17"></a>    tmp = L[<span class="st">&quot;end&quot;</span>];</span>
-<span id="cb482-18"><a href="section-high-performance-computing.html#cb482-18"></a>    X_end(i,_) = tmp;</span>
-<span id="cb482-19"><a href="section-high-performance-computing.html#cb482-19"></a>    cross(i) = L[<span class="st">&quot;cross&quot;</span>];</span>
-<span id="cb482-20"><a href="section-high-performance-computing.html#cb482-20"></a>  }</span>
-<span id="cb482-21"><a href="section-high-performance-computing.html#cb482-21"></a>  </span>
-<span id="cb482-22"><a href="section-high-performance-computing.html#cb482-22"></a>  <span class="cf">return</span> List::create(</span>
-<span id="cb482-23"><a href="section-high-performance-computing.html#cb482-23"></a>    Named(<span class="st">&quot;start&quot;</span>) = X_start,</span>
-<span id="cb482-24"><a href="section-high-performance-computing.html#cb482-24"></a>    Named(<span class="st">&quot;end&quot;</span>) = X_end,</span>
-<span id="cb482-25"><a href="section-high-performance-computing.html#cb482-25"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross,</span>
-<span id="cb482-26"><a href="section-high-performance-computing.html#cb482-26"></a>    Named(<span class="st">&quot;plane&quot;</span>) = plane_width</span>
-<span id="cb482-27"><a href="section-high-performance-computing.html#cb482-27"></a>  );</span>
-<span id="cb482-28"><a href="section-high-performance-computing.html#cb482-28"></a>}</span></code></pre></div>
+<div class="sourceCode" id="section-cb484"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb484-1"><a href="section-high-performance-computing.html#cb484-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb484-2"><a href="section-high-performance-computing.html#cb484-2"></a>List buffon_experiment(</span>
+<span id="cb484-3"><a href="section-high-performance-computing.html#cb484-3"></a>  <span class="dt">int</span> B = <span class="dv">2084</span>,</span>
+<span id="cb484-4"><a href="section-high-performance-computing.html#cb484-4"></a>  <span class="dt">int</span> plane_width = <span class="dv">10</span></span>
+<span id="cb484-5"><a href="section-high-performance-computing.html#cb484-5"></a>){</span>
+<span id="cb484-6"><a href="section-high-performance-computing.html#cb484-6"></a>  <span class="co">// Variable declaration</span></span>
+<span id="cb484-7"><a href="section-high-performance-computing.html#cb484-7"></a>  NumericMatrix X_start(B,<span class="dv">2</span>), X_end(B,<span class="dv">2</span>);</span>
+<span id="cb484-8"><a href="section-high-performance-computing.html#cb484-8"></a>  LogicalVector cross(B);</span>
+<span id="cb484-9"><a href="section-high-performance-computing.html#cb484-9"></a>  List L;</span>
+<span id="cb484-10"><a href="section-high-performance-computing.html#cb484-10"></a>  NumericVector tmp(<span class="dv">2</span>);</span>
+<span id="cb484-11"><a href="section-high-performance-computing.html#cb484-11"></a>  </span>
+<span id="cb484-12"><a href="section-high-performance-computing.html#cb484-12"></a>  <span class="co">// Computation</span></span>
+<span id="cb484-13"><a href="section-high-performance-computing.html#cb484-13"></a>  <span class="cf">for</span>(<span class="dt">int</span> i(<span class="dv">0</span>); i&lt;B; ++i){</span>
+<span id="cb484-14"><a href="section-high-performance-computing.html#cb484-14"></a>    L = cast_needle(plane_width);</span>
+<span id="cb484-15"><a href="section-high-performance-computing.html#cb484-15"></a>    tmp = L[<span class="st">&quot;start&quot;</span>];</span>
+<span id="cb484-16"><a href="section-high-performance-computing.html#cb484-16"></a>    X_start(i,_) = tmp; </span>
+<span id="cb484-17"><a href="section-high-performance-computing.html#cb484-17"></a>    tmp = L[<span class="st">&quot;end&quot;</span>];</span>
+<span id="cb484-18"><a href="section-high-performance-computing.html#cb484-18"></a>    X_end(i,_) = tmp;</span>
+<span id="cb484-19"><a href="section-high-performance-computing.html#cb484-19"></a>    cross(i) = L[<span class="st">&quot;cross&quot;</span>];</span>
+<span id="cb484-20"><a href="section-high-performance-computing.html#cb484-20"></a>  }</span>
+<span id="cb484-21"><a href="section-high-performance-computing.html#cb484-21"></a>  </span>
+<span id="cb484-22"><a href="section-high-performance-computing.html#cb484-22"></a>  <span class="cf">return</span> List::create(</span>
+<span id="cb484-23"><a href="section-high-performance-computing.html#cb484-23"></a>    Named(<span class="st">&quot;start&quot;</span>) = X_start,</span>
+<span id="cb484-24"><a href="section-high-performance-computing.html#cb484-24"></a>    Named(<span class="st">&quot;end&quot;</span>) = X_end,</span>
+<span id="cb484-25"><a href="section-high-performance-computing.html#cb484-25"></a>    Named(<span class="st">&quot;cross&quot;</span>) = cross,</span>
+<span id="cb484-26"><a href="section-high-performance-computing.html#cb484-26"></a>    Named(<span class="st">&quot;plane&quot;</span>) = plane_width</span>
+<span id="cb484-27"><a href="section-high-performance-computing.html#cb484-27"></a>  );</span>
+<span id="cb484-28"><a href="section-high-performance-computing.html#cb484-28"></a>}</span></code></pre></div>
 <p>Also in this case we have few remarks:</p>
 <ul>
 <li>C++ does not know the content of <code>L["start"]</code> in advance, so for this reason

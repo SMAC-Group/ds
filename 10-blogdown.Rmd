@@ -23,7 +23,7 @@ Create a new project selecting `Website using blogdown`.
 ## Choosing a theme
 The choice of the theme is essential: different themes have different ways to create content, structures, functionalities and maybe most importantly when you get started, different level of details for user documentation. By default, `blogdown` proposes the [hugo-lithium](https://github.com/yihui/hugo-lithium) theme, Yihui Xie's minimal example ^[[Blogdown default theme](https://bookdown.org/yihui/blogdown/themes.html#the-default-theme)]. The complete list of themes is at <https://themes.gohugo.io/>. The [showcase](https://gohugo.io/showcase/) section is also a good indication of what may be achieved. You can find themes with rich user documentation under the tag `documentation`, check [here](https://themes.gohugo.io/tags/documentation/). Some Hugo templates I considered:   
 
-- [Learn](https://themes.gohugo.io/hugo-theme-learn/): This a great and simple theme. It is perfect is the goal is to create documentation. This is for example the one I used for one of my classes, see [here](https://ptds.samorso.ch/). It has a dedicated website for the [documentation](https://learn.netlify.app/en/). This is why I pick it for this chapter.
+- [Learn](https://themes.gohugo.io/hugo-theme-learn/): This a great and simple theme. It is perfect if the goal is to create documentation. This is for example the one I used for one of my classes, see [here](https://ptds.samorso.ch/). It has a dedicated website for the [documentation](https://learn.netlify.app/en/). This is why I pick it for this chapter.
 
 - [Academic](https://themes.gohugo.io/academic/): this a very complete theme for academic résumé. It is commonly used in academia  (there is a tool to import your BibTeX bibliography!) so there is quite a community behind it, meaning also more support. It has many options and features including `widgets` to build pages. It is however probably an overkill when getting started.
 
@@ -74,7 +74,7 @@ The next step is to create some content. We will create a post and illustrate so
 
 First, you need to decide whether you want to create a plain Markdown document (`.md`) or a RMarkdown document (`.Rmd`) as there are noticeable differences ^[[RMarkdown vs. Markdown](https://bookdown.org/yihui/blogdown/output-format.html)]. A plain Markdown document is by default rendered _a posteriori_ in HTML via [Goldmark](https://github.com/yuin/goldmark/) ^[[Configure Markup in Hugo](https://gohugo.io/getting-started/configuration-markup/)] whereas RMarkdown is compiled _a priori_ using the `rmarkdown` package. A consequence of using RMarkdown is that your website might be slower to render and less clean with many HTML files. A good rule of thumb is: always write a post with plain Markdown unless you need to *run* `R` code (if only display `R` code, use plain Markdown).    
 
-The easiest way to create a document in to click on `Addins > Blogdown > New post` which generates a windows through a shiny app. Here is an example:
+The easiest way to create a document is to click on `Addins > Blogdown > New post` which generates a windows through a shiny app. Here is an example:
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/bg_new_post.png")
@@ -148,7 +148,7 @@ you can simply use the following syntax
 
 Here is how it looks on the website:
 
-```{r}
+```{r, echo = FALSE}
 knitr::include_graphics("images/bg_yt.png")
 ```
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Matthew Beckman, Stéphane Guerrier, Justin Lee, Roberto Molinari, Samuel Orso &amp; Iegor Rudnytskyi" />
 
 
-<meta name="date" content="2020-10-19" />
+<meta name="date" content="2020-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -342,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-getting-started" class="section level2">
 <h2><span class="header-section-number">11.2</span> Getting started</h2>
 <p>You need to install the <code>blogdown</code> package the usual way:</p>
-<div class="sourceCode" id="section-cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb488-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;blogdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb490-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;blogdown&quot;</span>)</span></code></pre></div>
 <p>Note that the package has addins functionalities for <code>Rstudio</code> and a project type that we are going to use.</p>
 <p>Create a new project selecting <code>Website using blogdown</code>.</p>
 <p><img src="images/bg_new_project.png" width="334" /></p>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.3</span> Choosing a theme</h2>
 <p>The choice of the theme is essential: different themes have different ways to create content, structures, functionalities and maybe most importantly when you get started, different level of details for user documentation. By default, <code>blogdown</code> proposes the <a href="https://github.com/yihui/hugo-lithium">hugo-lithium</a> theme, Yihui Xie’s minimal example.<a href="section-references.html#section-fn11" class="footnote-ref" id="section-fnref11"><sup>11</sup></a> The complete list of themes is at <a href="https://themes.gohugo.io/" class="uri">https://themes.gohugo.io/</a>. The <a href="https://gohugo.io/showcase/">showcase</a> section is also a good indication of what may be achieved. You can find themes with rich user documentation under the tag <code>documentation</code>, check <a href="https://themes.gohugo.io/tags/documentation/">here</a>. Some Hugo templates I considered:</p>
 <ul>
-<li><p><a href="https://themes.gohugo.io/hugo-theme-learn/">Learn</a>: This a great and simple theme. It is perfect is the goal is to create documentation. This is for example the one I used for one of my classes, see <a href="https://ptds.samorso.ch/">here</a>. It has a dedicated website for the <a href="https://learn.netlify.app/en/">documentation</a>. This is why I pick it for this chapter.</p></li>
+<li><p><a href="https://themes.gohugo.io/hugo-theme-learn/">Learn</a>: This a great and simple theme. It is perfect if the goal is to create documentation. This is for example the one I used for one of my classes, see <a href="https://ptds.samorso.ch/">here</a>. It has a dedicated website for the <a href="https://learn.netlify.app/en/">documentation</a>. This is why I pick it for this chapter.</p></li>
 <li><p><a href="https://themes.gohugo.io/academic/">Academic</a>: this a very complete theme for academic résumé. It is commonly used in academia (there is a tool to import your BibTeX bibliography!) so there is quite a community behind it, meaning also more support. It has many options and features including <code>widgets</code> to build pages. It is however probably an overkill when getting started.</p></li>
 <li><p><a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">Tranquilpeak</a>: a beautiful and neat theme for blogging. It comes with a complete <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md">documentation</a>.</p></li>
 </ul>
@@ -361,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-rendering-the-website" class="section level2">
 <h2><span class="header-section-number">11.4</span> Rendering the website</h2>
 <p>One attractive feature of Hugo is that you can render your site live locally (on your computer) so that you can observe directly the modifications taking place. With <code>blogdown</code>, type in your console:</p>
-<div class="sourceCode" id="section-cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb489-1"></a>blogdown<span class="op">::</span><span class="kw">serve_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="section-cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb491-1"></a>blogdown<span class="op">::</span><span class="kw">serve_site</span>()</span></code></pre></div>
 <p>Or alternatively, use directly the <code>Rstudio</code> <code>Addins</code>.</p>
 <p><img src="images/bg_addins1.png" width="175" /></p>
 <p>It creates the website in the viewer panel.</p>
@@ -369,24 +369,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I would recommend to open the website on your webrowser, for example by clicking on the <code>Show in new window</code> button <img src="images/bg_click.png" width="31" />. It will be very similar to the online version and you can directly see the modifications.</p>
 <p><img src="images/bg_live.png" width="960" /></p>
 <p>In order to stop the live rendering of the website, you can either restart the <code>R</code> session, or maybe simply, by typing in your console:</p>
-<div class="sourceCode" id="section-cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb490-1"></a>blogdown<span class="op">::</span><span class="kw">stop_server</span>()</span></code></pre></div>
+<div class="sourceCode" id="section-cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb492-1"></a>blogdown<span class="op">::</span><span class="kw">stop_server</span>()</span></code></pre></div>
 </div>
 <div id="section-creating-content" class="section level2">
 <h2><span class="header-section-number">11.5</span> Creating content</h2>
 <p>The next step is to create some content. We will create a post and illustrate some features of Hugo.</p>
 <p>First, you need to decide whether you want to create a plain Markdown document (<code>.md</code>) or a RMarkdown document (<code>.Rmd</code>) as there are noticeable differences.<a href="section-references.html#section-fn12" class="footnote-ref" id="section-fnref12"><sup>12</sup></a> A plain Markdown document is by default rendered <em>a posteriori</em> in HTML via <a href="https://github.com/yuin/goldmark/">Goldmark</a><a href="section-references.html#section-fn13" class="footnote-ref" id="section-fnref13"><sup>13</sup></a> whereas RMarkdown is compiled <em>a priori</em> using the <code>rmarkdown</code> package. A consequence of using RMarkdown is that your website might be slower to render and less clean with many HTML files. A good rule of thumb is: always write a post with plain Markdown unless you need to <em>run</em> <code>R</code> code (if only display <code>R</code> code, use plain Markdown).</p>
-<p>The easiest way to create a document in to click on <code>Addins &gt; Blogdown &gt; New post</code> which generates a windows through a shiny app. Here is an example:</p>
+<p>The easiest way to create a document is to click on <code>Addins &gt; Blogdown &gt; New post</code> which generates a windows through a shiny app. Here is an example:</p>
 <p><img src="images/bg_new_post.png" width="386" /></p>
 <ul>
 <li><p><em>Archetype</em> is a pre-configured skeleton page. The <a href="https://learn.netlify.app/en/">Learn</a> theme has two archetypes: chapter or default (see <a href="https://learn.netlify.app/en/cont/archetypes/">here</a>).</p></li>
 <li><p><em>Format</em>: there is a third format, <code>.Rmarkdown</code>. This format will be compiled to a Markdown document (not HTML) so you keep the files clean, however it does not use Pandoc as the <code>rmarkdown</code> package does (see <a href="https://bookdown.org/yihui/blogdown/output-format.html">Blogdown output format</a> for more details).</p></li>
 </ul>
 <p>The post I’ve generated has the following <code>YAML</code> metadata:</p>
-<div class="sourceCode" id="section-cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb491-1"></a>title<span class="op">:</span><span class="st"> &quot;My first post&quot;</span></span>
-<span id="cb491-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb491-2"></a>author<span class="op">:</span><span class="st"> &quot;John Doe&quot;</span></span>
-<span id="cb491-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb491-3"></a>date<span class="op">:</span><span class="st"> </span><span class="dv">2020-11-16</span></span>
-<span id="cb491-4"><a href="section-blogdown-websites-and-blogs-creation.html#cb491-4"></a>categories<span class="op">:</span><span class="st"> </span>[<span class="st">&quot;R&quot;</span>]</span>
-<span id="cb491-5"><a href="section-blogdown-websites-and-blogs-creation.html#cb491-5"></a>tags<span class="op">:</span><span class="st"> </span>[<span class="st">&quot;R Markdown&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-1"></a>title<span class="op">:</span><span class="st"> &quot;My first post&quot;</span></span>
+<span id="cb493-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-2"></a>author<span class="op">:</span><span class="st"> &quot;John Doe&quot;</span></span>
+<span id="cb493-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-3"></a>date<span class="op">:</span><span class="st"> </span><span class="dv">2020-11-16</span></span>
+<span id="cb493-4"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-4"></a>categories<span class="op">:</span><span class="st"> </span>[<span class="st">&quot;R&quot;</span>]</span>
+<span id="cb493-5"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-5"></a>tags<span class="op">:</span><span class="st"> </span>[<span class="st">&quot;R Markdown&quot;</span>]</span></code></pre></div>
 <p>Note that the output format has not been specified as it is HTML by default.</p>
 <p>We can immediately have a look at the changes on the website.</p>
 <p><img src="images/bg_new_post2.png" width="960" /></p>
@@ -396,15 +396,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Click on <code>Addins &gt; Blogdown &gt; New post</code> as we have just seen.</p></li>
 <li><p>Equivalently, you can type in your console</p></li>
 </ol>
-<div class="sourceCode" id="section-cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb492-1"></a>blogdown<span class="op">::</span><span class="kw">new_post</span>()</span></code></pre></div>
+<div class="sourceCode" id="section-cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb494-1"></a>blogdown<span class="op">::</span><span class="kw">new_post</span>()</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li><p>As an alternative, you can directly create the document (e.g. <code>File &gt; New file &gt; R Markdown</code>). In addition, you will need to know where to store the file (explained in the next section) and adapt the metadata of the file (you can for example have a look at the already existing posts).</p></li>
 <li><p>Eventually, you can use command lines in the terminal as for example shown <a href="https://learn.netlify.app/en/cont/archetypes/">here</a>.</p></li>
 </ol>
 <p>Second, you can now write some content in your file. Since I want to illustrate some of Hugo’s features, I create a new Markdown file named <code>test.md</code> in the <code>post</code> folder (remember that R Mardown are compiled via <code>rmarkdown</code>, so it will not understand Hugo shortcodes). The header of the file is simply:</p>
-<div class="sourceCode" id="section-cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-1"></a><span class="op">---</span></span>
-<span id="cb493-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-2"></a>title<span class="op">:</span><span class="st"> </span>Test</span>
-<span id="cb493-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb493-3"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb495-1"></a><span class="op">---</span></span>
+<span id="cb495-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb495-2"></a>title<span class="op">:</span><span class="st"> </span>Test</span>
+<span id="cb495-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb495-3"></a><span class="op">---</span></span></code></pre></div>
 <p>Note that you can also add other variables such as: <code>date</code>, <code>weight</code>, <code>description</code>. <code>weight</code> for example is important for organizing the posts. You can find <a href="https://gohugo.io/content-management/front-matter/">here</a> a complete list of variables.</p>
 <p>Most of the content you create is generally in Markdown format, and we let you refer to <a href="https://smac-group.github.io/ds/section-rmarkdown.html">Chapter 2</a>. Note that since your Markdown file is rendered using Goldmark, there are some differences compared to Pandoc (as used with the library <code>rmarkdown</code>), one noticeable is that you cannot run R code as already discussed. One of the gain of using the Markdown format is that you can use Hugo shortcodes. As stated on Hugo’s website:</p>
 <blockquote>
@@ -412,50 +412,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://gohugo.io/content-management/shortcodes/">What a shortcode is</a></p>
 </blockquote>
 <p>The idea of shortcodes is to circumvent some of Markdown’s limitations. For example, if you want to embed a Youtube video, say</p>
-<div class="sourceCode" id="section-cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb494-1"></a>https<span class="op">:</span><span class="er">//</span>www.youtube.com<span class="op">/</span>watch?v=w7Ft2ymGmfc</span></code></pre></div>
+<div class="sourceCode" id="section-cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb496-1"></a>https<span class="op">:</span><span class="er">//</span>www.youtube.com<span class="op">/</span>watch?v=w7Ft2ymGmfc</span></code></pre></div>
 <p>you can simply use the following syntax</p>
-<div class="sourceCode" id="section-cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb495-1"></a>{{<span class="op">&lt;</span><span class="st"> </span>youtube w7Ft2ymGmfc <span class="op">&gt;</span>}}</span></code></pre></div>
+<div class="sourceCode" id="section-cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb497-1"></a>{{<span class="op">&lt;</span><span class="st"> </span>youtube w7Ft2ymGmfc <span class="op">&gt;</span>}}</span></code></pre></div>
 <p>Here is how it looks on the website:</p>
-<div class="sourceCode" id="section-cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb496-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/bg_yt.png&quot;</span>)</span></code></pre></div>
 <p><img src="images/bg_yt.png" width="960" /></p>
 <p>You have other Hugo’s built-in shortcodes useful for example figures, Instagram, Tweeter, Vimeo,… Check this <a href="https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes">link</a>. There is also the possibility to create custom shortcodes. For example, the <a href="https://learn.netlify.app/en/shortcodes/">Learn</a> theme proposes several. For instance, we can add an info notice using</p>
-<div class="sourceCode" id="section-cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb497-1"></a>{{<span class="op">% notice info %</span>}}</span>
-<span id="cb497-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb497-2"></a>An information disclaimer</span>
-<span id="cb497-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb497-3"></a>{{<span class="op">% /notice %</span>}}</span></code></pre></div>
+<div class="sourceCode" id="section-cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-1"></a>{{<span class="op">% notice info %</span>}}</span>
+<span id="cb498-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-2"></a>An information disclaimer</span>
+<span id="cb498-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-3"></a>{{<span class="op">% /notice %</span>}}</span></code></pre></div>
 </div>
 <div id="section-website-structure-and-content-organization" class="section level2">
 <h2><span class="header-section-number">11.6</span> Website structure and content organization</h2>
 <p>If you’ve followed the above steps, you should have something similar to this tree for your website structure:</p>
-<div class="sourceCode" id="section-cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-1"></a>my<span class="op">-</span>website<span class="op">/</span></span>
-<span id="cb498-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-2"></a>├─ my<span class="op">-</span>website.Rproj</span>
-<span id="cb498-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-3"></a>├─ config.toml</span>
-<span id="cb498-4"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-4"></a>├─ index.Rmd</span>
-<span id="cb498-5"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-5"></a>├─ LICENSE.md</span>
-<span id="cb498-6"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-6"></a>├─ content<span class="op">/</span></span>
-<span id="cb498-7"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-7"></a>│  ├─ _index.en.md</span>
-<span id="cb498-8"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-8"></a>│  ├─ _index.fr.md</span>
-<span id="cb498-9"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-9"></a>│  ├─ basics<span class="op">/</span></span>
-<span id="cb498-10"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-10"></a>│  ├─ cont<span class="op">/</span></span>
-<span id="cb498-11"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-11"></a>│  ├─ post<span class="op">/</span></span>
-<span id="cb498-12"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-12"></a>│  │  ├─ <span class="dv">2015-07-23</span><span class="op">-</span>r<span class="op">-</span>rmarkdown.html</span>
-<span id="cb498-13"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-13"></a>│  │  ├─ <span class="dv">2015-07-23</span><span class="op">-</span>r<span class="op">-</span>rmarkdown.Rmd</span>
-<span id="cb498-14"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-14"></a>│  │  ├─ test.md</span>
-<span id="cb498-15"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-15"></a>│  │  ├─ <span class="dv">2020-11-16</span><span class="op">-</span>my<span class="op">-</span>first<span class="op">-</span>post.html</span>
-<span id="cb498-16"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-16"></a>│  │  ├─ <span class="dv">2020-11-16</span><span class="op">-</span>my<span class="op">-</span>first<span class="op">-</span>post.Rmd</span>
-<span id="cb498-17"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-17"></a>│  ├─ shortcodes<span class="op">/</span></span>
-<span id="cb498-18"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-18"></a>├─ layouts<span class="op">/</span></span>
-<span id="cb498-19"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-19"></a>├─ public<span class="op">/</span></span>
-<span id="cb498-20"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-20"></a>├─ static<span class="op">/</span></span>
-<span id="cb498-21"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-21"></a>│  ├─ css<span class="op">/</span></span>
-<span id="cb498-22"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-22"></a>│  ├─ fonts<span class="op">/</span></span>
-<span id="cb498-23"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-23"></a>│  ├─ images<span class="op">/</span></span>
-<span id="cb498-24"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-24"></a>│  │  ├─ showcase<span class="op">/</span></span>
-<span id="cb498-25"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-25"></a>│  │  │  ├─ inteliver_docs.png</span>
-<span id="cb498-26"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-26"></a>│  │  │  ├─ tat.png</span>
-<span id="cb498-27"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-27"></a>│  │  │  ├─ tshark_dev.png</span>
-<span id="cb498-28"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-28"></a>│  ├─ post<span class="op">/</span></span>
-<span id="cb498-29"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-29"></a>├─ themes<span class="op">/</span></span>
-<span id="cb498-30"><a href="section-blogdown-websites-and-blogs-creation.html#cb498-30"></a>│  ├─ hugo<span class="op">-</span>theme<span class="op">-</span>learn<span class="op">/</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-1"></a>my<span class="op">-</span>website<span class="op">/</span></span>
+<span id="cb499-2"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-2"></a>├─ my<span class="op">-</span>website.Rproj</span>
+<span id="cb499-3"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-3"></a>├─ config.toml</span>
+<span id="cb499-4"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-4"></a>├─ index.Rmd</span>
+<span id="cb499-5"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-5"></a>├─ LICENSE.md</span>
+<span id="cb499-6"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-6"></a>├─ content<span class="op">/</span></span>
+<span id="cb499-7"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-7"></a>│  ├─ _index.en.md</span>
+<span id="cb499-8"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-8"></a>│  ├─ _index.fr.md</span>
+<span id="cb499-9"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-9"></a>│  ├─ basics<span class="op">/</span></span>
+<span id="cb499-10"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-10"></a>│  ├─ cont<span class="op">/</span></span>
+<span id="cb499-11"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-11"></a>│  ├─ post<span class="op">/</span></span>
+<span id="cb499-12"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-12"></a>│  │  ├─ <span class="dv">2015-07-23</span><span class="op">-</span>r<span class="op">-</span>rmarkdown.html</span>
+<span id="cb499-13"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-13"></a>│  │  ├─ <span class="dv">2015-07-23</span><span class="op">-</span>r<span class="op">-</span>rmarkdown.Rmd</span>
+<span id="cb499-14"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-14"></a>│  │  ├─ test.md</span>
+<span id="cb499-15"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-15"></a>│  │  ├─ <span class="dv">2020-11-16</span><span class="op">-</span>my<span class="op">-</span>first<span class="op">-</span>post.html</span>
+<span id="cb499-16"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-16"></a>│  │  ├─ <span class="dv">2020-11-16</span><span class="op">-</span>my<span class="op">-</span>first<span class="op">-</span>post.Rmd</span>
+<span id="cb499-17"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-17"></a>│  ├─ shortcodes<span class="op">/</span></span>
+<span id="cb499-18"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-18"></a>├─ layouts<span class="op">/</span></span>
+<span id="cb499-19"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-19"></a>├─ public<span class="op">/</span></span>
+<span id="cb499-20"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-20"></a>├─ static<span class="op">/</span></span>
+<span id="cb499-21"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-21"></a>│  ├─ css<span class="op">/</span></span>
+<span id="cb499-22"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-22"></a>│  ├─ fonts<span class="op">/</span></span>
+<span id="cb499-23"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-23"></a>│  ├─ images<span class="op">/</span></span>
+<span id="cb499-24"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-24"></a>│  │  ├─ showcase<span class="op">/</span></span>
+<span id="cb499-25"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-25"></a>│  │  │  ├─ inteliver_docs.png</span>
+<span id="cb499-26"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-26"></a>│  │  │  ├─ tat.png</span>
+<span id="cb499-27"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-27"></a>│  │  │  ├─ tshark_dev.png</span>
+<span id="cb499-28"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-28"></a>│  ├─ post<span class="op">/</span></span>
+<span id="cb499-29"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-29"></a>├─ themes<span class="op">/</span></span>
+<span id="cb499-30"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-30"></a>│  ├─ hugo<span class="op">-</span>theme<span class="op">-</span>learn<span class="op">/</span></span></code></pre></div>
 <ul>
 <li><p><code>config.toml</code> is where you have configuration directives. Some themes such as Academic have <code>config/</code> directory. These directives could also be stored in <code>JSON</code> or <code>YAML</code> syntax.</p></li>
 <li><p><code>index.Rmd</code> is specific to <code>blogdown</code>.</p></li>
@@ -473,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Modify the menu, this is generally easily achieved, check <a href="https://learn.netlify.app/en/basics/configuration/">this</a>.</p></li>
 <li><p>With <code>blogdown</code>, it is recommended to ignore some files by adding</p></li>
 </ul>
-<div class="sourceCode" id="section-cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb499-1"></a>ignoreFiles =<span class="st"> </span>[<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.Rmd$&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.Rmarkdown$&quot;</span>, <span class="st">&quot;_files$&quot;</span>, <span class="st">&quot;_cache$&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="section-blogdown-websites-and-blogs-creation.html#cb500-1"></a>ignoreFiles =<span class="st"> </span>[<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.Rmd$&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.Rmarkdown$&quot;</span>, <span class="st">&quot;_files$&quot;</span>, <span class="st">&quot;_cache$&quot;</span>]</span></code></pre></div>
 <p>to your <code>config.toml</code> file. See this <a href="https://bookdown.org/yihui/blogdown/configuration.html#options">link</a> for further explanations.</p>
 <ul>
 <li><p><strong>Google analyitcs</strong>: simply add <code>googleAnalytics: UA-XXX-YY</code> in your <code>config.toml</code> file using your Google Analytics tracking identifier. Apparently the tracking works also when working locally using <code>blogdown::server_site()</code>, this <a href="http://estebanmoro.org/post/2019-02-04-setting-up-your-blog-with-rstudio-and-blogdown-iii-modify-your-theme/#google-analytics">blog</a> offers a solution.</p></li>
